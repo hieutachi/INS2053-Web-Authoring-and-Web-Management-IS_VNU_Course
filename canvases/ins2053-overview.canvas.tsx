@@ -41,7 +41,6 @@ export default function INS2053Overview() {
               { label: "Midterm (wk 8)", value: 30 },
               { label: "Final", value: 60 },
             ]}
-            centerLabel="100%"
           />
           <Text tone="secondary" size="small">Homework due every Sunday 23:59 · exams practical, no internet.</Text>
         </Stack>
