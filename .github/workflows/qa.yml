@@ -1,0 +1,40 @@
+name: Course QA
+
+on:
+  push:
+    branches: [main, course-hardening-integration]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Check repository formatting
+        run: git diff --check
+
+      - name: Audit teaching materials
+        run: node _tools/audit-selfstudy.js
+
+      - name: Run Canvas structural QA
+        run: node _tools/qa-canvases.js
+
+      - name: Check ebook-to-Canvas links
+        run: node _tools/check-diagram-links.js
+
+      - name: Test literal stripper
+        run: node _tools/test-strip-literals.js
