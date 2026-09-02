@@ -10,8 +10,14 @@ an immediately-assignable exercise to stand on its own.
 - QA: **PASS** on all 9 checks, both runners (`qa-canvases.sh`, `qa-canvases.js`).
 - Stripper tests: 19/19.
 - Snapshot taken: `_tools/backups/snapshot-20260901-1107/` (17 canvas + 16 ebook, 1.4M).
-  This is the only rollback point — the package is not a git repo and the older
-  `.bak` files predate the current decks.
+  At this starting point it was the only rollback location; the older `.bak`
+  files predated the current decks.
+- Repository status (updated 2026-09-02): the package is now version-controlled
+  on private GitHub repository
+  <https://github.com/hieutachi/INS2053-Web-Authoring-and-Web-Management-IS_VNU_Course>,
+  branch `main`; initial commit `8009a98396f5a8bbc4859f7614b44fcc5fb7a9cb`.
+  Because the local working tree is inside a OneDrive-synced directory, move it
+  outside OneDrive or exclude `.git/` from syncing to avoid metadata conflicts.
 - Slide counts today:
 
 | deck | slides | gap to 30 | deck | slides | gap to 30 |

@@ -572,7 +572,7 @@ Kết quả lần chạy cuối: **78 file markdown sạch**, 15/15 exercise có
 resolve 49/49. Canvas: **483 slide, 60 diagram** trên 17 deck (15 deck buổi ở
 30–34 slide/deck).
 
-### 9.7. Vẫn chưa kiểm chứng được (không đổi so với mục 8)
+### 9.7. Trạng thái kiểm chứng còn lại và Git
 
 - **Chưa thấy diagram nào render thật.** Vẫn không có `package.json`, không có
   `tsconfig.json`, `qoder/canvas` vẫn không resolve → **không có dòng TypeScript
@@ -580,10 +580,13 @@ resolve 49/49. Canvas: **483 slide, 60 diagram** trên 17 deck (15 deck buổi �
   hàm có được slide dùng, `role="img"`/`aria-label`, cỡ chữ ≥ 11px, `url(#id)`
   không treo, nhãn SVG tiếng Anh, độ rộng chữ ước tính không vượt `viewBox`.
   Hãy mở một deck bằng mắt trước khi dạy.
-- **Không có git repo ở bất kỳ đâu trong cây thư mục.** Rollback hiện chỉ dựa vào
-  `_tools/backups/`. Snapshot mới nhất là `_tools/backups/post-waveE-*/` (33 file:
-  toàn bộ `exercises/`, `homework/`, `README.md`, file kế hoạch và chính file
-  này). Nên `git init` sớm.
+- **Git/rollback đã được thiết lập ngày 02/09/2026.** Repository private:
+  <https://github.com/hieutachi/INS2053-Web-Authoring-and-Web-Management-IS_VNU_Course>,
+  nhánh `main`; initial commit `8009a98396f5a8bbc4859f7614b44fcc5fb7a9cb`
+  (`8009a98`). `.gitignore` loại `_archive/`, `_tools/backups/`, `.claude/` và
+  các báo cáo `.txt` sinh tự động khỏi remote; snapshot local vẫn được giữ.
+  Working tree hiện nằm trong thư mục OneDrive đồng bộ: nên chuyển repo ra ngoài
+  OneDrive hoặc loại `.git/` khỏi đồng bộ để tránh xung đột metadata Git.
 - **Chưa đọc hết từng dòng trong 118.331 từ.** Đọc theo mẫu, như lần trước.
 - **Chưa có dữ liệu lớp thật.** Mọi nhận định "sinh viên tự học cần gì" vẫn là
   suy luận từ thiết kế học liệu.

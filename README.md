@@ -2,6 +2,7 @@
 
 **Course package** — everything needed to teach and learn this 4-credit course.
 
+- **Repository:** <https://github.com/hieutachi/INS2053-Web-Authoring-and-Web-Management-IS_VNU_Course> (private)
 - **Level:** Beginner (prerequisite: INT1004)
 - **Language:** English
 - **Length:** 15 weeks, 3 periods (150 min) per week
