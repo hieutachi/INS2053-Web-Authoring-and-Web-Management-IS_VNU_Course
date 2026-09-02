@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities | CodeBreakers Club</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== HEADER (same on every page) ========== -->
+    <header>
+        <div class="logo">CB</div>
+        <div>
+            <h1>CodeBreakers Club</h1>
+            <p class="tagline">Where code meets community</p>
+        </div>
+    </header>
+
+    <!-- ========== NAVIGATION (Activities link is active) ========== -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="activities.html" class="active">Activities</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main>
+        <section>
+            <h2>Weekly Schedule</h2>
+            <p>We run activities every week of the semester. Come along to any
+               session that interests you — no experience needed for the open
+               workshops.</p>
+
+            <!-- ===== HTML TABLE =====
+                 caption  = table title
+                 thead    = header row
+                 tbody    = data rows
+                 colspan  = one cell that spans several columns -->
+            <table>
+                <caption>CodeBreakers Club — Weekly Activities</caption>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Time</th>
+                        <th>Activity</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td>18:00 – 20:00</td>
+                        <td>Web Development Workshop</td>
+                        <td>Room 204, Building A</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>18:00 – 20:00</td>
+                        <td>Python Study Group</td>
+                        <td>Library, Floor 3</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>17:30 – 19:30</td>
+                        <td>Open Coding Night</td>
+                        <td>Room 105, Building B</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>09:00 – 12:00</td>
+                        <td>Hackathon Practice</td>
+                        <td>Innovation Lab</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <!-- colspan="3" makes this one cell stretch
+                             across the Time, Activity and Location columns -->
+                        <td colspan="3">No activities — Rest day</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Special Events</h2>
+            <p>Beyond the weekly schedule we also host larger events each
+               semester:</p>
+            <ul>
+                <li><strong>Annual Hackathon</strong> — a 24-hour build competition.</li>
+                <li><strong>Career Talk Series</strong> — alumni share their journey into tech jobs.</li>
+                <li><strong>Beginner Bootcamp</strong> — a free introduction to programming for new students.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@codebreakers.edu">contact@codebreakers.edu</a></p>
+    </footer>
+
+</body>
+</html>

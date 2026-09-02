@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media | CodeBreakers Club</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== HEADER (same on every page) ========== -->
+    <header>
+        <div class="logo">CB</div>
+        <div>
+            <h1>CodeBreakers Club</h1>
+            <p class="tagline">Where code meets community</p>
+        </div>
+    </header>
+
+    <!-- ========== NAVIGATION (Media link is active) ========== -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="media.html" class="active">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main>
+        <section>
+            <h2>Media Gallery</h2>
+            <p>Watch recordings of our workshops and listen to our club podcast.</p>
+        </section>
+
+        <!-- ===== HTML5 VIDEO =====
+             controls      = show play/pause buttons
+             poster        = image shown before the video starts
+             width         = starting width (CSS keeps it responsive)
+             <source>      = provide two formats for browser compatibility
+             The text inside is a fallback for very old browsers. -->
+        <section class="media-item">
+            <h3>Workshop Recording: Introduction to HTML</h3>
+            <video controls poster="images/video-poster.jpg" width="720">
+                <source src="media/workshop.mp4" type="video/mp4">
+                <source src="media/workshop.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- ===== HTML5 AUDIO =====
+             Same idea as video, but for sound only. -->
+        <section class="media-item">
+            <h3>Club Podcast: Episode 1 — How We Started</h3>
+            <audio controls>
+                <source src="media/podcast.mp3" type="audio/mpeg">
+                <source src="media/podcast.ogg" type="audio/ogg">
+                Your browser does not support the audio tag.
+            </audio>
+        </section>
+
+        <section>
+            <h2>Photo Highlights</h2>
+            <img src="images/event-1.jpg" alt="Students presenting projects at the annual hackathon">
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@codebreakers.edu">contact@codebreakers.edu</a></p>
+    </footer>
+
+</body>
+</html>

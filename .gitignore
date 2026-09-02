@@ -1,0 +1,23 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+.claude/
+
+# Local archives and rollback snapshots
+_archive/
+_tools/backups/
+
+# Generated audit output (recreate with the scripts in _tools/)
+_tools/*.txt
+
+# Common generated dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+*.log
+*.tmp
+*.temp

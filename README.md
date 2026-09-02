@@ -1,0 +1,72 @@
+# INS2053 — Web Authoring and Web Management
+
+**Course package** — everything needed to teach and learn this 4-credit course.
+
+- **Level:** Beginner (prerequisite: INT1004)
+- **Language:** English
+- **Length:** 15 weeks, 3 periods (150 min) per week
+- **Assessment:** Attendance 10% · Midterm 30% · Final 60%
+
+---
+
+## Where everything lives
+
+| Folder | What it is | Who uses it |
+|---|---|---|
+| `schedule.md` | The 15-week plan, key dates, deadlines | Everyone — **start here** |
+| `ebook/` | The student textbook: 15 chapters + Appendix A (choosing technologies, CLO3) | Students (primary reference) |
+| `slides/` | Lecture slide decks (Marp markdown) | Lecturer |
+| `canvases/` | 17 interactive lecture decks with 60 hand-drawn SVG teaching diagrams — `buoi-01`...`buoi-15` (51 diagrams) plus two course-wide decks (9) | Lecturer (project in class) |
+| `exercises/` | In-class practice, one per session | Students, in class |
+| `homework/` | Weekly homework, one per session | Students, due Sunday 23:59 |
+| `exams/` | Midterm & final papers + rubrics + solutions | Lecturer (solutions), students (sample papers) |
+| `project/` | Capstone spec, milestones, rubric | Everyone |
+| `examples/` | A **complete working example** website | Students (reference only — do not copy) |
+| `references/` | Curated links (MDN, W3C, tools) | Everyone |
+| `_tools/` | Re-runnable, non-destructive QA and audit scripts | Maintainers |
+
+---
+
+## How to teach a session (150 min)
+
+A suggested rhythm for each 3-period week (150 min including two short breaks):
+
+1. **Lecture (50–60 min)** — work through the matching `ebook/` chapter and `slides/` deck. Project `canvases/buoi-NN.canvas.tsx` when you reach a concept students usually get wrong; each chapter's session-info block lists its own diagrams by name under `🖼 Diagrams:`.
+2. **Guided practice (45–60 min)** — run the matching `exercises/session-NN/exercise.md` together. Each exercise states its own estimate under *Time Required* (45–60 min).
+3. **Independent work (20–30 min)** — students start the week's homework; it is due **Sunday 23:59**.
+
+Every file for session `NN` shares that number: `ebook/NN-*.md`, `slides/NN-*.md`, `canvases/buoi-NN.canvas.tsx`, `exercises/session-NN/`, `homework/session-NN/`. The title slide of each deck prints its own sibling paths, so you can find the rest from the projector. See `schedule.md` → *Material for each session*.
+
+The capstone project grows a little every week. Milestones are in `project/milestones.md`.
+
+---
+
+## How to study (for students)
+
+1. Read the week's `ebook/` chapter **before** class. Each chapter has
+   `🧪 Try It Yourself` blocks — do them; each one tells you the expected result,
+   so you can tell straight away whether you got it right.
+2. Do the in-class exercise during class.
+3. Afterwards, work through `## Self-Check (answers included)` at the end of that
+   exercise. Answer from your own files first, then open each arrow to compare.
+   The last question gives you no code — write it yourself before revealing it.
+4. Finish the homework and push it to your GitHub repo by **Sunday 23:59**.
+5. Build your own Student Club Website a little each week. Compare it with
+   `examples/student-club/` when stuck.
+6. Before each exam, use the sample paper in `exams/` to practise.
+
+**Studying alone?** The package is designed so you can. Every ebook chapter ends
+with a common-errors table (symptom → cause → how to confirm → fix) and eight
+self-check questions with answers; every exercise carries the Self-Check section
+above; `exams/` includes worked solutions, and `exercises/session-08/` is a full
+practice paper with an answer key. Homework is the one thing with no published
+answers — it is graded, and the rubric tells you what is being looked for.
+
+---
+
+## Important notes
+
+- **Deadlines:** homework is due every Sunday 23:59. Grading stops Monday.
+- **Exams:** both are practical, 90 minutes, **no internet**.
+- **The example is a reference, not an answer key.** Study `examples/student-club/`, then build your own.
+- Maintainers can run `node _tools/audit-selfstudy.js`, `node _tools/qa-canvases.js`, and `node _tools/check-diagram-links.js` before publishing changes.
