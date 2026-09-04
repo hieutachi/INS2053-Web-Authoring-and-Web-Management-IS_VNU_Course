@@ -219,6 +219,10 @@ Save all files and preview. Hover your mouse over:
 - `css/style.css` with all previous CSS rules
 - All 4 HTML pages with content and navigation
 
+> **Missing something from an earlier session?** `examples/student-club/` is a complete working
+> reference site (all pages + `css/style.css`). Copy the rules you are missing so you can
+> follow today's tasks, then write your own work — a copied submission is not accepted.
+
 ## Expected Result
 
 ```

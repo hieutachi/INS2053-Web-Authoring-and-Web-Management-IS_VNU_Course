@@ -1281,10 +1281,10 @@ By the end of this course, you should be able to:
 
 | Component | Details |
 |-----------|---------|
-| Duration | 90 minutes |
-| Format | Practical (build/edit HTML/CSS) + Theory (short answer / multiple choice) |
-| Weight | Usually 40–50% of final grade |
-| Allowed Resources | Varies by instructor — ask your lecturer |
+| Duration | 120 minutes |
+| Format | Practical only — build and edit HTML/CSS files at a computer (no theory section) |
+| Weight | 60% of the final course grade (20% final practical exam + 40% capstone project) |
+| Allowed Resources | Your notes, textbook, and local files — no internet |
 
 ## Topics Likely on the Final Exam
 
@@ -1322,22 +1322,25 @@ By the end of this course, you should be able to:
 | Day 4 | Tables + Multimedia | Re-read Sessions 9–10; create a table and embed video |
 | Day 5 | Forms | Re-read Session 13; build a complete registration form |
 | Day 6 | Responsive + Spry | Re-read Sessions 14–15; add media queries to your site |
-| Day 7 | Full practice | Build a complete mini-site (3 pages) in 90 minutes under timed conditions |
+| Day 7 | Full practice | Build a complete mini-site (3 pages) in 120 minutes under timed conditions, offline |
 
 ## Practice Exercise: Timed Mock Exam
 
-Set a timer for 90 minutes and complete this from scratch:
+Set a timer for **120 minutes** — the length of the real final — and complete this from
+scratch, **with the internet switched off**, exactly as in the exam room:
 
 > **Task:** Create a 3-page website for a fictional coffee shop called "Campus Brew." Requirements:
 > 1. `index.html` — Home page with heading, welcome paragraph, featured image, and brief description.
 > 2. `menu.html` — Menu page with a styled table showing drinks, sizes, and prices (at least 6 rows, use colspan for category headers).
 > 3. `contact.html` — Contact page with a form (name, email, message textarea, submit button).
 > 4. All pages share: same header, navigation bar (with active highlighting), footer, linked CSS file.
-> 5. CSS includes: Google Font, box-shadow on header, border-radius on images, hover transitions on nav links, media query for mobile stacking.
+> 5. CSS includes: a **system font stack** (e.g. `font-family: Georgia, "Times New Roman", serif` — no web font, because the exam has no internet), box-shadow on header, border-radius on images, hover transitions on nav links, media query for mobile stacking.
 > 6. Every page has the viewport meta tag.
 > 7. All images have alt attributes. All form fields have labels.
 
-If you can complete this within 90 minutes, you are ready for the final exam.
+If you can complete this within 120 minutes with no internet, you are ready for the final
+exam. For a worked paper with an answer key, use `exams/final/sample-exam.md` together with
+`exams/final/sample-solution.md`.
 
 ## Last-Minute Tips
 

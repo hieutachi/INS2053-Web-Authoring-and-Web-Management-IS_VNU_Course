@@ -508,7 +508,7 @@ export default function Session01Lecture() {
         <Stack gap={12}>
           <H2>Organize before you code</H2>
           <Grid columns="repeat(2, minmax(0,1fr))" gap={16}>
-            <Code language="text">{`StudentClubWebsite/
+            <Code language="text">{`club-website/
 ├── index.html        <-- home page
 ├── about.html
 ├── events.html
@@ -726,7 +726,7 @@ export default function Session01Lecture() {
       <PresentationSlide
         id="s01-self-study-check"
         title="Self-Study Check"
-        notes="Answer key: 1) False — HTML is a markup language, not a programming language. 2) The file path (/about.html). 3) The browser sends the GET request. 4) A dedicated project folder (e.g. StudentClubWebsite/). 5) The body tag wraps all visible content."
+        notes="Answer key: 1) False — HTML is a markup language, not a programming language. 2) The file path (/about.html). 3) The browser sends the GET request. 4) A dedicated project folder (e.g. club-website/). 5) The body tag wraps all visible content."
       >
         <Stack gap={12}>
           <H2>Test yourself before practice</H2>

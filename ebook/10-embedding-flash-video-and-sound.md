@@ -301,7 +301,7 @@ The `preload` attribute hints to the browser how much of the video to load befor
 
 1. Start with the complete element:
    ```html
-   <video controls width="640" height="360" poster="img/video-cover.jpg" preload="metadata">
+   <video controls width="640" height="360" poster="images/video-cover.jpg" preload="metadata">
        <source src="video/intro.mp4" type="video/mp4">
        <track kind="captions" src="video/intro.vtt" srclang="en" label="English" default>
        <p>Your browser does not support HTML5 video.
@@ -962,10 +962,10 @@ Host your own file with `<video>` when the content is yours and small. Embed whe
 
 Before starting the tasks, prepare your project:
 
-1. Open your **StudentClubWebsite** folder in VS Code.
+1. Open your **club-website** folder in VS Code.
 2. Create two new folders inside the project root:
    ```
-   StudentClubWebsite/
+   club-website/
        video/          ← put video files here
        audio/          ← put audio files here
        images/         ← already exists; add poster images here
@@ -991,7 +991,6 @@ Before starting the tasks, prepare your project:
 <section class="media-section">
     <h3>Watch Our Promo Video</h3>
     <video controls
-           width="100%"
            poster="images/video-poster.jpg"
            preload="metadata">
         <source src="video/club-promo.mp4" type="video/mp4">
@@ -1086,7 +1085,6 @@ Before starting the tasks, prepare your project:
                 <section>
                     <h3>Club Promotional Video</h3>
                     <video controls
-                           width="100%"
                            poster="images/video-poster.jpg"
                            preload="metadata">
                         <source src="video/club-promo.mp4" type="video/mp4">

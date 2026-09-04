@@ -10,16 +10,21 @@ Estimated time: 50 minutes
 
 ## Instructions
 
+> **Two folders, two purposes — do not mix them up.**
+> `club-website/` (this exercise) is a **practice sandbox**. It deliberately puts some pages
+> inside `pages/` so you can learn what `../` does; you will throw it away afterwards.
+> `project/` (your homework and the graded capstone) keeps **all five pages flat at the root**,
+> so links there never need `../`. Everything you learn here about paths still applies — you
+> just won't need the `../` form in the project.
+
 ### Task 1: Create Your Site Folder Structure
-A well-organized website project uses a clear folder structure. Create the following folders on your Desktop:
+A well-organized website project uses a clear folder structure. Create the following folders inside your course working directory (not on your Desktop — `ebook/01` §"Never store website files on your Desktop"):
 
 ```
 club-website/
 ├── index.html
 ├── about.html
 ├── images/
-│   ├── logo.png
-│   └── banner.jpg
 ├── css/
 │   └── style.css
 └── pages/
@@ -28,8 +33,8 @@ club-website/
 ```
 
 **Steps:**
-1. Create a folder called `club-website` on your Desktop.
-2. Inside `club-website`, create two subfolders: `images`, `css`, and `pages`.
+1. Create a folder called `club-website` inside your course folder.
+2. Inside `club-website`, create three subfolders: `images`, `css`, and `pages`.
 3. Inside the `css` folder, create a new file called `style.css` (right-click > New > Text Document, rename to `style.css`).
 4. Inside `club-website`, create a new file called `index.html`.
 5. Inside `pages`, create `events.html` and `contact.html`.
@@ -221,7 +226,7 @@ Quick rule to memorise:
 **Cause 1 — an absolute path.** If you wrote
 
 ```html
-<img src="C:/Users/Linh/Desktop/club-website/images/logo.png" alt="Club logo">
+<img src="C:/Users/Linh/club-website/images/logo.png" alt="Club logo">
 ```
 
 that path only exists on your machine. Use the relative path `images/logo.png`.
@@ -266,7 +271,7 @@ Three things to verify in your own version:
 </details>
 
 ## Checklist
-- [ ] Created `club-website` folder with subfolders `images`, `css`, `pages`
+- [ ] Created `club-website` folder with subfolders `images`, `css`, `pages` (inside your course folder, not on the Desktop)
 - [ ] All file names follow naming conventions (lowercase, hyphens, correct extensions)
 - [ ] Created `index.html`, `about.html`, `events.html`, `contact.html`, and `style.css`
 - [ ] Links from `index.html` to other pages work correctly

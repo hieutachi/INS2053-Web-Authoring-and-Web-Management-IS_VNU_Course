@@ -1,37 +1,35 @@
-# Homework 13: Spry Menu Bar / Interactive Widget
+# Homework 14: CSS Dropdown Navigation
 
 ## Due Date
 Sunday, 23:59 (Week 15)
 
 ## Objective
-- Learn about interactive widgets and menu systems
-- Understand how JavaScript enhances web pages
+- Build an interactive dropdown menu with pure HTML and CSS
+- Understand how modern sites replaced the legacy Spry widgets with `:hover` CSS
 - Add an interactive element to your club website
 
 ## Requirements
 
-### Task 1: Add an Interactive Menu or Widget
-Enhance your site with an interactive element. You have two options:
+### Task 1: Add a Dropdown Menu to Your Navigation
+Create a dropdown navigation menu using HTML and CSS only — no JavaScript needed.
 
-**Option A: Enhanced Navigation with Dropdown (Recommended)**
-Create a dropdown navigation menu using HTML and CSS (no JavaScript required for this basic version).
+**Add a dropdown to your nav** (paths shown for `project/index.html` in the site root):
 
-**Create a dropdown menu in your navigation:**
 ```html
 <nav>
   <ul class="menu">
     <li><a href="index.html">Home</a></li>
     <li class="dropdown">
-      <a href="pages/about.html">About</a>
+      <a href="about.html">About</a>
       <ul class="dropdown-content">
-        <li><a href="pages/about.html#mission">Our Mission</a></li>
-        <li><a href="pages/about.html#activities">Activities</a></li>
-        <li><a href="pages/about.html#gallery">Gallery</a></li>
+        <li><a href="about.html#mission">Our Mission</a></li>
+        <li><a href="about.html#activities">Activities</a></li>
+        <li><a href="about.html#gallery">Gallery</a></li>
       </ul>
     </li>
-    <li><a href="pages/schedule.html">Schedule</a></li>
-    <li><a href="pages/media.html">Media</a></li>
-    <li><a href="pages/contact.html">Contact</a></li>
+    <li><a href="activities.html">Activities</a></li>
+    <li><a href="media.html">Media</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 ```
@@ -51,21 +49,14 @@ Create a dropdown navigation menu using HTML and CSS (no JavaScript required for
 }
 ```
 
-**Option B: Spry-Style Menu Bar (Describe It)**
-If you prefer, you can describe what a Spry menu bar or similar interactive widget would do in your project:
+> This is exactly the menu pattern Session 14 teaches as the modern replacement
+> for the retired Spry Menu Bar — `:hover` on the parent `<li>` shows the child `<ul>`.
 
-1. Write a description (1-2 paragraphs) of what an interactive menu bar would include
-2. Describe the features: hover effects, dropdowns, mobile menu toggle
-3. Create a mockup of the menu structure using HTML comments
-4. Explain what JavaScript would be needed to make it work
-
-**Write this in a file:** `project/pages/spry-menu.md`
-
-### Task 2: Implement the Dropdown Menu (If Option A)
-If you chose Option A, add the dropdown CSS to your stylesheet and update the navigation on all pages.
+### Task 2: Style and Integrate the Menu
+Add the dropdown CSS to your stylesheet and update the navigation on all pages.
 
 **Your CSS must include:**
-- Dropdown container styling (position: relative)
+- Dropdown container styling (`position: relative` on the parent `<li>`)
 - Dropdown content hidden by default
 - Show dropdown on hover
 - Style dropdown links (padding, hover color change)
@@ -73,7 +64,7 @@ If you chose Option A, add the dropdown CSS to your stylesheet and update the na
 
 **Your HTML updates must include:**
 - Updated nav on at least 2 pages with the dropdown structure
-- Correct links inside the dropdown
+- Correct links inside the dropdown (use your own pages and anchors)
 
 ### Task 3: Add a "Back to Top" Button (Bonus)
 Add a simple "Back to Top" button to your pages.
@@ -99,13 +90,12 @@ Add a simple "Back to Top" button to your pages.
 Add `id="top"` to your `<header>` element so the link scrolls back up.
 
 **File paths:**
-- `project/css/style.css` (dropdown styles)
-- `project/pages/spry-menu.md` (if Option B)
+- `project/css/style.css` (dropdown + button styles)
 - At least 2 HTML files (updated navigation)
 
 ## Submission Guide
 - Add changes: `git add project/`
-- Commit: `git commit -m "HW13: Add interactive dropdown menu"`
+- Commit: `git commit -m "HW14: Add interactive dropdown menu"`
 - Push: `git push`
 
 ## Grading Rubric

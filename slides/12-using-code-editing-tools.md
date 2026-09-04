@@ -36,7 +36,7 @@ Read: `ebook/12-using-code-editing-tools.md`  ·  Practise: `exercises/session-1
 |              |   style.css  |  4 |   <meta ...>           |
 |              +--------------+-----------------------------+
 |              | PANEL (Terminal)                            |
-|              | $ cd StudentClubWebsite                     |
+|              | $ cd club-website                           |
 +-----------------------------------------------------------+
 ```
 

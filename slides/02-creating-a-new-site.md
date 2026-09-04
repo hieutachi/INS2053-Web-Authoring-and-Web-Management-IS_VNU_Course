@@ -40,7 +40,7 @@ Read: `ebook/02-creating-a-new-site.md`  ·  Practise: `exercises/session-02/exe
 ## Complete Folder Structure
 
 ```
-StudentClubWebsite/
+club-website/
 ├── index.html           <-- Home (required!)
 ├── about.html
 ├── events.html

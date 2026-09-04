@@ -1,4 +1,4 @@
-# Homework 10: Polish Your Compact Site
+# Homework 11: Polish Your Compact Site
 
 ## Due Date
 Sunday, 23:59 (Week 12)
@@ -33,13 +33,9 @@ Add a small icon (favicon) to your website.
 - Create or find a small square image (16x16 or 32x32 pixels)
 - Save it as `favicon.ico` or `favicon.png` in the `images/` folder
 - Add this link in the `<head>` of every HTML page:
-  - For `index.html` (in project root):
+  - Every page sits at the project root, so the same line works on all five:
 ```html
 <link rel="icon" href="images/favicon.png" type="image/png">
-```
-  - For pages in the `pages/` folder:
-```html
-<link rel="icon" href="../images/favicon.png" type="image/png">
 ```
 
 ### Task 3: Write a README File
@@ -63,10 +59,10 @@ A website for the [Club Name] at VNU-IS.
 
 ## Pages
 - Home (index.html)
-- About (pages/about.html)
-- Contact (pages/contact.html)
-- Schedule (pages/schedule.html)
-- Media (pages/media.html)
+- About (about.html)
+- Activities (activities.html)
+- Media (media.html)
+- Contact (contact.html)
 
 ## Technologies
 - HTML5
@@ -83,15 +79,15 @@ Open `index.html` in any web browser.
 **File paths:**
 - `project/README.md` (new file)
 - `project/index.html` (polish + favicon)
-- `project/pages/about.html` (polish + favicon)
-- `project/pages/contact.html` (polish + favicon)
-- `project/pages/schedule.html` (polish + favicon)
-- `project/pages/media.html` (polish + favicon)
+- `project/about.html` (polish + favicon)
+- `project/activities.html` (polish + favicon)
+- `project/media.html` (polish + favicon)
+- `project/contact.html` (polish + favicon)
 - `project/css/style.css` (final polish)
 
 ## Submission Guide
 - Add changes: `git add project/`
-- Commit: `git commit -m "HW10: Polish site and add README"`
+- Commit: `git commit -m "HW11: Polish site and add README"`
 - Push: `git push`
 
 ## Grading Rubric

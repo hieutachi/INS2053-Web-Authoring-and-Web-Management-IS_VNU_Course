@@ -16,7 +16,7 @@ Welcome to the final session of our web authoring journey, friend! You have lear
                  3. Use browser DevTools to inspect and debug a page
                  4. Recognise and fix the most common markup and CSS errors
 📖 Prepare:      1. Install VS Code (https://code.visualstudio.com/)
-                 2. Have your StudentClubWebsite project open
+                 2. Have your club-website project open
                  3. Install Chrome or Edge
 🖼 Diagrams:     canvases/buoi-12.canvas.tsx — VSCodeLayout, EmmetExpand, ValidatorReport,
                  DevToolsLoop
@@ -78,7 +78,7 @@ According to the Stack Overflow Developer Survey, VS Code has been the #1 most-u
 │                │               │  └─────────────────────┘  │
 │                │               │                           │
 │                ├───────────────┤  PANEL (Terminal/Output)  │
-│                │               │  $ cd StudentClubWebsite  │
+│                │               │  $ cd club-website  │
 │                │               │  $ ls                     │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -95,7 +95,7 @@ According to the Stack Overflow Developer Survey, VS Code has been the #1 most-u
 
 1. Launch VS Code.
 2. Go to **File → Open Folder...**
-3. Navigate to your `StudentClubWebsite` folder.
+3. Navigate to your `club-website` folder.
 4. Click **Select Folder**.
 5. The Sidebar now shows your entire project tree.
 
@@ -1355,7 +1355,7 @@ You notice the parent `#main-area` has no defined width and no `overflow: hidden
 ## Setup
 
 1. Install VS Code from https://code.visualstudio.com/ (if not already installed).
-2. Open your **StudentClubWebsite** folder in VS Code (**File → Open Folder**).
+2. Open your **club-website** folder in VS Code (**File → Open Folder**).
 3. Install these extensions (**Ctrl+Shift+X**):
    - Live Server
    - Prettier - Code formatter

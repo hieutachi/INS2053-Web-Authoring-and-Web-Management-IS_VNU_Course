@@ -464,9 +464,9 @@ If you forget the plaque (alt text), visitors who cannot see the painting have n
 1. Add three images to a page: the club logo, a photo of members at a workshop, and a decorative divider line.
 2. Give each one alt text:
    ```html
-   <img src="img/logo.png" alt="Student Web Club logo">
-   <img src="img/workshop.jpg" alt="Six students building websites at a workshop">
-   <img src="img/divider.png" alt="">
+   <img src="images/logo.png" alt="Student Web Club logo">
+   <img src="images/workshop.jpg" alt="Six students building websites at a workshop">
+   <img src="images/divider.png" alt="">
    ```
 3. Now break one path on purpose: change `workshop.jpg` to `workshop-x.jpg` and reload.
 4. Finally, in F12 → Elements, delete each `<img>` in turn and read the page without it.
@@ -886,7 +886,7 @@ To use Emmet: type the abbreviation in an HTML file and press **Tab**.
 
 Before starting, make sure:
 
-1. Your `StudentClubWebsite` folder exists with all five HTML pages from Session 2
+1. Your `club-website` folder exists with all five HTML pages from Session 2
 2. Your `images/` folder contains at least these placeholder images (you can create simple placeholders using any image editor, or download free images):
    - `club-logo.png` (120x60 pixels)
    - `banner.jpg` (800x200 pixels)

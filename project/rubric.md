@@ -20,8 +20,10 @@ Evaluates file organization, naming conventions, and project setup.
 | 6 | Code is consistently indented (2 or 4 spaces) | 0.5 | Inconsistent in 1-2 files (-0.25); 3+ files (-0.4) | No indentation |
 | 7 | Images folder contains relevant image files | 0.5 | Missing some images (-0.25) | Empty folder |
 | 8 | No unnecessary or junk files in submission | 0.5 | 1-2 extra files (-0.25) | Many junk files |
+| 9 | A `README.md` at the project root introduces the club and lists the pages | 1.0 | Missing (-1.0) | — |
+| 10 | Submission unzips and opens with no manual fixing (all relative paths work) | 0.5 | 1-2 broken paths (-0.25) | Site does not open |
 
-**Max: 6 points (capped)**
+**Max: 6 points — the items above sum to exactly 6.0**
 
 ---
 
@@ -42,13 +44,13 @@ Evaluates valid, semantic, well-structured HTML across all pages.
 | 9 | Semantic `<footer>` on all pages | 0.5 | Missing on some (-0.15) | Missing on all |
 | 10 | All tags properly closed | 0.5 | 1-3 unclosed tags (-0.15); 4+ (-0.4) | Many unclosed tags |
 | 11 | Tags properly nested (no overlap) | 0.5 | 1-2 nesting errors (-0.25 each) | Many errors |
-| 12 | Home page (`index.html`) complete with all required elements | 1.0 | Missing 1-2 elements (-0.25 each) | Missing major elements |
+| 12 | Home page (`index.html`) complete with all required elements | 0.5 | Missing 1-2 elements (-0.25 each) | Missing major elements |
 | 13 | About page has mission, history, team sections | 0.5 | Missing 1 section (-0.25) | Missing all |
 | 14 | Activities page has complete schedule table | 0.5 | Table incomplete (-0.25) | No table |
 | 15 | Media page has video + audio elements | 0.5 | Missing one element (-0.25) | Neither |
 | 16 | Contact page has complete form | 0.5 | Form incomplete (-0.25) | No form |
 
-**Max: 8 points (capped)**
+**Max: 8 points — the items above sum to exactly 8.0**
 
 ---
 
@@ -63,7 +65,7 @@ Evaluates visual design, consistency, and responsive behavior.
 | 3 | Consistent body styles (font, margin, bg color) | 0.5 | Incomplete styles (-0.25) | No body styles |
 | 4 | Header is styled (bg color, text color, padding) | 0.5 | Partial styling (-0.25) | Unstyled |
 | 5 | Navigation bar styled (bg, horizontal links, spacing) | 0.5 | Partial styling (-0.25) | Unstyled |
-| 6 | Navigation hover effect | 0.5 | No hover effect (-0.5) | — |
+| 6 | Navigation hover effect | 0.25 | No hover effect (-0.25) | — |
 | 7 | Active page visually indicated in nav | 0.5 | No indicator (-0.5) | — |
 | 8 | Container centered with max-width | 0.5 | Missing or wrong values (-0.25) | No container |
 | 9 | Table styled with borders and readable layout | 0.5 | Partial table styling (-0.25) | Unstyled table |
@@ -77,9 +79,8 @@ Evaluates visual design, consistency, and responsive behavior.
 | 17 | Media query for responsive design exists | 0.5 | No media query (-0.5) | — |
 | 18 | Media query at 768px breakpoint | 0.25 | Wrong breakpoint (-0.25) | — |
 | 19 | Nav stacks vertically on mobile | 0.5 | Does not stack (-0.5) | — |
-| 20 | CSS is organized with comments | 0.25 | No comments (-0.25) | — |
 
-**Max: 8 points (capped)**
+**Max: 8 points — the items above sum to exactly 8.0** (CSS comments are scored once, in Category 7)
 
 ---
 
@@ -100,9 +101,8 @@ Evaluates link functionality and user experience.
 | 9 | Consistent visual design across pages | 0.5 | Inconsistent layout (-0.25) | Very different pages |
 | 10 | No broken links (instructor click test) | 0.5 | 1 broken (-0.25); 2+ broken (-0.5) | All broken |
 | 11 | Contact info visible (email or room number) | 0.25 | Missing (-0.25) | — |
-| 12 | Return-to-top or logical page flow | 0.25 | No logical flow (-0.25) | — |
 
-**Max: 6 points (capped)**
+**Max: 6 points — the items above sum to exactly 6.0**
 
 ---
 
@@ -123,9 +123,8 @@ Evaluates the meaningfulness and completeness of page content.
 | 9 | Images have meaningful `alt` text (not "image" or "img") | 0.5 | Generic alt text (-0.25) | No alt text |
 | 10 | Content is appropriate for a student club context | 0.25 | Inappropriate content (-0.25) | — |
 | 11 | Total text content is sufficient (not just headings) | 0.25 | Too thin (-0.25) | — |
-| 12 | Table caption is descriptive | 0.25 | Missing (-0.25) | — |
 
-**Max: 4 points (capped)**
+**Max: 4 points — the items above sum to exactly 4.0** (table caption is scored in Category 2)
 
 ---
 
@@ -144,15 +143,14 @@ Evaluates the contact/join form on `contact.html`.
 | 7 | Textarea with `rows` and `cols` | 0.25 | Missing attributes (-0.1) | No textarea |
 | 8 | Submit button with correct type | 0.25 | Missing or wrong type (-0.25) | No button |
 | 9 | All inputs have matching `<label>` elements | 0.5 | 1-2 labels missing (-0.15); 3+ (-0.4) | No labels |
-| 10 | Labels have correct `for` attribute matching input `id` | 0.5 | 1-2 mismatches (-0.15); 3+ (-0.4) | No matching |
+| 10 | Labels have correct `for` attribute matching input `id` | 0.25 | 1-2 mismatches (-0.15); 3+ (-0.4) | No matching |
 | 11 | At least 1 `<fieldset>` with `<legend>` | 0.25 | Missing fieldset or legend (-0.15) | Neither |
 | 12 | Form is visually organized and readable | 0.25 | Poor layout (-0.25) | — |
 | 13 | Placeholder text used appropriately | 0.25 | Missing or unhelpful (-0.1) | No placeholders |
 | 14 | Form section has introductory text | 0.25 | Missing (-0.25) | — |
 | 15 | Contact information below form | 0.25 | Missing (-0.25) | — |
-| 16 | Form inputs are focusable and usable | 0.25 | Inputs not usable (-0.25) | — |
 
-**Max: 4 points (capped)**
+**Max: 4 points — the items above sum to exactly 4.0**
 
 ---
 
@@ -163,7 +161,7 @@ Evaluates code cleanliness, comments, and adherence to standards.
 | # | Criterion | Full Marks | Partial Marks | Zero Marks |
 |---|-----------|------------|---------------|------------|
 | 1 | HTML comments explaining major sections | 0.5 | No comments (-0.5) | — |
-| 2 | CSS comments explaining sections/selectors | 0.5 | No comments (-0.5) | — |
+| 2 | CSS comments explaining sections/selectors | 0.25 | No comments (-0.25) | — |
 | 3 | Consistent indentation in HTML (2 or 4 spaces) | 0.5 | Inconsistent in 2+ files (-0.25) | No indentation |
 | 4 | Consistent indentation in CSS | 0.25 | Inconsistent (-0.25) | — |
 | 5 | No inline styles (`style=""` attributes) | 0.5 | 1-3 inline styles (-0.25); 4+ (-0.5) | Many inline styles |
@@ -171,19 +169,18 @@ Evaluates code cleanliness, comments, and adherence to standards.
 | 7 | Class and ID names are descriptive and lowercase | 0.25 | Poor naming (-0.15) | Bad naming throughout |
 | 8 | No deprecated HTML tags (`<font>`, `<center>`, `<marquee>`) | 0.5 | Uses deprecated tags (-0.5) | — |
 | 9 | HTML would pass W3C validation (minor issues OK) | 0.5 | Many validation errors (-0.25) | Fails validation |
-| 10 | CSS has no obvious syntax errors | 0.5 | Syntax errors present (-0.25) | Broken CSS |
-| 11 | No empty or unused CSS rules | 0.25 | Many unused rules (-0.15) | — |
-| 12 | Images use appropriate formats and sizes | 0.25 | Poor image choices (-0.15) | — |
-| 13 | No unnecessary external dependencies (CDN links, web fonts requiring internet) | 0.25 | Uses unnecessary CDN/external resources (-0.25) | — |
-| 14 | Code is DRY — no unnecessary repetition | 0.25 | Heavy repetition (-0.15) | — |
-| 15 | `<link>` to CSS is in `<head>` (not body) | 0.25 | Wrong placement (-0.25) | — |
-| 16 | External CSS used (no inline styles as main method) | 0.5 | Inline styles as main method (-0.5) | — |
+| 10 | CSS has no obvious syntax errors | 0.25 | Syntax errors present (-0.25) | Broken CSS |
+| 11 | No CDN links or web fonts that need the internet (site must work offline) | 0.25 | Uses internet-dependent resources (-0.25) | — |
 
-**Max: 4 points (capped)**
+**Max: 4 points — the items above sum to exactly 4.0**
 
 ---
 
 ## Final Grade Calculation
+
+This table converts the project into its own 40 points. The project is **40% of the course
+grade**; see `schedule.md` → *Assessment Overview* for how it sits alongside the 20% final
+practical exam, the 30% midterm, and the 10% attendance/homework component.
 
 | Category | Weight | Max Points | Score |
 |----------|--------|-----------|-------|
@@ -211,8 +208,8 @@ Evaluates code cleanliness, comments, and adherence to standards.
 | Bonus | Points | Condition |
 |-------|--------|-----------|
 | CSS variables (custom properties) used | +1 | Colors defined as `--primary-color`, etc. |
-| Google Fonts integrated | +1 | Custom web font used correctly |
+| Custom web font, self-hosted | +1 | Font files inside the project — a Google Fonts CDN `<link>` does **not** count (it breaks the offline requirement, see Category 7 item 11) |
 | Smooth scroll behavior | +0.5 | `scroll-behavior: smooth` on html |
 | Favicon added | +0.5 | `<link rel="icon">` in head |
 
-**Maximum total with bonus: 44/40 (capped at 40 for grade calculation, bonus for recognition)**
+**Maximum total with bonus: 43/40 (capped at 40 for grade calculation; bonus can only recover marks lost elsewhere, it cannot push you past 40)**

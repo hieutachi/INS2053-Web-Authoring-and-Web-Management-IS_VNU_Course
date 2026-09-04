@@ -1,4 +1,4 @@
-# Homework 11: HTML & CSS Validation and Code Cleanup
+# Homework 12: HTML & CSS Validation and Code Cleanup
 
 ## Due Date
 Sunday, 23:59 (Week 13)
@@ -22,10 +22,10 @@ Visit the [W3C HTML Validator](https://validator.w3.org/) and check each of your
 
 **You must validate these files:**
 - `project/index.html`
-- `project/pages/about.html`
-- `project/pages/contact.html`
-- `project/pages/schedule.html`
-- `project/pages/media.html`
+- `project/about.html`
+- `project/activities.html`
+- `project/media.html`
+- `project/contact.html`
 
 **Fix ALL errors found.** Common issues:
 - Missing `alt` attributes on images
@@ -104,7 +104,7 @@ nav {
 
 ## Submission Guide
 - Add changes: `git add project/`
-- Commit: `git commit -m "HW11: Validate HTML/CSS and clean up code"`
+- Commit: `git commit -m "HW12: Validate HTML/CSS and clean up code"`
 - Push: `git push`
 
 ## Grading Rubric

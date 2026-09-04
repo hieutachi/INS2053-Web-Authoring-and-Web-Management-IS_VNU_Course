@@ -1,4 +1,4 @@
-# Homework 12: Building a Contact Form
+# Homework 13: Building a Contact Form
 
 ## Due Date
 Sunday, 23:59 (Week 14)
@@ -11,7 +11,10 @@ Sunday, 23:59 (Week 14)
 ## Requirements
 
 ### Task 1: Create the Contact Form
-Update your `project/pages/contact.html` page to include a fully functional contact form.
+Update your `project/contact.html` page to include a fully functional contact form.
+
+> This is the page milestone **M6 (Week 14)** grades — the form built here is exactly what
+> that checklist asks for, so doing this homework properly finishes M6.
 
 **Your form must include at least 5 different input types:**
 
@@ -101,12 +104,12 @@ form button[type="submit"] {
 ```
 
 **File paths:**
-- `project/pages/contact.html` (updated with form)
+- `project/contact.html` (updated with form)
 - `project/css/style.css` (add form styles)
 
 ## Submission Guide
-- Add changes: `git add project/pages/contact.html project/css/style.css`
-- Commit: `git commit -m "HW12: Add contact form with multiple input types"`
+- Add changes: `git add project/contact.html project/css/style.css`
+- Commit: `git commit -m "HW13: Add contact form with multiple input types"`
 - Push: `git push`
 
 ## Grading Rubric

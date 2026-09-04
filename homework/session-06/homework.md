@@ -20,13 +20,24 @@ Update all three pages (index.html, about.html, contact.html) so they share the 
 - The same `<main>` wrapper for content
 - The same CSS stylesheet linked
 
-**Navigation links must be correct on every page:**
-- On `index.html`: use `pages/about.html` and `pages/contact.html`
-- On `about.html`: use `../index.html` for Home and `contact.html` for Contact
-- On `contact.html`: use `../index.html` for Home and `about.html` for About
+**Navigation links are identical on every page** — all three files sit at the project root,
+so every link is a plain file name:
+
+```html
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+```
+
+Copy this same block into all three pages, changing only which link gets `class="active"`.
+No `../` anywhere.
 
 ### Task 2: Complete the Contact Page
-Build out the `project/pages/contact.html` page with full content:
+Build out the `project/contact.html` page with full content:
 
 - A heading "Contact Us"
 - A paragraph inviting visitors to reach out
@@ -45,8 +56,8 @@ Update `project/index.html` with richer content:
 
 **File paths:**
 - `project/index.html`
-- `project/pages/about.html`
-- `project/pages/contact.html`
+- `project/about.html`
+- `project/contact.html`
 - `project/css/style.css`
 
 **Requirements checklist:**
@@ -73,7 +84,7 @@ Update `project/index.html` with richer content:
 | **Total** | **10** | |
 
 ## Tips
-- Use `../` to go up one folder level when linking from pages in the `pages/` folder
+- Every page sits at the project root, so links are plain file names — if you find yourself typing `../`, something is in the wrong folder
 - Test every link by clicking on it in the browser
 - If a link breaks, check the relative path carefully
 

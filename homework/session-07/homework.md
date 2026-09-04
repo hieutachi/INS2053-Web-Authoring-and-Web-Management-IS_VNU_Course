@@ -61,8 +61,8 @@ Make additional typography improvements across the mini-site:
 
 **File paths:**
 - `project/index.html` (add Google Fonts link)
-- `project/pages/about.html` (add Google Fonts link)
-- `project/pages/contact.html` (add Google Fonts link)
+- `project/about.html` (add Google Fonts link)
+- `project/contact.html` (add Google Fonts link)
 - `project/css/style.css` (update with font rules)
 
 ## Submission Guide
@@ -84,6 +84,12 @@ Make additional typography improvements across the mini-site:
 - Don't use more than 2-3 different fonts — it looks messy
 - Make sure your heading font is different from your body font for contrast
 - Test your page with a slow internet connection — Google Fonts need to download
+- **Always write a fallback** after the web font: `font-family: 'Poppins', Verdana, sans-serif`. If the font cannot load, the browser uses the next one in the list.
+
+> ⚠️ **This CDN link is for homework only.** The final capstone submission must work with the
+> network switched off (`project/spec.md` §8) and both exams are offline. Before you submit
+> the project, either download the font files into `project/css/fonts/` and use `@font-face`,
+> or delete the `<link>` and keep a system font stack. Rely on the fallback, not the CDN.
 
 ## Example Output
 Your mini-site should look significantly more polished with custom fonts. The headings should stand out with a distinctive style, and the body text should feel clean and easy to read. Links should change color when you hover over them.

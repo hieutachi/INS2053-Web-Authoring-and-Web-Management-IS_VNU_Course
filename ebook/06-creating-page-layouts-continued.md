@@ -99,7 +99,7 @@ Since we are building with plain HTML (no server-side includes or frameworks), t
 2. For each, write one sentence: *what can a visitor do here that they cannot do elsewhere?*
 3. Draw the folder tree you will create:
    ```
-   StudentClubWebsite/
+   club-website/
    ├── index.html          ← Home lives in the root
    ├── css/style.css
    ├── img/

@@ -6,7 +6,7 @@
 - **Level:** Beginner (prerequisite: INT1004)
 - **Language:** English
 - **Length:** 15 weeks, 3 periods (150 min) per week
-- **Assessment:** Attendance, Participation & Homework 10% · Midterm 30% · Final 60%
+- **Assessment:** Attendance, Participation & Homework 10% · Midterm (practical) 30% · Final practical exam 20% · Capstone project 40%
 
 ---
 
@@ -68,9 +68,10 @@ answers — it is graded, and the rubric tells you what is being looked for.
 
 ## Important notes
 
-- **Deadlines:** homework is due every Sunday 23:59. Grading stops Monday.
-- **Exams:** both are practical, 90 minutes, **no internet**.
-- **The example is a reference, not an answer key.** Study `examples/student-club/`, then build your own.
+- **Deadlines:** homework is due every Sunday 23:59, with a Monday grace day at −20%; nothing is marked after that. Full late-work policy in `schedule.md` → *Assessment Overview*.
+- **Exams:** both are practical — midterm 90 min, final 120 min — **no internet**. You may bring your own notes, the `ebook/` chapters offline, and your project files.
+- **Project:** all five pages sit flat at the project root (`index.html`, `about.html`, `activities.html`, `media.html`, `contact.html`) with only `css/` and `images/` (plus `media/`) as subfolders. Homework, exercises, `project/spec.md` and `examples/student-club/` all use this same structure.
+- **The example is a reference, not an answer key.** Study `examples/student-club/`, then build your own. If you fall behind, the exercises point you there to recover missing CSS rather than retyping from Session 2.
 - Maintainers can run `npm run qa` before publishing changes: it chains
   `_tools/audit-selfstudy.js`, `_tools/qa-canvases.js`, `_tools/check-diagram-links.js`
   and `_tools/qa-html-slides.mjs` (10 checks on `slides-html/`). Rebuild the HTML
@@ -81,7 +82,7 @@ answers — it is graded, and the rubric tells you what is being looked for.
 ## Lecture slides as HTML
 
 `canvases/*.canvas.tsx` needs a canvas host to display. `slides-html/` is the same
-17 decks — all 484 slides, all 61 diagrams, all speaker notes — as plain HTML that
+17 decks — all 484 slides, all 60 diagrams, and every speaker note from the source decks — as plain HTML that
 opens in any browser with no install:
 
 ```

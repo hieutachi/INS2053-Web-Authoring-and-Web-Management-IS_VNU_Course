@@ -1,9 +1,15 @@
-# Session 1 — In-Class Exercise: Introduction to Dreamweaver CS6 & Your First HTML Page
+# Session 1 — In-Class Exercise: Web Fundamentals & Your First HTML Page
 
 ## Objective
 - Understand what a website is and how web pages work
 - Learn the basic structure of an HTML document
-- Create and preview your very first HTML file in Dreamweaver CS6
+- Create and preview your very first HTML file in your code editor
+
+## Editor: use VS Code
+
+Every step below is written for **VS Code** (free, cross-platform, what the industry
+uses today). If your lab machine has **Dreamweaver CS6**, the *Dreamweaver note* under
+each step gives you the equivalent menu path — the HTML you write is identical either way.
 
 ## Time Required
 Estimated time: 45 minutes
@@ -14,23 +20,31 @@ Estimated time: 45 minutes
 - A **website** is a collection of web pages stored on a server and accessed through the internet.
 - A **web page** is a file written in HTML (HyperText Markup Language).
 - Your web browser (Chrome, Firefox, Edge) reads the HTML and displays the page visually.
-- Open Dreamweaver CS6 and spend a few minutes looking at the interface:
-  - **Document toolbar** (top) — shows file name, view options
-  - **Files panel** (right) — shows your project files
-  - **Design view** (center) — visual preview of the page
-  - **Code view** (center) — shows the HTML code
-  - **Split view** (center) — shows code and design side by side
-- Switch between Design view, Code view, and Split view. Notice how changes in one view appear in the other.
+- Open VS Code and spend a few minutes looking at the interface:
+  - **Explorer sidebar** (left) — shows your project folder and files
+  - **Editor area** (center) — where you write code
+  - **Tab bar** (top of editor) — one tab per open file
+  - **Status bar** (bottom) — line number, language mode, and the Live Server button
+  - **Command Palette** (`Ctrl+Shift+P`) — every command by name, the fastest way around
+- Open the Explorer, open a file, and note the line numbers down the left edge. You will refer to them constantly when a browser reports an error on line 7.
+
+> **Dreamweaver note.** If you are on a lab machine with Dreamweaver CS6, look at the
+> **Files panel** (right) instead of the Explorer, and try the three view buttons —
+> **Design** (visual preview), **Code** (the HTML), and **Split** (both). Switch between
+> them and watch a change in one appear in the other. VS Code has no Design view; you
+> preview in a real browser instead, which is what the rest of the course does.
 
 ### Task 2: Create Your First HTML File
-- In Dreamweaver, go to **File > New** and select **HTML** as the page type.
-- Click **Create**.
-- Switch to **Code view** and replace everything with the following code:
+- In VS Code, choose **File → New Text File**, then **File → Save As**.
+- Save it as `index.html` inside a new folder called `my-first-site` in your `Documents` folder.
+  Saving with the `.html` extension is what switches VS Code into HTML mode.
+- Type the following code into the file:
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>My First Web Page</title>
 </head>
 <body>
@@ -41,8 +55,14 @@ Estimated time: 45 minutes
 </html>
 ```
 
-- **Save the file**: Press **Ctrl+S**. Save it as `index.html` inside a new folder called `my-first-site` on your desktop.
-- **Preview in browser**: Press **F12** or go to **File > Preview in Browser**. Choose your browser.
+- **Save the file** with `Ctrl+S`. The dot on the tab disappears when the file is saved.
+- **Preview in browser**: right-click `index.html` in the Explorer and choose
+  **Open with Live Server**, or open the file from your file manager by double-clicking it.
+
+> **Dreamweaver note.** Use **File > New**, select **HTML** as the page type, click
+> **Create**, switch to **Code view** and replace everything with the code above. Save with
+> `Ctrl+S` into the same `my-first-site` folder, then press **F12** or use
+> **File > Preview in Browser**.
 
 **Expected output**: You should see a page with a large heading "Hello, World!" and two paragraphs below it.
 
@@ -89,7 +109,8 @@ Add more content to your HTML file:
 
 ## Starter Files
 - None required. You create everything from scratch.
-- You only need Dreamweaver CS6 installed.
+- You need one code editor installed: **VS Code** (free — <https://code.visualstudio.com>),
+  or Dreamweaver CS6 if your lab machine already has it. A browser you already have.
 
 ## Expected Result
 
@@ -139,7 +160,7 @@ why Task 3 asked you to change `<title>` and watch the tab, not the page.
 </details>
 
 <details>
-<summary>2. In Code view you pressed Enter twice between two sentences, but the browser shows them on the same line. Why?</summary>
+<summary>2. In your editor you pressed Enter twice between two sentences, but the browser shows them on the same line. Why?</summary>
 
 HTML **collapses whitespace**. Any run of spaces, tabs, and newlines in your
 source becomes a single space on screen. Pressing Enter in the editor is not a
@@ -204,11 +225,11 @@ Check your version against these two rules:
 </details>
 
 ## Checklist
-- [ ] Dreamweaver CS6 is open and you explored the interface
+- [ ] Your code editor is open and you explored the interface
 - [ ] You created a new HTML file
 - [ ] You typed the correct HTML structure (DOCTYPE, html, head, body)
 - [ ] You saved the file as `index.html`
-- [ ] You previewed the file in a browser using F12
+- [ ] You previewed the file in a browser (Live Server, double-click, or F12 in Dreamweaver)
 - [ ] You changed the `<title>` and saw it update in the browser tab
 - [ ] You added multiple headings (`h1`, `h2`) and paragraphs (`p`)
 

@@ -299,6 +299,12 @@ Every link should work. If any link is broken, check:
 - `css/style.css` file with previous CSS rules
 - All HTML pages from previous sessions
 
+> **Fell behind, or missing files from an earlier session?** `examples/student-club/` in this
+> repository is a complete, working reference site — every page, plus `css/style.css`. Open it
+> to see what your files should look like at this point, and copy the *CSS rules you are
+> missing* (for example `.main-nav`) so you can keep up with today's tasks instead of
+> retyping from Session 2. Study it, then write your own — a copied submission is not accepted.
+
 ## Expected Result
 
 ```

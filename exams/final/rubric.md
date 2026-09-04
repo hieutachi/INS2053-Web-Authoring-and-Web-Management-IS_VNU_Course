@@ -18,7 +18,9 @@ Create `schedule.html` with a properly structured table.
 | 10 | `colspan` used on at least one cell | 0.25 | colspan present but wrong value (-0.1) | No colspan |
 | 11 | Table has visible borders (HTML or CSS) | 0.15 | No borders (-0.15) | — |
 | 12 | Footer with copyright | 0.1 | No footer (-0.1) | — |
-| 13 | Tags properly closed and nested | 0.1 | 1-2 errors (-0.05); 3+ errors (-0.1) | Major errors |
+| 13 | Tags properly closed and nested | 0.05 | 1-2 errors (-0.05); 3+ errors (-0.05) | Major errors |
+
+**Point allocation:** Items sum to 2.0 points
 
 **Point allocation:** Items sum to 2 points
 
@@ -39,14 +41,14 @@ Create `media.html` with video and audio elements.
 | 1 | HTML5 document structure | 0.15 | Missing elements (-0.05 each) | No structure |
 | 2 | Navigation with "Media" active | 0.2 | Wrong active link (-0.1) | No nav |
 | 3 | `<h1>` heading | 0.1 | Wrong text (-0.05) | No heading |
-| 4 | `<video>` element exists | 0.15 | No video element (-0.15) | — |
+| 4 | `<video>` element exists | 0.25 | No video element (-0.25) | — |
 | 5 | Video has `controls` attribute | 0.15 | Missing controls (-0.15) | — |
 | 6 | Video has `poster` attribute | 0.1 | Missing poster (-0.1) | — |
 | 7 | Video has `width` attribute | 0.05 | Missing width (-0.05) | — |
 | 8 | Video has 2 `<source>` elements | 0.15 | Only 1 source (-0.1) | No source |
 | 9 | Source types correct (mp4 + webm) | 0.1 | Wrong types (-0.1) | — |
 | 10 | Video fallback text present | 0.1 | Missing fallback (-0.1) | — |
-| 11 | `<audio>` element exists | 0.15 | No audio element (-0.15) | — |
+| 11 | `<audio>` element exists | 0.2 | No audio element (-0.2) | — |
 | 12 | Audio has `controls` attribute | 0.1 | Missing controls (-0.1) | — |
 | 13 | Audio has 2 `<source>` elements | 0.1 | Only 1 source (-0.05) | No source |
 | 14 | Audio source types (mp3 + ogg) | 0.05 | Wrong types (-0.05) | — |
@@ -54,7 +56,7 @@ Create `media.html` with video and audio elements.
 | 16 | Descriptive paragraphs before media | 0.1 | Missing or insufficient (-0.05) | No description |
 | 17 | Footer | 0.05 | Missing (-0.05) | — |
 
-**Point allocation:** Items sum to 2 points
+**Point allocation:** Items sum to 2.0 points
 
 ### Common Mistakes
 - Using `<embed>` or `<object>` instead of `<video>`/`<audio>` → no credit for that element
@@ -70,7 +72,7 @@ Create `join.html` with a complete form.
 | # | Criterion | Full Marks | Partial Marks | Zero Marks |
 |---|-----------|------------|---------------|------------|
 | 1 | `<form>` with `action="#"` and `method="POST"` | 0.25 | Missing action or method (-0.1 each) | No form |
-| 2 | Text input (name) with label | 0.2 | Input exists but no label (-0.1); label `for` mismatch (-0.1) | No name input |
+| 2 | Text input (name) with label | 0.3 | Input exists but no label (-0.1); label `for` mismatch (-0.1) | No name input |
 | 3 | Name input has `required` attribute | 0.1 | Missing required (-0.1) | — |
 | 4 | Email input with `type="email"` | 0.15 | Wrong type (-0.1) | No email input |
 | 5 | Email input has label with correct `for` | 0.1 | Label missing or wrong (-0.1) | — |
@@ -88,7 +90,7 @@ Create `join.html` with a complete form.
 | 17 | Textarea has label | 0.1 | Missing (-0.1) | — |
 | 18 | Submit button present | 0.1 | No button (-0.1) | — |
 | 19 | Button has `type="submit"` or is `<input type="submit">` | 0.05 | Missing type (-0.05) | — |
-| 20 | At least 1 `<fieldset>` with `<legend>` | 0.15 | No fieldset (-0.1); no legend (-0.05) | Neither |
+| 20 | At least 1 `<fieldset>` with `<legend>` | 0.25 | No fieldset (-0.15); no legend (-0.1) | Neither |
 | 21 | All inputs have matching labels (consistency) | 0.1 | 1-2 missing labels (-0.05) | 3+ missing |
 | 22 | Navigation with "Join" active | 0.15 | Wrong active (-0.1) | No nav |
 | 23 | Footer present | 0.05 | Missing (-0.05) | — |
@@ -120,31 +122,31 @@ Create `index.html` and `css/style.css` that tie the site together.
 | 6 | `<nav>` with 4 links | 0.2 | 3 links (-0.1); fewer (-0.15) | No nav |
 | 7 | "Home" link marked active | 0.1 | Wrong active (-0.1) | — |
 | 8 | `<main>` with heading + paragraph | 0.2 | Missing elements (-0.1 each) | No main |
-| 9 | Call-to-action text present | 0.1 | Missing (-0.1) | — |
+| 9 | Call-to-action text present | 0.05 | Missing (-0.05) | — |
 | 10 | `<footer>` with copyright | 0.1 | Missing (-0.1) | — |
 | 11 | Semantic elements used correctly | 0.15 | Some divs instead (-0.05) | All divs |
 | 12 | Tags properly closed/nested | 0.1 | Errors (-0.05 each) | Major issues |
 
-**Part A total:** 1.5 points
+**Part A total:** items sum to 1.5 points
 
 ### Part B: `css/style.css` (1.5 points)
 
 | # | Criterion | Full Marks | Partial Marks | Zero Marks |
 |---|-----------|------------|---------------|------------|
 | 1 | Body styles (font, margin, bg) | 0.15 | Missing properties (-0.05 each) | No body style |
-| 2 | Header styles | 0.1 | Missing (-0.1) | — |
+| 2 | Header styles | 0.15 | Missing (-0.15) | — |
 | 3 | Nav styles (bg, links, layout) | 0.15 | Incomplete (-0.05) | No nav style |
 | 4 | Container styles | 0.1 | Missing (-0.1) | — |
 | 5 | Table styles | 0.1 | Missing (-0.1) | — |
 | 6 | Form styles | 0.1 | Missing (-0.1) | — |
-| 7 | Footer styles | 0.05 | Missing (-0.05) | — |
+| 7 | Footer styles | 0.1 | Missing (-0.1) | — |
 | 8 | **Media query exists** | 0.2 | No media query (-0.2) | — |
 | 9 | Media query targets 768px | 0.1 | Wrong breakpoint (-0.1) | — |
 | 10 | Nav stacks vertically in media query | 0.15 | Partial implementation (-0.1) | — |
 | 11 | CSS file in correct location (`css/`) | 0.1 | Wrong location (-0.1) | — |
 | 12 | CSS syntax is valid (no errors) | 0.1 | 1-2 errors (-0.05); 3+ (-0.1) | Broken CSS |
 
-**Part B total:** 1.5 points
+**Part B total:** items sum to 1.5 points
 
 **Problem 4 total:** 3 points
 

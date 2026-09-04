@@ -18,8 +18,9 @@ Build a **5-page student club website** that demonstrates everything you have le
 
 ### Timeline
 
-- **Weeks 1–14:** Build incrementally following milestones M1–M8
-- **Week 15:** Final submission and presentation
+- **Weeks 4–14:** Build incrementally through milestones M1–M6, each due in the week
+  listed in `project/milestones.md`
+- **Week 16, Sunday 23:59:** Final submission (M7 + M8) as a single ZIP — see §8
 
 ---
 
@@ -302,19 +303,27 @@ Build a **5-page student club website** that demonstrates everything you have le
 ### File Structure
 
 ```
-student-club-website/
+club-website/
 ├── index.html
 ├── about.html
 ├── activities.html
 ├── media.html
 ├── contact.html
+├── README.md
 ├── css/
 │   └── style.css
-└── images/
-    ├── logo.png
-    ├── team-photo.jpg
-    └── workshop.jpg
+├── images/
+│   ├── logo.png
+│   ├── team-photo.jpg
+│   └── workshop.jpg
+└── media/
+    ├── club-intro.mp4
+    └── podcast-ep3.mp3
 ```
+
+All five HTML pages sit **flat at the project root** — no `pages/` subfolder. That keeps every
+link a plain file name (`about.html`, never `../about.html`) and matches what the homework
+sheets, the exercises and `examples/student-club/` all use.
 
 ### Naming Conventions
 
@@ -429,15 +438,21 @@ Example:
 ## 8. Submission Requirements
 
 1. Submit a **ZIP file** named `INS2053_[YourName]_[StudentID].zip`
-2. The ZIP must contain the complete `student-club-website/` folder
+2. The ZIP must contain the complete `club-website/` folder
 3. All files must open correctly in a browser when extracted
-4. No external dependencies (no CDN links, no internet-required resources)
+4. No external dependencies (no CDN links, no internet-required resources). If you added a
+   Google Fonts `<link>` in Homework 7, either **download the font files into your project**
+   or remove the link and fall back to a system font stack — the graded site must render
+   correctly with the network switched off.
 5. Include a comment at the top of each HTML file with your name and student ID
 
 ### Deadline
 
-- **Final submission:** Week 15, before the final exam
+- **Final submission (M7 + M8):** Week 16, Sunday 23:59
 - **Late penalty:** -10% per day late
+- **Milestones M1–M6:** due at the start of the lab session in the week listed in
+  `project/milestones.md`; one grace day at −20%, then the milestone's points are lost
+  (the work still counts toward this final submission)
 
 ---
 

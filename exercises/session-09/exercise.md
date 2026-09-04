@@ -231,6 +231,10 @@ Save all files and preview. Your tables should now have:
 - `css/style.css` with all previous CSS rules
 - Navigation header/nav/footer structure from Session 6
 
+> **Missing the `.main-nav` CSS or any earlier file?** `examples/student-club/` is a complete
+> working reference site (all pages + `css/style.css`). Copy the rules you are missing so you
+> can follow today's tasks, then write your own work — a copied submission is not accepted.
+
 ## Expected Result
 
 **Table 1 — Members List:**

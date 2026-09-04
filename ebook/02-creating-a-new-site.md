@@ -56,7 +56,7 @@ The **local root folder** is the top-level folder on YOUR computer. Later in the
 
 Think of defining a site like **setting up a new apartment**:
 
-- Choosing the apartment = choosing your root folder (`StudentClubWebsite/`)
+- Choosing the apartment = choosing your root folder (`club-website/`)
 - Setting up rooms = creating subfolders (`images/`, `css/`, `js/`, `documents/`)
 - Moving furniture in = adding files (`index.html`, `logo.png`, `style.css`)
 - Giving the landlord your address = telling Dreamweaver/VS Code where the project lives
@@ -77,7 +77,7 @@ If you do not tell anyone your address, nobody can find your apartment. Similarl
 
 - Always define your site BEFORE creating any pages.
 - Never create files outside the site folder — they will not be part of your project.
-- The site folder name should be descriptive and match your project: `StudentClubWebsite`.
+- The site folder name should be descriptive and match your project: `club-website`.
 
 ---
 
@@ -88,7 +88,7 @@ If you do not tell anyone your address, nobody can find your apartment. Similarl
 Every professional website follows a predictable folder structure. Here is the complete structure for our Student Club Website:
 
 ```
-StudentClubWebsite/                  <-- ROOT FOLDER (site root)
+club-website/                  <-- ROOT FOLDER (site root)
 │
 ├── index.html                       <-- Home page (required!)
 ├── about.html                       <-- About Us page
@@ -188,7 +188,7 @@ A **file path** tells the browser where to find a file. There are two types:
 
 **Absolute path:** The COMPLETE address starting from the drive letter or domain name.
 ```
-C:\Users\Nguyen\Documents\StudentClubWebsite\images\logo.png
+C:\Users\Nguyen\Documents\club-website\images\logo.png
 https://www.studentclub.edu.vn/images/logo.png
 ```
 
@@ -206,7 +206,7 @@ Relative paths are calculated based on WHERE THE CURRENT FILE IS LOCATED. This i
 ```
 SCENARIO DIAGRAM:
 
-StudentClubWebsite/              <-- Root folder
+club-website/              <-- Root folder
 ├── index.html                   <-- YOU ARE HERE
 ├── about.html
 ├── images/
@@ -467,7 +467,7 @@ _notes/
 
 **Task (6 min):** Put your site under version control locally. No GitHub account needed yet.
 
-1. Open the integrated terminal in VS Code (**Ctrl+`**) with `StudentClubWebsite` open.
+1. Open the integrated terminal in VS Code (**Ctrl+`**) with `club-website` open.
 2. Run these one at a time:
    ```bash
    git init
@@ -581,8 +581,8 @@ These elements do not change the VISUAL appearance (browsers render them like `<
 
 ❌ Wrong:
 ```html
-<img src="C:\Users\Nguyen\Documents\StudentClubWebsite\images\logo.png" alt="Logo">
-<a href="C:\Users\Nguyen\Documents\StudentClubWebsite\about.html">About</a>
+<img src="C:\Users\Nguyen\Documents\club-website\images\logo.png" alt="Logo">
+<a href="C:\Users\Nguyen\Documents\club-website\about.html">About</a>
 ```
 
 ✅ Correct:
@@ -678,8 +678,8 @@ Testing from `index.html` hides the most common path bug. A link written as `abo
 
 | Concept | Definition | Example |
 |---------|-----------|---------|
-| Site | The root folder containing all files for one website | `StudentClubWebsite/` |
-| Local root folder | The project folder on your computer | `C:\Users\You\Documents\StudentClubWebsite\` |
+| Site | The root folder containing all files for one website | `club-website/` |
+| Local root folder | The project folder on your computer | `C:\Users\You\Documents\club-website\` |
 | Relative path | Path from the current file to the target file | `images/logo.png`, `../index.html` |
 | Absolute path | Full path from drive root or domain | `C:\Users\...\logo.png` |
 | `../` | Go up one folder level in a relative path | `../images/logo.png` from inside `css/` |
@@ -701,7 +701,7 @@ Testing from `index.html` hides the most common path bug. A link written as `abo
 
 **Folder structure:**
 ```
-StudentClubWebsite/
+club-website/
 ├── index.html
 ├── events.html          <-- YOU ARE EDITING THIS FILE
 ├── images/
@@ -745,7 +745,7 @@ StudentClubWebsite/
 
 **Folder structure:**
 ```
-StudentClubWebsite/
+club-website/
 ├── index.html
 ├── images/
 │   └── banner.jpg
@@ -864,7 +864,7 @@ header {
 
 ## Setup (Tools and Folders)
 
-Make sure you have completed the setup from Session 1. Your `StudentClubWebsite` folder should already exist with `images/`, `css/`, `js/`, and `documents/` subfolders.
+Make sure you have completed the setup from Session 1. Your `club-website` folder should already exist with `images/`, `css/`, `js/`, and `documents/` subfolders.
 
 If you have NOT done this yet, go back to Session 1, Task 1, and complete it now.
 
@@ -888,7 +888,7 @@ If you have NOT done this yet, go back to Session 1, Task 1, and complete it now
 
 **Step 3:** In the dialog box:
 - **Site Name:** Type `Student Club Website`
-- **Local Site Folder:** Click the folder icon and browse to `C:\Users\YourName\Documents\StudentClubWebsite\`
+- **Local Site Folder:** Click the folder icon and browse to `C:\Users\YourName\Documents\club-website\`
 - Leave all other settings as default
 
 **Step 4:** Click **Save**.
@@ -901,11 +901,11 @@ If you have NOT done this yet, go back to Session 1, Task 1, and complete it now
 
 **Step 2:** Go to **File → Open Folder**.
 
-**Step 3:** Browse to `C:\Users\YourName\Documents\StudentClubWebsite\` and click **Select Folder**.
+**Step 3:** Browse to `C:\Users\YourName\Documents\club-website\` and click **Select Folder**.
 
 **Step 4:** Look at the **Explorer panel** (Ctrl+Shift+E). You should see your folder and subfolders listed.
 
-✅ **Expected result:** Your editor displays the complete folder structure of `StudentClubWebsite` including all subfolders.
+✅ **Expected result:** Your editor displays the complete folder structure of `club-website` including all subfolders.
 
 💾 **Nothing new to save** — this is a configuration step.
 
@@ -967,7 +967,7 @@ If you have NOT done this yet, go back to Session 1, Task 1, and complete it now
 </html>
 ```
 
-Save as `index.html` in the root of `StudentClubWebsite/`.
+Save as `index.html` in the root of `club-website/`.
 
 **Step 2:** Create `about.html`. Copy the code above, then change:
 - `<title>` to `Student Club - About Us`
@@ -1224,7 +1224,7 @@ footer {
 
 **Step 2:** Navigate to your project folder:
 ```bash
-cd C:\Users\YourName\Documents\StudentClubWebsite
+cd C:\Users\YourName\Documents\club-website
 ```
 
 **Step 3:** Initialize Git:

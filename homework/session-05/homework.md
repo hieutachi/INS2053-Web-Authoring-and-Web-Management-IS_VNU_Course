@@ -26,7 +26,7 @@ Build a page layout for `project/index.html` using semantic HTML elements and CS
 </header>
 <nav>
   <ul>
-    <li><a href="../index.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -40,10 +40,19 @@ Build a page layout for `project/index.html` using semantic HTML elements and CS
 </footer>
 ```
 
-> **Note:** These paths assume the HTML file is inside `project/pages/`. Use `../` to go up one level to reach `index.html` in the project root.
+> **Note:** All project pages sit at the project root, so these three links are identical on
+> every page — plain file names, never `../`. Paste the same `<nav>` block into `index.html`,
+> `about.html` and `contact.html`, changing only which link carries `class="active"`. Test
+> every link by clicking it, not by reading it.
 
 ### Task 2: Style the Layout with CSS
 Add CSS rules to your `project/css/style.css` file to make the layout look like a proper web page.
+
+> **Do not skip this:** for `project/index.html` to pick up the stylesheet, its
+> `<head>` must contain `<link rel="stylesheet" href="css/style.css">` — added
+> in Session 4. If your page stays unstyled, open DevTools (F12) → Network tab,
+> reload, and check whether `style.css` loads with status 200 or 404; 404 means
+> the `href` path is wrong.
 
 **Your CSS must include:**
 

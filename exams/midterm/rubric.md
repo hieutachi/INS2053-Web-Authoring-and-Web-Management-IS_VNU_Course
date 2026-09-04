@@ -7,8 +7,7 @@ Create `about.html` with proper structure and content.
 | # | Criterion | Full Marks (0.25 each unless noted) | Partial Marks | Zero Marks |
 |---|-----------|--------------------------------------|---------------|------------|
 | 1 | DOCTYPE declaration | `<!DOCTYPE html>` is present at the top | Wrong or missing doctype (-0.25) | No doctype at all |
-| 2 | HTML structure | `<html>`, `<head>`, `<body>` tags are properly nested and closed | Missing one tag or not properly nested (-0.1) | Major structural issues |
-| 3 | Title tag | `<title>` contains "About — CodeBreakers Club" (or similar) | Title exists but text differs slightly (-0.1) | No `<title>` tag |
+| 2 | HTML structure | `<html>`, `<head>`, `<body>` tags are properly nested and closed | Missing one tag or not properly nested (-0.1) | Major structural issues || 3 | Title tag | `<title>` contains "About — CodeBreakers Club" (or similar) | Title exists but text differs slightly (-0.1) | No `<title>` tag |
 | 4 | H1 heading | `<h1>` contains "About CodeBreakers Club" | Heading exists but text differs (-0.1) | No `<h1>` |
 | 5 | Paragraph 1 | At least 2 sentences about the club in a `<p>` tag | Only 1 sentence (-0.1) | No paragraph |
 | 6 | Paragraph 2 | At least 2 sentences about club activities in a `<p>` tag | Only 1 sentence (-0.1) | No second paragraph |
@@ -33,24 +32,25 @@ Create `css/style.css` with all required rules.
 | # | Selector | Full Marks | Partial Marks | Zero Marks |
 |---|----------|------------|---------------|------------|
 | 1 | `body` — font-family | 0.15 | Partial property (-0.05) | Missing |
-| 2 | `body` — margin + background-color | 0.1 | One property missing (-0.05) | Missing |
+| 2 | `body` — margin + background-color | 0.15 | One property missing (-0.05) | Missing |
 | 3 | `h1` — color `#003366` | 0.15 | Wrong color value (-0.1) | Missing |
-| 4 | `h1` — text-align center | 0.1 | Wrong alignment (-0.05) | Missing |
+| 4 | `h1` — text-align center | 0.15 | Wrong alignment (-0.05) | Missing |
 | 5 | `p` — font-size 16px | 0.15 | Wrong value (-0.1) | Missing |
 | 6 | `p` — line-height 1.5 | 0.15 | Wrong value (-0.1) | Missing |
-| 7 | `p` — color #333 | 0.1 | Wrong color (-0.05) | Missing |
+| 7 | `p` — color #333 | 0.15 | Wrong color (-0.05) | Missing |
 | 8 | `.container` — max-width 960px | 0.15 | Wrong value (-0.1) | Missing |
 | 9 | `.container` — margin 20px auto | 0.15 | Wrong value (-0.1) | Missing |
-| 10 | `.container` — padding 10px | 0.1 | Wrong value (-0.05) | Missing |
-| 11 | `.container` — background-color #fff | 0.1 | Wrong color (-0.05) | Missing |
+| 10 | `.container` — padding 10px | 0.15 | Wrong value (-0.05) | Missing |
+| 11 | `.container` — background-color #fff | 0.15 | Wrong color (-0.05) | Missing |
 | 12 | `nav` — background-color #003366 | 0.15 | Wrong color (-0.1) | Missing |
-| 13 | `nav` — padding 10px | 0.1 | Wrong value (-0.05) | Missing |
+| 13 | `nav` — padding 10px | 0.15 | Wrong value (-0.05) | Missing |
 | 14 | `nav a` — color #fff | 0.15 | Wrong color (-0.1) | Missing |
-| 15 | `nav a` — text-decoration none | 0.1 | Missing (-0.05) | Missing |
-| 16 | `nav a` — margin-right 15px | 0.1 | Wrong value (-0.05) | Missing |
-| 17 | CSS file location | 0.1 | File in wrong folder (-0.1) | No CSS file |
-| 18 | CSS linked in HTML | 0.1 | Wrong `<link>` path (-0.1) | No link tag |
-| 19-20 | Reserved for syntax/extra | 0.2 | — | — |
+| 15 | `nav a` — text-decoration none | 0.15 | Missing (-0.05) | Missing |
+| 16 | `nav a` — margin-right 15px | 0.15 | Wrong value (-0.05) | Missing |
+| 17 | CSS file location | 0.15 | File in wrong folder (-0.1) | No CSS file |
+| 18 | CSS linked in HTML | 0.15 | Wrong `<link>` path (-0.1) | No link tag |
+| 19 | CSS syntax valid (no missing braces/semicolons) | 0.15 | 1-2 syntax errors (-0.05); 3+ (-0.15) | Unparseable CSS |
+| 20 | Consistent formatting and comments | 0.15 | No comments at all (-0.05); messy formatting (-0.1) | — |
 
 **Point allocation:** Items sum to 3 points
 
@@ -97,13 +97,13 @@ Ensure consistent navigation across all 3 pages.
 | # | Criterion | Full Marks | Partial Marks | Zero Marks |
 |---|-----------|------------|---------------|------------|
 | 1 | `about.html` has navigation | 0.25 | Nav exists but incomplete (-0.1) | No nav |
-| 2 | `activities.html` created with proper structure | 0.5 | File exists but missing structure elements (-0.25 each) | File not created |
+| 2 | `activities.html` created with proper structure | 0.25 | File exists but missing structure elements (-0.25 each) | File not created |
 | 3 | `activities.html` has navigation | 0.25 | Nav incomplete (-0.1) | No nav |
 | 4 | All nav links use correct relative paths | 0.25 | 1-2 wrong paths (-0.1); all wrong (-0.25) | No correct paths |
 | 5 | Active page has visual indicator (`class="active"`) | 0.25 | Class added but no CSS rule (-0.1) | No indicator |
 | 6 | CSS rule for `nav a.active` exists | 0.25 | Rule exists but wrong styling (-0.1) | No rule |
 | 7 | All links work when clicked (instructor test) | 0.25 | 1 link broken (-0.1); 2+ links broken (-0.25) | All broken |
-| 8 | Consistent footer across all pages | 0.25 | Footer inconsistent (-0.1) | No footer on some pages |
+| 8 | `activities.html` repeats the same footer as `index.html` | 0.25 | Footer inconsistent (-0.1) | No footer on some pages |
 
 **Point allocation:** Items sum to 2 points
 

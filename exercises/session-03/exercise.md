@@ -17,8 +17,9 @@ Open Dreamweaver and create a new file called `text-practice.html` inside the `c
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Text Practice</title>
 </head>
 <body>
@@ -36,12 +37,10 @@ Open Dreamweaver and create a new file called `text-practice.html` inside the `c
 - **Rule**: Each page should have only **one** `<h1>`. Think of it like a book: one title, many chapters (`<h2>`), many sections (`<h3>`), etc.
 
 ### Task 2: Paragraphs and Text Formatting
-Add the following below the headings in the same file:
+Add the following **inside the existing `<body>`**, below the six headings from Task 1.
+Do not type a second `<body>` tag — the file already has one.
 
 ```html
-<body>
-    <!-- ... headings from Task 1 ... -->
-
     <h2>About Our Club</h2>
     <p>The Student Technology Club was founded in 2020. We organize workshops, 
     coding competitions, and social events for students who love technology.</p>
@@ -58,7 +57,6 @@ Add the following below the headings in the same file:
 
     <hr>
     <p>The horizontal line above separates content sections.</p>
-</body>
 ```
 
 - Save and preview. Notice:

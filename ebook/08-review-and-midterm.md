@@ -16,7 +16,7 @@ Congratulations on making it to the midpoint of INS2053! You have covered an eno
                  4. Build a study plan for your remaining gaps
 📖 Prepare:      1. Re-read your own notes from Sessions 1-7
                  2. Have your Student Club Website project open for reference
-                 3. Bring pen and paper for the timed practice
+                 3. Bring your laptop — the timed practice is typed, like the real exam
 🖼 Diagrams:     canvases/buoi-08.canvas.tsx — CourseMap, ExamBudget, MarkLosers
 🔗 Outcomes:     CLO1 (master basic web design and build skills)
                  CLO4 (design and build a web application)
@@ -72,29 +72,45 @@ Understanding the exam format is half the battle. Here is what to expect:
 
 ### Exam Structure
 
-| Section | Type | Approximate Marks | Time Advice |
+The midterm is **100% practical**. There is no multiple-choice section and no written
+theory section — you sit at a computer, create a folder called `exam-midterm/`, and build
+the files the paper asks for. See `exams/midterm/sample-exam.md` for a real paper.
+
+| Problem | What you build | Marks | Time advice |
 |---|---|---|---|
-| A | Multiple Choice | ~20% | 1 minute per question |
-| B | Short Answer / Explanation | ~30% | 3–5 minutes per question |
-| C | Coding Exercises | ~50% | Remaining time; plan before writing |
-| **Total** | | **100%** | **90 minutes** |
+| 1 | `about.html` — HTML basics | 2 | ~15 min |
+| 2 | `css/style.css` — CSS styling | 3 | ~25 min |
+| 3 | `index.html` — semantic page layout | 3 | ~25 min |
+| 4 | Multi-page navigation across your files | 2 | ~20 min |
+| **Total** | | **10** | **90 minutes** (≈5 min spare to check) |
 
-### What Each Section Tests
+**Allowed:** your own notes, the `ebook/` chapters offline, and your project files.
+**Not allowed:** the internet, or messaging other students.
 
-**Section A — Multiple Choice:** Tests factual recall. Do you know what a tag does? Can you identify correct syntax? These are quick if you have studied; do not overthink them.
+### What Each Problem Tests
 
-**Section B — Short Answer:** Tests understanding and explanation. You may be asked to compare two concepts, explain why something is done a certain way, or describe a process in your own words. Write in complete sentences.
+**Problem 1 — HTML basics:** the boilerplate from memory, headings, paragraphs, a list, and
+an image with `alt`. Marked criterion by criterion (`exams/midterm/rubric.md`), so a missing
+`alt` costs 0.15 and nothing more — never leave a problem blank.
 
-**Section C — Coding Exercises:** Tests practical application. You will write HTML and/or CSS from scratch. Common tasks include creating a complete page, styling a component, building a layout, or fixing broken code. **Indent your code neatly** — markers read dozens of papers and clean formatting earns goodwill.
+**Problem 2 — CSS styling:** an external stylesheet in `css/style.css` with the exact
+selectors and values the paper lists. Inline styles score zero for this problem.
+
+**Problem 3 — Page layout:** `<header>`, `<nav>`, `<main>`, `<footer>` in the right order,
+styled. This is the heaviest problem after CSS — practise it until the skeleton is automatic.
+
+**Problem 4 — Navigation:** relative paths that actually work when clicked. The marker
+clicks every link.
 
 ### ✅ Best practices for exam day
 
-1. **Read ALL questions first** before answering any. This lets you budget time and tackle easy marks first.
-2. **Answer every question.** There is usually no penalty for wrong answers in MC sections. In coding sections, partial credit is awarded for partially correct code.
-3. **Write legibly.** If the marker cannot read it, they cannot mark it.
-4. **Use comments** in coding answers: `<!-- header section -->` and `/* navigation styles */`. This shows understanding even if syntax has minor errors.
-5. **Check file paths.** A common mistake in coding exercises is writing `href="style.css"` when the question says the CSS file is in a `css/` subfolder.
-6. **Manage time.** If stuck on a hard question, move on and come back. Secure the easy marks first.
+1. **Read ALL problems first** before you start typing. Budget time and take the easy marks first.
+2. **Never leave a problem blank.** Marking is per-criterion with partial credit — a half-built page still scores.
+3. **Type the boilerplate first, in every file.** It is worth marks in three of the four problems.
+4. **Use comments** in your code: `<!-- header section -->` and `/* navigation styles */`. They show intent even when syntax slips.
+5. **Check file paths.** The most common loss is writing `href="style.css"` when the paper says the CSS lives in a `css/` subfolder.
+6. **Save and open in the browser after every problem.** Do not discover at minute 85 that nothing renders.
+7. **Manage time.** If a problem stalls, move on and come back. Secure the easy marks first.
 
 ### ❌ Common mistakes on exams
 
@@ -165,7 +181,13 @@ The worksheet at the bottom of this chapter maps directly to the learning object
 
 # 💡 WORKED EXAMPLES (Practice Exam Questions with Answers)
 
-## Example 1: Multiple Choice Set (Section A Practice)
+> **How to use this section.** The midterm itself is 100% practical — you will not be asked
+> a multiple-choice or short-answer question on the paper. Examples 1, 2, 4, 5 and 7 below
+> are **recall drills**: they check whether the facts you need while typing are actually in
+> your head. Examples **3 and 6 are the ones shaped like the real exam** — do those under a
+> clock first, and use the others to find gaps.
+
+## Example 1: Multiple Choice Set (recall drill — not the exam format)
 
 Below are 15 representative MC questions covering Sessions 1–7. Cover the answers, try them yourself, then check.
 
@@ -396,7 +418,7 @@ d) `position: up 5px;`
 
 ---
 
-## Example 2: Short Answer Questions (Section B Practice)
+## Example 2: Short Answer Questions (recall drill — not the exam format)
 
 **Q16. Explain the difference between an ID selector and a class selector in CSS. When would you use each?**
 
@@ -485,7 +507,7 @@ Optional optimisation: Add `<link rel="preconnect">` tags for `fonts.googleapis.
 
 ---
 
-## Example 3: Coding Exercises (Section C Practice)
+## Example 3: Coding Exercises — **this is the real exam format**
 
 **Q21. Create a complete HTML5 page for the Student Club "About" page.**
 
@@ -876,7 +898,7 @@ Specificity matters because it explains why some styles unexpectedly fail to app
 
 ---
 
-## Example 6: Debugging Exercise — Fix a Broken Page
+## Example 6: Debugging Exercise — Fix a Broken Page (**close to the real exam format**)
 
 **Q35.** The following HTML page contains **EIGHT errors**. Find and fix all of them. This simulates the kind of debugging question that may appear on the midterm.
 
@@ -1140,13 +1162,181 @@ Open your Student Club Website project folder. Make sure all files from Sessions
 | 6 | Explain the CSS box model and calculate total element width | ☐ | ☐ |
 | 7 | Build a float-based two-column layout with cleared footer | ☐ | ☐ |
 | 8 | Create consistent navigation across multiple pages with active state | ☐ | ☐ |
-| 9 | Add Google Fonts and write proper font-family fallback stacks | ☐ | ☐ |
+| 9 | Write a `font-family` fallback stack that works with no internet | ☐ | ☐ |
 | 10 | Use CSS3 transitions, transforms, gradients, shadows, and border-radius | ☐ | ☐ |
 
 **Scoring guide:**
 - **9–10 Yes:** You are well-prepared. Focus on timed practice and edge cases.
 - **6–8 Yes:** Good foundation. Spend 1–2 hours revising the "No" topics.
 - **Below 6:** Significant gaps remain. Dedicate at least 3–4 hours of focused revision before the exam, prioritising Sessions 4–5 (CSS and layouts) as they carry the most weight.
+
+---
+
+# 🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU
+
+These are the errors that cost the most marks in a practical exam, gathered from Sessions
+1–7. Under time pressure you will not have the chapter open, so learn the *confirm* column —
+it turns "my page is wrong" into "I know which line to fix".
+
+| Symptom you see | Likely cause | How to confirm | Fix |
+|---|---|---|---|
+| Page is completely unstyled, plain black on white | `<link>` path wrong, or the CSS file is not in `css/` | F12 → Network, reload: is `style.css` **200** or **404**? | Match the `href` to the real folder: `css/style.css` from the root, `../css/style.css` from inside `pages/` |
+| Only *some* rules apply | A syntax error earlier in the file killed the rest | Comment out the top half of the CSS; if the rest starts working, the error is in that half | Look for a missing `}` or `;` just above the first rule that stopped working |
+| The whole page is one giant heading | A closing tag such as `</h1>` is missing | Ctrl+U — find the `<h1>` and look for its partner | Add the closing tag |
+| Nav links work on the home page but 404 from inside `pages/` | Paths written for the root reused on a subpage | Click every link from *every* page, not just from `index.html` | Add `../` when climbing out of `pages/` |
+| Image is a broken icon | Wrong path, or letter case differs (`Logo.PNG` vs `logo.png`) | Ctrl+U, then open the image URL directly in a new tab | Fix the file name to lowercase; keep images in `images/` |
+| Vietnamese text shows as `?` or `Ã¡` | `<meta charset="UTF-8">` missing or not first in `<head>` | Ctrl+U — is charset the first line inside `<head>`? | Put the charset meta first inside `<head>` |
+| Two columns refuse to sit side by side | Floats not cleared, or the container is too narrow | F12 → Elements, hover the container and read its computed width | Clear the float on the footer (`clear: both`) or widen the container |
+| Footer climbs up into the columns | Same cause: uncleared floats | F12 → Elements: the container's height is smaller than the columns | `clear: both` on the footer, or `overflow: hidden` on the wrapper |
+| Custom font never loads | Google Fonts `<link>` after the stylesheet, or no internet in the exam room | F12 → Network: the font request fails | In the exam, do not rely on web fonts — use a system stack: `font-family: Georgia, "Times New Roman", serif` |
+| Marker says "inline styles" and you lose all CSS marks | Styling written in `style="..."` attributes | Ctrl+F your HTML for `style=` | Move every rule into `css/style.css` |
+| Everything looks right on your screen, marker sees a broken site | Absolute path such as `C:/Users/you/...` | Ctrl+F your HTML for `C:/` and `file:///` | Use relative paths only |
+| You run out of time with a blank problem | Started with the hardest problem | — | Read all four problems first, type every boilerplate, then fill in — partial credit is awarded per criterion |
+
+---
+
+# ✅ SELF-CHECK QUESTIONS
+
+Answer from memory first — that is the whole point, since the exam allows no internet.
+Then open each arrow.
+
+<details>
+<summary>1. Write the five boilerplate lines of an HTML5 page, in order.</summary>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+</head>
+```
+
+`charset` must come before `<title>`, otherwise accented characters in the title can be
+mis-decoded. This is worth marks in three of the four midterm problems — type it, don't
+copy it.
+
+</details>
+
+<details>
+<summary>2. You are editing `pages/contact.html`. Write the `<link>` to `css/style.css`, which sits in the site root's `css/` folder.</summary>
+
+```html
+<link rel="stylesheet" href="../css/style.css">
+```
+
+`../` climbs from `pages/` back to the site root, then `css/style.css` descends into the
+CSS folder. From `index.html` in the root, the same link is `href="css/style.css"` — no
+`../`.
+
+</details>
+
+<details>
+<summary>3. What is the difference between a class selector and an ID selector, and which do you use for a repeated card layout?</summary>
+
+`.card` (class) may be used on **many** elements; `#card` (ID) must be **unique** on the
+page. A repeated card layout uses a class. IDs are for one-of-a-kind things and link
+anchors (`href="#top"`).
+
+</details>
+
+<details>
+<summary>4. An element has `width: 300px; padding: 20px; border: 5px solid;`. How wide is it on screen under the default box model?</summary>
+
+**350px** — `300 + 20 + 20 + 5 + 5`. Padding and border are added *outside* the declared
+width by default. Setting `box-sizing: border-box` makes the declared 300px include
+padding and border instead.
+
+</details>
+
+<details>
+<summary>5. Name the four semantic layout elements and what each holds.</summary>
+
+`<header>` — site or page banner (club name, logo).
+`<nav>` — the navigation links.
+`<main>` — the page's unique content; one per page.
+`<footer>` — copyright, contact, secondary links.
+
+Using `<div>` for all four is valid HTML but loses semantic marks.
+
+</details>
+
+<details>
+<summary>6. How do you show the visitor which page they are on, using only HTML and CSS?</summary>
+
+Add a class to the current page's link and style it:
+
+```html
+<li><a href="about.html" class="active">About</a></li>
+```
+```css
+nav a.active { background-color: #fff; color: #003366; }
+```
+
+The class moves from page to page — on `about.html` it sits on the About link, on
+`index.html` on the Home link. Markers check this per page.
+
+</details>
+
+<details>
+<summary>7. Your two-column float layout has the footer sitting inside the columns. What is wrong and how do you fix it?</summary>
+
+Floated elements are taken out of the normal flow, so the container collapses and the
+footer rises into the gap. Fix it by clearing the float:
+
+```css
+footer { clear: both; }
+```
+
+Or contain it on the wrapper with `overflow: hidden` (or a `::after` clearfix).
+
+</details>
+
+<details>
+<summary>8. Challenge — no code given. Write a complete `about.html` with the boilerplate, a link to `css/style.css` in a sibling `css/` folder, a nav of three links with About marked active, an `<h1>`, two paragraphs, and a footer. Write it yourself before revealing.</summary>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — CodeBreakers Club</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <h1>CodeBreakers Club</h1>
+    </header>
+
+    <!-- navigation: About is the current page -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>About CodeBreakers Club</h1>
+        <p>We are a student club for anyone who wants to build things on the web.</p>
+        <p>We meet every Thursday evening in Room 305 to work on projects together.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CodeBreakers Club</p>
+    </footer>
+</body>
+</html>
+```
+
+Three things to check in your own version: the `<link>` has no `../` (this file is in the
+root); `class="active"` is on About, not Home; and every opening tag has a closing partner.
+
+</details>
 
 ---
 

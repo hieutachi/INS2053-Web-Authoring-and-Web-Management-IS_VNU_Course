@@ -19,21 +19,23 @@ In the past, websites used **Adobe Flash** to show video and audio. Flash is now
 These work in all modern browsers without any plugins.
 
 ### Task 2: Prepare Media Files
-You need actual media files to practice with. You can use any of these options:
+Create a `media/` folder inside `club-website/` for video and audio files.
 
-**Option A: Use your own files**
-- Find a short video file (`.mp4` format is best)
-- Find a short audio file (`.mp3` format is best)
-- Copy them into `club-website/images/` (we will reuse the images folder for media)
+**You do not need real media files to finish this exercise.** What is being practised — and
+what gets marked — is the `<video>`/`<audio>` markup: the attributes, the two `<source>`
+elements, and the fallback text. With no file present the browser simply shows your fallback,
+which is the correct behaviour to observe. So:
 
-**Option B: Use free sample files from the internet**
-Download these free sample files:
-- Video: Search for "sample mp4 download" — use any small MP4 file
-- Audio: Search for "sample mp3 download" — use any small MP3 file
+**Option A (recommended in class): write the markup against names that do not exist yet.**
+Point `src` at `media/sample-video.mp4` and `media/sample-audio.mp3` and carry on. You will
+see the fallback text — that is the expected result for this step.
 
-Save the video as `sample-video.mp4` and the audio as `sample-audio.mp3` inside `club-website/images/`.
+**Option B (at home, if you want to watch it play): supply your own files.**
+- A short video (`.mp4`) and a short audio file (`.mp3`)
+- Save them as `sample-video.mp4` and `sample-audio.mp3` inside `club-website/media/`
 
-> **Note:** For simplicity, we store media files in `images/`. In a larger project, you would use a separate `media/` folder.
+> Keep media in `media/`, not `images/` — that is the folder `project/spec.md` expects, and
+> mixing video files into `images/` makes the project harder to check later.
 
 ### Task 3: Add Video to Your Page
 Create a new file called `media.html` in the `club-website` folder:
@@ -64,7 +66,7 @@ Create a new file called `media.html` in the `club-website` folder:
         <p>Watch this short video about our club activities:</p>
 
         <video width="560" height="315" controls>
-            <source src="images/sample-video.mp4" type="video/mp4">
+            <source src="media/sample-video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </main>
@@ -92,8 +94,8 @@ Create a new file called `media.html` in the `club-website` folder:
 
 ```html
         <video width="560" height="315" controls poster="images/banner.jpg">
-            <source src="images/sample-video.mp4" type="video/mp4">
-            <source src="images/sample-video.webm" type="video/webm">
+            <source src="media/sample-video.mp4" type="video/mp4">
+            <source src="media/sample-video.webm" type="video/webm">
             Your browser does not support the video tag.
         </video>
 ```
@@ -110,7 +112,7 @@ Add an audio section below the video in `media.html`:
         <p>Watch this short video about our club activities:</p>
 
         <video width="560" height="315" controls>
-            <source src="images/sample-video.mp4" type="video/mp4">
+            <source src="media/sample-video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
@@ -118,7 +120,7 @@ Add an audio section below the video in `media.html`:
         <p>Listen to our latest podcast episode about web development:</p>
 
         <audio controls>
-            <source src="images/sample-audio.mp3" type="audio/mpeg">
+            <source src="media/sample-audio.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
@@ -126,7 +128,7 @@ Add an audio section below the video in `media.html`:
         <p>Audio without controls (for demonstration only):</p>
 
         <audio controls loop>
-            <source src="images/sample-audio.mp3" type="audio/mpeg">
+            <source src="media/sample-audio.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </main>
@@ -163,8 +165,14 @@ Save and test. Click the Media link from every page to make sure it works.
 
 ## Starter Files
 - `club-website` folder from previous sessions
-- A video file (`.mp4`) and an audio file (`.mp3`) placed inside `images/`
 - `css/style.css` with all previous CSS rules
+- A video file (`.mp4`) and an audio file (`.mp3`) placed inside `media/`
+
+> **No media files to hand?** You do not need real ones to complete this exercise — the
+> `<video>`/`<audio>` markup, attributes and fallback text are what is being practised, and
+> a missing file simply shows the fallback. Point `src` at the names you would use
+> (`media/intro.mp4`, `media/theme.mp3`) and move on; download real files afterwards if you
+> want to see them play. `examples/student-club/media.html` shows the finished markup.
 
 ## Expected Result
 
@@ -217,8 +225,8 @@ can play**, and ignores the rest.
 
 ```html
 <video controls>
-    <source src="images/club-intro.mp4" type="video/mp4">
-    <source src="images/club-intro.webm" type="video/webm">
+    <source src="media/club-intro.mp4" type="video/mp4">
+    <source src="media/club-intro.webm" type="video/webm">
     Your browser cannot play this video.
 </video>
 ```
@@ -280,13 +288,13 @@ press play.
 <p>Interview with a graduate now working as a front-end developer.</p>
 
 <audio controls>
-    <source src="images/podcast-ep3.mp3" type="audio/mpeg">
-    <source src="images/podcast-ep3.ogg" type="audio/ogg">
+    <source src="media/podcast-ep3.mp3" type="audio/mpeg">
+    <source src="media/podcast-ep3.ogg" type="audio/ogg">
     Your browser cannot play this audio.
-    <a href="images/podcast-ep3.mp3">Download the MP3 instead</a>.
+    <a href="media/podcast-ep3.mp3">Download the MP3 instead</a>.
 </audio>
 
-<p><a href="images/podcast-ep3.mp3" download>Download episode 3 (MP3, 8 MB)</a></p>
+<p><a href="media/podcast-ep3.mp3" download>Download episode 3 (MP3, 8 MB)</a></p>
 ```
 
 Four things worth noting in your version:

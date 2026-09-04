@@ -1,4 +1,4 @@
-# Homework 8: Creating HTML Tables
+# Homework 9: Creating HTML Tables
 
 ## Due Date
 Sunday, 23:59 (Week 10)
@@ -13,7 +13,10 @@ Sunday, 23:59 (Week 10)
 ### Task 1: Create a Schedule Table
 Create a new page for your project that displays a weekly schedule or activity timetable.
 
-**Create the file:** `project/pages/schedule.html`
+**Create the file:** `project/activities.html`
+
+> This is the page `project/spec.md` and milestone M5 grade — the file name must be exactly
+> `activities.html`, at the project root beside `index.html`.
 
 **Your table must include:**
 - A `<caption>` element describing the table (e.g., "Weekly Club Activities")
@@ -62,19 +65,20 @@ Add CSS to make the table look professional.
 - Add a hover effect on rows
 
 ### Task 3: Update Navigation
-- Add a "Schedule" link to the navigation menu on ALL pages
-- Make sure the navigation works from every page
+- Add an "Activities" link to the navigation menu on ALL pages
+- All pages sit at the project root, so the link is simply `href="activities.html"` everywhere
+- Click it from every page to confirm
 
 **File paths:**
-- `project/pages/schedule.html` (new page with table)
+- `project/activities.html` (new page with table)
 - `project/css/style.css` (add table styles)
-- `project/index.html` (add Schedule link to nav)
-- `project/pages/about.html` (add Schedule link to nav)
-- `project/pages/contact.html` (add Schedule link to nav)
+- `project/index.html` (add Activities link to nav)
+- `project/about.html` (add Activities link to nav)
+- `project/contact.html` (add Activities link to nav)
 
 ## Submission Guide
 - Add changes: `git add project/`
-- Commit: `git commit -m "HW8: Add schedule page with styled table"`
+- Commit: `git commit -m "HW9: Add schedule page with styled table"`
 - Push: `git push`
 
 ## Grading Rubric
@@ -83,14 +87,14 @@ Add CSS to make the table look professional.
 | Table structure | 3 | Uses thead, tbody, caption, th, td correctly |
 | Content | 2 | Has 5+ columns, 5+ rows, colspan/rowspan used |
 | Table styling | 3 | Borders, header colors, zebra striping, hover |
-| Navigation | 1 | Schedule link added to all pages |
+| Navigation | 1 | Activities link added to all pages |
 | Link accuracy | 1 | All navigation links work correctly |
 | **Total** | **10** | |
 
 ## Tips
 - Use `border-collapse: collapse` to avoid double borders
 - Zebra striping makes tables much easier to read: `tr:nth-child(even) { background: #f2f2f2; }`
-- Make sure the Schedule nav link uses the correct path on each page
+- Make sure the Activities nav link is `href="activities.html"` on every page — no `../`
 
 ## Example Output
-A clean, professional-looking table on its own page. The header row should stand out with color, rows should alternate colors, and the navigation should include a Schedule link on every page.
+A clean, professional-looking table on its own page. The header row should stand out with color, rows should alternate colors, and the navigation should include an Activities link on every page.

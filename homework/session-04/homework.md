@@ -15,10 +15,15 @@ Create a CSS file and link it to your About page.
 
 **Create the file:** `project/css/style.css`
 
-**Link it in your HTML:** Add this line in the `<head>` of `project/pages/about.html`:
+**Link it in your HTML:** Add this line in the `<head>` of `project/about.html`:
 ```html
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="css/style.css">
 ```
+
+> Every page in this project sits at the project root, so the CSS link is the same on all
+> of them: `css/style.css`, with no `../`. Add the identical line to `index.html` and
+> `contact.html` too — a page without the link stays unstyled, and that is the single most
+> common reason a homework "looks like nothing happened".
 
 ### Task 2: Style the About Page
 Write CSS rules to make your About page look visually appealing.
@@ -51,7 +56,7 @@ Write CSS rules to make your About page look visually appealing.
 
 **File paths:**
 - `project/css/style.css` (new CSS file)
-- `project/pages/about.html` (updated with CSS link)
+- `project/about.html` (updated with CSS link)
 
 **Requirements checklist:**
 - [ ] External CSS file exists at `project/css/style.css`
@@ -63,7 +68,7 @@ Write CSS rules to make your About page look visually appealing.
 - [ ] At least one list is styled
 
 ## Submission Guide
-- Add changes: `git add project/css/style.css project/pages/about.html`
+- Add changes: `git add project/css/style.css project/about.html`
 - Commit: `git commit -m "HW4: Add external CSS and style About page"`
 - Push: `git push`
 
@@ -79,7 +84,8 @@ Write CSS rules to make your About page look visually appealing.
 | **Total** | **10** | |
 
 ## Tips
-- Use relative path `../css/style.css` in the HTML link (because about.html is in `pages/`)
+- The CSS link is `href="css/style.css"` on every page, because all pages sit at the project root
+- If the page still looks unstyled, press F12 → Network, reload, and check whether `style.css` returns **200** (found) or **404** (wrong path)
 - Pick colors that look good together (try a color palette site like coolors.co)
 - Test your page in the browser after each CSS change to see the effect
 

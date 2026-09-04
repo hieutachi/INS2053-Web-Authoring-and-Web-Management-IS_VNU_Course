@@ -1,4 +1,4 @@
-# Homework 9: Embedding Video and Audio
+# Homework 10: Embedding Video and Audio
 
 ## Due Date
 Sunday, 23:59 (Week 11)
@@ -13,7 +13,7 @@ Sunday, 23:59 (Week 11)
 ### Task 1: Create a Media Page
 Create a new page called "Media" to showcase video and audio content for your club.
 
-**Create the file:** `project/pages/media.html`
+**Create the file:** `project/media.html`
 
 **Your Media page must include:**
 
@@ -39,7 +39,7 @@ Create a new page called "Media" to showcase video and audio content for your cl
 
 **Example code:**
 ```html
-<video width="560" controls poster="../images/video-thumbnail.jpg">
+<video width="560" controls poster="images/video-thumbnail.jpg">
   <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
   Your browser does not support the video element.
 </video>
@@ -62,16 +62,16 @@ Add CSS to make the media page look good.
 
 ### Task 3: Update Navigation
 - Add a "Media" link to the navigation on ALL pages
-- Ensure the navigation works from every page (use correct relative paths)
+- Every page sits at the project root, so the link is `href="media.html"` everywhere
 
 **File paths:**
-- `project/pages/media.html` (new page)
+- `project/media.html` (new page)
 - `project/css/style.css` (add media styles)
 - All 4 existing HTML pages (update navigation)
 
 ## Submission Guide
 - Add changes: `git add project/`
-- Commit: `git commit -m "HW9: Add media page with video and audio"`
+- Commit: `git commit -m "HW10: Add media page with video and audio"`
 - Push: `git push`
 
 ## Grading Rubric

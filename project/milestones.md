@@ -2,11 +2,18 @@
 
 ## INS2053: Web Authoring and Web Management
 
-Each milestone aligns with the course schedule. Submit your work at the beginning of the corresponding lab session.
+Each milestone is due at the **beginning of the lab session in the week shown**, and every
+milestone falls at least one week *after* the session that teaches its skills — so you are
+never graded on something you have not been taught yet.
+
+**If you start late:** the milestones are cumulative, so catch up in order (M1 → M2 → …).
+`examples/student-club/` is a complete reference site with the same page structure — study
+it to see what a finished milestone looks like, then write your own. Copying it is not
+accepted as your submission.
 
 ---
 
-## Milestone M1 — Project Setup & Home Page (Week 3)
+## Milestone M1 — Project Setup & Home Page (Week 4)
 
 **Topics covered:** Sessions 1–3 (HTML basics, project structure, text & images)
 
@@ -38,7 +45,7 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 ---
 
-## Milestone M2 — CSS Basics (Week 4)
+## Milestone M2 — CSS Basics (Week 5)
 
 **Topics covered:** Session 4 (CSS basics)
 
@@ -69,7 +76,7 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 ---
 
-## Milestone M3 — Multi-Page Site & Navigation (Week 6)
+## Milestone M3 — Multi-Page Site & Navigation (Week 7)
 
 **Topics covered:** Sessions 5–6 (Layouts, multi-page sites)
 
@@ -101,7 +108,7 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 ---
 
-## Milestone M4 — Advanced CSS & Layout (Week 8)
+## Milestone M4 — Advanced CSS & Layout (Week 9)
 
 **Topics covered:** Session 7 (CSS3, fonts, layout)
 
@@ -133,9 +140,9 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 ---
 
-## Milestone M5 — Table & Media Pages (Week 10)
+## Milestone M5 — Table & Media Pages (Week 11)
 
-**Topics covered:** Sessions 8–9 (Tables, multimedia)
+**Topics covered:** Sessions 9–10 (Tables, multimedia)
 
 ### Deliverables
 
@@ -167,9 +174,9 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 ---
 
-## Milestone M6 — Contact Form (Week 12)
+## Milestone M6 — Contact Form (Week 14)
 
-**Topics covered:** Sessions 10–11 (Forms)
+**Topics covered:** Session 13 (Forms)
 
 ### Deliverables
 
@@ -207,9 +214,9 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 ---
 
-## Milestone M7 — Responsive Design (Week 14)
+## Milestone M7 — Responsive Design (Week 16, with the final submission)
 
-**Topics covered:** Sessions 12–13 (Mobile/responsive)
+**Topics covered:** Session 15 (Mobile interface design, viewport, media queries)
 
 ### Deliverables
 
@@ -240,9 +247,9 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 ---
 
-## Milestone M8 — Final Polish & Submission (Week 15)
+## Milestone M8 — Final Polish & Submission (Week 16)
 
-**Topics covered:** Sessions 14–15 (Review, code editing, validation)
+**Topics covered:** Sessions 11–12, 14–15 (site polish, code editing, validation, review)
 
 ### Deliverables
 
@@ -282,14 +289,14 @@ Each milestone aligns with the course schedule. Submit your work at the beginnin
 
 | Milestone | Week | Topic | Points |
 |-----------|------|-------|--------|
-| M1 | 3 | Setup & Home Page | 4 |
-| M2 | 4 | CSS Basics | 4 |
-| M3 | 6 | Multi-Page & Navigation | 5 |
-| M4 | 8 | Advanced CSS & Layout | 5 |
-| M5 | 10 | Tables & Media | 6 |
-| M6 | 12 | Contact Form | 6 |
-| M7 | 14 | Responsive Design | 5 |
-| M8 | 15 | Final Polish | 5 |
+| M1 | 4 | Setup & Home Page | 4 |
+| M2 | 5 | CSS Basics | 4 |
+| M3 | 7 | Multi-Page & Navigation | 5 |
+| M4 | 9 | Advanced CSS & Layout | 5 |
+| M5 | 11 | Tables & Media | 6 |
+| M6 | 14 | Contact Form | 6 |
+| M7 | 16 | Responsive Design | 5 |
+| M8 | 16 | Final Polish | 5 |
 | **Total** | | | **40** |
 
 ### Milestone Grade Scale

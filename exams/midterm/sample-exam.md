@@ -170,11 +170,26 @@ Add a rule for `nav a.active` in `css/style.css` to visually highlight the curre
 | 4 | Multi-page Navigation | 2 |
 | **Total** | | **10** |
 
+### Suggested time budget (90 minutes)
+
+| Problem | Suggested time |
+|---|---|
+| 1 — HTML Basics | 15 min |
+| 2 — CSS Styling | 25 min |
+| 3 — Page Layout | 25 min |
+| 4 — Multi-page Navigation | 20 min |
+| Check and save | 5 min |
+
+Marking is per criterion with partial credit, so **never leave a problem blank** — type the
+boilerplate in every file first, then fill in. Those lines alone carry marks in three of the
+four problems.
+
 ---
 
 ## Reminders
 
-- **No internet.** Close all browsers.
+- **No internet.** Close all browsers except the one previewing your own files.
+- **Allowed:** your own notes, the `ebook/` chapters offline, and your project files.
 - Save frequently.
 - Use VS Code or your preferred local editor.
 - File names are **case-sensitive** on some systems — use lowercase.

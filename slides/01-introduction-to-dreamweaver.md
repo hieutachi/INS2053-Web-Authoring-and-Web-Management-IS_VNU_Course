@@ -102,7 +102,7 @@ Local testing (this course):
 ## Project Folder Structure
 
 ```
-StudentClubWebsite/
+club-website/
 ├── index.html          <-- Home page (required!)
 ├── about.html
 ├── events.html
@@ -160,7 +160,7 @@ Your first HTML5 page (`index.html`):
 Follow `exercises/session-01/exercise.md`:
 
 1. Install Dreamweaver CS6 or VS Code
-2. Create the `StudentClubWebsite` folder structure
+2. Create the `club-website` folder structure
 3. Write `index.html` with heading + paragraph from scratch
 4. Preview in browser and verify output
 
@@ -168,11 +168,14 @@ Follow `exercises/session-01/exercise.md`:
 
 ## Homework
 
-See `homework/session-01/homework.md`:
+See `homework/session-01/homework.md` — **Homework 1: My First Web Page**
 
-- Set up complete project folder structure
-- Create `index.html` with valid HTML5 boilerplate
-- Screenshot folder structure and browser result
+- Create `homework/session-01/index.html` with all five boilerplate lines
+- One `<h1>`, one `<h2>`, three or more `<p>`, and one HTML comment
+- Create empty `css/` and `images/` next to it
+- Submit with `git add` / `git commit` / `git push`
+
+Not required this week: images, links, `<hr>`, `<br>`, CSS.
 
 **Due Sunday 23:59**
 

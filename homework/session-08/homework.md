@@ -18,7 +18,7 @@ For each one:
 - Write a one-sentence explanation of why
 - Find the matching section in the `ebook/` chapters (1–7) and re-read it
 
-Create a file called `midterm-review.md` in your project root with your three items:
+Create a file called `midterm-review.md` inside `homework/session-08/` with your three items:
 
 ```markdown
 # Midterm Review
@@ -36,8 +36,11 @@ Create a file called `midterm-review.md` in your project root with your three it
 ...
 ```
 
-### Task 2: Build a Simple Table
-Create a new page `project/pages/schedule.html` with a table showing your club's weekly activities.
+### Task 2: Build a Simple Table — practice file, not the project yet
+Create a **practice** file at `homework/session-08/table-practice.html` with a table showing
+your club's weekly activities. This is a warm-up: in Homework 9 you will build the real
+`project/activities.html` page, with more columns and `colspan`. Keeping this one separate
+means you can experiment freely without breaking your project.
 
 **Your table must include:**
 - A `<caption>` describing the table
@@ -70,7 +73,8 @@ Create a new page `project/pages/schedule.html` with a table showing your club's
 ```
 
 ### Task 3: Basic Table Styling
-Add CSS for the table in `project/css/style.css`:
+Add CSS for the table. Put it in `homework/session-08/table-practice.css` (linked from your
+practice page) — you will move the rules that work into `project/css/style.css` in Homework 9:
 
 ```css
 table {
@@ -94,21 +98,19 @@ tr:nth-child(even) {
 }
 ```
 
-### Task 4: Update Navigation
-- Add a "Schedule" link to the navigation menu on ALL existing pages
-- Make sure the relative paths are correct on each page
+### Task 4: Check Your Project Navigation
+Your project pages (`index.html`, `about.html`, `contact.html`) all sit at the project root,
+so each nav link is a plain file name. Open every page and click every link — fix any that
+404 before Homework 9 adds two more pages.
 
 **File paths:**
-- `midterm-review.md` (new file, project root)
-- `project/pages/schedule.html` (new page with table)
-- `project/css/style.css` (add table styles)
-- `project/index.html` (add Schedule link to nav)
-- `project/pages/about.html` (add Schedule link to nav)
-- `project/pages/contact.html` (add Schedule link to nav)
+- `homework/session-08/midterm-review.md` (new file)
+- `homework/session-08/table-practice.html` (new practice page with table)
+- `homework/session-08/table-practice.css` (table styles)
 
 ## Submission Guide
-- Add changes: `git add .`
-- Commit: `git commit -m "HW8: Midterm review and schedule table"`
+- Add changes: `git add homework/session-08/ project/`
+- Commit: `git commit -m "HW8: Midterm review and table practice"`
 - Push: `git push`
 
 ## Grading Rubric
@@ -117,14 +119,14 @@ tr:nth-child(even) {
 | Midterm reflection | 3 | Three mistakes identified with correct answers and explanations |
 | Table structure | 3 | Uses caption, thead, tbody, th, td correctly |
 | Table styling | 2 | Borders, header colors, zebra striping applied |
-| Navigation update | 2 | Schedule link added and working on all pages |
+| Project links verified | 2 | Every nav link on every project page clicks through correctly |
 | **Total** | **10** | |
 
 ## Tips
 - The midterm reflection is about learning from mistakes — there is no penalty for honest answers
 - You will learn tables in detail in Session 9; this homework gives you a head start
 - Use `border-collapse: collapse` to avoid double borders
-- Test the Schedule link from every page — check relative paths
+- Keep the practice table simple; Homework 9 is where it becomes a real project page
 
 ## Example Output
-A `midterm-review.md` file with three honest reflections, plus a clean schedule table page that matches the style of your existing site.
+A `midterm-review.md` with three honest reflections, plus a clean practice table page — and a project whose every navigation link you have personally clicked.

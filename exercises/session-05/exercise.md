@@ -27,8 +27,9 @@ Create a new file called `layout.html` in the `club-website` folder. Type the fo
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Club Layout</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -57,8 +58,9 @@ Replace the contents of `layout.html` with this complete structure:
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Club Layout</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -243,8 +245,9 @@ Now update your `index.html` to use the same semantic structure:
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Student Club - Home</title>
     <link rel="stylesheet" href="css/style.css">
 </head>

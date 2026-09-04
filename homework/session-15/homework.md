@@ -1,4 +1,4 @@
-# Homework 14: Making Your Site Responsive
+# Homework 15: Making Your Site Responsive
 
 ## Due Date
 Sunday, 23:59 (Week 16)
@@ -20,10 +20,10 @@ Add the responsive viewport meta tag to the `<head>` section of ALL your HTML pa
 
 **Files to update:**
 - `project/index.html`
-- `project/pages/about.html`
-- `project/pages/contact.html`
-- `project/pages/schedule.html`
-- `project/pages/media.html`
+- `project/about.html`
+- `project/activities.html`
+- `project/media.html`
+- `project/contact.html`
 
 ### Task 2: Write a Media Query
 Add a media query to your CSS that changes the layout for mobile screens (screens smaller than 768px).
@@ -126,7 +126,7 @@ Test your website on different screen sizes:
 
 ## Submission Guide
 - Add changes: `git add project/`
-- Commit: `git commit -m "HW14: Add responsive design with media queries"`
+- Commit: `git commit -m "HW15: Add responsive design with media queries"`
 - Push: `git push`
 
 ## Grading Rubric

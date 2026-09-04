@@ -11,7 +11,7 @@ Sunday, 23:59 (Week 4)
 ## Requirements
 
 ### Task 1: Enhance the About Page
-Update your `project/pages/about.html` file to make it a complete, rich content page about your Student Club.
+Update your `project/about.html` file to make it a complete, rich content page about your Student Club.
 
 **Your About page must include:**
 
@@ -40,7 +40,7 @@ Create a section with the heading `<h2>Photo Gallery</h2>` that contains at leas
 - Each image must have a different `alt` text describing what it shows
 - Add a short `<p>` caption below each image
 
-**File path:** `project/pages/about.html`
+**File path:** `project/about.html`
 
 **Requirements checklist:**
 - [ ] Uses h1, h2, and h3 headings
@@ -51,7 +51,7 @@ Create a section with the heading `<h2>Photo Gallery</h2>` that contains at leas
 - [ ] Has a photo gallery section with 3+ images and captions
 
 ## Submission Guide
-- Add changes: `git add project/pages/about.html`
+- Add changes: `git add project/about.html`
 - Commit: `git commit -m "HW3: Enhance About page with rich content"`
 - Push: `git push`
 
@@ -69,6 +69,8 @@ Create a section with the heading `<h2>Photo Gallery</h2>` that contains at leas
 - Headings should follow a logical order: don't skip from h1 to h3
 - Alt text should describe what the image shows (e.g., "Students working together on a coding project")
 - Use your own images or free images from sites like Unsplash or Pixabay
+- Because `about.html` sits at the project root next to `index.html`, image paths are plain:
+  `images/logo.png` — no `../`
 
 ## Example Output
 Your About page should look like a detailed club profile with sections, lists of activities, and photos. A visitor should be able to learn everything about your club from this page alone.

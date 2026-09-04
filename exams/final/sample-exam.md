@@ -1,6 +1,6 @@
 # Final Exam — INS2053: Web Authoring and Web Management
 
-## Week 15 | 90 minutes | No internet | Open file system only
+## Week 15 | 120 minutes | No internet | Open file system only
 
 ---
 
@@ -171,15 +171,17 @@ Build the home page and the complete stylesheet for a 4-page site.
 
 | # | Element | Details | Points |
 |---|---------|---------|--------|
-| 1 | HTML5 structure | Proper DOCTYPE, html, head, body with charset and viewport meta tags | 0.25 |
-| 2 | Viewport meta | `<meta name="viewport" content="width=device-width, initial-scale=1.0">` | 0.25 |
+| 1 | HTML5 structure | Proper DOCTYPE, html, head, body with charset | 0.2 |
+| 2 | Viewport meta | `<meta name="viewport" content="width=device-width, initial-scale=1.0">` | 0.2 |
 | 3 | External CSS | `<link>` to `css/style.css` | 0.15 |
 | 4 | Header | `<header>` with `<h1>` club name | 0.15 |
-| 5 | Navigation | `<nav>` with 4 links: Home, Schedule, Media, Join | 0.25 |
-| 6 | Main content | Welcome section with heading, paragraph, and call-to-action text | 0.25 |
-| 7 | Footer | `<footer>` with copyright | 0.15 |
+| 5 | Navigation | `<nav>` with 4 links: Home, Schedule, Media, Join | 0.2 |
+| 6 | Main content | Welcome section with heading, paragraph, and call-to-action text | 0.2 |
+| 7 | Footer | `<footer>` with copyright | 0.1 |
 | 8 | Semantic HTML | Uses `<header>`, `<nav>`, `<main>`, `<footer>` | 0.15 |
 | 9 | Valid HTML | All tags properly closed and nested | 0.15 |
+
+**`index.html` subtotal: 1.5 points**
 
 ### Requirements for `css/style.css`
 
@@ -195,6 +197,8 @@ The stylesheet must include:
 | 6 | Form styles | Input width, padding, label display | 0.15 |
 | 7 | Footer styles | Text align, padding, color | 0.1 |
 | 8 | **Media query** | `@media (max-width: 768px)` that stacks nav links vertically | 0.5 |
+
+**`css/style.css` subtotal: 1.5 points** — Problem 4 total: **3 points**
 
 ### Media Query Example
 
@@ -231,11 +235,26 @@ All 4 pages must exist with:
 | 4 | Complete Site | 3 |
 | **Total** | | **10** |
 
+### Suggested time budget (120 minutes)
+
+| Problem | Suggested time | Why |
+|---|---|---|
+| 1 — HTML Table | 20 min | Mechanical once you know `thead`/`tbody`/`colspan` |
+| 2 — Multimedia | 20 min | Attribute-heavy but short |
+| 3 — Form | 30 min | Longest to type; most marks per minute if you know the input types |
+| 4 — Complete Site | 40 min | Two files; the media query is worth 0.5 on its own |
+| Check and save | 10 min | Open every page, click every link |
+
+If you fall behind, **do not abandon a whole problem** — marking is per criterion, so a
+half-finished page still earns most of its structural marks. Type the boilerplate and the
+nav in all four files first; those alone are worth over 1 point.
+
 ---
 
 ## Reminders
 
-- **No internet.** Close all browsers.
+- **No internet.** Close all browsers except the one you use to preview your own files.
+- **Allowed:** your own notes, the `ebook/` chapters offline, and your project files.
 - Save frequently.
 - File names are **case-sensitive** — use lowercase.
 - Media files (video/audio) do NOT need to exist — only the HTML structure is graded.

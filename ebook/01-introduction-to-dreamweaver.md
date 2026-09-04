@@ -17,7 +17,7 @@ Welcome to your very first session in INS2053 — Web Authoring and Web Manageme
                  4. Write, save, and preview your first HTML5 page
                  5. Understand the basic anatomy of an HTML document
 📖 Prepare:      1. Install Adobe Dreamweaver CS6 OR Visual Studio Code (free) on your laptop
-                 2. Create an empty folder called "StudentClubWebsite" inside your Documents folder
+                 2. Create an empty folder called "club-website" inside your Documents folder
                  3. Read MDN "How the Web works" (link in Further Reading below)
 🖼 Diagrams:     canvases/buoi-01.canvas.tsx — RequestResponseCycle, TagAnatomy, HeadVsBody
 🔗 Outcomes:     CLO1 (master basic web design and build skills)
@@ -286,7 +286,7 @@ A **project folder structure** is the way you organize all the files that make u
 Every professional website uses a consistent folder structure. For our Student Club Website, we will use this structure throughout the entire course:
 
 ```
-StudentClubWebsite/              <-- Root folder (your "site")
+club-website/              <-- Root folder (your "site")
 │
 ├── index.html                   <-- Home page (MUST be named index.html)
 ├── about.html                   <-- About Us page
@@ -312,7 +312,7 @@ StudentClubWebsite/              <-- Root folder (your "site")
 
 Think of your project folder like a **filing cabinet in an office**:
 
-- The filing cabinet itself = the root folder (`StudentClubWebsite/`)
+- The filing cabinet itself = the root folder (`club-website/`)
 - Each drawer = a subfolder (`images/`, `css/`, `js/`, `documents/`)
 - Each file inside a drawer = an actual file (`logo.png`, `style.css`, `main.js`)
 
@@ -333,18 +333,21 @@ If you throw all papers into one drawer without sorting, you will never find any
 - **Never** store website files on your Desktop or scattered across multiple folders.
 - **Always** create the folder structure BEFORE you start writing code.
 - Keep folder and file names **lowercase**, use **hyphens** instead of spaces, and avoid special characters.
-- The root folder name should match your project name: `StudentClubWebsite`.
+- The root folder name should match your project name: `club-website`.
 
 ### 🧪 Try It Yourself — Build the Folder Structure Now
 
 **Task (5 min):** Create the structure you will use for the whole capstone.
 
-1. Inside `Documents`, create a folder named exactly `StudentClubWebsite`.
-2. Inside it, create three subfolders: `css`, `img`, `pages`.
-3. In VS Code use **File → Open Folder** and select `StudentClubWebsite`.
+1. Inside `Documents`, create a folder named exactly `club-website`.
+2. Inside it, create four subfolders — the same four as the tree in section 5: `images`, `css`, `js`, `documents`.
+3. In VS Code use **File → Open Folder** and select `club-website`.
 4. In the Explorer sidebar, create an empty `index.html` in the root and an empty `style.css` inside `css`.
 
-**Expected result:** The sidebar shows `StudentClubWebsite` at the top with `css`, `img`, `pages`, and `index.html` beneath it.
+**Expected result:** The sidebar shows `club-website` at the top with `css`, `documents`, `images`, `js`, and `index.html` beneath it.
+
+> Keep these exact names. Every later session, every homework and the capstone all
+> assume this tree, so `images` (not `img`) and `css` (not `styles`) matter from day one.
 
 <details>
 <summary>Why open the folder, not the file</summary>
@@ -419,7 +422,7 @@ Think of the HTML boilerplate like a **formal letter**:
 
 **Task (8 min):** Build and preview a complete HTML5 page without copying anything.
 
-1. In VS Code, create `StudentClubWebsite/index.html`.
+1. In VS Code, create `club-website/index.html`.
 2. Type this from memory — do not paste:
    ```html
    <!DOCTYPE html>
@@ -680,7 +683,7 @@ Remember: `<head>` = information ABOUT the page. `<body>` = content ON the page.
 ### Mistake 5: Not creating a project folder
 
 ❌ Wrong: Saving files directly on the Desktop or in Downloads
-✅ Correct: Creating `C:\Users\YourName\Documents\StudentClubWebsite\` and saving everything inside it
+✅ Correct: Creating `C:\Users\YourName\Documents\club-website\` and saving everything inside it
 
 ### 🧪 Try It Yourself — Watch the Browser Build Your Page
 
@@ -713,7 +716,7 @@ The browser reads your file once, builds the DOM from it, and renders from the D
 | Web Browser | Software that reads HTML and displays it visually | Chrome, Firefox, Edge |
 | Code Editor | A specialized text editor for writing code | Dreamweaver CS6, VS Code |
 | Boilerplate | The standard starting template for every HTML5 page | `<!DOCTYPE html><html>...` |
-| Project Folder | The root directory containing all website files organized in subfolders | `StudentClubWebsite/images/`, `css/`, `js/` |
+| Project Folder | The root directory containing all website files organized in subfolders | `club-website/images/`, `css/`, `js/` |
 | `index.html` | The default home page filename that servers look for automatically | The first page users see when visiting your site |
 | Tag | A marker in HTML that tells the browser how to display content | `<p>`, `<h1>`, `<img>` |
 | Self-closing tag | A tag that does not need a closing partner | `<img>`, `<br>`, `<meta>` |
@@ -855,7 +858,7 @@ Before starting the tasks, make sure you have:
 Open File Explorer and create this exact structure:
 
 ```
-C:\Users\YourName\Documents\StudentClubWebsite\
+C:\Users\YourName\Documents\club-website\
     images\
     css\
     js\
@@ -864,9 +867,9 @@ C:\Users\YourName\Documents\StudentClubWebsite\
 
 To create a folder: Right-click in File Explorer → New → Folder → type the name → press Enter.
 
-If using **VS Code**: Open the `StudentClubWebsite` folder via File → Open Folder. Install the "Live Server" extension from the Extensions panel (Ctrl+Shift+X).
+If using **VS Code**: Open the `club-website` folder via File → Open Folder. Install the "Live Server" extension from the Extensions panel (Ctrl+Shift+X).
 
-If using **Dreamweaver CS6**: Go to Site → New Site → set Site Name to "Student Club Website" → set Local Site Folder to your `StudentClubWebsite` folder → click Save.
+If using **Dreamweaver CS6**: Go to Site → New Site → set Site Name to "Student Club Website" → set Local Site Folder to your `club-website` folder → click Save.
 
 ---
 
@@ -907,7 +910,7 @@ If using **Dreamweaver CS6**: Go to Site → New Site → set Site Name to "Stud
 
 **Step 4:** Save the file:
 - Press Ctrl+S
-- Navigate to `C:\Users\YourName\Documents\StudentClubWebsite\`
+- Navigate to `C:\Users\YourName\Documents\club-website\`
 - Make sure the filename is exactly `index.html` (not `index.html.txt`)
 - Click Save
 
@@ -919,7 +922,7 @@ If using **Dreamweaver CS6**: Go to Site → New Site → set Site Name to "Stud
 
 ✅ **Expected result:** A simple web page with a large heading "Welcome to the Student Club" and two paragraphs of text. The browser tab displays "Student Club - Home."
 
-💾 **File to save:** `StudentClubWebsite/index.html`
+💾 **File to save:** `club-website/index.html`
 
 ---
 
@@ -938,7 +941,7 @@ If using **Dreamweaver CS6**: Go to Site → New Site → set Site Name to "Stud
 
 **Step 1 (VS Code):** Open the Explorer panel (Ctrl+Shift+E) on the left. You should see `index.html` listed. Click it to open. Look at the status bar at the bottom — it shows the line number, column, file encoding, and language.
 
-**Step 2:** In the Files/Explorer panel, verify that you can see your `StudentClubWebsite` folder and the subfolders (`images/`, `css/`, `js/`, `documents/`).
+**Step 2:** In the Files/Explorer panel, verify that you can see your `club-website` folder and the subfolders (`images/`, `css/`, `js/`, `documents/`).
 
 **Step 3:** Add a comment to your code. Place your cursor at the top of the `<body>` and type:
 ```html
@@ -950,7 +953,7 @@ Notice how the comment appears in a different color (syntax highlighting).
 
 ✅ **Expected result:** You can navigate between views, see your project files, and understand where key panels are located. Comments in code are invisible in the browser.
 
-💾 **File to save:** `StudentClubWebsite/index.html` (updated with comment)
+💾 **File to save:** `club-website/index.html` (updated with comment)
 
 ---
 
@@ -1044,7 +1047,7 @@ Notice how the comment appears in a different color (syntax highlighting).
 
 ✅ **Expected result:** A structured web page with a header, navigation bar (as an unstyled bulleted list), two content sections with headings and articles, and a footer. The page looks plain (no CSS yet) but has correct HTML structure.
 
-💾 **File to save:** `StudentClubWebsite/index.html` (complete version)
+💾 **File to save:** `club-website/index.html` (complete version)
 
 ---
 

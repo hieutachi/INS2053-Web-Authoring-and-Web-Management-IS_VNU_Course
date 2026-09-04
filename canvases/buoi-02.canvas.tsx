@@ -324,7 +324,7 @@ export default function Session02Lecture() {
         <Stack gap={12}>
           <H2>The standard web project layout</H2>
           <Grid columns="repeat(2, minmax(0,1fr))" gap={16}>
-            <Code language="text">{`StudentClubWebsite/
+            <Code language="text">{`club-website/
 ├── index.html          <-- home page
 ├── about.html
 ├── events.html

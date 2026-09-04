@@ -16,7 +16,7 @@ Hello again, friend! So far you have built several pages for your Student Club W
                  4. Polish a 3-5 page site to a presentable standard
                  5. Write a project README that explains your own site
 📖 Prepare:      1. Review all previous sessions
-                 2. Have your StudentClubWebsite folder open in VS Code
+                 2. Have your club-website folder open in VS Code
                  3. Bring pen and paper for the planning exercise
 🖼 Diagrams:     canvases/buoi-11.canvas.tsx — SiteMap, DryPrinciple, VisualHierarchy,
                  BriefToSpec
@@ -483,7 +483,7 @@ project for INS2053 — Web Authoring and Web Management.
 
 ## File Structure
 
-StudentClubWebsite/
+club-website/
 ├── index.html          ← Home page
 ├── about.html          ← About Us page
 ├── events.html         ← Events page
@@ -873,7 +873,7 @@ Open `index.html` in Chrome, Firefox, or Edge. No server needed.
 
 ## Folder Structure
 
-StudentClubWebsite/
+club-website/
 ├── index.html
 ├── about.html
 ├── events.html
@@ -919,7 +919,7 @@ INS2053, Fall 2024, VNU-IS
 
 ## Setup
 
-1. Open your **StudentClubWebsite** folder in VS Code.
+1. Open your **club-website** folder in VS Code.
 2. Make sure you have all pages from previous sessions: `index.html`, `about.html`, `events.html`, `gallery.html`, `media.html`, `contact.html`.
 3. Have a pen and paper (or digital note app) ready for planning.
 4. Open your browser's Developer Tools (F12) for testing.
