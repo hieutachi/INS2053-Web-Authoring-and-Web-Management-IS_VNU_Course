@@ -127,7 +127,9 @@ site/homework/session-NN.html   the homework sheet
 
 Each session hub states the same three stages, so a student always knows where they
 are: **before class** read the chapter and work its `🧪 Try It Yourself` blocks, **in
-class** follow the deck, **after class** finish the homework by Sunday 23:59.
+class** follow the deck, **after class** use the homework brief for practice and keep
+the result in their own Git repository. Online submission and grading are deliberately
+disabled until that workflow is complete.
 
 **What is deliberately not published.** The builder uses an allowlist, not a blocklist:
 
@@ -139,14 +141,15 @@ class** follow the deck, **after class** finish the homework by Sunday 23:59.
 | `canvases/`, `_tools/`, `_archive/` | Source and tooling, not student-facing |
 
 `npm run qa:site` fails the build if any page links into an excluded folder, so this
-cannot regress by accident. Homework rubrics *are* published — students should know
-how their work is marked.
+cannot regress by accident. It also rejects forms, uploads, request code and API
+endpoints while submission is disabled. Homework rubrics remain visible as reference
+criteria, but the site neither accepts work nor records grades.
 
 Build and check:
 
 ```bash
 npm run build:site        # generate site/
-npm run qa:site           # 11 checks on the generated site
+npm run qa:site           # 12 checks on the generated site
 npm run clean:site        # delete site/
 ```
 

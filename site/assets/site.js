@@ -19,16 +19,44 @@
   function applyTheme(name) {
     root.setAttribute("data-theme", name);
     var buttons = document.querySelectorAll("[data-theme-toggle]");
+    var labels = document.querySelectorAll("[data-theme-label]");
+    var nextName = name === "dark" ? "light" : "dark";
     for (var i = 0; i < buttons.length; i++) {
       // The button is a toggle, so announce its state rather than relying on
       // the visual colour change alone.
       buttons[i].setAttribute("aria-pressed", String(name === "dark"));
+      buttons[i].setAttribute("aria-label", "Switch to " + nextName + " theme");
+    }
+    for (var j = 0; j < labels.length; j++) {
+      labels[j].textContent = name === "dark" ? "Light" : "Dark";
     }
   }
 
   // The inline head script already set the attribute. Re-apply so the buttons
   // pick up their aria-pressed state now that the DOM exists.
   applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+
+  // Mark the current resource section in the persistent course navigation.
+  var section = window.location.pathname.match(/\/(sessions|ebook|slides|homework)\//);
+  if (section) {
+    var current = document.querySelector('[data-course-nav="' + section[1] + '"]');
+    if (current) current.setAttribute("aria-current", "page");
+  }
+
+  // Long chapters and homework sheets get a quiet reading-progress indicator.
+  var progress = document.querySelector("[data-reading-progress]");
+  function updateProgress() {
+    if (!progress) return;
+    var doc = document.documentElement;
+    var distance = doc.scrollHeight - doc.clientHeight;
+    var percent = distance > 0 ? Math.min(100, Math.max(0, doc.scrollTop / distance * 100)) : 0;
+    progress.style.width = percent + "%";
+  }
+  if (progress) {
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+  }
 
   document.addEventListener("click", function (event) {
     var button = event.target.closest && event.target.closest("[data-theme-toggle]");

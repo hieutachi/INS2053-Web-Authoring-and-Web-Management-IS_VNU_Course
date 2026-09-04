@@ -157,6 +157,24 @@ function render(markdown) {
   return { html, headings };
 }
 
+/**
+ * Keep the source homework useful to lecturers while publishing it only as
+ * ungraded practice. Technical uses of HTML submit controls in Session 13 stay
+ * intact as escaped teaching examples; course deadlines and hand-in wording do not.
+ */
+function prepareHomeworkMarkdown(markdown) {
+  return markdown
+    .replace(
+      /^## Due Date\s*\r?\n[^\r\n]*(?:\r?\n)?/m,
+      "## Practice Status\nOnline submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.\n"
+    )
+    .replace(/^## Submission Guide\s*$/m, "## Save Your Practice Work")
+    .replace(/^## Grading Rubric\s*$/m, "## Reference Rubric")
+    .replace(/\bby the deadline\b/gi, "before you attempt this task")
+    .replace(/\bfinal capstone submission\b/gi, "final capstone version")
+    .replace(/\bBefore you submit it\b/g, "Before you consider it finished");
+}
+
 /* --- the course map ------------------------------------------------------- */
 
 /**
@@ -194,7 +212,18 @@ const pad = (n) => String(n).padStart(2, "0");
  * One shell for every page. `crumbs` is an array of {href,label}; the last entry
  * is rendered as plain text because it is the current page.
  */
-function page({ title, heading, lead, crumbs = [], toc = [], body, depth = 0 }) {
+function page({
+  title,
+  heading,
+  lead,
+  crumbs = [],
+  toc = [],
+  body,
+  depth = 0,
+  pageClass = "content-page",
+  eyebrow = "INS2053 learning materials",
+  introExtra = "",
+}) {
   const base = depth === 0 ? "." : "..";
   const nav = crumbs
     .map((c, i) =>
@@ -234,22 +263,44 @@ t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
 </script>
 </head>
-<body>
+<body class="${esc(pageClass)}">
 <a class="skip" href="#main">Skip to content</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
-  <a class="home" href="${base}/index.html">${esc(COURSE)}</a>
-  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+  <div class="bar-inner">
+    <a class="home" href="${base}/index.html" aria-label="INS2053 course home">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Course resources">
+      <a data-course-nav="sessions" href="${base}/sessions/index.html">Sessions</a>
+      <a data-course-nav="ebook" href="${base}/ebook/index.html">Ebook</a>
+      <a data-course-nav="slides" href="${base}/slides/index.html">Slides</a>
+      <a data-course-nav="homework" href="${base}/homework/index.html">Homework</a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
+    </button>
+  </div>
 </header>
 ${nav ? `<nav class="crumbs" aria-label="Breadcrumb">${nav}</nav>` : ""}
 <main id="main">
-  <h1>${esc(heading)}</h1>
-${lead ? `  <p class="lead">${esc(lead)}</p>\n` : ""}${contents}
+  <header class="page-head">
+    <p class="eyebrow">${esc(eyebrow)}</p>
+    <h1>${esc(heading)}</h1>
+${lead ? `    <p class="lead">${esc(lead)}</p>\n` : ""}${introExtra}
+  </header>
+${contents}
 ${body}
 </main>
 <footer class="foot">
-  <p>${esc(COURSE)} — ${esc(SCHOOL)}</p>
-  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
-  in-class answer keys are not published here.</p>
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Web Authoring &amp; Web Management</span></p></div>
+    <div class="foot-copy">
+      <p>${esc(SCHOOL)}</p>
+      <p>Student learning materials only. Exam papers, marking rubrics and in-class answer keys are not published here.</p>
+    </div>
+  </div>
 </footer>
 <script src="${base}/assets/site.js" defer></script>
 </body>
@@ -264,7 +315,7 @@ ${body}
  *
  *   Before class  read the ebook chapter
  *   In class      lecture deck (the lecturer projects it; students can reread)
- *   After class   homework, due Sunday 23:59
+ *   After class   homework practice; submission and grading open later
  *
  * The in-class exercise is deliberately absent: exercises/ carries answer keys
  * in <details> blocks and stays unpublished. The card says so rather than
@@ -278,6 +329,7 @@ function sessionHub(s, chapterTitle) {
   const steps = [
     {
       when: "Before class",
+      phase: "prepare",
       title: "Read the chapter",
       note: "Work the 🧪 Try It Yourself blocks as you go — each one tells you the expected result, so you can check yourself.",
       href: `../ebook/${nn}-${chapterTitle.slug}.html`,
@@ -285,6 +337,7 @@ function sessionHub(s, chapterTitle) {
     },
     {
       when: "In class",
+      phase: "learn",
       title: "Lecture deck",
       note: "The slides your lecturer projects, with the teaching diagrams. Press <kbd>j</kbd> and <kbd>k</kbd> to move, <kbd>n</kbd> for speaker notes.",
       href: `../slides/buoi-${nn}.html`,
@@ -292,8 +345,9 @@ function sessionHub(s, chapterTitle) {
     },
     {
       when: "After class",
+      phase: "practice",
       title: s.n === 8 ? "Homework 07 review" : `Homework ${nn}`,
-      note: "Due Sunday 23:59. A Monday grace day is marked at −20%; nothing is marked after that.",
+      note: "Use the published brief for practice and keep your work in your own repository. Online submission and grading are not enabled yet.",
       href: `../homework/session-${nn}.html`,
       cta: `Homework ${nn}`,
     },
@@ -301,11 +355,12 @@ function sessionHub(s, chapterTitle) {
 
   const cards = steps
     .map(
-      (st) => `    <li class="step">
+      (st, index) => `    <li class="step step-${st.phase}">
+      <span class="step-number" aria-hidden="true">0${index + 1}</span>
       <p class="when">${esc(st.when)}</p>
-      <h3>${esc(st.title)}</h3>
+      <h2>${esc(st.title)}</h2>
       <p class="note">${st.note}</p>
-      <a class="cta" href="${st.href}">${esc(st.cta)}</a>
+      <a class="cta" href="${st.href}">${esc(st.cta)}<span aria-hidden="true">→</span></a>
     </li>`
     )
     .join("\n");
@@ -334,7 +389,7 @@ ${next ? `    <a class="next" href="${next}">Session ${s.n + 1} →</a>` : `    
   return page({
     title: `Session ${s.n}: ${s.topic} — ${COURSE}`,
     heading: `Session ${s.n}: ${s.topic}`,
-    lead: `Week ${s.n} of 15. Read the chapter before class, follow the deck in class, then submit the homework by Sunday 23:59.`,
+    lead: `Week ${s.n} of 15. Read the chapter before class, follow the deck in class, then use the homework brief for practice.`,
     crumbs: [
       { href: "../index.html", label: "Home" },
       { href: "../sessions/index.html", label: "Sessions" },
@@ -342,6 +397,8 @@ ${next ? `    <a class="next" href="${next}">Session ${s.n + 1} →</a>` : `    
     ],
     body,
     depth: 1,
+    pageClass: "session-page",
+    eyebrow: `Week ${pad(s.n)} · Learning flow`,
   });
 }
 
@@ -352,34 +409,34 @@ function homePage(chapters) {
     const nn = pad(s.n);
     const ch = chapters.find((c) => c.session === s.n);
     return `      <tr${s.midterm ? ' class="mid"' : ""}>
-        <td class="wk">${s.n}</td>
-        <td><a href="sessions/session-${nn}.html">${esc(s.topic)}</a></td>
-        <td>${ch ? `<a href="ebook/${ch.out}">Chapter ${s.n}</a>` : "—"}</td>
-        <td><a href="slides/buoi-${nn}.html">Deck</a></td>
-        <td><a href="homework/session-${nn}.html">HW ${nn}</a></td>
+        <td class="wk" data-label="Week"><span>${pad(s.n)}</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-${nn}.html">${esc(s.topic)}</a>${s.midterm ? '<small>Midterm week</small>' : ""}</td>
+        <td data-label="Read">${ch ? `<a class="resource-link" href="ebook/${ch.out}">Chapter ${s.n}</a>` : "—"}</td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-${nn}.html">Deck ${s.n}</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-${nn}.html">HW ${nn}</a></td>
       </tr>`;
   }).join("\n");
 
   const appendix = chapters.find((c) => c.session === null);
 
-  const body = `  <ul class="tiles">
-    <li><a href="sessions/index.html"><strong>Sessions</strong><span>Week by week, in teaching order</span></a></li>
-    <li><a href="ebook/index.html"><strong>Ebook</strong><span>15 chapters + Appendix A</span></a></li>
-    <li><a href="slides/index.html"><strong>Lecture slides</strong><span>17 decks, 60 diagrams</span></a></li>
-    <li><a href="homework/index.html"><strong>Homework</strong><span>15 sheets, due Sunday 23:59</span></a></li>
-  </ul>
+  const body = `  <section class="resource-section" aria-labelledby="resources-h">
+    <div class="section-head"><div><p class="section-kicker">Everything in one place</p><h2 id="resources-h">Course resources</h2></div><p>Start with your session, or jump straight to the material you need.</p></div>
+    <ul class="tiles">
+      <li class="tile-sessions"><a href="sessions/index.html"><span class="tile-icon" aria-hidden="true">01</span><span class="tile-copy"><strong>Sessions</strong><span>Week by week, in teaching order</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-ebook"><a href="ebook/index.html"><span class="tile-icon" aria-hidden="true">02</span><span class="tile-copy"><strong>Student ebook</strong><span>15 chapters + Appendix A</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-slides"><a href="slides/index.html"><span class="tile-icon" aria-hidden="true">03</span><span class="tile-copy"><strong>Lecture slides</strong><span>17 decks · 60 diagrams</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-homework"><a href="homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Homework</strong><span>15 practice sheets · submission later</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+    </ul>
+  </section>
 
-  <h2 id="how-it-works">How each week works</h2>
-  <p>Every week follows the same three steps. Read the chapter <strong>before</strong>
-  class so the lecture has something to build on, follow the deck in class, then do
-  the homework by <strong>Sunday 23:59</strong>.</p>
-  <ol class="flow">
-    <li><strong>Before class</strong> — read the ebook chapter and do its
-    <em>Try It Yourself</em> blocks.</li>
-    <li><strong>In class</strong> — 150 minutes: lecture, guided practice, then you
-    start the homework.</li>
-    <li><strong>After class</strong> — finish the homework and push it to your repo.</li>
-  </ol>
+  <section class="flow-section" aria-labelledby="how-it-works">
+    <div class="section-head"><div><p class="section-kicker">A simple weekly rhythm</p><h2 id="how-it-works">How each week works</h2></div><p>Prepare before class, learn together, then turn that knowledge into practice.</p></div>
+    <ol class="flow">
+      <li><span class="flow-index" aria-hidden="true">01</span><div><strong>Before class</strong><span>Read the ebook chapter and complete its <em>Try It Yourself</em> blocks.</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">02</span><div><strong>In class</strong><span>150 minutes of lecture, guided practice and a homework start.</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">03</span><div><strong>After class</strong><span>Practise with the homework brief and keep the result in your repository. Online submission and grading are not enabled yet.</span></div></li>
+    </ol>
+  </section>
 
   <h2 id="schedule">The 15 weeks</h2>
   <table class="sched">
@@ -405,10 +462,14 @@ ${
 
   return page({
     title: `${COURSE}`,
-    heading: "Web Authoring and Web Management",
-    lead: "Course materials for INS2053: the student ebook, the lecture slides, and the weekly homework — organised week by week.",
+    heading: "Build for the web. Learn by doing.",
+    lead: "Your complete INS2053 learning path — ebook, lecture slides and weekly homework, organised into one clear flow.",
+    eyebrow: "INS2053 · Student learning portal",
+    introExtra: `    <div class="hero-actions"><a class="primary-action" href="sessions/session-01.html">Start with Session 1 <span aria-hidden="true">→</span></a><a class="secondary-action" href="#schedule">Explore 15 weeks</a></div>
+    <dl class="hero-stats"><div><dt>15</dt><dd>guided sessions</dd></div><div><dt>16</dt><dd>ebook chapters</dd></div><div><dt>17</dt><dd>lecture decks</dd></div></dl>`,
     body,
     depth: 0,
+    pageClass: "home-page",
   });
 }
 
@@ -430,6 +491,8 @@ ${items
     crumbs: [{ href: "../index.html", label: "Home" }, { label: crumbLabel }],
     body,
     depth: 1,
+    pageClass: "list-page",
+    eyebrow: `${items.length} learning resources`,
   });
 }
 
@@ -541,6 +604,8 @@ async function build() {
         toc: headings.filter((h) => h.depth === 2),
         body: `${nav}  <article class="doc">\n${rewriteLinks(html, { fromDepth: 1 })}\n  </article>`,
         depth: 1,
+        pageClass: "reading-page ebook-page",
+        eyebrow: session ? `Ebook · Chapter ${pad(session)}` : "Ebook · Appendix",
       }),
       "utf8"
     );
@@ -559,7 +624,8 @@ async function build() {
       continue;
     }
     const md = await readFile(src, "utf8");
-    const { html, headings } = render(md);
+    const publicMd = prepareHomeworkMarkdown(md);
+    const { html, headings } = render(publicMd);
     const title = plain((md.split(/\r?\n/)[0] || "").replace(/^#\s*/, ""));
 
     await writeFile(
@@ -567,17 +633,22 @@ async function build() {
       page({
         title: `${title} — ${COURSE}`,
         heading: title,
-        lead: "Due Sunday 23:59. A Monday grace day is marked at −20%.",
+        lead: "Practice brief for this session. Online submission and grading are not enabled yet.",
         crumbs: [
           { href: "../index.html", label: "Home" },
           { href: "../homework/index.html", label: "Homework" },
           { label: `Session ${s.n}` },
         ],
         toc: headings.filter((h) => h.depth === 2),
-        body: `  <nav class="pager" aria-label="Session navigation">
+        body: `  <div class="callout status-note" role="status">
+    <p><strong>Practice mode.</strong> Online submission and grading are not enabled yet. Complete the work locally and keep it in your own Git repository until your lecturer announces the submission flow.</p>
+  </div>
+  <nav class="pager" aria-label="Session navigation">
     <a class="up" href="../sessions/session-${nn}.html">Session ${s.n} overview</a>
   </nav>\n  <article class="doc">\n${rewriteLinks(html, { fromDepth: 1 })}\n  </article>`,
         depth: 1,
+        pageClass: "reading-page homework-page",
+        eyebrow: `Session ${pad(s.n)} · Homework`,
       }),
       "utf8"
     );
@@ -639,9 +710,9 @@ async function build() {
     listPage({
       title: "Homework",
       heading: "Homework",
-      lead: "One sheet per session, each marked out of 10 by the rubric printed on it.",
+      lead: "One practice sheet per session, with requirements and a reference rubric.",
       crumbLabel: "Homework",
-      note: "Every sheet is due <strong>Sunday 23:59</strong>. A Monday grace day is marked at −20%; nothing is marked after that. Submission is arranged by your lecturer — this site does not collect work.",
+      note: "<strong>Practice mode:</strong> online submission and grading are not enabled yet. Complete each sheet locally and keep the result in your own Git repository until your lecturer announces the submission flow.",
       items: sheets.map((h) => ({
         href: `session-${pad(h.n)}.html`,
         label: h.title,

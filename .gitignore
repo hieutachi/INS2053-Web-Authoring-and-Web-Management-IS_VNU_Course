@@ -19,6 +19,7 @@ _tools/tmp-*.mjs
 
 # Common generated dependencies and build output
 node_modules/
+.vercel/
 dist/
 build/
 coverage/

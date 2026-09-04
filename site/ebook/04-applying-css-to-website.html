@@ -14,15 +14,33 @@ t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
 </script>
 </head>
-<body>
+<body class="reading-page ebook-page">
 <a class="skip" href="#main">Skip to content</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
-  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
-  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 course home">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Course resources">
+      <a data-course-nav="sessions" href="../sessions/index.html">Sessions</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Ebook</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slides</a>
+      <a data-course-nav="homework" href="../homework/index.html">Homework</a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
+    </button>
+  </div>
 </header>
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Ebook</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chapter 4</span></nav>
 <main id="main">
-  <h1>Session 4: Applying CSS to Your Website</h1>
+  <header class="page-head">
+    <p class="eyebrow">Ebook · Chapter 04</p>
+    <h1>Session 4: Applying CSS to Your Website</h1>
+
+  </header>
 <nav class="toc" aria-labelledby="toc-h">
       <h2 id="toc-h">On this page</h2>
       <ol>
@@ -1500,9 +1518,13 @@ footer a:hover {
   </article>
 </main>
 <footer class="foot">
-  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
-  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
-  in-class answer keys are not published here.</p>
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Web Authoring &amp; Web Management</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Student learning materials only. Exam papers, marking rubrics and in-class answer keys are not published here.</p>
+    </div>
+  </div>
 </footer>
 <script src="../assets/site.js" defer></script>
 </body>

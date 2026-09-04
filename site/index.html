@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>INS2053 · Web Authoring &amp; Web Management</title>
-<meta name="description" content="Course materials for INS2053: the student ebook, the lecture slides, and the weekly homework — organised week by week.">
+<meta name="description" content="Your complete INS2053 learning path — ebook, lecture slides and weekly homework, organised into one clear flow.">
 <link rel="stylesheet" href="./assets/site.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
@@ -14,35 +14,54 @@ t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
 </script>
 </head>
-<body>
+<body class="home-page">
 <a class="skip" href="#main">Skip to content</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
-  <a class="home" href="./index.html">INS2053 · Web Authoring &amp; Web Management</a>
-  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+  <div class="bar-inner">
+    <a class="home" href="./index.html" aria-label="INS2053 course home">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Course resources">
+      <a data-course-nav="sessions" href="./sessions/index.html">Sessions</a>
+      <a data-course-nav="ebook" href="./ebook/index.html">Ebook</a>
+      <a data-course-nav="slides" href="./slides/index.html">Slides</a>
+      <a data-course-nav="homework" href="./homework/index.html">Homework</a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
+    </button>
+  </div>
 </header>
 
 <main id="main">
-  <h1>Web Authoring and Web Management</h1>
-  <p class="lead">Course materials for INS2053: the student ebook, the lecture slides, and the weekly homework — organised week by week.</p>
+  <header class="page-head">
+    <p class="eyebrow">INS2053 · Student learning portal</p>
+    <h1>Build for the web. Learn by doing.</h1>
+    <p class="lead">Your complete INS2053 learning path — ebook, lecture slides and weekly homework, organised into one clear flow.</p>
+    <div class="hero-actions"><a class="primary-action" href="sessions/session-01.html">Start with Session 1 <span aria-hidden="true">→</span></a><a class="secondary-action" href="#schedule">Explore 15 weeks</a></div>
+    <dl class="hero-stats"><div><dt>15</dt><dd>guided sessions</dd></div><div><dt>16</dt><dd>ebook chapters</dd></div><div><dt>17</dt><dd>lecture decks</dd></div></dl>
+  </header>
 
-  <ul class="tiles">
-    <li><a href="sessions/index.html"><strong>Sessions</strong><span>Week by week, in teaching order</span></a></li>
-    <li><a href="ebook/index.html"><strong>Ebook</strong><span>15 chapters + Appendix A</span></a></li>
-    <li><a href="slides/index.html"><strong>Lecture slides</strong><span>17 decks, 60 diagrams</span></a></li>
-    <li><a href="homework/index.html"><strong>Homework</strong><span>15 sheets, due Sunday 23:59</span></a></li>
-  </ul>
+  <section class="resource-section" aria-labelledby="resources-h">
+    <div class="section-head"><div><p class="section-kicker">Everything in one place</p><h2 id="resources-h">Course resources</h2></div><p>Start with your session, or jump straight to the material you need.</p></div>
+    <ul class="tiles">
+      <li class="tile-sessions"><a href="sessions/index.html"><span class="tile-icon" aria-hidden="true">01</span><span class="tile-copy"><strong>Sessions</strong><span>Week by week, in teaching order</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-ebook"><a href="ebook/index.html"><span class="tile-icon" aria-hidden="true">02</span><span class="tile-copy"><strong>Student ebook</strong><span>15 chapters + Appendix A</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-slides"><a href="slides/index.html"><span class="tile-icon" aria-hidden="true">03</span><span class="tile-copy"><strong>Lecture slides</strong><span>17 decks · 60 diagrams</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-homework"><a href="homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Homework</strong><span>15 practice sheets · submission later</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+    </ul>
+  </section>
 
-  <h2 id="how-it-works">How each week works</h2>
-  <p>Every week follows the same three steps. Read the chapter <strong>before</strong>
-  class so the lecture has something to build on, follow the deck in class, then do
-  the homework by <strong>Sunday 23:59</strong>.</p>
-  <ol class="flow">
-    <li><strong>Before class</strong> — read the ebook chapter and do its
-    <em>Try It Yourself</em> blocks.</li>
-    <li><strong>In class</strong> — 150 minutes: lecture, guided practice, then you
-    start the homework.</li>
-    <li><strong>After class</strong> — finish the homework and push it to your repo.</li>
-  </ol>
+  <section class="flow-section" aria-labelledby="how-it-works">
+    <div class="section-head"><div><p class="section-kicker">A simple weekly rhythm</p><h2 id="how-it-works">How each week works</h2></div><p>Prepare before class, learn together, then turn that knowledge into practice.</p></div>
+    <ol class="flow">
+      <li><span class="flow-index" aria-hidden="true">01</span><div><strong>Before class</strong><span>Read the ebook chapter and complete its <em>Try It Yourself</em> blocks.</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">02</span><div><strong>In class</strong><span>150 minutes of lecture, guided practice and a homework start.</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">03</span><div><strong>After class</strong><span>Practise with the homework brief and keep the result in your repository. Online submission and grading are not enabled yet.</span></div></li>
+    </ol>
+  </section>
 
   <h2 id="schedule">The 15 weeks</h2>
   <table class="sched">
@@ -52,109 +71,109 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
     </thead>
     <tbody>
       <tr>
-        <td class="wk">1</td>
-        <td><a href="sessions/session-01.html">Introduction to Dreamweaver &amp; Web Fundamentals</a></td>
-        <td><a href="ebook/01-introduction-to-dreamweaver.html">Chapter 1</a></td>
-        <td><a href="slides/buoi-01.html">Deck</a></td>
-        <td><a href="homework/session-01.html">HW 01</a></td>
+        <td class="wk" data-label="Week"><span>01</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-01.html">Introduction to Dreamweaver &amp; Web Fundamentals</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/01-introduction-to-dreamweaver.html">Chapter 1</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-01.html">Deck 1</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-01.html">HW 01</a></td>
       </tr>
       <tr>
-        <td class="wk">2</td>
-        <td><a href="sessions/session-02.html">Creating a New Site &amp; Organizing Your Project</a></td>
-        <td><a href="ebook/02-creating-a-new-site.html">Chapter 2</a></td>
-        <td><a href="slides/buoi-02.html">Deck</a></td>
-        <td><a href="homework/session-02.html">HW 02</a></td>
+        <td class="wk" data-label="Week"><span>02</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-02.html">Creating a New Site &amp; Organizing Your Project</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/02-creating-a-new-site.html">Chapter 2</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-02.html">Deck 2</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-02.html">HW 02</a></td>
       </tr>
       <tr>
-        <td class="wk">3</td>
-        <td><a href="sessions/session-03.html">Working with Text and Images</a></td>
-        <td><a href="ebook/03-working-with-text-and-images.html">Chapter 3</a></td>
-        <td><a href="slides/buoi-03.html">Deck</a></td>
-        <td><a href="homework/session-03.html">HW 03</a></td>
+        <td class="wk" data-label="Week"><span>03</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-03.html">Working with Text and Images</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/03-working-with-text-and-images.html">Chapter 3</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-03.html">Deck 3</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-03.html">HW 03</a></td>
       </tr>
       <tr>
-        <td class="wk">4</td>
-        <td><a href="sessions/session-04.html">Applying CSS to Your Website</a></td>
-        <td><a href="ebook/04-applying-css-to-website.html">Chapter 4</a></td>
-        <td><a href="slides/buoi-04.html">Deck</a></td>
-        <td><a href="homework/session-04.html">HW 04</a></td>
+        <td class="wk" data-label="Week"><span>04</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-04.html">Applying CSS to Your Website</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/04-applying-css-to-website.html">Chapter 4</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-04.html">Deck 4</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-04.html">HW 04</a></td>
       </tr>
       <tr>
-        <td class="wk">5</td>
-        <td><a href="sessions/session-05.html">Creating Page Layouts</a></td>
-        <td><a href="ebook/05-creating-page-layouts.html">Chapter 5</a></td>
-        <td><a href="slides/buoi-05.html">Deck</a></td>
-        <td><a href="homework/session-05.html">HW 05</a></td>
+        <td class="wk" data-label="Week"><span>05</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-05.html">Creating Page Layouts</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/05-creating-page-layouts.html">Chapter 5</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-05.html">Deck 5</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-05.html">HW 05</a></td>
       </tr>
       <tr>
-        <td class="wk">6</td>
-        <td><a href="sessions/session-06.html">Creating Page Layouts (Continued)</a></td>
-        <td><a href="ebook/06-creating-page-layouts-continued.html">Chapter 6</a></td>
-        <td><a href="slides/buoi-06.html">Deck</a></td>
-        <td><a href="homework/session-06.html">HW 06</a></td>
+        <td class="wk" data-label="Week"><span>06</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-06.html">Creating Page Layouts (Continued)</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/06-creating-page-layouts-continued.html">Chapter 6</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-06.html">Deck 6</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-06.html">HW 06</a></td>
       </tr>
       <tr>
-        <td class="wk">7</td>
-        <td><a href="sessions/session-07.html">CSS3 and Web Fonts</a></td>
-        <td><a href="ebook/07-css3-and-web-fonts.html">Chapter 7</a></td>
-        <td><a href="slides/buoi-07.html">Deck</a></td>
-        <td><a href="homework/session-07.html">HW 07</a></td>
+        <td class="wk" data-label="Week"><span>07</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-07.html">CSS3 and Web Fonts</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/07-css3-and-web-fonts.html">Chapter 7</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-07.html">Deck 7</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-07.html">HW 07</a></td>
       </tr>
       <tr class="mid">
-        <td class="wk">8</td>
-        <td><a href="sessions/session-08.html">Review &amp; Midterm Exam Preparation</a></td>
-        <td><a href="ebook/08-review-and-midterm.html">Chapter 8</a></td>
-        <td><a href="slides/buoi-08.html">Deck</a></td>
-        <td><a href="homework/session-08.html">HW 08</a></td>
+        <td class="wk" data-label="Week"><span>08</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-08.html">Review &amp; Midterm Exam Preparation</a><small>Midterm week</small></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/08-review-and-midterm.html">Chapter 8</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-08.html">Deck 8</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-08.html">HW 08</a></td>
       </tr>
       <tr>
-        <td class="wk">9</td>
-        <td><a href="sessions/session-09.html">Working with Tables</a></td>
-        <td><a href="ebook/09-working-with-tables.html">Chapter 9</a></td>
-        <td><a href="slides/buoi-09.html">Deck</a></td>
-        <td><a href="homework/session-09.html">HW 09</a></td>
+        <td class="wk" data-label="Week"><span>09</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-09.html">Working with Tables</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/09-working-with-tables.html">Chapter 9</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-09.html">Deck 9</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-09.html">HW 09</a></td>
       </tr>
       <tr>
-        <td class="wk">10</td>
-        <td><a href="sessions/session-10.html">Embedding Flash, Video and Sound</a></td>
-        <td><a href="ebook/10-embedding-flash-video-and-sound.html">Chapter 10</a></td>
-        <td><a href="slides/buoi-10.html">Deck</a></td>
-        <td><a href="homework/session-10.html">HW 10</a></td>
+        <td class="wk" data-label="Week"><span>10</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-10.html">Embedding Flash, Video and Sound</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/10-embedding-flash-video-and-sound.html">Chapter 10</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-10.html">Deck 10</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-10.html">HW 10</a></td>
       </tr>
       <tr>
-        <td class="wk">11</td>
-        <td><a href="sessions/session-11.html">Designing a Compact Site</a></td>
-        <td><a href="ebook/11-designing-a-compact-site.html">Chapter 11</a></td>
-        <td><a href="slides/buoi-11.html">Deck</a></td>
-        <td><a href="homework/session-11.html">HW 11</a></td>
+        <td class="wk" data-label="Week"><span>11</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-11.html">Designing a Compact Site</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/11-designing-a-compact-site.html">Chapter 11</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-11.html">Deck 11</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-11.html">HW 11</a></td>
       </tr>
       <tr>
-        <td class="wk">12</td>
-        <td><a href="sessions/session-12.html">Using Code-Editing Tools</a></td>
-        <td><a href="ebook/12-using-code-editing-tools.html">Chapter 12</a></td>
-        <td><a href="slides/buoi-12.html">Deck</a></td>
-        <td><a href="homework/session-12.html">HW 12</a></td>
+        <td class="wk" data-label="Week"><span>12</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-12.html">Using Code-Editing Tools</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/12-using-code-editing-tools.html">Chapter 12</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-12.html">Deck 12</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-12.html">HW 12</a></td>
       </tr>
       <tr>
-        <td class="wk">13</td>
-        <td><a href="sessions/session-13.html">Creating Forms</a></td>
-        <td><a href="ebook/13-creating-forms.html">Chapter 13</a></td>
-        <td><a href="slides/buoi-13.html">Deck</a></td>
-        <td><a href="homework/session-13.html">HW 13</a></td>
+        <td class="wk" data-label="Week"><span>13</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-13.html">Creating Forms</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/13-creating-forms.html">Chapter 13</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-13.html">Deck 13</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-13.html">HW 13</a></td>
       </tr>
       <tr>
-        <td class="wk">14</td>
-        <td><a href="sessions/session-14.html">Working with Spry Framework</a></td>
-        <td><a href="ebook/14-working-with-spry-framework.html">Chapter 14</a></td>
-        <td><a href="slides/buoi-14.html">Deck</a></td>
-        <td><a href="homework/session-14.html">HW 14</a></td>
+        <td class="wk" data-label="Week"><span>14</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-14.html">Working with Spry Framework</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/14-working-with-spry-framework.html">Chapter 14</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-14.html">Deck 14</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-14.html">HW 14</a></td>
       </tr>
       <tr>
-        <td class="wk">15</td>
-        <td><a href="sessions/session-15.html">Mobile Interface Design and Review</a></td>
-        <td><a href="ebook/15-mobile-interface-design-and-review.html">Chapter 15</a></td>
-        <td><a href="slides/buoi-15.html">Deck</a></td>
-        <td><a href="homework/session-15.html">HW 15</a></td>
+        <td class="wk" data-label="Week"><span>15</span></td>
+        <td class="topic" data-label="Session"><a href="sessions/session-15.html">Mobile Interface Design and Review</a></td>
+        <td data-label="Read"><a class="resource-link" href="ebook/15-mobile-interface-design-and-review.html">Chapter 15</a></td>
+        <td data-label="Slides"><a class="resource-link" href="slides/buoi-15.html">Deck 15</a></td>
+        <td data-label="Homework"><a class="resource-link" href="homework/session-15.html">HW 15</a></td>
       </tr>
     </tbody>
   </table>
@@ -168,9 +187,13 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
   handled here either — follow the instructions your lecturer gives in class.</p>
 </main>
 <footer class="foot">
-  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
-  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
-  in-class answer keys are not published here.</p>
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Web Authoring &amp; Web Management</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Student learning materials only. Exam papers, marking rubrics and in-class answer keys are not published here.</p>
+    </div>
+  </div>
 </footer>
 <script src="./assets/site.js" defer></script>
 </body>

@@ -24,8 +24,14 @@ jobs:
         with:
           node-version: 24
 
+      - name: Install pinned dependencies
+        run: npm ci
+
       - name: Check repository formatting
         run: git diff --check
+
+      - name: Build and audit public student site
+        run: npm run build:site && npm run qa:site
 
       - name: Audit teaching materials
         run: node _tools/audit-selfstudy.js

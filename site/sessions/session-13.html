@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Session 13: Creating Forms — INS2053 · Web Authoring &amp; Web Management</title>
-<meta name="description" content="Week 13 of 15. Read the chapter before class, follow the deck in class, then submit the homework by Sunday 23:59.">
+<meta name="description" content="Week 13 of 15. Read the chapter before class, follow the deck in class, then use the homework brief for practice.">
 <link rel="stylesheet" href="../assets/site.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
@@ -14,35 +14,56 @@ t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
 </script>
 </head>
-<body>
+<body class="session-page">
 <a class="skip" href="#main">Skip to content</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
-  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
-  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 course home">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Course resources">
+      <a data-course-nav="sessions" href="../sessions/index.html">Sessions</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Ebook</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slides</a>
+      <a data-course-nav="homework" href="../homework/index.html">Homework</a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
+    </button>
+  </div>
 </header>
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../sessions/index.html">Sessions</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 13</span></nav>
 <main id="main">
-  <h1>Session 13: Creating Forms</h1>
-  <p class="lead">Week 13 of 15. Read the chapter before class, follow the deck in class, then submit the homework by Sunday 23:59.</p>
+  <header class="page-head">
+    <p class="eyebrow">Week 13 · Learning flow</p>
+    <h1>Session 13: Creating Forms</h1>
+    <p class="lead">Week 13 of 15. Read the chapter before class, follow the deck in class, then use the homework brief for practice.</p>
+
+  </header>
 
   <ol class="steps">
-    <li class="step">
+    <li class="step step-prepare">
+      <span class="step-number" aria-hidden="true">01</span>
       <p class="when">Before class</p>
-      <h3>Read the chapter</h3>
+      <h2>Read the chapter</h2>
       <p class="note">Work the 🧪 Try It Yourself blocks as you go — each one tells you the expected result, so you can check yourself.</p>
-      <a class="cta" href="../ebook/13-creating-forms.html">Chapter 13</a>
+      <a class="cta" href="../ebook/13-creating-forms.html">Chapter 13<span aria-hidden="true">→</span></a>
     </li>
-    <li class="step">
+    <li class="step step-learn">
+      <span class="step-number" aria-hidden="true">02</span>
       <p class="when">In class</p>
-      <h3>Lecture deck</h3>
+      <h2>Lecture deck</h2>
       <p class="note">The slides your lecturer projects, with the teaching diagrams. Press <kbd>j</kbd> and <kbd>k</kbd> to move, <kbd>n</kbd> for speaker notes.</p>
-      <a class="cta" href="../slides/buoi-13.html">Deck 13</a>
+      <a class="cta" href="../slides/buoi-13.html">Deck 13<span aria-hidden="true">→</span></a>
     </li>
-    <li class="step">
+    <li class="step step-practice">
+      <span class="step-number" aria-hidden="true">03</span>
       <p class="when">After class</p>
-      <h3>Homework 13</h3>
-      <p class="note">Due Sunday 23:59. A Monday grace day is marked at −20%; nothing is marked after that.</p>
-      <a class="cta" href="../homework/session-13.html">Homework 13</a>
+      <h2>Homework 13</h2>
+      <p class="note">Use the published brief for practice and keep your work in your own repository. Online submission and grading are not enabled yet.</p>
+      <a class="cta" href="../homework/session-13.html">Homework 13<span aria-hidden="true">→</span></a>
     </li>
   </ol>
   <div class="callout">
@@ -55,9 +76,13 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
   </nav>
 </main>
 <footer class="foot">
-  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
-  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
-  in-class answer keys are not published here.</p>
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Web Authoring &amp; Web Management</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Student learning materials only. Exam papers, marking rubrics and in-class answer keys are not published here.</p>
+    </div>
+  </div>
 </footer>
 <script src="../assets/site.js" defer></script>
 </body>

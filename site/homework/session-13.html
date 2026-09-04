@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Homework 13: Building a Contact Form — INS2053 · Web Authoring &amp; Web Management</title>
-<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<meta name="description" content="Practice brief for this session. Online submission and grading are not enabled yet.">
 <link rel="stylesheet" href="../assets/site.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
@@ -14,35 +14,56 @@ t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
 </script>
 </head>
-<body>
+<body class="reading-page homework-page">
 <a class="skip" href="#main">Skip to content</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
-  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
-  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 course home">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Course resources">
+      <a data-course-nav="sessions" href="../sessions/index.html">Sessions</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Ebook</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slides</a>
+      <a data-course-nav="homework" href="../homework/index.html">Homework</a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
+    </button>
+  </div>
 </header>
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 13</span></nav>
 <main id="main">
-  <h1>Homework 13: Building a Contact Form</h1>
-  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+  <header class="page-head">
+    <p class="eyebrow">Session 13 · Homework</p>
+    <h1>Homework 13: Building a Contact Form</h1>
+    <p class="lead">Practice brief for this session. Online submission and grading are not enabled yet.</p>
+
+  </header>
 <nav class="toc" aria-labelledby="toc-h">
       <h2 id="toc-h">On this page</h2>
       <ol>
-        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
-        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
-        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
+        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
         <li class="d2"><a href="#tips">Tips</a></li>
         <li class="d2"><a href="#example-output">Example Output</a></li>
       </ol>
     </nav>
+  <div class="callout status-note" role="status">
+    <p><strong>Practice mode.</strong> Online submission and grading are not enabled yet. Complete the work locally and keep it in your own Git repository until your lecturer announces the submission flow.</p>
+  </div>
   <nav class="pager" aria-label="Session navigation">
     <a class="up" href="../sessions/session-13.html">Session 13 overview</a>
   </nav>
   <article class="doc">
 <h2 id="homework-13-building-a-contact-form">Homework 13: Building a Contact Form<a class="anchor" href="#homework-13-building-a-contact-form" aria-label="Link to this section">#</a></h2>
-<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
-<p>Sunday, 23:59 (Week 14)</p>
+<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
+<p>Online submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.</p>
 <h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
 <ul>
 <li>Learn how to create HTML forms</li>
@@ -149,13 +170,13 @@ form button[type=&quot;submit&quot;] {
 <li><code>project/contact.html</code> (updated with form)</li>
 <li><code>project/css/style.css</code> (add form styles)</li>
 </ul>
-<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
 <ul>
 <li>Add changes: <code>git add project/contact.html project/css/style.css</code></li>
 <li>Commit: <code>git commit -m &quot;HW13: Add contact form with multiple input types&quot;</code></li>
 <li>Push: <code>git push</code></li>
 </ul>
-<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -207,9 +228,13 @@ form button[type=&quot;submit&quot;] {
   </article>
 </main>
 <footer class="foot">
-  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
-  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
-  in-class answer keys are not published here.</p>
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Web Authoring &amp; Web Management</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Student learning materials only. Exam papers, marking rubrics and in-class answer keys are not published here.</p>
+    </div>
+  </div>
 </footer>
 <script src="../assets/site.js" defer></script>
 </body>

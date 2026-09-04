@@ -237,8 +237,72 @@ console.log("== 10. session hubs are complete ================================="
   if (!dirty) ok("15 hubs each link chapter + deck + homework");
 }
 
-/* == 11. shared assets present ============================================ */
-console.log("== 11. shared assets ==============================================");
+/* == 11. submission and grading stay disabled ============================ */
+console.log("== 11. no submission or grading UI =================================");
+{
+  let dirty = 0;
+  const forbidden = [
+    [/<form\b/i, "form element"],
+    [/<input\b[^>]*\btype\s*=\s*["']file["']/i, "file upload input"],
+    [/<button\b[^>]*\btype\s*=\s*["']submit["']/i, "submit button"],
+    [/<input\b[^>]*\btype\s*=\s*["'](?:submit|image)["']/i, "submit input"],
+    [/\bFormData\s*\(/, "FormData request"],
+    [/\bfetch\s*\(/, "fetch request"],
+    [/\/api\/(?:submissions?|uploads?|grades?|grading|homework|assignments?)\b/i, "submission/grading API endpoint"],
+  ];
+  for (const [rel, s] of src) {
+    for (const [pattern, label] of forbidden) {
+      if (pattern.test(s)) {
+        bad(`${rel} — submission/grading feature found: ${label}`);
+        dirty++;
+      }
+    }
+  }
+  if (!dirty) ok("no forms, submit controls, uploads, requests or submission APIs");
+
+  const statusPages = ["index.html", "homework/index.html"];
+  for (let n = 1; n <= 15; n++) {
+    const id = String(n).padStart(2, "0");
+    statusPages.push(`sessions/session-${id}.html`, `homework/session-${id}.html`);
+  }
+  let missingStatus = 0;
+  for (const rel of statusPages) {
+    const s = src.get(rel) ?? "";
+    if (!/online submission and grading are not enabled yet/i.test(s)) {
+      bad(`${rel} — disabled submission/grading status is not visible`);
+      missingStatus++;
+    }
+  }
+  if (!missingStatus) ok("disabled status is visible on all 32 homework-related pages");
+
+  let staleHomeworkCopy = 0;
+  for (let n = 1; n <= 15; n++) {
+    const id = String(n).padStart(2, "0");
+    const rel = `homework/session-${id}.html`;
+    const s = src.get(rel) ?? "";
+    const required = ["Practice Status", "Save Your Practice Work", "Reference Rubric"];
+    const missing = required.filter((label) => !s.includes(`>${label}</a>`));
+    const stale = [
+      [/>Due Date</, "Due Date heading"],
+      [/>Submission Guide</, "Submission Guide heading"],
+      [/>Grading Rubric</, "Grading Rubric heading"],
+      [/Sunday,\s*23:59/i, "homework deadline"],
+      [/\bgrace day\b/i, "late-work policy"],
+      [/\bby the deadline\b/i, "deadline instruction"],
+    ].filter(([pattern]) => pattern.test(s)).map(([, label]) => label);
+    if (missing.length || stale.length) {
+      bad(`${rel} — public practice copy invalid: ${[
+        ...missing.map((label) => `missing ${label}`),
+        ...stale,
+      ].join("; ")}`);
+      staleHomeworkCopy++;
+    }
+  }
+  if (!staleHomeworkCopy) ok("15 homework sheets use practice headings and no hand-in deadline");
+}
+
+/* == 12. shared assets present ============================================ */
+console.log("== 12. shared assets ==============================================");
 for (const a of ["assets/site.css", "assets/site.js"]) {
   if (existsSync(path.join(SITE, a))) ok(a);
   else bad(`${a} missing`);
