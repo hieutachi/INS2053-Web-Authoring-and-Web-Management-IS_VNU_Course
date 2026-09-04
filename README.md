@@ -26,6 +26,7 @@
 | `references/` | Curated links (MDN, W3C, tools) | Everyone |
 | `_tools/` | Re-runnable, non-destructive QA and audit scripts, plus the HTML slide builder | Maintainers |
 | `slides-html/` | The `canvases/` decks rendered as standalone HTML — open `slides-html/index.html`, no build or install needed | Lecturer, students |
+| `site/` | The **public student website** (generated): ebook + decks + homework only, organised week by week. Deployed to Vercel | Students (published) |
 
 ---
 
@@ -107,3 +108,49 @@ npm run clean:slides      # delete slides-html/
 The builder is `_tools/build-html-slides.mjs`; the layout primitives it substitutes
 for the canvas host live in `_tools/canvas-runtime/`. Nothing under `canvases/` is
 modified — edit the `.canvas.tsx` deck and rebuild.
+
+---
+
+## The public student website
+
+`site/` is a static website for students, generated from the course files. It carries
+**only three things**: the ebook, the lecture decks, and the homework sheets. It is
+organised the way the course is actually taught — one hub page per week:
+
+```
+site/index.html                 the 15 weeks, in teaching order
+site/sessions/session-NN.html   one hub per week: before / in / after class
+site/ebook/NN-slug.html         the chapter
+site/slides/buoi-NN.html        the deck (copied from slides-html/)
+site/homework/session-NN.html   the homework sheet
+```
+
+Each session hub states the same three stages, so a student always knows where they
+are: **before class** read the chapter and work its `🧪 Try It Yourself` blocks, **in
+class** follow the deck, **after class** finish the homework by Sunday 23:59.
+
+**What is deliberately not published.** The builder uses an allowlist, not a blocklist:
+
+| Excluded | Why |
+|---|---|
+| `exercises/` | Each sheet carries a worked answer key (`## Self-Check`) — the lecturer hands these out in class |
+| `exams/` | Contains full sample solutions for both papers |
+| `project/rubric.md` | Marking rubric |
+| `canvases/`, `_tools/`, `_archive/` | Source and tooling, not student-facing |
+
+`npm run qa:site` fails the build if any page links into an excluded folder, so this
+cannot regress by accident. Homework rubrics *are* published — students should know
+how their work is marked.
+
+Build and check:
+
+```bash
+npm run build:site        # generate site/
+npm run qa:site           # 11 checks on the generated site
+npm run clean:site        # delete site/
+```
+
+Rebuild `slides-html/` first if a canvas changed — the site copies the decks from it.
+The builder is `_tools/build-site.mjs`, the shared stylesheet and script live in
+`_tools/site-assets/`, and markdown is rendered with `marked` (pinned). Every path in
+the output is relative, so the folder works when opened locally as well as when served.

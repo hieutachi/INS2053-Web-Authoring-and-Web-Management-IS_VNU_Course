@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 7: Typography with Google Fonts — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 7</span></nav>
+<main id="main">
+  <h1>Homework 7: Typography with Google Fonts</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-07.html">Session 7 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-7-typography-with-google-fonts">Homework 7: Typography with Google Fonts<a class="anchor" href="#homework-7-typography-with-google-fonts" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 8)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Import and use custom web fonts from Google Fonts</li>
+<li>Improve the overall typography of your mini-site</li>
+<li>Understand the impact of font choices on design</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-choose-and-add-google-fonts">Task 1: Choose and Add Google Fonts<a class="anchor" href="#task-1-choose-and-add-google-fonts" aria-label="Link to this section">#</a></h4>
+<p>Visit <a href="https://fonts.google.com/">Google Fonts</a> and choose fonts for your site.</p>
+<p><strong>Select fonts for:</strong></p>
+<ul>
+<li>Headings: Pick a bold, eye-catching font (e.g., Poppins, Montserrat, Playfair Display)</li>
+<li>Body text: Pick a clean, readable font (e.g., Open Sans, Lato, Roboto)</li>
+</ul>
+<p><strong>Add Google Fonts to your pages:</strong></p>
+<ul>
+<li>Add the Google Fonts <code>&lt;link&gt;</code> tag in the <code>&lt;head&gt;</code> section of ALL three HTML pages:</li>
+</ul>
+<pre><code class="language-html">&lt;link href=&quot;https://fonts.googleapis.com/css2?family=YourHeadingFont&amp;family=YourBodyFont&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre>
+<ul>
+<li>Replace <code>YourHeadingFont</code> and <code>YourBodyFont</code> with your actual font choices</li>
+</ul>
+<h4 id="task-2-apply-fonts-in-css">Task 2: Apply Fonts in CSS<a class="anchor" href="#task-2-apply-fonts-in-css" aria-label="Link to this section">#</a></h4>
+<p>Update <code>project/css/style.css</code> to use your chosen fonts.</p>
+<p><strong>Your CSS must include:</strong></p>
+<ul>
+<li>Set the heading font family (h1, h2, h3) to your heading font</li>
+<li>Set the body font family to your body font</li>
+<li>Add <code>font-weight</code> variations for visual hierarchy</li>
+<li>Set appropriate <code>letter-spacing</code> for headings (optional but nice)</li>
+<li>Ensure <code>line-height</code> is set to at least 1.6 for body text</li>
+</ul>
+<p><strong>Example CSS:</strong></p>
+<pre><code class="language-css">body {
+  font-family: &#39;Open Sans&#39;, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: &#39;Poppins&#39;, sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.5em;
+}
+</code></pre>
+<h4 id="task-3-fine-tune-typography">Task 3: Fine-Tune Typography<a class="anchor" href="#task-3-fine-tune-typography" aria-label="Link to this section">#</a></h4>
+<p>Make additional typography improvements across the mini-site:</p>
+<ul>
+<li>Adjust font sizes for h1, h2, h3 to create a clear visual hierarchy</li>
+<li>Style paragraph text for readability (line height, max-width for text blocks)</li>
+<li>Style links (change color, add hover effect with <code>a:hover</code>)</li>
+<li>Style list items for better spacing</li>
+</ul>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/index.html</code> (add Google Fonts link)</li>
+<li><code>project/about.html</code> (add Google Fonts link)</li>
+<li><code>project/contact.html</code> (add Google Fonts link)</li>
+<li><code>project/css/style.css</code> (update with font rules)</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW7: Add Google Fonts and improve typography&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Google Fonts integration</td>
+<td>3</td>
+<td>Fonts load on all 3 pages</td>
+</tr>
+<tr>
+<td>Font application</td>
+<td>2</td>
+<td>Headings and body use different fonts</td>
+</tr>
+<tr>
+<td>Typography hierarchy</td>
+<td>2</td>
+<td>Clear size/weight differences between heading levels</td>
+</tr>
+<tr>
+<td>Link styling</td>
+<td>2</td>
+<td>Links have custom colors and hover effects</td>
+</tr>
+<tr>
+<td>Readability</td>
+<td>1</td>
+<td>Text is easy to read with good spacing</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Don&#39;t use more than 2-3 different fonts — it looks messy</li>
+<li>Make sure your heading font is different from your body font for contrast</li>
+<li>Test your page with a slow internet connection — Google Fonts need to download</li>
+<li><strong>Always write a fallback</strong> after the web font: <code>font-family: &#39;Poppins&#39;, Verdana, sans-serif</code>. If the font cannot load, the browser uses the next one in the list.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>This CDN link is for homework only.</strong> The final capstone submission must work with the
+network switched off (<code>project/spec.md</code> §8) and both exams are offline. Before you submit
+the project, either download the font files into <code>project/css/fonts/</code> and use <code>@font-face</code>,
+or delete the <code>&lt;link&gt;</code> and keep a system font stack. Rely on the fallback, not the CDN.</p>
+</blockquote>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>Your mini-site should look significantly more polished with custom fonts. The headings should stand out with a distinctive style, and the body text should feel clean and easy to read. Links should change color when you hover over them.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

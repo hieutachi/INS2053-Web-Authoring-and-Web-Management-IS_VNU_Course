@@ -7,10 +7,14 @@
     "qa": "node _tools/audit-selfstudy.js && node _tools/qa-canvases.js && node _tools/check-diagram-links.js && node _tools/qa-html-slides.mjs",
     "qa:slides": "node _tools/qa-html-slides.mjs",
     "build:slides": "node _tools/build-html-slides.mjs",
-    "clean:slides": "node -e \"require('fs').rmSync('slides-html',{recursive:true,force:true})\""
+    "clean:slides": "node -e \"require('fs').rmSync('slides-html',{recursive:true,force:true})\"",
+    "build:site": "node _tools/build-site.mjs",
+    "qa:site": "node _tools/qa-site.mjs",
+    "clean:site": "node -e \"require('fs').rmSync('site',{recursive:true,force:true})\""
   },
   "devDependencies": {
     "esbuild": "0.25.10",
+    "marked": "18.0.11",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },

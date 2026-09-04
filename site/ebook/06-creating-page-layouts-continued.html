@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 6: Creating Page Layouts (Continued) — Multi-Page Sites and Navigation — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Session 6: Creating Page Layouts (Continued) — Multi-Page Sites and Navigation — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Ebook</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chapter 6</span></nav>
+<main id="main">
+  <h1>Session 6: Creating Page Layouts (Continued) — Multi-Page Sites and Navigation</h1>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#1-multi-page-website-architecture">1. Multi-Page Website Architecture</a></li>
+        <li class="d2"><a href="#2-relative-links-between-pages">2. Relative Links Between Pages</a></li>
+        <li class="d2"><a href="#3-navigation-menu-with-current-page-highlighting">3. Navigation Menu with Current Page Highlighting</a></li>
+        <li class="d2"><a href="#4-reusing-one-css-file-across-all-pages">4. Reusing One CSS File Across All Pages</a></li>
+        <li class="d2"><a href="#5-styling-new-components">5. Styling New Components</a></li>
+        <li class="d2"><a href="#best-practices-2">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-creating-the-about-page-from-indexhtml">Example 1: Creating the About Page from index.html</a></li>
+        <li class="d2"><a href="#example-2-building-the-events-page-with-event-cards">Example 2: Building the Events Page with Event Cards</a></li>
+        <li class="d2"><a href="#example-3-building-the-gallery-page-with-flexbox-grid">Example 3: Building the Gallery Page with Flexbox Grid</a></li>
+        <li class="d2"><a href="#example-4-building-the-contact-page-with-a-form">Example 4: Building the Contact Page with a Form</a></li>
+        <li class="d2"><a href="#example-5-verifying-navigation-across-all-pages">Example 5: Verifying Navigation Across All Pages</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Chapter navigation">
+    <a class="up" href="../sessions/session-06.html">Session 6 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-6">🟦 SESSION 6<a class="anchor" href="#session-6" aria-label="Link to this section">#</a></h2>
+<h2 id="creating-page-layouts-continued-multi-page-sites-and-navigation"><strong>Creating Page Layouts (Continued) — Multi-Page Sites and Navigation</strong><a class="anchor" href="#creating-page-layouts-continued-multi-page-sites-and-navigation" aria-label="Link to this section">#</a></h2>
+<p>You now have a beautifully laid-out home page. But a real website has many pages, and visitors need to move between them. Today you will build the complete Student Club Website: Home, About Us, Events, Gallery, and Contact. You will learn how to create a navigation menu that highlights the current page, how to reuse one CSS file across all pages, and how relative links connect everything together. By the end of this session your Student Club Website will be a fully functional multi-page site.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    MDN &quot;Creating hyperlinks&quot;; MDN &quot;Document and website structure&quot;
+                 Course slides (Week 6)
+🎯 Objectives:   1. Build a multi-page website with consistent layout
+                 2. Create a nav menu using &lt;ul&gt;/&lt;li&gt;/&lt;a&gt; with current-page highlighting
+                 3. Use relative links to navigate between pages in the same folder
+                 4. Share one CSS stylesheet across all pages
+                 5. Create individual page content (About, Events, Gallery, Contact)
+                 6. Style new components: event cards, gallery grid, contact form, tables
+📖 Prepare:      1. Complete Session 5 (a working two-column layout on index.html)
+                 2. Have css/style.css with all styles from Sessions 4-5
+                 3. Have your images/ folder ready for gallery photos
+🖼 Diagrams:     canvases/buoi-06.canvas.tsx — MultiPageNav, LinkTargets, ActiveClassWalk
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Explain why all pages should share the same header, navigation, sidebar, and footer</li>
+<li>Build a navigation menu using <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>, and <code>&lt;a&gt;</code> elements</li>
+<li>Highlight the current page in the navigation using an <code>active</code> class</li>
+<li>Write correct <strong>relative links</strong> between pages in the same site</li>
+<li>Create new pages by copying the page skeleton and changing only the main content</li>
+<li>Style specialised components: event cards, photo galleries, data tables, and contact forms</li>
+<li>Maintain one shared CSS file that styles the entire website</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-multi-page-website-architecture">1. Multi-Page Website Architecture<a class="anchor" href="#1-multi-page-website-architecture" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-06.canvas.tsx</code> → <code>MultiPageNav</code> — slide <code>s06-architecture</code> (&quot;Multi-Page Architecture&quot;)</p>
+</blockquote>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>multi-page website</strong> consists of multiple HTML files that link to each other. Each file is a separate page, but they all share the same visual structure: header, navigation, sidebar, and footer stay the same — only the <code>&lt;main&gt;</code> content changes.</p>
+<pre><code>index.html     →  Home page content
+about.html     →  About Us content
+events.html    →  Events listing
+gallery.html   →  Photo gallery
+contact.html   →  Contact form + info
+css/style.css  →  ONE stylesheet for ALL pages
+images/        →  Shared image folder
+</code></pre>
+<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think of a printed brochure. Every page has the same header logo, footer with contact info, and colour scheme. Only the body text differs per page. Your website works the same way: the &quot;template&quot; stays constant; only <code>&lt;main&gt;</code> changes.</p>
+<h4 id="12-why-consistency-matters">1.2 Why Consistency Matters<a class="anchor" href="#12-why-consistency-matters" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><strong>User experience:</strong> Visitors know where the navigation is on every page. They do not have to relearn the layout.</li>
+<li><strong>Branding:</strong> Consistent colours, fonts, and structure reinforce identity.</li>
+<li><strong>Maintainability:</strong> Change the navigation in one pattern and apply it everywhere.</li>
+<li><strong>Trust:</strong> Inconsistent pages look unprofessional and may confuse users into thinking they left your site.</li>
+</ul>
+<h4 id="13-the-copy-and-modify-workflow">1.3 The Copy-and-Modify Workflow<a class="anchor" href="#13-the-copy-and-modify-workflow" aria-label="Link to this section">#</a></h4>
+<p>Since we are building with plain HTML (no server-side includes or frameworks), the workflow is:</p>
+<ol>
+<li>Build <code>index.html</code> completely (header, nav, main, aside, footer).</li>
+<li><strong>Save As</strong> → <code>about.html</code>.</li>
+<li>Change the <code>&lt;title&gt;</code> tag.</li>
+<li>Move the <code>class=&quot;active&quot;</code> to the About link in the nav.</li>
+<li>Replace everything inside <code>&lt;main&gt;</code> with About page content.</li>
+<li>Repeat for each page.</li>
+</ol>
+<blockquote>
+<p>⚠️ When you copy a page, verify that the header, nav, aside, and footer are <strong>identical</strong>. Even a missing closing tag can break the layout.</p>
+</blockquote>
+<h4 id="important-notes">⚠️ Important Notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Every page must link to the <strong>same</strong> CSS file: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code>.</li>
+<li>Keep your folder structure flat (all HTML files in the root) for simple relative links.</li>
+<li>Name files with lowercase letters and hyphens: <code>about.html</code>, <code>event-calendar.html</code>. Avoid spaces and special characters.</li>
+</ul>
+<h4 id="try-it-yourself-sketch-before-you-code">🧪 Try It Yourself — Sketch Before You Code<a class="anchor" href="#try-it-yourself-sketch-before-you-code" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Decide the page set and the folder layout on paper first.</p>
+<ol>
+<li>Write down the pages your club site needs. Four is plenty: Home, About, Events, Contact.</li>
+<li>For each, write one sentence: <em>what can a visitor do here that they cannot do elsewhere?</em></li>
+<li>Draw the folder tree you will create:<pre><code>club-website/
+├── index.html          ← Home lives in the root
+├── css/style.css
+├── img/
+└── pages/
+    ├── about.html
+    ├── events.html
+    └── contact.html
+</code></pre>
+</li>
+<li>Create the empty files now, each with the HTML5 boilerplate and nothing else.</li>
+</ol>
+<p><strong>Expected result:</strong> Four files that all open in a browser and show a title, plus a written purpose for each. No styling yet.</p>
+<details>
+<summary>Why the one-sentence purpose matters</summary><p>If two pages have the same purpose, they should be one page. That is how sites end up with an &quot;About&quot; and an &quot;About Us&quot; that say the same thing.</p>
+<p>The other reason to write it down: the sentence becomes the page&#39;s <code>&lt;h1&gt;</code> and its <code>&lt;meta name=&quot;description&quot;&gt;</code>. You are not doing paperwork — you are drafting content.</p>
+<p>Note that <code>index.html</code> stays in the root. Web servers look for it automatically when someone visits the folder, so <code>example.com/</code> finds it with no file name in the URL. The other pages can sit in <code>pages/</code> because they are always reached by an explicit link.</p>
+</details><hr>
+<h3 id="2-relative-links-between-pages">2. Relative Links Between Pages<a class="anchor" href="#2-relative-links-between-pages" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-06.canvas.tsx</code> → <code>LinkTargets</code> — slide <code>s06-relative-links</code> (&quot;Relative Links&quot;)</p>
+</blockquote>
+<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>relative link</strong> points to a file based on its position relative to the current file. This is different from an <strong>absolute link</strong> (full URL starting with <code>http://</code>).</p>
+<h4 id="22-how-relative-links-work">2.2 How Relative Links Work<a class="anchor" href="#22-how-relative-links-work" aria-label="Link to this section">#</a></h4>
+<p>When all your HTML files are in the <strong>same folder</strong>:</p>
+<pre><code class="language-html">&lt;!-- From index.html, link to about.html --&gt;
+&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;
+
+&lt;!-- From about.html, link back to index.html --&gt;
+&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+</code></pre>
+<p>Just use the filename. No path prefix needed.</p>
+<p>When linking to files in <strong>subfolders</strong>:</p>
+<pre><code class="language-html">&lt;!-- Link to a CSS file in the css/ subfolder --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+
+&lt;!-- Link to an image in the images/ subfolder --&gt;
+&lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Team Photo&quot;&gt;
+
+&lt;!-- Link to a PDF in the documents/ subfolder --&gt;
+&lt;a href=&quot;documents/constitution.pdf&quot;&gt;Club Constitution&lt;/a&gt;
+</code></pre>
+<p>When linking to files in <strong>parent folders</strong> (rare in our project):</p>
+<pre><code class="language-html">&lt;!-- Go up one folder level --&gt;
+&lt;a href=&quot;../index.html&quot;&gt;Back to Home&lt;/a&gt;
+</code></pre>
+<h4 id="comparison-table">🔍 Comparison Table<a class="anchor" href="#comparison-table" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Link Type</th>
+<th>Syntax</th>
+<th>Example</th>
+<th>Use For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Same folder</td>
+<td><code>filename.html</code></td>
+<td><code>about.html</code></td>
+<td>Pages at the same level</td>
+</tr>
+<tr>
+<td>Subfolder</td>
+<td><code>folder/filename</code></td>
+<td><code>css/style.css</code></td>
+<td>CSS, images, documents</td>
+</tr>
+<tr>
+<td>Parent folder</td>
+<td><code>../filename</code></td>
+<td><code>../index.html</code></td>
+<td>Going up a level</td>
+</tr>
+<tr>
+<td>Absolute URL</td>
+<td><code>https://...</code></td>
+<td><code>https://example.com</code></td>
+<td>External websites</td>
+</tr>
+</tbody></table>
+<h4 id="important-notes-2">⚠️ Important Notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><strong>Never use absolute file paths</strong> like <code>C:\Users\N4G\site\about.html</code>. These only work on YOUR computer.</li>
+<li>Always use forward slashes (<code>/</code>) in URLs, even on Windows. Browsers handle the conversion.</li>
+<li>Test every link after creating new pages. Click through the entire navigation.</li>
+<li>The <code>href</code> value is case-sensitive on web servers (Linux). <code>About.html</code> and <code>about.html</code> are different files. Be consistent with lowercase.</li>
+</ul>
+<hr>
+<h3 id="3-navigation-menu-with-current-page-highlighting">3. Navigation Menu with Current Page Highlighting<a class="anchor" href="#3-navigation-menu-with-current-page-highlighting" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-06.canvas.tsx</code> → <code>ActiveClassWalk</code> — slide <code>s06-active-class</code> (&quot;Active Navigation&quot;)</p>
+</blockquote>
+<h4 id="31-building-the-navigation-structure">3.1 Building the Navigation Structure<a class="anchor" href="#31-building-the-navigation-structure" aria-label="Link to this section">#</a></h4>
+<p>The standard approach uses an unordered list inside <code>&lt;nav&gt;</code>:</p>
+<pre><code class="language-html">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<p>Why <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code>? Because navigation IS a list of links. Using semantic list markup helps screen readers announce &quot;list of 5 items&quot; so users know what to expect.</p>
+<h4 id="32-highlighting-the-current-page">3.2 Highlighting the Current Page<a class="anchor" href="#32-highlighting-the-current-page" aria-label="Link to this section">#</a></h4>
+<p>On each page, add <code>class=&quot;active&quot;</code> to the link for <strong>that</strong> page:</p>
+<pre><code class="language-html">&lt;!-- On index.html --&gt;
+&lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+
+&lt;!-- On about.html --&gt;
+&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+<p>CSS for the active state:</p>
+<pre><code class="language-css">nav ul li a.active {
+    background-color: #1a5276;
+    font-weight: bold;
+    border-bottom: 3px solid #fff;
+}
+</code></pre>
+<p>This gives the current page&#39;s link a darker background, bold text, and a white bottom border — clearly showing &quot;you are here.&quot;</p>
+<h4 id="33-how-it-works-step-by-step">3.3 How It Works Step by Step<a class="anchor" href="#33-how-it-works-step-by-step" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>User opens <code>index.html</code> → sees &quot;Home&quot; highlighted.</li>
+<li>User clicks &quot;About Us&quot; → browser loads <code>about.html</code>.</li>
+<li>On <code>about.html</code>, the <code>class=&quot;active&quot;</code> is on the About link → &quot;About Us&quot; is highlighted.</li>
+<li>The rest of the page (header, sidebar, footer) looks identical. Only <code>&lt;main&gt;</code> content changed.</li>
+</ol>
+<h4 id="important-notes-3">⚠️ Important Notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>You must manually move the <code>active</code> class when creating each page. This is easy to forget!</li>
+<li>The <code>active</code> class is NOT related to the CSS pseudo-class <code>:active</code> (which fires during a mouse click). They are different concepts.</li>
+<li>Consider adding <code>aria-current=&quot;page&quot;</code> alongside <code>class=&quot;active&quot;</code> for better accessibility:<pre><code class="language-html">&lt;a href=&quot;about.html&quot; class=&quot;active&quot; aria-current=&quot;page&quot;&gt;About Us&lt;/a&gt;
+</code></pre>
+</li>
+</ul>
+<h4 id="try-it-yourself-mark-the-current-page">🧪 Try It Yourself — Mark the Current Page<a class="anchor" href="#try-it-yourself-mark-the-current-page" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Make the nav tell the visitor where they are — for mouse, keyboard, and screen reader users alike.</p>
+<ol>
+<li>Style the active state:<pre><code class="language-css">nav a.active {
+    background: #1e40af;
+    color: #fff;
+    border-radius: 4px;
+}
+nav a:hover,
+nav a:focus { background: #3b82f6; color: #fff; }
+</code></pre>
+</li>
+<li>On <code>index.html</code> only, add the class to the Home link:<pre><code class="language-html">&lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot; aria-current=&quot;page&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+</li>
+<li>On <code>pages/about.html</code>, move both the class and <code>aria-current</code> to the About link.</li>
+<li>Open each page, then press <strong>Tab</strong> repeatedly through the nav without touching the mouse.</li>
+</ol>
+<p><strong>Expected result:</strong> Exactly one item is highlighted per page, and the focus outline is clearly visible as you Tab. Both the highlight and the focus ring must be visible — they answer different questions.</p>
+<details>
+<summary>Two mistakes and one addition</summary><p><strong>Mistake 1:</strong> copying the nav with <code>class=&quot;active&quot;</code> already on Home, so every page highlights Home. The nav markup is shared; the <code>active</code> class is per page.</p>
+<p><strong>Mistake 2:</strong> styling <code>:hover</code> but not <code>:focus</code>. A keyboard user then has no idea which link is selected. Always style them together.</p>
+<p><strong>The addition:</strong> <code>aria-current=&quot;page&quot;</code> conveys to a screen reader what the colour conveys visually. Without it, the highlight is decoration that assistive technology cannot see. You can even drop the class and style the attribute directly:</p>
+<pre><code class="language-css">nav a[aria-current=&quot;page&quot;] { background: #1e40af; color: #fff; }
+</code></pre>
+<p>That way the visual state and the announced state can never disagree.</p>
+</details><hr>
+<h3 id="4-reusing-one-css-file-across-all-pages">4. Reusing One CSS File Across All Pages<a class="anchor" href="#4-reusing-one-css-file-across-all-pages" aria-label="Link to this section">#</a></h3>
+<h4 id="41-the-principle">4.1 The Principle<a class="anchor" href="#41-the-principle" aria-label="Link to this section">#</a></h4>
+<p>Every HTML page links to the same <code>css/style.css</code>:</p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+</code></pre>
+<p>This means:</p>
+<ul>
+<li>Changes to <code>style.css</code> instantly affect <strong>every</strong> page.</li>
+<li>You never write duplicate CSS rules.</li>
+<li>Adding a new component style (like <code>.event-card</code>) makes it available on all pages.</li>
+</ul>
+<h4 id="42-organising-your-css">4.2 Organising Your CSS<a class="anchor" href="#42-organising-your-css" aria-label="Link to this section">#</a></h4>
+<p>As your stylesheet grows, organise it with clear section comments:</p>
+<pre><code class="language-css">/* =============================================
+   STUDENT CLUB WEBSITE — MAIN STYLESHEET
+   ============================================= */
+
+/* === RESET &amp; BASE === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: &quot;Segoe UI&quot;, Arial, sans-serif; ... }
+
+/* === LAYOUT === */
+.wrapper { max-width: 1000px; margin: 0 auto; ... }
+.page-body { display: flex; }
+
+/* === HEADER === */
+header { background-color: #1a5276; ... }
+
+/* === NAVIGATION === */
+nav { background-color: #2874a6; ... }
+nav ul li a.active { ... }
+
+/* === MAIN CONTENT === */
+main { flex: 3; padding: 25px; }
+main h2 { color: #1a5276; ... }
+
+/* === SIDEBAR === */
+aside { flex: 1; background-color: #f0f4f8; ... }
+
+/* === FOOTER === */
+footer { background-color: #1a5276; ... }
+
+/* === COMPONENTS === */
+.event-card { ... }
+.gallery { ... }
+.contact-form { ... }
+table { ... }
+
+/* === UTILITY CLASSES === */
+.highlight { ... }
+.center-text { ... }
+.btn { ... }
+</code></pre>
+<h4 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Keep ONE stylesheet for small-to-medium sites. Multiple files add complexity.</li>
+<li>Add new component styles at the bottom, in the COMPONENTS section.</li>
+<li>Never write page-specific CSS unless absolutely necessary. If you do, comment which page it belongs to.</li>
+<li>When you add a new element type (event card, gallery item), style it once in the shared CSS.</li>
+</ul>
+<h4 id="try-it-yourself-one-stylesheet-every-page">🧪 Try It Yourself — One Stylesheet, Every Page<a class="anchor" href="#try-it-yourself-one-stylesheet-every-page" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Prove that a single edit reaches the whole site.</p>
+<ol>
+<li>Confirm every page links the same file. From the root: <code>href=&quot;css/style.css&quot;</code>. From <code>pages/</code>: <code>href=&quot;../css/style.css&quot;</code>.</li>
+<li>In <code>css/style.css</code>, add a rule you cannot miss:<pre><code class="language-css">header { border-bottom: 4px solid #2563eb; }
+</code></pre>
+</li>
+<li>Open each page in turn — <code>index.html</code>, <code>pages/about.html</code>, <code>pages/contact.html</code>.</li>
+<li>Change the colour to <code>#dc2626</code>, save, and reload all three again.</li>
+</ol>
+<p><strong>Expected result:</strong> Every page gains the blue bar, then the red bar, from one edit. Any page that does not change has a broken <code>&lt;link&gt;</code> path — check its Network tab.</p>
+<details>
+<summary>The habit this replaces</summary><p>The tempting alternative is a <code>&lt;style&gt;</code> block in each page&#39;s <code>&lt;head&gt;</code>. It works for one page and fails at three: a colour change becomes three edits, and after a week the pages have quietly drifted apart.</p>
+<p>One external stylesheet also loads faster. The browser caches <code>style.css</code> after the first page, so the second and third pages need only their HTML.</p>
+<p>If a rule should apply to one page only, do not start a second stylesheet. Add a class to that page&#39;s <code>&lt;body&gt;</code>, e.g. <code>&lt;body class=&quot;home&quot;&gt;</code>, and scope the rule: <code>.home .hero { ... }</code>.</p>
+</details><hr>
+<h3 id="5-styling-new-components">5. Styling New Components<a class="anchor" href="#5-styling-new-components" aria-label="Link to this section">#</a></h3>
+<h4 id="51-event-cards">5.1 Event Cards<a class="anchor" href="#51-event-cards" aria-label="Link to this section">#</a></h4>
+<p>Event cards are self-contained blocks showing event details:</p>
+<pre><code class="language-css">.event-card {
+    background-color: #f8f9fa;
+    border-left: 4px solid #2874a6;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.event-card h3 {
+    color: #1a5276;
+    margin-top: 0;
+}
+
+.event-date {
+    color: #2874a6;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.event-location {
+    color: #666;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+</code></pre>
+<p>Usage:</p>
+<pre><code class="language-html">&lt;div class=&quot;event-card&quot;&gt;
+    &lt;h3&gt;Web Design Workshop&lt;/h3&gt;
+    &lt;p class=&quot;event-date&quot;&gt;March 15, 2024 | 2:00 PM - 4:00 PM&lt;/p&gt;
+    &lt;p class=&quot;event-location&quot;&gt;Room 301, Building A&lt;/p&gt;
+    &lt;p&gt;Learn the basics of HTML and CSS.&lt;/p&gt;
+    &lt;a href=&quot;contact.html&quot; class=&quot;btn&quot;&gt;Register Now&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="52-buttons">5.2 Buttons<a class="anchor" href="#52-buttons" aria-label="Link to this section">#</a></h4>
+<p>Reusable button style for action links:</p>
+<pre><code class="language-css">.btn {
+    display: inline-block;
+    background-color: #2874a6;
+    color: white;
+    padding: 8px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #1a5276;
+}
+</code></pre>
+<p>Note: <code>display: inline-block</code> allows padding and width on an <code>&lt;a&gt;</code> element while keeping it inline with surrounding text.</p>
+<h4 id="53-gallery-grid">5.3 Gallery Grid<a class="anchor" href="#53-gallery-grid" aria-label="Link to this section">#</a></h4>
+<p>Use Flexbox with wrapping to create a responsive photo grid:</p>
+<pre><code class="language-css">.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.gallery-item {
+    flex: 1 1 200px;       /* grow, shrink, minimum 200px */
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 3px;
+}
+
+.gallery-item p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #555;
+}
+</code></pre>
+<p>How <code>flex: 1 1 200px</code> works:</p>
+<ul>
+<li><code>flex-grow: 1</code> — items grow to fill extra space</li>
+<li><code>flex-shrink: 1</code> — items shrink if space is tight</li>
+<li><code>flex-basis: 200px</code> — start at 200px wide</li>
+</ul>
+<p>Items automatically wrap to new rows and adjust their width. No media queries needed for basic responsiveness.</p>
+<h4 id="54-data-tables">5.4 Data Tables<a class="anchor" href="#54-data-tables" aria-label="Link to this section">#</a></h4>
+<p>For structured data like member lists:</p>
+<pre><code class="language-css">table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #1a5276;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+</code></pre>
+<p>Key properties:</p>
+<ul>
+<li><code>border-collapse: collapse</code> — merges adjacent borders into single lines instead of double borders.</li>
+<li><code>tr:nth-child(even)</code> — targets every other row for zebra striping.</li>
+</ul>
+<h4 id="55-contact-forms">5.5 Contact Forms<a class="anchor" href="#55-contact-forms" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">.contact-form {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #1a5276;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2874a6;
+    outline: none;
+    box-shadow: 0 0 5px rgba(40, 116, 166, 0.3);
+}
+</code></pre>
+<p>Key techniques:</p>
+<ul>
+<li><code>display: block</code> on labels puts them above the input field.</li>
+<li><code>width: 100%</code> on inputs fills the container.</li>
+<li><code>:focus</code> pseudo-class styles the input when clicked/tabbed into.</li>
+<li><code>font-family: inherit</code> ensures form fields use the same font as the rest of the page.</li>
+</ul>
+<h4 id="important-notes-4">⚠️ Important Notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Form <code>&lt;label&gt;</code> elements should always have a <code>for</code> attribute matching the input&#39;s <code>id</code>. This connects them for accessibility.</li>
+<li>The <code>required</code> attribute on inputs enables browser-native validation.</li>
+<li>Forms need a server-side script to actually send data. Our form uses <code>action=&quot;#&quot;</code> as a placeholder.</li>
+</ul>
+<hr>
+<h3 id="best-practices-2">✅ Best Practices<a class="anchor" href="#best-practices-2" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><strong>Build one perfect page first</strong>, then copy it for other pages.</li>
+<li><strong>Always update the <code>active</code> class</strong> in the navigation when creating a new page.</li>
+<li><strong>Always update the <code>&lt;title&gt;</code> tag</strong> — format: &quot;Student Club - Page Name&quot;.</li>
+<li><strong>Test every link</strong> after creating a new page. Click through the entire navigation cycle.</li>
+<li><strong>Keep sidebar content relevant</strong> but mostly consistent across pages.</li>
+<li><strong>Add new component styles to the shared CSS file</strong>, never inline.</li>
+<li><strong>Use relative links only.</strong> Never hardcode absolute file paths.</li>
+<li><strong>Name files consistently:</strong> lowercase, no spaces, <code>.html</code> extension.</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-forgetting-to-move-the-active-class">Mistake 1: Forgetting to move the <code>active</code> class<a class="anchor" href="#mistake-1-forgetting-to-move-the-active-class" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: Home is still active on the About page --&gt;
+&lt;!-- On about.html --&gt;
+&lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: About Us is active on the About page --&gt;
+&lt;!-- On about.html --&gt;
+&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+<h4 id="mistake-2-broken-relative-links">Mistake 2: Broken relative links<a class="anchor" href="#mistake-2-broken-relative-links" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: absolute file path (only works on your computer) --&gt;
+&lt;a href=&quot;C:\Users\N4G\site\about.html&quot;&gt;About&lt;/a&gt;
+
+&lt;!-- ❌ WRONG: wrong filename casing on Linux servers --&gt;
+&lt;a href=&quot;About.html&quot;&gt;About&lt;/a&gt;  &lt;!-- file is actually about.html --&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: relative link, lowercase --&gt;
+&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+</code></pre>
+<h4 id="mistake-3-inconsistent-page-structure">Mistake 3: Inconsistent page structure<a class="anchor" href="#mistake-3-inconsistent-page-structure" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: missing sidebar on one page --&gt;
+&lt;main&gt;Content&lt;/main&gt;
+&lt;!-- no &lt;aside&gt; → main stretches to full width, layout breaks --&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: same structure on every page --&gt;
+&lt;div class=&quot;page-body&quot;&gt;
+    &lt;main&gt;Content&lt;/main&gt;
+    &lt;aside&gt;Sidebar&lt;/aside&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="mistake-4-different-css-file-paths-on-different-pages">Mistake 4: Different CSS file paths on different pages<a class="anchor" href="#mistake-4-different-css-file-paths-on-different-pages" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: if about.html is in the root, this path is wrong --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;!-- Should be css/style.css if CSS is in the css/ subfolder --&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: consistent path on all pages --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+<h4 id="mistake-5-missing-title-or-duplicate-titles">Mistake 5: Missing <code>&lt;title&gt;</code> or duplicate titles<a class="anchor" href="#mistake-5-missing-title-or-duplicate-titles" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: same title on every page --&gt;
+&lt;title&gt;Student Club&lt;/title&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: unique descriptive titles --&gt;
+&lt;title&gt;Student Club - Home&lt;/title&gt;
+&lt;title&gt;Student Club - About Us&lt;/title&gt;
+&lt;title&gt;Student Club - Events&lt;/title&gt;
+</code></pre>
+<h4 id="try-it-yourself-build-a-reusable-card-component">🧪 Try It Yourself — Build a Reusable Card Component<a class="anchor" href="#try-it-yourself-build-a-reusable-card-component" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (8 min):</strong> Write one class and use it three times on two pages.</p>
+<ol>
+<li>In <code>css/style.css</code>:<pre><code class="language-css">.card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.card h3 { margin-top: 0; }
+</code></pre>
+</li>
+<li>Use it three times on <code>index.html</code>:<pre><code class="language-html">&lt;div class=&quot;card&quot;&gt;
+    &lt;h3&gt;Weekly Workshop&lt;/h3&gt;
+    &lt;p&gt;Fridays, 5pm, Room B203.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+<li>Now use the same class once on <code>pages/about.html</code> — writing no new CSS at all.</li>
+<li>Change <code>border-radius</code> to <code>16px</code> in the stylesheet and reload both pages.</li>
+</ol>
+<p><strong>Expected result:</strong> All four cards change together from one edit. That is the whole point of a component class.</p>
+<details>
+<summary>How to name classes so this keeps working</summary><p>Name for <strong>what the thing is</strong>, not what it looks like:</p>
+<ul>
+<li>Good: <code>.card</code>, <code>.nav-link</code>, <code>.event-list</code>, <code>.btn-primary</code></li>
+<li>Bad: <code>.blue-box</code>, <code>.big-text</code>, <code>.left-column</code></li>
+</ul>
+<p><code>.blue-box</code> becomes a lie the moment the design changes to green, and you either live with the wrong name or rename it in every file. <code>.card</code> stays true regardless of colour.</p>
+<p>Then use a nested selector such as <code>.card h3</code> for parts inside the component. That keeps the component&#39;s styling self-contained instead of leaking into every <code>&lt;h3&gt;</code> on the site.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Multi-page site</td>
+<td>Multiple HTML files linked together</td>
+<td>index.html, about.html, events.html</td>
+</tr>
+<tr>
+<td>Relative link</td>
+<td>Path relative to current file location</td>
+<td><code>about.html</code>, <code>css/style.css</code></td>
+</tr>
+<tr>
+<td>Active navigation</td>
+<td>Visual indicator of current page</td>
+<td><code>class=&quot;active&quot;</code> on current link</td>
+</tr>
+<tr>
+<td>Shared stylesheet</td>
+<td>One CSS file linked by all pages</td>
+<td><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Event card</td>
+<td>Styled block displaying event details</td>
+<td><code>.event-card { border-left: 4px solid ... }</code></td>
+</tr>
+<tr>
+<td>Gallery grid</td>
+<td>Flex-wrap layout for photo thumbnails</td>
+<td><code>.gallery { display: flex; flex-wrap: wrap; }</code></td>
+</tr>
+<tr>
+<td>Zebra striping</td>
+<td>Alternating row colours in tables</td>
+<td><code>tr:nth-child(even) { background: #f2f2f2; }</code></td>
+</tr>
+<tr>
+<td>Form styling</td>
+<td>Labels above inputs, focus states</td>
+<td><code>.form-group label { display: block; }</code></td>
+</tr>
+<tr>
+<td>Button style</td>
+<td>Inline-block link styled as button</td>
+<td><code>.btn { display: inline-block; ... }</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-creating-the-about-page-from-indexhtml">Example 1: Creating the About Page from index.html<a class="anchor" href="#example-1-creating-the-about-page-from-indexhtml" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Your <code>index.html</code> is complete. You need to create <code>about.html</code> with the same layout but different content.</p>
+<p><strong>Steps with code:</strong></p>
+<p>Step 1 — Save As:</p>
+<pre><code>File → Save As → about.html (in the same folder as index.html)
+</code></pre>
+<p>Step 2 — Update the title:</p>
+<pre><code class="language-html">&lt;!-- ❌ OLD (copied from index.html) --&gt;
+&lt;title&gt;Student Club - Home&lt;/title&gt;
+
+&lt;!-- ✅ NEW --&gt;
+&lt;title&gt;Student Club - About Us&lt;/title&gt;
+</code></pre>
+<p>Step 3 — Move the active class:</p>
+<pre><code class="language-html">&lt;!-- ❌ OLD (Home was active) --&gt;
+&lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+
+&lt;!-- ✅ NEW (About Us is now active) --&gt;
+&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+<p>Step 4 — Replace main content:</p>
+<pre><code class="language-html">&lt;main&gt;
+    &lt;h2&gt;About Us&lt;/h2&gt;
+
+    &lt;h3&gt;Who We Are&lt;/h3&gt;
+    &lt;p&gt;The Student Club was founded in 2020 by a group of passionate
+       students who wanted to create a space for learning, creativity,
+       and friendship. Today, we have over 200 active members from
+       all faculties.&lt;/p&gt;
+
+    &lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Student Club Team Photo&quot; width=&quot;500&quot;&gt;
+    &lt;p class=&quot;caption&quot;&gt;Our team at the 2023 annual orientation event.&lt;/p&gt;
+
+    &lt;h3&gt;Our Mission&lt;/h3&gt;
+    &lt;p&gt;To provide a supportive environment where students can learn
+       new skills, share ideas, and grow together through technology
+       and creativity.&lt;/p&gt;
+
+    &lt;h3&gt;Our Values&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;Learning:&lt;/strong&gt; We believe in continuous growth&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Community:&lt;/strong&gt; We support each other&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Creativity:&lt;/strong&gt; We encourage innovative thinking&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Inclusion:&lt;/strong&gt; Everyone is welcome&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Our Leaders&lt;/h3&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Position&lt;/th&gt;
+            &lt;th&gt;Faculty&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Nguyen Van A&lt;/td&gt;
+            &lt;td&gt;President&lt;/td&gt;
+            &lt;td&gt;Information Technology&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Tran Thi B&lt;/td&gt;
+            &lt;td&gt;Vice President&lt;/td&gt;
+            &lt;td&gt;Business Administration&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Le Van C&lt;/td&gt;
+            &lt;td&gt;Events Coordinator&lt;/td&gt;
+            &lt;td&gt;Communication and Media&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/main&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li>The <code>&lt;title&gt;</code> appears in the browser tab. Unique titles help users distinguish tabs.</li>
+<li>Moving <code>class=&quot;active&quot;</code> tells visitors which page they are on.</li>
+<li>The <code>&lt;main&gt;</code> content is completely replaced. Everything outside <code>&lt;main&gt;</code> stays identical.</li>
+<li><code>&lt;img&gt;</code> uses a relative path to the <code>images/</code> subfolder.</li>
+<li><code>&lt;table&gt;</code> uses the styles defined in the shared CSS — no new CSS needed.</li>
+<li>The <code>&lt;aside&gt;</code> sidebar content stays the same (or can be slightly adjusted).</li>
+</ul>
+<p><strong>Result:</strong> <code>about.html</code> opens with the same header, nav, sidebar, and footer as <code>index.html</code>. The navigation highlights &quot;About Us.&quot; The main area shows club information and a leaders table.</p>
+<hr>
+<h3 id="example-2-building-the-events-page-with-event-cards">Example 2: Building the Events Page with Event Cards<a class="anchor" href="#example-2-building-the-events-page-with-event-cards" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Create an events listing page with styled event cards.</p>
+<p><strong>Code (events.html — main content only):</strong></p>
+<pre><code class="language-html">&lt;main&gt;
+    &lt;h2&gt;Events &amp;amp; Activities&lt;/h2&gt;
+
+    &lt;div class=&quot;event-card&quot;&gt;
+        &lt;h3&gt;Web Design Workshop&lt;/h3&gt;
+        &lt;p class=&quot;event-date&quot;&gt;March 15, 2024 | 2:00 PM - 4:00 PM&lt;/p&gt;
+        &lt;p class=&quot;event-location&quot;&gt;Room 301, Building A&lt;/p&gt;
+        &lt;p&gt;Learn the basics of HTML and CSS in this hands-on workshop.
+           Bring your laptop! No prior experience needed.&lt;/p&gt;
+        &lt;a href=&quot;contact.html&quot; class=&quot;btn&quot;&gt;Register Now&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;event-card&quot;&gt;
+        &lt;h3&gt;Photography Contest&lt;/h3&gt;
+        &lt;p class=&quot;event-date&quot;&gt;March 22, 2024 | All Day&lt;/p&gt;
+        &lt;p class=&quot;event-location&quot;&gt;Online Submission&lt;/p&gt;
+        &lt;p&gt;Submit your best campus photos and win prizes.
+           Theme: &quot;Student Life.&quot; Deadline: March 20.&lt;/p&gt;
+        &lt;a href=&quot;contact.html&quot; class=&quot;btn&quot;&gt;Submit Entry&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;event-card&quot;&gt;
+        &lt;h3&gt;Music Night&lt;/h3&gt;
+        &lt;p class=&quot;event-date&quot;&gt;March 29, 2024 | 7:00 PM&lt;/p&gt;
+        &lt;p class=&quot;event-location&quot;&gt;University Auditorium&lt;/p&gt;
+        &lt;p&gt;An evening of music, food, and fun. Student bands
+           will perform. Free entry for all members!&lt;/p&gt;
+        &lt;a href=&quot;contact.html&quot; class=&quot;btn&quot;&gt;Get Tickets&lt;/a&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;event-card&quot;&gt;
+        &lt;h3&gt;Hackathon 2024&lt;/h3&gt;
+        &lt;p class=&quot;event-date&quot;&gt;April 5-6, 2024 | 48 Hours&lt;/p&gt;
+        &lt;p class=&quot;event-location&quot;&gt;Computer Lab, Building B&lt;/p&gt;
+        &lt;p&gt;Build a web application in 48 hours. Teams of 3-5 members.
+           Prizes for the top 3 teams!&lt;/p&gt;
+        &lt;a href=&quot;contact.html&quot; class=&quot;btn&quot;&gt;Register Team&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li>Each event is wrapped in <code>&lt;div class=&quot;event-card&quot;&gt;</code> — this applies the card styling (background, left border, padding).</li>
+<li><code>&lt;p class=&quot;event-date&quot;&gt;</code> gets bold blue text via the <code>.event-date</code> CSS rule.</li>
+<li><code>&lt;p class=&quot;event-location&quot;&gt;</code> gets grey italic text via <code>.event-location</code>.</li>
+<li><code>&lt;a href=&quot;contact.html&quot; class=&quot;btn&quot;&gt;</code> renders as a styled button linking to the registration/contact page.</li>
+<li>All four cards stack vertically because <code>.event-card</code> is a block-level div with <code>margin-bottom: 20px</code>.</li>
+<li>Remember to set <code>class=&quot;active&quot;</code> on the Events nav link!</li>
+</ul>
+<p><strong>Result:</strong> Four event cards displayed as neat blocks with coloured left borders, dates, locations, descriptions, and action buttons.</p>
+<hr>
+<h3 id="example-3-building-the-gallery-page-with-flexbox-grid">Example 3: Building the Gallery Page with Flexbox Grid<a class="anchor" href="#example-3-building-the-gallery-page-with-flexbox-grid" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Display event photos in a responsive grid.</p>
+<p><strong>Code (gallery.html — main content only):</strong></p>
+<pre><code class="language-html">&lt;main&gt;
+    &lt;h2&gt;Photo Gallery&lt;/h2&gt;
+    &lt;p&gt;Photos from our events and activities.&lt;/p&gt;
+
+    &lt;div class=&quot;gallery&quot;&gt;
+        &lt;div class=&quot;gallery-item&quot;&gt;
+            &lt;img src=&quot;images/event1.jpg&quot; alt=&quot;Web Workshop 2024&quot;&gt;
+            &lt;p&gt;Web Workshop 2024&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;gallery-item&quot;&gt;
+            &lt;img src=&quot;images/event2.jpg&quot; alt=&quot;Music Night 2023&quot;&gt;
+            &lt;p&gt;Music Night 2023&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;gallery-item&quot;&gt;
+            &lt;img src=&quot;images/event3.jpg&quot; alt=&quot;Sports Day 2023&quot;&gt;
+            &lt;p&gt;Sports Day 2023&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;gallery-item&quot;&gt;
+            &lt;img src=&quot;images/event4.jpg&quot; alt=&quot;Hackathon 2023&quot;&gt;
+            &lt;p&gt;Hackathon 2023&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;gallery-item&quot;&gt;
+            &lt;img src=&quot;images/event5.jpg&quot; alt=&quot;Orientation 2023&quot;&gt;
+            &lt;p&gt;Orientation 2023&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;gallery-item&quot;&gt;
+            &lt;img src=&quot;images/event6.jpg&quot; alt=&quot;Charity Run 2023&quot;&gt;
+            &lt;p&gt;Charity Run 2023&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>.gallery</code> is a flex container with <code>flex-wrap: wrap</code> — items flow into rows and wrap when space runs out.</li>
+<li>Each <code>.gallery-item</code> has <code>flex: 1 1 200px</code> — starts at 200px, grows to fill space, shrinks if needed.</li>
+<li>Images use relative paths to <code>images/</code> folder. Each has descriptive <code>alt</code> text for accessibility.</li>
+<li>Captions below each image use the <code>.gallery-item p</code> style (smaller, grey text).</li>
+<li>The <code>gap: 15px</code> on the container adds consistent spacing between items without extra margins.</li>
+</ul>
+<p><strong>Result:</strong> Photos display in a responsive grid that adjusts columns based on available width. On wide screens you might see 3–4 per row; on narrow screens, 1–2.</p>
+<hr>
+<h3 id="example-4-building-the-contact-page-with-a-form">Example 4: Building the Contact Page with a Form<a class="anchor" href="#example-4-building-the-contact-page-with-a-form" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Create a contact page with information and a message form.</p>
+<p><strong>Code (contact.html — main content only):</strong></p>
+<pre><code class="language-html">&lt;main&gt;
+    &lt;h2&gt;Contact Us&lt;/h2&gt;
+
+    &lt;h3&gt;Get in Touch&lt;/h3&gt;
+    &lt;p&gt;We would love to hear from you! Whether you want to join
+       the club, ask a question, or suggest an event, feel free
+       to reach out.&lt;/p&gt;
+
+    &lt;div class=&quot;contact-info&quot;&gt;
+        &lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt;
+           &lt;a href=&quot;mailto:club@university.edu&quot;&gt;club@university.edu&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Phone:&lt;/strong&gt; +84 123 456 789&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Office:&lt;/strong&gt; Room 101, Student Activity Center&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Office Hours:&lt;/strong&gt; Monday - Friday, 8:00 AM - 5:00 PM&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;h3&gt;Send Us a Message&lt;/h3&gt;
+    &lt;form action=&quot;#&quot; method=&quot;post&quot; class=&quot;contact-form&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;name&quot;&gt;Your Name:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;email&quot;&gt;Your Email:&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;subject&quot;&gt;Subject:&lt;/label&gt;
+            &lt;select id=&quot;subject&quot; name=&quot;subject&quot;&gt;
+                &lt;option value=&quot;membership&quot;&gt;Membership Inquiry&lt;/option&gt;
+                &lt;option value=&quot;events&quot;&gt;Event Information&lt;/option&gt;
+                &lt;option value=&quot;suggestion&quot;&gt;Suggestion&lt;/option&gt;
+                &lt;option value=&quot;other&quot;&gt;Other&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;message&quot;&gt;Message:&lt;/label&gt;
+            &lt;textarea id=&quot;message&quot; name=&quot;message&quot; rows=&quot;5&quot; required&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Send Message&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/main&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>.contact-info</code> is a styled info box with light blue background (defined in CSS).</li>
+<li><code>mailto:</code> in the email link opens the user&#39;s email client.</li>
+<li><code>&lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;</code> — <code>action=&quot;#&quot;</code> is a placeholder. In production, this would point to a server script. <code>method=&quot;post&quot;</code> sends data securely (not in the URL).</li>
+<li>Each form field is wrapped in <code>&lt;div class=&quot;form-group&quot;&gt;</code> for consistent spacing.</li>
+<li><code>&lt;label for=&quot;name&quot;&gt;</code> is connected to <code>&lt;input id=&quot;name&quot;&gt;</code> via the matching <code>for</code>/<code>id</code> values. Clicking the label focuses the input.</li>
+<li><code>type=&quot;email&quot;</code> enables built-in email validation in modern browsers.</li>
+<li><code>required</code> prevents form submission if the field is empty.</li>
+<li><code>&lt;select&gt;</code> creates a dropdown menu with predefined options.</li>
+<li><code>&lt;textarea rows=&quot;5&quot;&gt;</code> creates a multi-line text input, 5 rows tall.</li>
+<li>The submit button uses the <code>.btn</code> class for consistent styling with other action buttons.</li>
+</ul>
+<p><strong>Result:</strong> A professional contact page with contact information in a highlighted box and a clean, accessible form below it.</p>
+<hr>
+<h3 id="example-5-verifying-navigation-across-all-pages">Example 5: Verifying Navigation Across All Pages<a class="anchor" href="#example-5-verifying-navigation-across-all-pages" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You have created all five pages. Verify that navigation works correctly.</p>
+<p><strong>Checklist:</strong></p>
+<ol>
+<li><p>Open <code>index.html</code> in the browser.</p>
+<ul>
+<li>✅ &quot;Home&quot; link is highlighted (has <code>class=&quot;active&quot;</code>)</li>
+<li>✅ Title shows &quot;Student Club - Home&quot;</li>
+</ul>
+</li>
+<li><p>Click &quot;About Us&quot;.</p>
+<ul>
+<li>✅ <code>about.html</code> loads</li>
+<li>✅ &quot;About Us&quot; link is highlighted</li>
+<li>✅ Header, sidebar, and footer look identical to home page</li>
+<li>✅ Main content shows About page content</li>
+</ul>
+</li>
+<li><p>Click &quot;Events&quot;.</p>
+<ul>
+<li>✅ <code>events.html</code> loads</li>
+<li>✅ &quot;Events&quot; link is highlighted</li>
+<li>✅ Event cards display correctly</li>
+</ul>
+</li>
+<li><p>Click &quot;Gallery&quot;.</p>
+<ul>
+<li>✅ <code>gallery.html</code> loads</li>
+<li>✅ &quot;Gallery&quot; link is highlighted</li>
+<li>✅ Photo grid displays correctly</li>
+</ul>
+</li>
+<li><p>Click &quot;Contact&quot;.</p>
+<ul>
+<li>✅ <code>contact.html</code> loads</li>
+<li>✅ &quot;Contact&quot; link is highlighted</li>
+<li>✅ Form renders with proper styling</li>
+</ul>
+</li>
+<li><p>From Contact, click &quot;Home&quot;.</p>
+<ul>
+<li>✅ Returns to <code>index.html</code> with &quot;Home&quot; highlighted</li>
+</ul>
+</li>
+<li><p>Check the browser console (F12 → Console).</p>
+<ul>
+<li>✅ No 404 errors for CSS or images</li>
+</ul>
+</li>
+</ol>
+<p><strong>If something is wrong:</strong></p>
+<ul>
+<li>Wrong page highlighted → forgot to move <code>class=&quot;active&quot;</code></li>
+<li>Styles missing → check <code>&lt;link&gt;</code> tag path matches <code>css/style.css</code></li>
+<li>Broken link → check filename spelling and case</li>
+<li>Layout broken → check that <code>&lt;aside&gt;</code> is present inside <code>.page-body</code></li>
+</ul>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Make sure your project folder contains:</p>
+<pre><code>student-club/
+├── index.html          ← completed in Session 5
+├── css/
+│   └── style.css       ← contains all styles from Sessions 4-5
+└── images/
+    └── (placeholder images for gallery)
+</code></pre>
+<p>Open your editor and your browser side by side. Preview after every save.</p>
+<hr>
+<h4 id="task-1-create-the-about-page">TASK 1: Create the About Page<a class="anchor" href="#task-1-create-the-about-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Build <code>about.html</code> with correct navigation highlighting and unique content.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Copy <code>index.html</code> → <code>about.html</code></li>
+<li>Update title, active nav link, and main content</li>
+<li>Include a table of club leaders</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>In your editor, open <code>index.html</code>.</li>
+<li>File → Save As → <code>about.html</code> (same folder).</li>
+<li>Change <code>&lt;title&gt;</code> to &quot;Student Club - About Us&quot;.</li>
+<li>Move <code>class=&quot;active&quot;</code> from the Home link to the About Us link.</li>
+<li>Replace everything inside <code>&lt;main&gt;</code> with the About content from Example 1 above.</li>
+<li>Make sure <code>&lt;aside&gt;</code> sidebar is unchanged.</li>
+<li>Save. Open in browser. Verify navigation highlighting.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> About page displays with highlighted &quot;About Us&quot; nav link, club description, mission statement, values list, and leaders table. Layout matches index.html.</p>
+<p>📁 <strong>File to save:</strong> <code>about.html</code></p>
+<hr>
+<h4 id="task-2-create-the-events-page">TASK 2: Create the Events Page<a class="anchor" href="#task-2-create-the-events-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Build <code>events.html</code> with styled event cards.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Copy <code>index.html</code> → <code>events.html</code></li>
+<li>Update title, active nav link, and main content</li>
+<li>Add at least 4 event cards</li>
+<li>Add event card CSS to the shared stylesheet</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Save <code>index.html</code> as <code>events.html</code>.</li>
+<li>Update <code>&lt;title&gt;</code> to &quot;Student Club - Events&quot;.</li>
+<li>Move <code>class=&quot;active&quot;</code> to the Events link.</li>
+<li>Replace <code>&lt;main&gt;</code> content with the events from Example 2 above.</li>
+<li>Add event card CSS to <code>css/style.css</code> (see Section 5.1 in Theory).</li>
+<li>Save both files. Preview.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> Events page shows four styled event cards with dates, locations, descriptions, and Register buttons. Nav highlights &quot;Events.&quot;</p>
+<p>📁 <strong>Files to save:</strong> <code>events.html</code>, <code>css/style.css</code></p>
+<hr>
+<h4 id="task-3-create-the-gallery-page">TASK 3: Create the Gallery Page<a class="anchor" href="#task-3-create-the-gallery-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Build <code>gallery.html</code> with a responsive photo grid.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Copy <code>index.html</code> → <code>gallery.html</code></li>
+<li>Update title, active nav link, and main content</li>
+<li>Add at least 6 gallery items</li>
+<li>Add gallery CSS to the shared stylesheet</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Save <code>index.html</code> as <code>gallery.html</code>.</li>
+<li>Update <code>&lt;title&gt;</code> to &quot;Student Club - Gallery&quot;.</li>
+<li>Move <code>class=&quot;active&quot;</code> to the Gallery link.</li>
+<li>Replace <code>&lt;main&gt;</code> content with the gallery from Example 3 above.</li>
+<li>Add gallery CSS to <code>css/style.css</code> (see Section 5.3 in Theory).</li>
+<li>Place placeholder images in <code>images/</code> folder (or use coloured rectangles).</li>
+<li>Save both files. Preview. Resize browser to test responsiveness.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> Gallery displays photos in a responsive flex grid. Items wrap and resize when the window changes size. Nav highlights &quot;Gallery.&quot;</p>
+<p>📁 <strong>Files to save:</strong> <code>gallery.html</code>, <code>css/style.css</code></p>
+<hr>
+<h4 id="task-4-create-the-contact-page">TASK 4: Create the Contact Page<a class="anchor" href="#task-4-create-the-contact-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Build <code>contact.html</code> with contact information and a styled form.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Copy <code>index.html</code> → <code>contact.html</code></li>
+<li>Update title, active nav link, and main content</li>
+<li>Include contact info box and message form</li>
+<li>Add form CSS to the shared stylesheet</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Save <code>index.html</code> as <code>contact.html</code>.</li>
+<li>Update <code>&lt;title&gt;</code> to &quot;Student Club - Contact&quot;.</li>
+<li>Move <code>class=&quot;active&quot;</code> to the Contact link.</li>
+<li>Replace <code>&lt;main&gt;</code> content with the contact page from Example 4 above.</li>
+<li>Add contact form CSS to <code>css/style.css</code> (see Section 5.5 in Theory).</li>
+<li>Save both files. Preview. Test form focus states by clicking each field.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> Contact page shows info box and a clean form. Inputs highlight with blue border when focused. Submit button matches the <code>.btn</code> style. Nav highlights &quot;Contact.&quot;</p>
+<p>📁 <strong>Files to save:</strong> <code>contact.html</code>, <code>css/style.css</code></p>
+<hr>
+<h4 id="task-5-full-site-navigation-test">TASK 5: Full Site Navigation Test<a class="anchor" href="#task-5-full-site-navigation-test" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Verify that every link works and every page looks consistent.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Click through every navigation link from every page</li>
+<li>Verify active highlighting is correct on each page</li>
+<li>Check for broken links, missing images, or layout issues</li>
+<li>Verify the browser console shows no errors</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open <code>index.html</code> in the browser.</li>
+<li>Click each nav link in order: Home → About → Events → Gallery → Contact → Home.</li>
+<li>On each page, verify:<ul>
+<li>Correct nav link is highlighted</li>
+<li>Title tab shows correct page name</li>
+<li>Header, sidebar, and footer are identical</li>
+<li>Main content is unique and properly styled</li>
+</ul>
+</li>
+<li>Click sidebar links and verify they navigate correctly.</li>
+<li>Open browser DevTools (F12) → Console tab. Look for red error messages.</li>
+<li>Fix any issues found.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> All five pages load correctly. Navigation cycle works in any order. No broken links. No console errors. Consistent design across all pages.</p>
+<p>📁 <strong>Files to fix (if needed):</strong> Any HTML or CSS file with issues</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Navigation bugs are the ones students most often ship without noticing, because the page they are testing from happens to work.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Nav link 404s from one page but works from another</td>
+<td>Path is relative to the wrong file</td>
+<td>Compare the <code>href</code> on both pages</td>
+<td>Add <code>../</code> per folder level, or use a consistent structure</td>
+</tr>
+<tr>
+<td>Every nav item looks &quot;current&quot;</td>
+<td>The <code>.active</code> class is on all of them, copied with the nav</td>
+<td>Ctrl+U on each page</td>
+<td>One <code>.active</code> per page, on that page&#39;s own link</td>
+</tr>
+<tr>
+<td>No nav item looks current</td>
+<td><code>.active</code> was never added, or the CSS rule is missing</td>
+<td>Inspect the link and check the Styles pane</td>
+<td>Add the class per page and a <code>.active</code> rule</td>
+</tr>
+<tr>
+<td>Hover style works with the mouse but not with Tab</td>
+<td>Only <code>:hover</code> is styled, <code>:focus</code> is not</td>
+<td>Press Tab through the nav and watch</td>
+<td>Style <code>:hover, :focus</code> together and keep a visible outline</td>
+</tr>
+<tr>
+<td>The nav bullets still show</td>
+<td><code>list-style: none</code> missing on the <code>&lt;ul&gt;</code></td>
+<td>Inspect the <code>&lt;ul&gt;</code></td>
+<td><code>nav ul { list-style: none; padding: 0; margin: 0 }</code></td>
+</tr>
+<tr>
+<td>Horizontal nav wraps to two lines too early</td>
+<td>Padding plus borders exceed the container width</td>
+<td>Inspect the total item widths</td>
+<td>Reduce padding, or let the nav wrap deliberately with <code>flex-wrap</code></td>
+</tr>
+<tr>
+<td>Clicking a nav item reloads the same page</td>
+<td><code>href=&quot;#&quot;</code> left in from the template</td>
+<td>Read the <code>href</code></td>
+<td>Point it at the real file name</td>
+</tr>
+<tr>
+<td>Screen reader does not announce the navigation</td>
+<td><code>&lt;nav&gt;</code> not used, or several <code>&lt;nav&gt;</code> with no labels</td>
+<td>Check the accessibility tree</td>
+<td>Wrap in <code>&lt;nav aria-label=&quot;Main&quot;&gt;</code>; label each <code>&lt;nav&gt;</code> if there is more than one</td>
+</tr>
+<tr>
+<td>Link colour looks unchanged after visiting</td>
+<td><code>:visited</code> not styled, or overridden later</td>
+<td>DevTools → force the <code>:visited</code> state</td>
+<td>Order the pseudo-classes link, visited, hover, focus, active</td>
+</tr>
+</tbody></table>
+<p><strong>Test navigation the way a marker will:</strong> open the deepest page in the site, then click every nav item in turn without touching the address bar. Any link that breaks is a path written from the wrong starting point.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. You are on <code>about.html</code> in the project root and want to link to <code>index.html</code>. What is the correct <code>href</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>href=&quot;index.html&quot;</code>. Both files sit in the same folder, so no path prefix is needed. Do not write <code>/index.html</code> (that means the server root, which breaks locally) and never write <code>../index.html</code> from the root.</p>
+</details><hr>
+<p><strong>Q2. How do you mark the current page in a navigation bar, and why does it matter?</strong></p>
+<details>
+<summary>Answer</summary><p>Add <code>class=&quot;active&quot;</code> and <code>aria-current=&quot;page&quot;</code> to that page&#39;s link, then style <code>.active</code> differently — bold, underlined, or a different colour. It matters because users need to know where they are; <code>aria-current</code> conveys the same information to screen readers, which cannot see the visual styling.</p>
+</details><hr>
+<p><strong>Q3. Why link one shared <code>style.css</code> from all five pages instead of giving each page its own stylesheet?</strong></p>
+<details>
+<summary>Answer</summary><p>One file means one place to change the header colour for the entire site. Five copies means five edits and inevitable drift where pages slowly stop matching. The browser also caches the shared file after the first page load, so every subsequent page renders faster.</p>
+</details><hr>
+<p><strong>Q4. What must be identical across every page of a multi-page site, and what should differ?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Identical:</strong> the <code>&lt;head&gt;</code> boilerplate, the stylesheet link, the entire <code>&lt;header&gt;</code>/<code>&lt;nav&gt;</code> block, and the <code>&lt;footer&gt;</code>.
+<strong>Different:</strong> the <code>&lt;title&gt;</code>, the meta description, which nav link carries <code>.active</code>, and everything inside <code>&lt;main&gt;</code>.</p>
+</details><hr>
+<p><strong>Q5. Your CSS works on <code>index.html</code> but not on <code>about.html</code>, and both use the same rules. What is the most likely cause?</strong></p>
+<details>
+<summary>Answer</summary><p>The <code>&lt;link&gt;</code> path is wrong on <code>about.html</code> — most commonly the stylesheet link was never copied, or the page lives in a subfolder and needs <code>../css/style.css</code>. Open DevTools → Network and look for a 404 on <code>style.css</code>. The second most likely cause is a class name typo in the HTML.</p>
+</details><hr>
+<p><strong>Q6. Why build a card component with a reusable <code>.card</code> class instead of styling each card individually?</strong></p>
+<details>
+<summary>Answer</summary><p>One rule set styles every card on every page, so all cards stay visually consistent and a design change is a single edit. Adding a sixth card becomes <code>&lt;article class=&quot;card&quot;&gt;</code> with no new CSS. Per-card styling multiplies your CSS by the number of cards and guarantees they drift apart.</p>
+</details><hr>
+<p><strong>Q7. What is the difference between <code>&lt;section&gt;</code> and <code>&lt;div&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;section&gt;</code> is a <strong>semantic</strong> grouping of related content that belongs in the document outline and should carry its own heading. <code>&lt;div&gt;</code> is a meaningless box used purely as a styling or layout hook. If the content has a heading and stands as a topic, use <code>&lt;section&gt;</code>; if you just need a wrapper for CSS, use <code>&lt;div&gt;</code>.</p>
+</details><hr>
+<p><strong>Q8. What is the fastest way to verify that every link in a 5-page site works?</strong></p>
+<details>
+<summary>Answer</summary><p>Start on the home page and click every nav link on every page, checking the browser reaches the right file — a 5-page site has 25 link paths and takes about two minutes. Watch for <code>file:///C:/...</code> 404s from absolute paths, and confirm each page&#39;s <code>.active</code> class matches the page you are actually on.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Create a new page by copying the page skeleton and modifying content</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Set the correct <code>class=&quot;active&quot;</code> on each page&#39;s navigation</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Write correct relative links between pages in the same folder</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Link all pages to the same external CSS file</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Style event cards with borders, dates, and action buttons</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create a responsive photo gallery using Flexbox wrap</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Build an accessible contact form with labels and focus states</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Test and debug navigation across a multi-page website</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 If you answered &quot;No&quot; to any item, revisit that section and redo the corresponding task. Pay close attention to the worked examples — follow them line by line.</p>
+</blockquote>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">Structuring a website — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks">Creating hyperlinks — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms">HTML forms — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form">Your first form — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables">Styling HTML tables — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">Flexbox — MDN</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox — CSS-Tricks</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In the next session, you will enhance your Student Club Website with advanced CSS techniques including responsive design with media queries, CSS transitions and animations, and refined typography — making your site look polished on every device.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

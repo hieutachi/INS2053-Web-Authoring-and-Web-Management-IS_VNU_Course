@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 4: Styling with External CSS — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 4</span></nav>
+<main id="main">
+  <h1>Homework 4: Styling with External CSS</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-04.html">Session 4 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-4-styling-with-external-css">Homework 4: Styling with External CSS<a class="anchor" href="#homework-4-styling-with-external-css" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 5)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Create an external CSS stylesheet</li>
+<li>Learn CSS selectors, properties, and values</li>
+<li>Apply colors, fonts, and spacing to your pages</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-create-your-external-css-file">Task 1: Create Your External CSS File<a class="anchor" href="#task-1-create-your-external-css-file" aria-label="Link to this section">#</a></h4>
+<p>Create a CSS file and link it to your About page.</p>
+<p><strong>Create the file:</strong> <code>project/css/style.css</code></p>
+<p><strong>Link it in your HTML:</strong> Add this line in the <code>&lt;head&gt;</code> of <code>project/about.html</code>:</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+<blockquote>
+<p>Every page in this project sits at the project root, so the CSS link is the same on all
+of them: <code>css/style.css</code>, with no <code>../</code>. Add the identical line to <code>index.html</code> and
+<code>contact.html</code> too — a page without the link stays unstyled, and that is the single most
+common reason a homework &quot;looks like nothing happened&quot;.</p>
+</blockquote>
+<h4 id="task-2-style-the-about-page">Task 2: Style the About Page<a class="anchor" href="#task-2-style-the-about-page" aria-label="Link to this section">#</a></h4>
+<p>Write CSS rules to make your About page look visually appealing.</p>
+<p><strong>Your CSS must include:</strong></p>
+<ol>
+<li><p><strong>Body styling:</strong></p>
+<ul>
+<li>Set a background color (choose a light, readable color)</li>
+<li>Set a text color that contrasts well with the background</li>
+<li>Set a default font family (e.g., Arial, Verdana, or sans-serif)</li>
+<li>Set font size for the body</li>
+</ul>
+</li>
+<li><p><strong>Heading styles:</strong></p>
+<ul>
+<li>Style <code>h1</code> with a specific color and larger font size</li>
+<li>Style <code>h2</code> with a different color</li>
+<li>Style <code>h3</code> with yet another color or style</li>
+</ul>
+</li>
+<li><p><strong>Paragraph styling:</strong></p>
+<ul>
+<li>Set line height (e.g., 1.6 or 1.8)</li>
+<li>Add margin or padding for spacing</li>
+</ul>
+</li>
+<li><p><strong>Image styling:</strong></p>
+<ul>
+<li>Set a maximum width so images don&#39;t overflow</li>
+<li>Add a border or border-radius for visual appeal</li>
+<li>Add some padding or margin around images</li>
+</ul>
+</li>
+<li><p><strong>List styling:</strong></p>
+<ul>
+<li>Style at least one list type (ul or ol)</li>
+<li>Maybe change the list-style or add padding</li>
+</ul>
+</li>
+</ol>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/css/style.css</code> (new CSS file)</li>
+<li><code>project/about.html</code> (updated with CSS link)</li>
+</ul>
+<p><strong>Requirements checklist:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> External CSS file exists at <code>project/css/style.css</code></li>
+<li><input disabled="" type="checkbox"> CSS is linked to <code>about.html</code></li>
+<li><input disabled="" type="checkbox"> Body has background color and font settings</li>
+<li><input disabled="" type="checkbox"> All 3 heading levels have distinct styles</li>
+<li><input disabled="" type="checkbox"> Paragraphs have readable line height</li>
+<li><input disabled="" type="checkbox"> Images have max-width and some styling</li>
+<li><input disabled="" type="checkbox"> At least one list is styled</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/css/style.css project/about.html</code></li>
+<li>Commit: <code>git commit -m &quot;HW4: Add external CSS and style About page&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSS file</td>
+<td>2</td>
+<td>File exists and is linked correctly</td>
+</tr>
+<tr>
+<td>Colors</td>
+<td>2</td>
+<td>Background, text, and heading colors are set</td>
+</tr>
+<tr>
+<td>Typography</td>
+<td>2</td>
+<td>Font family, sizes, line height are defined</td>
+</tr>
+<tr>
+<td>Spacing</td>
+<td>2</td>
+<td>Margins, padding, and line height improve readability</td>
+</tr>
+<tr>
+<td>Image styling</td>
+<td>1</td>
+<td>Images are sized and styled properly</td>
+</tr>
+<tr>
+<td>Overall look</td>
+<td>1</td>
+<td>Page looks clean and professional</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>The CSS link is <code>href=&quot;css/style.css&quot;</code> on every page, because all pages sit at the project root</li>
+<li>If the page still looks unstyled, press F12 → Network, reload, and check whether <code>style.css</code> returns <strong>200</strong> (found) or <strong>404</strong> (wrong path)</li>
+<li>Pick colors that look good together (try a color palette site like coolors.co)</li>
+<li>Test your page in the browser after each CSS change to see the effect</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>Your About page should transform from plain black-and-white text to a colorful, well-spaced page with styled headings, readable paragraphs, and nicely framed images.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

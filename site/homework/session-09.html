@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 9: Creating HTML Tables — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 9</span></nav>
+<main id="main">
+  <h1>Homework 9: Creating HTML Tables</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-09.html">Session 9 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-9-creating-html-tables">Homework 9: Creating HTML Tables<a class="anchor" href="#homework-9-creating-html-tables" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 10)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Learn how to build HTML tables</li>
+<li>Practice using table elements: table, tr, th, td</li>
+<li>Style a table with CSS to make it readable</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-create-a-schedule-table">Task 1: Create a Schedule Table<a class="anchor" href="#task-1-create-a-schedule-table" aria-label="Link to this section">#</a></h4>
+<p>Create a new page for your project that displays a weekly schedule or activity timetable.</p>
+<p><strong>Create the file:</strong> <code>project/activities.html</code></p>
+<blockquote>
+<p>This is the page <code>project/spec.md</code> and milestone M5 grade — the file name must be exactly
+<code>activities.html</code>, at the project root beside <code>index.html</code>.</p>
+</blockquote>
+<p><strong>Your table must include:</strong></p>
+<ul>
+<li>A <code>&lt;caption&gt;</code> element describing the table (e.g., &quot;Weekly Club Activities&quot;)</li>
+<li>A <code>&lt;thead&gt;</code> section with column headers</li>
+<li>A <code>&lt;tbody&gt;</code> section with data rows</li>
+<li>At least 5 columns (e.g., Day, Time, Activity, Location, Leader)</li>
+<li>At least 5 rows of data</li>
+<li>Use <code>&lt;th&gt;</code> for header cells and <code>&lt;td&gt;</code> for data cells</li>
+<li>Use <code>colspan</code> or <code>rowspan</code> at least once</li>
+</ul>
+<p><strong>Example structure:</strong></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Weekly Club Activities&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Day&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Activity&lt;/th&gt;
+      &lt;th&gt;Location&lt;/th&gt;
+      &lt;th&gt;Leader&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Monday&lt;/td&gt;
+      &lt;td&gt;3:00 PM&lt;/td&gt;
+      &lt;td&gt;Coding Workshop&lt;/td&gt;
+      &lt;td&gt;Room 301&lt;/td&gt;
+      &lt;td&gt;Nguyen Van A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!-- more rows --&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h4 id="task-2-style-the-table">Task 2: Style the Table<a class="anchor" href="#task-2-style-the-table" aria-label="Link to this section">#</a></h4>
+<p>Add CSS to make the table look professional.</p>
+<p><strong>Your CSS must include:</strong></p>
+<ul>
+<li>Set <code>width: 100%</code> and <code>border-collapse: collapse</code> on the table</li>
+<li>Add borders to all cells</li>
+<li>Style header cells with a background color and white text</li>
+<li>Add alternating row colors (zebra striping) using <code>tr:nth-child(even)</code></li>
+<li>Add padding inside cells for readability</li>
+<li>Add a hover effect on rows</li>
+</ul>
+<h4 id="task-3-update-navigation">Task 3: Update Navigation<a class="anchor" href="#task-3-update-navigation" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Add an &quot;Activities&quot; link to the navigation menu on ALL pages</li>
+<li>All pages sit at the project root, so the link is simply <code>href=&quot;activities.html&quot;</code> everywhere</li>
+<li>Click it from every page to confirm</li>
+</ul>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/activities.html</code> (new page with table)</li>
+<li><code>project/css/style.css</code> (add table styles)</li>
+<li><code>project/index.html</code> (add Activities link to nav)</li>
+<li><code>project/about.html</code> (add Activities link to nav)</li>
+<li><code>project/contact.html</code> (add Activities link to nav)</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW9: Add schedule page with styled table&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table structure</td>
+<td>3</td>
+<td>Uses thead, tbody, caption, th, td correctly</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>2</td>
+<td>Has 5+ columns, 5+ rows, colspan/rowspan used</td>
+</tr>
+<tr>
+<td>Table styling</td>
+<td>3</td>
+<td>Borders, header colors, zebra striping, hover</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>1</td>
+<td>Activities link added to all pages</td>
+</tr>
+<tr>
+<td>Link accuracy</td>
+<td>1</td>
+<td>All navigation links work correctly</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Use <code>border-collapse: collapse</code> to avoid double borders</li>
+<li>Zebra striping makes tables much easier to read: <code>tr:nth-child(even) { background: #f2f2f2; }</code></li>
+<li>Make sure the Activities nav link is <code>href=&quot;activities.html&quot;</code> on every page — no <code>../</code></li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>A clean, professional-looking table on its own page. The header row should stand out with color, rows should alternate colors, and the navigation should include an Activities link on every page.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

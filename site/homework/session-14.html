@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 14: CSS Dropdown Navigation — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 14</span></nav>
+<main id="main">
+  <h1>Homework 14: CSS Dropdown Navigation</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-14.html">Session 14 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-14-css-dropdown-navigation">Homework 14: CSS Dropdown Navigation<a class="anchor" href="#homework-14-css-dropdown-navigation" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 15)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Build an interactive dropdown menu with pure HTML and CSS</li>
+<li>Understand how modern sites replaced the legacy Spry widgets with <code>:hover</code> CSS</li>
+<li>Add an interactive element to your club website</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-add-a-dropdown-menu-to-your-navigation">Task 1: Add a Dropdown Menu to Your Navigation<a class="anchor" href="#task-1-add-a-dropdown-menu-to-your-navigation" aria-label="Link to this section">#</a></h4>
+<p>Create a dropdown navigation menu using HTML and CSS only — no JavaScript needed.</p>
+<p><strong>Add a dropdown to your nav</strong> (paths shown for <code>project/index.html</code> in the site root):</p>
+<pre><code class="language-html">&lt;nav&gt;
+  &lt;ul class=&quot;menu&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;dropdown&quot;&gt;
+      &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+      &lt;ul class=&quot;dropdown-content&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Our Mission&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html#activities&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html#gallery&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;activities.html&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<p><strong>CSS for the dropdown:</strong></p>
+<pre><code class="language-css">.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</code></pre>
+<blockquote>
+<p>This is exactly the menu pattern Session 14 teaches as the modern replacement
+for the retired Spry Menu Bar — <code>:hover</code> on the parent <code>&lt;li&gt;</code> shows the child <code>&lt;ul&gt;</code>.</p>
+</blockquote>
+<h4 id="task-2-style-and-integrate-the-menu">Task 2: Style and Integrate the Menu<a class="anchor" href="#task-2-style-and-integrate-the-menu" aria-label="Link to this section">#</a></h4>
+<p>Add the dropdown CSS to your stylesheet and update the navigation on all pages.</p>
+<p><strong>Your CSS must include:</strong></p>
+<ul>
+<li>Dropdown container styling (<code>position: relative</code> on the parent <code>&lt;li&gt;</code>)</li>
+<li>Dropdown content hidden by default</li>
+<li>Show dropdown on hover</li>
+<li>Style dropdown links (padding, hover color change)</li>
+<li>Smooth transition effect</li>
+</ul>
+<p><strong>Your HTML updates must include:</strong></p>
+<ul>
+<li>Updated nav on at least 2 pages with the dropdown structure</li>
+<li>Correct links inside the dropdown (use your own pages and anchors)</li>
+</ul>
+<h4 id="task-3-add-a-back-to-top-button-bonus">Task 3: Add a &quot;Back to Top&quot; Button (Bonus)<a class="anchor" href="#task-3-add-a-back-to-top-button-bonus" aria-label="Link to this section">#</a></h4>
+<p>Add a simple &quot;Back to Top&quot; button to your pages.</p>
+<p><strong>Minimum implementation (HTML + CSS):</strong></p>
+<pre><code class="language-html">&lt;a href=&quot;#top&quot; class=&quot;back-to-top&quot;&gt;Back to Top&lt;/a&gt;
+</code></pre>
+<pre><code class="language-css">.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2c3e50;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+</code></pre>
+<p>Add <code>id=&quot;top&quot;</code> to your <code>&lt;header&gt;</code> element so the link scrolls back up.</p>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/css/style.css</code> (dropdown + button styles)</li>
+<li>At least 2 HTML files (updated navigation)</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW14: Add interactive dropdown menu&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Menu structure</td>
+<td>3</td>
+<td>Dropdown HTML is properly structured</td>
+</tr>
+<tr>
+<td>CSS styling</td>
+<td>3</td>
+<td>Dropdown shows on hover, links styled</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>2</td>
+<td>Dropdown works within existing navigation</td>
+</tr>
+<tr>
+<td>Back to top</td>
+<td>1</td>
+<td>Button exists and links to top</td>
+</tr>
+<tr>
+<td>Code quality</td>
+<td>1</td>
+<td>Clean, well-commented code</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>The key to CSS dropdowns is <code>display: none</code> by default and <code>display: block</code> on <code>:hover</code></li>
+<li>Use <code>position: relative</code> on the parent <code>&lt;li&gt;</code> and <code>position: absolute</code> on the dropdown <code>&lt;ul&gt;</code></li>
+<li>If the dropdown goes off-screen, adjust <code>left</code> or <code>right</code> values</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>When you hover over the &quot;About&quot; menu item, a dropdown should appear showing sub-links like &quot;Our Mission,&quot; &quot;Activities,&quot; and &quot;Gallery.&quot; The dropdown should disappear when you move your mouse away.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 8: Midterm Review and Table Preparation — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 8</span></nav>
+<main id="main">
+  <h1>Homework 8: Midterm Review and Table Preparation</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-08.html">Session 8 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-8-midterm-review-and-table-preparation">Homework 8: Midterm Review and Table Preparation<a class="anchor" href="#homework-8-midterm-review-and-table-preparation" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 9)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Fix any weak areas identified during the midterm exam</li>
+<li>Learn the basics of HTML tables before Session 9</li>
+<li>Keep your Student Club Website project up to date</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-midterm-reflection">Task 1: Midterm Reflection<a class="anchor" href="#task-1-midterm-reflection" aria-label="Link to this section">#</a></h4>
+<p>Open your midterm exam (or the practice exam in <code>exercises/session-08/</code>). Identify <strong>three mistakes</strong> you made or three topics where you were unsure.</p>
+<p>For each one:</p>
+<ul>
+<li>Write what the correct answer is</li>
+<li>Write a one-sentence explanation of why</li>
+<li>Find the matching section in the <code>ebook/</code> chapters (1–7) and re-read it</li>
+</ul>
+<p>Create a file called <code>midterm-review.md</code> inside <code>homework/session-08/</code> with your three items:</p>
+<pre><code class="language-markdown"># Midterm Review
+
+## Mistake 1: [topic]
+- **My answer:** ...
+- **Correct answer:** ...
+- **Why:** ...
+- **Where to review:** ebook/0X-...md, section ...
+
+## Mistake 2: [topic]
+...
+
+## Mistake 3: [topic]
+...
+</code></pre>
+<h4 id="task-2-build-a-simple-table-practice-file-not-the-project-yet">Task 2: Build a Simple Table — practice file, not the project yet<a class="anchor" href="#task-2-build-a-simple-table-practice-file-not-the-project-yet" aria-label="Link to this section">#</a></h4>
+<p>Create a <strong>practice</strong> file at <code>homework/session-08/table-practice.html</code> with a table showing
+your club&#39;s weekly activities. This is a warm-up: in Homework 9 you will build the real
+<code>project/activities.html</code> page, with more columns and <code>colspan</code>. Keeping this one separate
+means you can experiment freely without breaking your project.</p>
+<p><strong>Your table must include:</strong></p>
+<ul>
+<li>A <code>&lt;caption&gt;</code> describing the table</li>
+<li>A <code>&lt;thead&gt;</code> with column headers (Day, Time, Activity, Location)</li>
+<li>A <code>&lt;tbody&gt;</code> with at least 4 rows of data</li>
+<li>Use <code>&lt;th&gt;</code> for header cells and <code>&lt;td&gt;</code> for data cells</li>
+</ul>
+<p><strong>Example structure:</strong></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Weekly Club Schedule&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Day&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Activity&lt;/th&gt;
+      &lt;th&gt;Location&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Monday&lt;/td&gt;
+      &lt;td&gt;3:00 PM&lt;/td&gt;
+      &lt;td&gt;Coding Workshop&lt;/td&gt;
+      &lt;td&gt;Room 301&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!-- add more rows --&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h4 id="task-3-basic-table-styling">Task 3: Basic Table Styling<a class="anchor" href="#task-3-basic-table-styling" aria-label="Link to this section">#</a></h4>
+<p>Add CSS for the table. Put it in <code>homework/session-08/table-practice.css</code> (linked from your
+practice page) — you will move the rules that work into <code>project/css/style.css</code> in Homework 9:</p>
+<pre><code class="language-css">table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</code></pre>
+<h4 id="task-4-check-your-project-navigation">Task 4: Check Your Project Navigation<a class="anchor" href="#task-4-check-your-project-navigation" aria-label="Link to this section">#</a></h4>
+<p>Your project pages (<code>index.html</code>, <code>about.html</code>, <code>contact.html</code>) all sit at the project root,
+so each nav link is a plain file name. Open every page and click every link — fix any that
+404 before Homework 9 adds two more pages.</p>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>homework/session-08/midterm-review.md</code> (new file)</li>
+<li><code>homework/session-08/table-practice.html</code> (new practice page with table)</li>
+<li><code>homework/session-08/table-practice.css</code> (table styles)</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add homework/session-08/ project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW8: Midterm review and table practice&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Midterm reflection</td>
+<td>3</td>
+<td>Three mistakes identified with correct answers and explanations</td>
+</tr>
+<tr>
+<td>Table structure</td>
+<td>3</td>
+<td>Uses caption, thead, tbody, th, td correctly</td>
+</tr>
+<tr>
+<td>Table styling</td>
+<td>2</td>
+<td>Borders, header colors, zebra striping applied</td>
+</tr>
+<tr>
+<td>Project links verified</td>
+<td>2</td>
+<td>Every nav link on every project page clicks through correctly</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>The midterm reflection is about learning from mistakes — there is no penalty for honest answers</li>
+<li>You will learn tables in detail in Session 9; this homework gives you a head start</li>
+<li>Use <code>border-collapse: collapse</code> to avoid double borders</li>
+<li>Keep the practice table simple; Homework 9 is where it becomes a real project page</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>A <code>midterm-review.md</code> with three honest reflections, plus a clean practice table page — and a project whose every navigation link you have personally clicked.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

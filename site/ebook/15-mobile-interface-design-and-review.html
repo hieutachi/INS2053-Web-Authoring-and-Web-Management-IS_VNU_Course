@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 15: Mobile Interface Design and Review — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Session 15: Mobile Interface Design and Review — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Ebook</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chapter 15</span></nav>
+<main id="main">
+  <h1>Session 15: Mobile Interface Design and Review</h1>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#1-why-mobile-design-matters">1. Why Mobile Design Matters</a></li>
+        <li class="d2"><a href="#2-the-viewport-meta-tag">2. The Viewport Meta Tag</a></li>
+        <li class="d2"><a href="#3-media-queries">3. Media Queries</a></li>
+        <li class="d2"><a href="#4-flexible-images">4. Flexible Images</a></li>
+        <li class="d2"><a href="#5-touch-friendly-design">5. Touch-Friendly Design</a></li>
+        <li class="d2"><a href="#6-testing-responsive-design">6. Testing Responsive Design</a></li>
+        <li class="d2"><a href="#example-1-adding-viewport-meta-tag-to-all-pages">Example 1: Adding Viewport Meta Tag to All Pages</a></li>
+        <li class="d2"><a href="#example-2-complete-responsive-css-for-student-club-website">Example 2: Complete Responsive CSS for Student Club Website</a></li>
+        <li class="d2"><a href="#example-3-using-chrome-devtools-to-test-responsiveness">Example 3: Using Chrome DevTools to Test Responsiveness</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#session-by-session-summary">Session-by-Session Summary</a></li>
+        <li class="d2"><a href="#core-skills-checklist">Core Skills Checklist</a></li>
+        <li class="d2"><a href="#exam-format-typical">Exam Format (Typical)</a></li>
+        <li class="d2"><a href="#topics-likely-on-the-final-exam">Topics Likely on the Final Exam</a></li>
+        <li class="d2"><a href="#study-plan-recommended-1-week-prep">Study Plan (Recommended 1-Week Prep)</a></li>
+        <li class="d2"><a href="#practice-exercise-timed-mock-exam">Practice Exercise: Timed Mock Exam</a></li>
+        <li class="d2"><a href="#last-minute-tips">Last-Minute Tips</a></li>
+        <li class="d2"><a href="#p1-why-presentation-is-a-core-skill">P1. Why Presentation Is a Core Skill</a></li>
+        <li class="d2"><a href="#p2-a-simple-presentation-structure-7-slides">P2. A Simple Presentation Structure (7 slides)</a></li>
+        <li class="d2"><a href="#p3-demo-technique-showing-the-site-live">P3. Demo Technique — Showing the Site Live</a></li>
+        <li class="d2"><a href="#p4-explaining-decisions-to-a-non-technical-audience">P4. Explaining Decisions to a Non-Technical Audience</a></li>
+        <li class="d2"><a href="#p5-handling-qa">P5. Handling Q&amp;A</a></li>
+        <li class="d2"><a href="#p6-practice-your-turn">P6. Practice — Your Turn</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Chapter navigation">
+    <a class="up" href="../sessions/session-15.html">Session 15 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-15">🟦 SESSION 15<a class="anchor" href="#session-15" aria-label="Link to this section">#</a></h2>
+<h2 id="mobile-interface-design-and-review"><strong>Mobile Interface Design and Review</strong><a class="anchor" href="#mobile-interface-design-and-review" aria-label="Link to this section">#</a></h2>
+<p>Welcome to our final session! Today has two important parts. First, you will learn how to make your Student Club Website look great on smartphones and tablets using responsive web design techniques (viewport meta tag, media queries, flexible images). Second, we will review everything you have learned across all 15 sessions and prepare you for the final exam. By the end of today, your website will work beautifully on desktop, tablet, AND phone — and you will have a clear study plan for the exam. Let us finish strong!</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    Chapter 15 — Mobile Interface Design / Review (course textbook)
+                 MDN &quot;Responsive Web Design&quot;; MDN &quot;Using Media Queries&quot;
+🎯 Objectives:   1. Add the viewport meta tag to every page
+                 2. Write CSS media queries for tablet and mobile breakpoints
+                 3. Compare desktop-first and mobile-first, and pick one per project
+                 4. Review all 15 sessions and prepare for the final exam
+📖 Prepare:      1. Complete Sessions 1-14
+                 2. Have the Student Club site fully built
+                 3. Have Chrome with Developer Tools available
+🖼 Diagrams:     canvases/buoi-15.canvas.tsx — ViewportMeta, MobileFirstLadder,
+                 MediaQueryAnatomy, ResponsiveDevices
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+                 CLO5 (evaluate, document, and present a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>Explain why mobile-friendly design is essential (statistics, user expectations, SEO).</li>
+<li>Describe what the viewport meta tag does and add it to every page.</li>
+<li>Write CSS media queries using <code>@media (max-width: ...)</code> for different screen sizes.</li>
+<li>Understand the difference between desktop-first and mobile-first CSS approaches.</li>
+<li>Make images flexible with <code>max-width: 100%</code>.</li>
+<li>Ensure touch targets are at least 44×44 pixels.</li>
+<li>Test responsive designs using Chrome Developer Tools Device Toolbar.</li>
+<li>Review key concepts from all 15 sessions.</li>
+<li>Create a personal study plan for the final exam.</li>
+<li>Complete a final-project checklist before submission.</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-why-mobile-design-matters">1. Why Mobile Design Matters<a class="anchor" href="#1-why-mobile-design-matters" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Mobile interface design</strong> means designing websites so they are usable, readable, and visually appealing on small screens — smartphones (typically 320px–430px wide) and tablets (typically 600px–1024px wide). This is not just about making things smaller; it requires rethinking layout, navigation, font sizes, button sizes, and image handling.</p>
+<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think about the last time you visited a website on your phone and had to pinch-zoom to read tiny text, or accidentally tapped the wrong link because the buttons were too close together. That website was NOT designed for mobile. Now think about websites like YouTube, Facebook, or your university portal — they adapt perfectly to your phone screen. That is responsive design in action.</p>
+<p>For our <strong>Student Club Website</strong>, consider: students will check event schedules, register for membership, and browse the gallery primarily on their phones during breaks between classes. If the site does not work on mobile, they will simply leave.</p>
+<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Statistic / Fact</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Over 60% of global web traffic comes from mobile devices</td>
+<td>StatCounter, 2024</td>
+</tr>
+<tr>
+<td>Google uses mobile-first indexing for search rankings</td>
+<td>Google Search Central</td>
+</tr>
+<tr>
+<td>57% of users say they will not recommend a business with a poorly designed mobile site</td>
+<td>Google/Ipsos</td>
+</tr>
+<tr>
+<td>Average smartphone width: 360px–430px (CSS pixels)</td>
+<td>Various device databases</td>
+</tr>
+<tr>
+<td>Average tablet width: 600px–1024px (CSS pixels)</td>
+<td>Various device databases</td>
+</tr>
+</tbody></table>
+<pre><code>┌──────────────────────────────────────────────────────┐
+│            SCREEN SIZE LANDSCAPE                      │
+│                                                      │
+│  Desktop/Laptop     Tablet           Smartphone      │
+│  ┌──────────────┐   ┌──────────┐     ┌────────┐     │
+│  │              │   │          │     │        │     │
+│  │  1200px+     │   │  768px   │     │ 375px  │     │
+│  │              │   │  -1024px │     │ -430px │     │
+│  │              │   │          │     │        │     │
+│  └──────────────┘   └──────────┘     └────────┘     │
+│                                                      │
+│  Your website must look good at ALL these widths!    │
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>&quot;Mobile-friendly&quot; does NOT mean creating a separate mobile website. Responsive design means ONE website that adapts to any screen size.</li>
+<li>Google penalizes sites that are not mobile-friendly in search results.</li>
+<li>Always test on real devices when possible, but Chrome DevTools Device Toolbar is excellent for development.</li>
+</ul>
+<hr>
+<h3 id="2-the-viewport-meta-tag">2. The Viewport Meta Tag<a class="anchor" href="#2-the-viewport-meta-tag" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-15.canvas.tsx</code> → <code>ViewportMeta</code> — slide <code>s15-responsive</code> (&quot;Viewport &amp; Media Queries&quot;)</p>
+</blockquote>
+<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<p>The <strong>viewport meta tag</strong> tells mobile browsers how to control the page&#39;s dimensions and scaling. Without it, mobile browsers assume the page is designed for a desktop (typically 980px wide) and shrink it down to fit the phone screen — making everything tiny and unreadable.</p>
+<h4 id="22-syntax">2.2 Syntax<a class="anchor" href="#22-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ ALWAYS include this in &lt;head&gt; --&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+</code></pre>
+<h4 id="23-what-each-part-means">2.3 What Each Part Means<a class="anchor" href="#23-what-each-part-means" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Attribute Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>width=device-width</code></td>
+<td>Set the viewport width equal to the device&#39;s actual screen width (in CSS pixels). A 375px phone gets a 375px viewport.</td>
+</tr>
+<tr>
+<td><code>initial-scale=1.0</code></td>
+<td>Start at 100% zoom (no automatic zooming in or out).</td>
+</tr>
+</tbody></table>
+<h4 id="24-without-vs-with-the-viewport-tag">2.4 Without vs With the Viewport Tag<a class="anchor" href="#24-without-vs-with-the-viewport-tag" aria-label="Link to this section">#</a></h4>
+<pre><code>WITHOUT viewport meta tag:
+┌─────────────────────────────────┐
+│ Phone renders page at ~980px    │
+│ then SHRINKS to fit 375px      │
+│ Result: everything is TINY     │
+│ User must pinch-zoom to read   │
+└─────────────────────────────────┘
+
+WITH viewport meta tag:
+┌─────────────────────────────────┐
+│ Phone renders page at 375px     │
+│ (actual device width)           │
+│ Result: normal-sized content   │
+│ Media queries can adjust layout │
+└─────────────────────────────────┘
+</code></pre>
+<h4 id="important-notes">⚠️ Important notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Add this tag to EVERY HTML page in your site. Missing it on even one page breaks mobile display for that page.</li>
+<li>Place it inside <code>&lt;head&gt;</code>, typically right after <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>.</li>
+<li>Never set <code>maximum-scale=1.0</code> or <code>user-scalable=no</code> — this prevents users from zooming and is an accessibility violation.</li>
+</ul>
+<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>Open your Student Club Website&#39;s <code>index.html</code> on your phone RIGHT NOW (before adding the viewport tag). Notice how tiny everything looks? Now add the tag and refresh. The difference is dramatic.</p>
+<h4 id="try-it-yourself-delete-the-viewport-tag">🧪 Try It Yourself — Delete the Viewport Tag<a class="anchor" href="#try-it-yourself-delete-the-viewport-tag" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> See exactly what that one line does.</p>
+<ol>
+<li>Confirm your page has it, inside <code>&lt;head&gt;</code>:<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+</code></pre>
+</li>
+<li>Open device mode (<strong>Ctrl+Shift+M</strong>) at iPhone SE and note that the text is readable.</li>
+<li>Now comment the tag out and reload.</li>
+<li>Paste this into the Console in both states and compare:<pre><code class="language-js">console.log(window.innerWidth);
+</code></pre>
+</li>
+</ol>
+<p><strong>Expected result:</strong> With the tag, <code>innerWidth</code> reports 375 and the page fits. Without it, the browser reports about 980 and renders a full desktop page zoomed out to postage-stamp size — technically all there, practically unreadable.</p>
+<details>
+<summary>What the two values mean</summary><p><code>width=device-width</code> tells the browser to use the device&#39;s real width as the viewport instead of pretending to be a 980px desktop. That default exists for old sites that were never designed for phones — zooming out is better than breaking them.</p>
+<p><code>initial-scale=1</code> sets the starting zoom to 100%, so one CSS pixel maps to one device-independent pixel.</p>
+<p>The consequence worth understanding: <strong>without this tag, media queries do nothing useful.</strong> Your <code>@media (max-width: 767px)</code> block never fires on a phone, because the browser believes the viewport is 980px wide. Students often conclude their media queries are broken and rewrite them, when the actual fault is a missing line in <code>&lt;head&gt;</code>.</p>
+<p>One thing not to add: <code>user-scalable=no</code> or <code>maximum-scale=1</code>. Both block pinch-zoom, which people with low vision rely on. Some browsers now ignore them for that reason, but they still appear in old templates — delete them when you find them.</p>
+</details><hr>
+<h3 id="3-media-queries">3. Media Queries<a class="anchor" href="#3-media-queries" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagrams:</strong> <code>canvases/buoi-15.canvas.tsx</code> → <code>MediaQueryAnatomy</code> — slide <code>s15-media-queries</code> (&quot;Media Query Breakpoints&quot;); <code>MobileFirstLadder</code> — slide <code>s15-media-queries</code> (&quot;Media Query Breakpoints&quot;)</p>
+</blockquote>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>media query</strong> is a CSS rule that applies styles only when certain conditions are met — most commonly, when the screen width falls below (or above) a specific threshold. Media queries are the engine of responsive design.</p>
+<h4 id="32-syntax">3.2 Syntax<a class="anchor" href="#32-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* Base styles apply to ALL screen sizes */
+main {
+    width: 65%;
+    float: left;
+    padding: 20px;
+}
+
+/* These styles ONLY apply when screen is 768px or narrower */
+@media (max-width: 768px) {
+    main {
+        width: 100%;
+        float: none;
+        padding: 15px;
+    }
+}
+</code></pre>
+<h4 id="33-how-media-queries-work">3.3 How Media Queries Work<a class="anchor" href="#33-how-media-queries-work" aria-label="Link to this section">#</a></h4>
+<pre><code>Browser receives CSS
+         │
+         ▼
+Applies ALL base (non-media-query) styles
+         │
+         ▼
+Checks each @media condition
+         │
+    ┌────┴────┐
+    │ TRUE?   │
+    ├────┬────┤
+   YES   NO
+    │     │
+    ▼     ▼
+ Apply   Skip those
+ those   styles
+ styles
+</code></pre>
+<h4 id="34-common-breakpoints">3.4 Common Breakpoints<a class="anchor" href="#34-common-breakpoints" aria-label="Link to this section">#</a></h4>
+<p>A <strong>breakpoint</strong> is the screen width where your layout changes. There are no universal standards, but these are widely used:</p>
+<table>
+<thead>
+<tr>
+<th>Breakpoint</th>
+<th>Target Devices</th>
+<th>Typical Changes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>max-width: 1200px</code></td>
+<td>Small laptops</td>
+<td>Reduce max-width, adjust padding</td>
+</tr>
+<tr>
+<td><code>max-width: 992px</code></td>
+<td>Tablets (landscape)</td>
+<td>Adjust column ratios, reduce font sizes</td>
+</tr>
+<tr>
+<td><code>max-width: 768px</code></td>
+<td>Tablets (portrait), large phones</td>
+<td>Stack columns vertically, compact nav</td>
+</tr>
+<tr>
+<td><code>max-width: 480px</code></td>
+<td>Small phones</td>
+<td>Smaller headings, tighter spacing</td>
+</tr>
+</tbody></table>
+<h4 id="desktop-first-vs-mobile-first">🔍 Desktop-First vs Mobile-First<a class="anchor" href="#desktop-first-vs-mobile-first" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>How It Works</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Desktop-first</strong></td>
+<td>Write desktop styles as default; use <code>max-width</code> media queries to override for smaller screens</td>
+<td>Easier to retrofit onto existing sites; matches how we built our Student Club site</td>
+<td>Mobile loads extra CSS it overrides</td>
+</tr>
+<tr>
+<td><strong>Mobile-first</strong></td>
+<td>Write mobile styles as default; use <code>min-width</code> media queries to add complexity for larger screens</td>
+<td>Better performance on mobile; forces simplicity-first thinking</td>
+<td>Requires planning from the start; harder to retrofit</td>
+</tr>
+</tbody></table>
+<p>For our Student Club Website, we use <strong>desktop-first</strong> because we already built the desktop layout in previous sessions. Both approaches produce the same visual result.</p>
+<h4 id="35-example-desktop-first-media-queries">3.5 Example: Desktop-First Media Queries<a class="anchor" href="#35-example-desktop-first-media-queries" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ===== DESKTOP DEFAULTS (apply to all screens) ===== */
+#wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main {
+    width: 65%;
+    float: left;
+    padding: 25px;
+}
+
+#sidebar {
+    width: 35%;
+    float: left;
+    padding: 20px;
+}
+
+.gallery-item {
+    width: calc(33.333% - 10px);
+}
+
+/* ===== TABLET (768px – 992px) ===== */
+@media (max-width: 992px) {
+    #wrapper {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .gallery-item {
+        width: calc(50% - 10px);
+    }
+}
+
+/* ===== MOBILE (below 768px) ===== */
+@media (max-width: 768px) {
+    /* Stack columns vertically */
+    main, #sidebar {
+        width: 100%;
+        float: none;
+    }
+
+    #sidebar {
+        border-left: none;
+        border-top: 2px solid #2874a6;
+        margin-top: 20px;
+    }
+
+    /* Smaller headings */
+    header h1 { font-size: 28px; }
+    main h2 { font-size: 24px; }
+    main h3 { font-size: 18px; }
+
+    /* Compact navigation */
+    nav ul li a {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    /* Full-width gallery items */
+    .gallery-item {
+        width: 100%;
+    }
+
+    /* Full-width buttons for easy tapping */
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
+
+/* ===== VERY SMALL PHONES (below 480px) ===== */
+@media (max-width: 480px) {
+    header h1 { font-size: 24px; }
+    header p { font-size: 13px; }
+
+    nav ul li a {
+        padding: 8px 8px;
+        font-size: 12px;
+    }
+
+    main { padding: 10px; }
+}
+</code></pre>
+<h4 id="important-notes-2">⚠️ Important notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Media queries should be placed AFTER your base styles in the CSS file (order matters — later rules override earlier ones at the same specificity).</li>
+<li>Use <code>max-width</code> for desktop-first; use <code>min-width</code> for mobile-first. Do not mix both in the same project unless you have a specific reason.</li>
+<li>Test at EVERY breakpoint by resizing the browser window slowly and watching for layout breaks.</li>
+</ul>
+<h4 id="try-it-yourself-write-media-queries-mobile-first">🧪 Try It Yourself — Write Media Queries Mobile-First<a class="anchor" href="#try-it-yourself-write-media-queries-mobile-first" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Build the same layout twice and compare the CSS.</p>
+<ol>
+<li>Write it desktop-first:<pre><code class="language-css">.cards { display: flex; gap: 16px; }
+@media (max-width: 767px) {
+    .cards { flex-direction: column; }
+}
+</code></pre>
+</li>
+<li>Now write it mobile-first:<pre><code class="language-css">.cards { display: flex; flex-direction: column; gap: 16px; }
+@media (min-width: 768px) {
+    .cards { flex-direction: row; }
+}
+</code></pre>
+</li>
+<li>Both work. Open device mode and drag the width across 768px for each version.</li>
+<li>Now add a third layout — four across on very wide screens — to each version and count the lines you had to write.</li>
+</ol>
+<p><strong>Expected result:</strong> Both produce identical results at two sizes. Adding a third breakpoint is where they diverge: mobile-first adds one <code>min-width</code> block, while desktop-first requires you to re-specify and override.</p>
+<details>
+<summary>Why mobile-first is the convention</summary><p>The base rules describe the <strong>simplest</strong> layout — a single column — and each <code>min-width</code> query adds complexity as space allows. That direction matters for three reasons:</p>
+<ol>
+<li><strong>Less overriding.</strong> You are always adding, never undoing. Desktop-first means every query cancels something set earlier, and specificity fights follow.</li>
+<li><strong>A phone downloads less work.</strong> It applies the base rules and skips every <code>min-width</code> block.</li>
+<li><strong>It matches how content flows naturally.</strong> A single column is what HTML does with no CSS at all — you are enhancing from a working state, not repairing a broken one.</li>
+</ol>
+<p>Choose breakpoints from <strong>where your content breaks</strong>, not from device names. Drag the width until the layout looks wrong and put the query there. Chasing &quot;iPhone width&quot; is futile; there are dozens, and they change every year.</p>
+<p>Common starting points: 768px for tablet-and-up, 1024px for desktop, 1280px for wide. Two breakpoints are enough for a compact site.</p>
+<p>Media queries need the viewport meta tag to mean anything on a phone — without it, the browser reports a 980px viewport and your <code>min-width: 768px</code> block applies on a 375px screen.</p>
+</details><hr>
+<h3 id="4-flexible-images">4. Flexible Images<a class="anchor" href="#4-flexible-images" aria-label="Link to this section">#</a></h3>
+<h4 id="41-the-problem">4.1 The Problem<a class="anchor" href="#41-the-problem" aria-label="Link to this section">#</a></h4>
+<p>Images with fixed pixel widths overflow narrow screens:</p>
+<pre><code>Desktop (1200px):               Mobile (375px):
+┌────────────────────┐          ┌──────────┐
+│ [600px image] ✓    │          │ [600px   │ ← OVERFLOW!
+│                    │          │  image   │
+└────────────────────┘          └──────────┘
+</code></pre>
+<h4 id="42-the-solution">4.2 The Solution<a class="anchor" href="#42-the-solution" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ✅ Images never exceed their container width */
+img {
+    max-width: 100%;
+    height: auto;
+}
+</code></pre>
+<ul>
+<li><code>max-width: 100%</code> — the image shrinks to fit its container but never grows beyond its natural size.</li>
+<li><code>height: auto</code> — maintains the original aspect ratio when the width changes.</li>
+</ul>
+<h4 id="43-background-images">4.3 Background Images<a class="anchor" href="#43-background-images" aria-label="Link to this section">#</a></h4>
+<p>Background images do not respond to <code>max-width</code>. Use <code>background-size</code> instead:</p>
+<pre><code class="language-css">.hero-banner {
+    background-image: url(&#39;images/banner.jpg&#39;);
+    background-size: cover;      /* Fills container, crops if needed */
+    background-position: center;
+    min-height: 300px;
+}
+</code></pre>
+<h4 id="important-notes-3">⚠️ Important notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Add the <code>img</code> rule early in your CSS (it should apply globally).</li>
+<li>For very large images, also consider serving smaller files for mobile using the <code>&lt;picture&gt;</code> element or <code>srcset</code> attribute (beyond scope of this course, but good to know about).</li>
+</ul>
+<h4 id="try-it-yourself-make-every-image-fit">🧪 Try It Yourself — Make Every Image Fit<a class="anchor" href="#try-it-yourself-make-every-image-fit" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Fix the single most common mobile bug in one rule.</p>
+<ol>
+<li>Put a large photo — 2000px wide or more — on a page with no CSS for images.</li>
+<li>Open device mode at 375px. The page now scrolls sideways, and the text is squeezed.</li>
+<li>Add one rule:<pre><code class="language-css">img {
+    max-width: 100%;
+    height: auto;
+}
+</code></pre>
+</li>
+<li>Reload at 375px, then drag the width back up to 1400px.</li>
+</ol>
+<p><strong>Expected result:</strong> The photo shrinks to fit any screen and the sideways scrolling stops. At wide widths it stops at its natural size instead of stretching and blurring.</p>
+<details>
+<summary>Why both lines are needed, and why not <code>width: 100%</code></summary><p><code>max-width: 100%</code> caps the image at its container&#39;s width but lets it stay smaller. <code>width: 100%</code> would <em>force</em> it to the container width, upscaling a small logo into a blurry mess.</p>
+<p><code>height: auto</code> is what preserves the aspect ratio. Without it, an explicit <code>height</code> attribute in the HTML stays fixed while the width shrinks, and the image distorts.</p>
+<p>Two additions worth knowing:</p>
+<pre><code class="language-html">&lt;img src=&quot;img/photo.jpg&quot; alt=&quot;Club workshop&quot; width=&quot;1200&quot; height=&quot;800&quot; loading=&quot;lazy&quot;&gt;
+</code></pre>
+<p>The <code>width</code> and <code>height</code> <strong>attributes</strong> let the browser reserve the right space before the file arrives, which stops the page jumping as images load. They do not conflict with the CSS — the CSS still controls display size; the attributes only supply the ratio.</p>
+<p><code>loading=&quot;lazy&quot;</code> defers off-screen images. On a page with ten photos it is the difference between a fast first paint and a slow one, especially on mobile data.</p>
+</details><hr>
+<h3 id="5-touch-friendly-design">5. Touch-Friendly Design<a class="anchor" href="#5-touch-friendly-design" aria-label="Link to this section">#</a></h3>
+<h4 id="51-finger-vs-mouse">5.1 Finger vs Mouse<a class="anchor" href="#51-finger-vs-mouse" aria-label="Link to this section">#</a></h4>
+<p>On a desktop, users click with a precise mouse cursor. On mobile, users tap with a fat finger (average fingertip contact area is about 44×44 CSS pixels). Design accordingly.</p>
+<h4 id="52-touch-target-guidelines">5.2 Touch Target Guidelines<a class="anchor" href="#52-touch-target-guidelines" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Minimum Size</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Buttons</td>
+<td>44×44 px</td>
+<td>Apple Human Interface Guidelines + WCAG 2.5.5</td>
+</tr>
+<tr>
+<td>Links (inline)</td>
+<td>Sufficient padding (at least 8px vertical)</td>
+<td>Prevent accidental taps</td>
+</tr>
+<tr>
+<td>Form inputs</td>
+<td>Full width on mobile</td>
+<td>Easy to tap and type</td>
+</tr>
+<tr>
+<td>Nav links</td>
+<td>At least 44px tall with adequate horizontal spacing</td>
+<td>Prevent mis-taps</td>
+</tr>
+</tbody></table>
+<h4 id="53-additional-mobile-considerations">5.3 Additional Mobile Considerations<a class="anchor" href="#53-additional-mobile-considerations" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ✅ Prevent text from being too small on mobile */
+body {
+    font-size: 16px;  /* 16px prevents iOS from auto-zooming on input focus */
+}
+
+/* ✅ Remove hover effects that don&#39;t work on touch */
+@media (hover: none) {
+    .btn:hover {
+        transform: none;     /* Disable lift effect on touch devices */
+        box-shadow: none;
+    }
+}
+</code></pre>
+<h4 id="important-notes-4">⚠️ Important notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>font-size: 16px</code> on form inputs prevents iOS Safari from zooming in when the field is focused.</li>
+<li>Hover effects do NOT work on touch screens. Provide alternative visual feedback (<code>:active</code> state) for touch.</li>
+<li>Avoid placing interactive elements too close together.</li>
+</ul>
+<hr>
+<h3 id="6-testing-responsive-design">6. Testing Responsive Design<a class="anchor" href="#6-testing-responsive-design" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-15.canvas.tsx</code> → <code>ResponsiveDevices</code> — slide <code>s15-breakpoints</code> (&quot;Common Breakpoints&quot;)</p>
+</blockquote>
+<h4 id="61-chrome-developer-tools-device-toolbar">6.1 Chrome Developer Tools Device Toolbar<a class="anchor" href="#61-chrome-developer-tools-device-toolbar" aria-label="Link to this section">#</a></h4>
+<p>This is the primary tool for testing responsive design during development:</p>
+<ol>
+<li>Open your page in Chrome.</li>
+<li>Press <strong>F12</strong> (or Ctrl+Shift+I / Cmd+Option+I on Mac).</li>
+<li>Click the <strong>Device Toggle Toolbar</strong> icon (phone/tablet icon) or press <strong>Ctrl+Shift+M</strong>.</li>
+<li>Select a device from the dropdown:<ul>
+<li>iPhone SE (375px)</li>
+<li>iPhone 14 Pro Max (430px)</li>
+<li>iPad Air (820px)</li>
+<li>Pixel 7 (412px)</li>
+</ul>
+</li>
+<li>Rotate between portrait and landscape.</li>
+<li>Or drag the edges to test any custom width.</li>
+</ol>
+<h4 id="62-what-to-check-at-each-size">6.2 What to Check at Each Size<a class="anchor" href="#62-what-to-check-at-each-size" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Desktop (1200px+)</th>
+<th>Tablet (768px)</th>
+<th>Mobile (375px)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigation</td>
+<td>Horizontal bar</td>
+<td>Compact horizontal</td>
+<td>Stacked or scrollable</td>
+</tr>
+<tr>
+<td>Columns</td>
+<td>Side-by-side</td>
+<td>May still be side-by-side</td>
+<td>Stacked vertically</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Natural size</td>
+<td>Scaled proportionally</td>
+<td>Full width</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>Normal size</td>
+<td>Slightly reduced</td>
+<td>Readable without zoom</td>
+</tr>
+<tr>
+<td>Buttons</td>
+<td>Standard size</td>
+<td>Standard size</td>
+<td>Large, full-width, tappable</td>
+</tr>
+<tr>
+<td>Forms</td>
+<td>Normal layout</td>
+<td>Normal layout</td>
+<td>Full-width inputs</td>
+</tr>
+<tr>
+<td>Sidebar</td>
+<td>Beside main content</td>
+<td>Beside or below</td>
+<td>Below main content</td>
+</tr>
+<tr>
+<td>Dropdown menus</td>
+<td>Hover to reveal</td>
+<td>Hover to reveal</td>
+<td>Always visible or hamburger</td>
+</tr>
+</tbody></table>
+<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Always include the viewport meta tag</strong> on every page.</li>
+<li><strong>Use relative units</strong> (%, em, rem) instead of fixed pixels for widths.</li>
+<li><strong>Set <code>max-width: 100%; height: auto;</code> on all images.</strong></li>
+<li><strong>Test at multiple breakpoints</strong> — resize the browser slowly and watch for layout problems.</li>
+<li><strong>Make touch targets at least 44×44 px</strong> on mobile.</li>
+<li><strong>Use <code>box-sizing: border-box</code></strong> globally to prevent padding from expanding elements beyond their container.</li>
+<li><strong>Stack columns vertically on mobile</strong> — side-by-side columns rarely work well below 768px.</li>
+<li><strong>Prioritize content</strong> — on mobile, show the most important content first; move secondary content (sidebars) below.</li>
+</ol>
+<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Mistake 1: Forgetting the viewport meta tag</strong></p>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: no viewport tag --&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Student Club&lt;/title&gt;
+&lt;/head&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: viewport tag present --&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club&lt;/title&gt;
+&lt;/head&gt;
+</code></pre>
+<p>❌ <strong>Mistake 2: Fixed-width images</strong></p>
+<pre><code class="language-css">/* ❌ WRONG: image overflows on mobile */
+img { width: 600px; }
+</code></pre>
+<pre><code class="language-css">/* ✅ CORRECT: image scales down */
+img { max-width: 100%; height: auto; }
+</code></pre>
+<p>❌ <strong>Mistake 3: Only testing on desktop</strong></p>
+<pre><code>❌ WRONG: &quot;It looks fine on my laptop&quot; → broken on phone
+✅ CORRECT: Test at 375px, 768px, 1024px, and 1200px minimum
+</code></pre>
+<p>❌ <strong>Mistake 4: Tiny touch targets</strong></p>
+<pre><code class="language-css">/* ❌ WRONG: links too small to tap accurately */
+nav a { padding: 4px 6px; font-size: 11px; }
+</code></pre>
+<pre><code class="language-css">/* ✅ CORRECT: comfortable tap targets */
+nav a { padding: 12px 16px; font-size: 14px; min-height: 44px; }
+</code></pre>
+<p>❌ <strong>Mistake 5: Disabling zoom</strong></p>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: blocks accessibility --&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: allows user zoom --&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+</code></pre>
+<h4 id="try-it-yourself-test-like-a-marker-will">🧪 Try It Yourself — Test Like a Marker Will<a class="anchor" href="#try-it-yourself-test-like-a-marker-will" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (8 min):</strong> Run the four checks your site has to survive.</p>
+<ol>
+<li><strong>Narrow screen.</strong> F12 → <strong>Ctrl+Shift+M</strong>, choose iPhone SE (375px). Scroll the whole page. Nothing should require horizontal scrolling.</li>
+<li><strong>Responsive sweep.</strong> Switch to <strong>Responsive</strong> and drag the width slowly from 1400px down to 320px. Watch for the exact width where something breaks.</li>
+<li><strong>Keyboard only.</strong> Reload, put your hands off the mouse, and press <strong>Tab</strong> through every link, field, and button. You must always be able to see where focus is.</li>
+<li><strong>Lighthouse.</strong> F12 → <strong>Lighthouse</strong> tab → tick Accessibility and Performance → <strong>Analyze page load</strong>. Read the top three issues.</li>
+</ol>
+<p><strong>Expected result:</strong> No sideways scrolling at 375px, no layout break between 320px and 1400px, a visible focus ring on every interactive element, and a Lighthouse accessibility score you can name.</p>
+<details>
+<summary>What each check is really finding</summary><p><strong>The drag is the most useful one.</strong> A layout rarely breaks <em>at</em> your breakpoint — it breaks 40px before it, where the content no longer fits but the media query has not fired. Dragging finds that width; testing three fixed sizes does not.</p>
+<p><strong>Horizontal scrolling always has a cause</strong>, and it is usually one element: a fixed <code>width</code> in pixels, a long unbroken URL, or a table. Find it by pasting this into the Console:</p>
+<pre><code class="language-js">document.querySelectorAll(&#39;*&#39;).forEach(el =&gt; {
+    if (el.scrollWidth &gt; document.documentElement.clientWidth) console.log(el);
+});
+</code></pre>
+<p><strong>Tab order follows the source, not the CSS.</strong> If you moved a nav visually with Flexbox <code>order</code>, tabbing still follows the HTML — which is why keyboard testing catches problems that look fine on screen.</p>
+<p><strong>Lighthouse gives you a checklist, not a verdict.</strong> Contrast failures, missing <code>alt</code>, unlabelled form fields, and a missing <code>lang</code> attribute are the four it most often reports, and all four are quick to fix.</p>
+<p>One thing device mode cannot simulate: touch target size and real network speed. Test the finished site on an actual phone at least once via Live Server&#39;s network address.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Responsive Web Design</td>
+<td>One website that adapts layout to any screen size</td>
+<td>Fluid grids + media queries + flexible images</td>
+</tr>
+<tr>
+<td>Viewport Meta Tag</td>
+<td>Tells mobile browsers the page width and initial zoom</td>
+<td><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Media Query</td>
+<td>CSS conditional rule based on screen characteristics</td>
+<td><code>@media (max-width: 768px) { ... }</code></td>
+</tr>
+<tr>
+<td>Breakpoint</td>
+<td>Screen width where layout changes</td>
+<td>768px (tablet/mobile boundary)</td>
+</tr>
+<tr>
+<td>Desktop-first</td>
+<td>Default styles for desktop; override with <code>max-width</code> queries</td>
+<td>Our approach for Student Club site</td>
+</tr>
+<tr>
+<td>Mobile-first</td>
+<td>Default styles for mobile; enhance with <code>min-width</code> queries</td>
+<td>Industry best practice for new projects</td>
+</tr>
+<tr>
+<td>Flexible Images</td>
+<td>Images that scale down for smaller screens</td>
+<td><code>img { max-width: 100%; height: auto; }</code></td>
+</tr>
+<tr>
+<td>Touch Target</td>
+<td>Minimum tappable area for interactive elements</td>
+<td>44×44 px (Apple HIG / WCAG)</td>
+</tr>
+<tr>
+<td>Device Toolbar</td>
+<td>Chrome DevTools feature for simulating mobile screens</td>
+<td>Ctrl+Shift+M</td>
+</tr>
+<tr>
+<td><code>box-sizing: border-box</code></td>
+<td>Includes padding/border in element&#39;s total width</td>
+<td>Prevents overflow from padding</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-adding-viewport-meta-tag-to-all-pages">Example 1: Adding Viewport Meta Tag to All Pages<a class="anchor" href="#example-1-adding-viewport-meta-tag-to-all-pages" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong>
+Your Student Club Website currently has no viewport meta tag. Every page looks tiny on mobile. You need to fix all six pages.</p>
+<p><strong>Code (add to <code>&lt;head&gt;</code> of EVERY HTML file):</strong></p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;!-- ✅ ADD THIS LINE --&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - [Page Name]&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></td>
+<td>Character encoding (already present from earlier sessions).</td>
+</tr>
+<tr>
+<td><code>&lt;meta name=&quot;viewport&quot; ...&gt;</code></td>
+<td>NEW: tells mobile browsers to use the device&#39;s actual width.</td>
+</tr>
+<tr>
+<td><code>width=device-width</code></td>
+<td>Viewport width = device screen width in CSS pixels.</td>
+</tr>
+<tr>
+<td><code>initial-scale=1.0</code></td>
+<td>No automatic zoom on page load.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong>
+After adding this tag to all six pages and viewing on a phone, text is readable at normal size, and media queries can now take effect properly.</p>
+<hr>
+<h3 id="example-2-complete-responsive-css-for-student-club-website">Example 2: Complete Responsive CSS for Student Club Website<a class="anchor" href="#example-2-complete-responsive-css-for-student-club-website" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong>
+Add comprehensive responsive styles to <code>css/style.css</code> to handle tablet and mobile layouts.</p>
+<p><strong>Code (append to bottom of <code>css/style.css</code>):</strong></p>
+<pre><code class="language-css">/* =============================================
+   RESPONSIVE STYLES (Session 15)
+   ============================================= */
+
+/* --- Global: Flexible Images --- */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Global: Border-box sizing --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ===== TABLET BREAKPOINT (≤ 992px) ===== */
+@media (max-width: 992px) {
+    #wrapper {
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .gallery-item {
+        width: calc(50% - 10px);
+    }
+}
+
+/* ===== MOBILE BREAKPOINT (≤ 768px) ===== */
+@media (max-width: 768px) {
+    /* --- Stack two-column layout --- */
+    main, #sidebar {
+        width: 100%;
+        float: none;
+    }
+
+    #sidebar {
+        border-left: none;
+        border-top: 2px solid #2874a6;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    /* --- Header adjustments --- */
+    header {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    /* --- Navigation: compact --- */
+    .main-nav {
+        flex-wrap: wrap;
+    }
+
+    .main-nav &gt; li &gt; a {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    /* Dropdowns: show inline on mobile (no hover) */
+    .dropdown {
+        position: static;
+        display: block;
+        box-shadow: none;
+        border-radius: 0;
+        background-color: #1e5f8a;
+    }
+
+    .dropdown li a {
+        padding-left: 30px;
+        font-size: 12px;
+    }
+
+    /* --- Content typography --- */
+    main {
+        padding: 15px;
+    }
+
+    main h2 {
+        font-size: 24px;
+    }
+
+    main h3 {
+        font-size: 18px;
+    }
+
+    /* --- Gallery: single column --- */
+    .gallery-item {
+        width: 100%;
+    }
+
+    /* --- Tables: horizontal scroll --- */
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    /* --- Forms: full-width, touch-friendly --- */
+    .registration-form,
+    .contact-form {
+        padding: 10px;
+    }
+
+    fieldset {
+        padding: 15px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+}
+
+/* ===== SMALL PHONE BREAKPOINT (≤ 480px) ===== */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    header p {
+        font-size: 13px;
+    }
+
+    .main-nav &gt; li &gt; a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .event-card {
+        padding: 12px;
+    }
+
+    fieldset {
+        padding: 10px;
+    }
+
+    legend {
+        font-size: 16px;
+    }
+}
+
+/* --- Touch target minimum sizes --- */
+nav a,
+.btn,
+.gallery-item a,
+.radio-group label,
+.checkbox-group label {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+</code></pre>
+<p><strong>Line-by-line explanation of key sections:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>img { max-width: 100%; height: auto; }</code></td>
+<td>All images scale down for smaller screens while maintaining aspect ratio.</td>
+</tr>
+<tr>
+<td><code>*, *::before, *::after { box-sizing: border-box; }</code></td>
+<td>Padding and borders are included in element widths, preventing overflow.</td>
+</tr>
+<tr>
+<td><code>@media (max-width: 992px)</code></td>
+<td>Tablet: removes wrapper max-width, reduces gallery to 2 columns.</td>
+</tr>
+<tr>
+<td><code>@media (max-width: 768px)</code></td>
+<td>Mobile: stacks main+sidebar vertically, compacts nav, full-width buttons, single-column gallery.</td>
+</tr>
+<tr>
+<td><code>.dropdown { position: static; display: block; }</code></td>
+<td>On mobile, dropdown submenus are always visible (no hover needed). They appear indented below parent.</td>
+</tr>
+<tr>
+<td><code>@media (max-width: 480px)</code></td>
+<td>Small phones: further reduces font sizes and padding.</td>
+</tr>
+<tr>
+<td><code>min-height: 44px</code> on interactive elements</td>
+<td>Ensures all tappable targets meet the 44px minimum.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong>
+The Student Club Website now displays correctly at desktop (1200px), tablet (768px), and mobile (375px) widths. Navigation, forms, gallery, and sidebar all adapt appropriately.</p>
+<hr>
+<h3 id="example-3-using-chrome-devtools-to-test-responsiveness">Example 3: Using Chrome DevTools to Test Responsiveness<a class="anchor" href="#example-3-using-chrome-devtools-to-test-responsiveness" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong>
+You want to verify that your responsive CSS works correctly across different device sizes.</p>
+<p><strong>Step-by-step walkthrough:</strong></p>
+<ol>
+<li>Open <code>index.html</code> in Chrome.</li>
+<li>Press <strong>F12</strong> to open Developer Tools.</li>
+<li>Click the <strong>Device Toggle Toolbar</strong> icon (looks like a phone and tablet) or press <strong>Ctrl+Shift+M</strong>.</li>
+<li>The page is now shown inside a resizable viewport simulator.</li>
+</ol>
+<p><strong>Test sequence:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>What to Verify</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Select &quot;Responsive&quot; from device dropdown</td>
+<td>Free-form resizing mode</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Drag viewport to <strong>1200px</strong> wide</td>
+<td>Desktop layout: two columns, full nav, 3-column gallery</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Drag viewport to <strong>992px</strong> wide</td>
+<td>Tablet: layout still works, gallery may shift to 2 columns</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Drag viewport to <strong>768px</strong> wide</td>
+<td>Mobile breakpoint triggers: columns stack, nav compacts, buttons go full-width</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Drag viewport to <strong>375px</strong> wide</td>
+<td>Small phone: smaller fonts, tight padding, everything readable</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Select &quot;iPhone SE&quot; preset</td>
+<td>Verify at exact 375px device</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Select &quot;iPad Air&quot; preset</td>
+<td>Verify at exact 820px device</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Click rotate icon</td>
+<td>Test landscape orientation</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Navigate to <code>join.html</code></td>
+<td>Test form fields on mobile: inputs full-width, labels readable, buttons tappable</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Navigate to <code>events.html</code></td>
+<td>Test accordion on mobile: summaries tappable, content readable</td>
+</tr>
+</tbody></table>
+<p><strong>Common issues to look for:</strong></p>
+<ul>
+<li>Text overflowing its container</li>
+<li>Images wider than the screen</li>
+<li>Navigation links overlapping or wrapping awkwardly</li>
+<li>Form inputs too narrow to type in comfortably</li>
+<li>Buttons too small to tap</li>
+<li>Sidebar appearing beside main content instead of below it</li>
+<li>Dropdown menus appearing off-screen</li>
+</ul>
+<p><strong>Result:</strong>
+Systematic testing confirms the site works at all target sizes. Any issues found are fixed by adjusting media query rules.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Before starting:</p>
+<ol>
+<li>Your Student Club site has all pages from Sessions 1–14.</li>
+<li>Back up your entire site folder before making changes.</li>
+<li>Have Chrome browser ready for testing.</li>
+</ol>
+<hr>
+<h4 id="task-1-add-viewport-meta-tag-to-all-pages">TASK 1: Add Viewport Meta Tag to All Pages 🎯<a class="anchor" href="#task-1-add-viewport-meta-tag-to-all-pages" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Ensure every HTML page has the viewport meta tag.</p>
+<p>📝 <strong>What you will do:</strong> Add one line to the <code>&lt;head&gt;</code> of each HTML file.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>index.html</code>.</li>
+<li>Inside <code>&lt;head&gt;</code>, immediately after <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>, add:<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+</code></pre>
+</li>
+<li>Save <code>index.html</code>.</li>
+<li>Repeat steps 1–3 for ALL other HTML files:<ul>
+<li><code>about.html</code></li>
+<li><code>events.html</code></li>
+<li><code>gallery.html</code></li>
+<li><code>join.html</code></li>
+<li><code>contact.html</code></li>
+</ul>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> Open each page in Chrome, activate Device Toolbar (Ctrl+Shift+M), and confirm text is readable at 375px width without zooming.</p>
+<p>💾 <strong>Save point:</strong> Back up after Task 1.</p>
+<hr>
+<h4 id="task-2-add-global-responsive-rules">TASK 2: Add Global Responsive Rules 🎯<a class="anchor" href="#task-2-add-global-responsive-rules" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Add flexible images and box-sizing to <code>style.css</code>.</p>
+<p>📝 <strong>What you will add:</strong> Two foundational rules that affect the entire site.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>css/style.css</code>.</li>
+<li>At the TOP of the file (before other rules), add:<pre><code class="language-css">/* === GLOBAL RESPONSIVE FOUNDATIONS === */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</code></pre>
+</li>
+<li>Save <code>style.css</code>.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Preview any page. Images should never overflow their containers. Resize the browser to confirm images scale smoothly.</p>
+<p>💾 <strong>Save point:</strong> Continue to Task 3.</p>
+<hr>
+<h4 id="task-3-add-media-queries-for-tablet-and-mobile">TASK 3: Add Media Queries for Tablet and Mobile 🎯<a class="anchor" href="#task-3-add-media-queries-for-tablet-and-mobile" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Add complete responsive media queries to handle all screen sizes.</p>
+<p>📝 <strong>What you will add:</strong> Three breakpoint sections (992px, 768px, 480px) plus touch-target rules.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Scroll to the BOTTOM of <code>css/style.css</code>.</li>
+<li>Paste the complete responsive CSS from Worked Example 2 above.</li>
+<li>Review the rules and adjust values if needed for your specific layout.</li>
+<li>Save <code>style.css</code>.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Using Chrome DevTools Device Toolbar:</p>
+<ul>
+<li>At 1200px: desktop layout intact (two columns, horizontal nav).</li>
+<li>At 768px: columns stacked, nav compacted, buttons full-width.</li>
+<li>At 375px: everything readable, tappable, no horizontal scroll.</li>
+<li>Test ALL pages (index, about, events, gallery, join, contact).</li>
+</ul>
+<p>💾 <strong>Save point:</strong> Back up after Task 3.</p>
+<hr>
+<h4 id="task-4-fix-mobile-navigation-dropdowns">TASK 4: Fix Mobile Navigation Dropdowns 🎯<a class="anchor" href="#task-4-fix-mobile-navigation-dropdowns" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Ensure dropdown submenus are accessible on mobile (where there is no hover).</p>
+<p>📝 <strong>What you will fix:</strong> On mobile, dropdown menus should be permanently visible (indented under the parent) since hover does not exist on touch screens.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>In <code>css/style.css</code>, find the mobile breakpoint section (<code>@media (max-width: 768px)</code>).</li>
+<li>Confirm these rules are present:<pre><code class="language-css">.dropdown {
+    position: static;
+    display: block;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: #1e5f8a;
+}
+
+.dropdown li a {
+    padding-left: 30px;
+    font-size: 12px;
+}
+</code></pre>
+</li>
+<li>If missing, add them inside the 768px media query.</li>
+<li>Save and test.</li>
+</ol>
+<p>✅ <strong>Check:</strong> At 375px width, the &quot;About&quot; and &quot;Events&quot; submenu items should be visible directly below their parent links, indented slightly. No hovering required.</p>
+<p>💾 <strong>Save point:</strong> Final backup of Session 15 work.</p>
+<hr>
+<h4 id="task-5-full-site-mobile-audit">TASK 5: Full Site Mobile Audit 🎯<a class="anchor" href="#task-5-full-site-mobile-audit" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Systematically test every page at three screen sizes and fix any remaining issues.</p>
+<p>📝 <strong>What you will do:</strong> Use the testing checklist from Worked Example 3.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open Chrome DevTools Device Toolbar.</li>
+<li>Visit EACH page at 375px, 768px, and 1200px.</li>
+<li>For each page, check:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Desktop OK?</th>
+<th>Tablet OK?</th>
+<th>Mobile OK?</th>
+<th>Issues Found</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index.html</td>
+<td>☐</td>
+<td>☐</td>
+<td>☐</td>
+<td>_____________</td>
+</tr>
+<tr>
+<td>about.html</td>
+<td>☐</td>
+<td>☐</td>
+<td>☐</td>
+<td>_____________</td>
+</tr>
+<tr>
+<td>events.html</td>
+<td>☐</td>
+<td>☐</td>
+<td>☐</td>
+<td>_____________</td>
+</tr>
+<tr>
+<td>gallery.html</td>
+<td>☐</td>
+<td>☐</td>
+<td>☐</td>
+<td>_____________</td>
+</tr>
+<tr>
+<td>join.html</td>
+<td>☐</td>
+<td>☐</td>
+<td>☐</td>
+<td>_____________</td>
+</tr>
+<tr>
+<td>contact.html</td>
+<td>☐</td>
+<td>☐</td>
+<td>☐</td>
+<td>_____________</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>Fix any issues by adjusting media query rules.</li>
+<li>Re-test after fixes.</li>
+</ol>
+<p>✅ <strong>Check:</strong> All boxes checked with no outstanding issues.</p>
+<p>💾 <strong>Save point:</strong> Final complete backup. Your Student Club Website is now fully responsive!</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Responsive bugs hide on a desktop monitor. Every symptom here is invisible until you narrow the window.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Desktop layout shrunk to fit, text unreadably small</td>
+<td>The viewport meta tag is missing</td>
+<td>View Source and check <code>&lt;head&gt;</code></td>
+<td><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Media queries have no effect</td>
+<td>The viewport tag is missing, so the reported width is always 980px</td>
+<td>Resize with DevTools and watch the query</td>
+<td>Add the viewport tag first — nothing responsive works without it</td>
+</tr>
+<tr>
+<td>Sideways scrolling on a phone</td>
+<td>An element is wider than the screen: a fixed width, a wide image, or a long unbroken string</td>
+<td>In device mode, add <code>* { outline: 1px solid red }</code> and find the wide box</td>
+<td><code>max-width: 100%</code>, <code>box-sizing: border-box</code>, <code>overflow-wrap: break-word</code></td>
+</tr>
+<tr>
+<td>Desktop styles override the mobile ones</td>
+<td><code>min-width</code> and <code>max-width</code> queries mixed in the wrong order</td>
+<td>Read the Styles pane for which query won</td>
+<td>Mobile-first: base styles, then <code>min-width</code> queries in ascending order</td>
+</tr>
+<tr>
+<td>Layout correct at 375px and 1200px, broken at 768px</td>
+<td>No breakpoint where the content actually needs one</td>
+<td>Drag the width slowly and watch it break</td>
+<td>Add breakpoints where the content breaks, not at device names</td>
+</tr>
+<tr>
+<td>Buttons hard to tap</td>
+<td>Touch targets under 44×44px</td>
+<td>Inspect the element&#39;s box size</td>
+<td>Increase padding to at least 44×44px</td>
+</tr>
+<tr>
+<td>Hover-only menu unusable on touch</td>
+<td>Touch devices have no hover</td>
+<td>Test on a real device</td>
+<td>Provide a tap or click path as well</td>
+</tr>
+<tr>
+<td>Image sharp on a laptop, blurry on a phone</td>
+<td>A low-resolution image scaled up on a high-DPI screen</td>
+<td>Compare the natural size to the displayed size</td>
+<td>Use <code>srcset</code> with 1x and 2x sources</td>
+</tr>
+<tr>
+<td><code>100vh</code> section is taller than a phone screen</td>
+<td>Mobile browser chrome is excluded from <code>vh</code></td>
+<td>Test on iOS Safari</td>
+<td>Use <code>min-height: 100dvh</code>, with a <code>vh</code> fallback</td>
+</tr>
+<tr>
+<td>Fixed header covers content when jumping to an anchor</td>
+<td>The anchor scrolls under the fixed header</td>
+<td>Click an in-page link and watch</td>
+<td><code>scroll-margin-top</code> equal to the header height</td>
+</tr>
+<tr>
+<td>Font size fine on a laptop, too small on a phone</td>
+<td>Sizes set in <code>px</code> for a desktop viewport</td>
+<td>Compare rendered sizes in device mode</td>
+<td>Base of <code>16px</code> minimum; scale with <code>rem</code> and <code>clamp()</code></td>
+</tr>
+</tbody></table>
+<p><strong>Test at three widths every time:</strong> 375px (phone), 768px (tablet), 1280px (laptop). Then, with the window narrow, press Tab through the whole page. That combination catches the overwhelming majority of responsive and accessibility problems before a marker or a real user finds them.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. What exactly does the viewport meta tag do?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code> tells the browser to lay the page out at the device&#39;s real width instead of pretending to be a 980px desktop and zooming out. Without it, a phone renders your desktop layout shrunk to fit, all text becomes unreadably small, and <strong>your media queries never fire</strong> because the reported width is still 980px.</p>
+</details><hr>
+<p><strong>Q2. Why must you never add <code>user-scalable=no</code> or <code>maximum-scale=1</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>They disable pinch-zoom. Users with low vision rely on zooming to read, so blocking it is a direct accessibility failure (WCAG 1.4.4). If your text is large enough, nobody needs to zoom anyway — and if it is not, blocking zoom makes the page unusable rather than fixing it.</p>
+</details><hr>
+<p><strong>Q3. What is the difference between mobile-first and desktop-first CSS?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Mobile-first</strong> writes the phone layout as the base CSS, then uses <code>@media (min-width: ...)</code> to add complexity for larger screens. <strong>Desktop-first</strong> writes the desktop layout as the base and uses <code>@media (max-width: ...)</code> to strip it back. Mobile-first is preferred: the base stylesheet stays simple, and phones — often on slow connections — download and apply less CSS.</p>
+</details><hr>
+<p><strong>Q4. Why must media queries be written in ascending order in a mobile-first stylesheet?</strong></p>
+<details>
+<summary>Answer</summary><p>Media queries of equal specificity resolve by <strong>source order</strong>, so the last matching rule wins. On a 1200px screen both <code>min-width: 768px</code> and <code>min-width: 1024px</code> match; the 1024px block must come later to take effect. Write them 480px → 768px → 1024px and the cascade lines up with screen size.</p>
+</details><hr>
+<p><strong>Q5. What are the standard breakpoints, and how should you choose them?</strong></p>
+<details>
+<summary>Answer</summary><p>Common values are 480px (large phone), 768px (tablet), 1024px (small laptop), and 1200px (desktop). But breakpoints should follow <strong>your content</strong>, not device names: widen the browser slowly and add a breakpoint wherever the layout starts to look wrong. Device-driven breakpoints go stale; content-driven ones do not.</p>
+</details><hr>
+<p><strong>Q6. Which two declarations make an image responsive, and why both?</strong></p>
+<details>
+<summary>Answer</summary><pre><code class="language-css">img { max-width: 100%; height: auto; }
+</code></pre>
+<p><code>max-width: 100%</code> stops the image exceeding its container (while <code>width: 100%</code> would also stretch small images past their natural size). <code>height: auto</code> lets the height scale in proportion — without it the image squashes or stretches as the width changes.</p>
+</details><hr>
+<p><strong>Q7. Why is 44×44px the minimum size for a touch target?</strong></p>
+<details>
+<summary>Answer</summary><p>It is roughly the contact area of an adult fingertip, and it is Apple&#39;s and the WCAG-aligned recommendation. Smaller targets cause mis-taps, which is especially punishing in navigation and forms. Achieve it with <code>display: block</code> plus <code>padding</code> on links, and leave at least 8px between adjacent targets.</p>
+</details><hr>
+<p><strong>Q8. How do you test responsive design without owning several phones?</strong></p>
+<details>
+<summary>Answer</summary><p>Chrome DevTools device toolbar: F12, then Ctrl+Shift+M. Pick device presets (iPhone SE for the narrowest common case, iPad, and a desktop width), rotate between portrait and landscape, and also drag the viewport edge slowly to catch breakpoints that only misbehave between presets. Then check on one real phone before submitting — emulators do not reproduce touch accuracy or real font rendering.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Explain why mobile-friendly design is essential for modern websites</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Add the viewport meta tag correctly to an HTML page</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Write a CSS media query using <code>@media (max-width: ...)</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Identify appropriate breakpoints for tablet and mobile layouts</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Make images responsive with <code>max-width: 100%</code> and <code>height: auto</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Ensure touch targets are at least 44×44 pixels</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Test responsive designs using Chrome Developer Tools</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Stack a two-column layout into a single column on mobile</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered <strong>No</strong> to any row, re-read the relevant Theory section and redo the corresponding Hands-On task.</p>
+<hr>
+<h2 id="comprehensive-course-recap-all-15-sessions">📚 COMPREHENSIVE COURSE RECAP (ALL 15 SESSIONS)<a class="anchor" href="#comprehensive-course-recap-all-15-sessions" aria-label="Link to this section">#</a></h2>
+<p>Congratulations — you have completed all 15 sessions! Here is everything you have learned, organized for exam review.</p>
+<h3 id="session-by-session-summary">Session-by-Session Summary<a class="anchor" href="#session-by-session-summary" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Title</th>
+<th>Key Concepts</th>
+<th>Key Skills</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Introduction to Dreamweaver</td>
+<td>HTML basics, IDE workspace, file types</td>
+<td>Navigate Dreamweaver; create/save HTML files; understand code vs design view</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Creating a New Site</td>
+<td>Site definition, folder structure, file paths, relative vs absolute paths</td>
+<td>Define a site in Dreamweaver; organize folders (css/, images/); use correct file paths</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Text and Images</td>
+<td>Headings (h1–h6), paragraphs, lists (ul/ol/li), images (img, alt, src), hyperlinks (a, href)</td>
+<td>Structure content with semantic HTML; embed images with alt text; create internal and external links</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Applying CSS</td>
+<td>Selectors (element, class, id), properties, colors, fonts, box model (margin, padding, border)</td>
+<td>Link CSS file; style text/colors/fonts; understand the box model; use classes and IDs</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Page Layouts</td>
+<td>Divs, floats, two-column layout, wrapper, clearing floats</td>
+<td>Build header/nav/main/sidebar/footer layout; float columns side by side; use wrapper for centering</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Multi-Page Sites</td>
+<td>Consistent navigation, active page highlighting, linking between pages</td>
+<td>Create multi-page site with shared structure; highlight current page in nav; maintain consistency</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CSS3 and Web Fonts</td>
+<td>Border-radius, box-shadow, text-shadow, gradients, transitions, Google Fonts</td>
+<td>Apply visual effects; load and use web fonts; create smooth hover transitions</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Review &amp; Midterm</td>
+<td>Consolidation of Sessions 1–7, practice exam</td>
+<td>Self-assess; identify weak areas; practice under timed conditions</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tables</td>
+<td>Table elements (table, tr, td, th, caption), colspan, rowspan, styling</td>
+<td>Create data tables; merge cells; style table headers and borders</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Flash, Video, Sound</td>
+<td>HTML5 video/audio elements, deprecated Flash, multimedia embedding</td>
+<td>Embed video/audio with controls; understand Flash deprecation; provide fallback content</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Compact Site Design</td>
+<td>Efficient spacing, reduced margins, condensed layouts</td>
+<td>Optimize layout density; adjust spacing for information-rich pages</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Code-Editing Tools</td>
+<td>W3C validation, browser developer tools, code formatting, debugging</td>
+<td>Validate HTML/CSS; inspect elements; debug layout issues; format code cleanly</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Creating Forms</td>
+<td>Form element, input types, select, textarea, label, fieldset, validation</td>
+<td>Build complete forms; use correct input types; associate labels; validate with HTML attributes</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Spry Framework</td>
+<td>Legacy widgets, CSS-only dropdowns, details/summary accordion</td>
+<td>Recognize Spry code; build CSS-only navigation and accordions; understand legacy migration</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Mobile Design / Review</td>
+<td>Viewport meta tag, media queries, responsive design, course review</td>
+<td>Make sites responsive; test on multiple screen sizes; review all topics for final exam</td>
+</tr>
+</tbody></table>
+<h3 id="core-skills-checklist">Core Skills Checklist<a class="anchor" href="#core-skills-checklist" aria-label="Link to this section">#</a></h3>
+<p>By the end of this course, you should be able to:</p>
+<h4 id="html-skills">HTML Skills<a class="anchor" href="#html-skills" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><input disabled="" type="checkbox"> Write a complete HTML5 document with DOCTYPE, head, and body</li>
+<li><input disabled="" type="checkbox"> Use semantic elements: header, nav, main, aside, footer, section, article</li>
+<li><input disabled="" type="checkbox"> Create headings, paragraphs, ordered/unordered lists</li>
+<li><input disabled="" type="checkbox"> Embed images with proper alt attributes</li>
+<li><input disabled="" type="checkbox"> Create hyperlinks (internal, external, email, anchor)</li>
+<li><input disabled="" type="checkbox"> Build data tables with headers, captions, colspan/rowspan</li>
+<li><input disabled="" type="checkbox"> Create forms with multiple input types, labels, fieldsets, and validation</li>
+<li><input disabled="" type="checkbox"> Embed HTML5 video and audio</li>
+<li><input disabled="" type="checkbox"> Use the <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements for accordions</li>
+</ul>
+<h4 id="css-skills">CSS Skills<a class="anchor" href="#css-skills" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><input disabled="" type="checkbox"> Link an external stylesheet</li>
+<li><input disabled="" type="checkbox"> Use element, class, and ID selectors</li>
+<li><input disabled="" type="checkbox"> Style text: font-family, font-size, color, text-align, line-height</li>
+<li><input disabled="" type="checkbox"> Apply the box model: margin, padding, border, width, height</li>
+<li><input disabled="" type="checkbox"> Create two-column layouts with floats (and understand Flexbox/Grid exist)</li>
+<li><input disabled="" type="checkbox"> Use CSS3 effects: border-radius, box-shadow, gradients, transitions</li>
+<li><input disabled="" type="checkbox"> Load and apply Google Fonts</li>
+<li><input disabled="" type="checkbox"> Style tables, forms, and navigation bars</li>
+<li><input disabled="" type="checkbox"> Write media queries for responsive design</li>
+<li><input disabled="" type="checkbox"> Make images flexible with max-width</li>
+</ul>
+<h4 id="practical-skills">Practical Skills<a class="anchor" href="#practical-skills" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><input disabled="" type="checkbox"> Set up and manage a website project in Dreamweaver</li>
+<li><input disabled="" type="checkbox"> Maintain consistent design across multiple pages</li>
+<li><input disabled="" type="checkbox"> Validate HTML and CSS using W3C validators</li>
+<li><input disabled="" type="checkbox"> Debug layout issues using browser Developer Tools</li>
+<li><input disabled="" type="checkbox"> Test websites at multiple screen sizes</li>
+<li><input disabled="" type="checkbox"> Organize files in a clean folder structure</li>
+</ul>
+<hr>
+<h2 id="final-exam-preparation-checklist">🎓 FINAL EXAM PREPARATION CHECKLIST<a class="anchor" href="#final-exam-preparation-checklist" aria-label="Link to this section">#</a></h2>
+<h3 id="exam-format-typical">Exam Format (Typical)<a class="anchor" href="#exam-format-typical" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Duration</td>
+<td>120 minutes</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Practical only — build and edit HTML/CSS files at a computer (no theory section)</td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>60% of the final course grade (20% final practical exam + 40% capstone project)</td>
+</tr>
+<tr>
+<td>Allowed Resources</td>
+<td>Your notes, textbook, and local files — no internet</td>
+</tr>
+</tbody></table>
+<h3 id="topics-likely-on-the-final-exam">Topics Likely on the Final Exam<a class="anchor" href="#topics-likely-on-the-final-exam" aria-label="Link to this section">#</a></h3>
+<h4 id="must-know-high-probability">Must-Know (High Probability)<a class="anchor" href="#must-know-high-probability" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Write a complete HTML5 page from scratch with proper structure</li>
+<li>Link an external CSS file and apply styles</li>
+<li>Create a two-column page layout (header, nav, main, sidebar, footer)</li>
+<li>Build a navigation bar with active page highlighting</li>
+<li>Use CSS3 effects: border-radius, box-shadow, transitions, gradients</li>
+<li>Create and style a data table (with th, caption, colspan/rowspan)</li>
+<li>Embed HTML5 video or audio with controls</li>
+<li>Build a form with at least 5 different input types, labels, fieldset/legend</li>
+<li>Write media queries for responsive design</li>
+<li>Add the viewport meta tag and explain its purpose</li>
+</ol>
+<h4 id="should-know-medium-probability">Should-Know (Medium Probability)<a class="anchor" href="#should-know-medium-probability" aria-label="Link to this section">#</a></h4>
+<ol start="11">
+<li>Explain the difference between GET and POST methods</li>
+<li>Identify and fix common HTML/CSS errors</li>
+<li>Explain why Spry is legacy and name modern alternatives</li>
+<li>Describe mobile-first vs desktop-first approaches</li>
+<li>Explain the box model (content, padding, border, margin)</li>
+</ol>
+<h4 id="nice-to-know-lower-probability">Nice-to-Know (Lower Probability)<a class="anchor" href="#nice-to-know-lower-probability" aria-label="Link to this section">#</a></h4>
+<ol start="16">
+<li>History of web technologies (Flash deprecation, evolution of CSS)</li>
+<li>Accessibility considerations (alt text, labels, keyboard navigation)</li>
+<li>Specific CSS property values or syntax details</li>
+</ol>
+<h3 id="study-plan-recommended-1-week-prep">Study Plan (Recommended 1-Week Prep)<a class="anchor" href="#study-plan-recommended-1-week-prep" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Focus</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Day 1</td>
+<td>HTML fundamentals</td>
+<td>Re-read Sessions 1–3; rebuild index.html from memory</td>
+</tr>
+<tr>
+<td>Day 2</td>
+<td>CSS fundamentals</td>
+<td>Re-read Sessions 4–5; style a page from scratch</td>
+</tr>
+<tr>
+<td>Day 3</td>
+<td>CSS3 + Layouts</td>
+<td>Re-read Sessions 6–7; add effects and Google Fonts</td>
+</tr>
+<tr>
+<td>Day 4</td>
+<td>Tables + Multimedia</td>
+<td>Re-read Sessions 9–10; create a table and embed video</td>
+</tr>
+<tr>
+<td>Day 5</td>
+<td>Forms</td>
+<td>Re-read Session 13; build a complete registration form</td>
+</tr>
+<tr>
+<td>Day 6</td>
+<td>Responsive + Spry</td>
+<td>Re-read Sessions 14–15; add media queries to your site</td>
+</tr>
+<tr>
+<td>Day 7</td>
+<td>Full practice</td>
+<td>Build a complete mini-site (3 pages) in 120 minutes under timed conditions, offline</td>
+</tr>
+</tbody></table>
+<h3 id="practice-exercise-timed-mock-exam">Practice Exercise: Timed Mock Exam<a class="anchor" href="#practice-exercise-timed-mock-exam" aria-label="Link to this section">#</a></h3>
+<p>Set a timer for <strong>120 minutes</strong> — the length of the real final — and complete this from
+scratch, <strong>with the internet switched off</strong>, exactly as in the exam room:</p>
+<blockquote>
+<p><strong>Task:</strong> Create a 3-page website for a fictional coffee shop called &quot;Campus Brew.&quot; Requirements:</p>
+<ol>
+<li><code>index.html</code> — Home page with heading, welcome paragraph, featured image, and brief description.</li>
+<li><code>menu.html</code> — Menu page with a styled table showing drinks, sizes, and prices (at least 6 rows, use colspan for category headers).</li>
+<li><code>contact.html</code> — Contact page with a form (name, email, message textarea, submit button).</li>
+<li>All pages share: same header, navigation bar (with active highlighting), footer, linked CSS file.</li>
+<li>CSS includes: a <strong>system font stack</strong> (e.g. <code>font-family: Georgia, &quot;Times New Roman&quot;, serif</code> — no web font, because the exam has no internet), box-shadow on header, border-radius on images, hover transitions on nav links, media query for mobile stacking.</li>
+<li>Every page has the viewport meta tag.</li>
+<li>All images have alt attributes. All form fields have labels.</li>
+</ol>
+</blockquote>
+<p>If you can complete this within 120 minutes with no internet, you are ready for the final
+exam. For a worked paper with an answer key, use <code>exams/final/sample-exam.md</code> together with
+<code>exams/final/sample-solution.md</code>.</p>
+<h3 id="last-minute-tips">Last-Minute Tips<a class="anchor" href="#last-minute-tips" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><strong>Read questions carefully.</strong> Underline key requirements (e.g., &quot;use at least 3 input types,&quot; &quot;include a media query&quot;).</li>
+<li><strong>Start with structure.</strong> Write the HTML skeleton first, then add CSS. Do not try to do everything at once.</li>
+<li><strong>Validate mentally.</strong> After writing each section, quickly scan for unclosed tags, missing attributes, and typos.</li>
+<li><strong>Partial credit matters.</strong> Even if you cannot complete everything, write what you know. An incomplete but correct form earns more points than nothing.</li>
+<li><strong>Manage your time.</strong> If stuck on one question, move on and come back later.</li>
+<li><strong>Your Student Club Website IS your study guide.</strong> It contains examples of every topic covered in the course. Review it thoroughly.</li>
+</ol>
+<hr>
+<h2 id="final-project-submission-checklist">📋 FINAL PROJECT SUBMISSION CHECKLIST<a class="anchor" href="#final-project-submission-checklist" aria-label="Link to this section">#</a></h2>
+<p>Before submitting your Student Club Website, verify every item:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Check</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Every HTML file starts with <code>&lt;!DOCTYPE html&gt;</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Every HTML file has <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Every HTML file has the viewport meta tag</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Every page links to <code>css/style.css</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Every page has the same header, navigation, and footer</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Active page is highlighted in navigation on each page</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>All images have descriptive <code>alt</code> attributes</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>All file paths are relative (no <code>C:\</code> or <code>http://localhost</code>)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>9</td>
+<td>All navigation links work and point to correct pages</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Layout works on desktop (1200px)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Layout works on tablet (768px)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Layout works on mobile (375px)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>13</td>
+<td>At least one page has a styled table</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>14</td>
+<td>At least one page has a form with multiple input types</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>15</td>
+<td>All form fields have associated labels</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>16</td>
+<td>HTML validates without errors (validator.w3.org)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>17</td>
+<td>CSS validates without errors (jigsaw.w3.org/css-validator)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>18</td>
+<td>File names are lowercase with hyphens (no spaces, no special characters)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Site folder is organized (html files in root, css/ folder, images/ folder)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Site folder can be zipped and submitted as a complete package</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="presenting-your-web-application-clo5">🎤 PRESENTING YOUR WEB APPLICATION (CLO5)<a class="anchor" href="#presenting-your-web-application-clo5" aria-label="Link to this section">#</a></h2>
+<blockquote>
+<p><strong>CLO5</strong> has three parts: <em>EVALUATE</em>, <em>build guidance documentation</em>, and <em>PRESENT/introduce</em> the
+application. You have already learned evaluation (validation, audits) and documentation (README, Session 11).
+The last part — <strong>presenting</strong> — is what this section teaches. Being able to BUILD a website but not EXPLAIN
+it means half the value is lost, especially for MIS graduates who must present solutions to clients and managers.</p>
+</blockquote>
+<h3 id="p1-why-presentation-is-a-core-skill">P1. Why Presentation Is a Core Skill<a class="anchor" href="#p1-why-presentation-is-a-core-skill" aria-label="Link to this section">#</a></h3>
+<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<p>Two developers build the same website. One presents it as <em>&quot;here is my code&quot;</em> and clicks around silently.
+The other says <em>&quot;the client&#39;s goal was X, so I designed Y to achieve it — let me show you&quot;</em> and demos the
+site while explaining each decision. Which one gets hired, or gets the project approved? The second.
+<strong>The website is the same; the outcome is different.</strong> Presentation is the difference.</p>
+<h3 id="p2-a-simple-presentation-structure-7-slides">P2. A Simple Presentation Structure (7 slides)<a class="anchor" href="#p2-a-simple-presentation-structure-7-slides" aria-label="Link to this section">#</a></h3>
+<p>Use this skeleton for a 5–7 minute project presentation:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Slide</th>
+<th>What to say (one line each)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Title</td>
+<td>Project name + your name</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Goal &amp; audience</td>
+<td>&quot;The site helps [who] do [what]&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Site map</td>
+<td>Show the pages and how they connect</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Live demo</td>
+<td>Walk the site like a visitor would</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Design decisions</td>
+<td>&quot;I chose X because Y&quot; (2–3 decisions)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Challenges &amp; fixes</td>
+<td>One bug you found and how you fixed it</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Conclusion &amp; future</td>
+<td>What you&#39;d add next</td>
+</tr>
+</tbody></table>
+<h3 id="p3-demo-technique-showing-the-site-live">P3. Demo Technique — Showing the Site Live<a class="anchor" href="#p3-demo-technique-showing-the-site-live" aria-label="Link to this section">#</a></h3>
+<ul>
+<li><strong>Open with the finished page</strong>, not your code. The audience cares about the result first.</li>
+<li><strong>Follow a visitor&#39;s journey</strong>: Home → About → one feature (table/form/media) → Contact.</li>
+<li><strong>Narrate while you click</strong>: never let more than ~10 seconds pass in silence.</li>
+<li><strong>Resize the window</strong> (or use DevTools device mode) to show the responsive design — a strong finishing move.</li>
+<li><strong>Have a backup</strong>: if the projector/internet fails, keep screenshots ready. Professionals always have a plan B.</li>
+</ul>
+<h3 id="p4-explaining-decisions-to-a-non-technical-audience">P4. Explaining Decisions to a Non-Technical Audience<a class="anchor" href="#p4-explaining-decisions-to-a-non-technical-audience" aria-label="Link to this section">#</a></h3>
+<p>Avoid jargon; translate it. Use the pattern <strong>&quot;I chose X because it helps [the user/client goal].&quot;</strong></p>
+<table>
+<thead>
+<tr>
+<th>Instead of (jargon)</th>
+<th>Say (benefit)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;I used semantic HTML&quot;</td>
+<td>&quot;I structured the page so screen readers and Google understand it&quot;</td>
+</tr>
+<tr>
+<td>&quot;I used Flexbox&quot;</td>
+<td>&quot;I made the menu line up neatly on any screen size&quot;</td>
+</tr>
+<tr>
+<td>&quot;I added alt attributes&quot;</td>
+<td>&quot;Every image has a text description for users who can&#39;t see it&quot;</td>
+</tr>
+<tr>
+<td>&quot;It&#39;s responsive&quot;</td>
+<td>&quot;It works well on the phones your customers actually use&quot;</td>
+</tr>
+</tbody></table>
+<h3 id="p5-handling-qa">P5. Handling Q&amp;A<a class="anchor" href="#p5-handling-qa" aria-label="Link to this section">#</a></h3>
+<ul>
+<li><strong>Pause before answering</strong> — it is fine to think for 3 seconds.</li>
+<li>If you don&#39;t know: <em>&quot;That&#39;s a good point — I didn&#39;t cover it, but my approach would be…&quot;</em> (honesty beats bluffing).</li>
+<li>If challenged on a choice: refer back to a <strong>requirement</strong> (&quot;The brief said the owner edits it herself, so I kept the structure simple&quot;).</li>
+</ul>
+<h3 id="p6-practice-your-turn">P6. Practice — Your Turn<a class="anchor" href="#p6-practice-your-turn" aria-label="Link to this section">#</a></h3>
+<h4 id="task-p1-rehearse-a-5-minute-presentation">TASK P1: Rehearse a 5-minute presentation<a class="anchor" href="#task-p1-rehearse-a-5-minute-presentation" aria-label="Link to this section">#</a></h4>
+<p>Prepare the 7 slides from P2 for your Student Club Website and rehearse out loud once, timing yourself.
+✅ Check: Did you demo the site following a visitor&#39;s journey, and explain at least 2 decisions in benefit language?
+💾 File: <code>notes/presentation-outline.md</code></p>
+<h4 id="presentation-rubric-self-peer-review">Presentation rubric (self / peer review)<a class="anchor" href="#presentation-rubric-self-peer-review" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>2 (good)</th>
+<th>1 (partial)</th>
+<th>0 (missing)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Clear goal &amp; audience stated</td>
+<td>✔</td>
+<td>vague</td>
+<td>✘</td>
+</tr>
+<tr>
+<td>Live demo follows a journey</td>
+<td>✔</td>
+<td>random clicking</td>
+<td>✘</td>
+</tr>
+<tr>
+<td>Decisions explained as benefits</td>
+<td>✔</td>
+<td>jargon only</td>
+<td>✘</td>
+</tr>
+<tr>
+<td>Handles a question honestly</td>
+<td>✔</td>
+<td>bluff</td>
+<td>✘</td>
+</tr>
+<tr>
+<td>Within time limit</td>
+<td>✔</td>
+<td>over/under</td>
+<td>✘</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design">MDN: Responsive Web Design</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">MDN: Using Media Queries</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">MDN: Viewport Meta Tag</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout">MDN: CSS Layout Overview</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">MDN: Flexbox Guide</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">MDN: Grid Guide</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn">MDN: Web Development Complete Beginner&#39;s Guide</a></li>
+<li><a href="https://www.w3.org/TR/mediaqueries-4/">W3C: CSS Media Queries Specification</a></li>
+<li><a href="https://search.google.com/test/mobile-friendly">Google: Mobile-Friendly Test</a></li>
+<li><a href="https://validator.w3.org/">W3C Markup Validator</a></li>
+<li><a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validator</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>There is no next session — you have completed INS2053! But your learning journey continues. Keep building websites, keep experimenting with CSS, and keep pushing your skills. The foundation you have built in these 15 sessions will serve you well in any future web development course or project. Good luck on your final exam, and congratulations on reaching this milestone!</p>
+<hr>
+<h2 id="congratulations">🎉 CONGRATULATIONS!<a class="anchor" href="#congratulations" aria-label="Link to this section">#</a></h2>
+<p>You have completed the <strong>INS2053 — Web Authoring and Web Management</strong> course ebook. You now possess the skills to:</p>
+<ul>
+<li>Build complete, multi-page websites from scratch</li>
+<li>Style them professionally with CSS</li>
+<li>Create interactive forms, data tables, and multimedia pages</li>
+<li>Make everything work beautifully on desktop, tablet, and mobile</li>
+<li>Write clean, valid, accessible HTML and CSS</li>
+</ul>
+<p>Your <strong>Student Club Website</strong> is proof of what you have accomplished. Keep it as a portfolio piece, keep improving it, and keep building new projects.</p>
+<p>The web is waiting for your creativity. Go build something amazing.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

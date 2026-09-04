@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 3: Building the About Page — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 3</span></nav>
+<main id="main">
+  <h1>Homework 3: Building the About Page</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-03.html">Session 3 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-3-building-the-about-page">Homework 3: Building the About Page<a class="anchor" href="#homework-3-building-the-about-page" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 4)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Practice using heading levels, paragraphs, and lists</li>
+<li>Learn how to add images with meaningful alt text</li>
+<li>Build rich content using semantic HTML elements</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-enhance-the-about-page">Task 1: Enhance the About Page<a class="anchor" href="#task-1-enhance-the-about-page" aria-label="Link to this section">#</a></h4>
+<p>Update your <code>project/about.html</code> file to make it a complete, rich content page about your Student Club.</p>
+<p><strong>Your About page must include:</strong></p>
+<ol>
+<li><p><strong>Headings:</strong> Use at least 3 different heading levels:</p>
+<ul>
+<li><code>&lt;h1&gt;</code> for the club name</li>
+<li><code>&lt;h2&gt;</code> for section titles (e.g., &quot;Our Mission&quot;, &quot;Our Activities&quot;)</li>
+<li><code>&lt;h3&gt;</code> for sub-sections (e.g., &quot;Weekly Events&quot;)</li>
+</ul>
+</li>
+<li><p><strong>Paragraphs:</strong> At least 3 paragraphs covering:</p>
+<ul>
+<li>What your club is about (purpose)</li>
+<li>Who can join (membership)</li>
+<li>Why someone should join (benefits)</li>
+</ul>
+</li>
+<li><p><strong>Lists:</strong> At least 2 different lists:</p>
+<ul>
+<li>An unordered list (<code>&lt;ul&gt;</code>) of at least 5 club activities or events</li>
+<li>An ordered list (<code>&lt;ol&gt;</code>) of at least 3 steps (e.g., &quot;How to Join&quot;)</li>
+</ul>
+</li>
+<li><p><strong>Images:</strong> At least 2 images with descriptive alt text:</p>
+<ul>
+<li>One image representing your club</li>
+<li>One image showing an activity or event (can be any relevant photo)</li>
+<li>Each <code>&lt;img&gt;</code> must have a meaningful <code>alt</code> attribute (not empty, not &quot;image&quot;)</li>
+</ul>
+</li>
+</ol>
+<h4 id="task-2-add-an-image-gallery-section">Task 2: Add an Image Gallery Section<a class="anchor" href="#task-2-add-an-image-gallery-section" aria-label="Link to this section">#</a></h4>
+<p>Create a section with the heading <code>&lt;h2&gt;Photo Gallery&lt;/h2&gt;</code> that contains at least 3 images arranged in a simple layout.</p>
+<ul>
+<li>Each image must have a different <code>alt</code> text describing what it shows</li>
+<li>Add a short <code>&lt;p&gt;</code> caption below each image</li>
+</ul>
+<p><strong>File path:</strong> <code>project/about.html</code></p>
+<p><strong>Requirements checklist:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Uses h1, h2, and h3 headings</li>
+<li><input disabled="" type="checkbox"> Has 3+ paragraphs</li>
+<li><input disabled="" type="checkbox"> Has 1 unordered list with 5+ items</li>
+<li><input disabled="" type="checkbox"> Has 1 ordered list with 3+ items</li>
+<li><input disabled="" type="checkbox"> Has 2+ images with descriptive alt text</li>
+<li><input disabled="" type="checkbox"> Has a photo gallery section with 3+ images and captions</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/about.html</code></li>
+<li>Commit: <code>git commit -m &quot;HW3: Enhance About page with rich content&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Heading hierarchy</td>
+<td>2</td>
+<td>Uses h1, h2, h3 correctly</td>
+</tr>
+<tr>
+<td>Paragraphs</td>
+<td>2</td>
+<td>Has 3+ well-written paragraphs</td>
+</tr>
+<tr>
+<td>Lists</td>
+<td>2</td>
+<td>Has both ordered and unordered lists</td>
+</tr>
+<tr>
+<td>Images + alt text</td>
+<td>3</td>
+<td>Images load, alt text is descriptive</td>
+</tr>
+<tr>
+<td>Photo gallery</td>
+<td>1</td>
+<td>Has gallery section with captions</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Headings should follow a logical order: don&#39;t skip from h1 to h3</li>
+<li>Alt text should describe what the image shows (e.g., &quot;Students working together on a coding project&quot;)</li>
+<li>Use your own images or free images from sites like Unsplash or Pixabay</li>
+<li>Because <code>about.html</code> sits at the project root next to <code>index.html</code>, image paths are plain:
+<code>images/logo.png</code> — no <code>../</code></li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>Your About page should look like a detailed club profile with sections, lists of activities, and photos. A visitor should be able to learn everything about your club from this page alone.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

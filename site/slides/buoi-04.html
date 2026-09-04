@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 4 — Applying CSS — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Stop styling with HTML. Start styling with CSS.">
+<meta name="generator" content="_tools/build-html-slides.mjs">
+<link rel="stylesheet" href="assets/deck.css">
+<link rel="preload" as="image" href="assets/s4-css.jpg"/>
+</head>
+<body class="page-deck">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="topbar-course">INS2053 · Web Authoring &amp; Web Management</span>
+    <span class="topbar-title">Session 4 — Applying CSS</span>
+  </div>
+  <div class="topbar-actions">
+    <a class="btn" href="index.html"><span aria-hidden="true">↩</span><span class="btn-label">All decks</span></a>
+    <button class="btn" id="expand-toggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">⌄</span><span class="btn-label">Expand notes</span>
+    </button>
+    <button class="btn" id="notes-toggle" type="button" aria-pressed="true">
+      <span aria-hidden="true">✎</span><span class="btn-label">Notes</span>
+    </button>
+    <button class="btn" id="theme-toggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">◐</span><span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+<div class="shell">
+  <nav class="toc" aria-label="Slide navigation">
+    <div class="toc-head">
+      <h2>Slides</h2>
+      <span class="toc-count" id="slide-counter">1 / 34</span>
+    </div>
+    <label class="visually-hidden" for="toc-search">Filter slides</label>
+    <input class="toc-search" id="toc-search" type="search" placeholder="Filter slides…  (press /)" autocomplete="off">
+    <ol class="toc-list">
+      <li><a href="#s04-title"><span class="toc-num">1</span><span>Session 4 — Applying CSS</span></a></li>
+      <li><a href="#s04-objectives"><span class="toc-num">2</span><span>Learning Objectives</span></a></li>
+      <li><a href="#s04-agenda"><span class="toc-num">3</span><span>Today&#39;s 150-Minute Plan</span></a></li>
+      <li><a href="#s04-recap-s3"><span class="toc-num">4</span><span>Recap: What Did We Learn Last Time?</span></a></li>
+      <li><a href="#s04-what-is-css"><span class="toc-num">5</span><span>What Is CSS?</span></a></li>
+      <li><a href="#s04-css-real-life"><span class="toc-num">6</span><span>This Is CSS in Real Life</span></a></li>
+      <li><a href="#s04-three-methods"><span class="toc-num">7</span><span>Three Ways to Add CSS</span></a></li>
+      <li><a href="#s04-methods-table"><span class="toc-num">8</span><span>CSS Methods Compared</span></a></li>
+      <li><a href="#s04-rule-anatomy"><span class="toc-num">9</span><span>Anatomy of a CSS Rule</span></a></li>
+      <li><a href="#s04-css-vocabulary"><span class="toc-num">10</span><span>CSS Vocabulary</span></a></li>
+      <li><a href="#s04-selectors"><span class="toc-num">11</span><span>CSS Selectors</span></a></li>
+      <li><a href="#s04-selector-table"><span class="toc-num">12</span><span>Selector Reference Table</span></a></li>
+      <li><a href="#s04-properties"><span class="toc-num">13</span><span>Common CSS Properties</span></a></li>
+      <li><a href="#s04-colors"><span class="toc-num">14</span><span>Color Values in CSS</span></a></li>
+      <li><a href="#s04-quick-check"><span class="toc-num">15</span><span>Quick Check: CSS Basics</span></a></li>
+      <li><a href="#s04-try-css"><span class="toc-num">16</span><span>Try It Now: Style Your First Page</span></a></li>
+      <li><a href="#s04-box-model"><span class="toc-num">17</span><span>The Box Model</span></a></li>
+      <li><a href="#s04-margin-padding"><span class="toc-num">18</span><span>Margin vs Padding</span></a></li>
+      <li><a href="#s04-css-reset"><span class="toc-num">19</span><span>Start with a CSS Reset</span></a></li>
+      <li><a href="#s04-specificity"><span class="toc-num">20</span><span>Specificity</span></a></li>
+      <li><a href="#s04-worked-example-1"><span class="toc-num">21</span><span>Worked Example 1: Body &amp; Typography</span></a></li>
+      <li><a href="#s04-code-example"><span class="toc-num">22</span><span>Worked Example 2: Styling the Header</span></a></li>
+      <li><a href="#s04-discussion"><span class="toc-num">23</span><span>Discussion: Why Separate CSS from HTML?</span></a></li>
+      <li><a href="#s04-debug"><span class="toc-num">24</span><span>Debug This</span></a></li>
+      <li><a href="#s04-mistakes"><span class="toc-num">25</span><span>Common Mistakes</span></a></li>
+      <li><a href="#s04-self-study-check"><span class="toc-num">26</span><span>Self-Study Check</span></a></li>
+      <li><a href="#s04-practice"><span class="toc-num">27</span><span>Hands-On Practice</span></a></li>
+      <li><a href="#s04-practice-tips"><span class="toc-num">28</span><span>Practice Tips</span></a></li>
+      <li><a href="#s04-do-dont"><span class="toc-num">29</span><span>CSS: Do vs Don&#39;t</span></a></li>
+      <li><a href="#s04-accessibility"><span class="toc-num">30</span><span>Accessible Colour and Type</span></a></li>
+      <li><a href="#s04-practice-check"><span class="toc-num">31</span><span>Practice Checkpoints</span></a></li>
+      <li><a href="#s04-assignment"><span class="toc-num">32</span><span>Assignment: Style Your Site</span></a></li>
+      <li><a href="#s04-homework"><span class="toc-num">33</span><span>Homework</span></a></li>
+      <li><a href="#s04-recap"><span class="toc-num">34</span><span>Recap &amp; Next</span></a></li>
+    </ol>
+    <p class="toc-empty" id="toc-empty" hidden>No slide matches that filter.</p>
+  </nav>
+  <main class="slides" id="main">
+    <section class="hero" id="deck-top">
+      <span class="hero-kicker">Session 4</span>
+      <h1>Session 4 — Applying CSS</h1>
+      <p class="hero-sub">Stop styling with HTML. Start styling with CSS.</p>
+      <div class="hero-meta">
+        <div><span class="k">Slides</span><span class="v">34</span></div>
+        <div><span class="k">Source</span><span class="v"><code>canvases/buoi-04.canvas.tsx</code></span></div>
+        <div><span class="k">Textbook chapter</span><span class="v"><code>ebook/04-applying-css-to-website.md</code></span></div>
+        <div><span class="k">Marp slides</span><span class="v"><code>slides/04-applying-css-to-website.md</code></span></div>
+        <div><span class="k">In-class exercise</span><span class="v"><code>exercises/session-04/exercise.md</code></span></div>
+        <div><span class="k">Homework</span><span class="v"><code>homework/session-04/</code></span></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-title" data-pattern="aurora" style="--slide-bg:var(--bg-elevated);--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent);--pattern-accent-2:color-mix(in srgb, var(--chart-goldenYellow) 22%, transparent)" aria-labelledby="h-s04-title">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">1</span>
+        <h2 id="h-s04-title">Session 4 — Applying CSS</h2>
+        <span class="visually-hidden">Slide 1 of 34</span>
+        <a class="slide-anchor" href="#s04-title" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack is-center" style="gap:16px"><span class="c-tag is-info">INS2053 · Session 4 · 150 min</span><p class="c-h1">Applying CSS to Your Website</p><p class="c-text is-secondary">Selectors, colours, fonts, the box model, and specificity — painting your HTML skeleton.</p></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Welcome to Session 4. Today we add colour, fonts, and spacing to our HTML skeleton using CSS.</div>
+      </details>
+    </section>
+    <section class="slide" id="s04-objectives" aria-labelledby="h-s04-objectives">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">2</span>
+        <h2 id="h-s04-objectives">Learning Objectives</h2>
+        <span class="visually-hidden">Slide 2 of 34</span>
+        <a class="slide-anchor" href="#s04-objectives" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Learning Objectives</h3><div class="c-stack" style="gap:6px"><p class="c-text">1. Explain what CSS is and why it is separate from HTML</p><p class="c-text">2. Link an external stylesheet to any HTML page using &lt;link&gt;</p><p class="c-text">3. Write rules with element, class, and ID selectors</p><p class="c-text">4. Apply colour, font-size, margin, and padding</p><p class="c-text">5. Describe the four layers of the CSS box model</p><p class="c-text">6. Predict which rule wins when two rules conflict (specificity)</p></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-agenda" aria-labelledby="h-s04-agenda">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">3</span>
+        <h2 id="h-s04-agenda">Today&#39;s 150-Minute Plan</h2>
+        <span class="visually-hidden">Slide 3 of 34</span>
+        <a class="slide-anchor" href="#s04-agenda" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Session timeline</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-tag is-info">0 – 10 min</span><p class="c-text">Welcome &amp; objectives</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">10 – 18 min</span><p class="c-text">Recap of Session 3</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-success">18 – 90 min</span><p class="c-text">New content + live demos</p></div></div><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-tag is-success">90 – 140 min</span><p class="c-text">In-class practice (Tasks 1–4)</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-warning">140 – 148 min</span><p class="c-text">Homework briefing</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">148 – 150 min</span><p class="c-text">Recap &amp; next session</p></div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Theory ~60 min · Practice ~90 min. Have css/style.css ready in your project.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-recap-s3" aria-labelledby="h-s04-recap-s3">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">4</span>
+        <h2 id="h-s04-recap-s3">Recap: What Did We Learn Last Time?</h2>
+        <span class="visually-hidden">Slide 4 of 34</span>
+        <a class="slide-anchor" href="#s04-recap-s3" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Quick review — Session 3</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>How many h1 tags per page? (Answer: Exactly one.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Which tag makes text bold with semantic meaning? (Answer: &lt;strong&gt;)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>What four attributes does every img need? (Answer: src, alt, width, height)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Which format for photographs? For logos? (Answer: JPG for photos, SVG/PNG for logos)</div></div></div></div><p class="c-text is-secondary">Your pages have content. Today we make them look good.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-what-is-css" aria-labelledby="h-s04-what-is-css">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">5</span>
+        <h2 id="h-s04-what-is-css">What Is CSS?</h2>
+        <span class="visually-hidden">Slide 5 of 34</span>
+        <a class="slide-anchor" href="#s04-what-is-css" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">What Is CSS?</h3><p class="c-text">CSS = Cascading Style Sheets. It tells the browser how HTML should look.</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Analogy: HTML = bricks and walls of a house. CSS = paint, wallpaper, and furniture.</div></div></div><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text is-primary">Separation of concerns</span> — HTML handles meaning; CSS handles looks.</p><p class="c-text"><span class="c-text is-primary">Consistency</span> — one stylesheet styles every page.</p><p class="c-text"><span class="c-text is-primary">Efficiency</span> — change one file instead of dozens.</p></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-css-real-life" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-goldenYellow) 26%, transparent)" aria-labelledby="h-s04-css-real-life">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">6</span>
+        <h2 id="h-s04-css-real-life">This Is CSS in Real Life</h2>
+        <span class="visually-hidden">Slide 6 of 34</span>
+        <a class="slide-anchor" href="#s04-css-real-life" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">This Is CSS in Real Life</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:8px"><img src="assets/s4-css.jpg" alt="A laptop screen showing colored CSS rules in a code editor" style="width:100%;border-radius:8px;border:1px solid var(--stroke-tertiary)"/><p class="c-text is-tertiary is-small">Photo: Negative Space — CC0, Wikimedia Commons</p></div><div class="c-stack" style="gap:8px"><p class="c-text">The coloured lines on this screen <span class="c-text is-primary">are CSS rules</span>.</p><p class="c-text">Each rule = <span class="c-text is-primary">selector</span> + <span class="c-text is-primary">declarations</span>.</p><p class="c-text">HTML says <span class="c-text is-primary">WHAT</span> the content is.</p><p class="c-text">CSS says <span class="c-text is-primary">HOW IT LOOKS</span>.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>One external style.css can restyle every page of the CodeBreakers club site at once.</div></div></div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">The coloured lines you see in any code editor ARE CSS rules. Each rule has a selector on the left and declarations inside curly braces. Point out that one external style.css file can restyle every page of the CodeBreakers club site at once — that is the whole point of separating HTML from CSS.</div>
+      </details>
+    </section>
+    <section class="slide" id="s04-three-methods" aria-labelledby="h-s04-three-methods">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">7</span>
+        <h2 id="h-s04-three-methods">Three Ways to Add CSS</h2>
+        <span class="visually-hidden">Slide 7 of 34</span>
+        <a class="slide-anchor" href="#s04-three-methods" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Three Ways to Add CSS</h3><div class="c-grid" style="grid-template-columns:repeat(3, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><span class="c-pill is-danger">Inline</span><p class="c-text is-secondary">style=&quot;...&quot; on the element. One element only. Avoid in production.</p></div><div class="c-stack" style="gap:6px"><span class="c-pill is-warning">Internal</span><p class="c-text is-secondary">&lt;style&gt; in &lt;head&gt;. One page only. Rarely used.</p></div><div class="c-stack" style="gap:6px"><span class="c-pill is-success">External</span><p class="c-text is-secondary">Separate .css file linked via &lt;link&gt;. One file for the entire site.</p></div></div><hr class="c-divider"/><code class="c-code-inline">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-methods-table" aria-labelledby="h-s04-methods-table">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">8</span>
+        <h2 id="h-s04-methods-table">CSS Methods Compared</h2>
+        <span class="visually-hidden">Slide 8 of 34</span>
+        <a class="slide-anchor" href="#s04-methods-table" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Why external always wins</h3><div class="c-grid" style="grid-template-columns:repeat(4, minmax(0,1fr));gap:4px"><p class="c-text is-secondary"><span class="c-text is-primary">Feature</span></p><p class="c-text is-secondary"><span class="c-text is-primary">Inline</span></p><p class="c-text is-secondary"><span class="c-text is-primary">Internal</span></p><p class="c-text is-secondary"><span class="c-text is-primary">External</span></p><p class="c-text">Scope</p><p class="c-text">One element</p><p class="c-text">One page</p><p class="c-text is-success">Entire site</p><p class="c-text">Reusable?</p><p class="c-text">No</p><p class="c-text">No</p><p class="c-text is-success">Yes</p><p class="c-text">Maintainable?</p><p class="c-text is-danger">Terrible</p><p class="c-text is-warning">Poor</p><p class="c-text is-success">Excellent</p><p class="c-text">Recommended?</p><p class="c-text is-danger">Never</p><p class="c-text is-warning">Rarely</p><p class="c-text is-success">Always</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>The &lt;link&gt; tag goes INSIDE &lt;head&gt;, never in &lt;body&gt;.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-rule-anatomy" aria-labelledby="h-s04-rule-anatomy">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">9</span>
+        <h2 id="h-s04-rule-anatomy">Anatomy of a CSS Rule</h2>
+        <span class="visually-hidden">Slide 9 of 34</span>
+        <a class="slide-anchor" href="#s04-rule-anatomy" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Every rule has the same four parts</h3><svg viewBox="0 0 560 218" width="100%" height="218" role="img" aria-label="A CSS rule is a selector followed by a declaration block; each declaration is a property, a colon, a value and a semicolon"><rect x="14" y="40" width="106" height="36" rx="6" fill="var(--chart-blue)" opacity="0.9"></rect><text x="67" y="64" text-anchor="middle" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">p.intro</text><text x="130" y="64" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">{</text><rect x="152" y="40" width="128" height="36" rx="6" fill="var(--chart-goldenYellow)" opacity="0.9"></rect><text x="216" y="64" text-anchor="middle" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">font-size</text><text x="288" y="64" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">:</text><rect x="302" y="40" width="82" height="36" rx="6" fill="var(--chart-green)" opacity="0.9"></rect><text x="343" y="64" text-anchor="middle" font-size="16" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">18px</text><text x="392" y="64" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--chart-brightOrange)">;</text><text x="410" y="64" font-size="18" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">}</text><path d="M126,84 L126,94 L430,94 L430,84" fill="none" stroke="var(--stroke-secondary)" stroke-width="1.5"></path><text x="278" y="110" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text-secondary)">declaration block — as many lines as you need</text><line x1="67" y1="36" x2="67" y2="24" stroke="var(--stroke-tertiary)"></line><text x="67" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="var(--chart-blue)">selector</text><line x1="216" y1="36" x2="216" y2="24" stroke="var(--stroke-tertiary)"></line><text x="216" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="var(--chart-goldenYellow)">property</text><line x1="343" y1="36" x2="343" y2="24" stroke="var(--stroke-tertiary)"></line><text x="343" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="var(--chart-green)">value</text><rect x="14" y="126" width="252" height="78" rx="8" fill="var(--fill-tertiary)" stroke="var(--stroke-secondary)"></rect><text x="26" y="148" font-size="13" font-weight="700" fill="var(--text-primary)">Read it out loud:</text><text x="26" y="170" font-size="12" fill="var(--text-secondary)">&quot;Find every p that has class intro,</text><text x="26" y="188" font-size="12" fill="var(--text-secondary)">and set its font size to 18 pixels.&quot;</text><rect x="282" y="126" width="266" height="78" rx="8" fill="var(--bg-elevated)" stroke="var(--chart-brightOrange)" stroke-width="1.5"></rect><text x="294" y="148" font-size="13" font-weight="700" fill="var(--chart-brightOrange)">Miss the semicolon</text><text x="294" y="170" font-size="12" fill="var(--text-secondary)">and the browser silently drops that</text><text x="294" y="188" font-size="12" fill="var(--text-secondary)">line AND the next one silently.</text></svg></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Do not move on until the class can name all four parts out loud. Most CSS that &#39;does nothing&#39; is a missing semicolon or a missing closing brace.</div>
+      </details>
+    </section>
+    <section class="slide" id="s04-css-vocabulary" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-s04-css-vocabulary">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">10</span>
+        <h2 id="h-s04-css-vocabulary">CSS Vocabulary</h2>
+        <span class="visually-hidden">Slide 10 of 34</span>
+        <a class="slide-anchor" href="#s04-css-vocabulary" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">CSS Vocabulary</h3><code class="c-code-inline">p.notice { color: navy; font-size: 14px; }</code><div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Part</th><th scope="col">In the example</th><th scope="col">Name</th></tr></thead><tbody><tr><td>p.notice</td><td>the bit before {</td><td>selector</td></tr><tr><td>color / font-size</td><td>left of each colon</td><td>property</td></tr><tr><td>navy / 14px</td><td>right of each colon</td><td>value</td></tr><tr><td>color: navy;</td><td>one property:value pair + ;</td><td>declaration</td></tr><tr><td>everything shown</td><td>selector + { declarations }</td><td>rule</td></tr></tbody></table></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>A rule can have as many declarations as you need. Each one ends with a semicolon.</div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Read each row aloud. A declaration is one property-value pair ending with a semicolon. A rule is the selector plus the entire declaration block. Students should be able to point at any part of a CSS rule and name it.</div>
+      </details>
+    </section>
+    <section class="slide" id="s04-selectors" aria-labelledby="h-s04-selectors">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">11</span>
+        <h2 id="h-s04-selectors">CSS Selectors</h2>
+        <span class="visually-hidden">Slide 11 of 34</span>
+        <a class="slide-anchor" href="#s04-selectors" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Selectors: Element, Class, ID</h3><div class="c-grid" style="grid-template-columns:repeat(3, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><span class="c-tag is-info">Element</span><code class="c-code-inline">p { color: #333; }</code><p class="c-text is-secondary">Targets ALL elements of that tag. Low specificity (0,0,1).</p></div><div class="c-stack" style="gap:6px"><span class="c-tag is-success">Class</span><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-sel">.highlight</span> <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-prop">background</span><span class="tok-punct">:</span> <span class="tok-color">#ffffcc</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-punct">}</span></span></span></code></pre></div><p class="c-text is-secondary">Reusable on many elements. Medium specificity (0,1,0).</p></div><div class="c-stack" style="gap:6px"><span class="c-tag is-warning">ID</span><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-sel">#header</span> <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-prop">background</span><span class="tok-punct">:</span> <span class="tok-color">#1a5276</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-punct">}</span></span></span></code></pre></div><p class="c-text is-secondary">Unique per page. High specificity (1,0,0). Use sparingly.</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-selector-table" aria-labelledby="h-s04-selector-table">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">12</span>
+        <h2 id="h-s04-selector-table">Selector Reference Table</h2>
+        <span class="visually-hidden">Slide 12 of 34</span>
+        <a class="slide-anchor" href="#s04-selector-table" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">When to use which selector</h3><div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Selector</th><th scope="col">Example</th><th scope="col">Matches</th></tr></thead><tbody><tr><td>Element</td><td>p</td><td>Every &lt;p&gt; on the page</td></tr><tr><td>Class</td><td>.notice</td><td>Any element with class=&quot;notice&quot;</td></tr><tr><td>ID</td><td>#header</td><td>The one element with id=&quot;header&quot;</td></tr><tr><td>Descendant</td><td>nav a</td><td>Every &lt;a&gt; inside a &lt;nav&gt;</td></tr><tr><td>Pseudo-class</td><td>a:hover</td><td>Any &lt;a&gt; the mouse is over</td></tr></tbody></table></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Prefer classes over IDs. Classes are reusable and easier to override.</div></div></div><p class="c-text is-secondary">Descendant selectors and pseudo-classes let you target elements precisely without adding extra classes everywhere.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-properties" aria-labelledby="h-s04-properties">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">13</span>
+        <h2 id="h-s04-properties">Common CSS Properties</h2>
+        <span class="visually-hidden">Slide 13 of 34</span>
+        <a class="slide-anchor" href="#s04-properties" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Properties you will use most</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:4px"><p class="c-text"><span class="c-text is-primary">color</span> — text color</p><p class="c-text"><span class="c-text is-primary">background-color</span> — fill color</p><p class="c-text"><span class="c-text is-primary">font-family</span> — typeface</p><p class="c-text"><span class="c-text is-primary">font-size</span> — text size (px)</p><p class="c-text"><span class="c-text is-primary">font-weight</span> — bold/normal</p><p class="c-text"><span class="c-text is-primary">text-align</span> — left/center/right</p></div><div class="c-stack" style="gap:4px"><p class="c-text"><span class="c-text is-primary">margin</span> — space OUTSIDE</p><p class="c-text"><span class="c-text is-primary">padding</span> — space INSIDE</p><p class="c-text"><span class="c-text is-primary">border</span> — line around element</p><p class="c-text"><span class="c-text is-primary">width / height</span> — dimensions</p><p class="c-text"><span class="c-text is-primary">line-height</span> — line spacing</p><p class="c-text"><span class="c-text is-primary">text-decoration</span> — underline, etc.</p></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Every declaration ends with a semicolon. Missing ; is the #1 CSS bug.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-colors" aria-labelledby="h-s04-colors">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">14</span>
+        <h2 id="h-s04-colors">Color Values in CSS</h2>
+        <span class="visually-hidden">Slide 14 of 34</span>
+        <a class="slide-anchor" href="#s04-colors" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Three ways to specify colors</h3><div class="c-grid" style="grid-template-columns:repeat(3, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><span class="c-tag is-info">Named</span><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-prop">color</span><span class="tok-punct">:</span> navy<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-prop">background</span><span class="tok-punct">:</span> white<span class="tok-punct">;</span></span></span></code></pre></div><p class="c-text is-secondary">Easy to read, limited palette</p></div><div class="c-stack" style="gap:6px"><span class="c-tag is-success">Hex codes</span><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#1a5276</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-prop">background</span><span class="tok-punct">:</span> <span class="tok-color">#f5f5f5</span><span class="tok-punct">;</span></span></span></code></pre></div><p class="c-text is-secondary">Most common. Exact colors.</p></div><div class="c-stack" style="gap:6px"><span class="c-tag is-warning">RGB</span><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-fn">rgb</span><span class="tok-punct">(</span><span class="tok-number">26</span><span class="tok-punct">,</span> <span class="tok-number">82</span><span class="tok-punct">,</span> <span class="tok-number">118</span><span class="tok-punct">)</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-fn">rgba</span><span class="tok-punct">(</span><span class="tok-number">0</span><span class="tok-punct">,</span><span class="tok-number">0</span><span class="tok-punct">,</span><span class="tok-number">0</span><span class="tok-punct">,</span> <span class="tok-number">0.5</span><span class="tok-punct">)</span><span class="tok-punct">;</span></span></span></code></pre></div><p class="c-text is-secondary">Red, Green, Blue values. Alpha for transparency.</p></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Tip: Use coolors.co or a color picker to find hex codes that look good together.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-quick-check" aria-labelledby="h-s04-quick-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">15</span>
+        <h2 id="h-s04-quick-check">Quick Check: CSS Basics</h2>
+        <span class="visually-hidden">Slide 15 of 34</span>
+        <a class="slide-anchor" href="#s04-quick-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Test yourself</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Where does the &lt;link&gt; tag go? (Answer: Inside &lt;head&gt;, never in &lt;body&gt;.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>What character separates property and value? (Answer: A colon :)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>What character ends every declaration? (Answer: A semicolon ;)</div></div></div></div><p class="c-text is-secondary">Discuss with your neighbor for 30 seconds.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-try-css" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent)" aria-labelledby="h-s04-try-css">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">16</span>
+        <h2 id="h-s04-try-css">Try It Now: Style Your First Page</h2>
+        <span class="visually-hidden">Slide 16 of 34</span>
+        <a class="slide-anchor" href="#s04-try-css" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Five minutes — add CSS to your page</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Step 1: Create style.css</p><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src">body <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-prop">font-family</span><span class="tok-punct">:</span> Arial<span class="tok-punct">,</span> sans-serif<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-prop">background-color</span><span class="tok-punct">:</span> <span class="tok-color">#f5f5f5</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#333</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">  <span class="tok-prop">margin</span><span class="tok-punct">:</span> <span class="tok-number">0</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">  <span class="tok-prop">padding</span><span class="tok-punct">:</span> <span class="tok-number">20px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">h1 <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">  <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#2c3e50</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">  <span class="tok-prop">border-bottom</span><span class="tok-punct">:</span> <span class="tok-number">2px</span> solid <span class="tok-color">#3498db</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src">  <span class="tok-prop">padding-bottom</span><span class="tok-punct">:</span> <span class="tok-number">10px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src"><span class="tok-punct">}</span></span></span></code></pre></div></div><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Step 2: Link it in HTML</p><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-tag">&lt;meta</span> <span class="tok-attr">charset</span><span class="tok-op">=</span><span class="tok-string">&quot;UTF-8&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-tag">&lt;title</span><span class="tok-punct">&gt;</span>My Page<span class="tok-tag">&lt;/title</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-tag">&lt;link</span> <span class="tok-attr">rel</span><span class="tok-op">=</span><span class="tok-string">&quot;stylesheet&quot;</span> <span class="tok-attr">href</span><span class="tok-op">=</span><span class="tok-string">&quot;style.css&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"><span class="tok-tag">&lt;/head</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text" style="font-weight:700">What to check</p><p class="c-text">1. The page background changes to light gray.</p><p class="c-text">2. The heading is dark blue with an underline.</p><p class="c-text">3. If nothing changes, check that the &lt;link&gt; tag is in the &lt;head&gt;.</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>If the CSS does not apply, open DevTools → Console. Look for a 404 error on style.css.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-box-model" aria-labelledby="h-s04-box-model">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">17</span>
+        <h2 id="h-s04-box-model">The Box Model</h2>
+        <span class="visually-hidden">Slide 17 of 34</span>
+        <a class="slide-anchor" href="#s04-box-model" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">The Box Model</h3><svg viewBox="0 0 560 264" width="100%" height="264" role="img" aria-label="Concentric layers: content, padding, border, margin, and how they add up to the total width"><rect x="14" y="14" width="300" height="196" rx="6" fill="var(--chart-goldenYellow)" opacity="0.18" stroke="var(--chart-goldenYellow)" stroke-dasharray="5 4"></rect><text x="24" y="30" font-size="12" font-weight="700" fill="var(--chart-goldenYellow)">margin  20px</text><rect x="54" y="46" width="220" height="132" rx="4" fill="none" stroke="var(--text-secondary)" stroke-width="8"></rect><text x="64" y="42" font-size="12" font-weight="700" fill="var(--text-secondary)">border  4px</text><rect x="62" y="54" width="204" height="116" fill="var(--chart-green)" opacity="0.22"></rect><text x="72" y="72" font-size="12" font-weight="700" fill="var(--chart-green)">padding  16px</text><rect x="96" y="82" width="136" height="60" rx="3" fill="var(--chart-blue)" opacity="0.85"></rect><text x="164" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#0B1220">content</text><text x="164" y="126" text-anchor="middle" font-size="12" fill="#0B1220">width: 200px</text><line x1="96" y1="196" x2="232" y2="196" stroke="var(--chart-blue)" stroke-width="1.5"></line><text x="164" y="192" text-anchor="middle" font-size="11" fill="var(--chart-blue)">200</text><rect x="330" y="14" width="216" height="112" rx="8" fill="var(--bg-elevated)" stroke="var(--chart-brightOrange)" stroke-width="1.5"></rect><text x="342" y="34" font-size="13" font-weight="700" fill="var(--chart-brightOrange)">Default: content-box</text><text x="342" y="56" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">200 content</text><text x="342" y="72" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">+ 32 padding (16 each side)</text><text x="342" y="88" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">+  8 border (4 each side)</text><line x1="342" y1="96" x2="534" y2="96" stroke="var(--stroke-tertiary)"></line><text x="342" y="114" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-weight="700" fill="var(--chart-brightOrange)">= 240px on screen</text><rect x="330" y="136" width="216" height="112" rx="8" fill="var(--bg-elevated)" stroke="var(--chart-green)" stroke-width="1.5"></rect><text x="342" y="156" font-size="13" font-weight="700" fill="var(--chart-green)">Fix: border-box</text><text x="342" y="178" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">*{box-sizing:border-box;}</text><text x="342" y="200" font-size="12" fill="var(--text-secondary)">Now width: 200px means</text><text x="342" y="216" font-size="12" fill="var(--text-secondary)">200px on screen — padding and</text><text x="342" y="232" font-size="12" fill="var(--text-secondary)">border grow inwards instead.</text><text x="14" y="232" font-size="12" fill="var(--text-tertiary)">Padding is inside the border,</text><text x="14" y="248" font-size="12" fill="var(--text-tertiary)">margin is outside it. Margin never gets a background colour.</text></svg></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-margin-padding" aria-labelledby="h-s04-margin-padding">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">18</span>
+        <h2 id="h-s04-margin-padding">Margin vs Padding</h2>
+        <span class="visually-hidden">Slide 18 of 34</span>
+        <a class="slide-anchor" href="#s04-margin-padding" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">The difference that trips everyone up</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><span class="c-tag is-success">Padding = INSIDE</span><p class="c-text">Space between content and border.</p><p class="c-text is-secondary">Gets the background color.</p><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-prop">padding</span><span class="tok-punct">:</span> <span class="tok-number">15px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-prop">padding</span><span class="tok-punct">:</span> <span class="tok-number">10px</span> <span class="tok-number">20px</span><span class="tok-punct">;</span></span></span></code></pre></div></div><div class="c-stack" style="gap:6px"><span class="c-tag is-warning">Margin = OUTSIDE</span><p class="c-text">Space between this element and others.</p><p class="c-text is-secondary">Never gets a background color.</p><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-prop">margin</span><span class="tok-punct">:</span> <span class="tok-number">20px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-prop">margin</span><span class="tok-punct">:</span> <span class="tok-number">10px</span> auto<span class="tok-punct">;</span></span></span></code></pre></div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Remember: padding is like stuffing inside a box. Margin is the space between boxes on a shelf.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-css-reset" aria-labelledby="h-s04-css-reset">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">19</span>
+        <h2 id="h-s04-css-reset">Start with a CSS Reset</h2>
+        <span class="visually-hidden">Slide 19 of 34</span>
+        <a class="slide-anchor" href="#s04-css-reset" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Why start every stylesheet with a reset?</h3><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-comment">/* Put this at the TOP of style.css */</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-sel">*</span> <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">    <span class="tok-prop">margin</span><span class="tok-punct">:</span> <span class="tok-number">0</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">    <span class="tok-prop">padding</span><span class="tok-punct">:</span> <span class="tok-number">0</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">    <span class="tok-prop">box-sizing</span><span class="tok-punct">:</span> border-box<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-punct">}</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text is-primary">margin: 0; padding: 0</span> — removes browser-default spacing so YOU control everything.</p><p class="c-text"><span class="c-text is-primary">box-sizing: border-box</span> — width includes padding and border. No more surprise sizes.</p><p class="c-text"><span class="c-text is-primary">*</span> — the universal selector. Applies to EVERY element on the page.</p></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Without a reset, different browsers apply different default margins. Your layout will be inconsistent.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-specificity" aria-labelledby="h-s04-specificity">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">20</span>
+        <h2 id="h-s04-specificity">Specificity</h2>
+        <span class="visually-hidden">Slide 20 of 34</span>
+        <a class="slide-anchor" href="#s04-specificity" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Specificity: Which Rule Wins?</h3><p class="c-text">Score = (ids, classes, elements). The bigger score wins, whatever the order in the file.</p><svg viewBox="0 0 560 356" width="100%" height="356" role="img" aria-label="Specificity ladder from element selectors up to inline styles, and the rule that decides a tie"><text x="14" y="16" font-size="12" font-weight="700" fill="var(--text-tertiary)">WEAKEST</text><g><rect x="14" y="24" width="96" height="34" rx="6" fill="var(--chart-blue)" opacity="0.9"></rect><text x="26" y="46" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">p</text><text x="122" y="46" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">(0,0,1)</text><text x="192" y="46" font-size="12" fill="var(--text-tertiary)">one element</text></g><g><rect x="14" y="64" width="150" height="34" rx="6" fill="var(--chart-blue)" opacity="0.9"></rect><text x="26" y="86" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">.intro</text><text x="176" y="86" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">(0,1,0)</text><text x="246" y="86" font-size="12" fill="var(--text-tertiary)">one class</text></g><g><rect x="14" y="104" width="206" height="34" rx="6" fill="var(--chart-goldenYellow)" opacity="0.9"></rect><text x="26" y="126" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">p.intro</text><text x="232" y="126" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">(0,1,1)</text><text x="302" y="126" font-size="12" fill="var(--text-tertiary)">class + element</text></g><g><rect x="14" y="144" width="262" height="34" rx="6" fill="var(--chart-brightOrange)" opacity="0.9"></rect><text x="26" y="166" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">#header</text><text x="288" y="166" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">(1,0,0)</text><text x="358" y="166" font-size="12" fill="var(--text-tertiary)">an id — hard to override</text></g><text x="14" y="200" font-size="12" font-weight="700" fill="var(--text-tertiary)">STRONGEST</text><text x="14" y="228" font-size="13" fill="var(--text-secondary)">Count ids, then classes, then elements.</text><text x="14" y="244" font-size="13" fill="var(--text-secondary)">First column that differs decides it.</text><rect x="6" y="258" width="270" height="92" rx="8" fill="var(--fill-tertiary)" stroke="var(--stroke-secondary)"></rect><text x="18" y="278" font-size="13" font-weight="700" fill="var(--text-primary)">Same score? Last one wins.</text><text x="18" y="300" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-tertiary)">p{color:black;}</text><text x="18" y="318" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--chart-green)">p{color:navy;} &lt;-- wins</text><text x="18" y="340" font-size="11" fill="var(--text-tertiary)">Order matters only at same score.</text><rect x="286" y="258" width="268" height="92" rx="8" fill="var(--bg-elevated)" stroke="var(--chart-brightOrange)" stroke-width="1.5"></rect><text x="298" y="278" font-size="13" font-weight="700" fill="var(--chart-brightOrange)">Avoid !important</text><text x="298" y="300" font-size="12" fill="var(--text-secondary)">It wins now but blocks fixes</text><text x="298" y="318" font-size="12" fill="var(--text-secondary)">later. Add a class instead,</text><text x="298" y="336" font-size="12" fill="var(--text-secondary)">or use a precise selector.</text></svg></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-worked-example-1" aria-labelledby="h-s04-worked-example-1">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">21</span>
+        <h2 id="h-s04-worked-example-1">Worked Example 1: Body &amp; Typography</h2>
+        <span class="visually-hidden">Slide 21 of 34</span>
+        <a class="slide-anchor" href="#s04-worked-example-1" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Setting base styles for the whole site</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-comment">/* === BASE STYLES === */</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-sel">*</span> <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">    <span class="tok-prop">margin</span><span class="tok-punct">:</span> <span class="tok-number">0</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">    <span class="tok-prop">padding</span><span class="tok-punct">:</span> <span class="tok-number">0</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">    <span class="tok-prop">box-sizing</span><span class="tok-punct">:</span> border-box<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">body <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">    <span class="tok-prop">font-family</span><span class="tok-punct">:</span> Arial<span class="tok-punct">,</span> sans-serif<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">    <span class="tok-prop">font-size</span><span class="tok-punct">:</span> <span class="tok-number">16px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">    <span class="tok-prop">line-height</span><span class="tok-punct">:</span> <span class="tok-number">1.6</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src">    <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#333333</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src">    <span class="tok-prop">background-color</span><span class="tok-punct">:</span> <span class="tok-color">#f5f5f5</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">14</span><span class="c-code-src"><span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">15</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">16</span><span class="c-code-src">h1 <span class="tok-punct">{</span> <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#2c3e50</span><span class="tok-punct">;</span> <span class="tok-prop">font-size</span><span class="tok-punct">:</span> <span class="tok-number">28px</span><span class="tok-punct">;</span> <span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">17</span><span class="c-code-src">h2 <span class="tok-punct">{</span> <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#2980b9</span><span class="tok-punct">;</span> <span class="tok-prop">font-size</span><span class="tok-punct">:</span> <span class="tok-number">22px</span><span class="tok-punct">;</span> <span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">18</span><span class="c-code-src">p  <span class="tok-punct">{</span> <span class="tok-prop">margin-bottom</span><span class="tok-punct">:</span> <span class="tok-number">12px</span><span class="tok-punct">;</span> <span class="tok-punct">}</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary"><span class="c-text is-primary">*</span> — resets ALL elements. Always put this first.</p><p class="c-text is-secondary"><span class="c-text is-primary">body</span> — sets defaults inherited by child elements.</p><p class="c-text is-secondary"><span class="c-text is-primary">line-height: 1.6</span> — comfortable reading spacing.</p><p class="c-text is-secondary"><span class="c-text is-primary">h1, h2</span> — distinct colors create visual hierarchy.</p><p class="c-text is-secondary"><span class="c-text is-primary">margin-bottom</span> — adds space below paragraphs.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In the browser: light gray background, dark readable text, blue headings, spaced paragraphs.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-code-example" aria-labelledby="h-s04-code-example">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">22</span>
+        <h2 id="h-s04-code-example">Worked Example 2: Styling the Header</h2>
+        <span class="visually-hidden">Slide 22 of 34</span>
+        <a class="slide-anchor" href="#s04-code-example" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Full header stylesheet explained</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-comment">/* === HEADER === */</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">header <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-prop">background-color</span><span class="tok-punct">:</span> <span class="tok-color">#1a5276</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-prop">color</span><span class="tok-punct">:</span> white<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">  <span class="tok-prop">text-align</span><span class="tok-punct">:</span> center<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">  <span class="tok-prop">padding</span><span class="tok-punct">:</span> <span class="tok-number">30px</span> <span class="tok-number">20px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">header h1 <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">  <span class="tok-prop">font-size</span><span class="tok-punct">:</span> <span class="tok-number">36px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">  <span class="tok-prop">margin-bottom</span><span class="tok-punct">:</span> <span class="tok-number">10px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src"><span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">14</span><span class="c-code-src">header p <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">15</span><span class="c-code-src">  <span class="tok-prop">font-size</span><span class="tok-punct">:</span> <span class="tok-number">18px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">16</span><span class="c-code-src">  <span class="tok-prop">opacity</span><span class="tok-punct">:</span> <span class="tok-number">0.9</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">17</span><span class="c-code-src"><span class="tok-punct">}</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary"><span class="c-text is-primary">background-color</span> — dark blue fills the entire header area.</p><p class="c-text is-secondary"><span class="c-text is-primary">color: white</span> — all text inside header turns white. Child elements inherit this.</p><p class="c-text is-secondary"><span class="c-text is-primary">padding: 30px 20px</span> — 30px top/bottom, 20px left/right. Creates breathing room.</p><p class="c-text is-secondary"><span class="c-text is-primary">header h1</span> — descendant selector: targets only &lt;h1&gt; INSIDE &lt;header&gt;, not elsewhere.</p><p class="c-text is-secondary"><span class="c-text is-primary">opacity: 0.9</span> — subtitle is slightly transparent, creating visual hierarchy.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In the browser: a full-width dark blue bar with large white centred title and a softer subtitle beneath it.</div></div></div><p class="c-text is-secondary">Save css/style.css → Ctrl+S → refresh browser to see changes.</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-discussion" aria-labelledby="h-s04-discussion">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">23</span>
+        <h2 id="h-s04-discussion">Discussion: Why Separate CSS from HTML?</h2>
+        <span class="visually-hidden">Slide 23 of 34</span>
+        <a class="slide-anchor" href="#s04-discussion" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Why not just style everything inline?</h3><div class="c-stack" style="gap:8px"><p class="c-text">Imagine 10 pages, each with inline styles. Want to change the heading color?</p><p class="c-text">You would have to edit ALL 10 files. With external CSS, you edit ONE file.</p><p class="c-text">Separation also means designers and developers can work independently.</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>One stylesheet → one place to update → instant site-wide changes.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-debug" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-brightOrange) 26%, transparent)" aria-labelledby="h-s04-debug">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">24</span>
+        <h2 id="h-s04-debug">Debug This</h2>
+        <span class="visually-hidden">Slide 24 of 34</span>
+        <a class="slide-anchor" href="#s04-debug" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">This CSS has three bugs. Find them.</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Buggy CSS</p><div class="c-code lang-css"><span class="c-code-lang">css</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src">body <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-prop">font-family</span><span class="tok-punct">:</span> Arial<span class="tok-punct">,</span> sans-serif<span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-prop">background-color</span><span class="tok-punct">:</span> <span class="tok-color">#f5f5f5</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#333</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">  <span class="tok-prop">margin</span><span class="tok-punct">:</span> <span class="tok-number">0</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">  <span class="tok-prop">padding</span><span class="tok-punct">:</span> <span class="tok-number">20px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">h1 <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">  <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#2c3e50</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">  <span class="tok-prop">border-bottom</span><span class="tok-punct">:</span> <span class="tok-number">2px</span> solid <span class="tok-color">#3498db</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src">  <span class="tok-prop">padding-bottom</span><span class="tok-punct">:</span> <span class="tok-number">10px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src"><span class="tok-punct">}</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">14</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">15</span><span class="c-code-src"><span class="tok-sel">.intro</span> <span class="tok-punct">{</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">16</span><span class="c-code-src">  <span class="tok-prop">font-size</span><span class="tok-punct">:</span> <span class="tok-number">18px</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">17</span><span class="c-code-src">  <span class="tok-prop">line-height</span><span class="tok-punct">:</span> <span class="tok-number">1.6</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">18</span><span class="c-code-src">  <span class="tok-prop">color</span><span class="tok-punct">:</span> <span class="tok-color">#666</span><span class="tok-punct">;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">19</span><span class="c-code-src"><span class="tok-punct">}</span></span></span></code></pre></div></div><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Bugs</p><p class="c-text is-danger">1. No &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt; in the HTML — the CSS file is not connected to the page.</p><p class="c-text is-danger">2. .intro class is defined but no HTML element has class=&quot;intro&quot; — the style will never apply.</p><p class="c-text is-danger">3. No box-sizing: border-box — padding will add to the total width, causing layout issues.</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Rule: CSS only works if (1) the file is linked, (2) selectors match HTML elements, and (3) the box model is predictable.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-mistakes" aria-labelledby="h-s04-mistakes">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">25</span>
+        <h2 id="h-s04-mistakes">Common Mistakes</h2>
+        <span class="visually-hidden">Slide 25 of 34</span>
+        <a class="slide-anchor" href="#s04-mistakes" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Common Mistakes</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Forgetting to link the CSS file — no &lt;link&gt; in &lt;head&gt; means no styles.</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Wrong selector syntax — using # for a class or . for an ID.</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Missing semicolons — color: navy (no ;) breaks the next declaration.</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Confusing margin vs padding — margin = outside, padding = inside.</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>No CSS reset — browsers apply different default margins. Start with * { margin: 0; padding: 0; box-sizing: border-box; }</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Wrong path in &lt;link&gt; — from pages/ subfolder, use ../css/style.css not css/style.css</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Using !important — it wins now but blocks fixes later. Use better selectors instead.</div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-self-study-check" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent)" aria-labelledby="h-s04-self-study-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">26</span>
+        <h2 id="h-s04-self-study-check">Self-Study Check</h2>
+        <span class="visually-hidden">Slide 26 of 34</span>
+        <a class="slide-anchor" href="#s04-self-study-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Self-Study Check</h3><p class="c-text is-secondary">Can you answer these without scrolling back?</p><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>1. In h1 { color: red; } which word is the selector?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>2. Which symbol starts a class selector? An id selector?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>3. Which of the 3 ways to add CSS is recommended, and why?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>4. What tag in &lt;head&gt; links an external stylesheet?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>5. True or false: a property and its value are separated by a colon and end with a semicolon.</div></div></div></div><hr class="c-divider"/><p class="c-text is-tertiary">Answers are in the speaker notes. Check your understanding before moving on.</p></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Answer key: 1. h1 is the selector. 2. A dot (.) starts a class selector; a hash (#) starts an id selector. 3. External, because one file styles every page and is easiest to maintain. 4. The &lt;link&gt; tag inside &lt;head&gt;. 5. True — property: value; with a colon between them and a semicolon at the end.</div>
+      </details>
+    </section>
+    <section class="slide" id="s04-practice" aria-labelledby="h-s04-practice">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">27</span>
+        <h2 id="h-s04-practice">Hands-On Practice</h2>
+        <span class="visually-hidden">Slide 27 of 34</span>
+        <a class="slide-anchor" href="#s04-practice" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Hands-On Practice</h3><p class="c-text">Open exercises/session-04/ in your project folder.</p><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-tag is-success">Task 1</span><p class="c-text">Create an External CSS File and Link It</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-success">Task 2</span><p class="c-text">Tag Selectors, Class Selectors, and ID Selectors</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-success">Task 3</span><p class="c-text">Practice Margin and Padding</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-success">Task 4</span><p class="c-text">Apply CSS to All Pages</p></div></div><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Estimated time: 55 minutes.</div></div></div><p class="c-text is-secondary">Preview in the browser after every save. Press F12 to inspect.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-practice-tips" aria-labelledby="h-s04-practice-tips">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">28</span>
+        <h2 id="h-s04-practice-tips">Practice Tips</h2>
+        <span class="visually-hidden">Slide 28 of 34</span>
+        <a class="slide-anchor" href="#s04-practice-tips" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Tips for the in-class tasks</h3><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text is-primary">Start with the reset</span> (* { margin: 0; padding: 0; box-sizing: border-box; }) at the top of style.css.</p><p class="c-text"><span class="c-text is-primary">Save after every change</span> and refresh the browser to see results immediately.</p><p class="c-text"><span class="c-text is-primary">Check the &lt;link&gt; path</span> carefully — from pages/ use ../css/style.css.</p><p class="c-text"><span class="c-text is-primary">If nothing changes</span>, check for missing semicolons or wrong selector names.</p><p class="c-text"><span class="c-text is-primary">Use F12 DevTools</span> to inspect elements and see which styles are applied.</p></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Stuck? Compare your CSS against the worked examples on previous slides.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-do-dont" aria-labelledby="h-s04-do-dont">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">29</span>
+        <h2 id="h-s04-do-dont">CSS: Do vs Don&#39;t</h2>
+        <span class="visually-hidden">Slide 29 of 34</span>
+        <a class="slide-anchor" href="#s04-do-dont" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Do vs Don&#x27;t</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-stack" style="gap:6px"><h4 class="c-h3 is-success">Do</h4><p class="c-text">Keep all CSS in one external css/style.css</p><p class="c-text">Style with classes: .card, .btn, .nav-link</p><p class="c-text">Start the file with a reset: margin, padding, box-sizing</p><p class="c-text">Group related rules and comment each section</p><p class="c-text">Use rem or em for font sizes so text scales with user settings</p></div><div class="c-stack" style="gap:6px"><h4 class="c-h3 is-danger">Don&#x27;t</h4><p class="c-text">Sprinkle style=&quot;...&quot; attributes through the HTML</p><p class="c-text">Chain long selectors like body div div p span</p><p class="c-text">Reach for !important to win a specificity fight</p><p class="c-text">Style by id (#header) when a class would be reusable</p><p class="c-text">Hard-code the same colour value in twelve places</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-accessibility" aria-labelledby="h-s04-accessibility">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">30</span>
+        <h2 id="h-s04-accessibility">Accessible Colour and Type</h2>
+        <span class="visually-hidden">Slide 30 of 34</span>
+        <a class="slide-anchor" href="#s04-accessibility" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Styling Decisions That Decide Readability</h3><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-pill">Contrast</span><p class="c-text">Body text needs a contrast ratio of at least 4.5:1 against its background. #999 on white fails; #595959 passes.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Font size</span><p class="c-text">Never set body text below 16px. Small type is the most common complaint on student sites.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Line height</span><p class="c-text">line-height: 1.5 or more for paragraphs. Tight lines are hard to track for dyslexic readers.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Colour alone</span><p class="c-text">Never use colour as the only signal. Add an icon, underline, or label so colour-blind users get the message too.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Focus</span><p class="c-text">Never write outline: none without providing a replacement focus style. Keyboard users need to see where they are.</p></div></div><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Check contrast in DevTools: inspect the element, click the colour swatch, and read the contrast ratio it reports.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-practice-check" aria-labelledby="h-s04-practice-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">31</span>
+        <h2 id="h-s04-practice-check">Practice Checkpoints</h2>
+        <span class="visually-hidden">Slide 31 of 34</span>
+        <a class="slide-anchor" href="#s04-practice-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">How to Know Each Task Is Done</h3><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-pill">Task 1</span><p class="c-text">The external stylesheet is loading: change one colour, reload, and see the change.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 2</span><p class="c-text">The reset works: the page has no unexpected gap at the very top edge.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 3</span><p class="c-text">Your class selectors match the HTML — inspect an element and confirm your rule appears in the Styles pane.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 4</span><p class="c-text">Body text is at least 16px with line-height 1.5, and passes the contrast check.</p></div></div><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>If a rule seems ignored, inspect the element: DevTools strikes through overridden declarations and shows which selector won.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-assignment" aria-labelledby="h-s04-assignment">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">32</span>
+        <h2 id="h-s04-assignment">Assignment: Style Your Site</h2>
+        <span class="visually-hidden">Slide 32 of 34</span>
+        <a class="slide-anchor" href="#s04-assignment" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Start in class — finish for homework</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Deliverable</p><p class="c-text">css/style.css linked from every page of your Student Club Website, with zero inline style attributes remaining.</p><p class="c-text" style="font-weight:700">Acceptance criteria</p><p class="c-text">A reset block at the top of the file.</p><p class="c-text">Body typography set: font-family, font-size, line-height, colour.</p><p class="c-text">Header and nav styled with class selectors.</p><p class="c-text">At least one reusable class used on two or more elements.</p></div><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Before you submit</p><p class="c-text">Validate the CSS at jigsaw.w3.org/css-validator.</p><p class="c-text">Search your HTML for style=&quot; — there should be no hits.</p><p class="c-text">Check text contrast on every coloured background.</p><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>One stylesheet for the whole site. The moment you copy CSS into a second file, the two versions start drifting apart.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-homework" aria-labelledby="h-s04-homework">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">33</span>
+        <h2 id="h-s04-homework">Homework</h2>
+        <span class="visually-hidden">Slide 33 of 34</span>
+        <a class="slide-anchor" href="#s04-homework" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Homework 4 (homework/session-04/)</h3><p class="c-text">See homework/session-04/ for full requirements.</p><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text">Styling with External CSS</span> — create an external stylesheet and style your About page.</p><p class="c-text">Task 1: Create project/css/style.css and link it in project/pages/about.html using a relative path.</p><p class="c-text">Task 2: Style the About page with body colors/fonts, distinct heading styles, paragraph line-height/spacing, image max-width/borders, and at least one styled list.</p></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Due Sunday 23:59. Submit via the course portal.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s04-recap" aria-labelledby="h-s04-recap">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">34</span>
+        <h2 id="h-s04-recap">Recap &amp; Next</h2>
+        <span class="visually-hidden">Slide 34 of 34</span>
+        <a class="slide-anchor" href="#s04-recap" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Recap</h3><div class="c-stack" style="gap:6px"><p class="c-text">CSS separates style from structure — one file styles the whole site.</p><p class="c-text">Use external stylesheets, class selectors, and a CSS reset.</p><p class="c-text">The box model: content, padding, border, margin. Use border-box.</p><p class="c-text">Specificity decides which rule wins: ID &gt; class &gt; element.</p></div><hr class="c-divider"/><h4 class="c-h3">Next Session</h4><p class="c-text is-secondary">Session 5: Semantic HTML5 elements and Flexbox layouts — building a two-column page with header, nav, main + sidebar, and footer.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="backtotop" id="backtotop" type="button" aria-label="Back to top">↑</button>
+<footer class="deck-footer">
+  <p>Generated from <code>canvases/buoi-04.canvas.tsx</code>. Keys: <kbd>j</kbd>/<kbd>k</kbd> next &amp; previous slide · <kbd>/</kbd> filter · <kbd>n</kbd> notes · <kbd>t</kbd> theme.</p>
+</footer>
+<script src="assets/deck.js" defer></script>
+</body>
+</html>

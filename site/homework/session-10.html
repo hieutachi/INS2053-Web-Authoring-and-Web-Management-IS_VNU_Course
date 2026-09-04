@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 10: Embedding Video and Audio — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 10</span></nav>
+<main id="main">
+  <h1>Homework 10: Embedding Video and Audio</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-10.html">Session 10 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-10-embedding-video-and-audio">Homework 10: Embedding Video and Audio<a class="anchor" href="#homework-10-embedding-video-and-audio" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 11)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Learn to embed video and audio using HTML5 elements</li>
+<li>Understand media formats and browser compatibility</li>
+<li>Add rich media content to your club website</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-create-a-media-page">Task 1: Create a Media Page<a class="anchor" href="#task-1-create-a-media-page" aria-label="Link to this section">#</a></h4>
+<p>Create a new page called &quot;Media&quot; to showcase video and audio content for your club.</p>
+<p><strong>Create the file:</strong> <code>project/media.html</code></p>
+<p><strong>Your Media page must include:</strong></p>
+<ol>
+<li><p><strong>Video Section:</strong></p>
+<ul>
+<li>Use the <code>&lt;video&gt;</code> element to embed a video</li>
+<li>Include <code>controls</code> attribute so users can play/pause</li>
+<li>Set a <code>width</code> attribute (e.g., <code>width=&quot;560&quot;</code>)</li>
+<li>Add a <code>poster</code> attribute with a thumbnail image</li>
+<li>Add fallback text for browsers that don&#39;t support video</li>
+<li>You can use a sample video from the internet or a local file</li>
+</ul>
+</li>
+<li><p><strong>Audio Section:</strong></p>
+<ul>
+<li>Use the <code>&lt;audio&gt;</code> element to embed audio</li>
+<li>Include <code>controls</code> attribute</li>
+<li>Add fallback text</li>
+<li>You can use a sample audio file or a royalty-free audio URL</li>
+</ul>
+</li>
+<li><p><strong>Page Content:</strong></p>
+<ul>
+<li>A heading &quot;Club Media&quot;</li>
+<li>A paragraph describing the video (what it shows)</li>
+<li>A paragraph describing the audio content</li>
+<li>At least one image related to media/content creation</li>
+</ul>
+</li>
+</ol>
+<p><strong>Example code:</strong></p>
+<pre><code class="language-html">&lt;video width=&quot;560&quot; controls poster=&quot;images/video-thumbnail.jpg&quot;&gt;
+  &lt;source src=&quot;https://www.w3schools.com/html/mov_bbb.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  Your browser does not support the video element.
+&lt;/video&gt;
+
+&lt;audio controls&gt;
+  &lt;source src=&quot;https://www.w3schools.com/html/horse.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+</code></pre>
+<h4 id="task-2-style-the-media-page">Task 2: Style the Media Page<a class="anchor" href="#task-2-style-the-media-page" aria-label="Link to this section">#</a></h4>
+<p>Add CSS to make the media page look good.</p>
+<p><strong>Your CSS must include:</strong></p>
+<ul>
+<li>Center the video element</li>
+<li>Style the audio player (add margin, maybe a background)</li>
+<li>Style the section headings</li>
+<li>Add spacing between sections</li>
+<li>Make the video responsive with <code>max-width: 100%</code></li>
+</ul>
+<h4 id="task-3-update-navigation">Task 3: Update Navigation<a class="anchor" href="#task-3-update-navigation" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Add a &quot;Media&quot; link to the navigation on ALL pages</li>
+<li>Every page sits at the project root, so the link is <code>href=&quot;media.html&quot;</code> everywhere</li>
+</ul>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/media.html</code> (new page)</li>
+<li><code>project/css/style.css</code> (add media styles)</li>
+<li>All 4 existing HTML pages (update navigation)</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW10: Add media page with video and audio&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Video element</td>
+<td>3</td>
+<td>Uses video tag with controls, poster, fallback</td>
+</tr>
+<tr>
+<td>Audio element</td>
+<td>3</td>
+<td>Uses audio tag with controls and fallback</td>
+</tr>
+<tr>
+<td>Page content</td>
+<td>2</td>
+<td>Has headings, descriptions, images</td>
+</tr>
+<tr>
+<td>Media styling</td>
+<td>1</td>
+<td>Video centered, audio styled</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>1</td>
+<td>Media link added to all pages, links work</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>If you don&#39;t have video/audio files, use sample URLs from w3schools.com or similar</li>
+<li>The <code>poster</code> attribute on video shows an image before the video plays</li>
+<li>Test both video and audio in multiple browsers if possible</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>Your Media page should have a video player that users can play and pause, an audio player, and descriptions of the content. The navigation bar should include a &quot;Media&quot; link that works from every page.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

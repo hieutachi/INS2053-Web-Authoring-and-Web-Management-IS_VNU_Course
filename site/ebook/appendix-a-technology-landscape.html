@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Choosing Web Technologies — A Beginner&#39;s Decision Guide — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Choosing Web Technologies — A Beginner&#39;s Decision Guide — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Ebook</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Appendix A</span></nav>
+<main id="main">
+  <h1>Choosing Web Technologies — A Beginner&#39;s Decision Guide</h1>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#1-choosing-is-a-skill">1. Choosing Is a Skill</a></li>
+        <li class="d2"><a href="#2-the-5-criterion-decision-framework">2. The 5-Criterion Decision Framework</a></li>
+        <li class="d2"><a href="#3-the-web-technology-landscape-awareness">3. The Web Technology Landscape (Awareness)</a></li>
+      </ol>
+    </nav>
+  <article class="doc">
+<h2 id="appendix-a">🧭 APPENDIX A<a class="anchor" href="#appendix-a" aria-label="Link to this section">#</a></h2>
+<h2 id="choosing-web-technologies-a-beginners-decision-guide"><strong>Choosing Web Technologies — A Beginner&#39;s Decision Guide</strong><a class="anchor" href="#choosing-web-technologies-a-beginners-decision-guide" aria-label="Link to this section">#</a></h2>
+<blockquote>
+<p>This appendix supports <strong>CLO3: CHOOSE appropriate technologies for Web application development.</strong>
+The course teaches you to BUILD with HTML + CSS (+ Dreamweaver/VS Code). But a professional must also know
+what ELSE exists and HOW to choose. This appendix gives you that awareness and a simple, repeatable
+decision method. It is reading material — you are NOT required to learn these other tools.</p>
+</blockquote>
+<hr>
+<h2 id="appendix-information">📌 APPENDIX INFORMATION<a class="anchor" href="#appendix-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 When to read:  Any time after Session 11 — best before the capstone technology
+                  choice. Not tied to a timetabled session; ~45 minutes of reading.
+📚 Reference:     MDN &quot;Web technology for developers&quot; (overview pages only)
+🎯 Objectives:    1. Explain why technology selection is a skill separate from coding
+                  2. Apply the 5-criterion framework to compare two technologies
+                  3. Name the main layers of the web technology landscape
+                  4. Justify a technology choice in writing
+📖 Prepare:       1. Have your capstone project brief in front of you
+                  2. Be ready to name two candidate technologies to compare
+🖼 Diagrams:      none of its own. Course-wide decks: canvases/ins2053-overview.canvas.tsx
+                  (syllabus tour) and canvases/ins2053-bai-giang.canvas.tsx (9 diagrams)
+🔗 Outcomes:      CLO3 (choose appropriate technologies for web development)
+                  CLO5 (evaluate, document, and present a web application)
+</code></pre>
+<hr>
+<h2 id="what-you-will-learn">🎯 WHAT YOU WILL LEARN<a class="anchor" href="#what-you-will-learn" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>Why &quot;choosing a technology&quot; is a real skill, separate from coding</li>
+<li>A simple <strong>5-criterion decision framework</strong> you can apply to any choice</li>
+<li>A <strong>map of the web technology landscape</strong> (what exists beyond HTML/CSS)</li>
+<li>How to justify a choice in writing (a skill employers value)</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-choosing-is-a-skill">1. Choosing Is a Skill<a class="anchor" href="#1-choosing-is-a-skill" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Technology selection</strong> is the process of picking the tools, languages, and platforms for a project
+<em>after comparing alternatives against the project&#39;s real needs</em> — not just using whatever you already know.</p>
+<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Imagine you need to travel from Hanoi to a nearby town:</p>
+<ul>
+<li><strong>Motorbike</strong> = cheap, flexible, good for 1–2 people, but tiring for long trips</li>
+<li><strong>Bus</strong> = cheap and safe, but slow and on a fixed route</li>
+<li><strong>Car</strong> = comfortable and fast, but expensive and needs a driver</li>
+</ul>
+<p>There is no &quot;best&quot; vehicle. The best choice depends on: <strong>how many people, how far, budget, and time.</strong>
+Choosing web technologies works exactly the same way.</p>
+<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fit</td>
+<td>The wrong tool makes a simple job hard (e.g., using a framework for a 3-page brochure site)</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Some tools cost money or need expensive hosting</td>
+</tr>
+<tr>
+<td>Maintainability</td>
+<td>A tool nobody on the team knows becomes a liability</td>
+</tr>
+<tr>
+<td>Employability</td>
+<td>MIS graduates are often asked to <em>recommend</em> tools, not just use them</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="2-the-5-criterion-decision-framework">2. The 5-Criterion Decision Framework<a class="anchor" href="#2-the-5-criterion-decision-framework" aria-label="Link to this section">#</a></h3>
+<p>When comparing any two (or more) technologies, score them against <strong>five criteria</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Criterion</th>
+<th>Question to ask</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Requirements fit</strong></td>
+<td>Does it actually do what the project needs?</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Cost</strong></td>
+<td>License fees? Hosting fees? Developer time?</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Learning curve</strong></td>
+<td>Can the team learn it in the time available?</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Community &amp; support</strong></td>
+<td>Is there documentation, tutorials, and help when stuck?</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Maintenance &amp; future</strong></td>
+<td>Is it actively updated, or dying (like Flash)?</td>
+</tr>
+</tbody></table>
+<h4 id="how-to-use-it">How to use it<a class="anchor" href="#how-to-use-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>List the candidate technologies.</li>
+<li>Score each criterion 1 (poor) to 5 (excellent).</li>
+<li>Add the scores; the highest total is your recommendation.</li>
+<li><strong>Write one sentence justifying each score</strong> — the justification is the real skill.</li>
+</ol>
+<h4 id="worked-example-a-3-page-club-website">🔍 Worked example: &quot;A 3-page club website&quot;<a class="anchor" href="#worked-example-a-3-page-club-website" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Plain HTML/CSS</th>
+<th>WordPress</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Requirements fit</td>
+<td>5 (a small static site is exactly this)</td>
+<td>3 (overkill)</td>
+<td>1 (far overkill)</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>5 (free, cheap hosting)</td>
+<td>3 (hosting + plugins)</td>
+<td>3 (build tooling)</td>
+</tr>
+<tr>
+<td>Learning curve</td>
+<td>5 (you just learned it)</td>
+<td>3</td>
+<td>1 (steep)</td>
+</tr>
+<tr>
+<td>Community</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>5 (standards never die)</td>
+<td>3 (needs updates)</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>25</strong> ✅</td>
+<td>17</td>
+<td>13</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion:</strong> For a small static site, plain HTML/CSS wins. This is exactly why this course uses it.</p>
+<hr>
+<h3 id="3-the-web-technology-landscape-awareness">3. The Web Technology Landscape (Awareness)<a class="anchor" href="#3-the-web-technology-landscape-awareness" aria-label="Link to this section">#</a></h3>
+<p>You do not need to learn these — just know they exist and what problem each solves.</p>
+<h4 id="31-the-layer-cake">3.1 The layer cake<a class="anchor" href="#31-the-layer-cake" aria-label="Link to this section">#</a></h4>
+<pre><code>┌────────────────────────────────────────────┐
+│  Content / Structure      HTML             │  ← you know this
+│  Presentation             CSS              │  ← you know this
+│  Behaviour                JavaScript       │  ← awareness
+├────────────────────────────────────────────┤
+│  CSS helpers        Bootstrap, Tailwind,   │  ← awareness
+│                     Sass (preprocessor)    │
+│  CMS (no-code)      WordPress, Wix,        │  ← awareness
+│                     Google Sites           │
+│  Static generators  Jekyll, Hugo,          │  ← awareness
+│                     Eleventy               │
+│  JS frameworks      React, Vue, Angular    │  ← awareness
+│  Backend            PHP, Node.js, Python   │  ← out of scope
+│  Hosting            GitHub Pages, Netlify, │  ← awareness
+│                     Vercel, shared hosting │
+└────────────────────────────────────────────┘
+</code></pre>
+<h4 id="32-quick-orientation-table">3.2 Quick orientation table<a class="anchor" href="#32-quick-orientation-table" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>Examples</th>
+<th>Best for</th>
+<th>Overkill for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSS framework</td>
+<td>Bootstrap, Tailwind</td>
+<td>fast, consistent UI on big sites</td>
+<td>a tiny personal page</td>
+</tr>
+<tr>
+<td>CSS preprocessor</td>
+<td>Sass</td>
+<td>large stylesheets with variables/mixins</td>
+<td>a 1-file stylesheet</td>
+</tr>
+<tr>
+<td>CMS</td>
+<td>WordPress, Wix</td>
+<td>non-technical owners who edit content often</td>
+<td>a site that never changes</td>
+</tr>
+<tr>
+<td>Static site generator</td>
+<td>Jekyll, Hugo</td>
+<td>blogs/docs with many similar pages</td>
+<td>a 3-page site</td>
+</tr>
+<tr>
+<td>JS framework</td>
+<td>React, Vue, Angular</td>
+<td>interactive apps (dashboards, SPAs)</td>
+<td>a static brochure site</td>
+</tr>
+<tr>
+<td>Static hosting</td>
+<td>GitHub Pages, Netlify, Vercel</td>
+<td>free/cheap hosting of static sites</td>
+<td>sites needing a database</td>
+</tr>
+</tbody></table>
+<h4 id="important-note-course-scope">⚠️ Important note (course scope)<a class="anchor" href="#important-note-course-scope" aria-label="Link to this section">#</a></h4>
+<p>This course deliberately keeps the <strong>required</strong> stack to HTML + CSS (+ Dreamweaver/VS Code), per the syllabus.
+The tools above are for your <strong>awareness</strong> so you can <em>choose</em> wisely in future projects (CLO3) —
+they are NOT examined and NOT required for the capstone.</p>
+<hr>
+<h2 id="summary">📋 SUMMARY<a class="anchor" href="#summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>Takeaway</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Choosing ≠ coding</td>
+<td>Selection is comparing alternatives against needs</td>
+</tr>
+<tr>
+<td>5 criteria</td>
+<td>Fit, Cost, Learning curve, Community, Maintenance</td>
+</tr>
+<tr>
+<td>Score + justify</td>
+<td>Number each 1–5 and write one reason per score</td>
+</tr>
+<tr>
+<td>Know the landscape</td>
+<td>Frameworks, CMS, generators, hosting each solve a different problem</td>
+</tr>
+<tr>
+<td>Right-size the tool</td>
+<td>Small static site → plain HTML/CSS is usually correct</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="practice-decision-exercise">🛠️ PRACTICE — DECISION EXERCISE<a class="anchor" href="#practice-decision-exercise" aria-label="Link to this section">#</a></h2>
+<h4 id="task-1-score-a-real-scenario">TASK 1: Score a real scenario<a class="anchor" href="#task-1-score-a-real-scenario" aria-label="Link to this section">#</a></h4>
+<p><strong>Situation:</strong> A local restaurant owner (non-technical) wants a website to show the menu, opening hours,
+and a phone number. She will want to change prices herself every week and has no budget for a developer.</p>
+<p>Using the 5-criterion framework, compare <strong>plain HTML/CSS</strong> vs <strong>WordPress</strong> vs <strong>Wix</strong> and fill a table
+like the worked example. Then write a 3-sentence recommendation to the owner in plain language.</p>
+<p>✅ <strong>What to check in your answer:</strong></p>
+<ul>
+<li>Did you weight &quot;owner can edit without a developer&quot; highly? (That favours a CMS/site-builder.)</li>
+<li>Did you note cost and learning curve for the owner, not for you?</li>
+<li>Is your recommendation justified, not just a guess?</li>
+</ul>
+<p>💾 <strong>File to save:</strong> <code>notes/technology-choice-restaurant.md</code></p>
+<h4 id="task-2-justify-the-courses-own-choice">TASK 2: Justify the course&#39;s own choice<a class="anchor" href="#task-2-justify-the-courses-own-choice" aria-label="Link to this section">#</a></h4>
+<p>Write 5 sentences explaining why this course uses plain HTML/CSS for the Student Club Website,
+using the 5 criteria. (This is also good revision for the final exam.)</p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">MDN — Choosing and installing tools</a></li>
+<li><a href="https://pages.github.com/">GitHub Pages</a></li>
+<li><a href="https://www.netlify.com/">Netlify</a></li>
+<li><a href="https://wordpress.org/">WordPress.org</a></li>
+</ul>
+<hr>
+<h2 id="where-this-fits">⏭️ WHERE THIS FITS<a class="anchor" href="#where-this-fits" aria-label="Link to this section">#</a></h2>
+<p>Read this appendix after <strong>Session 11</strong> (site planning) and again before the <strong>final exam</strong>,
+when you may be asked to justify a technology or structure choice.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

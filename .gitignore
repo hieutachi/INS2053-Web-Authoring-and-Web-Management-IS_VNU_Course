@@ -15,6 +15,7 @@ _tools/*.txt
 
 # One-off audit probes. The re-runnable QA scripts have no tmp- prefix.
 _tools/tmp-*.js
+_tools/tmp-*.mjs
 
 # Common generated dependencies and build output
 node_modules/

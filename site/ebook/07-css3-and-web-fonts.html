@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 7: CSS3 and Web Fonts — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Session 7: CSS3 and Web Fonts — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Ebook</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chapter 7</span></nav>
+<main id="main">
+  <h1>Session 7: CSS3 and Web Fonts</h1>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#1-web-fonts-and-google-fonts">1. Web Fonts and Google Fonts</a></li>
+        <li class="d2"><a href="#2-adding-google-fonts-to-your-page">2. Adding Google Fonts to Your Page</a></li>
+        <li class="d2"><a href="#3-font-family-stacks">3. Font-Family Stacks</a></li>
+        <li class="d2"><a href="#4-text-styling-properties">4. Text Styling Properties</a></li>
+        <li class="d2"><a href="#5-css3-rounded-corners-border-radius">5. CSS3 Rounded Corners (border-radius)</a></li>
+        <li class="d2"><a href="#6-css3-shadows-box-shadow">6. CSS3 Shadows (box-shadow)</a></li>
+        <li class="d2"><a href="#7-css3-gradients">7. CSS3 Gradients</a></li>
+        <li class="d2"><a href="#8-css3-transitions">8. CSS3 Transitions</a></li>
+        <li class="d2"><a href="#9-hover-effects-with-transitions-and-transforms">9. Hover Effects with Transitions and Transforms</a></li>
+        <li class="d2"><a href="#example-1-loading-and-applying-google-fonts">Example 1: Loading and Applying Google Fonts</a></li>
+        <li class="d2"><a href="#example-2-styled-event-card-with-shadow-rounded-corners-and-hover-lift">Example 2: Styled Event Card with Shadow, Rounded Corners, and Hover Lift</a></li>
+        <li class="d2"><a href="#example-3-gradient-header-with-text-shadow">Example 3: Gradient Header with Text Shadow</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Chapter navigation">
+    <a class="up" href="../sessions/session-07.html">Session 7 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-7">🟦 SESSION 7<a class="anchor" href="#session-7" aria-label="Link to this section">#</a></h2>
+<h2 id="css3-and-web-fonts"><strong>CSS3 and Web Fonts</strong><a class="anchor" href="#css3-and-web-fonts" aria-label="Link to this section">#</a></h2>
+<p>Welcome back, everyone! In this session we are going to make your Student Club Website look truly <em>modern</em> and <em>professional</em>. Up until now, our pages have been functional but a little plain — rectangular boxes, flat colours, and system fonts that every other website uses. Today we change all of that. You will learn how to load beautiful custom fonts from Google Fonts, add rounded corners, shadows, gradients, and smooth hover animations using pure CSS3. By the end of this session your site will look like something you would actually be proud to show off. No image-editing software needed — just code!</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    Chapter 7 — CSS3 &amp; Web Fonts (course ebook)
+                 MDN: &quot;CSS transitions&quot;, &quot;Using CSS gradients&quot;, &quot;@font-face&quot;
+🎯 Objectives:   1. Use Google Fonts, @font-face, and font-family stacks
+                 2. Apply text styling (text-align, line-height, letter-spacing)
+                 3. Create CSS3 transitions and hover effects
+                 4. Enhance the Student Club Website with modern visuals
+📖 Prepare:      1. Finish the Sessions 1-6 hands-on tasks
+                 2. Have your student-club-site folder open in Dreamweaver / VS Code
+                 3. Check your internet connection (Google Fonts loads online)
+🖼 Diagrams:     canvases/buoi-07.canvas.tsx — GoogleFontsFlow, FontStackChain, PolishLab
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Import and use <strong>Google Fonts</strong> in any HTML page via <code>&lt;link&gt;</code> tags.</li>
+<li>Write correct <strong><code>font-family</code> fallback stacks</strong> so text always renders even if the custom font fails to load.</li>
+<li>Understand the difference between <code>@import</code> and <code>&lt;link&gt;</code> for loading fonts, and know which is preferred.</li>
+<li>Style text professionally using <strong><code>text-align</code></strong>, <strong><code>line-height</code></strong>, <strong><code>letter-spacing</code></strong>, and <strong><code>text-shadow</code></strong>.</li>
+<li>Create <strong>rounded corners</strong> with <code>border-radius</code> (including shorthand values).</li>
+<li>Add depth with <strong><code>box-shadow</code></strong> on cards, buttons, and containers.</li>
+<li>Build <strong>linear and radial gradients</strong> as background images.</li>
+<li>Animate property changes smoothly with <strong>CSS3 <code>transition</code></strong>.</li>
+<li>Combine <code>transition</code> with <strong><code>:hover</code> pseudo-class</strong> to create interactive hover effects.</li>
+<li>Apply all of the above to the <strong>Student Club Website</strong> project.</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-web-fonts-and-google-fonts">1. Web Fonts and Google Fonts<a class="anchor" href="#1-web-fonts-and-google-fonts" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>web font</strong> is a font file that is downloaded by the browser when a visitor opens your page. Instead of relying only on fonts already installed on the user&#39;s computer (like Arial or Times New Roman), you can serve <em>any</em> font you like — as long as you have the right licence.</p>
+<p><strong>Google Fonts</strong> is a free, open-source library of over 1,500 font families hosted on Google&#39;s servers. You do not need to download or host the font files yourself; you simply tell the browser where to fetch them.</p>
+<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think of Google Fonts like Spotify for typefaces. Spotify streams music from its servers instead of requiring you to own every MP3 file. Google Fonts streams font files to the visitor&#39;s browser on demand. The most popular fonts are cached worldwide, so they load very fast.</p>
+<h4 id="12-why-it-matters">1.2 Why it matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<p>Without web fonts, your website is limited to the handful of &quot;web-safe&quot; fonts that happen to be pre-installed on each visitor&#39;s operating system. This means your carefully designed heading might render in boring Times New Roman on someone else&#39;s machine. Google Fonts gives you typographic control that was previously only possible in print design.</p>
+<pre><code>HOW GOOGLE FONTS WORKS (simplified):
+
+Your HTML                Google Server           Visitor Browser
+┌──────────────┐        ┌───────────────┐        ┌──────────────────┐
+│ &lt;link href=  │──GET──▶│ serves .woff2 │──file──▶│ Downloads font   │
+│  &quot;fonts.goog │        │ font file     │        │ Applies to text  │
+│   leapis...&quot; │        │               │        │                  │
+└──────────────┘        └───────────────┘        └──────────────────┘
+</code></pre>
+<h4 id="important-notes">⚠️ Important notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>You must have an <strong>internet connection</strong> while developing for Google Fonts to load. If you work offline, the fallback font will display instead.</li>
+<li>Only request the <strong>font weights you actually use</strong> (e.g., 400 and 700). Requesting every weight slows down page load.</li>
+<li>Always include a <strong>fallback generic family</strong> at the end of your <code>font-family</code> declaration (e.g., <code>sans-serif</code>, <code>serif</code>, <code>monospace</code>).</li>
+</ul>
+<h4 id="try-it-yourself-load-a-google-font-properly">🧪 Try It Yourself — Load a Google Font Properly<a class="anchor" href="#try-it-yourself-load-a-google-font-properly" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Add a web font and verify it arrived over the network.</p>
+<ol>
+<li>Go to fonts.google.com, pick Roboto, and select the styles you will actually use — Regular 400 and Bold 700.</li>
+<li>Copy the <code>&lt;link&gt;</code> tags into <code>&lt;head&gt;</code>, <strong>above</strong> your own stylesheet:<pre><code class="language-html">&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+</li>
+<li>Apply it: <code>body { font-family: &#39;Roboto&#39;, sans-serif; }</code></li>
+<li>Reload with F12 → <strong>Network</strong> open, filter to <strong>Font</strong>, and count the requests.</li>
+</ol>
+<p><strong>Expected result:</strong> Two font files download (one per weight) and the page text visibly changes. If you requested nine weights, you would see nine files — for no benefit.</p>
+<details>
+<summary>The three details that trip people up</summary><p><strong>Order.</strong> The font <code>&lt;link&gt;</code> must come before your stylesheet. If your CSS is parsed first, <code>font-family: &#39;Roboto&#39;</code> refers to a font the browser has not been told how to fetch yet.</p>
+<p><strong>Weights.</strong> Every weight is a separate download. Selecting all nine on the Google Fonts page can add several hundred kilobytes to a page that uses two of them. Request 400 and 700, and add others only when you actually use them.</p>
+<p><strong><code>&amp;display=swap</code>.</strong> Without it, text can stay invisible for up to three seconds while the font loads — the &quot;flash of invisible text&quot;. With it, the browser shows the fallback font immediately and swaps in the web font when it arrives. Visible text in a fallback beats no text at all.</p>
+</details><hr>
+<h3 id="2-adding-google-fonts-to-your-page">2. Adding Google Fonts to Your Page<a class="anchor" href="#2-adding-google-fonts-to-your-page" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-07.canvas.tsx</code> → <code>GoogleFontsFlow</code> — slide <code>s7-google-fonts</code> (&quot;Google Fonts&quot;)</p>
+</blockquote>
+<p>There are two ways to load Google Fonts: the <code>&lt;link&gt;</code> tag (recommended) and the CSS <code>@import</code> rule.</p>
+<h4 id="comparison-table">🔍 Comparison table<a class="anchor" href="#comparison-table" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>&lt;link&gt;</code> tag</th>
+<th><code>@import</code> rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Where it goes</td>
+<td>Inside <code>&lt;head&gt;</code> in HTML</td>
+<td>At the very top of a <code>.css</code> file</td>
+</tr>
+<tr>
+<td>Loading behaviour</td>
+<td>Parallel (faster)</td>
+<td>Blocks rendering until loaded (slower)</td>
+</tr>
+<tr>
+<td>Ease of use</td>
+<td>Copy-paste from Google Fonts site</td>
+<td>Must remember to place first in CSS</td>
+</tr>
+<tr>
+<td>Recommended?</td>
+<td>✅ Yes</td>
+<td>❌ Generally no</td>
+</tr>
+</tbody></table>
+<h4 id="method-a-link-tag-preferred">Method A — <code>&lt;link&gt;</code> tag (preferred)<a class="anchor" href="#method-a-link-tag-preferred" aria-label="Link to this section">#</a></h4>
+<!-- Step-by-step walkthrough --><ol>
+<li>Go to <a href="https://fonts.google.com">https://fonts.google.com</a>.</li>
+<li>Search for a font, e.g. <strong>Montserrat</strong>.</li>
+<li>Click the font card, then select the weights you need (e.g., Regular 400 and Bold 700).</li>
+<li>On the right panel, copy the <code>&lt;link&gt;</code> tag provided under &quot;Get embed code&quot;.</li>
+<li>Paste it inside the <code>&lt;head&gt;</code> section of <strong>every</strong> HTML page that needs the font.</li>
+</ol>
+<pre><code class="language-html">&lt;!-- Inside &lt;head&gt;, BEFORE your own stylesheet link --&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap&quot;
+      rel=&quot;stylesheet&quot;&gt;
+</code></pre>
+<h5 id="line-by-line-explanation">Line-by-line explanation<a class="anchor" href="#line-by-line-explanation" aria-label="Link to this section">#</a></h5>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;</code></td>
+<td>Tells the browser to start connecting to Google&#39;s API server early, saving time later.</td>
+</tr>
+<tr>
+<td><code>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;</code></td>
+<td>Same thing for the actual font-file server (<code>gstatic</code>). The <code>crossorigin</code> attribute is required because fonts are served cross-domain.</td>
+</tr>
+<tr>
+<td><code>&lt;link href=&quot;...display=swap&quot; rel=&quot;stylesheet&quot;&gt;</code></td>
+<td>Loads a tiny CSS file from Google that contains <code>@font-face</code> rules pointing to the actual font files. <code>display=swap</code> means &quot;show fallback text immediately, then swap in the custom font once it loads.&quot;</td>
+</tr>
+</tbody></table>
+<h4 id="method-b-import-less-preferred-but-useful-to-know">Method B — <code>@import</code> (less preferred, but useful to know)<a class="anchor" href="#method-b-import-less-preferred-but-useful-to-know" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* MUST be the VERY FIRST rule in your CSS file */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap&#39;);
+</code></pre>
+<p>⚠️ If you put <code>@import</code> after any other CSS rule, the browser will ignore it silently. This is a very common bug.</p>
+<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Use <code>&lt;link&gt;</code> in HTML rather than <code>@import</code> in CSS for better performance.</li>
+<li>Limit yourself to <strong>2–3 font families</strong> per site. More than that hurts load time and visual consistency.</li>
+<li>Always add <code>display=swap</code> so users see text immediately.</li>
+<li>Place the Google Fonts <code>&lt;link&gt;</code> <strong>before</strong> your own stylesheet <code>&lt;link&gt;</code> so the fonts are available when your CSS is parsed.</li>
+</ul>
+<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Forgetting the fallback font</p>
+<pre><code class="language-css">h1 {
+    font-family: &#39;Montserrat&#39;;
+}
+</code></pre>
+<p>✅ <strong>Correct:</strong> Including a generic fallback</p>
+<pre><code class="language-css">h1 {
+    font-family: &#39;Montserrat&#39;, sans-serif;
+}
+</code></pre>
+<p>❌ <strong>Wrong:</strong> Putting <code>@import</code> in the middle of your CSS</p>
+<pre><code class="language-css">body { margin: 0; }
+@import url(&#39;https://fonts.googleapis.com/...&#39;); /* IGNORED! */
+</code></pre>
+<p>✅ <strong>Correct:</strong> Putting <code>@import</code> as the absolute first line</p>
+<pre><code class="language-css">@import url(&#39;https://fonts.googleapis.com/...&#39;);
+body { margin: 0; }
+</code></pre>
+<p>❌ <strong>Wrong:</strong> Adding the Google Fonts link to only one page</p>
+<pre><code class="language-html">&lt;!-- Only index.html has the link; about.html shows fallback --&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong> Adding the same Google Fonts <code>&lt;link&gt;</code> to <strong>every</strong> HTML page that uses those fonts.</p>
+<hr>
+<h3 id="3-font-family-stacks">3. Font-Family Stacks<a class="anchor" href="#3-font-family-stacks" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-07.canvas.tsx</code> → <code>FontStackChain</code> — slide <code>s7-font-stacks</code> (&quot;Font stacks &amp; text styling&quot;)</p>
+</blockquote>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>font stack</strong> (or font-family stack) is a comma-separated list of fonts in a CSS <code>font-family</code> declaration. The browser tries each font in order and uses the first one it finds.</p>
+<pre><code class="language-css">body {
+    font-family: &#39;Open Sans&#39;, Arial, Helvetica, sans-serif;
+}
+</code></pre>
+<p>Reading left to right:</p>
+<ol>
+<li>Try <strong>&#39;Open Sans&#39;</strong> (the Google Font we loaded).</li>
+<li>If that failed, try <strong>Arial</strong> (commonly installed).</li>
+<li>If that failed, try <strong>Helvetica</strong> (macOS default).</li>
+<li>If nothing else worked, use whatever the browser considers a generic <strong>sans-serif</strong>.</li>
+</ol>
+<h4 id="32-why-it-matters">3.2 Why it matters<a class="anchor" href="#32-why-it-matters" aria-label="Link to this section">#</a></h4>
+<p>Even though Google Fonts is extremely reliable, things can go wrong: the visitor might be offline, the CDN could be temporarily blocked in their country, or JavaScript errors could prevent loading. A good font stack guarantees your text remains readable in <em>all</em> circumstances.</p>
+<h4 id="best-practices-2">✅ Best practices<a class="anchor" href="#best-practices-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always end with a <strong>generic family keyword</strong>: <code>serif</code>, <code>sans-serif</code>, or <code>monospace</code>. These are not quoted.</li>
+<li>Choose fallbacks that have similar proportions to your primary font so the layout does not shift dramatically.</li>
+<li>Quote font names that contain spaces: <code>&#39;Open Sans&#39;</code>, not <code>Open Sans</code>.</li>
+</ul>
+<h4 id="common-mistakes-2">❌ Common mistakes<a class="anchor" href="#common-mistakes-2" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Missing quotes around multi-word font name</p>
+<pre><code class="language-css">font-family: Open Sans, sans-serif;
+</code></pre>
+<p>✅ <strong>Correct:</strong> Quoted</p>
+<pre><code class="language-css">font-family: &#39;Open Sans&#39;, sans-serif;
+</code></pre>
+<h4 id="try-it-yourself-watch-the-fallback-happen">🧪 Try It Yourself — Watch the Fallback Happen<a class="anchor" href="#try-it-yourself-watch-the-fallback-happen" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Confirm which font the browser is really using.</p>
+<ol>
+<li>Set a proper stack:<pre><code class="language-css">body { font-family: &#39;Roboto&#39;, &#39;Segoe UI&#39;, Arial, sans-serif; }
+</code></pre>
+</li>
+<li>Reload, then inspect a paragraph in F12 → <strong>Computed</strong>. Scroll to the very bottom of that pane and read <strong>Rendered Fonts</strong>.</li>
+<li>Now misspell the first font on purpose — <code>&#39;Robotoo&#39;</code> — and reload.</li>
+<li>Read Rendered Fonts again.</li>
+</ol>
+<p><strong>Expected result:</strong> First it reports Roboto. After the typo it silently reports Segoe UI or Arial instead, with no error anywhere. The page still looks fine, just not as designed.</p>
+<details>
+<summary>Why the stack has that shape</summary><p>The browser tries each name left to right and uses the first one it can load. So order it from most specific to most general:</p>
+<ol>
+<li>Your web font — <code>&#39;Roboto&#39;</code></li>
+<li>A good system font likely to be installed — <code>&#39;Segoe UI&#39;</code> on Windows, <code>-apple-system</code> on Mac</li>
+<li>A font present almost everywhere — <code>Arial</code>, <code>Georgia</code></li>
+<li>A generic family as the final guarantee — <code>sans-serif</code>, <code>serif</code>, <code>monospace</code></li>
+</ol>
+<p>Never omit the generic family. It is the only entry the browser cannot fail to satisfy.</p>
+<p>Quote any name containing a space: <code>&#39;Segoe UI&#39;</code>, not <code>Segoe UI</code>. And this is precisely why a silent fallback is easy to miss — nothing breaks, so Rendered Fonts is the only place the truth shows up.</p>
+</details><hr>
+<h3 id="4-text-styling-properties">4. Text Styling Properties<a class="anchor" href="#4-text-styling-properties" aria-label="Link to this section">#</a></h3>
+<h4 id="41-text-align">4.1 <code>text-align</code><a class="anchor" href="#41-text-align" aria-label="Link to this section">#</a></h4>
+<p>Controls horizontal alignment of inline content within a block element.</p>
+<pre><code class="language-css">header h1   { text-align: center; }  /* Centred heading */
+p           { text-align: left; }    /* Default for LTR languages */
+.price      { text-align: right; }   /* Numbers aligned right */
+article p   { text-align: justify; } /* Both edges flush (newspaper style) */
+</code></pre>
+<p>⚠️ <code>text-align: justify</code> can create ugly rivers of white space in narrow columns. Use sparingly.</p>
+<h4 id="42-line-height">4.2 <code>line-height</code><a class="anchor" href="#42-line-height" aria-label="Link to this section">#</a></h4>
+<p>Controls the vertical space between baselines of consecutive lines of text. It is one of the <strong>most important</strong> properties for readability.</p>
+<pre><code class="language-css">/* Unitless value (RECOMMENDED) — relative to font-size */
+p { line-height: 1.6; }   /* 1.6 × font-size */
+
+/* Pixel value (avoid — does not scale) */
+p { line-height: 24px; }
+
+/* Percentage (works but unitless is cleaner) */
+p { line-height: 160%; }
+</code></pre>
+<p>🎒 <strong>Real-life analogy:</strong> <code>line-height</code> is like the spacing between lines on ruled notebook paper. Too tight and it is hard to read; too loose and lines feel disconnected. For body text, <strong>1.5 – 1.8</strong> is usually ideal.</p>
+<h4 id="43-letter-spacing">4.3 <code>letter-spacing</code><a class="anchor" href="#43-letter-spacing" aria-label="Link to this section">#</a></h4>
+<p>Adds or removes horizontal space between characters. Useful for headings and uppercase text.</p>
+<pre><code class="language-css">h1 { letter-spacing: 2px; }     /* Wider, more dramatic */
+.uppercase-nav { letter-spacing: 1px; text-transform: uppercase; }
+.tight { letter-spacing: -0.5px; } /* Tighter than normal */
+</code></pre>
+<h4 id="44-text-shadow">4.4 <code>text-shadow</code><a class="anchor" href="#44-text-shadow" aria-label="Link to this section">#</a></h4>
+<p>Adds a shadow behind text, giving it depth or a glow effect.</p>
+<pre><code class="language-css">/* Syntax: text-shadow: h-offset v-offset blur color; */
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>2px</code></td>
+<td>Horizontal offset (right)</td>
+</tr>
+<tr>
+<td><code>2px</code></td>
+<td>Vertical offset (down)</td>
+</tr>
+<tr>
+<td><code>4px</code></td>
+<td>Blur radius (higher = softer)</td>
+</tr>
+<tr>
+<td><code>rgba(0,0,0,0.3)</code></td>
+<td>Shadow colour (black at 30% opacity)</td>
+</tr>
+</tbody></table>
+<h4 id="best-practices-3">✅ Best practices<a class="anchor" href="#best-practices-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Use <strong>unitless <code>line-height</code></strong> for body text so it scales proportionally.</li>
+<li>Use <code>letter-spacing</code> subtly — 1–3 px for headings, never more unless it is a deliberate design choice.</li>
+<li>Keep <code>text-shadow</code> subtle; heavy shadows look dated.</li>
+</ul>
+<h4 id="common-mistakes-3">❌ Common mistakes<a class="anchor" href="#common-mistakes-3" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Using pixel line-height that breaks when font size changes</p>
+<pre><code class="language-css">p { font-size: 16px; line-height: 24px; }
+</code></pre>
+<p>✅ <strong>Correct:</strong> Using unitless line-height</p>
+<pre><code class="language-css">p { font-size: 16px; line-height: 1.6; }
+</code></pre>
+<hr>
+<h3 id="5-css3-rounded-corners-border-radius">5. CSS3 Rounded Corners (<code>border-radius</code>)<a class="anchor" href="#5-css3-rounded-corners-border-radius" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-07.canvas.tsx</code> → <code>PolishLab</code> — slide <code>s7-corners-shadows</code> (&quot;Rounded corners &amp; shadows&quot;)</p>
+</blockquote>
+<h4 id="51-definition">5.1 Definition<a class="anchor" href="#51-definition" aria-label="Link to this section">#</a></h4>
+<p>The <code>border-radius</code> property rounds the corners of an element&#39;s border box. Before CSS3, designers had to use corner images — now it is a single line of CSS.</p>
+<h4 id="52-shorthand-syntax">5.2 Shorthand syntax<a class="anchor" href="#52-shorthand-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code>border-radius: TL  TR  BR  BL;     (clockwise from top-left)
+border-radius: TL+BR  TR+BL;       (two-value shorthand)
+border-radius: ALL;                 (single value = all four corners)
+</code></pre>
+<pre><code class="language-css">/* All four corners equally rounded */
+.card { border-radius: 10px; }
+
+/* Top-left &amp; bottom-right = 10px; top-right &amp; bottom-left = 20px */
+.fancy { border-radius: 10px 20px; }
+
+/* Each corner different */
+.asymmetric { border-radius: 10px 20px 30px 40px; }
+
+/* Perfect circle (element must be square) */
+.avatar { width: 80px; height: 80px; border-radius: 50%; }
+
+/* Pill-shaped button */
+.btn { border-radius: 25px; }
+</code></pre>
+<pre><code>VISUAL: border-radius values
+
+  10px ───────────────── 20px
+   │                       │
+   │      CONTENT          │
+   │                       │
+  40px ───────────────── 30px
+
+  (top-left, top-right, bottom-right, bottom-left)
+</code></pre>
+<h4 id="important-notes-2">⚠️ Important notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>border-radius: 50%</code> only creates a perfect circle when <strong>width equals height</strong>. If the element is rectangular, you get an ellipse.</li>
+<li><code>border-radius</code> also clips background images and gradients to the rounded shape.</li>
+</ul>
+<hr>
+<h3 id="6-css3-shadows-box-shadow">6. CSS3 Shadows (<code>box-shadow</code>)<a class="anchor" href="#6-css3-shadows-box-shadow" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-07.canvas.tsx</code> → <code>PolishLab</code> — slide <code>s7-corners-shadows</code> (&quot;Rounded corners &amp; shadows&quot;)</p>
+</blockquote>
+<h4 id="61-definition">6.1 Definition<a class="anchor" href="#61-definition" aria-label="Link to this section">#</a></h4>
+<p><code>box-shadow</code> adds a drop shadow to the outside (or inside) of an element&#39;s border box.</p>
+<pre><code class="language-css">/* Syntax: box-shadow: h-offset v-offset blur spread color; */
+.card {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0</code></td>
+<td>Horizontal offset (0 = centred)</td>
+</tr>
+<tr>
+<td><code>2px</code></td>
+<td>Vertical offset (positive = downward)</td>
+</tr>
+<tr>
+<td><code>10px</code></td>
+<td>Blur radius (larger = softer, wider shadow)</td>
+</tr>
+<tr>
+<td><em>(omitted)</em></td>
+<td>Spread radius (optional; expands/shrinks the shadow)</td>
+</tr>
+<tr>
+<td><code>rgba(...)</code></td>
+<td>Shadow colour</td>
+</tr>
+</tbody></table>
+<h4 id="inner-shadow">Inner shadow<a class="anchor" href="#inner-shadow" aria-label="Link to this section">#</a></h4>
+<p>Add the <code>inset</code> keyword to place the shadow <em>inside</em> the element:</p>
+<pre><code class="language-css">.pressed-button {
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+</code></pre>
+<h4 id="multiple-shadows">Multiple shadows<a class="anchor" href="#multiple-shadows" aria-label="Link to this section">#</a></h4>
+<p>Separate with commas:</p>
+<pre><code class="language-css">.glow-card {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1),
+                0 0 20px rgba(52, 152, 219, 0.2);
+}
+</code></pre>
+<h4 id="best-practices-4">✅ Best practices<a class="anchor" href="#best-practices-4" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Use low-opacity colours (<code>rgba</code> with alpha 0.05 – 0.2) for subtle, modern shadows.</li>
+<li>Avoid pure black (<code>#000</code>) shadows; they look harsh. Use dark grey with transparency instead.</li>
+<li>Increase blur radius for a softer, more natural shadow.</li>
+</ul>
+<h4 id="common-mistakes-4">❌ Common mistakes<a class="anchor" href="#common-mistakes-4" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Harsh solid-black shadow</p>
+<pre><code class="language-css">box-shadow: 5px 5px 0px #000000;
+</code></pre>
+<p>✅ <strong>Correct:</strong> Soft, transparent shadow</p>
+<pre><code class="language-css">box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+</code></pre>
+<h4 id="try-it-yourself-a-shadow-that-looks-real">🧪 Try It Yourself — A Shadow That Looks Real<a class="anchor" href="#try-it-yourself-a-shadow-that-looks-real" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Tune a shadow instead of copying one.</p>
+<ol>
+<li>Start deliberately badly:<pre><code class="language-css">.card { box-shadow: 10px 10px 0 #000; }
+</code></pre>
+</li>
+<li>Reload. It looks like a 1998 clip-art drop shadow.</li>
+<li>Now change one value at a time, reloading after each:<pre><code class="language-css">.card { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.card { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.card { box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+</code></pre>
+</li>
+</ol>
+<p><strong>Expected result:</strong> As blur grows and the colour becomes more transparent, the card appears to sit further off the page. The hard black shadow reads as a mistake; the soft transparent ones read as depth.</p>
+<details>
+<summary>Reading the four values</summary><p><code>box-shadow: &lt;x&gt; &lt;y&gt; &lt;blur&gt; &lt;colour&gt;</code></p>
+<ul>
+<li><strong>x</strong> — keep it <code>0</code>. Light comes from above in almost every interface.</li>
+<li><strong>y</strong> — how far the element floats. A larger value means higher.</li>
+<li><strong>blur</strong> — roughly two to three times <code>y</code>. This is what separates soft from harsh.</li>
+<li><strong>colour</strong> — always <code>rgba()</code> with low alpha, never a solid. A solid shadow cannot blend with whatever is behind it.</li>
+</ul>
+<p>One more property pairs with this: <code>border-radius</code>. Sharp corners with a soft shadow look inconsistent, so raise both together. And if <code>border-radius</code> appears to do nothing, check the element is not <code>display: inline</code> — inline elements ignore it.</p>
+</details><hr>
+<h3 id="7-css3-gradients">7. CSS3 Gradients<a class="anchor" href="#7-css3-gradients" aria-label="Link to this section">#</a></h3>
+<h4 id="71-definition">7.1 Definition<a class="anchor" href="#71-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>gradient</strong> is a smooth transition between two or more colours rendered as a background image by the browser. There are two main types: <strong>linear</strong> (colours flow in a straight line) and <strong>radial</strong> (colours radiate outward from a point).</p>
+<h4 id="72-linear-gradients">7.2 Linear gradients<a class="anchor" href="#72-linear-gradients" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* Simple two-colour, left to right */
+.header {
+    background: linear-gradient(to right, #1a5276, #3498db);
+}
+
+/* With angle (135 degrees = diagonal top-left to bottom-right) */
+.banner {
+    background: linear-gradient(135deg, #1a5276 0%, #2874a6 50%, #3498db 100%);
+}
+
+/* Direction keywords */
+background: linear-gradient(to bottom, ...);   /* Top → bottom */
+background: linear-gradient(to top, ...);      /* Bottom → top */
+background: linear-gradient(to right, ...);    /* Left → right */
+background: linear-gradient(to left, ...);     /* Right → left */
+</code></pre>
+<pre><code>LINEAR GRADIENT DIRECTIONS:
+
+  to bottom ↓        to right →        135deg ↘
+  ┌──────────┐       ┌──────────┐      ┌──────────┐
+  │ ████████ │       │ ██→█████ │      │ ██↘     │
+  │ ▓▓▓▓▓▓▓▓ │       │ ▓▓▓▓▓▓▓▓ │      │   ▓▓▓▓  │
+  │ ░░░░░░░░ │       │ ░░░░░░░░ │      │     ░░░░│
+  └──────────┘       └──────────┘      └──────────┘
+</code></pre>
+<h4 id="73-radial-gradients">7.3 Radial gradients<a class="anchor" href="#73-radial-gradients" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">.spotlight {
+    background: radial-gradient(circle, #ffcc00, #ff6600);
+}
+
+.ellipse-bg {
+    background: radial-gradient(ellipse at center, #ffffff 0%, #e8eef3 100%);
+}
+</code></pre>
+<h4 id="best-practices-5">✅ Best practices<a class="anchor" href="#best-practices-5" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Use gradients for <strong>headers, buttons, banners, and accent areas</strong> — not for entire page backgrounds (it gets visually noisy).</li>
+<li>Stick to <strong>2–3 colours</strong> per gradient for a clean look.</li>
+<li>Test contrast: make sure white text on a gradient header is still readable at both ends of the gradient.</li>
+</ul>
+<h4 id="common-mistakes-5">❌ Common mistakes<a class="anchor" href="#common-mistakes-5" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Too many colours creating a rainbow mess</p>
+<pre><code class="language-css">background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+</code></pre>
+<p>✅ <strong>Correct:</strong> Two harmonious colours</p>
+<pre><code class="language-css">background: linear-gradient(135deg, #1a5276 0%, #3498db 100%);
+</code></pre>
+<hr>
+<h3 id="8-css3-transitions">8. CSS3 Transitions<a class="anchor" href="#8-css3-transitions" aria-label="Link to this section">#</a></h3>
+<h4 id="81-definition">8.1 Definition<a class="anchor" href="#81-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>transition</strong> tells the browser to animate the change from one CSS property value to another over a specified duration. Without transitions, property changes (e.g., on <code>:hover</code>) happen instantly. With transitions, they happen smoothly.</p>
+<h4 id="82-syntax">8.2 Syntax<a class="anchor" href="#82-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* Short form */
+.element {
+    transition: property duration timing-function delay;
+}
+
+/* Example */
+a {
+    color: #0066cc;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #003366;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>property</code></td>
+<td><code>color</code>, <code>background-color</code>, <code>transform</code>, <code>all</code>, etc.</td>
+<td>Which property to animate</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>0.3s</code>, <code>500ms</code>, <code>1s</code></td>
+<td>How long the animation takes</td>
+</tr>
+<tr>
+<td><code>timing-function</code></td>
+<td><code>ease</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code>, <code>linear</code></td>
+<td>Speed curve of the animation</td>
+</tr>
+<tr>
+<td><code>delay</code></td>
+<td><code>0s</code>, <code>0.2s</code></td>
+<td>Wait before starting (optional)</td>
+</tr>
+</tbody></table>
+<h4 id="timing-functions-explained">Timing functions explained<a class="anchor" href="#timing-functions-explained" aria-label="Link to this section">#</a></h4>
+<pre><code>ease:         Starts slow → speeds up → slows down  (DEFAULT, natural feel)
+ease-in:      Starts slow → speeds up                (like a car accelerating)
+ease-out:     Starts fast → slows down                (like a ball rolling to stop)
+ease-in-out:  Starts slow → speeds up → slows down   (symmetric)
+linear:       Constant speed throughout              (robotic, rarely used for UI)
+</code></pre>
+<h4 id="transitioning-multiple-properties">Transitioning multiple properties<a class="anchor" href="#transitioning-multiple-properties" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">.event-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+</code></pre>
+<p>Or use <code>all</code> as a shortcut (animates every changed property):</p>
+<pre><code class="language-css">.event-card {
+    transition: all 0.3s ease;
+}
+</code></pre>
+<p>⚠️ <code>transition: all</code> is convenient but can cause unintended animations if you later add new properties. Prefer listing specific properties for production sites.</p>
+<h4 id="important-notes-3">⚠️ Important notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>The <code>transition</code> property goes on the <strong>normal state</strong>, NOT on the <code>:hover</code> state. This ensures the animation plays both <em>into</em> and <em>out of</em> the hover.</li>
+<li>Not all properties can be animated. You cannot transition <code>display</code>, <code>font-family</code>, or <code>position</code>. Check <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">MDN: Animatable CSS properties</a>.</li>
+</ul>
+<h4 id="best-practices-6">✅ Best practices<a class="anchor" href="#best-practices-6" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Keep durations between <strong>0.2 s and 0.5 s</strong> for UI interactions. Longer feels sluggish; shorter feels jarring.</li>
+<li>Use <code>ease</code> or <code>ease-in-out</code> for most UI transitions.</li>
+<li>Always define the transition on the base selector, not the pseudo-class.</li>
+</ul>
+<h4 id="common-mistakes-6">❌ Common mistakes<a class="anchor" href="#common-mistakes-6" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Transition defined only on <code>:hover</code></p>
+<pre><code class="language-css">a:hover {
+    transition: color 0.3s ease;
+    color: red;
+}
+/* Result: smooth IN, instant OUT */
+</code></pre>
+<p>✅ <strong>Correct:</strong> Transition defined on the base selector</p>
+<pre><code class="language-css">a {
+    transition: color 0.3s ease;
+    color: blue;
+}
+a:hover {
+    color: red;
+}
+/* Result: smooth IN and smooth OUT */
+</code></pre>
+<hr>
+<h3 id="9-hover-effects-with-transitions-and-transforms">9. Hover Effects with Transitions and Transforms<a class="anchor" href="#9-hover-effects-with-transitions-and-transforms" aria-label="Link to this section">#</a></h3>
+<h4 id="91-combining-transition-hover-transform">9.1 Combining <code>transition</code> + <code>:hover</code> + <code>transform</code><a class="anchor" href="#91-combining-transition-hover-transform" aria-label="Link to this section">#</a></h4>
+<p>This is the recipe for interactive, tactile-feeling UI elements:</p>
+<pre><code class="language-css">.event-card {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+</code></pre>
+<p>What happens:</p>
+<ol>
+<li>Normal state: card sits flat with a subtle shadow.</li>
+<li>User hovers: card lifts 5 px upward AND shadow grows deeper.</li>
+<li>Both changes animate smoothly over 0.3 seconds.</li>
+<li>User moves mouse away: card settles back down smoothly.</li>
+</ol>
+<h4 id="92-common-transform-functions">9.2 Common transform functions<a class="anchor" href="#92-common-transform-functions" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Effect</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>translateY(value)</code></td>
+<td>Move vertically</td>
+<td><code>translateY(-5px)</code> moves up 5 px</td>
+</tr>
+<tr>
+<td><code>translateX(value)</code></td>
+<td>Move horizontally</td>
+<td><code>translateX(10px)</code> moves right 10 px</td>
+</tr>
+<tr>
+<td><code>scale(factor)</code></td>
+<td>Resize</td>
+<td><code>scale(1.05)</code> grows 5%</td>
+</tr>
+<tr>
+<td><code>rotate(angle)</code></td>
+<td>Rotate</td>
+<td><code>rotate(10deg)</code> rotates clockwise</td>
+</tr>
+<tr>
+<td><code>skew(x-angle)</code></td>
+<td>Skew</td>
+<td><code>skew(5deg)</code> tilts horizontally</td>
+</tr>
+</tbody></table>
+<h4 id="best-practices-7">✅ Best practices<a class="anchor" href="#best-practices-7" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Use <code>transform</code> for movement/scale instead of changing <code>margin</code> or <code>top/left</code> — transforms are hardware-accelerated and much smoother.</li>
+<li>Small movements (3–8 px translation, 1.02–1.08 scale) feel elegant. Large movements feel cartoonish.</li>
+<li>Always pair <code>transform</code> changes with a <code>transition</code> so they animate rather than snap.</li>
+</ul>
+<h4 id="common-mistakes-7">❌ Common mistakes<a class="anchor" href="#common-mistakes-7" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Changing <code>top</code>/<code>left</code> for hover movement (causes reflow, janky)</p>
+<pre><code class="language-css">.card:hover { top: -5px; }
+</code></pre>
+<p>✅ <strong>Correct:</strong> Using <code>transform</code> (GPU-accelerated, smooth)</p>
+<pre><code class="language-css">.card:hover { transform: translateY(-5px); }
+</code></pre>
+<h4 id="try-it-yourself-lift-a-card-on-hover">🧪 Try It Yourself — Lift a Card on Hover<a class="anchor" href="#try-it-yourself-lift-a-card-on-hover" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Combine transition and transform into one polished effect.</p>
+<ol>
+<li>Add to your card class:<pre><code class="language-css">.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover,
+.card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+</code></pre>
+</li>
+<li>Reload and hover. The card lifts smoothly.</li>
+<li>Now move <code>transition</code> from <code>.card</code> into the <code>.card:hover</code> rule and reload.</li>
+<li>Put it back, then add this and reload once more:<pre><code class="language-css">@media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+}
+</code></pre>
+</li>
+</ol>
+<p><strong>Expected result:</strong> With <code>transition</code> on the base rule the card animates both in and out. Moved into <code>:hover</code>, it animates in but snaps back — because on mouse-out the hover rule no longer applies, so there is no transition left to obey.</p>
+<details>
+<summary>Two things worth keeping</summary><p><strong>Where <code>transition</code> belongs.</strong> On the element, not the state. Read it as &quot;this element animates changes to these properties&quot;, not &quot;animate when hovered&quot;.</p>
+<p><strong>Which properties to animate.</strong> <code>transform</code> and <code>opacity</code> only, for anything that needs to be smooth. The browser can hand those to the GPU. Animating <code>width</code>, <code>height</code>, <code>top</code>, or <code>margin</code> forces it to recalculate layout on every frame, which is what makes an effect feel janky on a phone.</p>
+<p><code>prefers-reduced-motion</code> is not optional politeness — for users with vestibular disorders, motion can cause genuine nausea. Honouring the setting takes three lines.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Google Fonts</td>
+<td>Free cloud-hosted font library; loaded via <code>&lt;link&gt;</code></td>
+<td><code>&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Font stack</td>
+<td>Comma-separated fallback list in <code>font-family</code></td>
+<td><code>&#39;Montserrat&#39;, Arial, sans-serif</code></td>
+</tr>
+<tr>
+<td><code>text-align</code></td>
+<td>Horizontal alignment of inline content</td>
+<td><code>text-align: center;</code></td>
+</tr>
+<tr>
+<td><code>line-height</code></td>
+<td>Vertical space between text baselines</td>
+<td><code>line-height: 1.6;</code></td>
+</tr>
+<tr>
+<td><code>letter-spacing</code></td>
+<td>Horizontal space between characters</td>
+<td><code>letter-spacing: 2px;</code></td>
+</tr>
+<tr>
+<td><code>text-shadow</code></td>
+<td>Shadow rendered behind text</td>
+<td><code>text-shadow: 2px 2px 4px rgba(0,0,0,0.3);</code></td>
+</tr>
+<tr>
+<td><code>border-radius</code></td>
+<td>Rounds element corners</td>
+<td><code>border-radius: 10px;</code> or <code>50%</code></td>
+</tr>
+<tr>
+<td><code>box-shadow</code></td>
+<td>Drop shadow on element box</td>
+<td><code>box-shadow: 0 4px 12px rgba(0,0,0,0.12);</code></td>
+</tr>
+<tr>
+<td><code>linear-gradient</code></td>
+<td>Background colour transition in a line</td>
+<td><code>linear-gradient(135deg, #1a5276, #3498db)</code></td>
+</tr>
+<tr>
+<td><code>radial-gradient</code></td>
+<td>Background colour transition radiating outward</td>
+<td><code>radial-gradient(circle, #ffcc00, #ff6600)</code></td>
+</tr>
+<tr>
+<td><code>transition</code></td>
+<td>Smoothly animates property changes</td>
+<td><code>transition: all 0.3s ease;</code></td>
+</tr>
+<tr>
+<td><code>transform</code></td>
+<td>Moves, scales, rotates elements</td>
+<td><code>transform: translateY(-5px) scale(1.05);</code></td>
+</tr>
+<tr>
+<td><code>:hover</code></td>
+<td>Pseudo-class for mouse-over state</td>
+<td><code>.card:hover { ... }</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-loading-and-applying-google-fonts">Example 1: Loading and Applying Google Fonts<a class="anchor" href="#example-1-loading-and-applying-google-fonts" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want headings in Montserrat (Bold) and body text in Open Sans (Regular) on the Student Club home page.</p>
+<p><strong>Code (HTML <code>&lt;head&gt;</code>):</strong></p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Student Club - Home&lt;/title&gt;
+
+    &lt;!-- 1. Preconnect for faster font loading --&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+
+    &lt;!-- 2. Load Montserrat 400+700 and Open Sans 400+600 --&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap&quot;
+          rel=&quot;stylesheet&quot;&gt;
+
+    &lt;!-- 3. Your own stylesheet (AFTER fonts so fonts are ready) --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+</code></pre>
+<p><strong>Code (CSS):</strong></p>
+<pre><code class="language-css">/* Headings use Montserrat */
+h1, h2, h3, h4, h5, h6 {
+    font-family: &#39;Montserrat&#39;, Arial, sans-serif;
+}
+
+/* Body text uses Open Sans */
+body, p, li, a, td, th {
+    font-family: &#39;Open Sans&#39;, Arial, sans-serif;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;link rel=&quot;preconnect&quot; ...&gt;</code> (×2)</td>
+<td>Opens TCP connections to Google&#39;s servers early so the font download starts sooner.</td>
+</tr>
+<tr>
+<td><code>family=Montserrat:wght@400;700</code></td>
+<td>Requests Montserrat in Regular (400) and Bold (700) only.</td>
+</tr>
+<tr>
+<td><code>family=Open+Sans:wght@400;600</code></td>
+<td>Requests Open Sans in Regular (400) and Semi-Bold (600).</td>
+</tr>
+<tr>
+<td><code>display=swap</code></td>
+<td>Shows fallback text immediately, swaps in custom font when ready.</td>
+</tr>
+<tr>
+<td><code>font-family: &#39;Montserrat&#39;, Arial, sans-serif</code></td>
+<td>Uses Montserrat if available; falls back to Arial, then generic sans-serif.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> Headings appear in the geometric, modern Montserrat typeface. Body paragraphs use the highly readable Open Sans. If the visitor is offline, Arial (or the system sans-serif) displays instead — the page remains perfectly usable.</p>
+<hr>
+<h3 id="example-2-styled-event-card-with-shadow-rounded-corners-and-hover-lift">Example 2: Styled Event Card with Shadow, Rounded Corners, and Hover Lift<a class="anchor" href="#example-2-styled-event-card-with-shadow-rounded-corners-and-hover-lift" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want event cards on the home page that look like floating cards and lift slightly when hovered.</p>
+<p><strong>Code (HTML):</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;event-card&quot;&gt;
+    &lt;div class=&quot;event-date&quot;&gt;March 15, 2024&lt;/div&gt;
+    &lt;h3&gt;Web Design Workshop&lt;/h3&gt;
+    &lt;p class=&quot;event-location&quot;&gt;Room 301, Building A&lt;/p&gt;
+    &lt;p&gt;Learn the fundamentals of responsive web design in this hands-on workshop.&lt;/p&gt;
+    &lt;a href=&quot;events.html&quot; class=&quot;btn&quot;&gt;Learn More&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Code (CSS):</strong></p>
+<pre><code class="language-css">.event-card {
+    background-color: #f8f9fa;                          /* Light grey background */
+    border-left: 5px solid #3498db;                     /* Blue accent bar on left */
+    padding: 25px;                                      /* Inner spacing */
+    margin-bottom: 20px;                                /* Gap between cards */
+    border-radius: 8px;                                 /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);         /* Subtle shadow */
+    transition: transform 0.3s ease,                    /* Animate transform */
+                box-shadow 0.3s ease,                   /* Animate shadow */
+                border-left-color 0.3s ease;            /* Animate accent colour */
+}
+
+.event-card:hover {
+    transform: translateY(-3px);                        /* Lift card up 3 px */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);       /* Deeper shadow */
+    border-left-color: #1a5276;                         /* Darker accent */
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>background-color: #f8f9fa</code></td>
+<td>Gives the card a light background distinct from the page.</td>
+</tr>
+<tr>
+<td><code>border-left: 5px solid #3498db</code></td>
+<td>Creates a coloured accent stripe — a common card-design pattern.</td>
+</tr>
+<tr>
+<td><code>padding: 25px</code></td>
+<td>Pushes content away from edges for breathing room.</td>
+</tr>
+<tr>
+<td><code>border-radius: 8px</code></td>
+<td>Softens corners for a modern, friendly appearance.</td>
+</tr>
+<tr>
+<td><code>box-shadow: 0 2px 8px rgba(0,0,0,0.08)</code></td>
+<td>Adds a faint shadow underneath to create the illusion of depth/lifting.</td>
+</tr>
+<tr>
+<td><code>transition: transform 0.3s ease, ...</code></td>
+<td>Tells the browser to animate these three properties over 0.3 seconds.</td>
+</tr>
+<tr>
+<td><code>transform: translateY(-3px)</code></td>
+<td>On hover, shifts the card 3 pixels upward. Negative = up.</td>
+</tr>
+<tr>
+<td><code>box-shadow: 0 5px 20px rgba(0,0,0,0.15)</code></td>
+<td>On hover, makes the shadow larger and darker to reinforce the &quot;lifting&quot; illusion.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> Cards sit flat with a subtle shadow. When the user hovers, the card gently rises and the shadow deepens, creating a satisfying tactile interaction. The blue accent bar darkens to provide additional visual feedback.</p>
+<hr>
+<h3 id="example-3-gradient-header-with-text-shadow">Example 3: Gradient Header with Text Shadow<a class="anchor" href="#example-3-gradient-header-with-text-shadow" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want the site header to have a diagonal gradient background and the title to have a subtle text shadow for legibility.</p>
+<p><strong>Code (HTML):</strong></p>
+<pre><code class="language-html">&lt;header&gt;
+    &lt;h1&gt;Student Club&lt;/h1&gt;
+    &lt;p&gt;Building Community Through Technology&lt;/p&gt;
+&lt;/header&gt;
+</code></pre>
+<p><strong>Code (CSS):</strong></p>
+<pre><code class="language-css">header {
+    background: linear-gradient(135deg, #1a5276 0%, #2874a6 50%, #3498db 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-family: &#39;Montserrat&#39;, sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+header p {
+    font-size: 20px;
+    opacity: 0.9;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>linear-gradient(135deg, ...)</code></td>
+<td>Creates a diagonal gradient from dark blue (#1a5276) through medium blue (#2874a6) to lighter blue (#3498db).</td>
+</tr>
+<tr>
+<td><code>color: white</code></td>
+<td>Makes all text inside the header white for contrast against the dark gradient.</td>
+</tr>
+<tr>
+<td><code>text-align: center</code></td>
+<td>Centres heading and tagline horizontally.</td>
+</tr>
+<tr>
+<td><code>padding: 40px 20px</code></td>
+<td>40 px top/bottom padding for vertical breathing room; 20 px left/right.</td>
+</tr>
+<tr>
+<td><code>text-shadow: 2px 2px 4px rgba(0,0,0,0.3)</code></td>
+<td>Adds a dark shadow offset 2 px right and 2 px down with 4 px blur, making white letters pop out of the blue background.</td>
+</tr>
+<tr>
+<td><code>letter-spacing: 2px</code></td>
+<td>Adds slight spacing between characters in the heading for a premium, editorial feel.</td>
+</tr>
+<tr>
+<td><code>opacity: 0.9</code></td>
+<td>Makes the tagline slightly translucent so it is visually subordinate to the heading.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> The header displays a rich diagonal blue gradient. The title &quot;Student Club&quot; appears in bold white Montserrat with wide letter-spacing and a soft shadow. The tagline sits below in slightly faded white.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Make sure your project folder looks like this before starting:</p>
+<pre><code>student-club-site/
+├── index.html
+├── about.html
+├── events.html
+├── gallery.html
+├── contact.html
+├── css/
+│   └── style.css
+└── images/
+</code></pre>
+<p>Open <code>index.html</code> and <code>css/style.css</code> in your editor. You should already have the basic layout from Sessions 5–6.</p>
+<hr>
+<h4 id="task-1-add-google-fonts-to-all-pages">TASK 1: Add Google Fonts to All Pages<a class="anchor" href="#task-1-add-google-fonts-to-all-pages" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Load Montserrat (400, 700) and Open Sans (400, 600) and apply them across the site.</p>
+<p>📝 <strong>What you will do:</strong> Add the Google Fonts <code>&lt;link&gt;</code> tags to every HTML page and update the CSS font-family declarations.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>index.html</code>. Inside <code>&lt;head&gt;</code>, <strong>before</strong> the <code>&lt;link&gt;</code> to <code>style.css</code>, add:<pre><code class="language-html">&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap&quot;
+      rel=&quot;stylesheet&quot;&gt;
+</code></pre>
+</li>
+<li>Repeat step 1 for <code>about.html</code>, <code>events.html</code>, <code>gallery.html</code>, and <code>contact.html</code>.</li>
+<li>Open <code>css/style.css</code>. At the top, add:<pre><code class="language-css">h1, h2, h3, h4, h5, h6 {
+    font-family: &#39;Montserrat&#39;, Arial, sans-serif;
+}
+
+body, p, li, a, td, th, input, textarea, select, button {
+    font-family: &#39;Open Sans&#39;, Arial, sans-serif;
+}
+</code></pre>
+</li>
+<li>Save all files. Preview <code>index.html</code> in the browser (F12). Verify that headings now use Montserrat and body text uses Open Sans.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Headings look distinctly different from body text. If you disconnect from the internet and refresh, the page still displays correctly with Arial.</p>
+<p>💾 <strong>Save</strong> all files.</p>
+<hr>
+<h4 id="task-2-apply-text-styling-to-the-header">TASK 2: Apply Text Styling to the Header<a class="anchor" href="#task-2-apply-text-styling-to-the-header" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Make the header text professional with proper alignment, spacing, and text shadow.</p>
+<p>📝 <strong>What you will do:</strong> Update the header CSS with text-align, letter-spacing, line-height, and text-shadow.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>In <code>css/style.css</code>, find or create the <code>header</code> rule and update it:<pre><code class="language-css">header {
+    background: linear-gradient(135deg, #1a5276 0%, #2874a6 50%, #3498db 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-family: &#39;Montserrat&#39;, sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+header p {
+    font-size: 20px;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+</code></pre>
+</li>
+<li>Save and preview. Confirm the heading has a shadow, wider letter spacing, and the tagline is centred below it.</li>
+</ol>
+<p>✅ <strong>Check:</strong> The header text is clearly readable against the gradient. The shadow is visible but not overpowering.</p>
+<p>💾 <strong>Save</strong> <code>style.css</code>.</p>
+<hr>
+<h4 id="task-3-create-interactive-event-cards-with-hover-effects">TASK 3: Create Interactive Event Cards with Hover Effects<a class="anchor" href="#task-3-create-interactive-event-cards-with-hover-effects" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Style event cards with rounded corners, shadows, and a smooth hover-lift animation.</p>
+<p>📝 <strong>What you will do:</strong> Add CSS for <code>.event-card</code> with <code>border-radius</code>, <code>box-shadow</code>, <code>transition</code>, and <code>:hover</code> transform.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>In <code>events.html</code> (or wherever your event cards live), make sure each card uses this structure:<pre><code class="language-html">&lt;div class=&quot;event-card&quot;&gt;
+    &lt;div class=&quot;event-date&quot;&gt;March 15, 2024&lt;/div&gt;
+    &lt;h3&gt;Web Design Workshop&lt;/h3&gt;
+    &lt;p class=&quot;event-location&quot;&gt;Room 301, Building A&lt;/p&gt;
+    &lt;p&gt;Learn responsive web design fundamentals.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+<li>In <code>css/style.css</code>, add:<pre><code class="language-css">.event-card {
+    background-color: #f8f9fa;
+    border-left: 5px solid #3498db;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-left-color 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-left-color: #1a5276;
+}
+
+.event-date {
+    color: #3498db;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.event-location {
+    color: #666;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+</code></pre>
+</li>
+<li>Save and preview. Hover your mouse over each event card.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Cards lift slightly on hover with a smooth animation. The shadow deepens. Moving the mouse away reverses the animation smoothly.</p>
+<p>💾 <strong>Save</strong> all files.</p>
+<hr>
+<h4 id="task-4-style-navigation-links-with-hover-transitions">TASK 4: Style Navigation Links with Hover Transitions<a class="anchor" href="#task-4-style-navigation-links-with-hover-transitions" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Make navigation links animate their background colour on hover.</p>
+<p>📝 <strong>What you will do:</strong> Add transition and hover styles to nav links.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>In <code>css/style.css</code>, find or create the nav link rules:<pre><code class="language-css">nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-family: &#39;Montserrat&#39;, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: #3498db;
+    box-shadow: inset 0 -3px 0 #ffcc00;
+}
+</code></pre>
+</li>
+<li>Save and preview. Hover over each nav link.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Background colour fades in smoothly on hover. Active page link stays highlighted. The yellow bottom border accent appears on hover.</p>
+<p>💾 <strong>Save</strong> all files.</p>
+<hr>
+<h4 id="task-5-add-a-gradient-welcome-banner">TASK 5: Add a Gradient Welcome Banner<a class="anchor" href="#task-5-add-a-gradient-welcome-banner" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create an eye-catching banner section with a gradient background and a call-to-action button.</p>
+<p>📝 <strong>What you will do:</strong> Add HTML for the banner and CSS with gradient, text shadow, and button hover effect.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>In <code>index.html</code>, inside <code>&lt;main&gt;</code>, add:<pre><code class="language-html">&lt;section class=&quot;welcome-banner&quot;&gt;
+    &lt;div class=&quot;banner-content&quot;&gt;
+        &lt;h2&gt;Join Our Community&lt;/h2&gt;
+        &lt;p&gt;Become a member of the Student Club and unlock exciting opportunities!&lt;/p&gt;
+        &lt;a href=&quot;contact.html&quot; class=&quot;btn btn-large&quot;&gt;Join Now&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+</li>
+<li>In <code>css/style.css</code>, add:<pre><code class="language-css">.welcome-banner {
+    background: linear-gradient(135deg, #2874a6 0%, #1a5276 50%, #0d3b5e 100%);
+    color: white;
+    text-align: center;
+    padding: 50px 30px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.welcome-banner h2 {
+    font-family: &#39;Montserrat&#39;, sans-serif;
+    font-size: 36px;
+    color: white;
+    border: none;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-banner p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(to right, #2874a6, #3498db);
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #1a5276, #2874a6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-large {
+    font-size: 18px;
+    padding: 15px 40px;
+}
+</code></pre>
+</li>
+<li>Save and preview.</li>
+</ol>
+<p>✅ <strong>Check:</strong> The banner has a dark diagonal gradient. The heading has a text shadow. The &quot;Join Now&quot; button is pill-shaped with its own gradient and lifts on hover.</p>
+<p>💾 <strong>Save</strong> all files.</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Web fonts and CSS3 effects fail quietly: the page still renders, just not the way you designed it.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Custom font never appears</td>
+<td>The <code>&lt;link&gt;</code> to Google Fonts is missing or below the stylesheet</td>
+<td>Network tab shows no request to <code>fonts.googleapis.com</code></td>
+<td>Put the font <code>&lt;link&gt;</code> in <code>&lt;head&gt;</code>, before your own CSS</td>
+</tr>
+<tr>
+<td>Font loads but the page uses the fallback</td>
+<td>The <code>font-family</code> name does not match, or quotes are missing</td>
+<td>Computed pane shows the rendered family</td>
+<td>Copy the exact name: <code>font-family: &#39;Roboto&#39;, sans-serif</code></td>
+</tr>
+<tr>
+<td>Bold and italic look wrong or &quot;smeared&quot;</td>
+<td>Those weights were not requested from Google Fonts</td>
+<td>Check the <code>&lt;link&gt;</code> URL for the weight list</td>
+<td>Request the weights you use, e.g. <code>wght@400;700</code></td>
+</tr>
+<tr>
+<td>A flash of unstyled text on every load</td>
+<td>Normal web-font behaviour before the font arrives</td>
+<td>Throttle to Slow 3G in the Network tab</td>
+<td>Add <code>&amp;display=swap</code> to the font URL</td>
+</tr>
+<tr>
+<td><code>box-shadow</code> invisible</td>
+<td>Zero blur and zero offset, or the colour matches the background</td>
+<td>Inspect the computed value</td>
+<td>Give it offset, blur, and a contrasting <code>rgba()</code> colour</td>
+</tr>
+<tr>
+<td><code>border-radius</code> has no effect</td>
+<td>Applied to an inline element</td>
+<td>Check the computed <code>display</code></td>
+<td>Set <code>display: inline-block</code> or <code>block</code></td>
+</tr>
+<tr>
+<td>Gradient renders as a flat colour</td>
+<td>Only one colour stop, or a missing comma</td>
+<td>Styles pane marks the value invalid</td>
+<td><code>linear-gradient(to right, #123, #456)</code></td>
+</tr>
+<tr>
+<td>Transition jumps instead of animating</td>
+<td><code>transition</code> declared on the <code>:hover</code> rule, not the base rule</td>
+<td>Inspect the base rule</td>
+<td>Put <code>transition</code> on the element itself</td>
+</tr>
+<tr>
+<td>Animation ignores <code>auto</code> values</td>
+<td><code>height: auto</code> and <code>display</code> are not animatable</td>
+<td>The transition simply snaps</td>
+<td>Animate <code>max-height</code>, <code>opacity</code>, or <code>transform</code> instead</td>
+</tr>
+<tr>
+<td>Text unreadable over a gradient or image</td>
+<td>Insufficient contrast</td>
+<td>Run the DevTools contrast checker</td>
+<td>Darken the overlay, or use a solid backing colour behind the text</td>
+</tr>
+</tbody></table>
+<p><strong>Check the font actually swapped, not just loaded.</strong> In DevTools, select a heading and read the Computed panel&#39;s rendered font at the very bottom. It names the font the browser truly used — which is the only way to catch a silent fallback.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. Where does the Google Fonts <code>&lt;link&gt;</code> go, and why there?</strong></p>
+<details>
+<summary>Answer</summary><p>Inside <code>&lt;head&gt;</code>, <strong>before</strong> your own <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code>. The font must be requested early so the browser can start downloading it while parsing the rest of the page, and it must load before your CSS so your <code>font-family</code> rules have the font available.</p>
+</details><hr>
+<p><strong>Q2. Why does <code>font-family</code> take a comma-separated list instead of a single name?</strong></p>
+<details>
+<summary>Answer</summary><p>It is a <strong>fallback stack</strong>. The browser tries each name in order and uses the first one available. <code>font-family: &#39;Roboto&#39;, Arial, sans-serif</code> means: use Roboto if it loaded; if the request failed, use Arial; if Arial is missing, use whatever sans-serif font the system provides. Always end with a generic family (<code>sans-serif</code>, <code>serif</code>, <code>monospace</code>).</p>
+</details><hr>
+<p><strong>Q3. Should <code>transition</code> go on the base selector or on <code>:hover</code>? Why?</strong></p>
+<details>
+<summary>Answer</summary><p>On the <strong>base</strong> selector. Putting it on <code>:hover</code> only animates the mouse-enter; when the pointer leaves, the <code>:hover</code> rule (and its transition) no longer applies, so the element snaps back instantly. On the base selector, both directions animate smoothly.</p>
+</details><hr>
+<p><strong>Q4. Read <code>box-shadow: 0 4px 12px rgba(0,0,0,0.15)</code> value by value.</strong></p>
+<details>
+<summary>Answer</summary><p><code>0</code> horizontal offset (no left/right shift) · <code>4px</code> vertical offset (shadow sits below) · <code>12px</code> blur radius (soft edge) · <code>rgba(0,0,0,0.15)</code> colour — black at 15% opacity. Using <code>rgba</code> rather than a solid grey lets the page background show through, which looks natural on any background colour.</p>
+</details><hr>
+<p><strong>Q5. Why prefer <code>rgba(0,0,0,0.15)</code> over a hex colour like <code>#cccccc</code> for shadows?</strong></p>
+<details>
+<summary>Answer</summary><p><code>rgba</code> is semi-transparent, so the shadow tints whatever is behind it and looks correct on white, coloured, and image backgrounds alike. A solid <code>#cccccc</code> shadow looks right on white and obviously wrong on anything else.</p>
+</details><hr>
+<p><strong>Q6. What is the difference between <code>text-shadow</code> and <code>box-shadow</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>text-shadow</code> applies to the <strong>glyphs</strong> of the text; <code>box-shadow</code> applies to the element&#39;s <strong>box</strong>. <code>text-shadow</code> takes no spread value and has no <code>inset</code> keyword. Use <code>text-shadow</code> sparingly — mainly to lift light text off a photo or gradient — and never on body copy, where it hurts readability.</p>
+</details><hr>
+<p><strong>Q7. What does <code>135deg</code> mean in <code>linear-gradient(135deg, #667eea, #764ba2)</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>The direction the gradient travels. <code>0deg</code> runs bottom to top, <code>90deg</code> left to right, <code>180deg</code> top to bottom; <code>135deg</code> runs diagonally from top-left to bottom-right. Note a gradient is a <strong>background image</strong>, so it replaces <code>background-color</code> — you cannot show both on the same element.</p>
+</details><hr>
+<p><strong>Q8. Which properties are cheap to animate, and which cause slow repaints?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Cheap:</strong> <code>transform</code> and <code>opacity</code> — the compositor handles them on the GPU without re-running layout. <strong>Expensive:</strong> <code>width</code>, <code>height</code>, <code>top</code>, <code>left</code>, <code>margin</code>, <code>padding</code> — each frame forces a re-layout of the page. To move something, use <code>transform: translateY(-2px)</code> rather than animating <code>top</code>.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Add Google Fonts to an HTML page using <code>&lt;link&gt;</code> tags</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Write a font-family stack with proper fallback fonts</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Explain the difference between <code>&lt;link&gt;</code> and <code>@import</code> for fonts</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Use <code>text-align</code>, <code>line-height</code>, and <code>letter-spacing</code> effectively</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Create rounded corners with <code>border-radius</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Add <code>box-shadow</code> and <code>text-shadow</code> for depth</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Build linear and radial gradients as backgrounds</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Write CSS transitions that animate hover effects smoothly</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered <strong>No</strong> to any item, revisit the corresponding Theory section and redo the relevant Hands-On task before moving on.</p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">CSS transitions — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform">CSS transforms — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_images/Using_CSS_gradients">Using CSS gradients — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow"><code>box-shadow</code> — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius"><code>border-radius</code> — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face"><code>@font-face</code> — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow"><code>text-shadow</code> — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"><code>line-height</code> — MDN</a></li>
+<li><a href="https://fonts.google.com">Google Fonts</a></li>
+<li><a href="https://web.dev/articles/typography">Web Fundamentals: Typography — web.dev</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>Session 8 is a <strong>Review &amp; Midterm Preparation</strong> session — we will recap everything from Sessions 1–7, work through practice exam questions, and make sure you are fully ready for the midterm.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

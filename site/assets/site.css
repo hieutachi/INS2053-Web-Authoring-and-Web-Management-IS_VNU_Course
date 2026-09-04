@@ -1,0 +1,349 @@
+/* =============================================================================
+   INS2053 — course site stylesheet
+
+   The palette and the dark-theme selector deliberately match
+   slides-html/assets/deck.css: the decks are copied into this site unchanged,
+   so a student moving from a chapter to a deck should not see the colours jump.
+   The theme choice is stored under the same localStorage key for the same
+   reason.
+   ============================================================================= */
+
+:root {
+  --bg-page: #eef1f6;
+  --bg-base: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-code: #f7f9fc;
+
+  --fill-primary: #dbe3ee;
+  --fill-secondary: #e5ebf4;
+  --fill-tertiary: #eef2f8;
+
+  --stroke-primary: #94a3b8;
+  --stroke-secondary: #c3cede;
+  --stroke-tertiary: #dbe2ec;
+
+  --text-primary: #0f172a;
+  --text-secondary: #41506b;
+  --text-tertiary: #6b7a94;
+
+  --accent: #2563eb;
+  --accent-warm: #f0b429;
+  --accent-green: #15803d;
+  --accent-orange: #ea580c;
+
+  --measure: 74ch;
+  --radius: 10px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg-page: #0b1220;
+  --bg-base: #111a2b;
+  --bg-elevated: #162034;
+  --bg-code: #0d1626;
+
+  --fill-primary: #1e2c45;
+  --fill-secondary: #1a273d;
+  --fill-tertiary: #162034;
+
+  --stroke-primary: #47597a;
+  --stroke-secondary: #2c3b56;
+  --stroke-tertiary: #223047;
+
+  --text-primary: #e8eef9;
+  --text-secondary: #aebbd2;
+  --text-tertiary: #8494ae;
+
+  --accent: #60a5fa;
+  --accent-warm: #fbbf24;
+  --accent-green: #4ade80;
+  --accent-orange: #fb923c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* --- skip link and top bar ------------------------------------------------ */
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip:focus {
+  left: 0;
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem clamp(1rem, 4vw, 2.5rem);
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--stroke-tertiary);
+}
+
+.bar .home {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.bar .home:hover {
+  color: var(--accent);
+}
+
+.theme {
+  padding: 0.4rem 0.85rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--fill-tertiary);
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.theme:hover {
+  color: var(--text-primary);
+  border-color: var(--stroke-primary);
+}
+
+/* --- breadcrumbs ---------------------------------------------------------- */
+
+.crumbs {
+  max-width: var(--measure);
+  margin: 1.5rem auto 0;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.crumbs a {
+  color: var(--text-secondary);
+}
+
+.crumbs .sep {
+  margin: 0 0.5rem;
+  color: var(--stroke-primary);
+}
+
+/* --- main column ---------------------------------------------------------- */
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+h1 {
+  margin: 0.5rem 0 0.75rem;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  margin: 0 0 2rem;
+  font-size: 1.06rem;
+  color: var(--text-secondary);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.3;
+  scroll-margin-top: 4.5rem;
+}
+
+h2 {
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.4rem;
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--stroke-tertiary);
+}
+
+h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.13rem;
+}
+
+h4 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 1.1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Heading anchor: present for deep links, quiet until hover. */
+.anchor {
+  margin-left: 0.4rem;
+  color: var(--stroke-primary);
+  text-decoration: none;
+  opacity: 0;
+}
+
+h2:hover .anchor,
+h3:hover .anchor,
+.anchor:focus {
+  opacity: 1;
+}
+
+hr {
+  height: 1px;
+  margin: 2.5rem 0;
+  border: 0;
+  background: var(--stroke-tertiary);
+}
+
+/* --- code ----------------------------------------------------------------- */
+
+code {
+  padding: 0.15em 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--fill-tertiary);
+  border-radius: 4px;
+}
+
+pre {
+  margin: 0 0 1.3rem;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  background: var(--bg-code);
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: var(--radius);
+  line-height: 1.55;
+}
+
+pre code {
+  padding: 0;
+  font-size: 0.86rem;
+  background: none;
+}
+
+/* Material handed out in class rather than published here: keep the words, drop
+   the link. A link that 404s teaches students the site is broken. */
+.unpub {
+  border-bottom: 1px dotted var(--stroke-secondary);
+  color: var(--text-secondary);
+  cursor: help;
+}
+
+/* A path used as an EXAMPLE inside a chapter (a file in the student's own
+   project, not a page on this site). Rendered as a path, not a destination. */
+code.path {
+  color: var(--text-secondary);
+}
+
+/* --- tables --------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  margin: 0 0 1.4rem;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+
+caption {
+  margin-bottom: 0.6rem;
+  color: var(--text-tertiary);
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--stroke-tertiary);
+}
+
+th {
+  background: var(--fill-tertiary);
+  font-weight: 600;
+}
+
+/* A chapter's common-errors table is wide; let it scroll rather than squash. */
+.doc table {
+  display: block;
+  overflow-x: auto;
+  white-space: normal;
+}
+
+blockquote {
+  margin: 0 0 1.3rem;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  border-left: 3px solid var(--accent-warm);
+  color: var(--text-secondary);
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+

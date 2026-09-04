@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 2: Creating a New Site &amp; Organizing Your Project — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Session 2: Creating a New Site &amp; Organizing Your Project — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Ebook</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chapter 2</span></nav>
+<main id="main">
+  <h1>Session 2: Creating a New Site &amp; Organizing Your Project</h1>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#1-what-is-a-site-in-web-development">1. What Is a &quot;Site&quot; in Web Development?</a></li>
+        <li class="d2"><a href="#2-complete-folder-structure">2. Complete Folder Structure</a></li>
+        <li class="d2"><a href="#3-file-paths-relative-vs-absolute">3. File Paths: Relative vs. Absolute</a></li>
+        <li class="d2"><a href="#4-file-naming-conventions">4. File Naming Conventions</a></li>
+        <li class="d2"><a href="#5-introduction-to-git-and-github">5. Introduction to Git and GitHub</a></li>
+        <li class="d2"><a href="#6-creating-navigation-across-multiple-pages">6. Creating Navigation Across Multiple Pages</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-understanding-relative-paths-with-a-diagram">Example 1: Understanding Relative Paths with a Diagram</a></li>
+        <li class="d2"><a href="#example-2-linking-from-a-subfolder">Example 2: Linking FROM a Subfolder</a></li>
+        <li class="d2"><a href="#example-3-complete-multi-page-setup">Example 3: Complete Multi-Page Setup</a></li>
+        <li class="d2"><a href="#setup-tools-and-folders">Setup (Tools and Folders)</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Chapter navigation">
+    <a class="up" href="../sessions/session-02.html">Session 2 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-2">🟦 SESSION 2<a class="anchor" href="#session-2" aria-label="Link to this section">#</a></h2>
+<h2 id="creating-a-new-site-organizing-your-project"><strong>Creating a New Site &amp; Organizing Your Project</strong><a class="anchor" href="#creating-a-new-site-organizing-your-project" aria-label="Link to this section">#</a></h2>
+<p>Welcome back! In Session 1 you created your first HTML page and learned what a website is. Today we go deeper: you will learn how to organize an entire multi-page website, understand the critical difference between relative and absolute file paths, follow professional file naming conventions, and get your first taste of version control with Git and GitHub. By the end of this session your Student Club Website will have multiple working pages linked together through a navigation menu — just like a real website.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    MDN &quot;Dealing with Files&quot;
+                 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files
+🎯 Objectives:   1. Define a site in Dreamweaver (or set up a project in VS Code)
+                 2. Create a complete folder structure for a multi-page website
+                 3. Explain relative vs absolute paths and use relative paths correctly
+                 4. Apply professional file naming conventions
+                 5. Understand the basics of Git and GitHub for version control
+📖 Prepare:      1. Complete all tasks from Session 1 (your index.html should exist)
+                 2. Install Git from https://git-scm.com/downloads (optional but recommended)
+                 3. Create a free GitHub account at https://github.com (optional but recommended)
+🖼 Diagrams:     canvases/buoi-02.canvas.tsx — PathResolver, DotDotLadder, GitFlow
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO3 (choose appropriate technologies for web development)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>After this session you will be able to:</p>
+<ul>
+<li>Define a &quot;site&quot; in Dreamweaver or configure a workspace in VS Code for a web project</li>
+<li>Build a complete multi-page website with consistent navigation across all pages</li>
+<li>Distinguish between relative and absolute file paths and explain why relative paths are essential for web development</li>
+<li>Apply correct file naming conventions (lowercase, hyphens, no spaces, no special characters)</li>
+<li>Explain what Git is, why developers use it, and perform basic Git operations (init, add, commit)</li>
+<li>Create a <code>.gitignore</code> file and push a project to GitHub</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-what-is-a-site-in-web-development">1. What Is a &quot;Site&quot; in Web Development?<a class="anchor" href="#1-what-is-a-site-in-web-development" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>site</strong> is the root folder on your computer that contains ALL files belonging to one website. When you &quot;define a site&quot; in Dreamweaver, you are telling the software: &quot;This folder is my project. All files inside it belong to this website.&quot;</p>
+<p>In VS Code, the equivalent action is &quot;opening a folder as a workspace.&quot; The result is the same: your editor knows where your project lives and can manage files, links, and settings accordingly.</p>
+<p>The <strong>local root folder</strong> is the top-level folder on YOUR computer. Later in the course, you will also learn about the <strong>remote root folder</strong>, which is the corresponding folder on a web server where you publish your site.</p>
+<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think of defining a site like <strong>setting up a new apartment</strong>:</p>
+<ul>
+<li>Choosing the apartment = choosing your root folder (<code>club-website/</code>)</li>
+<li>Setting up rooms = creating subfolders (<code>images/</code>, <code>css/</code>, <code>js/</code>, <code>documents/</code>)</li>
+<li>Moving furniture in = adding files (<code>index.html</code>, <code>logo.png</code>, <code>style.css</code>)</li>
+<li>Giving the landlord your address = telling Dreamweaver/VS Code where the project lives</li>
+</ul>
+<p>If you do not tell anyone your address, nobody can find your apartment. Similarly, if you do not define your site, Dreamweaver cannot resolve relative paths or manage your files properly.</p>
+<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Relative paths</td>
+<td>Dreamweaver needs to know the root folder to calculate relative paths correctly</td>
+</tr>
+<tr>
+<td>File management</td>
+<td>The Files panel shows only files inside the defined site</td>
+</tr>
+<tr>
+<td>Link checking</td>
+<td>Dreamweaver can check for broken links only within a defined site</td>
+</tr>
+<tr>
+<td>Consistency</td>
+<td>Everyone on a team uses the same folder structure</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>When you upload to a server, the entire site folder is transferred</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>Always define your site BEFORE creating any pages.</li>
+<li>Never create files outside the site folder — they will not be part of your project.</li>
+<li>The site folder name should be descriptive and match your project: <code>club-website</code>.</li>
+</ul>
+<hr>
+<h3 id="2-complete-folder-structure">2. Complete Folder Structure<a class="anchor" href="#2-complete-folder-structure" aria-label="Link to this section">#</a></h3>
+<h4 id="21-standard-web-project-structure">2.1 Standard Web Project Structure<a class="anchor" href="#21-standard-web-project-structure" aria-label="Link to this section">#</a></h4>
+<p>Every professional website follows a predictable folder structure. Here is the complete structure for our Student Club Website:</p>
+<pre><code>club-website/                  &lt;-- ROOT FOLDER (site root)
+│
+├── index.html                       &lt;-- Home page (required!)
+├── about.html                       &lt;-- About Us page
+├── events.html                      &lt;-- Events page
+├── gallery.html                     &lt;-- Photo gallery page
+├── contact.html                     &lt;-- Contact page
+│
+├── images/                          &lt;-- All image files
+│   ├── club-logo.png
+│   ├── banner.jpg
+│   ├── team-photo.jpg
+│   ├── event-workshop.jpg
+│   └── event-music.jpg
+│
+├── css/                             &lt;-- All CSS stylesheets
+│   ├── style.css                    &lt;-- Main stylesheet
+│   └── responsive.css               &lt;-- Mobile-specific styles (later)
+│
+├── js/                              &lt;-- All JavaScript files
+│   └── main.js                      &lt;-- Main script file
+│
+└── documents/                       &lt;-- Downloadable files
+    ├── club-constitution.pdf
+    └── membership-form.pdf
+</code></pre>
+<h4 id="22-rules-for-folder-organization">2.2 Rules for Folder Organization<a class="anchor" href="#22-rules-for-folder-organization" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>One root folder per project</td>
+<td>Keeps everything contained and portable</td>
+</tr>
+<tr>
+<td>Separate folders by file type</td>
+<td>Makes finding files fast and easy</td>
+</tr>
+<tr>
+<td>No files loose in the root (except .html pages)</td>
+<td>HTML pages live in root; everything else goes in subfolders</td>
+</tr>
+<tr>
+<td>No nested sub-sub-sub-folders</td>
+<td>Keep it flat — two levels maximum (root → subfolder → files)</td>
+</tr>
+<tr>
+<td>Use lowercase folder names</td>
+<td>Avoids case-sensitivity problems on Linux servers</td>
+</tr>
+<tr>
+<td>No spaces in folder names</td>
+<td>Spaces cause URL encoding issues (<code>%20</code>)</td>
+</tr>
+</tbody></table>
+<h4 id="real-life-example-2">🎒 Real-life Example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>Think of folder structure like organizing a <strong>kitchen</strong>:</p>
+<ul>
+<li>Pots and pans go in one cabinet (<code>images/</code>)</li>
+<li>Plates and bowls go in another (<code>css/</code>)</li>
+<li>Utensils go in a drawer (<code>js/</code>)</li>
+<li>Recipes go in a binder (<code>documents/</code>)</li>
+</ul>
+<p>You would never put a frying pan in the refrigerator or store milk in the oven. Similarly, never put a CSS file in the <code>images/</code> folder or an image in the root folder.</p>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>Create ALL folders before you start coding. This takes 30 seconds and saves hours of confusion later.</li>
+<li>If you realize you need a new folder mid-project, create it immediately — do not dump files in the wrong place &quot;for now.&quot;</li>
+<li>Every HTML page goes in the root folder (unless you have a specific reason for sub-pages, which we will cover in later sessions).</li>
+</ul>
+<h4 id="try-it-yourself-climb-the-folder-ladder">🧪 Try It Yourself — Climb the Folder Ladder<a class="anchor" href="#try-it-yourself-climb-the-folder-ladder" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Make one stylesheet reach a page in a subfolder.</p>
+<ol>
+<li>You have <code>css/style.css</code> and <code>pages/about.html</code>.</li>
+<li>In <code>pages/about.html</code>, first try the wrong path:<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+</li>
+<li>Reload and open F12 → <strong>Network</strong>. Note the 404 and the exact URL it tried.</li>
+<li>Now fix it:<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;../css/style.css&quot;&gt;
+</code></pre>
+</li>
+<li>Reload and confirm the request turns green.</li>
+</ol>
+<p><strong>Expected result:</strong> The failed request asked for <code>pages/css/style.css</code>. Adding <code>../</code> steps out of <code>pages/</code> first, so the browser finds <code>css/style.css</code>.</p>
+<details>
+<summary>How to read a path without guessing</summary><p>Read it left to right, starting from the folder the <strong>current file</strong> is in:</p>
+<ul>
+<li><code>style.css</code> → same folder as me</li>
+<li><code>css/style.css</code> → into a <code>css</code> folder inside my folder</li>
+<li><code>../css/style.css</code> → out one level, then into <code>css</code></li>
+<li><code>/css/style.css</code> → from the server root, which on a local file system means your C: drive — almost always wrong in this course</li>
+</ul>
+<p>The Network tab always shows the full URL the browser tried. Compare that to where the file actually is, and the fix becomes obvious.</p>
+</details><hr>
+<h3 id="3-file-paths-relative-vs-absolute">3. File Paths: Relative vs. Absolute<a class="anchor" href="#3-file-paths-relative-vs-absolute" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagrams:</strong> <code>canvases/buoi-02.canvas.tsx</code> → <code>PathResolver</code> — slide <code>paths</code> (&quot;Relative vs Absolute Paths&quot;); <code>DotDotLadder</code> — slide <code>dotdot-rule</code> (&quot;The ../ Rule&quot;)</p>
+</blockquote>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>file path</strong> tells the browser where to find a file. There are two types:</p>
+<p><strong>Absolute path:</strong> The COMPLETE address starting from the drive letter or domain name.</p>
+<pre><code>C:\Users\Nguyen\Documents\club-website\images\logo.png
+https://www.studentclub.edu.vn/images/logo.png
+</code></pre>
+<p><strong>Relative path:</strong> The path STARTING FROM THE CURRENT FILE&#39;S LOCATION.</p>
+<pre><code>images/logo.png          (from index.html to images/logo.png)
+about.html               (from index.html to about.html, both in root)
+../index.html            (from css/style.css UP one level to index.html)
+</code></pre>
+<h4 id="32-how-relative-paths-work">3.2 How Relative Paths Work<a class="anchor" href="#32-how-relative-paths-work" aria-label="Link to this section">#</a></h4>
+<p>Relative paths are calculated based on WHERE THE CURRENT FILE IS LOCATED. This is the single most important concept in this session. Let us walk through every scenario:</p>
+<pre><code>SCENARIO DIAGRAM:
+
+club-website/              &lt;-- Root folder
+├── index.html                   &lt;-- YOU ARE HERE
+├── about.html
+├── images/
+│   └── logo.png
+├── css/
+│   └── style.css
+└── documents/
+    └── form.pdf
+</code></pre>
+<p><strong>From <code>index.html</code> (in the root):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Target File</th>
+<th>Relative Path</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>about.html</code></td>
+<td><code>about.html</code></td>
+<td>Same folder — just use the filename</td>
+</tr>
+<tr>
+<td><code>images/logo.png</code></td>
+<td><code>images/logo.png</code></td>
+<td>Go INTO the <code>images/</code> subfolder</td>
+</tr>
+<tr>
+<td><code>css/style.css</code></td>
+<td><code>css/style.css</code></td>
+<td>Go INTO the <code>css/</code> subfolder</td>
+</tr>
+<tr>
+<td><code>documents/form.pdf</code></td>
+<td><code>documents/form.pdf</code></td>
+<td>Go INTO the <code>documents/</code> subfolder</td>
+</tr>
+</tbody></table>
+<p><strong>From <code>css/style.css</code> (inside the <code>css/</code> subfolder):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Target File</th>
+<th>Relative Path</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>index.html</code></td>
+<td><code>../index.html</code></td>
+<td>Go UP one level (<code>..</code>) then find <code>index.html</code></td>
+</tr>
+<tr>
+<td><code>about.html</code></td>
+<td><code>../about.html</code></td>
+<td>Go UP one level then find <code>about.html</code></td>
+</tr>
+<tr>
+<td><code>images/logo.png</code></td>
+<td><code>../images/logo.png</code></td>
+<td>Go UP one level, then INTO <code>images/</code></td>
+</tr>
+</tbody></table>
+<p><strong>The <code>../</code> notation means &quot;go up one folder level.&quot;</strong> Each <code>../</code> goes up one more level:</p>
+<ul>
+<li><code>../</code> = up one level</li>
+<li><code>../../</code> = up two levels</li>
+<li><code>../../../</code> = up three levels (rarely needed)</li>
+</ul>
+<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<p>Think of relative paths like giving <strong>directions from your current location</strong>:</p>
+<ul>
+<li>You are standing in the living room (= <code>index.html</code> in root)</li>
+<li>&quot;Go to the kitchen&quot; = <code>images/logo.png</code> (move into a nearby room)</li>
+<li>&quot;Stay here&quot; = <code>about.html</code> (same room, different spot)</li>
+</ul>
+<p>But if you are standing INSIDE the kitchen (= <code>css/style.css</code> inside <code>css/</code>):</p>
+<ul>
+<li>&quot;Go back to the living room first, THEN go to the bedroom&quot; = <code>../about.html</code> (exit kitchen → enter bedroom)</li>
+</ul>
+<p>You always give directions FROM WHERE YOU ARE, not from some fixed point. That is exactly how relative paths work.</p>
+<h4 id="comparison-table-relative-vs-absolute-paths">🔍 Comparison Table: Relative vs. Absolute Paths<a class="anchor" href="#comparison-table-relative-vs-absolute-paths" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Relative Path</th>
+<th>Absolute Path</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Starts from</td>
+<td>Current file&#39;s location</td>
+<td>Drive root or domain</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><code>images/logo.png</code></td>
+<td><code>C:\Users\Name\site\images\logo.png</code></td>
+</tr>
+<tr>
+<td>Works after moving the site folder?</td>
+<td>✅ Yes</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>Works after uploading to a server?</td>
+<td>✅ Yes</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>Easy to read and maintain?</td>
+<td>✅ Yes</td>
+<td>❌ No</td>
+</tr>
+<tr>
+<td>Recommended for web development?</td>
+<td>✅ ALWAYS</td>
+<td>❌ NEVER</td>
+</tr>
+<tr>
+<td>Used for</td>
+<td>Links between pages, image sources, CSS references</td>
+<td>Bookmarking, external resources</td>
+</tr>
+</tbody></table>
+<h4 id="33-why-relative-paths-matter">3.3 Why Relative Paths Matter<a class="anchor" href="#33-why-relative-paths-matter" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Portability</td>
+<td>You can move your entire site folder to another computer and all links still work</td>
+</tr>
+<tr>
+<td>Server deployment</td>
+<td>When uploaded to a server, absolute local paths (<code>C:\...</code>) become meaningless</td>
+</tr>
+<tr>
+<td>Team projects</td>
+<td>Different team members have different user folders; relative paths work for everyone</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Renaming or reorganizing folders is easier when paths are relative</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li><strong>ALWAYS use relative paths in your HTML and CSS.</strong> This is a non-negotiable rule in web development.</li>
+<li>The only time absolute paths are acceptable is when linking to EXTERNAL resources (like a CDN for fonts or libraries): <code>&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Roboto&quot;&gt;</code>.</li>
+<li>Test your links by opening the HTML file directly in a browser AND by using Dreamweaver&#39;s link checker.</li>
+<li>If an image does not display, the FIRST thing to check is whether the relative path is correct.</li>
+</ul>
+<hr>
+<h3 id="4-file-naming-conventions">4. File Naming Conventions<a class="anchor" href="#4-file-naming-conventions" aria-label="Link to this section">#</a></h3>
+<h4 id="41-the-rules">4.1 The Rules<a class="anchor" href="#41-the-rules" aria-label="Link to this section">#</a></h4>
+<p>Professional web developers follow strict naming conventions. These are NOT optional suggestions — they prevent real, painful bugs.</p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Correct ✅</th>
+<th>Wrong ❌</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Use lowercase only</td>
+<td><code>about-us.html</code></td>
+<td><code>About-Us.html</code></td>
+<td>Linux servers are case-sensitive; <code>About.html</code> ≠ <code>about.html</code></td>
+</tr>
+<tr>
+<td>Use hyphens for spaces</td>
+<td><code>team-photo.jpg</code></td>
+<td><code>team photo.jpg</code></td>
+<td>Spaces become <code>%20</code> in URLs, causing broken links</td>
+</tr>
+<tr>
+<td>No special characters</td>
+<td><code>events.html</code></td>
+<td><code>events&amp;news.html</code></td>
+<td>Characters like <code>#</code>, <code>%</code>, <code>&amp;</code>, <code>@</code>, <code>!</code> have special meaning in URLs</td>
+</tr>
+<tr>
+<td>Keep names short but descriptive</td>
+<td><code>contact.html</code></td>
+<td><code>the-page-where-you-can-contact-us.html</code></td>
+<td>Long names are hard to type and prone to typos</td>
+</tr>
+<tr>
+<td>Use meaningful names</td>
+<td><code>gallery.html</code></td>
+<td><code>page2.html</code></td>
+<td>Meaningful names make maintenance easier</td>
+</tr>
+<tr>
+<td>Always include the extension</td>
+<td><code>style.css</code></td>
+<td><code>style</code></td>
+<td>Without the extension, the browser does not know the file type</td>
+</tr>
+<tr>
+<td><code>index.html</code> for home page</td>
+<td><code>index.html</code></td>
+<td><code>home.html</code></td>
+<td>Web servers look for <code>index.html</code> by default</td>
+</tr>
+</tbody></table>
+<h4 id="42-common-file-names-for-our-project">4.2 Common File Names for Our Project<a class="anchor" href="#42-common-file-names-for-our-project" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Filename</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home</td>
+<td><code>index.html</code></td>
+<td>Landing page, first page visitors see</td>
+</tr>
+<tr>
+<td>About Us</td>
+<td><code>about.html</code></td>
+<td>Information about the club</td>
+</tr>
+<tr>
+<td>Events</td>
+<td><code>events.html</code></td>
+<td>List of upcoming and past events</td>
+</tr>
+<tr>
+<td>Gallery</td>
+<td><code>gallery.html</code></td>
+<td>Photo gallery of club activities</td>
+</tr>
+<tr>
+<td>Contact</td>
+<td><code>contact.html</code></td>
+<td>Contact form and information</td>
+</tr>
+<tr>
+<td>Main stylesheet</td>
+<td><code>css/style.css</code></td>
+<td>Primary CSS file</td>
+</tr>
+<tr>
+<td>Main script</td>
+<td><code>js/main.js</code></td>
+<td>Primary JavaScript file</td>
+</tr>
+<tr>
+<td>Logo</td>
+<td><code>images/club-logo.png</code></td>
+<td>Club logo image</td>
+</tr>
+<tr>
+<td>Banner</td>
+<td><code>images/banner.jpg</code></td>
+<td>Header banner image</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>Rename files BEFORE linking to them. Changing a filename after other pages already link to it breaks those links.</li>
+<li>If you rename a file in Dreamweaver&#39;s Files panel (right-click → Rename), Dreamweaver will offer to update all links automatically. Always say YES.</li>
+<li>Double-check filenames when typing <code>href</code> and <code>src</code> attributes. A single typo causes a broken link.</li>
+</ul>
+<h4 id="try-it-yourself-break-a-name-on-purpose">🧪 Try It Yourself — Break a Name on Purpose<a class="anchor" href="#try-it-yourself-break-a-name-on-purpose" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (4 min):</strong> See the failure mode that only appears after you upload.</p>
+<ol>
+<li>Rename an image in <code>img/</code> to include a space and a capital: <code>Club Photo.jpg</code>.</li>
+<li>Link it with <code>&lt;img src=&quot;img/Club Photo.jpg&quot; alt=&quot;Club members&quot;&gt;</code> and reload.</li>
+<li>Look at the address bar of the image request in F12 → Network.</li>
+<li>Now rename the file to <code>club-photo.jpg</code>, update the <code>src</code>, and reload.</li>
+</ol>
+<p><strong>Expected result:</strong> The first version may still work locally, but the Network tab shows the space encoded as <code>%20</code>. The second version is clean.</p>
+<details>
+<summary>Why this bites later, not now</summary><p>Windows is case-insensitive and tolerant of spaces, so the bad name works on your laptop. Most web servers run Linux, which is case-sensitive: <code>Club Photo.jpg</code> and <code>club-photo.jpg</code> are two different files, and only one of them exists. This is the classic &quot;it worked on my machine&quot; bug.</p>
+<p>The rule that avoids it entirely: lowercase letters, digits, and hyphens. Nothing else.</p>
+</details><hr>
+<h3 id="5-introduction-to-git-and-github">5. Introduction to Git and GitHub<a class="anchor" href="#5-introduction-to-git-and-github" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-02.canvas.tsx</code> → <code>GitFlow</code> — slide <code>git-basics</code> (&quot;Git &amp; GitHub Basics&quot;)</p>
+</blockquote>
+<h4 id="51-what-is-git">5.1 What Is Git?<a class="anchor" href="#51-what-is-git" aria-label="Link to this section">#</a></h4>
+<p><strong>Git</strong> is a <strong>version control system</strong>. It records every change you make to your files over time, so you can:</p>
+<ul>
+<li><strong>Undo mistakes</strong> — revert to any previous version of your code</li>
+<li><strong>Track history</strong> — see who changed what and when</li>
+<li><strong>Work in parallel</strong> — multiple people can edit the same project without overwriting each other&#39;s work</li>
+<li><strong>Back up your work</strong> — store copies on remote servers like GitHub</li>
+</ul>
+<h4 id="real-life-example-4">🎒 Real-life Example<a class="anchor" href="#real-life-example-4" aria-label="Link to this section">#</a></h4>
+<p>Think of Git like the <strong>&quot;Save As&quot; feature in a word processor, but much more powerful</strong>:</p>
+<ul>
+<li>Every time you save a version in Git (called a &quot;commit&quot;), it takes a snapshot of ALL your files</li>
+<li>You can go back to ANY snapshot at any time</li>
+<li>Unlike &quot;Save As,&quot; Git stores only the CHANGES between snapshots, so it uses very little disk space</li>
+<li>Multiple people can make their own snapshots and merge them together later</li>
+</ul>
+<p>Or think of it like a <strong>time machine for your code</strong>: made a mistake? Travel back to yesterday&#39;s version. Want to compare what changed? Look at the diff between two points in time.</p>
+<h4 id="52-what-is-github">5.2 What Is GitHub?<a class="anchor" href="#52-what-is-github" aria-label="Link to this section">#</a></h4>
+<p><strong>GitHub</strong> is a website that hosts Git repositories online. It provides:</p>
+<ul>
+<li><strong>Cloud backup</strong> — your code is safe even if your computer dies</li>
+<li><strong>Collaboration</strong> — team members can clone, edit, and merge code</li>
+<li><strong>Portfolio</strong> — employers look at your GitHub to evaluate your skills</li>
+<li><strong>Issue tracking</strong> — track bugs and feature requests</li>
+<li><strong>Free hosting</strong> — GitHub Pages lets you publish static websites for free</li>
+</ul>
+<h4 id="53-basic-git-commands">5.3 Basic Git Commands<a class="anchor" href="#53-basic-git-commands" aria-label="Link to this section">#</a></h4>
+<p>Here are the fundamental Git commands you need to know:</p>
+<pre><code class="language-bash"># 1. Initialize a new Git repository in your project folder
+git init
+
+# 2. Check which files have been changed
+git status
+
+# 3. Stage files for the next commit (add them to the staging area)
+git add index.html              # Stage one specific file
+git add images/                 # Stage all files in a folder
+git add .                       # Stage ALL changed files (use carefully)
+
+# 4. Commit staged changes with a descriptive message
+git commit -m &quot;Create initial home page with navigation&quot;
+
+# 5. View the commit history
+git log --oneline
+
+# 6. Connect to a GitHub repository
+git remote add origin https://github.com/YOUR_USERNAME/student-club-website.git
+
+# 7. Push your commits to GitHub
+git push -u origin main
+</code></pre>
+<h4 id="54-the-git-workflow">5.4 The Git Workflow<a class="anchor" href="#54-the-git-workflow" aria-label="Link to this section">#</a></h4>
+<pre><code>YOUR FILES          STAGING AREA         REPOSITORY           GITHUB
+(working directory)  (git add)          (git commit)        (git push)
+
+Edit files    --&gt;    Stage changes  --&gt;  Commit with     --&gt;  Push to
+(save)               (select what       message             cloud backup
+                      to include)       (snapshot saved)
+</code></pre>
+<p>Each step is intentional:</p>
+<ol>
+<li><strong>Edit</strong> — Make changes to your files</li>
+<li><strong>Stage</strong> (<code>git add</code>) — Choose which changes to include in the next snapshot</li>
+<li><strong>Commit</strong> (<code>git commit</code>) — Save a permanent snapshot with a descriptive message</li>
+<li><strong>Push</strong> (<code>git push</code>) — Upload your commits to GitHub</li>
+</ol>
+<h4 id="comparison-git-terms">🔍 Comparison: Git Terms<a class="anchor" href="#comparison-git-terms" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Analogy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Repository (repo)</td>
+<td>A project tracked by Git</td>
+<td>A photo album</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>A saved snapshot of all files at one point in time</td>
+<td>A photo in the album</td>
+</tr>
+<tr>
+<td>Stage</td>
+<td>The list of changes ready to be committed</td>
+<td>Photos laid out on the table before putting them in the album</td>
+</tr>
+<tr>
+<td>Push</td>
+<td>Upload commits to a remote server (GitHub)</td>
+<td>Sending photos to cloud storage</td>
+</tr>
+<tr>
+<td>Pull</td>
+<td>Download commits from a remote server</td>
+<td>Downloading photos from cloud storage</td>
+</tr>
+<tr>
+<td>Clone</td>
+<td>Download an entire repository from GitHub</td>
+<td>Copying someone&#39;s photo album</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>A parallel line of development</td>
+<td>Making a copy of the album to experiment without changing the original</td>
+</tr>
+</tbody></table>
+<h4 id="55-the-gitignore-file">5.5 The <code>.gitignore</code> File<a class="anchor" href="#55-the-gitignore-file" aria-label="Link to this section">#</a></h4>
+<p>Not every file should be tracked by Git. Create a file called <code>.gitignore</code> in your project root to tell Git which files to ignore:</p>
+<pre><code># .gitignore for Student Club Website
+
+# OS-generated files
+Thumbs.db
+.DS_Store
+
+# Editor temporary files
+*.tmp
+*.bak
+*~
+
+# Dreamweaver configuration (personal settings, not shared)
+_notes/
+*.dwt
+</code></pre>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>Git is OPTIONAL for this course but HIGHLY RECOMMENDED. Learning Git early gives you a huge advantage.</li>
+<li>Never commit sensitive files (passwords, API keys, personal data).</li>
+<li>Write meaningful commit messages: &quot;Add navigation bar to all pages&quot; is good; &quot;update&quot; is bad.</li>
+<li>Commit frequently — at minimum, commit after completing each task.</li>
+<li>If Git feels overwhelming right now, focus on the folder structure and paths first. You can learn Git gradually.</li>
+</ul>
+<h4 id="try-it-yourself-your-first-three-git-commands">🧪 Try It Yourself — Your First Three Git Commands<a class="anchor" href="#try-it-yourself-your-first-three-git-commands" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Put your site under version control locally. No GitHub account needed yet.</p>
+<ol>
+<li>Open the integrated terminal in VS Code (**Ctrl+<code>**) with </code>club-website` open.</li>
+<li>Run these one at a time:<pre><code class="language-bash">git init
+git add .
+git commit -m &quot;Initial site structure&quot;
+</code></pre>
+</li>
+<li>Now change something in <code>index.html</code> and save.</li>
+<li>Run <code>git status</code>, then <code>git diff</code>.</li>
+</ol>
+<p><strong>Expected result:</strong> <code>git status</code> names <code>index.html</code> as modified, and <code>git diff</code> shows your change with a <code>-</code> for the old line and a <code>+</code> for the new one.</p>
+<details>
+<summary>What you just gained</summary><p>A commit is a restore point. From here, <code>git diff</code> answers &quot;what did I change since it last worked?&quot; — the single most useful question when a page suddenly breaks.</p>
+<p>If <code>git</code> is not recognised, Git is not installed or not on your PATH. Install it from git-scm.com and reopen the terminal. You do not need GitHub for any of this; <code>git init</code> creates a repository that lives entirely in your project folder.</p>
+</details><hr>
+<h3 id="6-creating-navigation-across-multiple-pages">6. Creating Navigation Across Multiple Pages<a class="anchor" href="#6-creating-navigation-across-multiple-pages" aria-label="Link to this section">#</a></h3>
+<h4 id="61-consistent-navigation">6.1 Consistent Navigation<a class="anchor" href="#61-consistent-navigation" aria-label="Link to this section">#</a></h4>
+<p>Every page in your website should have the SAME navigation menu. This allows users to move freely between pages without getting lost.</p>
+<p>The navigation is built with a <code>&lt;nav&gt;</code> element containing an unordered list of links:</p>
+<pre><code class="language-html">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<h4 id="62-active-page-highlighting">6.2 Active Page Highlighting<a class="anchor" href="#62-active-page-highlighting" aria-label="Link to this section">#</a></h4>
+<p>On each page, the link to the CURRENT page should be visually distinct so users know where they are. One simple approach is to add a class:</p>
+<pre><code class="language-html">&lt;!-- On the ABOUT page --&gt;
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<p>Then in CSS:</p>
+<pre><code class="language-css">nav a.active {
+    font-weight: bold;
+    color: #ff6600;
+}
+</code></pre>
+<h4 id="63-semantic-html-structure">6.3 Semantic HTML Structure<a class="anchor" href="#63-semantic-html-structure" aria-label="Link to this section">#</a></h4>
+<p>Use semantic elements to give your page meaningful structure:</p>
+<pre><code class="language-html">&lt;header&gt;   &lt;!-- Top section: logo, site title, navigation --&gt;
+&lt;nav&gt;      &lt;!-- Navigation links --&gt;
+&lt;main&gt;     &lt;!-- Primary content unique to this page --&gt;
+&lt;section&gt;  &lt;!-- A thematic grouping within main --&gt;
+&lt;article&gt;  &lt;!-- Self-contained content (blog post, news item) --&gt;
+&lt;aside&gt;    &lt;!-- Sidebar or tangential content --&gt;
+&lt;footer&gt;   &lt;!-- Bottom section: copyright, contact info --&gt;
+</code></pre>
+<p>These elements do not change the VISUAL appearance (browsers render them like <code>&lt;div&gt;</code> by default), but they provide MEANING for screen readers, search engines, and other developers reading your code.</p>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>Copy-paste the navigation block into EVERY page. Later in the course, you will learn techniques to avoid repetition, but for now, manual copying is fine.</li>
+<li>Update the <code>class=&quot;active&quot;</code> attribute on each page to match the current page.</li>
+<li>Always test every link on every page. Click every single navigation link and verify it loads the correct page.</li>
+</ul>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><strong>Define your site FIRST.</strong> Before writing any code, set up the site in Dreamweaver or open the folder in VS Code.</li>
+<li><strong>Create all folders before coding.</strong> Run through the folder structure checklist: <code>images/</code>, <code>css/</code>, <code>js/</code>, <code>documents/</code>.</li>
+<li><strong>Use relative paths exclusively.</strong> Never use <code>C:\...</code> paths in HTML or CSS.</li>
+<li><strong>Follow naming conventions strictly.</strong> Lowercase, hyphens, no spaces, no special characters.</li>
+<li><strong>Test every link.</strong> After creating a new page, click every navigation link on every existing page.</li>
+<li><strong>Keep the same navigation on every page.</strong> Consistency prevents users from getting lost.</li>
+<li><strong>Commit early and often</strong> (if using Git). Small, frequent commits are better than one giant commit.</li>
+<li><strong>Write descriptive commit messages.</strong> Future-you will thank present-you.</li>
+<li><strong>Back up your work.</strong> Use Git/GitHub, a USB drive, or cloud storage. Computers fail.</li>
+<li><strong>Validate your HTML.</strong> Use the W3C Validator (<a href="https://validator.w3.org/">https://validator.w3.org/</a>) to check for errors.</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-using-absolute-paths-in-html">Mistake 1: Using absolute paths in HTML<a class="anchor" href="#mistake-1-using-absolute-paths-in-html" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;img src=&quot;C:\Users\Nguyen\Documents\club-website\images\logo.png&quot; alt=&quot;Logo&quot;&gt;
+&lt;a href=&quot;C:\Users\Nguyen\Documents\club-website\about.html&quot;&gt;About&lt;/a&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;img src=&quot;images/logo.png&quot; alt=&quot;Logo&quot;&gt;
+&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+</code></pre>
+<p>Absolute paths break the moment you move the folder, share the project, or upload to a server.</p>
+<h4 id="mistake-2-forgetting-when-linking-from-a-subfolder">Mistake 2: Forgetting <code>../</code> when linking from a subfolder<a class="anchor" href="#mistake-2-forgetting-when-linking-from-a-subfolder" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong (inside <code>css/style.css</code>):</p>
+<pre><code class="language-css">background-image: url(&quot;images/banner.jpg&quot;);
+/* This looks for css/images/banner.jpg — which does not exist! */
+</code></pre>
+<p>✅ Correct (inside <code>css/style.css</code>):</p>
+<pre><code class="language-css">background-image: url(&quot;../images/banner.jpg&quot;);
+/* This goes UP one level, then into images/ — correct! */
+</code></pre>
+<h4 id="mistake-3-inconsistent-file-naming">Mistake 3: Inconsistent file naming<a class="anchor" href="#mistake-3-inconsistent-file-naming" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code>About.html          (capital A)
+CONTACT.HTML        (all caps)
+my page.html        (space in name)
+events_&amp;_news.html  (special character &amp;)
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code>about.html
+contact.html
+my-page.html
+events-news.html
+</code></pre>
+<h4 id="mistake-4-not-including-the-same-navigation-on-every-page">Mistake 4: Not including the same navigation on every page<a class="anchor" href="#mistake-4-not-including-the-same-navigation-on-every-page" aria-label="Link to this section">#</a></h4>
+<p>If your home page has five navigation links but your about page has only three, users will get stuck. Copy the exact same <code>&lt;nav&gt;</code> block to every page.</p>
+<h4 id="mistake-5-skipping-site-definition-in-dreamweaver">Mistake 5: Skipping site definition in Dreamweaver<a class="anchor" href="#mistake-5-skipping-site-definition-in-dreamweaver" aria-label="Link to this section">#</a></h4>
+<p>Without defining a site, Dreamweaver cannot:</p>
+<ul>
+<li>Calculate relative paths correctly</li>
+<li>Show files in the Files panel</li>
+<li>Check for broken links</li>
+<li>Manage templates</li>
+</ul>
+<p>Always go to <strong>Site → New Site</strong> before doing anything else.</p>
+<h4 id="try-it-yourself-navigation-that-works-from-every-page">🧪 Try It Yourself — Navigation That Works From Every Page<a class="anchor" href="#try-it-yourself-navigation-that-works-from-every-page" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (8 min):</strong> Build one nav block and prove it works from two folder levels.</p>
+<ol>
+<li>In <code>index.html</code> (site root), add:<pre><code class="language-html">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;pages/about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;pages/contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+</li>
+<li>Create <code>pages/about.html</code> and <code>pages/contact.html</code>.</li>
+<li>In <strong>both</strong> of those files, paste the same nav — then fix the paths for their location:<pre><code class="language-html">&lt;li&gt;&lt;a href=&quot;../index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+</li>
+<li>Open <code>pages/contact.html</code> first, and click all three links. Then repeat from <code>index.html</code>.</li>
+</ol>
+<p><strong>Expected result:</strong> All three links work from all three pages. Six successful clicks, no 404s.</p>
+<details>
+<summary>Why start from the deepest page</summary><p>Testing from <code>index.html</code> hides the most common path bug. A link written as <code>about.html</code> works from the root only by accident when both files sit together — but from <code>pages/</code>, the browser looks for <code>pages/about.html</code>, and from the root it looks for <code>about.html</code>. Starting your test in the subfolder forces you to get the <code>../</code> right, which is exactly what a marker will click first.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Site</td>
+<td>The root folder containing all files for one website</td>
+<td><code>club-website/</code></td>
+</tr>
+<tr>
+<td>Local root folder</td>
+<td>The project folder on your computer</td>
+<td><code>C:\Users\You\Documents\club-website\</code></td>
+</tr>
+<tr>
+<td>Relative path</td>
+<td>Path from the current file to the target file</td>
+<td><code>images/logo.png</code>, <code>../index.html</code></td>
+</tr>
+<tr>
+<td>Absolute path</td>
+<td>Full path from drive root or domain</td>
+<td><code>C:\Users\...\logo.png</code></td>
+</tr>
+<tr>
+<td><code>../</code></td>
+<td>Go up one folder level in a relative path</td>
+<td><code>../images/logo.png</code> from inside <code>css/</code></td>
+</tr>
+<tr>
+<td>File naming convention</td>
+<td>Lowercase, hyphens, no spaces, no special chars</td>
+<td><code>about-us.html</code> not <code>About Us.html</code></td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Version control system that tracks file changes</td>
+<td><code>git init</code>, <code>git add</code>, <code>git commit</code></td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>Cloud platform for hosting Git repositories</td>
+<td>github.com/your-username/project</td>
+</tr>
+<tr>
+<td>Commit</td>
+<td>A saved snapshot of your project at one point in time</td>
+<td><code>git commit -m &quot;Add about page&quot;</code></td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>File listing patterns Git should ignore</td>
+<td><code>Thumbs.db</code>, <code>*.tmp</code></td>
+</tr>
+<tr>
+<td>Semantic HTML</td>
+<td>Using meaningful tags (<code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>)</td>
+<td><code>&lt;nav&gt;</code> instead of <code>&lt;div class=&quot;nav&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Navigation consistency</td>
+<td>Same nav menu on every page</td>
+<td>Five identical links on all pages</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-understanding-relative-paths-with-a-diagram">Example 1: Understanding Relative Paths with a Diagram<a class="anchor" href="#example-1-understanding-relative-paths-with-a-diagram" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You are editing <code>events.html</code> in the root folder and want to link to <code>images/event-workshop.jpg</code>. You also want to link to <code>css/style.css</code>. What relative paths do you use?</p>
+<p><strong>Folder structure:</strong></p>
+<pre><code>club-website/
+├── index.html
+├── events.html          &lt;-- YOU ARE EDITING THIS FILE
+├── images/
+│   └── event-workshop.jpg
+└── css/
+    └── style.css
+</code></pre>
+<p><strong>Code (inside <code>events.html</code>):</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Student Club - Events&lt;/title&gt;
+    &lt;!-- events.html is in root, css/ is a subfolder of root --&gt;
+    &lt;!-- So the path is: css/style.css --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Our Events&lt;/h1&gt;
+    &lt;!-- events.html is in root, images/ is a subfolder of root --&gt;
+    &lt;!-- So the path is: images/event-workshop.jpg --&gt;
+    &lt;img src=&quot;images/event-workshop.jpg&quot; alt=&quot;Web Design Workshop&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code>: Since <code>events.html</code> is in the root and <code>style.css</code> is inside <code>css/</code> (a direct subfolder of root), the relative path is simply <code>css/style.css</code> — go INTO the <code>css</code> folder and find <code>style.css</code>.</li>
+<li><code>&lt;img src=&quot;images/event-workshop.jpg&quot;...&gt;</code>: Same logic — <code>events.html</code> is in root, <code>event-workshop.jpg</code> is inside <code>images/</code>, so the path is <code>images/event-workshop.jpg</code>.</li>
+</ul>
+<p><strong>Result:</strong> The browser finds and loads both the CSS file and the image correctly because the relative paths are calculated from the location of <code>events.html</code>.</p>
+<hr>
+<h3 id="example-2-linking-from-a-subfolder">Example 2: Linking FROM a Subfolder<a class="anchor" href="#example-2-linking-from-a-subfolder" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You are writing CSS inside <code>css/style.css</code> and want to reference an image in <code>images/banner.jpg</code>. Since the CSS file is INSIDE the <code>css/</code> subfolder, you must go UP one level first.</p>
+<p><strong>Folder structure:</strong></p>
+<pre><code>club-website/
+├── index.html
+├── images/
+│   └── banner.jpg
+└── css/
+    └── style.css        &lt;-- YOU ARE EDITING THIS FILE
+</code></pre>
+<p><strong>Code (inside <code>css/style.css</code>):</strong></p>
+<pre><code class="language-css">/* style.css is inside css/, so we need ../ to go UP to root first */
+
+header {
+    /* From css/ go up (..) then into images/ to find banner.jpg */
+    background-image: url(&quot;../images/banner.jpg&quot;);
+    background-size: cover;
+    height: 200px;
+}
+
+.logo {
+    /* Same pattern: up one level, then into images/ */
+    background-image: url(&quot;../images/club-logo.png&quot;);
+    width: 120px;
+    height: 60px;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>url(&quot;../images/banner.jpg&quot;)</code>: The <code>..</code> means &quot;go up one folder level&quot; (from <code>css/</code> to the root). Then <code>/images/banner.jpg</code> navigates into the <code>images/</code> subfolder. Without the <code>../</code>, the browser would look for <code>css/images/banner.jpg</code>, which does not exist.</li>
+<li><code>url(&quot;../images/club-logo.png&quot;)</code>: Same logic applies to every reference from a subfolder to a sibling folder.</li>
+</ul>
+<p><strong>Result:</strong> The CSS correctly loads the background images because the <code>../</code> prefix navigates up from <code>css/</code> to the root before descending into <code>images/</code>.</p>
+<hr>
+<h3 id="example-3-complete-multi-page-setup">Example 3: Complete Multi-Page Setup<a class="anchor" href="#example-3-complete-multi-page-setup" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to create three pages (Home, About, Contact) with identical navigation and correct relative paths.</p>
+<p><strong>Code for <code>index.html</code>:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - Home&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;Welcome!&lt;/h2&gt;
+        &lt;p&gt;This is the home page of the Student Club.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2024 Student Club.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Code for <code>about.html</code>:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - About Us&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;About Us&lt;/h2&gt;
+        &lt;p&gt;The Student Club was founded in 2020.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2024 Student Club.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Key observations:</strong></p>
+<ul>
+<li>Both pages use <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code> — same relative path because both HTML files are in the root.</li>
+<li>Navigation links are identical except for <code>class=&quot;active&quot;</code> which moves to the current page.</li>
+<li>The <code>&lt;title&gt;</code> is different on each page (important for SEO and usability).</li>
+<li>Both pages have the same <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, and <code>&lt;footer&gt;</code> structure.</li>
+</ul>
+<p><strong>Result:</strong> Three interconnected pages with consistent navigation. Users can click between pages freely. The active link is highlighted on each page.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup-tools-and-folders">Setup (Tools and Folders)<a class="anchor" href="#setup-tools-and-folders" aria-label="Link to this section">#</a></h3>
+<p>Make sure you have completed the setup from Session 1. Your <code>club-website</code> folder should already exist with <code>images/</code>, <code>css/</code>, <code>js/</code>, and <code>documents/</code> subfolders.</p>
+<p>If you have NOT done this yet, go back to Session 1, Task 1, and complete it now.</p>
+<hr>
+<h4 id="task-1-define-the-site-in-dreamweaver-or-set-up-vs-code">TASK 1: Define the Site in Dreamweaver (or Set Up VS Code)<a class="anchor" href="#task-1-define-the-site-in-dreamweaver-or-set-up-vs-code" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Tell your editor where your project lives so it can manage files and resolve paths.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>The site must be defined/opened in your editor</li>
+<li>The Files panel (Dreamweaver) or Explorer (VS Code) must show your folder structure</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>For Dreamweaver CS6:</strong></p>
+<p><strong>Step 1:</strong> Open Dreamweaver CS6.</p>
+<p><strong>Step 2:</strong> Go to <strong>Site → New Site</strong>.</p>
+<p><strong>Step 3:</strong> In the dialog box:</p>
+<ul>
+<li><strong>Site Name:</strong> Type <code>Student Club Website</code></li>
+<li><strong>Local Site Folder:</strong> Click the folder icon and browse to <code>C:\Users\YourName\Documents\club-website\</code></li>
+<li>Leave all other settings as default</li>
+</ul>
+<p><strong>Step 4:</strong> Click <strong>Save</strong>.</p>
+<p><strong>Step 5:</strong> Look at the <strong>Files panel</strong> (usually on the right side). You should see &quot;Student Club Website&quot; at the top and your folder structure below it.</p>
+<p><strong>For VS Code:</strong></p>
+<p><strong>Step 1:</strong> Open VS Code.</p>
+<p><strong>Step 2:</strong> Go to <strong>File → Open Folder</strong>.</p>
+<p><strong>Step 3:</strong> Browse to <code>C:\Users\YourName\Documents\club-website\</code> and click <strong>Select Folder</strong>.</p>
+<p><strong>Step 4:</strong> Look at the <strong>Explorer panel</strong> (Ctrl+Shift+E). You should see your folder and subfolders listed.</p>
+<p>✅ <strong>Expected result:</strong> Your editor displays the complete folder structure of <code>club-website</code> including all subfolders.</p>
+<p>💾 <strong>Nothing new to save</strong> — this is a configuration step.</p>
+<hr>
+<h4 id="task-2-create-all-website-pages">TASK 2: Create All Website Pages<a class="anchor" href="#task-2-create-all-website-pages" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create five HTML pages for the Student Club Website, each with consistent navigation.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Create <code>index.html</code>, <code>about.html</code>, <code>events.html</code>, <code>gallery.html</code>, and <code>contact.html</code></li>
+<li>Every page must have the same navigation menu</li>
+<li>Every page must link to <code>css/style.css</code></li>
+<li>Each page must have unique content in the <code>&lt;main&gt;</code> section</li>
+<li>The <code>class=&quot;active&quot;</code> attribute must be on the correct link for each page</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Create <code>index.html</code> (if it does not already exist from Session 1). Use this code:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - Home&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;Welcome to the Student Club&lt;/h2&gt;
+        &lt;p&gt;We are a community of creative and enthusiastic students.
+           Join us for workshops, events, and fun activities!&lt;/p&gt;
+        &lt;section&gt;
+            &lt;h3&gt;Latest News&lt;/h3&gt;
+            &lt;article&gt;
+                &lt;h4&gt;Web Design Workshop&lt;/h4&gt;
+                &lt;p&gt;Learn the basics of HTML and CSS. Date: March 15, 2024.&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2024 Student Club. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Save as <code>index.html</code> in the root of <code>club-website/</code>.</p>
+<p><strong>Step 2:</strong> Create <code>about.html</code>. Copy the code above, then change:</p>
+<ul>
+<li><code>&lt;title&gt;</code> to <code>Student Club - About Us</code></li>
+<li>Move <code>class=&quot;active&quot;</code> from <code>index.html</code> link to <code>about.html</code> link</li>
+<li>Replace <code>&lt;main&gt;</code> content with:</li>
+</ul>
+<pre><code class="language-html">    &lt;main&gt;
+        &lt;h2&gt;About Us&lt;/h2&gt;
+        &lt;p&gt;The Student Club was founded in 2020 with a mission to bring
+           students together through technology, creativity, and community service.&lt;/p&gt;
+        &lt;h3&gt;Our Mission&lt;/h3&gt;
+        &lt;p&gt;To provide a supportive environment where students can learn new skills,
+           share ideas, and grow together.&lt;/p&gt;
+        &lt;h3&gt;Our Activities&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Weekly coding workshops&lt;/li&gt;
+            &lt;li&gt;Design competitions&lt;/li&gt;
+            &lt;li&gt;Community service projects&lt;/li&gt;
+            &lt;li&gt;Social events and meetups&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/main&gt;
+</code></pre>
+<p>Save as <code>about.html</code> in the root.</p>
+<p><strong>Step 3:</strong> Create <code>events.html</code> similarly. Change:</p>
+<ul>
+<li><code>&lt;title&gt;</code> to <code>Student Club - Events</code></li>
+<li>Move <code>class=&quot;active&quot;</code> to the Events link</li>
+<li>Replace <code>&lt;main&gt;</code> content with:</li>
+</ul>
+<pre><code class="language-html">    &lt;main&gt;
+        &lt;h2&gt;Upcoming Events&lt;/h2&gt;
+        &lt;section&gt;
+            &lt;h3&gt;March 2024&lt;/h3&gt;
+            &lt;article&gt;
+                &lt;h4&gt;Web Design Workshop&lt;/h4&gt;
+                &lt;p&gt;Date: March 15 | Time: 2:00 PM - 4:00 PM | Room: IT Lab 3&lt;/p&gt;
+            &lt;/article&gt;
+            &lt;article&gt;
+                &lt;h4&gt;Photography Contest&lt;/h4&gt;
+                &lt;p&gt;Deadline: March 20 | Submit photos to club@university.edu&lt;/p&gt;
+            &lt;/article&gt;
+            &lt;article&gt;
+                &lt;h4&gt;Music Night&lt;/h4&gt;
+                &lt;p&gt;Date: March 29 | Time: 6:00 PM | Venue: Campus Hall&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+</code></pre>
+<p>Save as <code>events.html</code> in the root.</p>
+<p><strong>Step 4:</strong> Create <code>gallery.html</code>. Change:</p>
+<ul>
+<li><code>&lt;title&gt;</code> to <code>Student Club - Gallery</code></li>
+<li>Move <code>class=&quot;active&quot;</code> to the Gallery link</li>
+<li>Replace <code>&lt;main&gt;</code> content with placeholder text (you will add real images in Session 3):</li>
+</ul>
+<pre><code class="language-html">    &lt;main&gt;
+        &lt;h2&gt;Photo Gallery&lt;/h2&gt;
+        &lt;p&gt;Photos from our events and activities will appear here.&lt;/p&gt;
+        &lt;section&gt;
+            &lt;h3&gt;Orientation Day 2024&lt;/h3&gt;
+            &lt;p&gt;[Photos coming soon]&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section&gt;
+            &lt;h3&gt;Workshop Highlights&lt;/h3&gt;
+            &lt;p&gt;[Photos coming soon]&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+</code></pre>
+<p>Save as <code>gallery.html</code> in the root.</p>
+<p><strong>Step 5:</strong> Create <code>contact.html</code>. Change:</p>
+<ul>
+<li><code>&lt;title&gt;</code> to <code>Student Club - Contact</code></li>
+<li>Move <code>class=&quot;active&quot;</code> to the Contact link</li>
+<li>Replace <code>&lt;main&gt;</code> content with:</li>
+</ul>
+<pre><code class="language-html">    &lt;main&gt;
+        &lt;h2&gt;Contact Us&lt;/h2&gt;
+        &lt;p&gt;We would love to hear from you! Reach out through any of these channels:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Email: &lt;a href=&quot;mailto:club@university.edu&quot;&gt;club@university.edu&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;Phone: +84 123 456 789&lt;/li&gt;
+            &lt;li&gt;Office: Building A, Room 101&lt;/li&gt;
+            &lt;li&gt;Hours: Monday - Friday, 9:00 AM - 5:00 PM&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/main&gt;
+</code></pre>
+<p>Save as <code>contact.html</code> in the root.</p>
+<p><strong>Step 6:</strong> Verify all five files appear in the Files panel / Explorer.</p>
+<p>✅ <strong>Expected result:</strong> Five HTML files in the root folder, each with unique content and consistent navigation. Clicking any navigation link on any page loads the correct destination page.</p>
+<p>💾 <strong>Files to save:</strong> <code>index.html</code>, <code>about.html</code>, <code>events.html</code>, <code>gallery.html</code>, <code>contact.html</code></p>
+<hr>
+<h4 id="task-3-create-the-css-stylesheet">TASK 3: Create the CSS Stylesheet<a class="anchor" href="#task-3-create-the-css-stylesheet" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a basic stylesheet that makes your navigation look like a horizontal menu bar and adds basic styling.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Create <code>css/style.css</code></li>
+<li>Style the navigation as a horizontal bar</li>
+<li>Add basic typography and layout styles</li>
+<li>Style the footer</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Create a new file and save it as <code>css/style.css</code> inside your <code>css/</code> subfolder.</p>
+<p><strong>Step 2:</strong> Add this CSS code:</p>
+<pre><code class="language-css">/* ========================================
+   Student Club Website - Main Stylesheet
+   ======================================== */
+
+/* --- Reset &amp; Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #f5f5f5;
+}
+
+/* --- Header --- */
+header {
+    background-color: #1a5276;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+/* --- Navigation --- */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    background-color: #2874a6;
+    border-radius: 3px;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+
+/* --- Main Content --- */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main h2 {
+    color: #1a5276;
+    border-bottom: 2px solid #2874a6;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+main h3 {
+    color: #2874a6;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+main article {
+    margin-bottom: 15px;
+    padding-left: 15px;
+    border-left: 3px solid #ddd;
+}
+
+main article h4 {
+    color: #1a5276;
+    margin-bottom: 5px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+</code></pre>
+<p><strong>Step 3:</strong> Save the file (Ctrl+S).</p>
+<p><strong>Step 4:</strong> Open <code>index.html</code> and preview in browser (F12). You should see:</p>
+<ul>
+<li>A dark blue header with white text</li>
+<li>A horizontal navigation bar</li>
+<li>A centered content area with white background and shadow</li>
+<li>A dark footer at the bottom</li>
+</ul>
+<p><strong>Step 5:</strong> Navigate to each page and verify the styling is consistent. Check that the active link looks different on each page.</p>
+<p>✅ <strong>Expected result:</strong> All five pages share the same visual design. The navigation bar is horizontal. The active page link is bold with an underline. The layout is clean and readable.</p>
+<p>💾 <strong>File to save:</strong> <code>css/style.css</code></p>
+<hr>
+<h4 id="task-4-optional-initialize-git-and-push-to-github">TASK 4 (Optional): Initialize Git and Push to GitHub<a class="anchor" href="#task-4-optional-initialize-git-and-push-to-github" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Set up version control for your project and back it up to GitHub.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Git must be installed on your computer</li>
+<li>You must have a GitHub account</li>
+<li>Your project must be pushed to a GitHub repository</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Open a terminal (Command Prompt, PowerShell, or VS Code integrated terminal).</p>
+<p><strong>Step 2:</strong> Navigate to your project folder:</p>
+<pre><code class="language-bash">cd C:\Users\YourName\Documents\club-website
+</code></pre>
+<p><strong>Step 3:</strong> Initialize Git:</p>
+<pre><code class="language-bash">git init
+</code></pre>
+<p><strong>Step 4:</strong> Create a <code>.gitignore</code> file:</p>
+<pre><code class="language-bash">echo Thumbs.db &gt; .gitignore
+echo *.tmp &gt;&gt; .gitignore
+</code></pre>
+<p><strong>Step 5:</strong> Stage all files:</p>
+<pre><code class="language-bash">git add .
+</code></pre>
+<p><strong>Step 6:</strong> Make your first commit:</p>
+<pre><code class="language-bash">git commit -m &quot;Initial site setup with 5 pages and basic CSS&quot;
+</code></pre>
+<p><strong>Step 7:</strong> Create a new repository on GitHub:</p>
+<ul>
+<li>Go to <a href="https://github.com/new">https://github.com/new</a></li>
+<li>Name it <code>student-club-website</code></li>
+<li>Do NOT initialize with README (your project already has files)</li>
+<li>Click Create Repository</li>
+</ul>
+<p><strong>Step 8:</strong> Connect and push:</p>
+<pre><code class="language-bash">git remote add origin https://github.com/YOUR_USERNAME/student-club-website.git
+git branch -M main
+git push -u origin main
+</code></pre>
+<p><strong>Step 9:</strong> Refresh the GitHub page. You should see all your project files.</p>
+<p>✅ <strong>Expected result:</strong> Your entire project is backed up on GitHub. You can view all files in the browser at <code>https://github.com/YOUR_USERNAME/student-club-website</code>.</p>
+<p>💾 <strong>Files created:</strong> <code>.gitignore</code>, Git repository metadata in <code>.git/</code> folder</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Almost every Session 2 bug is a path bug, and paths fail in recognisable ways. Match the symptom to the cause before you start guessing.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Broken-image icon where a photo should be</td>
+<td><code>src</code> path wrong, or file name case does not match</td>
+<td>F12 → Network tab shows a red 404 for the image</td>
+<td>Correct the path; make the file name lowercase and identical in both places</td>
+</tr>
+<tr>
+<td>Page is unstyled — plain black text on white</td>
+<td>The <code>&lt;link&gt;</code> to the stylesheet is not resolving</td>
+<td>Network tab shows 404 on <code>style.css</code></td>
+<td>Fix the path, usually <code>css/style.css</code> or <code>../css/style.css</code></td>
+</tr>
+<tr>
+<td>Link opens your C: drive or a directory listing</td>
+<td><code>href</code> starts with <code>/</code>, which means the server root</td>
+<td>Look at the address bar: it shows <code>file:///C:/</code></td>
+<td>Remove the leading slash and use a relative path</td>
+</tr>
+<tr>
+<td>Link works from the home page but 404s from a subfolder page</td>
+<td>Path written relative to the root, not to the current file</td>
+<td>Compare the two pages&#39; <code>href</code> values</td>
+<td>Add <code>../</code> for each folder level you must climb out of</td>
+</tr>
+<tr>
+<td><code>pages/pages/contact.html</code> in the address bar</td>
+<td>The folder name is repeated because you are already inside it</td>
+<td>Read the URL — the doubled segment is the clue</td>
+<td>Drop the folder prefix: just <code>contact.html</code></td>
+</tr>
+<tr>
+<td>Works on your laptop, 404s after upload</td>
+<td>Case mismatch — Windows ignores case, Linux servers do not</td>
+<td>Compare <code>About.html</code> in the file system to <code>about.html</code> in the <code>href</code></td>
+<td>Rename everything to lowercase and update the links</td>
+</tr>
+<tr>
+<td><code>%20</code> appearing in the URL</td>
+<td>The file name contains a space</td>
+<td>Look at the address bar</td>
+<td>Rename with hyphens: <code>student-club.html</code></td>
+</tr>
+<tr>
+<td>Typing the folder URL gives a directory listing, not your page</td>
+<td>The home page is not named <code>index.html</code></td>
+<td>Check the file name in the root folder</td>
+<td>Rename it to exactly <code>index.html</code></td>
+</tr>
+</tbody></table>
+<p><strong>Fastest diagnostic in the course:</strong> press F12, open the Network tab, and reload. Every failed request is one red row, and the row tells you the exact path the browser tried. Nine times out of ten the fix is adding or removing a <code>../</code>.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. What is the difference between a relative path and an absolute path?</strong></p>
+<details>
+<summary>Answer</summary><p>A <strong>relative path</strong> is written from the location of the current file: <code>images/logo.png</code> means &quot;the images folder next to me&quot;. An <strong>absolute path</strong> starts from the drive root or a full domain: <code>C:\Users\You\project\images\logo.png</code> or <code>https://example.com/images/logo.png</code>. Always use relative paths for your own files — absolute local paths break the instant the project moves to another computer or a web server.</p>
+</details><hr>
+<p><strong>Q2. What does <code>../</code> mean in a path, and when do you need it?</strong></p>
+<details>
+<summary>Answer</summary><p><code>../</code> means &quot;go up one folder level&quot;. You need it when the file you are linking from sits deeper in the tree than the target. From <code>css/style.css</code>, the logo in <code>images/</code> is <code>../images/logo.png</code> — up out of <code>css/</code>, then down into <code>images/</code>. Two levels up is <code>../../</code>.</p>
+</details><hr>
+<p><strong>Q3. Your friend&#39;s link <code>&lt;a href=&quot;C:\Users\Mai\Documents\site\about.html&quot;&gt;</code> works on her laptop but not yours. Why?</strong></p>
+<details>
+<summary>Answer</summary><p>It is an absolute local path pointing at a folder that only exists on her machine. On your computer there is no <code>C:\Users\Mai</code>, so the link fails. Uploaded to a server it also fails, because servers have no <code>C:</code> drive. The fix is a relative path: <code>&lt;a href=&quot;about.html&quot;&gt;</code>.</p>
+</details><hr>
+<p><strong>Q4. Why does <code>git add</code> exist? Why not have <code>git commit</code> save everything automatically?</strong></p>
+<details>
+<summary>Answer</summary><p><code>git add</code> populates the <strong>staging area</strong>, letting you choose exactly which changes belong in the next commit. If you fixed a navigation bug and half-finished a new page, you can stage and commit only the bug fix, keeping the history clean and each commit focused on one logical change.</p>
+</details><hr>
+<p><strong>Q5. What belongs in <code>.gitignore</code> and why?</strong></p>
+<details>
+<summary>Answer</summary><p>Files that are generated, machine-specific, or private: OS junk (<code>Thumbs.db</code>, <code>.DS_Store</code>), editor temp files (<code>*.tmp</code>, <code>*.bak</code>), Dreamweaver&#39;s personal config, and any file with passwords or API keys. They are noise in the history, cause pointless merge conflicts, and secrets must never reach a public repository.</p>
+</details><hr>
+<p><strong>Q6. Why must the navigation menu be identical on every page?</strong></p>
+<details>
+<summary>Answer</summary><p>Users build a mental map of the site. If the nav order changes or a link disappears between pages, they lose their bearings and the site feels broken. Identical navigation also means one CSS rule set styles all of it, so you fix bugs in one place instead of five.</p>
+</details><hr>
+<p><strong>Q7. What is the practical difference between <code>&lt;nav&gt;</code> and <code>&lt;div class=&quot;nav&quot;&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>Visually, none — both are block containers. Semantically, <code>&lt;nav&gt;</code> tells screen readers &quot;this is a navigation landmark&quot;, letting users jump straight to it, and tells search engines which links define the site structure. <code>&lt;div&gt;</code> carries no meaning at all. Same effort to type; strictly more information.</p>
+</details><hr>
+<p><strong>Q8. You renamed <code>About.html</code> to <code>about.html</code> locally and the site still works. After uploading, links break. Why?</strong></p>
+<details>
+<summary>Answer</summary><p>Windows filesystems are case-insensitive, so <code>About.html</code> and <code>about.html</code> are the same file locally. Most web servers run Linux, where they are <strong>different files</strong>. If a link still says <code>About.html</code> but the uploaded file is <code>about.html</code>, the server returns 404. Always use lowercase filenames and match them exactly in every link.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes ☐</th>
+<th>No ☐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Define a site in Dreamweaver or open a project folder in VS Code</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create a proper folder structure with <code>images/</code>, <code>css/</code>, <code>js/</code>, and <code>documents/</code> subfolders</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Explain the difference between relative and absolute paths and why relative paths are required</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Write correct relative paths from both the root folder and from subfolders (using <code>../</code>)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Apply file naming conventions (lowercase, hyphens, no spaces) to all files and folders</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create multiple HTML pages with identical navigation menus and correct active-page highlighting</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Explain what Git is and perform basic operations: init, add, commit</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Test all navigation links across all pages and fix any broken links</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p><strong>Self-scoring guide:</strong></p>
+<ul>
+<li>7-8 Yes: Excellent! You are ready for Session 3.</li>
+<li>5-6 Yes: Good. Redo the practice tasks where you struggled before continuing.</li>
+<li>0-4 Yes: Re-read the Theory section carefully. Focus especially on Section 3 (relative paths) — this is the most common stumbling block. Ask your instructor for help.</li>
+</ul>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files">Dealing with Files — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks">Creating Hyperlinks — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">Document and Website Structure — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server">What is a Web Server — MDN</a></li>
+<li><a href="https://docs.github.com/en/get-started/using-git/about-git">Git Handbook — GitHub Docs</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/GitHub/Intro_to_GitHub">Setting up Version Control — MDN</a></li>
+<li><a href="https://validator.w3.org/">W3C HTML Validator</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 3, you will learn how to format text with headings, paragraphs, lists, and emphasis tags, and how to add images with proper accessibility attributes — bringing your Student Club Website to life with real content.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

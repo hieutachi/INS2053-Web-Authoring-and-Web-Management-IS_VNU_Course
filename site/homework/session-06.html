@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 6: Build Your 3-Page Mini-Site — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Due Sunday 23:59. A Monday grace day is marked at −20%.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="home" href="../index.html">INS2053 · Web Authoring &amp; Web Management</a>
+  <button class="theme" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+</header>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Homework</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Session 6</span></nav>
+<main id="main">
+  <h1>Homework 6: Build Your 3-Page Mini-Site</h1>
+  <p class="lead">Due Sunday 23:59. A Monday grace day is marked at −20%.</p>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">On this page</h2>
+      <ol>
+        <li class="d2"><a href="#due-date">Due Date</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#submission-guide">Submission Guide</a></li>
+        <li class="d2"><a href="#grading-rubric">Grading Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <nav class="pager" aria-label="Session navigation">
+    <a class="up" href="../sessions/session-06.html">Session 6 overview</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-6-build-your-3-page-mini-site">Homework 6: Build Your 3-Page Mini-Site<a class="anchor" href="#homework-6-build-your-3-page-mini-site" aria-label="Link to this section">#</a></h2>
+<h3 id="due-date">Due Date<a class="anchor" href="#due-date" aria-label="Link to this section">#</a></h3>
+<p>Sunday, 23:59 (Week 7)</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Connect all pages with a shared navigation menu</li>
+<li>Maintain consistent layout across multiple pages</li>
+<li>Create a working multi-page website</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-add-navigation-to-all-3-pages">Task 1: Add Navigation to All 3 Pages<a class="anchor" href="#task-1-add-navigation-to-all-3-pages" aria-label="Link to this section">#</a></h4>
+<p>Update all three pages (index.html, about.html, contact.html) so they share the same navigation structure and layout.</p>
+<p><strong>Every page must have:</strong></p>
+<ul>
+<li>The same <code>&lt;header&gt;</code> with the club name</li>
+<li>The same <code>&lt;nav&gt;</code> with links to: Home, About, Contact</li>
+<li>The same <code>&lt;footer&gt;</code> with copyright info</li>
+<li>The same <code>&lt;main&gt;</code> wrapper for content</li>
+<li>The same CSS stylesheet linked</li>
+</ul>
+<p><strong>Navigation links are identical on every page</strong> — all three files sit at the project root,
+so every link is a plain file name:</p>
+<pre><code class="language-html">&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<p>Copy this same block into all three pages, changing only which link gets <code>class=&quot;active&quot;</code>.
+No <code>../</code> anywhere.</p>
+<h4 id="task-2-complete-the-contact-page">Task 2: Complete the Contact Page<a class="anchor" href="#task-2-complete-the-contact-page" aria-label="Link to this section">#</a></h4>
+<p>Build out the <code>project/contact.html</code> page with full content:</p>
+<ul>
+<li>A heading &quot;Contact Us&quot;</li>
+<li>A paragraph inviting visitors to reach out</li>
+<li>A list of contact methods (email, phone, social media — use fake info)</li>
+<li>A paragraph with the club&#39;s meeting location/address</li>
+<li>At least 1 image</li>
+</ul>
+<h4 id="task-3-improve-the-home-page">Task 3: Improve the Home Page<a class="anchor" href="#task-3-improve-the-home-page" aria-label="Link to this section">#</a></h4>
+<p>Update <code>project/index.html</code> with richer content:</p>
+<ul>
+<li>A welcome section with an intro paragraph</li>
+<li>A &quot;What We Do&quot; section with a list of activities</li>
+<li>A &quot;Why Join Us?&quot; section with 3 benefits</li>
+<li>At least 2 images</li>
+<li>A &quot;Latest News&quot; or &quot;Upcoming Events&quot; section</li>
+</ul>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/index.html</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/contact.html</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<p><strong>Requirements checklist:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> All 3 pages have the same header, nav, and footer</li>
+<li><input disabled="" type="checkbox"> Navigation links work correctly from every page</li>
+<li><input disabled="" type="checkbox"> Contact page has full content</li>
+<li><input disabled="" type="checkbox"> Home page has multiple sections</li>
+<li><input disabled="" type="checkbox"> CSS is linked on all pages</li>
+<li><input disabled="" type="checkbox"> Layout is consistent across all pages</li>
+</ul>
+<h3 id="submission-guide">Submission Guide<a class="anchor" href="#submission-guide" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW6: Complete 3-page mini-site with navigation&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="grading-rubric">Grading Rubric<a class="anchor" href="#grading-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Navigation links</td>
+<td>3</td>
+<td>All links work correctly on all 3 pages</td>
+</tr>
+<tr>
+<td>Consistent layout</td>
+<td>2</td>
+<td>Same header, nav, footer on every page</td>
+</tr>
+<tr>
+<td>Contact page content</td>
+<td>2</td>
+<td>Has all required content elements</td>
+</tr>
+<tr>
+<td>Home page content</td>
+<td>2</td>
+<td>Has multiple sections and images</td>
+</tr>
+<tr>
+<td>Overall consistency</td>
+<td>1</td>
+<td>Site feels unified and professional</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Every page sits at the project root, so links are plain file names — if you find yourself typing <code>../</code>, something is in the wrong folder</li>
+<li>Test every link by clicking on it in the browser</li>
+<li>If a link breaks, check the relative path carefully</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>You should have a 3-page website where you can click between Home, About, and Contact pages. Every page should feel like part of the same site with matching design.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <p>INS2053 · Web Authoring &amp; Web Management — International School, Vietnam National University, Hanoi</p>
+  <p>Teaching material for enrolled students. Exam papers, marking rubrics and
+  in-class answer keys are not published here.</p>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
