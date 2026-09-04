@@ -160,7 +160,7 @@ function PolishLab({ t }: { t: CanvasTokens }) {
       <g transform="translate(432,28)">
         <rect width="128" height="82" rx="14" fill="url(#s07-grad)" />
         <text x="64" y="46" fontSize="12.5" textAnchor="middle" fill={ON_FILL}>gradient</text>
-        <text x="0" y="102" fontSize="11.5" fontFamily={MONO} fill={t.chart.goldenYellow}>linear-gradient(135deg, ...)</text>
+        <text x="0" y="102" fontSize="11.5" fontFamily={MONO} fill={t.chart.goldenYellow}>linear-gradient()</text>
       </g>
 
       <g transform="translate(0,124)">
@@ -475,10 +475,8 @@ p {
   href="https://fonts.googleapis.com">
 <link rel="preconnect"
   href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/
-  css2?family=Roboto+Slab:wght@400;700
-  &family=Open+Sans:wght@400;600
-  &display=swap" rel="stylesheet">
+<!-- The href below is ONE line. Never break a URL. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Open+Sans:wght@400;600&display=swap">
 <link rel="stylesheet" href="css/style.css">`}</Code>
             <Stack gap={4}>
               <Text tone="primary" style={{ fontWeight: 700 }}>What each line does:</Text>

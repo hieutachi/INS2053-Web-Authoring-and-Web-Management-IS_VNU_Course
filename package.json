@@ -1,0 +1,20 @@
+{
+  "name": "ins2053-web-course",
+  "version": "1.0.0",
+  "private": true,
+  "description": "INS2053 - Web Authoring & Web Management. Course materials: ebook, slides, exercises, homework, exams, capstone project.",
+  "scripts": {
+    "qa": "node _tools/audit-selfstudy.js && node _tools/qa-canvases.js && node _tools/check-diagram-links.js && node _tools/qa-html-slides.mjs",
+    "qa:slides": "node _tools/qa-html-slides.mjs",
+    "build:slides": "node _tools/build-html-slides.mjs",
+    "clean:slides": "node -e \"require('fs').rmSync('slides-html',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

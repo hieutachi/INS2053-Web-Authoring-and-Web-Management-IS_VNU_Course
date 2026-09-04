@@ -6,7 +6,7 @@
 - **Level:** Beginner (prerequisite: INT1004)
 - **Language:** English
 - **Length:** 15 weeks, 3 periods (150 min) per week
-- **Assessment:** Attendance 10% · Midterm 30% · Final 60%
+- **Assessment:** Attendance, Participation & Homework 10% · Midterm 30% · Final 60%
 
 ---
 
@@ -24,7 +24,8 @@
 | `project/` | Capstone spec, milestones, rubric | Everyone |
 | `examples/` | A **complete working example** website | Students (reference only — do not copy) |
 | `references/` | Curated links (MDN, W3C, tools) | Everyone |
-| `_tools/` | Re-runnable, non-destructive QA and audit scripts | Maintainers |
+| `_tools/` | Re-runnable, non-destructive QA and audit scripts, plus the HTML slide builder | Maintainers |
+| `slides-html/` | The `canvases/` decks rendered as standalone HTML — open `slides-html/index.html`, no build or install needed | Lecturer, students |
 
 ---
 
@@ -70,4 +71,38 @@ answers — it is graded, and the rubric tells you what is being looked for.
 - **Deadlines:** homework is due every Sunday 23:59. Grading stops Monday.
 - **Exams:** both are practical, 90 minutes, **no internet**.
 - **The example is a reference, not an answer key.** Study `examples/student-club/`, then build your own.
-- Maintainers can run `node _tools/audit-selfstudy.js`, `node _tools/qa-canvases.js`, and `node _tools/check-diagram-links.js` before publishing changes.
+- Maintainers can run `npm run qa` before publishing changes: it chains
+  `_tools/audit-selfstudy.js`, `_tools/qa-canvases.js`, `_tools/check-diagram-links.js`
+  and `_tools/qa-html-slides.mjs` (10 checks on `slides-html/`). Rebuild the HTML
+  slides first if any canvas changed, so QA reads current output.
+
+---
+
+## Lecture slides as HTML
+
+`canvases/*.canvas.tsx` needs a canvas host to display. `slides-html/` is the same
+17 decks — all 484 slides, all 61 diagrams, all speaker notes — as plain HTML that
+opens in any browser with no install:
+
+```
+slides-html/index.html          all decks, in teaching order
+slides-html/buoi-NN.html        one page per session
+```
+
+Each page has a filterable slide index, `j`/`k` navigation, a light/dark toggle, a
+notes toggle, and print styles — use the browser's Print to PDF for handouts.
+Expand the notes first (`n`, or the Expand notes button) if you want them in the PDF.
+
+Regenerate after editing any canvas:
+
+```bash
+npm install               # once: esbuild + react (dev-only)
+npm run build:slides      # every deck
+npm run build:slides 07   # just session 7
+npm run qa:slides         # 10 checks on the generated HTML
+npm run clean:slides      # delete slides-html/
+```
+
+The builder is `_tools/build-html-slides.mjs`; the layout primitives it substitutes
+for the canvas host live in `_tools/canvas-runtime/`. Nothing under `canvases/` is
+modified — edit the `.canvas.tsx` deck and rebuild.

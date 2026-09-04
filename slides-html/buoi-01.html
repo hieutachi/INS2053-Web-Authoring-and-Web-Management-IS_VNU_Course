@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 1 — Introduction to Dreamweaver — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Your first web page, from empty folder to browser.">
+<meta name="generator" content="_tools/build-html-slides.mjs">
+<link rel="stylesheet" href="assets/deck.css">
+<link rel="preload" as="image" href="assets/s1-datacenter.jpg"/>
+</head>
+<body class="page-deck">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="topbar-course">INS2053 · Web Authoring &amp; Web Management</span>
+    <span class="topbar-title">Session 1 — Introduction to Dreamweaver</span>
+  </div>
+  <div class="topbar-actions">
+    <a class="btn" href="index.html"><span aria-hidden="true">↩</span><span class="btn-label">All decks</span></a>
+    <button class="btn" id="expand-toggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">⌄</span><span class="btn-label">Expand notes</span>
+    </button>
+    <button class="btn" id="notes-toggle" type="button" aria-pressed="true">
+      <span aria-hidden="true">✎</span><span class="btn-label">Notes</span>
+    </button>
+    <button class="btn" id="theme-toggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">◐</span><span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+<div class="shell">
+  <nav class="toc" aria-label="Slide navigation">
+    <div class="toc-head">
+      <h2>Slides</h2>
+      <span class="toc-count" id="slide-counter">1 / 35</span>
+    </div>
+    <label class="visually-hidden" for="toc-search">Filter slides</label>
+    <input class="toc-search" id="toc-search" type="search" placeholder="Filter slides…  (press /)" autocomplete="off">
+    <ol class="toc-list">
+      <li><a href="#title"><span class="toc-num">1</span><span>Session 1 — Introduction to Dreamweaver</span></a></li>
+      <li><a href="#s01-course-map"><span class="toc-num">2</span><span>Welcome to INS2053 — How This Course Works</span></a></li>
+      <li><a href="#objectives"><span class="toc-num">3</span><span>Learning Objectives</span></a></li>
+      <li><a href="#agenda"><span class="toc-num">4</span><span>Today&#39;s 150-Minute Plan</span></a></li>
+      <li><a href="#icebreaker"><span class="toc-num">5</span><span>Warm-Up: What Do You Already Know?</span></a></li>
+      <li><a href="#how-web-works"><span class="toc-num">6</span><span>How the Web Works</span></a></li>
+      <li><a href="#s01-real-web-servers"><span class="toc-num">7</span><span>Real Web Servers</span></a></li>
+      <li><a href="#s01-key-terms-glossary"><span class="toc-num">8</span><span>Key Terms Glossary</span></a></li>
+      <li><a href="#what-is-html"><span class="toc-num">9</span><span>What Is an HTML File?</span></a></li>
+      <li><a href="#s01-anatomy-of-url"><span class="toc-num">10</span><span>Anatomy of a URL</span></a></li>
+      <li><a href="#self-closing-tags"><span class="toc-num">11</span><span>Two Kinds of Tags</span></a></li>
+      <li><a href="#quick-check-1"><span class="toc-num">12</span><span>Quick Check</span></a></li>
+      <li><a href="#code-editors"><span class="toc-num">13</span><span>Code Editors: Dreamweaver vs VS Code</span></a></li>
+      <li><a href="#editor-comparison"><span class="toc-num">14</span><span>Editor Feature Comparison</span></a></li>
+      <li><a href="#folder-structure"><span class="toc-num">15</span><span>Project Folder Structure</span></a></li>
+      <li><a href="#file-extensions"><span class="toc-num">16</span><span>Common Web File Extensions</span></a></li>
+      <li><a href="#boilerplate"><span class="toc-num">17</span><span>The HTML5 Boilerplate</span></a></li>
+      <li><a href="#boilerplate-breakdown"><span class="toc-num">18</span><span>Boilerplate Line-by-Line</span></a></li>
+      <li><a href="#head-vs-body"><span class="toc-num">19</span><span>Where Does Each Part Show Up?</span></a></li>
+      <li><a href="#worked-example-1"><span class="toc-num">20</span><span>Worked Example 1: Hello World Page</span></a></li>
+      <li><a href="#worked-example"><span class="toc-num">21</span><span>Worked Example 2: Student Club Home Page</span></a></li>
+      <li><a href="#html-comments"><span class="toc-num">22</span><span>Using HTML Comments</span></a></li>
+      <li><a href="#discussion"><span class="toc-num">23</span><span>Discussion: Why Separate Files?</span></a></li>
+      <li><a href="#common-mistakes"><span class="toc-num">24</span><span>Common Mistakes</span></a></li>
+      <li><a href="#s01-self-study-check"><span class="toc-num">25</span><span>Self-Study Check</span></a></li>
+      <li><a href="#practice"><span class="toc-num">26</span><span>In-Class Practice</span></a></li>
+      <li><a href="#practice-tips"><span class="toc-num">27</span><span>Practice Tips</span></a></li>
+      <li><a href="#s01-practice-check"><span class="toc-num">28</span><span>Practice Checkpoints</span></a></li>
+      <li><a href="#s01-try-boilerplate"><span class="toc-num">29</span><span>Try It Now: Type the Boilerplate</span></a></li>
+      <li><a href="#s01-do-dont"><span class="toc-num">30</span><span>First HTML File: Do vs Don&#39;t</span></a></li>
+      <li><a href="#s01-debug"><span class="toc-num">31</span><span>Debug This</span></a></li>
+      <li><a href="#s01-accessibility"><span class="toc-num">32</span><span>Accessibility Starts in the Boilerplate</span></a></li>
+      <li><a href="#s01-assignment"><span class="toc-num">33</span><span>Assignment: Your First Page</span></a></li>
+      <li><a href="#homework"><span class="toc-num">34</span><span>Homework</span></a></li>
+      <li><a href="#recap"><span class="toc-num">35</span><span>Recap &amp; Next Session</span></a></li>
+    </ol>
+    <p class="toc-empty" id="toc-empty" hidden>No slide matches that filter.</p>
+  </nav>
+  <main class="slides" id="main">
+    <section class="hero" id="deck-top">
+      <span class="hero-kicker">Session 1</span>
+      <h1>Session 1 — Introduction to Dreamweaver</h1>
+      <p class="hero-sub">Your first web page, from empty folder to browser.</p>
+      <div class="hero-meta">
+        <div><span class="k">Slides</span><span class="v">35</span></div>
+        <div><span class="k">Source</span><span class="v"><code>canvases/buoi-01.canvas.tsx</code></span></div>
+        <div><span class="k">Textbook chapter</span><span class="v"><code>ebook/01-introduction-to-dreamweaver.md</code></span></div>
+        <div><span class="k">Marp slides</span><span class="v"><code>slides/01-introduction-to-dreamweaver.md</code></span></div>
+        <div><span class="k">In-class exercise</span><span class="v"><code>exercises/session-01/exercise.md</code></span></div>
+        <div><span class="k">Homework</span><span class="v"><code>homework/session-01/</code></span></div>
+      </div>
+    </section>
+    <section class="slide" id="title" data-pattern="aurora" style="--slide-bg:var(--bg-elevated);--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent);--pattern-accent-2:color-mix(in srgb, var(--chart-goldenYellow) 22%, transparent)" aria-labelledby="h-title">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">1</span>
+        <h2 id="h-title">Session 1 — Introduction to Dreamweaver</h2>
+        <span class="visually-hidden">Slide 1 of 35</span>
+        <a class="slide-anchor" href="#title" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack is-center" style="gap:16px"><span class="c-tag is-info">INS2053 · Session 1 · 150 min</span><p class="c-h1">Introduction to Dreamweaver &amp; Web Fundamentals</p><p class="c-text is-secondary">What is a website? What is HTML? Create your first web page from scratch.</p></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Welcome students to INS2053. This is their very first web authoring session. Emphasize that no prior coding experience is needed.</div>
+      </details>
+    </section>
+    <section class="slide" id="s01-course-map" data-pattern="grid" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-s01-course-map">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">2</span>
+        <h2 id="h-s01-course-map">Welcome to INS2053 — How This Course Works</h2>
+        <span class="visually-hidden">Slide 2 of 35</span>
+        <a class="slide-anchor" href="#s01-course-map" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">4 credits · 15 weeks · 150 minutes per week · taught in English</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:8px"><p class="c-text" style="font-weight:700">How you are assessed</p><div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Component</th><th scope="col">Weight</th></tr></thead><tbody><tr><td>Attendance, participation &amp; homework</td><td>10%</td></tr><tr><td>Midterm — practical, Week 8</td><td>30%</td></tr><tr><td>Final — practical + capstone, Week 15</td><td>60%</td></tr></tbody></table></div><p class="c-text is-secondary is-small">Both exams are hands-on and offline: no internet, you build in a real editor.</p></div><div class="c-stack" style="gap:8px"><p class="c-text" style="font-weight:700">One project, fifteen weeks</p><p class="c-text">You build a Student Club Website. Every session adds one layer to the same site — structure, then text and images, then CSS, layout, tables, media, forms, responsive.</p><p class="c-text">Eight milestones (M1–M8) are checked along the way and carry 40 points of the final grade.</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Nothing you build gets thrown away. Week 15 you submit the site Week 2 started.</div></div></div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Week 1 only. Spend 6-8 minutes here. The one thing they must leave with: the capstone is ONE site built across all 15 weeks, not 15 throwaway exercises.</div>
+      </details>
+    </section>
+    <section class="slide" id="objectives" aria-labelledby="h-objectives">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">3</span>
+        <h2 id="h-objectives">Learning Objectives</h2>
+        <span class="visually-hidden">Slide 3 of 35</span>
+        <a class="slide-anchor" href="#objectives" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">After this session you will be able to:</h3><div class="c-stack" style="gap:6px"><p class="c-text">1. Explain what a website, webpage, and HTML file are</p><p class="c-text">2. Identify the main parts of a code editor workspace (Dreamweaver / VS Code)</p><p class="c-text">3. Create a proper project folder structure for a website</p><p class="c-text">4. Write, save, and preview your first HTML5 page</p><p class="c-text">5. Explain each part of the HTML5 boilerplate</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Linked outcomes: CLO1 (explain web concepts), CLO4 (use development tools)</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="agenda" aria-labelledby="h-agenda">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">4</span>
+        <h2 id="h-agenda">Today&#39;s 150-Minute Plan</h2>
+        <span class="visually-hidden">Slide 4 of 35</span>
+        <a class="slide-anchor" href="#agenda" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Session timeline</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-tag is-info">0 – 10 min</span><p class="c-text">Welcome &amp; objectives</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">10 – 20 min</span><p class="c-text">Icebreaker &amp; what you already know</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-success">20 – 90 min</span><p class="c-text">New content + live demos</p></div></div><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-tag is-success">90 – 140 min</span><p class="c-text">In-class practice (Tasks 1–3)</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-warning">140 – 148 min</span><p class="c-text">Homework briefing</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">148 – 150 min</span><p class="c-text">Recap &amp; next session</p></div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Theory ~60 min · Practice ~90 min. Raise your hand any time you get stuck.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="icebreaker" aria-labelledby="h-icebreaker">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">5</span>
+        <h2 id="h-icebreaker">Warm-Up: What Do You Already Know?</h2>
+        <span class="visually-hidden">Slide 5 of 35</span>
+        <a class="slide-anchor" href="#icebreaker" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Quick show of hands</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>How many of you have visited a website today?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Can anyone name the language websites are built with?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>What happens when you type a URL and press Enter?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Have you ever looked at View Source on a web page?</div></div></div></div><p class="c-text is-secondary">No wrong answers. By the end of today you will understand what happens behind the scenes.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="how-web-works" data-pattern="grid" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-how-web-works">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">6</span>
+        <h2 id="h-how-web-works">How the Web Works</h2>
+        <span class="visually-hidden">Slide 6 of 35</span>
+        <a class="slide-anchor" href="#how-web-works" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:16px"><h3 class="c-h2">How the web works</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><svg viewBox="0 0 560 250" width="100%" height="250" role="img" aria-label="A browser sends a GET request, the server replies with HTML and CSS, the browser renders the page"><defs><marker id="s1rq" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 z" fill="var(--chart-goldenYellow)"></path></marker><marker id="s1rs" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 z" fill="var(--chart-green)"></path></marker><filter id="s1sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.18"></feDropShadow></filter></defs><g filter="url(#s1sh)"><rect x="14" y="40" width="184" height="148" rx="12" fill="var(--bg-elevated)" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect></g><line x1="14" y1="68" x2="198" y2="68" stroke="var(--stroke-tertiary)" stroke-width="1"></line><circle cx="31" cy="54" r="3.5" fill="var(--stroke-tertiary)"></circle><circle cx="43" cy="54" r="3.5" fill="var(--stroke-tertiary)"></circle><circle cx="55" cy="54" r="3.5" fill="var(--stroke-tertiary)"></circle><rect x="68" y="47" width="118" height="15" rx="7.5" fill="var(--fill-tertiary)"></rect><text x="127" y="58" text-anchor="middle" font-size="11" fill="var(--text-tertiary)">student-club.com</text><rect x="28" y="80" width="156" height="16" rx="3" fill="var(--chart-blue)" opacity="0.85"></rect><rect x="28" y="104" width="70" height="46" rx="3" fill="var(--fill-tertiary)" stroke="var(--stroke-tertiary)"></rect><path d="M40,138 L58,116 L74,138 z" fill="var(--chart-green)" opacity="0.7"></path><rect x="106" y="104" width="78" height="7" rx="3.5" fill="var(--fill-tertiary)"></rect><rect x="106" y="117" width="78" height="7" rx="3.5" fill="var(--fill-tertiary)"></rect><rect x="106" y="130" width="52" height="7" rx="3.5" fill="var(--fill-tertiary)"></rect><rect x="28" y="160" width="156" height="16" rx="3" fill="var(--fill-tertiary)"></rect><text x="106" y="208" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text-primary)">Browser</text><text x="106" y="226" text-anchor="middle" font-size="11" fill="var(--text-tertiary)">on your laptop</text><g filter="url(#s1sh)"><rect x="362" y="40" width="184" height="148" rx="12" fill="var(--bg-elevated)" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect></g><rect x="376" y="54" width="156" height="26" rx="5" fill="var(--chart-blue)" opacity="0.9"></rect><text x="454" y="71" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">index.html</text><rect x="376" y="86" width="156" height="26" rx="5" fill="var(--chart-blue)" opacity="0.6"></rect><text x="454" y="103" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">css/style.css</text><rect x="376" y="118" width="156" height="26" rx="5" fill="var(--chart-blue)" opacity="0.35"></rect><text x="454" y="135" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-primary)">images/logo.png</text><rect x="376" y="152" width="156" height="22" rx="5" fill="var(--fill-tertiary)" stroke="var(--stroke-tertiary)" stroke-dasharray="3 3"></rect><text x="454" y="167" text-anchor="middle" font-size="11" fill="var(--text-tertiary)">your other files</text><text x="454" y="208" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text-primary)">Web server</text><text x="454" y="226" text-anchor="middle" font-size="11" fill="var(--text-tertiary)">a computer that stores your files</text><line x1="206" y1="86" x2="354" y2="86" stroke="var(--chart-goldenYellow)" stroke-width="2.5" marker-end="url(#s1rq)"></line><circle cx="222" cy="68" r="10" fill="var(--chart-goldenYellow)"></circle><text x="222" y="72.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">1</text><text x="296" y="72.5" text-anchor="middle" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">GET /index.html</text><line x1="354" y1="142" x2="206" y2="142" stroke="var(--chart-green)" stroke-width="2.5" marker-end="url(#s1rs)"></line><circle cx="344" cy="122" r="10" fill="var(--chart-green)"></circle><text x="344" y="126.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">2</text><text x="280" y="162" text-anchor="middle" font-size="12.5" fill="var(--text-secondary)">200 OK</text><text x="280" y="178" text-anchor="middle" font-size="12.5" fill="var(--text-secondary)">HTML, CSS, images</text><circle cx="34" cy="200" r="10" fill="var(--chart-blue)"></circle><text x="34" y="204.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">3</text><text x="34" y="226" text-anchor="middle" font-size="11" fill="var(--text-tertiary)">renders</text></svg><div class="c-stack" style="gap:8px"><p class="c-text">Your browser asks a server for a page.</p><p class="c-text">The server sends back HTML + CSS files.</p><p class="c-text">The browser renders them into what you see.</p><hr class="c-divider"/><p class="c-text is-secondary">Real-life analogy: A website is like a textbook. Each chapter = one .html file. The table of contents = navigation menu. The printing press = web server.</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-real-web-servers" data-pattern="grid" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-s01-real-web-servers">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">7</span>
+        <h2 id="h-s01-real-web-servers">Real Web Servers</h2>
+        <span class="visually-hidden">Slide 7 of 35</span>
+        <a class="slide-anchor" href="#s01-real-web-servers" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:14px"><h3 class="c-h2">What does a real web server look like?</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><img src="assets/s1-datacenter.jpg" alt="Racks of servers with blue LEDs in a data center" style="width:100%;border-radius:8px;border:1px solid var(--stroke-tertiary)"/><p class="c-text is-tertiary is-small">Photo: BalticServers.com — CC BY-SA 3.0, Wikimedia Commons</p></div><div class="c-stack" style="gap:8px"><p class="c-text">A web server is just a computer kept on 24/7 so visitors can reach your site any time.</p><p class="c-text">A data center racks hundreds of these servers together with backup power and cooling.</p><p class="c-text">Big sites use many servers; your CodeBreakers club site needs only one cheap plan.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>While developing, YOUR laptop acts as the server — Live Server or Dreamweaver preview serves files locally.</div></div></div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">This slide makes the abstract &#39;server&#39; concept concrete. Emphasize that while developing, each student&#39;s laptop IS the server thanks to Live Server or Dreamweaver preview. The datacenter photo shows what production hosting looks like.</div>
+      </details>
+    </section>
+    <section class="slide" id="s01-key-terms-glossary" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-s01-key-terms-glossary">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">8</span>
+        <h2 id="h-s01-key-terms-glossary">Key Terms Glossary</h2>
+        <span class="visually-hidden">Slide 8 of 35</span>
+        <a class="slide-anchor" href="#s01-key-terms-glossary" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Vocabulary reference</h3><div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Term</th><th scope="col">What it means</th><th scope="col">Example</th></tr></thead><tbody><tr><td>Website</td><td>A collection of connected web pages stored on a server</td><td>codebreakers.club</td></tr><tr><td>Webpage</td><td>A single HTML document the browser can display</td><td>about.html</td></tr><tr><td>Browser</td><td>Software that reads HTML and draws the page on screen</td><td>Chrome, Edge, Firefox</td></tr><tr><td>Web server</td><td>A computer that stores and delivers web files on request</td><td>Your laptop with Live Server</td></tr><tr><td>URL</td><td>The address used to find a specific page on the web</td><td>http://codebreakers.club/index.html</td></tr><tr><td>HTML</td><td>HyperText Markup Language — describes structure, not logic</td><td>&lt;h1&gt;Welcome&lt;/h1&gt;</td></tr><tr><td>Tag</td><td>A marker in angle brackets that tells the browser what something is</td><td>&lt;p&gt;, &lt;img&gt;, &lt;a&gt;</td></tr><tr><td>Code editor</td><td>A specialized text editor for writing code with highlighting</td><td>VS Code, Dreamweaver</td></tr></tbody></table></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>HTML is NOT a programming language. It is a markup language — it describes structure, never logic.</div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Use this as a quick-reference while reading the ebook. Every term here appears in Session 1 exercises. Students should be able to define each term without looking at notes by the end of self-study.</div>
+      </details>
+    </section>
+    <section class="slide" id="what-is-html" aria-labelledby="h-what-is-html">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">9</span>
+        <h2 id="h-what-is-html">What Is an HTML File?</h2>
+        <span class="visually-hidden">Slide 9 of 35</span>
+        <a class="slide-anchor" href="#what-is-html" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">HTML = HyperText Markup Language</h3><p class="c-text is-secondary">HTML is NOT a programming language. It describes the STRUCTURE of content using tags.</p><svg viewBox="0 0 560 190" width="100%" height="190" role="img" aria-label="An HTML element is made of an opening tag, the content, and a closing tag that contains a slash"><path d="M102,62 L102,52 L458,52 L458,62" fill="none" stroke="var(--stroke-secondary)" stroke-width="1.5"></path><rect x="228" y="26" width="104" height="22" rx="11" fill="var(--fill-tertiary)" stroke="var(--stroke-tertiary)"></rect><text x="280" y="41" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text-secondary)">ONE element</text><rect x="102" y="72" width="52" height="38" rx="6" fill="var(--chart-blue)" opacity="0.9"></rect><text x="128" y="97" text-anchor="middle" font-size="19" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">&lt;h1&gt;</text><rect x="160" y="72" width="232" height="38" rx="6" fill="var(--chart-green)" opacity="0.85"></rect><text x="276" y="97" text-anchor="middle" font-size="19" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">Welcome to the Club</text><rect x="398" y="72" width="60" height="38" rx="6" fill="var(--chart-blue)" opacity="0.9"></rect><text x="428" y="97" text-anchor="middle" font-size="19" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">&lt;/h1&gt;</text><line x1="128" y1="114" x2="128" y2="130" stroke="var(--stroke-tertiary)" stroke-width="1"></line><text x="122" y="146" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text-primary)">opening tag</text><text x="122" y="162" text-anchor="middle" font-size="11" fill="var(--text-tertiary)">names the element</text><line x1="276" y1="114" x2="276" y2="130" stroke="var(--stroke-tertiary)" stroke-width="1"></line><text x="276" y="146" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text-primary)">content</text><text x="276" y="162" text-anchor="middle" font-size="11" fill="var(--text-tertiary)">what the reader sees</text><line x1="428" y1="114" x2="428" y2="130" stroke="var(--stroke-tertiary)" stroke-width="1"></line><text x="434" y="146" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text-primary)">closing tag</text><text x="434" y="162" text-anchor="middle" font-size="11" fill="var(--chart-brightOrange)">the / is required</text></svg><div class="c-row" style="gap:8px"><span class="c-tag is-info">plain text file, .html</span><span class="c-tag is-info">tags describe structure</span><span class="c-tag is-success">any browser can read it</span></div><p class="c-text is-secondary">Like a recipe card: the card = the .html file, the ingredients = your content, the instructions = the tags, and the cook = the browser.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-anatomy-of-url" data-pattern="grid" style="--pattern-accent:color-mix(in srgb, var(--chart-goldenYellow) 26%, transparent)" aria-labelledby="h-s01-anatomy-of-url">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">10</span>
+        <h2 id="h-s01-anatomy-of-url">Anatomy of a URL</h2>
+        <span class="visually-hidden">Slide 10 of 35</span>
+        <a class="slide-anchor" href="#s01-anatomy-of-url" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Breaking down a URL</h3><code class="c-code-inline">http://www.codebreakers.club/about.html</code><div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Part</th><th scope="col">Value</th><th scope="col">What the browser does</th></tr></thead><tbody><tr><td>Protocol</td><td>http://</td><td>Tells the browser how to talk to the server (http or https).</td></tr><tr><td>Domain</td><td>www.codebreakers.club</td><td>The address of the server that holds the site files.</td></tr><tr><td>File path</td><td>/about.html</td><td>Which specific file on that server to download and display.</td></tr></tbody></table></div><hr class="c-divider"/><p class="c-text is-secondary">If you type just the domain without a path, the server sends back index.html by default.</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In our course project the URL might be http://localhost:5500/about.html — localhost means your own laptop is the server.</div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Walk through each part slowly. Students often confuse the domain with the file path. Remind them that http:// is the protocol, the domain tells the browser WHERE to go, and the path tells it WHICH file to request. In this course all URLs start with http:// or https://.</div>
+      </details>
+    </section>
+    <section class="slide" id="self-closing-tags" aria-labelledby="h-self-closing-tags">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">11</span>
+        <h2 id="h-self-closing-tags">Two Kinds of Tags</h2>
+        <span class="visually-hidden">Slide 11 of 35</span>
+        <a class="slide-anchor" href="#self-closing-tags" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Paired tags vs self-closing tags</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><span class="c-tag is-success">Paired (most tags)</span><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;h1</span><span class="tok-punct">&gt;</span>Hello<span class="tok-tag">&lt;/h1</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>A paragraph<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;a</span> <span class="tok-attr">href</span><span class="tok-op">=</span><span class="tok-string">&quot;...&quot;</span><span class="tok-punct">&gt;</span>Click<span class="tok-tag">&lt;/a</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text is-secondary">Opening tag + content + closing tag</p></div><div class="c-stack" style="gap:6px"><span class="c-tag is-warning">Self-closing (void elements)</span><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;img</span> <span class="tok-attr">src</span><span class="tok-op">=</span><span class="tok-string">&quot;...&quot;</span> <span class="tok-attr">alt</span><span class="tok-op">=</span><span class="tok-string">&quot;...&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;hr</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src"><span class="tok-tag">&lt;meta</span> <span class="tok-attr">charset</span><span class="tok-op">=</span><span class="tok-string">&quot;UTF-8&quot;</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text is-secondary">No closing tag needed — they stand alone</p></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Tags must nest properly: &lt;p&gt;&lt;strong&gt;OK&lt;/strong&gt;&lt;/p&gt; is correct. &lt;p&gt;&lt;strong&gt;BAD&lt;/p&gt;&lt;/strong&gt; is broken.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="quick-check-1" aria-labelledby="h-quick-check-1">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">12</span>
+        <h2 id="h-quick-check-1">Quick Check</h2>
+        <span class="visually-hidden">Slide 12 of 35</span>
+        <a class="slide-anchor" href="#quick-check-1" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Think before we continue</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Is HTML a programming language? (Answer: No — it is a markup language.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Does pressing Enter in your code create a new line in the browser? (Answer: No — HTML ignores extra whitespace.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Which tag wraps ALL visible content? (Answer: &lt;body&gt;)</div></div></div></div><p class="c-text is-secondary">Discuss with your neighbor for 30 seconds.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="code-editors" aria-labelledby="h-code-editors">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">13</span>
+        <h2 id="h-code-editors">Code Editors: Dreamweaver vs VS Code</h2>
+        <span class="visually-hidden">Slide 13 of 35</span>
+        <a class="slide-anchor" href="#code-editors" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Choosing your code editor</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><span class="c-tag is-info">Dreamweaver CS6</span><p class="c-text">Design View (WYSIWYG) + Code View + Split View</p><p class="c-text">Built-in site management &amp; properties panel</p><p class="c-text is-secondary">Released 2012 — older but visual</p></div><div class="c-stack" style="gap:6px"><span class="c-tag is-success">VS Code (recommended)</span><p class="c-text">Free, fast, thousands of extensions</p><p class="c-text">Install Live Server for auto-refresh preview</p><p class="c-text is-secondary">Industry standard today</p></div></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Regardless of editor choice, you MUST learn to read and write HTML code directly.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="editor-comparison" aria-labelledby="h-editor-comparison">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">14</span>
+        <h2 id="h-editor-comparison">Editor Feature Comparison</h2>
+        <span class="visually-hidden">Slide 14 of 35</span>
+        <a class="slide-anchor" href="#editor-comparison" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Dreamweaver vs VS Code at a glance</h3><div class="c-grid" style="grid-template-columns:repeat(3, minmax(0,1fr));gap:4px"><p class="c-text is-secondary"><span class="c-text is-primary">Feature</span></p><p class="c-text is-secondary"><span class="c-text is-primary">Dreamweaver</span></p><p class="c-text is-secondary"><span class="c-text is-primary">VS Code</span></p><p class="c-text">Price</p><p class="c-text">Paid</p><p class="c-text is-success">Free</p><p class="c-text">Visual editor</p><p class="c-text is-success">Yes (WYSIWYG)</p><p class="c-text">No</p><p class="c-text">Extensions</p><p class="c-text">Limited</p><p class="c-text is-success">Thousands</p><p class="c-text">Speed</p><p class="c-text">Slower</p><p class="c-text is-success">Fast</p><p class="c-text">Git support</p><p class="c-text">Basic</p><p class="c-text is-success">Excellent</p><p class="c-text">Live preview</p><p class="c-text">Design View</p><p class="c-text">Live Server ext.</p><p class="c-text">Industry usage</p><p class="c-text">Rare</p><p class="c-text is-success">Very common</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Both editors work fine for this course. Pick whichever feels comfortable.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="folder-structure" aria-labelledby="h-folder-structure">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">15</span>
+        <h2 id="h-folder-structure">Project Folder Structure</h2>
+        <span class="visually-hidden">Slide 15 of 35</span>
+        <a class="slide-anchor" href="#folder-structure" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Organize before you code</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-code lang-text"><span class="c-code-lang">text</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src">StudentClubWebsite/</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">├── index.html        &lt;-- home page</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">├── about.html</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">├── events.html</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">├── contact.html</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">├── images/           &lt;-- all images</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src">│   └── club-logo.png</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">├── css/              &lt;-- stylesheets</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">│   └── style.css</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">├── js/               &lt;-- scripts</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">│   └── main.js</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src">└── documents/        &lt;-- PDFs, downloads</span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary">Like a filing cabinet: each drawer holds one type of file.</p><div class="c-row" style="gap:8px"><span class="c-tag is-success">lowercase names</span><span class="c-tag is-success">hyphens not spaces</span><span class="c-tag is-success">index.html = home</span></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Never save files on Desktop or scatter across folders.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="file-extensions" aria-labelledby="h-file-extensions">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">16</span>
+        <h2 id="h-file-extensions">Common Web File Extensions</h2>
+        <span class="visually-hidden">Slide 16 of 35</span>
+        <a class="slide-anchor" href="#file-extensions" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">File types you will use</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:4px"><div class="c-row" style="gap:8px"><span class="c-tag is-info">.html</span><p class="c-text">Web page structure</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">.css</span><p class="c-text">Styles (colors, fonts)</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">.js</span><p class="c-text">Interactivity &amp; behavior</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">.jpg/.png</span><p class="c-text">Images</p></div></div><div class="c-stack" style="gap:4px"><div class="c-row" style="gap:8px"><span class="c-tag is-info">.svg</span><p class="c-text">Scalable icons/logos</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">.gif</span><p class="c-text">Simple animations</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">.pdf</span><p class="c-text">Downloadable documents</p></div></div></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Windows hides extensions by default. Enable View → Show → File name extensions to avoid saving page.txt instead of page.html.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="boilerplate" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-goldenYellow) 26%, transparent)" aria-labelledby="h-boilerplate">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">17</span>
+        <h2 id="h-boilerplate">The HTML5 Boilerplate</h2>
+        <span class="visually-hidden">Slide 17 of 35</span>
+        <a class="slide-anchor" href="#boilerplate" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">The HTML5 boilerplate — memorize this!</h3><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-doctype">&lt;!DOCTYPE html&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;html</span> <span class="tok-attr">lang</span><span class="tok-op">=</span><span class="tok-string">&quot;en&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">    <span class="tok-tag">&lt;meta</span> <span class="tok-attr">charset</span><span class="tok-op">=</span><span class="tok-string">&quot;UTF-8&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">    <span class="tok-tag">&lt;meta</span> <span class="tok-attr">name</span><span class="tok-op">=</span><span class="tok-string">&quot;viewport&quot;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">          <span class="tok-attr">content</span><span class="tok-op">=</span><span class="tok-string">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src">    <span class="tok-tag">&lt;title</span><span class="tok-punct">&gt;</span>Page Title Here<span class="tok-tag">&lt;/title</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src"><span class="tok-tag">&lt;/head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src"><span class="tok-tag">&lt;body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">    <span class="tok-comment">&lt;!-- All visible content goes here --&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src"><span class="tok-tag">&lt;/body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src"><span class="tok-tag">&lt;/html</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text is-secondary">&lt;!DOCTYPE html&gt; prevents quirks mode. &lt;head&gt; = metadata (invisible). &lt;body&gt; = visible content.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="boilerplate-breakdown" aria-labelledby="h-boilerplate-breakdown">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">18</span>
+        <h2 id="h-boilerplate-breakdown">Boilerplate Line-by-Line</h2>
+        <span class="visually-hidden">Slide 18 of 35</span>
+        <a class="slide-anchor" href="#boilerplate-breakdown" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">What each line does</h3><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text is-primary">&lt;!DOCTYPE html&gt;</span> — Tells the browser this is HTML5. Without it, browsers enter quirks mode.</p><p class="c-text"><span class="c-text is-primary">&lt;html lang=&quot;en&quot;&gt;</span> — Root element. lang=&quot;en&quot; declares English for accessibility and SEO.</p><p class="c-text"><span class="c-text is-primary">&lt;meta charset=&quot;UTF-8&quot;&gt;</span> — Supports all characters including Vietnamese diacritics.</p><p class="c-text"><span class="c-text is-primary">&lt;meta name=&quot;viewport&quot;...&gt;</span> — Makes the page responsive on mobile devices.</p><p class="c-text"><span class="c-text is-primary">&lt;title&gt;</span> — Sets the browser tab text. NOT visible on the page itself.</p><p class="c-text"><span class="c-text is-primary">&lt;body&gt;</span> — Everything visible goes here: headings, paragraphs, images, links.</p><p class="c-text"><span class="c-text is-primary">&lt;!-- comment --&gt;</span> — Invisible notes for developers. Never shown in the browser.</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Analogy: DOCTYPE = letterhead. head = envelope (metadata). body = the letter content. &lt;/html&gt; = signature.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="head-vs-body" aria-labelledby="h-head-vs-body">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">19</span>
+        <h2 id="h-head-vs-body">Where Does Each Part Show Up?</h2>
+        <span class="visually-hidden">Slide 19 of 35</span>
+        <a class="slide-anchor" href="#head-vs-body" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">head is about the page — body IS the page</h3><svg viewBox="0 0 560 268" width="100%" height="268" role="img" aria-label="The head holds information about the page and stays invisible; the body holds the content the reader sees"><defs><marker id="s1hb" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 z" fill="var(--chart-goldenYellow)"></path></marker><marker id="s1bb" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 z" fill="var(--chart-green)"></path></marker></defs><rect x="12" y="26" width="266" height="228" rx="10" fill="none" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect><text x="22" y="19" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">&lt;html lang=&quot;en&quot;&gt;</text><rect x="26" y="44" width="238" height="96" rx="8" fill="var(--fill-tertiary)" stroke="var(--stroke-tertiary)"></rect><text x="36" y="62" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-weight="700" fill="var(--text-primary)">&lt;head&gt;</text><rect x="36" y="68" width="218" height="19" rx="4" fill="var(--bg-elevated)" stroke="var(--stroke-tertiary)"></rect><text x="43" y="81.5" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">&lt;meta charset=&quot;UTF-8&quot;&gt;</text><rect x="36" y="90" width="218" height="19" rx="4" fill="var(--bg-elevated)" stroke="var(--stroke-tertiary)"></rect><text x="43" y="103.5" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">&lt;meta name=&quot;viewport&quot; ...&gt;</text><rect x="36" y="112" width="218" height="19" rx="4" fill="var(--chart-goldenYellow)" opacity="0.9"></rect><text x="43" y="125.5" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">&lt;title&gt;Student Club&lt;/title&gt;</text><rect x="26" y="150" width="238" height="94" rx="8" fill="var(--fill-tertiary)" stroke="var(--stroke-tertiary)"></rect><text x="36" y="168" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-weight="700" fill="var(--text-primary)">&lt;body&gt;</text><rect x="36" y="174" width="218" height="22" rx="4" fill="var(--chart-green)" opacity="0.9"></rect><text x="43" y="189" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">&lt;h1&gt;Welcome&lt;/h1&gt;</text><rect x="36" y="199" width="218" height="19" rx="4" fill="var(--chart-green)" opacity="0.55"></rect><text x="43" y="212.5" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">&lt;p&gt;Join us today.&lt;/p&gt;</text><text x="36" y="233" font-size="11" fill="var(--text-tertiary)">everything the reader sees</text><rect x="336" y="40" width="212" height="152" rx="10" fill="var(--bg-elevated)" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect><path d="M344,40 L344,26 L452,26 L452,40 z" fill="var(--chart-goldenYellow)" opacity="0.9"></path><text x="398" y="37" text-anchor="middle" font-size="11" fill="#0B1220">Student Club</text><line x1="336" y1="62" x2="548" y2="62" stroke="var(--stroke-tertiary)"></line><text x="352" y="92" font-size="17" font-weight="700" fill="var(--text-primary)">Welcome</text><text x="352" y="114" font-size="12" fill="var(--text-secondary)">Join us today.</text><rect x="352" y="128" width="180" height="7" rx="3.5" fill="var(--fill-tertiary)"></rect><rect x="352" y="140" width="180" height="7" rx="3.5" fill="var(--fill-tertiary)"></rect><rect x="352" y="152" width="120" height="7" rx="3.5" fill="var(--fill-tertiary)"></rect><path d="M258,121 C300,121 306,33 340,33" fill="none" stroke="var(--chart-goldenYellow)" stroke-width="2" marker-end="url(#s1hb)"></path><path d="M270,185 C310,185 312,95 344,95" fill="none" stroke="var(--chart-green)" stroke-width="2" marker-end="url(#s1bb)"></path><rect x="298" y="206" width="14" height="14" rx="3" fill="var(--chart-goldenYellow)"></rect><text x="320" y="217" font-size="13" fill="var(--text-secondary)">head = ABOUT the page (invisible)</text><rect x="298" y="228" width="14" height="14" rx="3" fill="var(--chart-green)"></rect><text x="320" y="239" font-size="13" fill="var(--text-secondary)">body = the page itself</text></svg></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Point at the diagram, not the code. Ask the class: if I change the title, what changes on screen? Answer: only the tab. This is the single most common beginner confusion.</div>
+      </details>
+    </section>
+    <section class="slide" id="worked-example-1" aria-labelledby="h-worked-example-1">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">20</span>
+        <h2 id="h-worked-example-1">Worked Example 1: Hello World Page</h2>
+        <span class="visually-hidden">Slide 20 of 35</span>
+        <a class="slide-anchor" href="#worked-example-1" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">The simplest possible web page</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-doctype">&lt;!DOCTYPE html&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;html</span> <span class="tok-attr">lang</span><span class="tok-op">=</span><span class="tok-string">&quot;en&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">    <span class="tok-tag">&lt;meta</span> <span class="tok-attr">charset</span><span class="tok-op">=</span><span class="tok-string">&quot;UTF-8&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">    <span class="tok-tag">&lt;title</span><span class="tok-punct">&gt;</span>Simple Page<span class="tok-tag">&lt;/title</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-tag">&lt;/head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-tag">&lt;body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">    <span class="tok-tag">&lt;h1</span><span class="tok-punct">&gt;</span>Hello, World!<span class="tok-tag">&lt;/h1</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">    <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>This is my first web page.<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src"><span class="tok-tag">&lt;/body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src"><span class="tok-tag">&lt;/html</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary"><span class="c-text is-primary">&lt;!DOCTYPE html&gt;</span> — Declares HTML5 standards mode.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;title&gt;</span> — Tab reads &quot;Simple Page.&quot;</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;h1&gt;</span> — Large bold heading on the page.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;p&gt;</span> — Normal paragraph with automatic spacing.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In the browser: one large heading and one paragraph below it. The tab says &quot;Simple Page.&quot;</div></div></div><p class="c-text is-secondary">Save as index.html → Ctrl+S → F12 to preview.</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="worked-example" aria-labelledby="h-worked-example">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">21</span>
+        <h2 id="h-worked-example">Worked Example 2: Student Club Home Page</h2>
+        <span class="visually-hidden">Slide 21 of 35</span>
+        <a class="slide-anchor" href="#worked-example" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Your first complete web page</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-doctype">&lt;!DOCTYPE html&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;html</span> <span class="tok-attr">lang</span><span class="tok-op">=</span><span class="tok-string">&quot;en&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">    <span class="tok-tag">&lt;meta</span> <span class="tok-attr">charset</span><span class="tok-op">=</span><span class="tok-string">&quot;UTF-8&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">    <span class="tok-tag">&lt;title</span><span class="tok-punct">&gt;</span>Student Club - Home<span class="tok-tag">&lt;/title</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-tag">&lt;/head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-tag">&lt;body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">    <span class="tok-tag">&lt;h1</span><span class="tok-punct">&gt;</span>Welcome to the Student Club<span class="tok-tag">&lt;/h1</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">    <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>We are a community of students</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">       who love technology and creativity.<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src">    <span class="tok-tag">&lt;h2</span><span class="tok-punct">&gt;</span>Upcoming Events<span class="tok-tag">&lt;/h2</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src">    <span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">14</span><span class="c-code-src">        <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Web Workshop — Mar 15<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">15</span><span class="c-code-src">        <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Photo Contest — Mar 22<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">16</span><span class="c-code-src">        <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Music Night — Mar 29<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">17</span><span class="c-code-src">    <span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">18</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">19</span><span class="c-code-src">    <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>Contact: <span class="tok-tag">&lt;a</span> <span class="tok-attr">href</span><span class="tok-op">=</span><span class="tok-string">&quot;mailto:club@university.edu&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">20</span><span class="c-code-src">       club@university.edu<span class="tok-tag">&lt;/a</span><span class="tok-punct">&gt;</span><span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">21</span><span class="c-code-src"><span class="tok-tag">&lt;/body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">22</span><span class="c-code-src"><span class="tok-tag">&lt;/html</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary"><span class="c-text is-primary">&lt;!DOCTYPE html&gt;</span> — tells the browser this is HTML5 (prevents quirks mode).</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;title&gt;</span> — text shown in the browser tab only, NOT on the page.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;h1&gt;</span> — largest heading, one per page. Browsers render it bold and large.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;h2&gt;</span> — sub-heading, smaller than h1. Creates section structure.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;ul&gt; + &lt;li&gt;</span> — bulleted list. Each item wrapped in &lt;li&gt; tags.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;a href=&quot;mailto:...&quot;&gt;</span> — clickable email link that opens the mail app.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In the browser: a large heading, a welcome paragraph, three bullet points, and a clickable email link. The tab reads &quot;Student Club - Home.&quot;</div></div></div><p class="c-text is-secondary">Save as <span class="c-text">index.html</span> → Ctrl+S → F12 to preview.</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="html-comments" aria-labelledby="h-html-comments">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">22</span>
+        <h2 id="h-html-comments">Using HTML Comments</h2>
+        <span class="visually-hidden">Slide 22 of 35</span>
+        <a class="slide-anchor" href="#html-comments" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Comments: notes for yourself</h3><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-comment">&lt;!-- ===== HEADER SECTION ===== --&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;header</span><span class="tok-punct">&gt;</span>...<span class="tok-tag">&lt;/header</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src"><span class="tok-comment">&lt;!-- TODO: Add team photos here --&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-comment">&lt;!-- Using UTF-8 to support Vietnamese characters --&gt;</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text">Comments are invisible in the browser but visible in source code.</p><p class="c-text is-secondary">Use them to label sections, leave TODO notes, or explain WHY something is done.</p></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Never put passwords or sensitive data in comments. They are visible via View Source.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="discussion" aria-labelledby="h-discussion">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">23</span>
+        <h2 id="h-discussion">Discussion: Why Separate Files?</h2>
+        <span class="visually-hidden">Slide 23 of 35</span>
+        <a class="slide-anchor" href="#discussion" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Why not put everything in one file?</h3><div class="c-stack" style="gap:8px"><p class="c-text">A real website has 5, 10, or 50+ pages.</p><p class="c-text">If everything were in one file, it would be enormous and impossible to maintain.</p><p class="c-text">Separate files = easier editing, faster loading, better organization.</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Think about it: why do textbooks have chapters instead of being one giant wall of text?</div></div></div><p class="c-text is-secondary">We will build multi-page sites starting in Session 2.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="common-mistakes" aria-labelledby="h-common-mistakes">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">24</span>
+        <h2 id="h-common-mistakes">Common Mistakes</h2>
+        <span class="visually-hidden">Slide 24 of 35</span>
+        <a class="slide-anchor" href="#common-mistakes" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Watch out for these mistakes</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Forgetting &lt;!DOCTYPE html&gt; — triggers quirks mode, pages render incorrectly</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Spaces in filenames — &quot;My Page.html&quot; becomes &quot;My%20Page.html&quot; in URLs</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Not saving before previewing — browser shows the OLD version</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Mixing up &lt;head&gt; and &lt;body&gt; — headings go in body, title goes in head</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>No project folder — never save files directly on Desktop</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Saving as .txt — always verify the extension is .html, not .html.txt</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Unclosed tags — every &lt;p&gt; needs &lt;/p&gt;, every &lt;h1&gt; needs &lt;/h1&gt;</div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-self-study-check" aria-labelledby="h-s01-self-study-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">25</span>
+        <h2 id="h-s01-self-study-check">Self-Study Check</h2>
+        <span class="visually-hidden">Slide 25 of 35</span>
+        <a class="slide-anchor" href="#s01-self-study-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Test yourself before practice</h3><div class="c-stack" style="gap:8px"><p class="c-text">1. True or false: HTML is a programming language.</p><p class="c-text">2. Which part of a URL names the specific file to display?</p><p class="c-text">3. Who sends the GET request — the browser or the server?</p><p class="c-text">4. Where should you save all your website files?</p><p class="c-text">5. Which HTML tag wraps ALL visible content on the page?</p></div><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Answers are in the speaker notes. Try answering from memory first, then check.</div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Answer key: 1) False — HTML is a markup language, not a programming language. 2) The file path (/about.html). 3) The browser sends the GET request. 4) A dedicated project folder (e.g. StudentClubWebsite/). 5) The body tag wraps all visible content.</div>
+      </details>
+    </section>
+    <section class="slide" id="practice" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent)" aria-labelledby="h-practice">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">26</span>
+        <h2 id="h-practice">In-Class Practice</h2>
+        <span class="visually-hidden">Slide 26 of 35</span>
+        <a class="slide-anchor" href="#practice" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">In-class practice (exercises/session-01/)</h3><div class="c-stack" style="gap:8px"><h4 class="c-h3">Task 1: Explore your editor</h4><p class="c-text">VS Code: Explorer sidebar, editor tabs, status bar, Command Palette. Dreamweaver: Files panel plus the Design / Code / Split view buttons.</p><h4 class="c-h3">Task 2: Create your first HTML file</h4><p class="c-text">Type the HTML5 boilerplate by hand. Save as index.html in my-first-site/. Preview in the browser.</p><h4 class="c-h3">Task 3: Read the structure you wrote</h4><p class="c-text">Name what each line does. Change the title and watch the browser tab, not the page.</p><h4 class="c-h3">Task 4: Experiment</h4><p class="c-text">Add h2 subheadings and more paragraphs. Compare h1 with h2 on screen.</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Estimated time: 45 minutes. Ask your instructor if stuck.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="practice-tips" aria-labelledby="h-practice-tips">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">27</span>
+        <h2 id="h-practice-tips">Practice Tips</h2>
+        <span class="visually-hidden">Slide 27 of 35</span>
+        <a class="slide-anchor" href="#practice-tips" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Tips for the in-class tasks</h3><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text is-primary">Type, do not copy-paste.</span> Typing builds muscle memory for the boilerplate.</p><p class="c-text"><span class="c-text is-primary">Save after every few changes</span> (Ctrl+S). Unsaved work is lost work.</p><p class="c-text"><span class="c-text is-primary">Preview often</span> (F12). Catch errors early rather than at the end.</p><p class="c-text"><span class="c-text is-primary">Check the tab title</span> to confirm your &lt;title&gt; tag is working.</p><p class="c-text"><span class="c-text is-primary">If the image is broken</span>, check the file path and extension carefully.</p></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Stuck? Compare your code line-by-line against the worked example on the previous slides.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-practice-check" aria-labelledby="h-s01-practice-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">28</span>
+        <h2 id="h-s01-practice-check">Practice Checkpoints</h2>
+        <span class="visually-hidden">Slide 28 of 35</span>
+        <a class="slide-anchor" href="#s01-practice-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">How to Know Each Task Is Done</h3><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-pill">Task 1</span><p class="c-text">You can find the Files panel, Properties panel, and Design/Code/Split view buttons in the editor.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 2</span><p class="c-text">Your index.html opens in the browser and shows &quot;Hello World&quot; — no blank page, no code visible.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 3</span><p class="c-text">Your home page has a visible header, nav links, main content, and footer — all in the browser.</p></div></div><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>If the browser shows raw HTML code instead of a page, check that the file extension is .html (not .txt).</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-try-boilerplate" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent)" aria-labelledby="h-s01-try-boilerplate">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">29</span>
+        <h2 id="h-s01-try-boilerplate">Try It Now: Type the Boilerplate</h2>
+        <span class="visually-hidden">Slide 29 of 35</span>
+        <a class="slide-anchor" href="#s01-try-boilerplate" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Three minutes — type this from memory</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">The HTML5 boilerplate</p><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-doctype">&lt;!DOCTYPE html&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;html</span> <span class="tok-attr">lang</span><span class="tok-op">=</span><span class="tok-string">&quot;en&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-tag">&lt;meta</span> <span class="tok-attr">charset</span><span class="tok-op">=</span><span class="tok-string">&quot;UTF-8&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">  <span class="tok-tag">&lt;meta</span> <span class="tok-attr">name</span><span class="tok-op">=</span><span class="tok-string">&quot;viewport&quot;</span> <span class="tok-attr">content</span><span class="tok-op">=</span><span class="tok-string">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">  <span class="tok-tag">&lt;title</span><span class="tok-punct">&gt;</span>My Page<span class="tok-tag">&lt;/title</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-tag">&lt;/head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src"><span class="tok-tag">&lt;body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">  <span class="tok-tag">&lt;h1</span><span class="tok-punct">&gt;</span>Hello World<span class="tok-tag">&lt;/h1</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src"><span class="tok-tag">&lt;/body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src"><span class="tok-tag">&lt;/html</span><span class="tok-punct">&gt;</span></span></span></code></pre></div></div><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">What each line does</p><p class="c-text">&lt;!DOCTYPE html&gt; — tells the browser &quot;this is HTML5.&quot;</p><p class="c-text">lang=&quot;en&quot; — helps screen readers and search engines.</p><p class="c-text">meta charset — supports all characters (accents, emojis).</p><p class="c-text">meta viewport — makes the page work on phones.</p><p class="c-text">&lt;title&gt; — shows in the browser tab.</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Type it three times today. By tomorrow, you will remember it from memory. That is the goal.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-do-dont" aria-labelledby="h-s01-do-dont">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">30</span>
+        <h2 id="h-s01-do-dont">First HTML File: Do vs Don&#39;t</h2>
+        <span class="visually-hidden">Slide 30 of 35</span>
+        <a class="slide-anchor" href="#s01-do-dont" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Do vs Don&#x27;t</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-stack" style="gap:6px"><h4 class="c-h3 is-success">Do</h4><p class="c-text">Start every page with &lt;!DOCTYPE html&gt;</p><p class="c-text">Set &lt;html lang=&quot;en&quot;&gt; and &lt;meta charset=&quot;UTF-8&quot;&gt;</p><p class="c-text">Name your home page exactly index.html</p><p class="c-text">Use all-lowercase file names with no spaces</p><p class="c-text">Save with the .html extension, not .txt</p></div><div class="c-stack" style="gap:6px"><h4 class="c-h3 is-danger">Don&#x27;t</h4><p class="c-text">Skip the doctype — the browser falls back to quirks mode</p><p class="c-text">Write &lt;Title&gt; or &lt;BODY&gt; in mixed case</p><p class="c-text">Name files &quot;My Home Page.html&quot; with spaces</p><p class="c-text">Nest tags out of order: &lt;b&gt;&lt;i&gt;text&lt;/b&gt;&lt;/i&gt;</p><p class="c-text">Forget the closing tag on a container element</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-debug" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-brightOrange) 26%, transparent)" aria-labelledby="h-s01-debug">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">31</span>
+        <h2 id="h-s01-debug">Debug This</h2>
+        <span class="visually-hidden">Slide 31 of 35</span>
+        <a class="slide-anchor" href="#s01-debug" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Three bugs. Find them before you scroll.</h3><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-doctype">&lt;!DOCTYPE html&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;html</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-tag">&lt;title</span><span class="tok-punct">&gt;</span>My Club<span class="tok-tag">&lt;title</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"><span class="tok-tag">&lt;/head</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-tag">&lt;body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src">  <span class="tok-tag">&lt;h1</span><span class="tok-punct">&gt;</span>Welcome<span class="tok-tag">&lt;/h2</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">  <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>Join us today!</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src"><span class="tok-tag">&lt;/body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src"><span class="tok-tag">&lt;/html</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><hr class="c-divider"/><div class="c-stack" style="gap:4px"><div class="c-row" style="gap:8px"><span class="c-pill">Bug 1</span><p class="c-text">&lt;title&gt; is never closed — the second one needs a slash: &lt;/title&gt;. Everything after it disappears.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Bug 2</span><p class="c-text">&lt;h1&gt; is closed with &lt;/h2&gt;. Opening and closing tags must match.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Bug 3</span><p class="c-text">&lt;html&gt; has no lang attribute — add lang=&quot;en&quot; so screen readers pick the right voice.</p></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>The unclosed &lt;p&gt; is legal HTML — the browser closes it at &lt;/body&gt; — but closing it yourself is the habit to build.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-accessibility" aria-labelledby="h-s01-accessibility">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">32</span>
+        <h2 id="h-s01-accessibility">Accessibility Starts in the Boilerplate</h2>
+        <span class="visually-hidden">Slide 32 of 35</span>
+        <a class="slide-anchor" href="#s01-accessibility" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Four Attributes You Set Once Per Page</h3><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-pill">lang</span><p class="c-text">&lt;html lang=&quot;en&quot;&gt; tells a screen reader which language to pronounce. Wrong lang makes speech unintelligible.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">charset</span><p class="c-text">&lt;meta charset=&quot;UTF-8&quot;&gt; must be first in &lt;head&gt; so accented and Vietnamese characters render instead of showing as ?.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">title</span><p class="c-text">&lt;title&gt; is the first thing announced and the label in the browser tab. Never leave it as &quot;Untitled Document&quot;.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">viewport</span><p class="c-text">The viewport meta tag lets users zoom on a phone. Without it, text is unreadably small.</p></div></div><hr class="c-divider"/><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>These four lines cost you thirty seconds and decide whether the page is usable at all. Put them in every file from day one.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s01-assignment" aria-labelledby="h-s01-assignment">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">33</span>
+        <h2 id="h-s01-assignment">Assignment: Your First Page</h2>
+        <span class="visually-hidden">Slide 33 of 35</span>
+        <a class="slide-anchor" href="#s01-assignment" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Start in class — finish for homework</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Deliverable</p><p class="c-text">homework/session-01/index.html with the full HTML5 boilerplate and your own content, plus empty css/ and images/ beside it.</p><p class="c-text" style="font-weight:700">Acceptance criteria</p><p class="c-text">Doctype, lang, charset, viewport, and title are all present.</p><p class="c-text">One &lt;h1&gt;, one &lt;h2&gt;, three or more &lt;p&gt;, and one HTML comment.</p><p class="c-text">Sub-folders css/ and images/ exist, even if still empty.</p><p class="c-text">File opens in the browser with the correct tab title.</p></div><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Before you submit</p><p class="c-text">Open the file in Chrome — is the tab title yours, not &quot;index.html&quot;?</p><p class="c-text">View Source (Ctrl+U) and check every tag is closed.</p><p class="c-text">Confirm the file name is index.html, lowercase, no spaces.</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Type the boilerplate by hand this week. You will use it in all fifteen sessions, so it is worth knowing from memory.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="homework" aria-labelledby="h-homework">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">34</span>
+        <h2 id="h-homework">Homework</h2>
+        <span class="visually-hidden">Slide 34 of 35</span>
+        <a class="slide-anchor" href="#homework" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Homework 1 (homework/session-01/)</h3><div class="c-stack" style="gap:8px"><p class="c-text"><span class="c-text">My First Web Page</span> — build a page introducing yourself.</p><p class="c-text">Requirements: full HTML5 boilerplate, one h1, one h2, three or more paragraphs, one comment, empty css/ and images/.</p><p class="c-text">Not this week: images, links, hr, br, CSS. Those arrive in Sessions 3 and 4.</p><hr class="c-divider"/><div class="c-row" style="gap:8px"><span class="c-tag is-danger">Due: Sunday 23:59</span><span class="c-tag is-info">Submit via git push</span></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="recap" data-pattern="aurora" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent);--pattern-accent-2:color-mix(in srgb, var(--chart-blue) 22%, transparent)" aria-labelledby="h-recap">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">35</span>
+        <h2 id="h-recap">Recap &amp; Next Session</h2>
+        <span class="visually-hidden">Slide 35 of 35</span>
+        <a class="slide-anchor" href="#recap" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Recap</h3><div class="c-stack" style="gap:6px"><p class="c-text">A website = many HTML files linked together</p><p class="c-text">HTML = markup language using tags for structure</p><p class="c-text">Always start with the HTML5 boilerplate</p><p class="c-text">Create folder structure BEFORE writing code</p><p class="c-text">Name home page index.html, use lowercase + hyphens</p></div><hr class="c-divider"/><h4 class="c-h3">Next: Session 2</h4><p class="c-text is-secondary">Creating a new site — multi-page websites, relative paths, file naming, Git intro.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="backtotop" id="backtotop" type="button" aria-label="Back to top">↑</button>
+<footer class="deck-footer">
+  <p>Generated from <code>canvases/buoi-01.canvas.tsx</code>. Keys: <kbd>j</kbd>/<kbd>k</kbd> next &amp; previous slide · <kbd>/</kbd> filter · <kbd>n</kbd> notes · <kbd>t</kbd> theme.</p>
+</footer>
+<script src="assets/deck.js" defer></script>
+</body>
+</html>

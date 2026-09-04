@@ -131,7 +131,10 @@ function SpecificityScale({ t }: { t: CanvasTokens }) {
     </g>
   );
   return (
-    <svg viewBox="0 0 560 250" width="100%" height="250" role="img"
+    /* The two notes sit under the ladder, not beside it: the widest bar plus its
+       score and plain-English weight already reach about x=518, so a right-hand
+       column would land on top of the "#header" row. */
+    <svg viewBox="0 0 560 356" width="100%" height="356" role="img"
       aria-label="Specificity ladder from element selectors up to inline styles, and the rule that decides a tie">
       <text x="14" y="16" fontSize="12" fontWeight="700" fill={t.text.tertiary}>WEAKEST</text>
       {tier(24, 96, "(0,0,1)", "p", "one element", t.chart.blue)}
@@ -140,21 +143,21 @@ function SpecificityScale({ t }: { t: CanvasTokens }) {
       {tier(144, 262, "(1,0,0)", "#header", "an id — hard to override", t.chart.brightOrange)}
       <text x="14" y="200" fontSize="12" fontWeight="700" fill={t.text.tertiary}>STRONGEST</text>
 
-      {/* the tie-break */}
-      <rect x="330" y="24" width="218" height="94" rx="8" fill={t.fill.tertiary} stroke={t.stroke.secondary} />
-      <text x="342" y="44" fontSize="13" fontWeight="700" fill={t.text.primary}>Same score? Last one wins.</text>
-      <text x="342" y="66" fontSize="11" fontFamily={MONO} fill={t.text.tertiary}>p{"{"}color:black;{"}"}</text>
-      <text x="342" y="84" fontSize="11" fontFamily={MONO} fill={t.chart.green}>p{"{"}color:navy;{"}"} &lt;-- wins</text>
-      <text x="342" y="106" fontSize="11" fill={t.text.tertiary}>Order matters only at same score.</text>
-
-      <rect x="330" y="130" width="218" height="88" rx="8" fill={t.bg.elevated} stroke={t.chart.brightOrange} strokeWidth="1.5" />
-      <text x="342" y="150" fontSize="13" fontWeight="700" fill={t.chart.brightOrange}>Avoid !important</text>
-      <text x="342" y="172" fontSize="12" fill={t.text.secondary}>It wins now but blocks fixes</text>
-      <text x="342" y="188" fontSize="12" fill={t.text.secondary}>later. Add a class instead,</text>
-      <text x="342" y="204" fontSize="12" fill={t.text.secondary}>or use a precise selector.</text>
-
       <text x="14" y="228" fontSize="13" fill={t.text.secondary}>Count ids, then classes, then elements.</text>
       <text x="14" y="244" fontSize="13" fill={t.text.secondary}>First column that differs decides it.</text>
+
+      {/* the tie-break */}
+      <rect x="6" y="258" width="270" height="92" rx="8" fill={t.fill.tertiary} stroke={t.stroke.secondary} />
+      <text x="18" y="278" fontSize="13" fontWeight="700" fill={t.text.primary}>Same score? Last one wins.</text>
+      <text x="18" y="300" fontSize="11" fontFamily={MONO} fill={t.text.tertiary}>p{"{"}color:black;{"}"}</text>
+      <text x="18" y="318" fontSize="11" fontFamily={MONO} fill={t.chart.green}>p{"{"}color:navy;{"}"} &lt;-- wins</text>
+      <text x="18" y="340" fontSize="11" fill={t.text.tertiary}>Order matters only at same score.</text>
+
+      <rect x="286" y="258" width="268" height="92" rx="8" fill={t.bg.elevated} stroke={t.chart.brightOrange} strokeWidth="1.5" />
+      <text x="298" y="278" fontSize="13" fontWeight="700" fill={t.chart.brightOrange}>Avoid !important</text>
+      <text x="298" y="300" fontSize="12" fill={t.text.secondary}>It wins now but blocks fixes</text>
+      <text x="298" y="318" fontSize="12" fill={t.text.secondary}>later. Add a class instead,</text>
+      <text x="298" y="336" fontSize="12" fill={t.text.secondary}>or use a precise selector.</text>
     </svg>
   );
 }

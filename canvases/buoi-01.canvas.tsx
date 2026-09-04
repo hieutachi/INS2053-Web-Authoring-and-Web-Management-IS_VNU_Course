@@ -95,14 +95,17 @@ function RequestResponseCycle({ t }: { t: CanvasTokens }) {
 
       {/* ---- Response ---- */}
       <line x1="354" y1="142" x2="206" y2="142" stroke={t.chart.green} strokeWidth="2.5" markerEnd="url(#s1rs)" />
-      <circle cx="338" cy="162" r="10" fill={t.chart.green} />
-      <text x="338" y="166.5" textAnchor="middle" fontSize="12" fontWeight="700" fill={ON_FILL}>2</text>
-      <text x="266" y="166.5" textAnchor="middle" fontSize="13" fill={t.text.secondary}>200 OK + HTML, CSS, images</text>
+      <circle cx="344" cy="122" r="10" fill={t.chart.green} />
+      <text x="344" y="126.5" textAnchor="middle" fontSize="12" fontWeight="700" fill={ON_FILL}>2</text>
+      {/* Two lines: one line of this label is wider than the 164px gap between
+          the browser and server cards, and used to run under the badge. */}
+      <text x="280" y="162" textAnchor="middle" fontSize="12.5" fill={t.text.secondary}>200 OK</text>
+      <text x="280" y="178" textAnchor="middle" fontSize="12.5" fill={t.text.secondary}>HTML, CSS, images</text>
 
       {/* ---- Step 3 ---- */}
       <circle cx="34" cy="200" r="10" fill={t.chart.blue} />
       <text x="34" y="204.5" textAnchor="middle" fontSize="12" fontWeight="700" fill={ON_FILL}>3</text>
-      <text x="50" y="204.5" fontSize="11" fill={t.text.tertiary}>renders</text>
+      <text x="34" y="226" textAnchor="middle" fontSize="11" fill={t.text.tertiary}>renders</text>
     </svg>
   );
 }
@@ -224,6 +227,38 @@ export default function Session01Lecture() {
           <Tag tone="info">INS2053 · Session 1 · 150 min</Tag>
           <H1>Introduction to Dreamweaver &amp; Web Fundamentals</H1>
           <Text tone="secondary">What is a website? What is HTML? Create your first web page from scratch.</Text>
+        </Stack>
+      </PresentationSlide>
+
+      {/* ===== SLIDE 1b: Course map (Week 1 only) ===== */}
+      <PresentationSlide
+        id="s01-course-map"
+        title="Welcome to INS2053 — How This Course Works"
+        notes="Week 1 only. Spend 6-8 minutes here. The one thing they must leave with: the capstone is ONE site built across all 15 weeks, not 15 throwaway exercises."
+        background={{ pattern: "grid", accent: t.chart.blue }}
+      >
+        <Stack gap={12}>
+          <H2>4 credits · 15 weeks · 150 minutes per week · taught in English</H2>
+          <Grid columns="repeat(2, minmax(0,1fr))" gap={16}>
+            <Stack gap={8}>
+              <Text fontWeight="700">How you are assessed</Text>
+              <Table
+                headers={["Component", "Weight"]}
+                rows={[
+                  ["Attendance, participation & homework", "10%"],
+                  ["Midterm — practical, Week 8", "30%"],
+                  ["Final — practical + capstone, Week 15", "60%"],
+                ]}
+              />
+              <Text size="small" tone="secondary">Both exams are hands-on and offline: no internet, you build in a real editor.</Text>
+            </Stack>
+            <Stack gap={8}>
+              <Text fontWeight="700">One project, fifteen weeks</Text>
+              <Text>You build a Student Club Website. Every session adds one layer to the same site — structure, then text and images, then CSS, layout, tables, media, forms, responsive.</Text>
+              <Text>Eight milestones (M1–M8) are checked along the way and carry 40 points of the final grade.</Text>
+              <Callout tone="info">Nothing you build gets thrown away. Week 15 you submit the site Week 2 started.</Callout>
+            </Stack>
+          </Grid>
         </Stack>
       </PresentationSlide>
 
@@ -712,12 +747,14 @@ export default function Session01Lecture() {
         <Stack gap={12}>
           <H2>In-class practice (exercises/session-01/)</H2>
           <Stack gap={8}>
-            <H3>Task 1: Explore the editor workspace</H3>
-            <Text>Switch between Design / Code / Split views. Locate Files panel, Properties panel.</Text>
-            <H3>Task 2: Create your first HTML page</H3>
-            <Text>Type the HTML5 boilerplate by hand. Save as index.html. Preview in browser.</Text>
-            <H3>Task 3: Build a complete home page</H3>
-            <Text>Add header, nav, main, sections, footer. Preview and verify structure.</Text>
+            <H3>Task 1: Explore your editor</H3>
+            <Text>VS Code: Explorer sidebar, editor tabs, status bar, Command Palette. Dreamweaver: Files panel plus the Design / Code / Split view buttons.</Text>
+            <H3>Task 2: Create your first HTML file</H3>
+            <Text>Type the HTML5 boilerplate by hand. Save as index.html in my-first-site/. Preview in the browser.</Text>
+            <H3>Task 3: Read the structure you wrote</H3>
+            <Text>Name what each line does. Change the title and watch the browser tab, not the page.</Text>
+            <H3>Task 4: Experiment</H3>
+            <Text>Add h2 subheadings and more paragraphs. Compare h1 with h2 on screen.</Text>
           </Stack>
           <Callout tone="info">Estimated time: 45 minutes. Ask your instructor if stuck.</Callout>
         </Stack>
@@ -855,10 +892,10 @@ export default function Session01Lecture() {
           <Grid columns="repeat(2, minmax(0,1fr))" gap={12}>
             <Stack gap={6}>
               <Text fontWeight="700">Deliverable</Text>
-              <Text>A folder my-first-site/ containing index.html with the full HTML5 boilerplate and your own content.</Text>
+              <Text>homework/session-01/index.html with the full HTML5 boilerplate and your own content, plus empty css/ and images/ beside it.</Text>
               <Text fontWeight="700">Acceptance criteria</Text>
               <Text>Doctype, lang, charset, viewport, and title are all present.</Text>
-              <Text>One &lt;h1&gt;, at least two &lt;p&gt; paragraphs, and one HTML comment.</Text>
+              <Text>One &lt;h1&gt;, one &lt;h2&gt;, three or more &lt;p&gt;, and one HTML comment.</Text>
               <Text>Sub-folders css/ and images/ exist, even if still empty.</Text>
               <Text>File opens in the browser with the correct tab title.</Text>
             </Stack>
@@ -880,12 +917,13 @@ export default function Session01Lecture() {
         <Stack gap={12}>
           <H2>Homework 1 (homework/session-01/)</H2>
           <Stack gap={8}>
-            <Text><Text as="span">My First Personal Page</Text> — build a page introducing yourself.</Text>
-            <Text>Requirements: HTML5 structure, h1 heading, 2+ paragraphs, one image, one link.</Text>
+            <Text><Text as="span">My First Web Page</Text> — build a page introducing yourself.</Text>
+            <Text>Requirements: full HTML5 boilerplate, one h1, one h2, three or more paragraphs, one comment, empty css/ and images/.</Text>
+            <Text>Not this week: images, links, hr, br, CSS. Those arrive in Sessions 3 and 4.</Text>
             <Divider />
             <Row gap={8}>
               <Tag tone="danger">Due: Sunday 23:59</Tag>
-              <Tag tone="info">Submit via course platform</Tag>
+              <Tag tone="info">Submit via git push</Tag>
             </Row>
           </Stack>
         </Stack>

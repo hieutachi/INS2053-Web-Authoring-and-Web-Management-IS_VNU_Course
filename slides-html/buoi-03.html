@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 3 — Working with Text and Images — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Text and images are 90% of every web page.">
+<meta name="generator" content="_tools/build-html-slides.mjs">
+<link rel="stylesheet" href="assets/deck.css">
+<link rel="preload" as="image" href="assets/s3-webpage.png"/>
+</head>
+<body class="page-deck">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="topbar-course">INS2053 · Web Authoring &amp; Web Management</span>
+    <span class="topbar-title">Session 3 — Working with Text and Images</span>
+  </div>
+  <div class="topbar-actions">
+    <a class="btn" href="index.html"><span aria-hidden="true">↩</span><span class="btn-label">All decks</span></a>
+    <button class="btn" id="expand-toggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">⌄</span><span class="btn-label">Expand notes</span>
+    </button>
+    <button class="btn" id="notes-toggle" type="button" aria-pressed="true">
+      <span aria-hidden="true">✎</span><span class="btn-label">Notes</span>
+    </button>
+    <button class="btn" id="theme-toggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">◐</span><span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+<div class="shell">
+  <nav class="toc" aria-label="Slide navigation">
+    <div class="toc-head">
+      <h2>Slides</h2>
+      <span class="toc-count" id="slide-counter">1 / 34</span>
+    </div>
+    <label class="visually-hidden" for="toc-search">Filter slides</label>
+    <input class="toc-search" id="toc-search" type="search" placeholder="Filter slides…  (press /)" autocomplete="off">
+    <ol class="toc-list">
+      <li><a href="#title"><span class="toc-num">1</span><span>Session 3 — Working with Text and Images</span></a></li>
+      <li><a href="#objectives"><span class="toc-num">2</span><span>Learning Objectives</span></a></li>
+      <li><a href="#agenda"><span class="toc-num">3</span><span>Today&#39;s 150-Minute Plan</span></a></li>
+      <li><a href="#recap-s2"><span class="toc-num">4</span><span>Recap: What Did We Learn Last Time?</span></a></li>
+      <li><a href="#headings"><span class="toc-num">5</span><span>Headings: Page Structure</span></a></li>
+      <li><a href="#anatomy-real-page"><span class="toc-num">6</span><span>Anatomy of a Real Web Page</span></a></li>
+      <li><a href="#heading-table"><span class="toc-num">7</span><span>Heading Tag Reference</span></a></li>
+      <li><a href="#text-formatting"><span class="toc-num">8</span><span>Text Formatting</span></a></li>
+      <li><a href="#strong-vs-b"><span class="toc-num">9</span><span>strong/em vs b/i</span></a></li>
+      <li><a href="#br-hr-usage"><span class="toc-num">10</span><span>Using br and hr Correctly</span></a></li>
+      <li><a href="#text-elements-ref"><span class="toc-num">11</span><span>Text Elements Reference</span></a></li>
+      <li><a href="#lists"><span class="toc-num">12</span><span>Lists: ul, ol, Nested</span></a></li>
+      <li><a href="#nested-lists"><span class="toc-num">13</span><span>Nested Lists Explained</span></a></li>
+      <li><a href="#quick-check"><span class="toc-num">14</span><span>Quick Check: Text Tags</span></a></li>
+      <li><a href="#s03-try-images"><span class="toc-num">15</span><span>Try It Now: Add an Image</span></a></li>
+      <li><a href="#images"><span class="toc-num">16</span><span>The img Tag</span></a></li>
+      <li><a href="#img-attributes"><span class="toc-num">17</span><span>Image Attributes Reference</span></a></li>
+      <li><a href="#alt-text"><span class="toc-num">18</span><span>Alt Text &amp; Accessibility</span></a></li>
+      <li><a href="#image-formats"><span class="toc-num">19</span><span>Choosing Image Formats</span></a></li>
+      <li><a href="#format-table"><span class="toc-num">20</span><span>Which Format Do I Pick?</span></a></li>
+      <li><a href="#image-format-table"><span class="toc-num">21</span><span>Choosing an Image Format</span></a></li>
+      <li><a href="#worked-example-1"><span class="toc-num">22</span><span>Worked Example 1: Basic Text Page</span></a></li>
+      <li><a href="#worked-example"><span class="toc-num">23</span><span>Worked Example 2: Rich About Page</span></a></li>
+      <li><a href="#discussion"><span class="toc-num">24</span><span>Discussion: Why Does Alt Text Matter?</span></a></li>
+      <li><a href="#common-mistakes"><span class="toc-num">25</span><span>Common Mistakes</span></a></li>
+      <li><a href="#self-study-check"><span class="toc-num">26</span><span>Self-Study Check</span></a></li>
+      <li><a href="#practice"><span class="toc-num">27</span><span>In-Class Practice</span></a></li>
+      <li><a href="#practice-tips"><span class="toc-num">28</span><span>Practice Tips</span></a></li>
+      <li><a href="#s03-do-dont"><span class="toc-num">29</span><span>Text &amp; Images: Do vs Don&#39;t</span></a></li>
+      <li><a href="#s03-debug"><span class="toc-num">30</span><span>Debug This</span></a></li>
+      <li><a href="#s03-practice-check"><span class="toc-num">31</span><span>Practice Checkpoints</span></a></li>
+      <li><a href="#s03-assignment"><span class="toc-num">32</span><span>Assignment: Rich Content Page</span></a></li>
+      <li><a href="#homework"><span class="toc-num">33</span><span>Homework</span></a></li>
+      <li><a href="#recap"><span class="toc-num">34</span><span>Recap &amp; Next Session</span></a></li>
+    </ol>
+    <p class="toc-empty" id="toc-empty" hidden>No slide matches that filter.</p>
+  </nav>
+  <main class="slides" id="main">
+    <section class="hero" id="deck-top">
+      <span class="hero-kicker">Session 3</span>
+      <h1>Session 3 — Working with Text and Images</h1>
+      <p class="hero-sub">Text and images are 90% of every web page.</p>
+      <div class="hero-meta">
+        <div><span class="k">Slides</span><span class="v">34</span></div>
+        <div><span class="k">Source</span><span class="v"><code>canvases/buoi-03.canvas.tsx</code></span></div>
+        <div><span class="k">Textbook chapter</span><span class="v"><code>ebook/03-working-with-text-and-images.md</code></span></div>
+        <div><span class="k">Marp slides</span><span class="v"><code>slides/03-working-with-text-and-images.md</code></span></div>
+        <div><span class="k">In-class exercise</span><span class="v"><code>exercises/session-03/exercise.md</code></span></div>
+        <div><span class="k">Homework</span><span class="v"><code>homework/session-03/</code></span></div>
+      </div>
+    </section>
+    <section class="slide" id="title" data-pattern="aurora" style="--slide-bg:var(--bg-elevated);--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent);--pattern-accent-2:color-mix(in srgb, var(--chart-goldenYellow) 22%, transparent)" aria-labelledby="h-title">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">1</span>
+        <h2 id="h-title">Session 3 — Working with Text and Images</h2>
+        <span class="visually-hidden">Slide 1 of 34</span>
+        <a class="slide-anchor" href="#title" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack is-center" style="gap:16px"><span class="c-tag is-info">INS2053 · Session 3 · 150 min</span><p class="c-h1">Working with Text &amp; Images</p><p class="c-text is-secondary">Headings, paragraphs, lists, bold/italic, images with alt text, and choosing the right image format.</p></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Students should have 5 pages with navigation from Session 2. Today we fill those pages with rich content.</div>
+      </details>
+    </section>
+    <section class="slide" id="objectives" aria-labelledby="h-objectives">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">2</span>
+        <h2 id="h-objectives">Learning Objectives</h2>
+        <span class="visually-hidden">Slide 2 of 34</span>
+        <a class="slide-anchor" href="#objectives" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">After this session you will be able to:</h3><div class="c-stack" style="gap:6px"><p class="c-text">1. Use headings (h1-h6) correctly in proper hierarchy</p><p class="c-text">2. Format text with p, strong, em, br, hr</p><p class="c-text">3. Create unordered and ordered lists, including nested lists</p><p class="c-text">4. Insert images with src, alt, width, and height attributes</p><p class="c-text">5. Choose JPG, PNG, GIF, or SVG based on image type</p><p class="c-text">6. Write meaningful alt text for accessibility</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Linked outcomes: CLO2 (create structured websites), CLO3 (apply formatting and media), CLO4</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="agenda" aria-labelledby="h-agenda">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">3</span>
+        <h2 id="h-agenda">Today&#39;s 150-Minute Plan</h2>
+        <span class="visually-hidden">Slide 3 of 34</span>
+        <a class="slide-anchor" href="#agenda" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Session timeline</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-tag is-info">0 – 10 min</span><p class="c-text">Welcome &amp; objectives</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">10 – 18 min</span><p class="c-text">Recap of Session 2</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-success">18 – 90 min</span><p class="c-text">New content + live demos</p></div></div><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-tag is-success">90 – 140 min</span><p class="c-text">In-class practice (Tasks 1–4)</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-warning">140 – 148 min</span><p class="c-text">Homework briefing</p></div><div class="c-row" style="gap:8px"><span class="c-tag is-info">148 – 150 min</span><p class="c-text">Recap &amp; next session</p></div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Theory ~60 min · Practice ~90 min. Have images ready in your images/ folder.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="recap-s2" aria-labelledby="h-recap-s2">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">4</span>
+        <h2 id="h-recap-s2">Recap: What Did We Learn Last Time?</h2>
+        <span class="visually-hidden">Slide 4 of 34</span>
+        <a class="slide-anchor" href="#recap-s2" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Quick review — Session 2</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>What is a relative path? (A path starting from the current file&#x27;s location.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>When do you need ../ ? (When linking FROM a subfolder to a file outside it.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>What naming rules must you follow? (Lowercase, hyphens, no spaces, no special chars.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Why must every page have the same nav menu? (So users never get lost.)</div></div></div></div><p class="c-text is-secondary">If you cannot answer these, review Session 2 before continuing.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="headings" data-pattern="grid" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-headings">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">5</span>
+        <h2 id="h-headings">Headings: Page Structure</h2>
+        <span class="visually-hidden">Slide 5 of 34</span>
+        <a class="slide-anchor" href="#headings" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:16px"><h3 class="c-h2">Headings create a page outline</h3><svg viewBox="0 0 560 236" width="100%" height="236" role="img" aria-label="A correct outline goes h1, h2, h3 with no gaps; skipping from h1 to h3 breaks the outline that screen readers use"><rect x="10" y="10" width="264" height="216" rx="10" fill="none" stroke="var(--chart-green)" stroke-width="1.5"></rect><circle cx="30" cy="30" r="10" fill="var(--chart-green)"></circle><text x="30" y="34.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0B1220">OK</text><text x="48" y="35" font-size="13" font-weight="700" fill="var(--chart-green)">No level is skipped</text><g><rect x="22" y="48" width="240" height="30" rx="5" fill="var(--chart-blue)" opacity="0.95"></rect><text x="32" y="68" font-size="15" font-weight="600" fill="#0B1220">h1  Student Club</text></g><g><rect x="38" y="84" width="224" height="26" rx="5" fill="var(--chart-blue)" opacity="0.7"></rect><text x="48" y="101.33333333333333" font-size="13" font-weight="600" fill="#0B1220">h2  About Us</text></g><g><rect x="54" y="116" width="208" height="22" rx="5" fill="var(--chart-blue)" opacity="0.45"></rect><text x="64" y="131" font-size="12" font-weight="600" fill="#0B1220">h3  Our Mission</text></g><g><rect x="54" y="144" width="208" height="22" rx="5" fill="var(--chart-blue)" opacity="0.45"></rect><text x="64" y="159" font-size="12" font-weight="600" fill="#0B1220">h3  Our History</text></g><g><rect x="38" y="172" width="224" height="26" rx="5" fill="var(--chart-blue)" opacity="0.7"></rect><text x="48" y="189.33333333333334" font-size="13" font-weight="600" fill="#0B1220">h2  Events</text></g><text x="22" y="216" font-size="11" fill="var(--text-tertiary)">Reads like a table of contents.</text><rect x="288" y="10" width="262" height="216" rx="10" fill="none" stroke="var(--chart-brightOrange)" stroke-width="1.5"></rect><circle cx="308" cy="30" r="10" fill="var(--chart-brightOrange)"></circle><text x="308" y="34.5" text-anchor="middle" font-size="13" font-weight="700" fill="#0B1220">X</text><text x="326" y="35" font-size="13" font-weight="700" fill="var(--chart-brightOrange)">h2 is missing</text><g><rect x="300" y="48" width="238" height="30" rx="5" fill="var(--chart-blue)" opacity="0.95"></rect><text x="310" y="68" font-size="15" font-weight="600" fill="#0B1220">h1  Student Club</text></g><rect x="316" y="84" width="222" height="26" rx="5" fill="none" stroke="var(--chart-brightOrange)" stroke-dasharray="4 4"></rect><text x="326" y="101" font-size="12" fill="var(--chart-brightOrange)">h2 — nothing here</text><g><rect x="332" y="116" width="206" height="22" rx="5" fill="var(--chart-blue)" opacity="0.45"></rect><text x="342" y="131" font-size="12" font-weight="600" fill="#0B1220">h3  About Us</text></g><g><rect x="348" y="144" width="190" height="22" rx="5" fill="var(--chart-blue)" opacity="0.3"></rect><text x="358" y="159" font-size="12" font-weight="600" fill="#0B1220">h5  Our Mission</text></g><text x="300" y="196" font-size="11" fill="var(--chart-brightOrange)">Screen reader says &quot;heading level 3&quot;</text><text x="300" y="212" font-size="11" fill="var(--chart-brightOrange)">after level 1 — outline is broken.</text></svg><p class="c-text is-secondary">h1 = the book title (one per page) · h2 = chapter titles · h3 = sections inside a chapter. Headings are structure, never a way to make text bigger — that is CSS.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="anatomy-real-page" data-pattern="grid" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-anatomy-real-page">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">6</span>
+        <h2 id="h-anatomy-real-page">Anatomy of a Real Web Page</h2>
+        <span class="visually-hidden">Slide 6 of 34</span>
+        <a class="slide-anchor" href="#anatomy-real-page" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Anatomy of a Real Web Page</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:8px"><img src="assets/s3-webpage.png" alt="The English Wikipedia home page open in a browser, showing headings, text, links and images" style="width:100%;border-radius:8px;border:1px solid var(--stroke-tertiary)"/><p class="c-text is-tertiary is-small">Screenshot: QuickQuokka — Public domain, Wikimedia Commons</p></div><div class="c-stack" style="gap:8px"><p class="c-text"><span class="c-text is-primary">Spot these on the page:</span></p><p class="c-text">The one big title at the top = <span class="c-text is-primary">&lt;h1&gt;</span></p><p class="c-text">Blocks of readable text = <span class="c-text is-primary">&lt;p&gt;</span> paragraphs</p><p class="c-text">Blue underlined clickable words = <span class="c-text is-primary">&lt;a&gt;</span> links</p><p class="c-text">Photos with captions below them = <span class="c-text is-primary">&lt;img&gt;</span> + alt text</p><p class="c-text">The menu on the left side = a list of links (<span class="c-text is-primary">&lt;ul&gt;</span>)</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Every single one of those is a tag you will learn today. Real websites are just many small tags put together.</div></div></div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Walk through each bullet and point at the matching area in the screenshot. Emphasize that every visible element on any web page is built from simple tags — the same ones we learn today. Students should open their own browser and compare.</div>
+      </details>
+    </section>
+    <section class="slide" id="heading-table" aria-labelledby="h-heading-table">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">7</span>
+        <h2 id="h-heading-table">Heading Tag Reference</h2>
+        <span class="visually-hidden">Slide 7 of 34</span>
+        <a class="slide-anchor" href="#heading-table" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Six heading levels at a glance</h3><div class="c-grid" style="grid-template-columns:repeat(3, minmax(0,1fr));gap:4px"><p class="c-text is-secondary"><span class="c-text is-primary">Tag</span></p><p class="c-text is-secondary"><span class="c-text is-primary">Default Size</span></p><p class="c-text is-secondary"><span class="c-text is-primary">Usage</span></p><p class="c-text">&lt;h1&gt;</p><p class="c-text">~32px, bold</p><p class="c-text">Main title — ONE per page</p><p class="c-text">&lt;h2&gt;</p><p class="c-text">~24px, bold</p><p class="c-text">Major sections</p><p class="c-text">&lt;h3&gt;</p><p class="c-text">~20px, bold</p><p class="c-text">Subsections under h2</p><p class="c-text">&lt;h4&gt;</p><p class="c-text">~18px, bold</p><p class="c-text">Sub-subsections</p><p class="c-text">&lt;h5&gt;</p><p class="c-text">~16px, bold</p><p class="c-text">Rarely needed</p><p class="c-text">&lt;h6&gt;</p><p class="c-text">~14px, bold</p><p class="c-text">Very rarely needed</p></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Do NOT use headings just to make text big. Use CSS font-size for visual sizing without structural meaning.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="text-formatting" aria-labelledby="h-text-formatting">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">8</span>
+        <h2 id="h-text-formatting">Text Formatting</h2>
+        <span class="visually-hidden">Slide 8 of 34</span>
+        <a class="slide-anchor" href="#text-formatting" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Paragraphs, bold, italic, breaks</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>A paragraph of text.<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;strong</span><span class="tok-punct">&gt;</span>Important<span class="tok-tag">&lt;/strong</span><span class="tok-punct">&gt;</span> <span class="tok-op">=</span> bold + semantic</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src"><span class="tok-tag">&lt;em</span><span class="tok-punct">&gt;</span>Emphasis<span class="tok-tag">&lt;/em</span><span class="tok-punct">&gt;</span> <span class="tok-op">=</span> italic + semantic</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span>   <span class="tok-op">=</span> line break (addresses, poetry)</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-tag">&lt;hr</span><span class="tok-punct">&gt;</span>   <span class="tok-op">=</span> horizontal rule (section divider)</span></span></code></pre></div></div><div class="c-stack" style="gap:6px"><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Use strong/em instead of b/i for meaningful emphasis.</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Do NOT use br for spacing — use CSS margin/padding instead.</div></div></div><p class="c-text is-secondary">HTML ignores extra whitespace. Pressing Enter in code does NOT create a new line in the browser.</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="strong-vs-b" aria-labelledby="h-strong-vs-b">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">9</span>
+        <h2 id="h-strong-vs-b">strong/em vs b/i</h2>
+        <span class="visually-hidden">Slide 9 of 34</span>
+        <a class="slide-anchor" href="#strong-vs-b" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Same look, different meaning</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><span class="c-tag is-success">Semantic (preferred)</span><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;strong</span><span class="tok-punct">&gt;</span>deadline<span class="tok-tag">&lt;/strong</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;em</span><span class="tok-punct">&gt;</span>strictly<span class="tok-tag">&lt;/em</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text is-secondary">Bold/italic + meaning. Screen readers announce emphasis.</p></div><div class="c-stack" style="gap:6px"><span class="c-tag is-info">Visual only</span><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;b</span><span class="tok-punct">&gt;</span>product name<span class="tok-tag">&lt;/b</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;i</span><span class="tok-punct">&gt;</span>foreign word<span class="tok-tag">&lt;/i</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text is-secondary">Bold/italic with NO meaning. Purely visual styling.</p></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>For beginners: always use &lt;strong&gt; for bold and &lt;em&gt; for italic. These are semantically correct in most situations.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="br-hr-usage" aria-labelledby="h-br-hr-usage">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">10</span>
+        <h2 id="h-br-hr-usage">Using br and hr Correctly</h2>
+        <span class="visually-hidden">Slide 10 of 34</span>
+        <a class="slide-anchor" href="#br-hr-usage" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">When to use br and hr</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><span class="c-tag is-success">Correct uses</span><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-comment">&lt;!-- br: addresses, poetry --&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>Room 101<span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">Building A<span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">University Campus<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-comment">&lt;!-- hr: thematic section break --&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"><span class="tok-tag">&lt;hr</span><span class="tok-punct">&gt;</span></span></span></code></pre></div></div><div class="c-stack" style="gap:6px"><span class="c-tag is-danger">Wrong uses</span><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-comment">&lt;!-- WRONG: spacing between sections --&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>Section 1<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span><span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span><span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src"><span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>Section 2<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src"><span class="tok-comment">&lt;!-- Use CSS margin instead! --&gt;</span></span></span></code></pre></div></div></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>br = line break within content (addresses, poems). hr = thematic divider between sections. Neither is for layout spacing.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="text-elements-ref" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent)" aria-labelledby="h-text-elements-ref">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">11</span>
+        <h2 id="h-text-elements-ref">Text Elements Reference</h2>
+        <span class="visually-hidden">Slide 11 of 34</span>
+        <a class="slide-anchor" href="#text-elements-ref" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">All Text Tags at a Glance</h3><div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Element</th><th scope="col">What it renders</th><th scope="col">When to use it</th></tr></thead><tbody><tr><td>h1 – h6</td><td>Headings, largest to smallest</td><td>Page outline — one h1 per page, never skip levels</td></tr><tr><td>p</td><td>A paragraph block with spacing</td><td>Any block of running text</td></tr><tr><td>strong</td><td>Bold text with importance</td><td>Key terms, warnings, deadlines</td></tr><tr><td>em</td><td>Italic text with emphasis</td><td>Words you would stress when speaking</td></tr><tr><td>ul + li</td><td>Bulleted list items</td><td>Items where order does not matter</td></tr><tr><td>ol + li</td><td>Numbered list items</td><td>Steps, rankings, anything sequential</td></tr><tr><td>blockquote</td><td>Indented quotation block</td><td>Quoting someone — club motto, testimonial</td></tr><tr><td>br</td><td>Line break (self-closing)</td><td>Addresses, poetry — never for spacing</td></tr><tr><td>hr</td><td>Horizontal rule (self-closing)</td><td>Thematic divider between sections</td></tr></tbody></table></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>br and hr are self-closing — they have no closing tag. Every other tag above needs an opening AND closing tag.</div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">This is your cheat sheet for every text tag in Session 3. Bookmark or screenshot this slide. When you are coding, come back here if you forget which tag to use.</div>
+      </details>
+    </section>
+    <section class="slide" id="lists" aria-labelledby="h-lists">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">12</span>
+        <h2 id="h-lists">Lists: ul, ol, Nested</h2>
+        <span class="visually-hidden">Slide 12 of 34</span>
+        <a class="slide-anchor" href="#lists" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Unordered, ordered, and nested lists</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:16px"><div class="c-stack" style="gap:6px"><h4 class="c-h3">Unordered (bullets)</h4><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Web Workshop<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Photo Contest<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Music Night<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"><span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text is-secondary">Order does NOT matter</p></div><div class="c-stack" style="gap:6px"><h4 class="c-h3">Ordered (numbers)</h4><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;ol</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Fill out form<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Attend orientation<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Pay membership fee<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"><span class="tok-tag">&lt;/ol</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><p class="c-text is-secondary">Order IS critical</p></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Nested lists go INSIDE the li element. You can mix ul inside ol and vice versa.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="nested-lists" aria-labelledby="h-nested-lists">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">13</span>
+        <h2 id="h-nested-lists">Nested Lists Explained</h2>
+        <span class="visually-hidden">Slide 13 of 34</span>
+        <a class="slide-anchor" href="#nested-lists" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">A list inside a list</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Frontend Skills</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">    <span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">      <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>HTML<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">      <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>CSS<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">      <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>JavaScript<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src">    <span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">  <span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">  <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Backend Skills</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">    <span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">      <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>PHP<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src">      <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>MySQL<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src">    <span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">14</span><span class="c-code-src">  <span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">15</span><span class="c-code-src"><span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary"><span class="c-text is-primary">The inner &lt;ul&gt;</span> is placed INSIDE the &lt;li&gt;, after the text and before &lt;/li&gt;.</p><p class="c-text is-secondary"><span class="c-text is-primary">Indentation</span> shows nesting visually but does not affect rendering.</p><p class="c-text is-secondary"><span class="c-text is-primary">You can nest deeper</span> but avoid going beyond 3 levels — it becomes hard to read.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In the browser: indented bullet points under each parent item.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="quick-check" aria-labelledby="h-quick-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">14</span>
+        <h2 id="h-quick-check">Quick Check: Text Tags</h2>
+        <span class="visually-hidden">Slide 14 of 34</span>
+        <a class="slide-anchor" href="#quick-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Test yourself</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>How many h1 tags should a page have? (Answer: Exactly one.)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Which tag makes text bold AND tells screen readers it is important? (Answer: &lt;strong&gt;)</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Can you put a &lt;ul&gt; inside an &lt;ol&gt;? (Answer: Yes — nested lists can mix types.)</div></div></div></div><p class="c-text is-secondary">Discuss with your neighbor for 30 seconds.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="s03-try-images" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent)" aria-labelledby="h-s03-try-images">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">15</span>
+        <h2 id="h-s03-try-images">Try It Now: Add an Image</h2>
+        <span class="visually-hidden">Slide 15 of 34</span>
+        <a class="slide-anchor" href="#s03-try-images" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Three minutes — add an image to your page</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Step 1: Save an image</p><p class="c-text">Download any image and save it as images/club-photo.jpg in your project folder.</p><p class="c-text" style="font-weight:700">Step 2: Add the tag</p><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;img</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-attr">src</span><span class="tok-op">=</span><span class="tok-string">&quot;images/club-photo.jpg&quot;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-attr">alt</span><span class="tok-op">=</span><span class="tok-string">&quot;Club members at the annual event&quot;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-attr">width</span><span class="tok-op">=</span><span class="tok-string">&quot;400&quot;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"><span class="tok-punct">&gt;</span></span></span></code></pre></div></div><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">What to check</p><p class="c-text">1. The image appears in the browser — no broken icon.</p><p class="c-text">2. If you see a broken icon, right-click → Inspect → check the src path in the Elements panel.</p><p class="c-text">3. The alt text is descriptive — it says what is IN the image, not just &quot;image&quot; or &quot;photo.&quot;</p><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>The most common error: saving the image in the wrong folder. The src path must match where the file actually is.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="images" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-goldenYellow) 26%, transparent)" aria-labelledby="h-images">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">16</span>
+        <h2 id="h-images">The img Tag</h2>
+        <span class="visually-hidden">Slide 16 of 34</span>
+        <a class="slide-anchor" href="#images" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Every attribute of &lt;img&gt; does one job</h3><svg viewBox="0 0 560 272" width="100%" height="272" role="img" aria-label="src points at the file on disk, alt is the sentence a screen reader speaks, width and height reserve the space on the page"><defs><marker id="s3a" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 z" fill="var(--stroke-secondary)"></path></marker><pattern id="s3ph" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="var(--chart-blue)" opacity="0.25"></rect><path d="M0,10 L10,0" stroke="var(--chart-blue)" stroke-width="1" opacity="0.4"></path></pattern></defs><rect x="14" y="12" width="532" height="60" rx="8" fill="var(--fill-tertiary)" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect><text x="26" y="34" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">&lt;img</text><rect x="70" y="20" width="176" height="20" rx="4" fill="var(--chart-blue)" opacity="0.9"></rect><text x="76" y="34" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">src=&quot;images/team.jpg&quot;</text><rect x="254" y="20" width="132" height="20" rx="4" fill="var(--chart-goldenYellow)" opacity="0.9"></rect><text x="260" y="34" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">alt=&quot;Five leaders…&quot;</text><rect x="70" y="44" width="164" height="20" rx="4" fill="var(--chart-green)" opacity="0.9"></rect><text x="76" y="58" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">width=&quot;400&quot; height=&quot;300&quot;</text><text x="242" y="58" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">&gt;</text><text x="404" y="34" font-size="11" fill="var(--text-tertiary)">no closing tag —</text><text x="404" y="48" font-size="11" fill="var(--text-tertiary)">&lt;img&gt; stands alone</text><line x1="158" y1="76" x2="158" y2="98" stroke="var(--stroke-secondary)" stroke-width="1.5" marker-end="url(#s3a)"></line><rect x="14" y="104" width="164" height="118" rx="10" fill="var(--bg-elevated)" stroke="var(--chart-blue)" stroke-width="1.5"></rect><text x="26" y="124" font-size="13" font-weight="700" fill="var(--chart-blue)">src = the file</text><rect x="26" y="132" width="140" height="18" rx="4" fill="var(--fill-tertiary)"></rect><text x="32" y="145" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-secondary)">images/</text><rect x="38" y="154" width="128" height="18" rx="4" fill="var(--chart-blue)" opacity="0.85"></rect><text x="44" y="167" font-size="11" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#0B1220">team.jpg</text><text x="26" y="192" font-size="11" fill="var(--text-tertiary)">Wrong path = broken</text><text x="26" y="206" font-size="11" fill="var(--text-tertiary)">image icon, every time.</text><line x1="320" y1="76" x2="320" y2="98" stroke="var(--stroke-secondary)" stroke-width="1.5" marker-end="url(#s3a)"></line><rect x="192" y="104" width="180" height="118" rx="10" fill="var(--bg-elevated)" stroke="var(--chart-goldenYellow)" stroke-width="1.5"></rect><text x="204" y="124" font-size="13" font-weight="700" fill="var(--chart-goldenYellow)">alt = the sentence</text><path d="M204,134 h156 a6,6 0 0 1 6,6 v40 a6,6 0 0 1 -6,6 h-134 l-10,12 v-12 h-12 a6,6 0 0 1 -6,-6 v-40 a6,6 0 0 1 6,-6 z" fill="var(--chart-goldenYellow)" opacity="0.9"></path><text x="212" y="152" font-size="11" fill="#0B1220">&quot;Five club leaders in</text><text x="212" y="166" font-size="11" fill="#0B1220">front of the IT building&quot;</text><text x="204" y="200" font-size="11" fill="var(--text-tertiary)">Spoken aloud to blind users.</text><text x="204" y="214" font-size="11" fill="var(--text-tertiary)">Also what Google reads.</text><line x1="470" y1="76" x2="470" y2="98" stroke="var(--stroke-secondary)" stroke-width="1.5" marker-end="url(#s3a)"></line><rect x="386" y="104" width="160" height="118" rx="10" fill="var(--bg-elevated)" stroke="var(--chart-green)" stroke-width="1.5"></rect><text x="398" y="124" font-size="13" font-weight="700" fill="var(--chart-green)">width/height = space</text><rect x="416" y="134" width="100" height="60" fill="url(#s3ph)" stroke="var(--chart-green)" stroke-width="1.5"></rect><text x="466" y="206" text-anchor="middle" font-size="11" fill="var(--chart-green)">400 x 300</text><line x1="416" y1="128" x2="516" y2="128" stroke="var(--chart-green)" stroke-width="1"></line><line x1="404" y1="134" x2="404" y2="194" stroke="var(--chart-green)" stroke-width="1"></line><text x="14" y="246" font-size="13" fill="var(--text-secondary)">Set both numbers so the browser reserves space —</text><text x="14" y="262" font-size="13" fill="var(--text-secondary)">text below stops jumping as images load.</text></svg></div>
+      </div>
+    </section>
+    <section class="slide" id="img-attributes" aria-labelledby="h-img-attributes">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">17</span>
+        <h2 id="h-img-attributes">Image Attributes Reference</h2>
+        <span class="visually-hidden">Slide 17 of 34</span>
+        <a class="slide-anchor" href="#img-attributes" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Four attributes you need</h3><div class="c-grid" style="grid-template-columns:repeat(3, minmax(0,1fr));gap:4px"><p class="c-text is-secondary"><span class="c-text is-primary">Attribute</span></p><p class="c-text is-secondary"><span class="c-text is-primary">Purpose</span></p><p class="c-text is-secondary"><span class="c-text is-primary">Example</span></p><p class="c-text">src</p><p class="c-text">Path to the image file</p><p class="c-text">images/photo.jpg</p><p class="c-text">alt</p><p class="c-text">Description for screen readers</p><p class="c-text">Club members at workshop</p><p class="c-text">width</p><p class="c-text">Width in pixels</p><p class="c-text">400</p><p class="c-text">height</p><p class="c-text">Height in pixels</p><p class="c-text">300</p></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>&lt;img&gt; is self-closing — no &lt;/img&gt; tag. Set width and height to prevent layout jump while loading.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="alt-text" aria-labelledby="h-alt-text">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">18</span>
+        <h2 id="h-alt-text">Alt Text &amp; Accessibility</h2>
+        <span class="visually-hidden">Slide 18 of 34</span>
+        <a class="slide-anchor" href="#alt-text" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Writing good alt text</h3><p class="c-text">The alt attribute is NOT optional. Screen readers read it aloud. Search engines rely on it.</p><svg viewBox="0 0 560 200" width="100%" height="200" role="img" aria-label="Compare what a screen reader says for a useless alt value, an empty alt on a decorative image, and a descriptive alt"><text x="24" y="16" font-size="11" font-weight="700" fill="var(--text-tertiary)">YOU WRITE</text><text x="238" y="16" font-size="11" font-weight="700" fill="var(--text-tertiary)">THE SCREEN READER SAYS</text><text x="470" y="16" font-size="11" font-weight="700" fill="var(--text-tertiary)">VERDICT</text><g><rect x="12" y="24" width="536" height="42" rx="8" fill="var(--bg-elevated)" stroke="var(--chart-brightOrange)" stroke-width="1.5"></rect><text x="24" y="50" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-primary)">alt=&quot;image&quot;</text><text x="238" y="50" font-size="12" fill="var(--text-secondary)">&quot;image&quot; — and nothing else</text><text x="470" y="50" font-size="12" font-weight="700" fill="var(--chart-brightOrange)">useless</text></g><g><rect x="12" y="74" width="536" height="42" rx="8" fill="var(--bg-elevated)" stroke="var(--chart-brightOrange)" stroke-width="1.5"></rect><text x="24" y="100" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-primary)">alt=&quot;IMG_2341.jpg&quot;</text><text x="238" y="100" font-size="12" fill="var(--text-secondary)">&quot;I M G underscore 2 3 4 1&quot;</text><text x="470" y="100" font-size="12" font-weight="700" fill="var(--chart-brightOrange)">worse</text></g><g><rect x="12" y="124" width="536" height="42" rx="8" fill="var(--bg-elevated)" stroke="var(--chart-green)" stroke-width="1.5"></rect><text x="24" y="150" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="var(--text-primary)">alt=&quot;Five club leaders…&quot;</text><text x="238" y="150" font-size="12" fill="var(--text-secondary)">&quot;Five club leaders in front of…&quot;</text><text x="470" y="150" font-size="12" font-weight="700" fill="var(--chart-green)">correct</text></g><text x="12" y="186" font-size="12" fill="var(--text-tertiary)">Decorative image? Use alt=&quot;&quot; so the reader skips it.</text></svg><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Describe WHAT THE IMAGE SHOWS. Keep under 125 characters. Never start with &quot;Image of&quot;.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="image-formats" aria-labelledby="h-image-formats">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">19</span>
+        <h2 id="h-image-formats">Choosing Image Formats</h2>
+        <span class="visually-hidden">Slide 19 of 34</span>
+        <a class="slide-anchor" href="#image-formats" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">JPG vs PNG vs GIF vs SVG</h3><svg viewBox="0 0 560 264" width="100%" height="264" role="img" aria-label="Choose JPG for photographs, PNG for transparency, SVG for logos that must stay sharp, GIF only for short animations"><defs><linearGradient id="s3jpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--chart-blue)"></stop><stop offset="55%" stop-color="var(--chart-green)"></stop><stop offset="100%" stop-color="var(--chart-goldenYellow)"></stop></linearGradient><pattern id="s3trans" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="var(--bg-elevated)"></rect><rect width="6" height="6" fill="var(--fill-tertiary)"></rect><rect x="6" y="6" width="6" height="6" fill="var(--fill-tertiary)"></rect></pattern></defs><rect x="10" y="12" width="130" height="188" rx="10" fill="var(--bg-elevated)" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect><rect x="24" y="26" width="102" height="66" rx="4" fill="url(#s3jpg)"></rect><text x="75" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="var(--text-primary)">JPG</text><text x="75" y="132" text-anchor="middle" font-size="12" fill="var(--text-secondary)">photographs</text><text x="24" y="154" font-size="11" fill="var(--text-tertiary)">millions of colours</text><text x="24" y="170" font-size="11" fill="var(--chart-brightOrange)">no transparency</text><text x="24" y="190" font-size="11" fill="var(--text-tertiary)">team photo, banner</text><rect x="150" y="12" width="130" height="188" rx="10" fill="var(--bg-elevated)" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect><rect x="164" y="26" width="102" height="66" rx="4" fill="url(#s3trans)" stroke="var(--stroke-tertiary)"></rect><circle cx="215" cy="59" r="22" fill="var(--chart-blue)" opacity="0.9"></circle><text x="215" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="var(--text-primary)">PNG</text><text x="215" y="132" text-anchor="middle" font-size="12" fill="var(--text-secondary)">transparency</text><text x="164" y="154" font-size="11" fill="var(--chart-green)">see-through corners</text><text x="164" y="170" font-size="11" fill="var(--text-tertiary)">bigger than JPG</text><text x="164" y="190" font-size="11" fill="var(--text-tertiary)">logo, screenshot</text><rect x="290" y="12" width="130" height="188" rx="10" fill="var(--bg-elevated)" stroke="var(--chart-green)" stroke-width="1.5"></rect><rect x="304" y="26" width="102" height="66" rx="4" fill="var(--fill-tertiary)"></rect><path d="M330,78 L355,38 L380,78 z" fill="var(--chart-green)" opacity="0.9"></path><text x="355" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="var(--text-primary)">SVG</text><text x="355" y="132" text-anchor="middle" font-size="12" fill="var(--text-secondary)">stays sharp</text><text x="304" y="154" font-size="11" fill="var(--chart-green)">same file at any size</text><text x="304" y="170" font-size="11" fill="var(--text-tertiary)">tiny, editable text</text><text x="304" y="190" font-size="11" fill="var(--text-tertiary)">icons, logo, diagrams</text><rect x="430" y="12" width="120" height="188" rx="10" fill="var(--bg-elevated)" stroke="var(--stroke-secondary)" stroke-width="1.5"></rect><rect x="442" y="26" width="30" height="66" rx="3" fill="var(--chart-goldenYellow)" opacity="0.4"></rect><rect x="476" y="26" width="30" height="66" rx="3" fill="var(--chart-goldenYellow)" opacity="0.7"></rect><rect x="510" y="26" width="30" height="66" rx="3" fill="var(--chart-goldenYellow)" opacity="1"></rect><text x="490" y="112" text-anchor="middle" font-size="16" font-weight="700" fill="var(--text-primary)">GIF</text><text x="490" y="132" text-anchor="middle" font-size="12" fill="var(--text-secondary)">short animation</text><text x="442" y="154" font-size="11" fill="var(--chart-brightOrange)">only 256 colours</text><text x="442" y="170" font-size="11" fill="var(--chart-brightOrange)">heavy files</text><text x="442" y="190" font-size="11" fill="var(--text-tertiary)">use video instead</text><text x="10" y="222" font-size="13" fill="var(--text-secondary)">Photo = JPG. Drawing that must scale = SVG.</text><text x="10" y="238" font-size="13" fill="var(--text-secondary)">Needs a see-through background and is not a drawing? PNG.</text><text x="10" y="254" font-size="13" font-weight="700" fill="var(--chart-goldenYellow)">Always resize before you upload: keep a content photo under 200 KB.</text></svg></div>
+      </div>
+    </section>
+    <section class="slide" id="format-table" aria-labelledby="h-format-table">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">20</span>
+        <h2 id="h-format-table">Which Format Do I Pick?</h2>
+        <span class="visually-hidden">Slide 20 of 34</span>
+        <a class="slide-anchor" href="#format-table" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Quick decision guide</h3><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text is-primary">Photograph?</span> → JPG (millions of colors, small file size)</p><p class="c-text"><span class="c-text is-primary">Logo or icon that must stay sharp?</span> → SVG (scales to any size)</p><p class="c-text"><span class="c-text is-primary">Need transparent background?</span> → PNG (supports alpha channel)</p><p class="c-text"><span class="c-text is-primary">Short animation?</span> → GIF (but consider video instead)</p><p class="c-text"><span class="c-text is-primary">Screenshot?</span> → PNG (preserves text clarity)</p></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Always resize images BEFORE uploading. A 5 MB camera photo kills page load speed. Keep content photos under 200 KB.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="image-format-table" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-goldenYellow) 26%, transparent)" aria-labelledby="h-image-format-table">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">21</span>
+        <h2 id="h-image-format-table">Choosing an Image Format</h2>
+        <span class="visually-hidden">Slide 21 of 34</span>
+        <a class="slide-anchor" href="#image-format-table" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Format Quick Reference</h3><div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Format</th><th scope="col">Best for</th><th scope="col">Avoid when</th></tr></thead><tbody><tr><td>JPG</td><td>Photos, banners, images with many colors</td><td>You need transparency or sharp edges</td></tr><tr><td>PNG</td><td>Logos, screenshots, transparency, sharp edges</td><td>The file is a photograph (use JPG instead)</td></tr><tr><td>GIF</td><td>Tiny animations, very few colors</td><td>The image has more than 256 colors</td></tr><tr><td>SVG</td><td>Icons, logos that must stay sharp at any size</td><td>The image is a photograph</td></tr></tbody></table></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Size rules: keep each image under ~200 KB. Resize the file BEFORE inserting — do not just set width/height on a 5 MB photo. Always write alt text.</div></div></div></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Use this table when you are about to insert an image and are not sure which format to save it in. Remember: resize the actual file BEFORE inserting — do not rely on width and height attributes alone to shrink a huge photo.</div>
+      </details>
+    </section>
+    <section class="slide" id="worked-example-1" aria-labelledby="h-worked-example-1">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">22</span>
+        <h2 id="h-worked-example-1">Worked Example 1: Basic Text Page</h2>
+        <span class="visually-hidden">Slide 22 of 34</span>
+        <a class="slide-anchor" href="#worked-example-1" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Simple page with headings and lists</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;body</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-tag">&lt;h1</span><span class="tok-punct">&gt;</span>Student Club<span class="tok-tag">&lt;/h1</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-tag">&lt;h2</span><span class="tok-punct">&gt;</span>About Us<span class="tok-tag">&lt;/h2</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">  <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>We are a community of</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src">     <span class="tok-tag">&lt;em</span><span class="tok-punct">&gt;</span>creators<span class="tok-tag">&lt;/em</span><span class="tok-punct">&gt;</span> and</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">     <span class="tok-tag">&lt;strong</span><span class="tok-punct">&gt;</span>innovators<span class="tok-tag">&lt;/strong</span><span class="tok-punct">&gt;</span>.<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">  <span class="tok-tag">&lt;h3</span><span class="tok-punct">&gt;</span>Activities<span class="tok-tag">&lt;/h3</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">  <span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Weekly workshops<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Design contests<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Social events<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src">  <span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">14</span><span class="c-code-src"><span class="tok-tag">&lt;/body</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary"><span class="c-text is-primary">h1 → h2 → h3</span> — proper hierarchy, no levels skipped.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;em&gt;</span> adds italic emphasis. <span class="c-text is-primary">&lt;strong&gt;</span> adds bold importance.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;ul&gt;</span> for items where order does not matter.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In the browser: a large title, section heading, paragraph with styled words, and a bulleted list.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="worked-example" aria-labelledby="h-worked-example">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">23</span>
+        <h2 id="h-worked-example">Worked Example 2: Rich About Page</h2>
+        <span class="visually-hidden">Slide 23 of 34</span>
+        <a class="slide-anchor" href="#worked-example" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">About page with text, lists &amp; images</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;main</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src">  <span class="tok-tag">&lt;h2</span><span class="tok-punct">&gt;</span>About Our Club<span class="tok-tag">&lt;/h2</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src">  <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>The <span class="tok-tag">&lt;strong</span><span class="tok-punct">&gt;</span>Student Club<span class="tok-tag">&lt;/strong</span><span class="tok-punct">&gt;</span> is a</span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src">     community of <span class="tok-tag">&lt;em</span><span class="tok-punct">&gt;</span>creators<span class="tok-tag">&lt;/em</span><span class="tok-punct">&gt;</span>.<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">  <span class="tok-tag">&lt;h3</span><span class="tok-punct">&gt;</span>What We Do<span class="tok-tag">&lt;/h3</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src">  <span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span><span class="tok-tag">&lt;strong</span><span class="tok-punct">&gt;</span>Workshops:<span class="tok-tag">&lt;/strong</span><span class="tok-punct">&gt;</span> web design<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">9</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span><span class="tok-tag">&lt;strong</span><span class="tok-punct">&gt;</span>Contests:<span class="tok-tag">&lt;/strong</span><span class="tok-punct">&gt;</span> photography<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">10</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span><span class="tok-tag">&lt;strong</span><span class="tok-punct">&gt;</span>Social:<span class="tok-tag">&lt;/strong</span><span class="tok-punct">&gt;</span> movie nights<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">11</span><span class="c-code-src">  <span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">12</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">13</span><span class="c-code-src">  <span class="tok-tag">&lt;h3</span><span class="tok-punct">&gt;</span>How to Join<span class="tok-tag">&lt;/h3</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">14</span><span class="c-code-src">  <span class="tok-tag">&lt;ol</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">15</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Fill out the membership form<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">16</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Attend orientation<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">17</span><span class="c-code-src">    <span class="tok-tag">&lt;li</span><span class="tok-punct">&gt;</span>Pay the annual fee<span class="tok-tag">&lt;/li</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">18</span><span class="c-code-src">  <span class="tok-tag">&lt;/ol</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">19</span><span class="c-code-src"></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">20</span><span class="c-code-src">  <span class="tok-tag">&lt;img</span> <span class="tok-attr">src</span><span class="tok-op">=</span><span class="tok-string">&quot;images/team-photo.jpg&quot;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">21</span><span class="c-code-src">       <span class="tok-attr">alt</span><span class="tok-op">=</span><span class="tok-string">&quot;Five leaders at IT building&quot;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">22</span><span class="c-code-src">       <span class="tok-attr">width</span><span class="tok-op">=</span><span class="tok-string">&quot;400&quot;</span> <span class="tok-attr">height</span><span class="tok-op">=</span><span class="tok-string">&quot;300&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">23</span><span class="c-code-src"><span class="tok-tag">&lt;/main</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><div class="c-stack" style="gap:6px"><p class="c-text is-secondary"><span class="c-text is-primary">&lt;h2&gt; then &lt;h3&gt;</span> — proper heading hierarchy. Never skip levels.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;strong&gt;</span> = bold + semantic importance. <span class="c-text is-primary">&lt;em&gt;</span> = italic + emphasis.</p><p class="c-text is-secondary"><span class="c-text is-primary">&lt;ul&gt;</span> for unordered items (activities). <span class="c-text is-primary">&lt;ol&gt;</span> when order matters (steps).</p><p class="c-text is-secondary"><span class="c-text is-primary">alt text</span> describes what the photo shows — not &quot;image&quot; or the filename.</p><p class="c-text is-secondary"><span class="c-text is-primary">width/height</span> prevent layout jump while loading.</p><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>In the browser: section headings, a bulleted activity list, numbered joining steps, and a team photo. Screen readers announce every element correctly.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="discussion" aria-labelledby="h-discussion">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">24</span>
+        <h2 id="h-discussion">Discussion: Why Does Alt Text Matter?</h2>
+        <span class="visually-hidden">Slide 24 of 34</span>
+        <a class="slide-anchor" href="#discussion" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Think about accessibility</h3><div class="c-stack" style="gap:8px"><p class="c-text">A blind person uses a screen reader to browse the web.</p><p class="c-text">Without alt text, they hear &quot;image&quot; or the filename — completely useless.</p><p class="c-text">With good alt text, they hear a description and understand the content.</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Accessibility is not optional. It is a core part of professional web development.</div></div></div><p class="c-text is-secondary">Google also reads alt text for image search rankings.</p></div>
+      </div>
+    </section>
+    <section class="slide" id="common-mistakes" aria-labelledby="h-common-mistakes">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">25</span>
+        <h2 id="h-common-mistakes">Common Mistakes</h2>
+        <span class="visually-hidden">Slide 25 of 34</span>
+        <a class="slide-anchor" href="#common-mistakes" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Watch out for these mistakes</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Skipping heading levels (h1 → h3) — breaks document outline for screen readers</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Missing or useless alt text (&quot;image&quot;, &quot;photo&quot;) — defeats accessibility purpose</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Using huge unoptimized images (5 MB straight from camera) — kills page load speed</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Using br for layout spacing — use CSS margin/padding instead</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Content outside li in lists — everything must be wrapped in li tags</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Multiple h1 tags per page — only ONE h1 allowed per page</div></div></div><div class="c-callout is-danger" role="note"><span class="c-callout-icon" aria-hidden="true">×</span><div class="c-callout-body"><div>Wrong image format — using GIF for photos or JPG for logos with transparency</div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="self-study-check" data-pattern="grid" style="--pattern-accent:color-mix(in srgb, var(--chart-blue) 26%, transparent)" aria-labelledby="h-self-study-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">26</span>
+        <h2 id="h-self-study-check">Self-Study Check</h2>
+        <span class="visually-hidden">Slide 26 of 34</span>
+        <a class="slide-anchor" href="#self-study-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Can You Answer These?</h3><div class="c-stack" style="gap:8px"><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>1. Which heading tag is the biggest?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>2. What does alt do when the image fails to load?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>3. Which format for a club logo with a transparent background?</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>4. True or false: &lt;br&gt; needs a closing tag.</div></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>5. Why is one h1 per page a good habit?</div></div></div></div><p class="c-text is-secondary">Check your answers in the speaker notes. If you missed two or more, re-read the relevant slides before starting practice.</p></div>
+      </div>
+      <details class="slide-notes">
+        <summary>Speaker notes</summary>
+        <div class="slide-notes-body">Answer key: 1) h1 is the biggest heading tag. 2) alt shows replacement text when the image fails to load AND is read aloud by screen readers. 3) PNG — it supports transparent backgrounds. 4) False — br is self-closing and does NOT need a closing tag. 5) One h1 per page gives the page a single clear topic, which helps screen readers and search engines understand what the page is about.</div>
+      </details>
+    </section>
+    <section class="slide" id="practice" data-pattern="dots" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent)" aria-labelledby="h-practice">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">27</span>
+        <h2 id="h-practice">In-Class Practice</h2>
+        <span class="visually-hidden">Slide 27 of 34</span>
+        <a class="slide-anchor" href="#practice" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">In-class practice (exercises/session-03/)</h3><div class="c-stack" style="gap:8px"><h4 class="c-h3">Task 1: Practice Headings (h1 through h6)</h4><p class="c-text">Create text-practice.html with all six heading levels. One h1 per page.</p><h4 class="c-h3">Task 2: Paragraphs and Text Formatting</h4><p class="c-text">Add paragraphs using p, strong, em, br, and hr tags for text formatting.</p><h4 class="c-h3">Task 3: Lists (Unordered and Ordered)</h4><p class="c-text">Create ul and ol lists plus a nested list mixing both types.</p><h4 class="c-h3">Task 4: Adding Images</h4><p class="c-text">Insert images using img with src, alt, width, and title attributes via relative paths.</p></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Estimated time: 50 minutes.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="practice-tips" aria-labelledby="h-practice-tips">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">28</span>
+        <h2 id="h-practice-tips">Practice Tips</h2>
+        <span class="visually-hidden">Slide 28 of 34</span>
+        <a class="slide-anchor" href="#practice-tips" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Tips for the in-class tasks</h3><div class="c-stack" style="gap:6px"><p class="c-text"><span class="c-text is-primary">Copy an image</span> into your images/ folder BEFORE writing the &lt;img&gt; tag.</p><p class="c-text"><span class="c-text is-primary">Check the path carefully</span> — if the image is broken, the path is wrong.</p><p class="c-text"><span class="c-text is-primary">Write real alt text</span> — describe what you actually see in the photo.</p><p class="c-text"><span class="c-text is-primary">Preview after every save</span> to verify headings render at different sizes.</p></div><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Stuck? Compare your code against the worked examples on previous slides.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s03-do-dont" aria-labelledby="h-s03-do-dont">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">29</span>
+        <h2 id="h-s03-do-dont">Text &amp; Images: Do vs Don&#39;t</h2>
+        <span class="visually-hidden">Slide 29 of 34</span>
+        <a class="slide-anchor" href="#s03-do-dont" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Do vs Don&#x27;t</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:14px"><div class="c-stack" style="gap:6px"><h4 class="c-h3 is-success">Do</h4><p class="c-text">Use exactly one &lt;h1&gt; per page, then h2, h3 in order</p><p class="c-text">Write alt text that describes the image content</p><p class="c-text">Use &lt;strong&gt; and &lt;em&gt; for meaning</p><p class="c-text">Resize images to their display size before uploading</p><p class="c-text">Use &lt;ul&gt; for unordered and &lt;ol&gt; for ranked lists</p></div><div class="c-stack" style="gap:6px"><h4 class="c-h3 is-danger">Don&#x27;t</h4><p class="c-text">Pick a heading level because you like its font size</p><p class="c-text">Write alt=&quot;image&quot; or alt=&quot;photo.jpg&quot;</p><p class="c-text">Use &lt;br&gt;&lt;br&gt; to fake paragraph spacing — that is CSS margin</p><p class="c-text">Serve a 4000px photo scaled down in the browser</p><p class="c-text">Fake a list with hyphens and &lt;br&gt; tags</p></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s03-debug" data-pattern="spotlight" style="--pattern-accent:color-mix(in srgb, var(--chart-brightOrange) 26%, transparent)" aria-labelledby="h-s03-debug">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">30</span>
+        <h2 id="h-s03-debug">Debug This</h2>
+        <span class="visually-hidden">Slide 30 of 34</span>
+        <a class="slide-anchor" href="#s03-debug" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Four problems in eight lines. Spot them.</h3><div class="c-code lang-html"><span class="c-code-lang">html</span><pre class="c-code-pre"><code><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">1</span><span class="c-code-src"><span class="tok-tag">&lt;h1</span><span class="tok-punct">&gt;</span>Our Club<span class="tok-tag">&lt;/h1</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">2</span><span class="c-code-src"><span class="tok-tag">&lt;h3</span><span class="tok-punct">&gt;</span>About Us<span class="tok-tag">&lt;/h3</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">3</span><span class="c-code-src"><span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>We meet weekly.<span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span><span class="tok-tag">&lt;br</span><span class="tok-punct">&gt;</span>Everyone is welcome.<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">4</span><span class="c-code-src"><span class="tok-tag">&lt;img</span> <span class="tok-attr">src</span><span class="tok-op">=</span><span class="tok-string">&quot;images/team.jpg&quot;</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">5</span><span class="c-code-src"><span class="tok-tag">&lt;ul</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">6</span><span class="c-code-src">  <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>Monday<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">7</span><span class="c-code-src">  <span class="tok-tag">&lt;p</span><span class="tok-punct">&gt;</span>Wednesday<span class="tok-tag">&lt;/p</span><span class="tok-punct">&gt;</span></span></span><span class="c-code-line"><span class="c-code-ln" aria-hidden="true">8</span><span class="c-code-src"><span class="tok-tag">&lt;/ul</span><span class="tok-punct">&gt;</span></span></span></code></pre></div><hr class="c-divider"/><div class="c-stack" style="gap:4px"><div class="c-row" style="gap:8px"><span class="c-pill">Bug 1</span><p class="c-text">&lt;h3&gt; after &lt;h1&gt; skips h2. Screen reader users navigating by heading think a level is missing.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Bug 2</span><p class="c-text">&lt;br&gt;&lt;br&gt; fakes spacing. Use two separate &lt;p&gt; elements and set margin in CSS.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Bug 3</span><p class="c-text">The &lt;img&gt; has no alt attribute. A blind user hears only the file name, or nothing at all.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Bug 4</span><p class="c-text">&lt;ul&gt; may only contain &lt;li&gt; children. Replace both &lt;p&gt; elements with &lt;li&gt;.</p></div></div><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Run this through validator.w3.org — it flags bugs 3 and 4 instantly.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s03-practice-check" aria-labelledby="h-s03-practice-check">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">31</span>
+        <h2 id="h-s03-practice-check">Practice Checkpoints</h2>
+        <span class="visually-hidden">Slide 31 of 34</span>
+        <a class="slide-anchor" href="#s03-practice-check" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">How to Know Each Task Is Done</h3><div class="c-stack" style="gap:6px"><div class="c-row" style="gap:8px"><span class="c-pill">Task 1</span><p class="c-text">Exactly one &lt;h1&gt; on the page, and heading levels descend without skipping.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 2</span><p class="c-text">Every &lt;img&gt; has alt text you could read aloud and still understand the page.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 3</span><p class="c-text">Both list types render correctly: bullets for &lt;ul&gt;, numbers for &lt;ol&gt;.</p></div><div class="c-row" style="gap:8px"><span class="c-pill">Task 4</span><p class="c-text">No image file is larger than about 300 KB, and none is wider than 1200px.</p></div></div><hr class="c-divider"/><div class="c-callout is-info" role="note"><span class="c-callout-icon" aria-hidden="true">i</span><div class="c-callout-body"><div>Fast alt-text test: hide every image with DevTools. If the page still makes sense, your alt text is doing its job.</div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="s03-assignment" aria-labelledby="h-s03-assignment">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">32</span>
+        <h2 id="h-s03-assignment">Assignment: Rich Content Page</h2>
+        <span class="visually-hidden">Slide 32 of 34</span>
+        <a class="slide-anchor" href="#s03-assignment" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:10px"><h3 class="c-h2">Start in class — finish for homework</h3><div class="c-grid" style="grid-template-columns:repeat(2, minmax(0,1fr));gap:12px"><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Deliverable</p><p class="c-text">pages/about.html for your Student Club Website, filled with real text and images.</p><p class="c-text" style="font-weight:700">Acceptance criteria</p><p class="c-text">One &lt;h1&gt;, at least two &lt;h2&gt; sections, no skipped levels.</p><p class="c-text">At least two images, each with descriptive alt text.</p><p class="c-text">One &lt;ul&gt; and one &lt;ol&gt;, used for the right kind of content.</p><p class="c-text">At least one &lt;strong&gt; and one &lt;em&gt; used for meaning, not styling.</p></div><div class="c-stack" style="gap:6px"><p class="c-text" style="font-weight:700">Before you submit</p><p class="c-text">Validate at validator.w3.org — zero errors.</p><p class="c-text">Read your alt text aloud. Does it describe the image?</p><p class="c-text">Check every image loads — no broken-image icons.</p><div class="c-callout is-warning" role="note"><span class="c-callout-icon" aria-hidden="true">!</span><div class="c-callout-body"><div>Missing alt text is the single most common accessibility failure on the web. Do not add yours to the count.</div></div></div></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="homework" aria-labelledby="h-homework">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">33</span>
+        <h2 id="h-homework">Homework</h2>
+        <span class="visually-hidden">Slide 33 of 34</span>
+        <a class="slide-anchor" href="#homework" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Homework 3 (homework/session-03/)</h3><div class="c-stack" style="gap:8px"><p class="c-text"><span class="c-text">Building the About Page</span> — enhance your about.html with rich, accessible content.</p><p class="c-text">Task 1: Use h1/h2/h3 headings, 3+ paragraphs, ul + ol lists, and 2+ images with descriptive alt text.</p><p class="c-text">Task 2: Add a Photo Gallery section with h2 &quot;Photo Gallery&quot;, at least 3 images, each with different alt text and a short caption paragraph.</p><hr class="c-divider"/><div class="c-row" style="gap:8px"><span class="c-tag is-danger">Due: Sunday 23:59</span><span class="c-tag is-info">Submit via course platform</span></div></div></div>
+      </div>
+    </section>
+    <section class="slide" id="recap" data-pattern="aurora" style="--pattern-accent:color-mix(in srgb, var(--chart-green) 26%, transparent);--pattern-accent-2:color-mix(in srgb, var(--chart-blue) 22%, transparent)" aria-labelledby="h-recap">
+      <header class="slide-head">
+        <span class="slide-index" aria-hidden="true">34</span>
+        <h2 id="h-recap">Recap &amp; Next Session</h2>
+        <span class="visually-hidden">Slide 34 of 34</span>
+        <a class="slide-anchor" href="#recap" aria-label="Link to this slide">#</a>
+      </header>
+      <div class="slide-body">
+<div class="c-stack" style="gap:12px"><h3 class="c-h2">Recap</h3><div class="c-stack" style="gap:6px"><p class="c-text">One h1 per page; never skip heading levels</p><p class="c-text">Use strong/em for semantic emphasis, not b/i</p><p class="c-text">ul for unordered items, ol when order matters</p><p class="c-text">Every img needs src, alt, width, and height</p><p class="c-text">Choose format wisely: JPG for photos, PNG for logos, SVG for icons</p><p class="c-text">Alt text describes what the image shows — keep it concise</p></div><hr class="c-divider"/><h4 class="c-h3">Next: Session 4</h4><p class="c-text is-secondary">Using CSS — selectors, colors, fonts, linking external stylesheets to your HTML pages.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+<button class="backtotop" id="backtotop" type="button" aria-label="Back to top">↑</button>
+<footer class="deck-footer">
+  <p>Generated from <code>canvases/buoi-03.canvas.tsx</code>. Keys: <kbd>j</kbd>/<kbd>k</kbd> next &amp; previous slide · <kbd>/</kbd> filter · <kbd>n</kbd> notes · <kbd>t</kbd> theme.</p>
+</footer>
+<script src="assets/deck.js" defer></script>
+</body>
+</html>

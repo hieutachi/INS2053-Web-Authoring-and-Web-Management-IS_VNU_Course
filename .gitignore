@@ -13,6 +13,9 @@ _tools/backups/
 # Generated audit output (recreate with the scripts in _tools/)
 _tools/*.txt
 
+# One-off audit probes. The re-runnable QA scripts have no tmp- prefix.
+_tools/tmp-*.js
+
 # Common generated dependencies and build output
 node_modules/
 dist/

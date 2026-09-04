@@ -211,7 +211,7 @@ function DropdownAnatomy({ t }: { t: CanvasTokens }) {
       <circle cx="148" cy="56" r="4" fill={t.chart.green} />
       <text x="94" y="70" fontSize="11" fontWeight="700" fill={t.chart.green}>origin</text>
       <line x1="120" y1="26" x2="120" y2="56" stroke={t.chart.green} strokeWidth="1.4" strokeDasharray="3 2" />
-      <text x="56" y="44" fontSize="11" fill={t.chart.green}>top: 100%</text>
+      <text x="14" y="70" fontSize="11" fill={t.chart.green}>top: 100%</text>
 
       {/* right-hand notes */}
       {notes.map((n, i) => (

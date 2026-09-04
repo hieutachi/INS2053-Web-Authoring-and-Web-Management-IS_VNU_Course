@@ -9,11 +9,9 @@ import {
   Table,
   Text,
   Tag,
-  useHostTheme,
 } from "qoder/canvas";
 
 export default function INS2053Overview() {
-  const { tokens } = useHostTheme();
   return (
     <Stack gap={24}>
       <Stack gap={6}>
@@ -24,7 +22,7 @@ export default function INS2053Overview() {
       <Grid columns={4} gap={16}>
         <Stat value="15" label="Sessions" />
         <Stat value="15" label="Ebook chapters" />
-        <Stat value="29" label="Exercises + homework" />
+        <Stat value="30" label="Exercises + homework" />
         <Stat value="5" label="CLOs covered" tone="success" />
       </Grid>
 
@@ -37,7 +35,7 @@ export default function INS2053Overview() {
             donut
             centerLabel="100%"
             data={[
-              { label: "Attendance", value: 10 },
+              { label: "Attendance + homework", value: 10 },
               { label: "Midterm (wk 8)", value: 30 },
               { label: "Final", value: 60 },
             ]}

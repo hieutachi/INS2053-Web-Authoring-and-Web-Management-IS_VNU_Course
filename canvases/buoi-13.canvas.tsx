@@ -35,10 +35,13 @@ function FormDataFlow({ t }: { t: CanvasTokens }) {
   const field = (y: number, label: string, value: string, attr: string, ok: boolean, key: string) => (
     <g key={key}>
       <text x="18" y={y} fontSize="11" fill={t.text.secondary}>{label}</text>
-      <rect x="18" y={y + 5} width="132" height="20" rx="4" fill={t.bg.elevated}
+      {/* Input 108 wide, attribute at x=132: at 11px mono, name="email" is ~79
+          units, so the annotation ends at ~211 and stays inside the 216-wide
+          card instead of running into the submit arrow at x=222. */}
+      <rect x="18" y={y + 5} width="108" height="20" rx="4" fill={t.bg.elevated}
         stroke={ok ? t.stroke.secondary : t.chart.brightOrange} strokeWidth={ok ? "1" : "1.8"} />
       <text x="25" y={y + 19} fontSize="11" fontFamily={MONO} fill={t.text.primary}>{value}</text>
-      <text x="156" y={y + 19} fontSize="11" fontFamily={MONO} fill={ok ? t.chart.blue : t.chart.brightOrange}>{attr}</text>
+      <text x="132" y={y + 19} fontSize="11" fontFamily={MONO} fill={ok ? t.chart.blue : t.chart.brightOrange}>{attr}</text>
     </g>
   );
 
@@ -76,18 +79,22 @@ function FormDataFlow({ t }: { t: CanvasTokens }) {
       <text x="266" y="146" fontSize="11.5" fill={t.text.secondary}>The value the visitor typed is gone.</text>
       <text x="266" y="161" fontSize="11.5" fill={t.text.secondary}>Not empty — gone. A field with no name</text>
       <text x="266" y="176" fontSize="11.5" fill={t.text.secondary}>is invisible to the browser.</text>
-      <text x="404" y="72" fontSize="11" fill={t.text.tertiary}>@ becomes %40</text>
-      <text x="404" y="92" fontSize="11" fill={t.text.tertiary}>space becomes +</text>
+      {/* x=432, not 404: the encoded email line above is 22 mono characters wide
+          and reaches about x=424, so the annotation used to start underneath it. */}
+      <text x="432" y="72" fontSize="11" fill={t.text.tertiary}>@ becomes %40</text>
+      <text x="432" y="92" fontSize="11" fill={t.text.tertiary}>space becomes +</text>
 
       {/* action and method */}
       <rect x="6" y="204" width="548" height="90" rx="7" fill={t.chart.blue} opacity="0.1" />
       <rect x="18" y="216" width="352" height="24" rx="5" fill={t.chart.blue} />
       <text x="28" y="232.5" fontSize="12" fontFamily={MONO} fill={ON_FILL}>&lt;form action="#" method="post"&gt;</text>
       <text x="18" y="258" fontSize="12.5" fill={t.text.primary}><tspan fontWeight="700">action</tspan> = where the data goes.</text>
-      <text x="18" y="275" fontSize="12" fill={t.text.secondary}>action="#" means nowhere: the page</text>
-      <text x="18" y="290" fontSize="12" fill={t.text.secondary}>reloads. Right for this course.</text>
+      {/* Rewrapped shorter: the first column is only 194 units wide before the
+          "method" column starts at x=212. */}
+      <text x="18" y="275" fontSize="12" fill={t.text.secondary}>action="#" means nowhere:</text>
+      <text x="18" y="290" fontSize="12" fill={t.text.secondary}>the page just reloads.</text>
       <text x="212" y="258" fontSize="12.5" fill={t.text.primary}><tspan fontWeight="700">method</tspan> = how it travels.</text>
-      <text x="212" y="275" fontSize="12" fill={t.text.secondary}>get shows every value in the URL bar.</text>
+      <text x="212" y="275" fontSize="12" fill={t.text.secondary}>get shows values in the URL.</text>
       <text x="212" y="290" fontSize="12" fill={t.text.secondary}>post keeps them out of sight.</text>
       <text x="440" y="258" fontSize="12.5" fontWeight="700" fill={t.chart.green}>Use post.</text>
       <text x="440" y="275" fontSize="12" fill={t.text.secondary}>A phone number in</text>
