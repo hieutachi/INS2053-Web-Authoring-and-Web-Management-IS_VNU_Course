@@ -53,17 +53,22 @@ The capstone project grows a little every week. Milestones are in `project/miles
 3. Afterwards, work through `## Self-Check (answers included)` at the end of that
    exercise. Answer from your own files first, then open each arrow to compare.
    The last question gives you no code — write it yourself before revealing it.
-4. Finish the homework and push it to your GitHub repo by **Sunday 23:59**.
-5. Build your own Student Club Website a little each week. Compare it with
+4. Before submitting homework, open `site/cham-bai.html` locally or the deployed
+   `/cham-bai.html`, choose the session, and load the assignment folder or its public
+   GitHub link. Fix the mechanical issues it reports; `ASSIST` and `MANUAL` rows still
+   need lecturer review.
+5. Finish the homework and push it to your GitHub repo by **Sunday 23:59**.
+6. Build your own Student Club Website a little each week. Compare it with
    `examples/student-club/` when stuck.
-6. Before each exam, use the sample paper in `exams/` to practise.
+7. Before each exam, use the sample paper in `exams/` to practise.
 
 **Studying alone?** The package is designed so you can. Every ebook chapter ends
 with a common-errors table (symptom → cause → how to confirm → fix) and eight
 self-check questions with answers; every exercise carries the Self-Check section
 above; `exams/` includes worked solutions, and `exercises/session-08/` is a full
-practice paper with an answer key. Homework is the one thing with no published
-answers — it is graded, and the rubric tells you what is being looked for.
+practice paper with an answer key. Homework has no published worked answers. Its
+rubric and browser self-check expose what is being looked for without replacing the
+lecturer's final judgement.
 
 ---
 
@@ -130,9 +135,12 @@ site/cham-bai.html              the browser-only homework self-check tool
 Each session hub states the same three stages, so a student always knows where they
 are: **before class** read the chapter and work its `🧪 Try It Yourself` blocks, **in
 class** follow the deck, **after class** use the homework brief for practice and keep
-the result in their own Git repository. The local self-check reports only the mechanically
-verifiable rubric portion; formal online submission, grade recording, and final grading
-remain disabled. See [`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md).
+the result in their own Git repository. The self-check accepts pasted files, a local
+folder, or a public GitHub URL. Text files are read within documented limits; binary
+assets are retained as path-only entries. Standard repository metadata is exempt from
+assignment filename checks. The result shows the complete rubric with `AUTO`, `ASSIST`,
+`MANUAL`, and blocked rows; formal submission, grade recording, and final grading remain
+disabled. See [`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md).
 
 **What is deliberately not published.** The builder uses an allowlist, not a blocklist:
 
@@ -153,12 +161,15 @@ reference criteria.
 Build and check:
 
 ```bash
-npm run build:site        # generate site/
-npm run qa:site           # 13 checks on the generated site
+npm run qa:grader         # build + 11 grader gates across all 15 rubrics
+npm run build:site        # generate site/, including the vetted grader artifact
+npm run qa:site           # 13 QA groups on the 69-page public output
 npm run clean:site        # delete site/
 ```
 
-Rebuild `slides-html/` first if a canvas changed — the site copies the decks from it.
+`build:site` copies `_tools/grader/cham-bai.html` to `site/cham-bai.html` byte-for-byte;
+site QA group 13 rejects any mismatch or unsafe publishing behavior. Rebuild
+`slides-html/` first if a canvas changed — the site copies the decks from it.
 The builder is `_tools/build-site.mjs`, the shared stylesheet and script live in
 `_tools/site-assets/`, and markdown is rendered with `marked` (pinned). Every path in
 the output is relative, so the folder works when opened locally as well as when served.

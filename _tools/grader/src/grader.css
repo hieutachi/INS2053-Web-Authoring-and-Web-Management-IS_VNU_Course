@@ -419,6 +419,13 @@ table.rubric tbody tr:nth-child(even) > td { background: var(--fill-tertiary); }
   border: 0;
 }
 
+@media (max-width: 600px) {
+  .topbar > :first-child { flex: 1 1 100%; max-width: 100%; }
+  .topbar .spacer { display: none; }
+  .topbar > .field { flex: 1 1 160px; min-width: 0; max-width: 100%; }
+  .topbar select { width: 100%; max-width: 100%; }
+}
+
 /* --- print: result card only, on A4 ---------------------------------------- */
 
 @media print {
