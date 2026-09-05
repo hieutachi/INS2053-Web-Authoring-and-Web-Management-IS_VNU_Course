@@ -4,6 +4,7 @@
      - theme toggle (persisted in localStorage)
      - speaker-notes toggle (persisted)
      - TOC filter, active-slide tracking, reading progress
+     - scroll reveal (opt-in from JS, skipped under prefers-reduced-motion)
      - j / k / ArrowDown / ArrowUp slide navigation, / to focus filter
    ============================================================================= */
 
@@ -101,12 +102,13 @@
     });
   }
 
-  /* --- active slide + progress ------------------------------------------- */
+  /* --- active slide, progress, reveal ------------------------------------- */
   var slides = [].slice.call(document.querySelectorAll(".slide"));
   var links = {};
   [].slice.call(document.querySelectorAll(".toc-list a")).forEach(function (a) {
     links[a.getAttribute("href").slice(1)] = a;
   });
+
   var bar = document.getElementById("progress-bar");
   var counter = document.getElementById("slide-counter");
   var current = -1;
@@ -151,6 +153,64 @@
       });
     }
     setCurrent(0);
+  }
+
+  /* --- scroll reveal ------------------------------------------------------
+     Opt-in from JS only. The stylesheet keeps every slide fully visible
+     until `js-reveal` lands on <body>, so a no-JS reader, a crawler and the
+     print stylesheet all still see the whole deck. Skipped outright when the
+     reader asks for reduced motion, or when there is no observer to drive it
+     (otherwise slides would be faded out with nothing to fade them back in).
+     --------------------------------------------------------------------- */
+  var wantsMotion =
+    !window.matchMedia ||
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (slides.length && wantsMotion && "IntersectionObserver" in window) {
+    /* deck.js is deferred, so the top of the page may already have painted.
+       Anything currently on screen is marked revealed *before* js-reveal is
+       added, otherwise those slides would visibly blink out and fade back. */
+    var vh = window.innerHeight || root.clientHeight;
+    slides.forEach(function (s) {
+      var box = s.getBoundingClientRect();
+      if (box.top < vh && box.bottom > 0) s.classList.add("is-revealed");
+    });
+
+    document.body.classList.add("js-reveal");
+
+    var revealer = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          en.target.classList.add("is-revealed");
+          obs.unobserve(en.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0 }
+    );
+
+    slides.forEach(function (s) {
+      if (!s.classList.contains("is-revealed")) revealer.observe(s);
+    });
+
+    /* Jumping straight to #slide-n, or printing from a fresh load, can leave
+       a target slide outside the observer's first pass. Reveal it eagerly. */
+    var revealNow = function (el) {
+      while (el && el !== document.body) {
+        if (el.classList && el.classList.contains("slide")) {
+          el.classList.add("is-revealed");
+          revealer.unobserve(el);
+          return;
+        }
+        el = el.parentNode;
+      }
+    };
+    if (location.hash) revealNow(document.getElementById(location.hash.slice(1)));
+    window.addEventListener("beforeprint", function () {
+      slides.forEach(function (s) {
+        s.classList.add("is-revealed");
+      });
+    });
   }
 
   /* --- keyboard navigation ---------------------------------------------- */

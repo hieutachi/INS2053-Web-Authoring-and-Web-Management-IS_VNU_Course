@@ -8,19 +8,46 @@
    ============================================================================= */
 
 :root {
+  /* --- accent -------------------------------------------------------------
+     Expressed as OKLCH parts so a single override re-themes the whole page.
+     OKLCH rather than HSL because its L really is perceived lightness: at a
+     fixed L every hue lands within ~0.8:1 of the same contrast ratio, so the
+     15 session colours below can all clear WCAG AA without hand-tuning each
+     one. The same palette in HSL measured 1.8:1 for teal against white while
+     blue measured 6.6:1 — a range no single set of tokens can cover.
+
+     The builder stamps <html data-session="NN"> and data-session on each index
+     card; the table further down then moves only the hues. L and C stay with
+     the theme, so the dark palette and the print palette each set contrast
+     once instead of per session.
+     --------------------------------------------------------------------- */
+  --accent-l: 0.5;
+  --accent-c: 0.16;
+  --accent-h: 262;
+
+  --accent-l2: 0.48;
+  --accent-c2: 0.16;
+  --accent-h2: 232;
+
+  /* sRGB fallback pair for browsers without oklch() — see the @supports block
+     below. The same hue numbers are reused; only saturation and lightness are
+     fixed here, measured so all 15 sessions still clear AA. */
+  --accent-fs: 55%;
+  --accent-fl: 28%;
+
   --chart-blue: #2563eb;
   --chart-green: #15803d;
-  --chart-goldenYellow: #f0b429;
+  --chart-goldenYellow: #e0a411;
   --chart-brightOrange: #ea580c;
   --chart-purple: #7c3aed;
   --chart-teal: #0d9488;
   --chart-red: #dc2626;
   --chart-gray: #64748b;
 
-  --bg-page: #eef1f6;
+  --bg-page: #eceff5;
   --bg-base: #ffffff;
   --bg-elevated: #ffffff;
-  --bg-editor: #f7f9fc;
+  --bg-editor: #f6f8fc;
 
   --fill-primary: #dbe3ee;
   --fill-secondary: #e5ebf4;
@@ -28,34 +55,101 @@
 
   --stroke-primary: #94a3b8;
   --stroke-secondary: #c3cede;
-  --stroke-tertiary: #dbe2ec;
+  --stroke-tertiary: #dee4ee;
 
-  --text-primary: #0f172a;
-  --text-secondary: #41506b;
-  --text-tertiary: #6b7a94;
+  --text-primary: #0d1524;
+  --text-secondary: #3e4d68;
+  --text-tertiary: #687791;
   --text-inverse: #ffffff;
 
-  --accent-primary: #2563eb;
-  --accent-secondary: #f0b429;
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 7%), 0 1px 3px rgb(15 23 42 / 5%);
+  --shadow-md: 0 6px 16px rgb(15 23 42 / 9%), 0 2px 5px rgb(15 23 42 / 6%);
+  --shadow-lg: 0 22px 48px rgb(15 23 42 / 15%), 0 5px 12px rgb(15 23 42 / 8%);
 
-  --shadow-sm: 0 1px 2px rgb(15 23 42 / 8%), 0 1px 3px rgb(15 23 42 / 6%);
-  --shadow-md: 0 4px 10px rgb(15 23 42 / 8%), 0 2px 4px rgb(15 23 42 / 6%);
-  --shadow-lg: 0 18px 42px rgb(15 23 42 / 14%), 0 4px 10px rgb(15 23 42 / 8%);
-
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 7px;
+  --radius-md: 11px;
+  --radius-lg: 18px;
 
   --sans: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial,
     sans-serif;
   --mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas,
     monospace;
 
+  /* --- type scale (1rem = 16px) ------------------------------------------ */
+  --step--2: 0.7rem;
+  --step--1: 0.815rem;
+  --step-0: 0.95rem;
+  --step-1: 1.02rem;
+  --step-2: clamp(1.06rem, 1rem + 0.3vw, 1.2rem);
+  --step-3: clamp(1.2rem, 1.08rem + 0.55vw, 1.44rem);
+  --step-4: clamp(1.45rem, 1.2rem + 1.2vw, 2rem);
+  --step-5: clamp(1.7rem, 1.25rem + 2.3vw, 2.5rem);
+
+  /* --- spacing scale ---------------------------------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 22px;
+  --sp-6: 30px;
+  --sp-7: 42px;
+
+  --measure: 76ch;
   --sidebar-w: 306px;
   --shell-max: 1180px;
+  --topbar-h: 56px;
+}
+
+/* Derived accent values.
+   A custom property is substituted where it is *declared*, not where it is
+   used, so anything that needs its own hue has to redeclare this block. The
+   index cards do exactly that: the builder stamps --accent-h on each card.
+
+   The sRGB fallback comes first and OKLCH overrides it behind @supports. A
+   browser that cannot parse oklch() would otherwise compute the accent tokens
+   as invalid and drop the colour from every link, heading and active-slide
+   marker. Decorative color-mix() below is deliberately left unguarded: it has
+   almost the same support baseline, but losing it costs a background tint
+   rather than the whole accent system.
+
+   --accent-line is declared once. It resolves var(--accent-primary) at use
+   time, so it follows whichever pair won the cascade. */
+:root,
+.deck-card {
+  --accent-primary: hsl(var(--accent-h) var(--accent-fs) var(--accent-fl));
+  --accent-secondary: hsl(var(--accent-h2) var(--accent-fs) var(--accent-fl));
+  --accent-wash: hsl(var(--accent-h) var(--accent-fs) var(--accent-fl) / 6%);
+  --accent-soft: hsl(var(--accent-h) var(--accent-fs) var(--accent-fl) / 12%);
+  --accent-ring: hsl(var(--accent-h) var(--accent-fs) var(--accent-fl) / 40%);
+  --accent-line: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+}
+
+@supports (color: oklch(0.5 0.16 262)) {
+  :root,
+  .deck-card {
+    --accent-primary: oklch(var(--accent-l) var(--accent-c) var(--accent-h));
+    --accent-secondary: oklch(var(--accent-l2) var(--accent-c2) var(--accent-h2));
+    --accent-wash: oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 6%);
+    --accent-soft: oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 12%);
+    --accent-ring: oklch(var(--accent-l) var(--accent-c) var(--accent-h) / 40%);
+  }
 }
 
 :root[data-theme="dark"] {
+  /* Lighter and slightly less saturated: on a dark surface the same chroma
+     reads as neon. Only L and C move, so every session hue keeps its identity
+     and its contrast in one step. */
+  --accent-l: 0.78;
+  --accent-c: 0.13;
+  --accent-l2: 0.82;
+  --accent-c2: 0.13;
+  --accent-fs: 70%;
+  --accent-fl: 70%;
+
   --chart-blue: #60a5fa;
   --chart-green: #4ade80;
   --chart-goldenYellow: #fbbf24;
@@ -65,9 +159,9 @@
   --chart-red: #f87171;
   --chart-gray: #94a3b8;
 
-  --bg-page: #080c15;
+  --bg-page: #070b13;
   --bg-base: #0f1626;
-  --bg-elevated: #151f33;
+  --bg-elevated: #152033;
   --bg-editor: #0b1220;
 
   --fill-primary: #22304a;
@@ -79,17 +173,45 @@
   --stroke-tertiary: #263248;
 
   --text-primary: #eef3fb;
-  --text-secondary: #b3c1d8;
-  --text-tertiary: #8496b3;
+  --text-secondary: #b6c3da;
+  --text-tertiary: #8698b5;
   --text-inverse: #0b1220;
 
-  --accent-primary: #60a5fa;
-  --accent-secondary: #fbbf24;
-
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);
-  --shadow-md: 0 4px 12px rgb(0 0 0 / 45%);
-  --shadow-lg: 0 20px 46px rgb(0 0 0 / 55%);
+  --shadow-md: 0 6px 16px rgb(0 0 0 / 45%);
+  --shadow-lg: 0 22px 48px rgb(0 0 0 / 55%);
 }
+
+/* --- per-session accent ---------------------------------------------------
+   One hue per session so a student who lands mid-course can tell the decks
+   apart at a glance, and so the 15 sessions read as a progression rather
+   than fifteen identical blue pages. The primary hue walks the wheel from
+   indigo to violet across the term; the secondary sits ~25° behind it, close
+   enough that every gradient still reads as one colour family.
+
+   Only the hues move. L and C stay on the theme, so contrast is set once and
+   the dark theme needs no per-session override.
+
+   Each row covers both places a session colour is needed: the deck page
+   (<html data-session="NN">) and its card on the index. One table, so the
+   two can never drift apart.
+   ---------------------------------------------------------------------- */
+
+:root[data-session="01"], .deck-card[data-session="01"] { --accent-h: 262; --accent-h2: 232; }
+:root[data-session="02"], .deck-card[data-session="02"] { --accent-h: 248; --accent-h2: 218; }
+:root[data-session="03"], .deck-card[data-session="03"] { --accent-h: 232; --accent-h2: 200; }
+:root[data-session="04"], .deck-card[data-session="04"] { --accent-h: 218; --accent-h2: 186; }
+:root[data-session="05"], .deck-card[data-session="05"] { --accent-h: 196; --accent-h2: 168; }
+:root[data-session="06"], .deck-card[data-session="06"] { --accent-h: 172; --accent-h2: 145; }
+:root[data-session="07"], .deck-card[data-session="07"] { --accent-h: 148; --accent-h2: 120; }
+:root[data-session="08"], .deck-card[data-session="08"] { --accent-h: 92;  --accent-h2: 66; }
+:root[data-session="09"], .deck-card[data-session="09"] { --accent-h: 70;  --accent-h2: 45; }
+:root[data-session="10"], .deck-card[data-session="10"] { --accent-h: 48;  --accent-h2: 28; }
+:root[data-session="11"], .deck-card[data-session="11"] { --accent-h: 30;  --accent-h2: 12; }
+:root[data-session="12"], .deck-card[data-session="12"] { --accent-h: 14;  --accent-h2: 350; }
+:root[data-session="13"], .deck-card[data-session="13"] { --accent-h: 356; --accent-h2: 330; }
+:root[data-session="14"], .deck-card[data-session="14"] { --accent-h: 336; --accent-h2: 310; }
+:root[data-session="15"], .deck-card[data-session="15"] { --accent-h: 312; --accent-h2: 285; }
 
 /* --- reset ---------------------------------------------------------------- */
 
@@ -101,17 +223,35 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: calc(var(--topbar-h) + var(--sp-5));
 }
 
 body {
   margin: 0;
-  background: var(--bg-page);
   color: var(--text-primary);
   font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 100%;
+  line-height: 1.62;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+
+  /* A faint accent wash behind the page: enough to tell one session's deck
+     from the next when two are open in adjacent tabs, not enough to fight
+     the white slide cards for attention. Fixed, so it does not scroll away
+     on a 40-slide deck. */
+  background-color: var(--bg-page);
+  background-image: radial-gradient(
+      1200px 620px at 8% -12%,
+      color-mix(in srgb, var(--accent-primary) 13%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      1000px 520px at 100% 0%,
+      color-mix(in srgb, var(--accent-secondary) 10%, transparent),
+      transparent 70%
+    );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 img,
@@ -121,6 +261,7 @@ svg {
 
 a {
   color: var(--accent-primary);
+  text-underline-offset: 2px;
 }
 
 :focus-visible {
@@ -167,10 +308,11 @@ a {
   z-index: 40;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 20px;
-  background: color-mix(in srgb, var(--bg-base) 88%, transparent);
-  backdrop-filter: blur(10px);
+  gap: var(--sp-4);
+  min-height: var(--topbar-h);
+  padding: var(--sp-2) var(--sp-5);
+  background: color-mix(in srgb, var(--bg-base) 82%, transparent);
+  backdrop-filter: blur(12px) saturate(140%);
   border-bottom: 1px solid var(--stroke-tertiary);
 }
 
@@ -179,10 +321,12 @@ a {
   flex-direction: column;
   min-width: 0;
   margin-right: auto;
+  padding-left: var(--sp-3);
+  border-left: 3px solid var(--accent-primary);
 }
 
 .topbar-course {
-  font-size: 11px;
+  font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -190,8 +334,8 @@ a {
 }
 
 .topbar-title {
-  font-size: 14.5px;
-  font-weight: 650;
+  font-size: var(--step-0);
+  font-weight: 640;
   color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
@@ -215,21 +359,29 @@ a {
   background: var(--bg-elevated);
   color: var(--text-secondary);
   font: inherit;
-  font-size: 13px;
+  font-size: var(--step--1);
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease,
+    box-shadow 0.16s ease, transform 0.16s ease;
 }
 
 .btn:hover {
   border-color: var(--accent-primary);
   color: var(--accent-primary);
+  background: var(--accent-wash);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn.is-active {
   background: var(--accent-primary);
   border-color: var(--accent-primary);
   color: var(--text-inverse);
+  box-shadow: 0 2px 8px var(--accent-soft);
 }
 
 .progress-track {
@@ -245,33 +397,30 @@ a {
 .progress-bar {
   height: 100%;
   width: 0;
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  transition: width 0.1s linear;
+  background: var(--accent-line);
+  box-shadow: 0 0 10px var(--accent-ring);
+  transition: width 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .shell {
   display: grid;
   grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
-  gap: 28px;
+  gap: var(--sp-6);
   max-width: var(--shell-max);
   margin: 0 auto;
-  padding: 26px 20px 96px;
+  padding: var(--sp-6) var(--sp-5) 96px;
 }
 
 /* --- table of contents ---------------------------------------------------- */
 
 .toc {
   position: sticky;
-  top: 76px;
+  top: calc(var(--topbar-h) + var(--sp-5));
   align-self: start;
-  max-height: calc(100vh - 104px);
+  max-height: calc(100vh - var(--topbar-h) - var(--sp-7));
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: var(--sp-4);
   border: 1px solid var(--stroke-tertiary);
   border-radius: var(--radius-lg);
   background: var(--bg-base);
@@ -282,12 +431,12 @@ a {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: var(--sp-3);
 }
 
 .toc-head h2 {
   margin: 0;
-  font-size: 12px;
+  font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -295,20 +444,33 @@ a {
 }
 
 .toc-count {
-  font-size: 12px;
-  color: var(--text-tertiary);
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-primary);
+  font-family: var(--mono);
+  font-size: var(--step--2);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .toc-search {
   width: 100%;
-  margin-bottom: 10px;
-  padding: 8px 11px;
+  margin-bottom: var(--sp-3);
+  padding: var(--sp-2) 11px;
   border: 1px solid var(--stroke-secondary);
   border-radius: var(--radius-sm);
   background: var(--bg-editor);
   color: var(--text-primary);
   font: inherit;
-  font-size: 13px;
+  font-size: var(--step--1);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.toc-search:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  outline: none;
 }
 
 .toc-list {
@@ -318,19 +480,22 @@ a {
   list-style: none;
   counter-reset: none;
   scrollbar-width: thin;
+  scrollbar-color: var(--stroke-secondary) transparent;
 }
 
 .toc-list a {
   display: grid;
   grid-template-columns: 26px minmax(0, 1fr);
-  gap: 8px;
-  padding: 6px 8px;
+  gap: var(--sp-2);
+  padding: 6px var(--sp-2);
   border-radius: var(--radius-sm);
   border-left: 3px solid transparent;
   color: var(--text-secondary);
-  font-size: 13.2px;
-  line-height: 1.4;
+  font-size: var(--step--1);
+  line-height: 1.42;
   text-decoration: none;
+  transition: background 0.14s ease, color 0.14s ease,
+    border-left-color 0.14s ease;
 }
 
 .toc-list a:hover {
@@ -340,7 +505,7 @@ a {
 
 .toc-list a.is-current {
   border-left-color: var(--accent-primary);
-  background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
+  background: var(--accent-soft);
   color: var(--text-primary);
   font-weight: 620;
 }
@@ -371,61 +536,79 @@ a {
 .slides {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: var(--sp-6);
   min-width: 0;
 }
 
 .hero {
-  padding: 34px 32px;
+  position: relative;
+  padding: var(--sp-7) var(--sp-6);
   border: 1px solid var(--stroke-tertiary);
   border-radius: var(--radius-lg);
   background: var(--bg-base);
   box-shadow: var(--shadow-md);
+  overflow: hidden;
   background-image: radial-gradient(
       1100px 320px at 12% -30%,
-      color-mix(in srgb, var(--accent-primary) 20%, transparent),
+      color-mix(in srgb, var(--accent-primary) 22%, transparent),
       transparent
     ),
     radial-gradient(
       900px 300px at 96% 0%,
-      color-mix(in srgb, var(--accent-secondary) 18%, transparent),
+      color-mix(in srgb, var(--accent-secondary) 20%, transparent),
       transparent
     );
 }
 
+/* Accent rule along the top edge — the same gradient as the progress bar, so
+   the deck reads as one object from the first pixel down. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--accent-line);
+}
+
 .hero-kicker {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 4px 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: var(--sp-3);
+  padding: var(--sp-1) 12px;
+  border: 1px solid var(--accent-ring);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent-primary) 16%, transparent);
+  background: var(--accent-soft);
   color: var(--accent-primary);
-  font-size: 12px;
+  font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
 .hero h1 {
-  margin: 0 0 10px;
-  font-size: clamp(26px, 3.4vw, 38px);
-  line-height: 1.18;
-  letter-spacing: -0.018em;
+  margin: 0 0 var(--sp-3);
+  font-size: var(--step-5);
+  font-weight: 720;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .hero-sub {
   margin: 0;
   max-width: 62ch;
   color: var(--text-secondary);
-  font-size: 16.5px;
+  font-size: var(--step-2);
+  text-wrap: pretty;
 }
 
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 26px;
-  margin-top: 20px;
-  padding-top: 18px;
+  gap: var(--sp-3) var(--sp-6);
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-4);
   border-top: 1px solid var(--stroke-tertiary);
 }
 
@@ -436,7 +619,7 @@ a {
 
 .hero-meta dt,
 .hero-meta .k {
-  font-size: 11px;
+  font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -444,33 +627,69 @@ a {
 }
 
 .hero-meta .v {
-  font-size: 15px;
-  font-weight: 650;
+  font-size: var(--step-1);
+  font-weight: 640;
 }
 
 .slide {
-  scroll-margin-top: 84px;
+  position: relative;
+  scroll-margin-top: calc(var(--topbar-h) + var(--sp-5));
   border: 1px solid var(--stroke-tertiary);
   border-radius: var(--radius-lg);
   background: var(--bg-base);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.24s ease, border-color 0.24s ease,
+    transform 0.24s ease;
+}
+
+.slide:hover {
+  box-shadow: var(--shadow-md);
 }
 
 .slide:target,
 .slide.is-current {
-  border-color: color-mix(in srgb, var(--accent-primary) 55%, transparent);
+  border-color: var(--accent-ring);
   box-shadow: var(--shadow-md);
+}
+
+/* The current slide gets an accent spine on its left edge: a position cue
+   that survives printing and does not move the layout. */
+.slide.is-current::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent-line);
+}
+
+/* Slides fade up as they enter the viewport. deck.js adds js-reveal to <body>
+   only when it has an IntersectionObserver to drive the effect and the reader
+   has not asked for reduced motion, so no-JS, old-browser and reduced-motion
+   readers never meet a slide that is hidden with nothing to un-hide it. */
+@media (prefers-reduced-motion: no-preference) {
+  body.js-reveal .slide:not(.is-revealed) {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  body.js-reveal .slide {
+    transition: opacity 0.42s ease, transform 0.42s ease,
+      box-shadow 0.24s ease, border-color 0.24s ease;
+  }
 }
 
 .slide-head {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 22px;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-5);
   border-bottom: 1px solid var(--stroke-tertiary);
-  background: var(--bg-elevated);
+  background: linear-gradient(
+    to right,
+    var(--accent-wash),
+    var(--bg-elevated) 45%
+  );
 }
 
 .slide-index {
@@ -479,21 +698,31 @@ a {
   flex-shrink: 0;
   width: 30px;
   height: 30px;
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--accent-primary) 14%, transparent);
+  border-radius: 9px;
+  border: 1px solid var(--accent-ring);
+  background: var(--accent-soft);
   color: var(--accent-primary);
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: var(--step--1);
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.slide.is-current .slide-index {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--text-inverse);
 }
 
 .slide-head h2 {
   margin: 0;
   flex: 1;
   min-width: 0;
-  font-size: 19.5px;
+  font-size: var(--step-3);
   font-weight: 660;
-  letter-spacing: -0.008em;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .slide-anchor {
@@ -520,7 +749,7 @@ a {
 
 .slide-body {
   position: relative;
-  padding: 22px;
+  padding: var(--sp-5);
   background: var(--slide-bg, transparent);
 }
 
@@ -583,13 +812,41 @@ a {
 }
 
 .slide-notes summary {
-  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: var(--sp-2) var(--sp-5);
   color: var(--text-tertiary);
-  font-size: 12.5px;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+/* Replace the default disclosure triangle with a rotating chevron so the
+   open/closed state reads at a glance from the back of the room. */
+.slide-notes summary::marker,
+.slide-notes summary::-webkit-details-marker {
+  content: "";
+  display: none;
+}
+
+.slide-notes summary::before {
+  content: "›";
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: var(--fill-tertiary);
+  font-size: var(--step-0);
+  line-height: 1;
+  transition: transform 0.18s ease;
+}
+
+.slide-notes[open] summary::before {
+  transform: rotate(90deg);
 }
 
 .slide-notes summary:hover {
@@ -597,10 +854,11 @@ a {
 }
 
 .slide-notes-body {
-  padding: 0 22px 16px;
+  padding: 0 var(--sp-5) var(--sp-4);
   max-width: 80ch;
   color: var(--text-secondary);
-  font-size: 14.5px;
+  font-size: var(--step-0);
+  text-wrap: pretty;
 }
 
 body.notes-hidden .slide-notes {
@@ -648,27 +906,50 @@ body.notes-hidden .slide-notes {
 
 .c-h1 {
   margin: 0;
-  font-size: clamp(24px, 3vw, 33px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.018em;
+  font-size: var(--step-4);
+  font-weight: 720;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .c-h2,
 h3.c-h2 {
   margin: 0;
-  font-size: 18.5px;
-  font-weight: 660;
-  line-height: 1.32;
-  letter-spacing: -0.006em;
+  font-size: var(--step-2);
+  font-weight: 670;
+  line-height: 1.3;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
 }
 
 .c-h3,
 h4.c-h3 {
   margin: 0;
-  font-size: 15.8px;
-  font-weight: 660;
-  line-height: 1.35;
+  font-size: var(--step-1);
+  font-weight: 670;
+  line-height: 1.34;
+}
+
+/* A short accent rule under every section heading. It costs no vertical space
+   (the rule sits in the heading's own line box via ::after) and gives the eye
+   an anchor when a slide stacks four or five sections. */
+.c-h2::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 3px;
+  margin-top: 5px;
+  border-radius: 999px;
+  background: var(--accent-line);
+}
+
+.c-h2.is-success::after {
+  background: var(--chart-green);
+}
+
+.c-h2.is-danger::after {
+  background: var(--chart-red);
 }
 
 .c-h2.is-success,
@@ -685,8 +966,10 @@ h4.c-h3 {
 
 .c-text {
   margin: 0;
-  font-size: 15.2px;
+  max-width: var(--measure);
+  font-size: var(--step-1);
   line-height: 1.58;
+  text-wrap: pretty;
 }
 
 .c-text.is-secondary {
@@ -707,13 +990,13 @@ h4.c-h3 {
 }
 
 .c-text.is-small {
-  font-size: 13.4px;
+  font-size: var(--step--1);
   line-height: 1.5;
 }
 
 .c-text.is-mono {
   font-family: var(--mono);
-  font-size: 13.6px;
+  font-size: var(--step-0);
 }
 
 span.c-text {
@@ -756,7 +1039,7 @@ span.c-text.is-warning {
   flex-shrink: 0;
   gap: 5px;
   border-radius: 999px;
-  font-size: 12.4px;
+  font-size: var(--step--1);
   font-weight: 660;
   line-height: 1.45;
   white-space: nowrap;
@@ -806,8 +1089,9 @@ span.c-text.is-warning {
   background: var(--accent-primary);
   color: var(--text-inverse);
   font-family: var(--mono);
-  font-size: 11.8px;
-  letter-spacing: 0.01em;
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .c-pill.is-success {
@@ -830,27 +1114,28 @@ span.c-text.is-warning {
 
 .c-callout {
   display: flex;
-  gap: 11px;
-  padding: 11px 14px;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
   border: 1px solid var(--stroke-secondary);
   border-left: 4px solid var(--stroke-primary);
   border-radius: var(--radius-md);
   background: var(--fill-tertiary);
-  font-size: 14.8px;
+  font-size: var(--step-1);
   line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .c-callout-icon {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  margin-top: 1px;
+  width: 21px;
+  height: 21px;
+  margin-top: 2px;
   border-radius: 999px;
   background: var(--stroke-primary);
   color: var(--text-inverse);
-  font-size: 12.5px;
+  font-size: var(--step--1);
   font-weight: 800;
   line-height: 1;
 }
@@ -862,6 +1147,8 @@ span.c-text.is-warning {
 .c-callout-title {
   display: block;
   margin-bottom: 2px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
 }
 
 .c-callout.is-info {
@@ -920,51 +1207,75 @@ span.c-text.is-warning {
 
 .c-code {
   position: relative;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--stroke-secondary);
   border-radius: var(--radius-md);
   background: var(--bg-editor);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
 
+/* The language label is a header strip rather than a floating chip: it never
+   collides with the first line of code, and it gives the block the "editor
+   window" look students already know from Dreamweaver and VS Code. */
 .c-code-lang {
-  position: absolute;
-  top: 6px;
-  right: 8px;
-  padding: 1px 7px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--stroke-secondary) 60%, transparent);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px var(--sp-3);
+  border-bottom: 1px solid var(--stroke-tertiary);
+  background: var(--fill-tertiary);
   color: var(--text-tertiary);
   font-family: var(--mono);
-  font-size: 10.5px;
+  font-size: var(--step--2);
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   user-select: none;
 }
 
+.c-code-lang::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-primary);
+  box-shadow: 12px 0 0 color-mix(in srgb, var(--chart-goldenYellow) 70%, transparent),
+    24px 0 0 color-mix(in srgb, var(--chart-green) 70%, transparent);
+  margin-right: 27px;
+}
+
 .c-code-pre {
   margin: 0;
-  padding: 12px 14px 12px 0;
+  padding: var(--sp-3) var(--sp-3) var(--sp-3) 0;
   overflow-x: auto;
   font-family: var(--mono);
-  font-size: 13.2px;
-  line-height: 1.62;
+  font-size: var(--step-0);
+  line-height: 1.65;
   tab-size: 2;
 }
 
 .c-code-line {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-columns: 44px minmax(0, 1fr);
+}
+
+.c-code-line:hover {
+  background: var(--accent-wash);
 }
 
 .c-code-ln {
-  padding-right: 12px;
-  color: color-mix(in srgb, var(--text-tertiary) 65%, transparent);
+  padding-right: var(--sp-3);
+  border-right: 1px solid var(--stroke-tertiary);
+  color: color-mix(in srgb, var(--text-tertiary) 62%, transparent);
+  font-variant-numeric: tabular-nums;
   text-align: right;
   user-select: none;
 }
 
 .c-code-src {
+  padding-left: var(--sp-3);
   white-space: pre;
   color: var(--text-primary);
 }
@@ -1023,24 +1334,25 @@ span.c-text.is-warning {
   border: 1px solid var(--stroke-tertiary);
   border-radius: var(--radius-md);
   background: var(--bg-base);
+  box-shadow: var(--shadow-sm);
 }
 
 .c-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14.4px;
+  font-size: var(--step-0);
 }
 
 .c-table caption {
-  padding: 8px 12px;
+  padding: var(--sp-2) var(--sp-3);
   color: var(--text-tertiary);
-  font-size: 13px;
+  font-size: var(--step--1);
   text-align: left;
 }
 
 .c-table th,
 .c-table td {
-  padding: 8.5px 13px;
+  padding: 9px var(--sp-3);
   border-bottom: 1px solid var(--stroke-tertiary);
   text-align: left;
   vertical-align: top;
@@ -1050,10 +1362,11 @@ span.c-text.is-warning {
   position: sticky;
   top: 0;
   background: var(--fill-tertiary);
+  border-bottom: 2px solid var(--accent-ring);
   color: var(--text-secondary);
-  font-size: 12.4px;
+  font-size: var(--step--2);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -1079,7 +1392,7 @@ span.c-text.is-warning {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 14px 16px;
+  padding: var(--sp-4) var(--sp-4);
   border: 1px solid var(--stroke-tertiary);
   border-radius: var(--radius-md);
   background: var(--bg-elevated);
@@ -1087,15 +1400,17 @@ span.c-text.is-warning {
 }
 
 .c-stat-value {
-  font-size: 27px;
-  font-weight: 700;
+  font-size: var(--step-4);
+  font-weight: 720;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-primary);
 }
 
 .c-stat-label {
   color: var(--text-tertiary);
-  font-size: 12.6px;
+  font-size: var(--step--1);
   font-weight: 600;
 }
 
@@ -1149,7 +1464,10 @@ span.c-text.is-warning {
   width: 100%;
   height: auto;
   margin: 2px 0;
-  border-radius: var(--radius-sm);
+  padding: var(--sp-2);
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
 }
 
 .slide-body img {
@@ -1246,38 +1564,56 @@ span.c-text.is-warning {
 .deck-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
-  gap: 16px;
+  gap: var(--sp-4);
 }
 
 .deck-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 9px;
-  padding: 18px;
+  padding: var(--sp-5) var(--sp-4) var(--sp-4);
   border: 1px solid var(--stroke-tertiary);
   border-radius: var(--radius-lg);
   background: var(--bg-base);
   box-shadow: var(--shadow-sm);
   color: inherit;
   text-decoration: none;
-  transition: transform 0.16s ease, box-shadow 0.16s ease,
-    border-color 0.16s ease;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+/* Accent cap on each card. --accent-h is set per card by the builder, so the
+   index reads as a colour-coded course map rather than 17 identical tiles. */
+.deck-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--accent-line);
+  opacity: 0.85;
+  transition: opacity 0.18s ease;
 }
 
 .deck-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent-primary) 55%, transparent);
+  transform: translateY(-3px);
+  border-color: var(--accent-ring);
   box-shadow: var(--shadow-lg);
+}
+
+.deck-card:hover::before {
+  opacity: 1;
 }
 
 .deck-card-num {
   align-self: flex-start;
   padding: 2.5px 9px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--accent-primary) 14%, transparent);
+  background: var(--accent-soft);
   color: var(--accent-primary);
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: var(--step--2);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -1285,41 +1621,44 @@ span.c-text.is-warning {
 
 .deck-card h3 {
   margin: 0;
-  font-size: 17px;
-  font-weight: 660;
-  line-height: 1.3;
+  font-size: var(--step-2);
+  font-weight: 670;
+  line-height: 1.28;
+  text-wrap: balance;
 }
 
 .deck-card p {
   margin: 0;
   color: var(--text-secondary);
-  font-size: 13.8px;
+  font-size: var(--step--1);
   line-height: 1.5;
+  text-wrap: pretty;
 }
 
 .deck-card-meta {
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: var(--sp-2);
   border-top: 1px solid var(--stroke-tertiary);
   color: var(--text-tertiary);
-  font-size: 12.5px;
+  font-size: var(--step--2);
 }
 
 .section-head {
-  margin: 4px 0 2px;
+  margin: var(--sp-1) 0 2px;
 }
 
 .section-head h2 {
-  margin: 0 0 4px;
-  font-size: 21px;
-  font-weight: 680;
+  margin: 0 0 var(--sp-1);
+  font-size: var(--step-3);
+  font-weight: 700;
+  letter-spacing: -0.012em;
 }
 
 .section-head p {
   margin: 0;
   max-width: 72ch;
   color: var(--text-secondary);
-  font-size: 15px;
+  font-size: var(--step-1);
 }
 
 /* --- responsive ----------------------------------------------------------- */
@@ -1327,7 +1666,7 @@ span.c-text.is-warning {
 @media (max-width: 1080px) {
   .shell {
     grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
+    gap: var(--sp-5);
   }
 
   .toc {
@@ -1341,28 +1680,29 @@ span.c-text.is-warning {
 }
 
 @media (max-width: 720px) {
-  body {
-    font-size: 15.5px;
+  :root {
+    --step-0: 0.92rem;
+    --step-1: 1rem;
   }
 
   .shell {
-    padding: 16px 12px 72px;
+    padding: var(--sp-4) var(--sp-3) 72px;
   }
 
   .hero {
-    padding: 24px 18px;
+    padding: var(--sp-6) var(--sp-4);
   }
 
   .slide-head,
   .slide-body {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: var(--sp-4);
+    padding-right: var(--sp-4);
   }
 
   .slide-notes summary,
   .slide-notes-body {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: var(--sp-4);
+    padding-right: var(--sp-4);
   }
 
   /* The decks assume a projector: collapse every multi-column grid on phones. */
@@ -1378,7 +1718,7 @@ span.c-text.is-warning {
      rather than removed, so each button keeps its accessible name. Without
      this the four buttons are ~360px wide and push the page sideways. */
   .topbar {
-    padding: 10px 12px;
+    padding: var(--sp-2) var(--sp-3);
   }
 
   .topbar-actions {
@@ -1407,11 +1747,16 @@ span.c-text.is-warning {
   }
 
   .c-code-pre {
-    font-size: 12.4px;
+    font-size: 0.78rem;
   }
 
   .c-code-line {
     grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+  /* No physical keyboard to hint at. */
+  .deck-keys {
+    display: none;
   }
 }
 
@@ -1422,6 +1767,19 @@ span.c-text.is-warning {
     --bg-page: #fff;
     --bg-base: #fff;
     --bg-elevated: #fff;
+    /* Darker accent for paper: laser output lightens mid-tones, and there is
+       no hover or focus state left to carry meaning. Measured worst case
+       across the 15 session hues is 8.0:1 on white. */
+    --accent-l: 0.42;
+    --accent-c: 0.13;
+    --accent-l2: 0.42;
+    --accent-c2: 0.13;
+    --accent-fs: 60%;
+    --accent-fl: 26%;
+  }
+
+  body {
+    background: #fff;
   }
 
   .topbar,
@@ -1429,6 +1787,7 @@ span.c-text.is-warning {
   .progress-track,
   .skip-link,
   .slide-anchor,
+  .deck-keys,
   .backtotop {
     display: none !important;
   }
@@ -1445,10 +1804,22 @@ span.c-text.is-warning {
     page-break-inside: avoid;
     box-shadow: none;
     border-color: #cbd5e1;
+    /* Undo the scroll reveal: on paper there is nothing to scroll into. */
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .slide {
-    margin-bottom: 14px;
+    margin-bottom: var(--sp-4);
+  }
+
+  .slide-body::before,
+  .slide.is-current::after {
+    display: none;
+  }
+
+  .slide-head {
+    background: #fff;
   }
 
   /* Notes print when the lecturer has expanded them (Expand notes / n key). */
@@ -1468,6 +1839,11 @@ span.c-text.is-warning {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .btn:hover,
+  .deck-card:hover {
+    transform: none;
+  }
 }
 
 /* --- back to top ---------------------------------------------------------- */
@@ -1479,22 +1855,25 @@ span.c-text.is-warning {
   z-index: 45;
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--stroke-secondary);
   border-radius: 999px;
   background: var(--bg-elevated);
   color: var(--text-secondary);
-  font-size: 17px;
+  font-size: var(--step-2);
   cursor: pointer;
   box-shadow: var(--shadow-md);
   opacity: 0;
+  transform: translateY(8px);
   pointer-events: none;
-  transition: opacity 0.18s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .backtotop.is-visible {
   opacity: 1;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
@@ -1506,8 +1885,38 @@ span.c-text.is-warning {
 footer.deck-footer {
   max-width: var(--shell-max);
   margin: 0 auto;
-  padding: 0 20px 40px;
+  padding: 0 var(--sp-5) var(--sp-7);
   color: var(--text-tertiary);
-  font-size: 13px;
+  font-size: var(--step--1);
+}
+
+.deck-footer p {
+  margin: 0 0 var(--sp-1);
+}
+
+/* Keyboard hints in the footer, so the shortcuts deck.js binds are
+   discoverable without reading the source. Hidden on touch-first viewports
+   and on paper, where there is no key to press. */
+.deck-keys {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-2);
+  font-size: var(--step--2);
+}
+
+.deck-footer kbd {
+  display: inline-block;
+  min-width: 18px;
+  padding: 1px 5px;
+  border: 1px solid var(--stroke-secondary);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-family: var(--mono);
+  font-size: var(--step--2);
+  line-height: 1.5;
+  text-align: center;
 }
 

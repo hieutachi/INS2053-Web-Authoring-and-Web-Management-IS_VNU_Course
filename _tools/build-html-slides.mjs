@@ -188,9 +188,18 @@ ${slide.html}
     </section>`;
 }
 
-function shell({ title, subtitle, bodyClass, head, main, footer, extraHead = [] }) {
+function shell({
+  title,
+  subtitle,
+  bodyClass,
+  head,
+  main,
+  footer,
+  extraHead = [],
+  session = "",
+}) {
   return `<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light"${session ? ` data-session="${esc(session)}"` : ""}>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -294,14 +303,14 @@ ${slides.map((s) => hoistLinks(slideSection(s, total), extraHead)).join("\n")}
     title: `${title} — ${COURSE}`,
     subtitle: meta.tagline || `${meta.kicker} lecture slides`,
     bodyClass: "page-deck",
+    session: meta.session,
     extraHead,
     head: topbar(title, buttons),
     main,
     footer: `<button class="backtotop" id="backtotop" type="button" aria-label="Back to top">↑</button>
 <footer class="deck-footer">
-  <p>Generated from <code>${esc(
-    meta.source
-  )}</code>. Keys: <kbd>j</kbd>/<kbd>k</kbd> next &amp; previous slide · <kbd>/</kbd> filter · <kbd>n</kbd> notes · <kbd>t</kbd> theme.</p>
+  <p>Generated from <code>${esc(meta.source)}</code>.</p>
+  <p class="deck-keys">Keys: <kbd>j</kbd> <kbd>k</kbd> next &amp; previous slide · <kbd>g</kbd> <kbd>G</kbd> first &amp; last · <kbd>/</kbd> filter · <kbd>n</kbd> notes · <kbd>t</kbd> theme</p>
 </footer>`,
   });
 }
@@ -360,7 +369,9 @@ function indexPage(built) {
   const extras = built.filter((d) => !d.session);
 
   const card = (d) =>
-    `    <a class="deck-card" href="${esc(d.out)}">
+    `    <a class="deck-card"${
+      d.session ? ` data-session="${esc(d.session)}"` : ""
+    } href="${esc(d.out)}">
       <span class="deck-card-num">${esc(d.kicker)}</span>
       <h3>${esc(d.title)}</h3>
       ${d.tagline ? `<p>${esc(d.tagline)}</p>` : ""}
