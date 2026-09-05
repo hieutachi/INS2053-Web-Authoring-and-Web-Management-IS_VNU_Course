@@ -33,6 +33,9 @@ jobs:
       - name: Build and audit public student site
         run: npm run build:site && npm run qa:site
 
+      - name: Audit the homework self-check tool
+        run: npm run qa:grader
+
       - name: Audit teaching materials
         run: node _tools/audit-selfstudy.js
 

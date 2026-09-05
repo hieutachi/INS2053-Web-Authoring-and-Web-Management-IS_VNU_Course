@@ -709,6 +709,10 @@ img {
 .tile-ebook { --tile-accent: var(--accent-green); }
 .tile-slides { --tile-accent: #805ad5; }
 .tile-homework { --tile-accent: var(--accent-orange); }
+/* Teal, dark enough to read on the near-white tile in light mode and lightened
+   for the dark theme — the icon glyph is drawn in this colour. */
+.tile-grader { --tile-accent: #0f766e; }
+:root[data-theme="dark"] .tile-grader { --tile-accent: #4bd1c0; }
 
 .tile-icon {
   display: grid;

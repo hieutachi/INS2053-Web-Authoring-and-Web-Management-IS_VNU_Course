@@ -1,0 +1,49 @@
+{
+  "session": 7,
+  "note": "Số liệu mong đợi cho fixtures/session-07. qa-grader.mjs so sánh với sai số 0.005. Sửa file này chỉ khi rubric hoặc fixture đổi có chủ đích.",
+  "cases": {
+    "pass": {
+      "autoAwarded": 10,
+      "autoPoints": 10,
+      "autoPercent": 100,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "google-fonts": { "state": "graded", "awarded": 3, "scores": [1, 1, 1, 1] },
+        "font-application": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1] },
+        "typography-hierarchy": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1, 1] },
+        "link-styling": { "state": "graded", "awarded": 2, "scores": [1, 1, 1] },
+        "readability": { "state": "graded", "awarded": 1, "scores": [1, 1] }
+      }
+    },
+    "fail": {
+      "autoAwarded": 2.77,
+      "autoPoints": 10,
+      "autoPercent": 28,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "google-fonts": { "state": "graded", "awarded": 1.57, "scores": [0.3333, 0.3333, 1, 1] },
+        "font-application": { "state": "graded", "awarded": 0.8, "scores": [1, 0, 0, 0] },
+        "typography-hierarchy": { "state": "graded", "awarded": 0.4, "scores": [1, 0, 0, 0, 0] },
+        "link-styling": { "state": "graded", "awarded": 0, "scores": [0, 0, 0] },
+        "readability": { "state": "graded", "awarded": 0, "scores": [0, 0] }
+      }
+    },
+    "empty": {
+      "files": [],
+      "autoAwarded": 0,
+      "autoPoints": 0,
+      "autoPercent": null,
+      "blockedPoints": 10,
+      "manualPoints": 0,
+      "rows": {
+        "google-fonts": { "state": "blocked", "awarded": null },
+        "font-application": { "state": "blocked", "awarded": null },
+        "typography-hierarchy": { "state": "blocked", "awarded": null },
+        "link-styling": { "state": "blocked", "awarded": null },
+        "readability": { "state": "blocked", "awarded": null }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "session": 1,
+  "title": "Homework 1: My First Web Page",
+  "total": 10,
+  "expects": ["index.html", "css/", "images/"],
+  "note": "Nộp cả thư mục homework/session-01/ (index.html + css/ + images/).",
+  "rows": [
+    {
+      "id": "html-structure",
+      "criteria": "HTML structure",
+      "points": 3,
+      "tier": "auto",
+      "description": "Correct DOCTYPE, <html>, <head>, <body>, all tags closed and properly nested",
+      "checks": [
+        { "type": "hasDoctype", "file": "index.html", "weight": 1 },
+        { "type": "hasElement", "file": "index.html", "tag": "html", "weight": 1 },
+        { "type": "hasElement", "file": "index.html", "tag": "head", "weight": 1 },
+        { "type": "hasElement", "file": "index.html", "tag": "body", "weight": 1 },
+        { "type": "tagsBalanced", "file": "index.html", "weight": 2 },
+        { "type": "tagsNested", "file": "index.html", "weight": 2 }
+      ]
+    },
+    {
+      "id": "boilerplate",
+      "criteria": "Boilerplate completeness",
+      "points": 2,
+      "tier": "auto",
+      "description": "All five lines present, charset before title, lang set",
+      "checks": [
+        { "type": "hasElement", "file": "index.html", "tag": "html", "attr": { "lang": "*" } },
+        { "type": "hasElement", "file": "index.html", "tag": "meta", "attr": { "charset": "utf-8" } },
+        { "type": "hasElement", "file": "index.html", "tag": "meta", "attr": { "name": "viewport", "content": "~width=device-width" } },
+        { "type": "attrNotEmpty", "file": "index.html", "tag": "title", "attr": "#text" },
+        { "type": "elementOrder", "file": "index.html", "first": "meta[charset]", "then": "title" }
+      ]
+    },
+    {
+      "id": "content",
+      "criteria": "Content",
+      "points": 2,
+      "tier": "assist",
+      "description": "Own words: h1, h2, and three or more paragraphs",
+      "note": "Máy chỉ đếm được số lượng và độ dài. Việc bài viết có phải lời của chính sinh viên và có đúng chủ đề hay không thì người chấm phải đọc.",
+      "checks": [
+        { "type": "singleH1", "file": "index.html" },
+        { "type": "hasElement", "file": "index.html", "tag": "h2" },
+        { "type": "hasElement", "file": "index.html", "tag": "p", "minCount": 3 },
+        { "type": "minWords", "file": "index.html", "tag": "p", "minWords": 10, "minCount": 3 },
+        { "type": "noPlaceholderText", "file": "index.html" }
+      ]
+    },
+    {
+      "id": "folder-layout",
+      "criteria": "Folder layout",
+      "points": 2,
+      "tier": "auto",
+      "description": "css/ and images/ exist alongside index.html",
+      "checks": [
+        { "type": "pathsExist", "paths": ["index.html", "css/", "images/"], "weight": 2 },
+        { "type": "fileNaming" }
+      ]
+    },
+    {
+      "id": "cleanliness",
+      "criteria": "Code cleanliness",
+      "points": 1,
+      "tier": "assist",
+      "description": "Consistent indentation, at least one useful comment",
+      "note": "Máy thấy comment có tồn tại và có chữ; comment đó có giải thích được gì không thì người chấm quyết định.",
+      "checks": [
+        { "type": "indentConsistent", "file": "index.html", "tolerance": 0.9 },
+        { "type": "hasComment", "file": "index.html", "minCount": 1, "minWords": 1 }
+      ]
+    }
+  ]
+}

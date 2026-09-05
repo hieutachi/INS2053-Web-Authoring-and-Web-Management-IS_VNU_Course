@@ -1,0 +1,79 @@
+{
+  "session": 14,
+  "title": "Homework 14: CSS Dropdown Navigation",
+  "total": 10,
+  "expects": ["index.html", "about.html", "css/style.css"],
+  "note": "Nộp css/style.css và ít nhất 2 trang HTML đã cập nhật nav có dropdown.",
+  "rows": [
+    {
+      "id": "menu-structure",
+      "criteria": "Menu structure",
+      "points": 3,
+      "tier": "auto",
+      "description": "Dropdown HTML is properly structured",
+      "checks": [
+        { "type": "hasElement", "files": ["index.html", "about.html"], "tag": "nav" },
+        { "type": "elementInside", "files": ["index.html", "about.html"], "tag": "ul", "inside": "nav", "minCount": 2 },
+        { "type": "elementInside", "files": ["index.html", "about.html"], "tag": "ul", "inside": "li", "weight": 5 },
+        { "type": "elementInside", "files": ["index.html", "about.html"], "tag": "li", "inside": "ul|ol", "all": true },
+        { "type": "countInRange", "files": ["index.html", "about.html"], "tag": "a", "min": 8, "max": 60 }
+      ]
+    },
+    {
+      "id": "css-styling",
+      "criteria": "CSS styling",
+      "points": 3,
+      "tier": "assist",
+      "description": "Dropdown shows on hover, links styled",
+      "note": "Máy đọc được cặp rule quyết định: menu con display:none, rồi :hover cho nó hiện lại, cùng position relative/absolute và padding cho link. Menu có bung ra đúng chỗ, không bị tràn màn hình hay bị che thì phải mở trình duyệt hover thử.",
+      "checks": [
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": ".dropdown-content", "prop": "display", "value": "none", "weight": 2 },
+        { "type": "cssSelectorPattern", "file": "css/style.css", "pattern": ":hover\\s+\\.dropdown-content|\\.dropdown:hover\\s*>?\\s*ul", "label": "rule hiện menu con khi hover", "minDecls": 1, "weight": 3 },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": ".dropdown-content", "prop": "position", "value": "absolute", "weight": 2 },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": ".dropdown", "prop": "position", "value": "relative", "weight": 2 },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": ".dropdown-content", "props": ["background-color", "min-width"] },
+        { "type": "cssMinDecls", "file": "css/style.css", "selector": ".dropdown-content a", "minCount": 2 },
+        { "type": "cssPropSet", "file": "css/style.css", "props": ["transition"] }
+      ]
+    },
+    {
+      "id": "integration",
+      "criteria": "Integration",
+      "points": 2,
+      "tier": "assist",
+      "description": "Dropdown works within existing navigation",
+      "note": "Máy đối chiếu class trong HTML với rule trong CSS và kiểm tra link trong menu con có trỏ tới file/anchor thật. Việc dropdown có nằm gọn trong nav cũ mà không phá layout thì người chấm xem trình duyệt.",
+      "checks": [
+        { "type": "classStyled", "files": ["index.html", "about.html"], "classes": ["dropdown", "dropdown-content"], "weight": 3 },
+        { "type": "navConsistent", "pages": ["index.html", "about.html"], "weight": 2 },
+        { "type": "linksResolve", "files": ["index.html", "about.html"], "tags": ["a"], "attrs": ["href"], "weight": 2 },
+        { "type": "hasElement", "files": ["about.html"], "tag": "h2", "attr": { "id": "*" }, "minCount": 2 }
+      ]
+    },
+    {
+      "id": "back-to-top",
+      "criteria": "Back to top",
+      "points": 1,
+      "tier": "auto",
+      "description": "Button exists and links to top",
+      "checks": [
+        { "type": "classStyled", "files": ["index.html", "about.html"], "classes": ["back-to-top"], "weight": 2 },
+        { "type": "anchorToId", "files": ["index.html", "about.html"], "href": "#top", "weight": 2 },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": ".back-to-top", "prop": "position", "value": "fixed" }
+      ]
+    },
+    {
+      "id": "code-quality",
+      "criteria": "Code quality",
+      "points": 1,
+      "tier": "assist",
+      "description": "Clean, well-commented code",
+      "note": "Máy đếm comment và đo thụt lề. Comment có giải thích đúng ý đồ của đoạn code hay không thì người chấm đọc.",
+      "checks": [
+        { "type": "cssHasComment", "file": "css/style.css", "minCount": 4, "minWords": 2, "weight": 2 },
+        { "type": "hasComment", "files": ["index.html", "about.html"], "minCount": 1, "minWords": 1 },
+        { "type": "indentConsistent", "files": ["index.html", "about.html", "css/style.css"], "tolerance": 0.95, "weight": 2 }
+      ]
+    }
+  ]
+}

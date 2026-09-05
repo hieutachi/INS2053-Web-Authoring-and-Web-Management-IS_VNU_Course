@@ -1,0 +1,74 @@
+{
+  "session": 5,
+  "title": "Homework 5: Semantic Layout",
+  "total": 10,
+  "expects": ["index.html", "css/style.css"],
+  "note": "Nộp project/index.html và project/css/style.css.",
+  "rows": [
+    {
+      "id": "semantic-html",
+      "criteria": "Semantic HTML",
+      "points": 3,
+      "tier": "auto",
+      "description": "Uses header, nav, main, footer correctly",
+      "checks": [
+        { "type": "hasElement", "file": "index.html", "tag": "header" },
+        { "type": "hasElement", "file": "index.html", "tag": "nav" },
+        { "type": "hasElement", "file": "index.html", "tag": "main" },
+        { "type": "hasElement", "file": "index.html", "tag": "footer" },
+        { "type": "elementInside", "file": "index.html", "tag": "li", "inside": "nav", "minCount": 3, "weight": 2 },
+        { "type": "tagsBalanced", "file": "index.html", "weight": 2 }
+      ]
+    },
+    {
+      "id": "navigation",
+      "criteria": "Navigation",
+      "points": 2,
+      "tier": "assist",
+      "description": "Links work, displayed properly",
+      "note": "Máy kiểm tra được liên kết trỏ tới file có trong bài nộp. Trang có hiển thị hàng ngang đúng ý hay không thì người chấm mở trình duyệt xem.",
+      "checks": [
+        { "type": "countInRange", "file": "index.html", "tag": "a", "min": 3 },
+        { "type": "attrNotEmpty", "file": "index.html", "tag": "a", "attr": "href" },
+        { "type": "linksResolve", "file": "index.html", "tags": ["a"], "attrs": ["href"], "weight": 2 },
+        { "type": "relativePaths", "file": "index.html" }
+      ]
+    },
+    {
+      "id": "css-layout",
+      "criteria": "CSS layout",
+      "points": 3,
+      "tier": "auto",
+      "description": "Header, nav, main, footer all styled",
+      "checks": [
+        { "type": "cssLinked", "file": "index.html", "href": "css/style.css" },
+        { "type": "cssBalancedBraces", "file": "css/style.css" },
+        { "type": "cssMinDecls", "file": "css/style.css", "selectors": ["header", "nav", "main", "footer"], "minCount": 2, "weight": 3 },
+        { "type": "cssColorSet", "file": "css/style.css", "selector": "header", "prop": "background-color" },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "nav ul", "prop": "list-style", "value": ["none", "none none none"] },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "main", "props": ["max-width"] }
+      ]
+    },
+    {
+      "id": "visual-quality",
+      "criteria": "Visual quality",
+      "points": 1,
+      "tier": "manual",
+      "description": "Page looks like a real website layout",
+      "note": "Không có cách nào đo bằng máy được việc trang \"trông giống một website thật\". Người chấm mở file bằng trình duyệt và cho điểm."
+    },
+    {
+      "id": "code-quality",
+      "criteria": "Code quality",
+      "points": 1,
+      "tier": "assist",
+      "description": "Clean, well-indented HTML and CSS",
+      "note": "Máy đo được thụt lề có nhất quán và có comment hay không. Code có dễ đọc thật hay không thì người chấm đánh giá.",
+      "checks": [
+        { "type": "indentConsistent", "file": "index.html", "tolerance": 0.9 },
+        { "type": "hasComment", "file": "index.html", "minCount": 1, "minWords": 1 },
+        { "type": "cssHasComment", "file": "css/style.css", "minCount": 1 }
+      ]
+    }
+  ]
+}

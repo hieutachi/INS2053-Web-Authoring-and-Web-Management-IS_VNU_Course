@@ -24,7 +24,7 @@
 | `project/` | Capstone spec, milestones, rubric | Everyone |
 | `examples/` | A **complete working example** website | Students (reference only — do not copy) |
 | `references/` | Curated links (MDN, W3C, tools) | Everyone |
-| `_tools/` | Re-runnable, non-destructive QA and audit scripts, plus the HTML slide builder | Maintainers |
+| `_tools/` | Re-runnable QA/build scripts and the homework self-check source; see [`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md) | Maintainers |
 | `slides-html/` | The `canvases/` decks rendered as standalone HTML — open `slides-html/index.html`, no build or install needed | Lecturer, students |
 | `site/` | The **public student website** (generated): ebook + decks + homework only, organised week by week. Deployed to Vercel | Students (published) |
 
@@ -114,8 +114,9 @@ modified — edit the `.canvas.tsx` deck and rebuild.
 ## The public student website
 
 `site/` is a static website for students, generated from the course files. It carries
-**only three things**: the ebook, the lecture decks, and the homework sheets. It is
-organised the way the course is actually taught — one hub page per week:
+the ebook, lecture decks, homework sheets, and one QA-approved browser-only homework
+self-check artifact. It is organised the way the course is actually taught — one hub
+page per week:
 
 ```
 site/index.html                 the 15 weeks, in teaching order
@@ -123,13 +124,15 @@ site/sessions/session-NN.html   one hub per week: before / in / after class
 site/ebook/NN-slug.html         the chapter
 site/slides/buoi-NN.html        the deck (copied from slides-html/)
 site/homework/session-NN.html   the homework sheet
+site/cham-bai.html              the browser-only homework self-check tool
 ```
 
 Each session hub states the same three stages, so a student always knows where they
 are: **before class** read the chapter and work its `🧪 Try It Yourself` blocks, **in
 class** follow the deck, **after class** use the homework brief for practice and keep
-the result in their own Git repository. Online submission and grading are deliberately
-disabled until that workflow is complete.
+the result in their own Git repository. The local self-check reports only the mechanically
+verifiable rubric portion; formal online submission, grade recording, and final grading
+remain disabled. See [`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md).
 
 **What is deliberately not published.** The builder uses an allowlist, not a blocklist:
 
@@ -138,18 +141,20 @@ disabled until that workflow is complete.
 | `exercises/` | Each sheet carries a worked answer key (`## Self-Check`) — the lecturer hands these out in class |
 | `exams/` | Contains full sample solutions for both papers |
 | `project/rubric.md` | Marking rubric |
-| `canvases/`, `_tools/`, `_archive/` | Source and tooling, not student-facing |
+| `canvases/`, `_tools/`, `_archive/` | Source and tooling, not student-facing; only the vetted `_tools/grader/cham-bai.html` artifact is copied separately |
 
 `npm run qa:site` fails the build if any page links into an excluded folder, so this
 cannot regress by accident. It also rejects forms, uploads, request code and API
-endpoints while submission is disabled. Homework rubrics remain visible as reference
-criteria, but the site neither accepts work nor records grades.
+endpoints while submission is disabled. The sole named exception is
+`site/cham-bai.html`, which reads work locally (or read-only from GitHub), executes no
+student code, uploads nothing, and records no grade. Homework rubrics remain visible as
+reference criteria.
 
 Build and check:
 
 ```bash
 npm run build:site        # generate site/
-npm run qa:site           # 12 checks on the generated site
+npm run qa:site           # 13 checks on the generated site
 npm run clean:site        # delete site/
 ```
 

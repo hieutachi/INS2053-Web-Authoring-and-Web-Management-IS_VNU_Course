@@ -1,0 +1,52 @@
+{
+  "session": 11,
+  "note": "Số liệu mong đợi cho fixtures/session-11. qa-grader.mjs so sánh với sai số 0.005. Sửa file này chỉ khi rubric hoặc fixture đổi có chủ đích.",
+  "cases": {
+    "pass": {
+      "autoAwarded": 10,
+      "autoPoints": 10,
+      "autoPercent": 100,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "page-count": { "state": "graded", "awarded": 1, "scores": [1, 1] },
+        "content-quality": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1] },
+        "navigation": { "state": "graded", "awarded": 2, "scores": [1, 1, 1] },
+        "visual-polish": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1, 1] },
+        "favicon": { "state": "graded", "awarded": 1, "scores": [1, 1] },
+        "readme": { "state": "graded", "awarded": 2, "scores": [1] }
+      }
+    },
+    "fail": {
+      "autoAwarded": 4.41,
+      "autoPoints": 10,
+      "autoPercent": 44,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "page-count": { "state": "graded", "awarded": 0.83, "scores": [1, 0.5] },
+        "content-quality": { "state": "graded", "awarded": 0.53, "scores": [0.8, 0, 0, 0] },
+        "navigation": { "state": "graded", "awarded": 1.5, "scores": [0.55, 0.9286, 1] },
+        "visual-polish": { "state": "graded", "awarded": 0.97, "scores": [1, 0, 0.9, 0, 0] },
+        "favicon": { "state": "graded", "awarded": 0.25, "scores": [0, 1] },
+        "readme": { "state": "graded", "awarded": 0.33, "scores": [0.1667] }
+      }
+    },
+    "empty": {
+      "files": [],
+      "autoAwarded": 0,
+      "autoPoints": 0,
+      "autoPercent": null,
+      "blockedPoints": 10,
+      "manualPoints": 0,
+      "rows": {
+        "page-count": { "state": "blocked", "awarded": null },
+        "content-quality": { "state": "blocked", "awarded": null },
+        "navigation": { "state": "blocked", "awarded": null },
+        "visual-polish": { "state": "blocked", "awarded": null },
+        "favicon": { "state": "blocked", "awarded": null },
+        "readme": { "state": "blocked", "awarded": null }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "session": 3,
+  "title": "Homework 3: Building the About Page",
+  "total": 10,
+  "expects": ["about.html", "images/"],
+  "note": "Nộp project/about.html cùng thư mục images/.",
+  "rows": [
+    {
+      "id": "heading-hierarchy",
+      "criteria": "Heading hierarchy",
+      "points": 2,
+      "tier": "auto",
+      "description": "Uses h1, h2, h3 correctly",
+      "checks": [
+        { "type": "singleH1", "file": "about.html" },
+        { "type": "headingOrder", "file": "about.html", "require": ["h1", "h2", "h3"], "weight": 2 }
+      ]
+    },
+    {
+      "id": "paragraphs",
+      "criteria": "Paragraphs",
+      "points": 2,
+      "tier": "assist",
+      "description": "Has 3+ well-written paragraphs",
+      "note": "Máy đếm được số đoạn và độ dài mỗi đoạn. \"Viết tốt\" — đúng chủ đề, đúng ngữ pháp, là lời của chính sinh viên — người chấm phải đọc.",
+      "checks": [
+        { "type": "hasElement", "file": "about.html", "tag": "p", "minCount": 3 },
+        { "type": "minWords", "file": "about.html", "tag": "p", "minWords": 15, "minCount": 3 },
+        { "type": "noPlaceholderText", "file": "about.html" }
+      ]
+    },
+    {
+      "id": "lists",
+      "criteria": "Lists",
+      "points": 2,
+      "tier": "auto",
+      "description": "Has both ordered and unordered lists",
+      "checks": [
+        { "type": "hasElement", "file": "about.html", "tag": "ul" },
+        { "type": "hasElement", "file": "about.html", "tag": "ol" },
+        { "type": "elementInside", "file": "about.html", "tag": "li", "inside": "ul|ol", "all": true },
+        { "type": "countInRange", "file": "about.html", "tag": "li", "min": 8 }
+      ]
+    },
+    {
+      "id": "images-alt",
+      "criteria": "Images + alt text",
+      "points": 3,
+      "tier": "assist",
+      "description": "Images load, alt text is descriptive",
+      "note": "Máy kiểm tra được alt có tồn tại, không rỗng, không phải chữ chung chung như \"image\", và đường dẫn ảnh có tồn tại trong bài nộp. Alt có mô tả đúng nội dung ảnh hay không thì người chấm phải xem ảnh.",
+      "checks": [
+        { "type": "countInRange", "file": "about.html", "tag": "img", "min": 2 },
+        { "type": "attrPresent", "file": "about.html", "tag": "img", "attr": "alt" },
+        { "type": "imgHasAlt", "file": "about.html", "minWords": 2, "weight": 2 },
+        { "type": "linksResolve", "file": "about.html", "tags": ["img"], "attrs": ["src"] },
+        { "type": "relativePaths", "file": "about.html" }
+      ]
+    },
+    {
+      "id": "photo-gallery",
+      "criteria": "Photo gallery",
+      "points": 1,
+      "tier": "assist",
+      "description": "Has gallery section with captions",
+      "note": "Máy tìm được chữ \"Photo Gallery\" trong file và đếm tổng số ảnh. Việc 3 ảnh đó có nằm trong khu gallery và mỗi ảnh có caption riêng bên dưới hay không thì người chấm phải xem mắt.",
+      "checks": [
+        {
+          "type": "fileSections",
+          "file": "about.html",
+          "sections": [
+            { "label": "mục Photo Gallery", "any": ["Photo Gallery", "Thư viện ảnh", "Thu vien anh", "Gallery"] }
+          ]
+        },
+        { "type": "countInRange", "file": "about.html", "tag": "img", "min": 5 }
+      ]
+    }
+  ]
+}

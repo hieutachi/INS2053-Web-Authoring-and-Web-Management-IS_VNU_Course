@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Club — Lien he</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header, nav, footer giong nhau tren ca ba trang -->
+  <header>
+    <h1>Lien he Coding Club</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Trang chu</a></li>
+      <li><a href="about.html">Gioi thieu</a></li>
+      <li><a href="contact.html">Lien he</a></li>
+      <li><a href="activities.html">Hoat dong</a></li>
+      <li><a href="media.html">Media</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Cach lien lac voi chung toi</h2>
+    <p>Ban co the nhan tin cho ban dieu phoi bat cu luc nao trong tuan hoc.</p>
+    <ul>
+      <li>Email: coding-club@example.edu</li>
+      <li>Dien thoai: 0900 000 000</li>
+      <li>Fanpage: example.edu/coding-club</li>
+    </ul>
+    <p>Cau lac bo hop tai phong 305, nha E3, vao chieu thu Nam hang tuan.</p>
+    <img src="images/map.svg" alt="So do duong di toi phong 305 nha E3">
+
+    <!-- Form lien he -->
+    <h2>Gui tin nhan cho ban dieu phoi</h2>
+    <form action="https://example.edu/lien-he" method="post">
+      <div class="form-group">
+        <label for="fullname">Ho va ten:</label>
+        <input type="text" id="fullname" name="fullname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">So dien thoai:</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+
+      <div class="form-group">
+        <label for="meeting-date">Ngay muon gap:</label>
+        <input type="date" id="meeting-date" name="meeting-date">
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Chu de:</label>
+        <select id="subject" name="subject">
+          <option value="">-- Chon chu de --</option>
+          <option value="membership">Dang ky thanh vien</option>
+          <option value="event">Thong tin su kien</option>
+          <option value="feedback">Gop y</option>
+          <option value="other">Khac</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Noi dung:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="newsletter">Nhan ban tin hang thang</label>
+        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+      </div>
+
+      <button type="submit">Gui tin nhan</button>
+      <button type="reset">Xoa het</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Coding Club</p>
+  </footer>
+</body>
+</html>

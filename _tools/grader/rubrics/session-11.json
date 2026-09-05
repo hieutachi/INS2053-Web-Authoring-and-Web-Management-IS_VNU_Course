@@ -1,0 +1,97 @@
+{
+  "session": 11,
+  "title": "Homework 11: Polish & Documentation",
+  "total": 10,
+  "expects": ["index.html", "about.html", "contact.html", "activities.html", "media.html", "css/style.css", "README.md"],
+  "note": "Nộp cả năm trang project/, css/style.css, README.md và ảnh favicon.",
+  "rows": [
+    {
+      "id": "page-count",
+      "criteria": "Page count",
+      "points": 1,
+      "tier": "auto",
+      "description": "Has 3-5 pages",
+      "checks": [
+        { "type": "pathsExist", "paths": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "weight": 2 },
+        { "type": "pathsExist", "paths": ["css/style.css", "images/"] }
+      ]
+    },
+    {
+      "id": "content-quality",
+      "criteria": "Content quality",
+      "points": 2,
+      "tier": "assist",
+      "description": "Well-written, no errors, good images",
+      "note": "Máy phát hiện được chữ mẫu còn sót, ảnh thiếu alt và ảnh trỏ sai đường dẫn. Chính tả, ngữ pháp và nội dung có hay hay không thì người chấm phải đọc — đây là giới hạn cứng của công cụ.",
+      "checks": [
+        { "type": "noPlaceholderText", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "weight": 2 },
+        { "type": "imgHasAlt", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "minWords": 2, "weight": 2 },
+        { "type": "linksResolve", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tags": ["img"], "attrs": ["src"] },
+        { "type": "minWords", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tag": "p", "minWords": 12, "minCount": 5 }
+      ]
+    },
+    {
+      "id": "navigation",
+      "criteria": "Navigation",
+      "points": 2,
+      "tier": "assist",
+      "description": "All links work across all pages",
+      "note": "Máy đối chiếu được href với các file đã nộp. Liên kết ra internet thì grader offline không thử được, người chấm phải click từng cái.",
+      "checks": [
+        { "type": "navConsistent", "pages": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "weight": 3 },
+        { "type": "linksResolve", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tags": ["a"], "attrs": ["href"], "weight": 2 },
+        { "type": "relativePaths", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"] }
+      ]
+    },
+    {
+      "id": "visual-polish",
+      "criteria": "Visual polish",
+      "points": 2,
+      "tier": "assist",
+      "description": "Consistent, professional appearance",
+      "note": "Máy thấy được cả năm trang đều nhúng cùng một stylesheet, CSS không lỗi ngoặc và không còn style nội tuyến. \"Trông chuyên nghiệp\" thì người chấm mở trình duyệt đánh giá.",
+      "checks": [
+        { "type": "cssLinked", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "href": "css/style.css", "weight": 2 },
+        { "type": "cssBalancedBraces", "file": "css/style.css" },
+        { "type": "noInlineStyle", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "maxCount": 0 },
+        { "type": "cssHoverExists", "file": "css/style.css" },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "footer", "props": ["padding"] }
+      ]
+    },
+    {
+      "id": "favicon",
+      "criteria": "Favicon",
+      "points": 1,
+      "tier": "assist",
+      "description": "Favicon shows in browser tab",
+      "note": "Máy thấy thẻ <link rel=\"icon\"> trên từng trang và kiểm tra file ảnh có tồn tại. Biểu tượng có hiện trên tab trình duyệt hay không thì grader không mở được trình duyệt để xem.",
+      "checks": [
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tag": "link", "attr": { "rel": "~icon" }, "weight": 3 },
+        { "type": "linksResolve", "files": ["index.html"], "tags": ["link"], "attrs": ["href"] }
+      ]
+    },
+    {
+      "id": "readme",
+      "criteria": "README",
+      "points": 2,
+      "tier": "assist",
+      "description": "Has all required sections",
+      "note": "Máy tìm được các mục bắt buộc trong README. Nội dung có đúng và có ích hay không thì người chấm phải đọc.",
+      "checks": [
+        {
+          "type": "fileSections",
+          "file": "README.md",
+          "minWords": 50,
+          "weight": 3,
+          "sections": [
+            { "label": "Tiêu đề dự án", "any": ["# "] },
+            { "label": "Danh sách trang", "any": ["## pages", "## trang", "## các trang", "index.html"] },
+            { "label": "Công nghệ dùng", "any": ["## technolog", "## công nghệ", "html5", "css3"] },
+            { "label": "Cách mở site", "any": ["## how to run", "## cách mở", "## chạy", "trình duyệt", "browser"] },
+            { "label": "Tác giả", "any": ["## author", "## tác giả", "student id", "mssv"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "session": 12,
+  "title": "Homework 12: Validation & Clean Code",
+  "total": 10,
+  "expects": ["index.html", "about.html", "contact.html", "activities.html", "media.html", "css/style.css"],
+  "note": "Nộp cả năm trang project/ cùng css/style.css.",
+  "rows": [
+    {
+      "id": "html-validation",
+      "criteria": "HTML validation",
+      "points": 3,
+      "tier": "assist",
+      "description": "Zero errors on W3C validator",
+      "note": "Grader chạy offline nên KHÔNG gọi được validator.w3.org. Máy chỉ kiểm tra được các lỗi thường gặp nhất mà bài học liệt kê: thẻ chưa đóng, lồng sai, thiếu lang, thiếu alt, id trùng, thiếu DOCTYPE. Kết quả \"0 lỗi W3C\" thật thì người chấm phải xem ảnh chụp màn hình validator của sinh viên.",
+      "checks": [
+        { "type": "hasDoctype", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"] },
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tag": "html", "attr": { "lang": "*" } },
+        { "type": "tagsBalanced", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "weight": 2 },
+        { "type": "tagsNested", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "weight": 2 },
+        { "type": "attrPresent", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tag": "img", "attr": "alt" },
+        { "type": "uniqueIds", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"] },
+        { "type": "singleH1", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"] }
+      ]
+    },
+    {
+      "id": "css-validation",
+      "criteria": "CSS validation",
+      "points": 3,
+      "tier": "assist",
+      "description": "Zero errors on W3C validator",
+      "note": "Cũng không gọi được jigsaw.w3.org. Máy chỉ thấy ngoặc có cân bằng và các khai báo có đúng dạng `prop: value;`. Tên thuộc tính viết sai hay giá trị không hợp lệ thì máy không có danh sách chuẩn để đối chiếu — người chấm cần ảnh chụp validator.",
+      "checks": [
+        { "type": "cssBalancedBraces", "file": "css/style.css", "weight": 3 },
+        { "type": "cssRuleExists", "file": "css/style.css", "selector": ["body", "header", "nav", "main", "footer"], "loose": true, "weight": 2 },
+        { "type": "noInlineStyle", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "maxCount": 0, "weight": 2 }
+      ]
+    },
+    {
+      "id": "html-formatting",
+      "criteria": "HTML formatting",
+      "points": 2,
+      "tier": "assist",
+      "description": "Proper indentation, comments, structure",
+      "note": "Máy đo được thụt lề nhất quán và số comment có nội dung. Comment có giải thích đúng chỗ hay không thì người chấm đọc.",
+      "checks": [
+        { "type": "indentConsistent", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tolerance": 0.95, "weight": 2 },
+        { "type": "hasComment", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "minCount": 2, "minWords": 1, "weight": 2 },
+        { "type": "elementOrder", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "first": "header", "then": "footer" }
+      ]
+    },
+    {
+      "id": "css-formatting",
+      "criteria": "CSS formatting",
+      "points": 2,
+      "tier": "assist",
+      "description": "Clean formatting with comments",
+      "note": "Máy đếm được comment CSS và kiểm tra thụt lề. Việc nhóm các rule liên quan lại với nhau thì người chấm nhìn mới biết.",
+      "checks": [
+        { "type": "cssHasComment", "file": "css/style.css", "minCount": 4, "minWords": 1, "weight": 2 },
+        { "type": "indentConsistent", "file": "css/style.css", "tolerance": 0.95, "weight": 2 }
+      ]
+    }
+  ]
+}

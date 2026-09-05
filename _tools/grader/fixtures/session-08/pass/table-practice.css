@@ -1,0 +1,28 @@
+/* Bang chiem het be rong, vien gop lai thanh mot duong */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Vien va khoang dem cho moi o */
+th, td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Hang tieu de noi bat */
+th {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Ke soc cho de doc theo hang */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+caption {
+  font-weight: 700;
+  padding-bottom: 8px;
+}

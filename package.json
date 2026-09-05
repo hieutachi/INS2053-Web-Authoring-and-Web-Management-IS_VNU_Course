@@ -8,9 +8,12 @@
     "qa:slides": "node _tools/qa-html-slides.mjs",
     "build:slides": "node _tools/build-html-slides.mjs",
     "clean:slides": "node -e \"require('fs').rmSync('slides-html',{recursive:true,force:true})\"",
-    "build:site": "node _tools/build-site.mjs",
+    "build:site": "node _tools/build-grader.mjs && node _tools/build-site.mjs",
     "qa:site": "node _tools/qa-site.mjs",
-    "clean:site": "node -e \"require('fs').rmSync('site',{recursive:true,force:true})\""
+    "clean:site": "node -e \"require('fs').rmSync('site',{recursive:true,force:true})\"",
+    "build:grader": "node _tools/build-grader.mjs",
+    "qa:grader": "node _tools/build-grader.mjs && node _tools/qa-grader.mjs",
+    "clean:grader": "node -e \"require('fs').rmSync('_tools/grader/cham-bai.html',{force:true})\""
   },
   "devDependencies": {
     "esbuild": "0.25.10",

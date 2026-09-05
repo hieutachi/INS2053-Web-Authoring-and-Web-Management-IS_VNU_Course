@@ -1,0 +1,5 @@
+{
+  "//": "Scoped ESM marker. The root package.json has no \"type\" field, so Node reads *.js as CommonJS. The grader sources must be plain ESM because the same files are (a) imported by _tools/qa-grader.mjs and (b) concatenated into cham-bai.html by _tools/build-grader.mjs. This file changes nothing for npm: npm only reads the root manifest, and no dependency is added anywhere.",
+  "type": "module",
+  "private": true
+}

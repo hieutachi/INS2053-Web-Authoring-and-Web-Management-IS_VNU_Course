@@ -1,0 +1,89 @@
+{
+  "session": 15,
+  "title": "Homework 15: Making Your Site Responsive",
+  "total": 10,
+  "expects": ["index.html", "about.html", "activities.html", "media.html", "contact.html", "css/style.css"],
+  "note": "Nộp cả 5 trang HTML (có thẻ viewport) và css/style.css (media query + ảnh co giãn).",
+  "rows": [
+    {
+      "id": "viewport-meta",
+      "criteria": "Viewport meta tag",
+      "points": 2,
+      "tier": "auto",
+      "description": "Added to all HTML pages",
+      "checks": [
+        {
+          "type": "hasElement",
+          "files": ["index.html", "about.html", "activities.html", "media.html", "contact.html"],
+          "tag": "meta",
+          "attr": { "name": "viewport", "content": "~width=device-width" },
+          "weight": 4
+        },
+        {
+          "type": "hasElement",
+          "files": ["index.html", "about.html", "activities.html", "media.html", "contact.html"],
+          "tag": "meta",
+          "attr": { "name": "viewport", "content": "~initial-scale=1" },
+          "weight": 2
+        },
+        {
+          "type": "elementInside",
+          "files": ["index.html", "about.html", "activities.html", "media.html", "contact.html"],
+          "tag": "meta",
+          "inside": "head",
+          "all": true
+        }
+      ]
+    },
+    {
+      "id": "media-query",
+      "criteria": "Media query",
+      "points": 3,
+      "tier": "auto",
+      "description": "At least one media query with 5+ element changes",
+      "checks": [
+        { "type": "cssMediaQuery", "file": "css/style.css", "maxWidth": 768, "minDecls": 5, "weight": 5 },
+        { "type": "cssBalancedBraces", "file": "css/style.css", "weight": 2 },
+        { "type": "cssHasComment", "file": "css/style.css", "minCount": 5, "minWords": 2 }
+      ]
+    },
+    {
+      "id": "responsive-images",
+      "criteria": "Responsive images",
+      "points": 2,
+      "tier": "auto",
+      "description": "Images scale properly on all screen sizes",
+      "checks": [
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "img", "prop": "max-width", "value": "100%", "weight": 3 },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "img", "prop": "height", "value": "auto", "weight": 2 },
+        {
+          "type": "noInlineStyle",
+          "files": ["index.html", "about.html", "activities.html", "media.html", "contact.html"],
+          "maxCount": 0
+        }
+      ]
+    },
+    {
+      "id": "mobile-layout",
+      "criteria": "Mobile layout",
+      "points": 2,
+      "tier": "assist",
+      "description": "Site looks good on mobile screen (768px)",
+      "note": "Máy chỉ đọc được rằng media query có đủ nhiều khai báo và có xử lý bảng, form, nav — những chỗ hay tràn ngang nhất. Bố cục ở 768px có thật sự dễ đọc, chữ có bị chồng hay ảnh có bị méo thì phải mở DevTools xem, grader không render trang.",
+      "checks": [
+        { "type": "cssMediaQuery", "file": "css/style.css", "maxWidth": 768, "minDecls": 10, "weight": 3 },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "table", "prop": "overflow-x", "value": "auto", "weight": 2 },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "form input", "prop": "width", "value": "100%", "weight": 2 },
+        { "type": "cssMinDecls", "file": "css/style.css", "selector": "nav ul", "minCount": 3 }
+      ]
+    },
+    {
+      "id": "testing",
+      "criteria": "Testing",
+      "points": 1,
+      "tier": "manual",
+      "description": "Site tested and works at multiple widths",
+      "note": "Bài yêu cầu tự mở DevTools và thử ở 320px, 768px, 1024px rồi sửa lỗi bố cục. Không có dấu vết nào trong code chứng minh việc đó đã làm, nên grader không chấm dòng này; người chấm hỏi sinh viên hoặc xem ảnh chụp DevTools kèm bài nộp."
+    }
+  ]
+}

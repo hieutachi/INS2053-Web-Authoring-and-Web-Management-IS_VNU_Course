@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  Content-Security-Policy for a file:// page.
+
+  default-src 'none' is the point of the whole file: the grader must not be able
+  to reach anything except the two GitHub hosts, and only from the GitHub tab.
+
+  'unsafe-inline' appears for script-src and style-src because the CSS and JS are
+  INLINED into this single file on purpose — there is no origin for a hash or a
+  nonce to be checked against when the page is opened by double-click, and
+  file:// pages cannot load a sibling .js with default-src 'none'. Inline is the
+  only shape a self-contained offline tool can take.
+
+  Verified symptom of a stricter policy: with script-src 'self' the page opens
+  blank from file:// because the inline <script> is refused and no error is shown
+  to the student. A blank page teaches nothing, so 'unsafe-inline' stays.
+
+  img-src allows data: and blob: only, for the favicon and nothing else.
+  No student code is ever executed: connect-src cannot reach anything the
+  student controls, and the submission is only ever tokenized as text.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src https://api.github.com https://raw.githubusercontent.com; form-action 'none'; base-uri 'none'">
+<title>INS2053 — Chấm bài tập về nhà</title>
+<style>
+/*GRADER_CSS*/
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="topbar noprint">
+    <div>
+      <h1>INS2053 — Chấm bài tập về nhà</h1>
+      <p class="sub">Công cụ chạy hoàn toàn trên máy bạn. Bài làm không được gửi đi đâu.</p>
+    </div>
+    <div class="spacer"></div>
+    <div class="field">
+      <label for="session">Buổi</label>
+      <select id="session"></select>
+    </div>
+    <button type="button" id="theme" class="noprint">Đổi nền sáng / tối</button>
+  </div>
+
+  <div class="panel noprint">
+    <h2>1. Thông tin của bạn</h2>
+    <div class="row">
+      <div class="field grow">
+        <label for="stu-name">Họ và tên</label>
+        <input type="text" id="stu-name" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field grow">
+        <label for="stu-id">MSSV</label>
+        <input type="text" id="stu-id" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field grow">
+        <label for="stu-class">Lớp</label>
+        <input type="text" id="stu-class" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+    <p class="hint">Ba ô này chỉ để in lên thẻ kết quả cho ảnh chụp. Công cụ không tự đoán và không lấy từ đâu khác.</p>
+  </div>
+
+  <div class="panel noprint">
+    <h2>2. Nộp bài</h2>
+
+    <div class="tabs" role="tablist" aria-label="Cách nộp bài">
+      <button type="button" class="tab" id="tab-paste" role="tab"
+              aria-selected="true" aria-controls="panel-paste">Dán code</button>
+      <button type="button" class="tab" id="tab-github" role="tab"
+              aria-selected="false" aria-controls="panel-github">Dán link GitHub</button>
+    </div>
+
+    <div class="tabpanel" id="panel-paste" role="tabpanel" aria-labelledby="tab-paste">
+      <p class="hint">Không cần mạng. Dán từng file kèm đúng đường dẫn như trong repo, ví dụ <code>index.html</code>, <code>css/style.css</code>.</p>
+      <div id="files"></div>
+      <div class="row">
+        <button type="button" id="add-html">+ Thêm file HTML</button>
+        <button type="button" id="add-css">+ Thêm file CSS</button>
+        <button type="button" id="add-asset">+ Thêm ảnh (chỉ đường dẫn)</button>
+      </div>
+      <p class="hint">Ảnh và video không dán được thành chữ. Với những file đó chỉ cần ghi đúng đường dẫn — ví dụ <code>images/hero.png</code> — và để trống ô nội dung; rubric chỉ hỏi file có tồn tại hay không. Chọn cả thư mục ở dưới thì công cụ tự làm việc này.</p>
+
+      <p class="hint">Hoặc chọn cả thư mục bài làm — file được đọc ngay tại máy, không tải lên mạng:</p>
+      <div class="dropzone" id="dropzone">
+        <label for="folder">Kéo thả thư mục vào đây, hoặc</label>
+        <input type="file" id="folder" multiple webkitdirectory directory>
+      </div>
+      <p class="hint" id="folder-info"></p>
+    </div>
+
+    <div class="tabpanel" id="panel-github" role="tabpanel" aria-labelledby="tab-github" hidden>
+      <p class="hint">Cần mạng. Nhận cả ba dạng: <code>https://github.com/user/repo</code>, <code>.../tree/&lt;branch&gt;/&lt;đường/dẫn&gt;</code>, hoặc link raw.</p>
+      <div class="row">
+        <div class="field grow">
+          <label for="gh-url">Link GitHub</label>
+          <input type="text" id="gh-url" autocomplete="off" spellcheck="false"
+                 placeholder="https://github.com/tenban/ins2053-homework/tree/main/project">
+        </div>
+        <button type="button" id="gh-load">Tải bài từ GitHub</button>
+      </div>
+      <p class="hint">Đọc nội dung <code>.html</code>, <code>.htm</code>, <code>.css</code>, <code>.md</code>; file khác chỉ giữ đường dẫn asset. Tối đa 40 file, mỗi file text 512 KB, tổng nội dung text 5 MB. Bài được chốt theo commit SHA và SHA đó in lên thẻ kết quả.</p>
+      <p class="hint" id="gh-info"></p>
+    </div>
+  </div>
+
+  <div class="panel noprint">
+    <h2>3. Chấm</h2>
+    <div class="row">
+      <button type="button" id="grade" class="primary">Chấm bài</button>
+      <button type="button" id="print" disabled>In / Lưu PDF</button>
+      <button type="button" id="json" disabled>Tải JSON</button>
+    </div>
+  </div>
+
+  <div id="messages" aria-live="polite"></div>
+  <div id="result"></div>
+
+</div>
+<script>
+/*GRADER_JS*/
+</script>
+</body>
+</html>

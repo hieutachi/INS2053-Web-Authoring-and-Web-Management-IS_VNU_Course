@@ -1,0 +1,74 @@
+{
+  "session": 8,
+  "title": "Homework 8: Midterm Review & Tables",
+  "total": 10,
+  "expects": ["midterm-review.md", "table-practice.html", "table-practice.css"],
+  "note": "Nộp ba file trong homework/session-08/. Dòng \"Project links verified\" cần thêm ba trang project nếu muốn máy kiểm tra.",
+  "rows": [
+    {
+      "id": "midterm-reflection",
+      "criteria": "Midterm reflection",
+      "points": 3,
+      "tier": "assist",
+      "description": "Three mistakes identified with correct answers and explanations",
+      "note": "Máy chỉ đếm được file có đủ ba mục và có các nhãn \"Correct answer\"/\"Why\" hay không. Nội dung tự nhìn lại có thật và có ích hay không thì người chấm phải đọc.",
+      "checks": [
+        {
+          "type": "fileSections",
+          "file": "midterm-review.md",
+          "minWords": 80,
+          "sections": [
+            { "label": "Mistake 1", "any": ["mistake 1", "lỗi 1", "sai 1", "## 1"] },
+            { "label": "Mistake 2", "any": ["mistake 2", "lỗi 2", "sai 2", "## 2"] },
+            { "label": "Mistake 3", "any": ["mistake 3", "lỗi 3", "sai 3", "## 3"] },
+            { "label": "Đáp án đúng", "any": ["correct answer", "đáp án đúng", "câu trả lời đúng"] },
+            { "label": "Giải thích", "any": ["why", "vì sao", "tại sao", "lý do"] },
+            { "label": "Chỗ ôn lại", "any": ["where to review", "ebook/", "ôn lại", "chương"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "table-structure",
+      "criteria": "Table structure",
+      "points": 3,
+      "tier": "auto",
+      "description": "Uses caption, thead, tbody, th, td correctly",
+      "checks": [
+        {
+          "type": "tableStructure",
+          "file": "table-practice.html",
+          "require": ["caption", "thead", "tbody", "th", "td"],
+          "minCols": 4,
+          "minRows": 4,
+          "weight": 4
+        },
+        { "type": "hasDoctype", "file": "table-practice.html" },
+        { "type": "tagsBalanced", "file": "table-practice.html" },
+        { "type": "tagsNested", "file": "table-practice.html" }
+      ]
+    },
+    {
+      "id": "table-styling",
+      "criteria": "Table styling",
+      "points": 2,
+      "tier": "auto",
+      "description": "Borders, header colors, zebra striping applied",
+      "checks": [
+        { "type": "cssLinked", "file": "table-practice.html", "href": "table-practice.css" },
+        { "type": "cssDeclEquals", "file": "table-practice.css", "selector": "table", "prop": "border-collapse", "value": "collapse" },
+        { "type": "cssPropSet", "file": "table-practice.css", "selector": "td", "props": ["border", "padding"] },
+        { "type": "cssColorSet", "file": "table-practice.css", "selector": "th", "prop": "background-color" },
+        { "type": "cssSelectorPattern", "file": "table-practice.css", "pattern": "nth-child", "label": "kẻ sọc bảng", "minDecls": 1 }
+      ]
+    },
+    {
+      "id": "project-links",
+      "criteria": "Project links verified",
+      "points": 2,
+      "tier": "manual",
+      "description": "Every nav link on every project page clicks through correctly",
+      "note": "Yêu cầu của bài là \"mở từng trang và click từng liên kết\". Grader không mở được trình duyệt nên không thể xác nhận việc đó; nếu sinh viên nộp kèm ba trang project thì dòng navigation-links của Session 6 mới đo được phần đường dẫn."
+    }
+  ]
+}

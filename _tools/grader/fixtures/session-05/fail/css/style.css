@@ -1,0 +1,11 @@
+body {
+  font-family: Arial;
+}
+
+.header {
+  background: blue;
+}
+
+.nav a {
+  color: white;
+}

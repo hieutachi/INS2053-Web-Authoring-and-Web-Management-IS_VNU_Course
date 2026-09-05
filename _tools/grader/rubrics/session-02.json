@@ -1,0 +1,82 @@
+{
+  "session": 2,
+  "title": "Homework 2: Setting Up Your Project Folder",
+  "total": 10,
+  "expects": ["index.html", "about.html", "contact.html", "css/", "images/"],
+  "note": "Nộp cả thư mục project/ (5 file trang + css/ + images/).",
+  "rows": [
+    {
+      "id": "folder-structure",
+      "criteria": "Folder structure",
+      "points": 3,
+      "tier": "auto",
+      "description": "All folders exist with correct naming",
+      "checks": [
+        { "type": "pathsExist", "paths": ["index.html", "about.html", "contact.html", "css/", "images/"], "weight": 3 },
+        { "type": "fileNaming" }
+      ]
+    },
+    {
+      "id": "index-page",
+      "criteria": "index.html",
+      "points": 2,
+      "tier": "auto",
+      "description": "Has club name, welcome text, list, images",
+      "checks": [
+        { "type": "hasDoctype", "file": "index.html" },
+        { "type": "singleH1", "file": "index.html" },
+        { "type": "minWords", "file": "index.html", "tag": "p", "minWords": 8, "minCount": 1 },
+        { "type": "hasElement", "file": "index.html", "tag": "li", "minCount": 3 },
+        { "type": "elementInside", "file": "index.html", "tag": "li", "inside": "ul", "all": true }
+      ]
+    },
+    {
+      "id": "about-page",
+      "criteria": "about.html",
+      "points": 1,
+      "tier": "auto",
+      "description": "Has heading and description paragraph",
+      "checks": [
+        { "type": "hasDoctype", "file": "about.html" },
+        { "type": "singleH1", "file": "about.html" },
+        { "type": "minWords", "file": "about.html", "tag": "p", "minWords": 15, "minCount": 1 }
+      ]
+    },
+    {
+      "id": "contact-page",
+      "criteria": "contact.html",
+      "points": 1,
+      "tier": "auto",
+      "description": "Has heading and contact information",
+      "checks": [
+        { "type": "hasDoctype", "file": "contact.html" },
+        { "type": "singleH1", "file": "contact.html" },
+        { "type": "minWords", "file": "contact.html", "tag": "p", "minWords": 3, "minCount": 1 }
+      ]
+    },
+    {
+      "id": "image-handling",
+      "criteria": "Image handling",
+      "points": 2,
+      "tier": "auto",
+      "description": "2+ images with alt text, correct relative paths",
+      "checks": [
+        { "type": "countInRange", "file": "index.html", "tag": "img", "min": 2 },
+        { "type": "attrPresent", "file": "index.html", "tag": "img", "attr": "alt" },
+        { "type": "imgHasAlt", "file": "index.html", "minWords": 2 },
+        { "type": "relativePaths", "file": "index.html" },
+        { "type": "linksResolve", "file": "index.html", "tags": ["img"], "attrs": ["src"] }
+      ]
+    },
+    {
+      "id": "file-naming",
+      "criteria": "File naming",
+      "points": 1,
+      "tier": "auto",
+      "description": "All lowercase, no spaces, correct conventions",
+      "checks": [
+        { "type": "fileNaming" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "session": 7,
+  "title": "Homework 7: Google Fonts & Typography",
+  "total": 10,
+  "expects": ["index.html", "about.html", "contact.html", "css/style.css"],
+  "note": "Nộp cả ba trang project/ cùng css/style.css.",
+  "rows": [
+    {
+      "id": "google-fonts",
+      "criteria": "Google Fonts integration",
+      "points": 3,
+      "tier": "assist",
+      "description": "Fonts load on all 3 pages",
+      "note": "Máy chỉ thấy thẻ <link> trỏ tới fonts.googleapis.com có nằm trong <head> của cả ba trang hay không. Grader chạy offline nên KHÔNG thể biết font có tải về được thật không, tên font có tồn tại không. Nếu sinh viên tải font về dùng @font-face (đúng yêu cầu offline của capstone) thì các dòng này sẽ báo 0 — người chấm phải xem lại và cho điểm tay.",
+      "checks": [
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html"], "tag": "link", "attr": { "href": "~fonts.googleapis.com" }, "weight": 3 },
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html"], "tag": "link", "attr": { "href": "~family=" }, "weight": 2 },
+        { "type": "elementInside", "files": ["index.html", "about.html", "contact.html"], "tag": "link", "inside": "head" },
+        { "type": "cssLinked", "files": ["index.html", "about.html", "contact.html"], "href": "css/style.css" }
+      ]
+    },
+    {
+      "id": "font-application",
+      "criteria": "Font application",
+      "points": 2,
+      "tier": "assist",
+      "description": "Headings and body use different fonts",
+      "note": "Máy kiểm tra được body và h1/h2/h3 đều có khai báo font-family. Hai font đó có KHÁC nhau và có tương phản đẹp hay không thì người chấm đọc CSS rồi quyết định.",
+      "checks": [
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "body", "props": ["font-family"], "weight": 2 },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h1", "props": ["font-family"] },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h2", "props": ["font-family"] },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h3", "props": ["font-family"] }
+      ]
+    },
+    {
+      "id": "typography-hierarchy",
+      "criteria": "Typography hierarchy",
+      "points": 2,
+      "tier": "auto",
+      "description": "Clear size/weight differences between heading levels",
+      "checks": [
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h1", "props": ["font-size"] },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h2", "props": ["font-size"] },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h3", "props": ["font-size"] },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h1", "props": ["font-weight"] },
+        { "type": "cssMinDecls", "file": "css/style.css", "selectors": ["h1", "h2"], "minCount": 2 }
+      ]
+    },
+    {
+      "id": "link-styling",
+      "criteria": "Link styling",
+      "points": 2,
+      "tier": "auto",
+      "description": "Links have custom colors and hover effects",
+      "checks": [
+        { "type": "cssColorSet", "file": "css/style.css", "selector": "a", "prop": "color" },
+        { "type": "cssHoverExists", "file": "css/style.css", "selector": "a", "weight": 2 },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "a", "props": ["text-decoration"] }
+      ]
+    },
+    {
+      "id": "readability",
+      "criteria": "Readability",
+      "points": 1,
+      "tier": "assist",
+      "description": "Text is easy to read with good spacing",
+      "note": "Máy đo được line-height ≥ 1.6 và có giới hạn bề rộng khối chữ. Chữ có dễ đọc thật hay không thì người chấm mở trình duyệt xem.",
+      "checks": [
+        { "type": "cssNumberInRange", "file": "css/style.css", "selector": "body", "prop": "line-height", "min": 1.6, "weight": 2 },
+        { "type": "cssMinDecls", "file": "css/style.css", "selectors": ["li"], "minCount": 1 }
+      ]
+    }
+  ]
+}

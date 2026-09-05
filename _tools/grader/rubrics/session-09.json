@@ -1,0 +1,73 @@
+{
+  "session": 9,
+  "title": "Homework 9: Schedule Table Page",
+  "total": 10,
+  "expects": ["activities.html", "index.html", "about.html", "contact.html", "css/style.css"],
+  "note": "Nộp cả bốn trang project/ cùng css/style.css. Tên file phải đúng activities.html.",
+  "rows": [
+    {
+      "id": "table-structure",
+      "criteria": "Table structure",
+      "points": 3,
+      "tier": "auto",
+      "description": "Uses thead, tbody, caption, th, td correctly",
+      "checks": [
+        { "type": "tableStructure", "file": "activities.html", "require": ["caption", "thead", "tbody", "th", "td"], "weight": 4 },
+        { "type": "hasDoctype", "file": "activities.html" },
+        { "type": "tagsBalanced", "file": "activities.html" },
+        { "type": "tagsNested", "file": "activities.html" }
+      ]
+    },
+    {
+      "id": "table-content",
+      "criteria": "Content",
+      "points": 2,
+      "tier": "auto",
+      "description": "Has 5+ columns, 5+ rows, colspan/rowspan used",
+      "checks": [
+        { "type": "tableStructure", "file": "activities.html", "require": [], "minCols": 5, "minRows": 5, "spans": true, "weight": 3 },
+        { "type": "hasElement", "file": "activities.html", "tag": "th", "minCount": 5 },
+        { "type": "noPlaceholderText", "file": "activities.html" }
+      ]
+    },
+    {
+      "id": "table-styling",
+      "criteria": "Table styling",
+      "points": 3,
+      "tier": "auto",
+      "description": "Borders, header colors, zebra striping, hover",
+      "checks": [
+        { "type": "cssLinked", "file": "activities.html", "href": "css/style.css" },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "table", "prop": "border-collapse", "value": "collapse" },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "table", "prop": "width", "value": "100%" },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "td", "props": ["border", "padding"] },
+        { "type": "cssColorSet", "file": "css/style.css", "selector": "th", "prop": "background-color" },
+        { "type": "cssSelectorPattern", "file": "css/style.css", "pattern": "nth-child", "label": "kẻ sọc bảng", "minDecls": 1 },
+        { "type": "cssHoverExists", "file": "css/style.css", "selector": "tr" }
+      ]
+    },
+    {
+      "id": "navigation",
+      "criteria": "Navigation",
+      "points": 1,
+      "tier": "auto",
+      "description": "Activities link added to all pages",
+      "checks": [
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html", "activities.html"], "tag": "a", "attr": { "href": "~activities.html" }, "weight": 2 },
+        { "type": "navConsistent", "pages": ["index.html", "about.html", "contact.html", "activities.html"] }
+      ]
+    },
+    {
+      "id": "link-accuracy",
+      "criteria": "Link accuracy",
+      "points": 1,
+      "tier": "assist",
+      "description": "All navigation links work correctly",
+      "note": "Máy đối chiếu được href với danh sách file đã nộp. Liên kết ra ngoài internet thì grader chạy offline không thử được, người chấm phải click.",
+      "checks": [
+        { "type": "linksResolve", "files": ["index.html", "about.html", "contact.html", "activities.html"], "tags": ["a"], "attrs": ["href"], "weight": 2 },
+        { "type": "relativePaths", "files": ["index.html", "about.html", "contact.html", "activities.html"] }
+      ]
+    }
+  ]
+}

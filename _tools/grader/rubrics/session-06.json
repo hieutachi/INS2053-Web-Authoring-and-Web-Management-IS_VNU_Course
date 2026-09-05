@@ -1,0 +1,74 @@
+{
+  "session": 6,
+  "title": "Homework 6: Multi-page Consistency",
+  "total": 10,
+  "expects": ["index.html", "about.html", "contact.html", "css/style.css"],
+  "note": "Nộp cả ba trang project/ cùng css/style.css.",
+  "rows": [
+    {
+      "id": "navigation-links",
+      "criteria": "Navigation links",
+      "points": 3,
+      "tier": "assist",
+      "description": "All links work correctly on all 3 pages",
+      "note": "Máy kiểm tra được mọi trang có liên kết chéo tới nhau và file đích tồn tại trong bài nộp. Liên kết ra ngoài internet thì grader chạy offline không thể thử, người chấm phải click.",
+      "checks": [
+        { "type": "navConsistent", "pages": ["index.html", "about.html", "contact.html"], "weight": 3 },
+        { "type": "linksResolve", "files": ["index.html", "about.html", "contact.html"], "tags": ["a"], "attrs": ["href"], "weight": 2 },
+        { "type": "attrNotEmpty", "files": ["index.html", "about.html", "contact.html"], "tag": "a", "attr": "href" },
+        { "type": "relativePaths", "files": ["index.html", "about.html", "contact.html"] }
+      ]
+    },
+    {
+      "id": "consistent-layout",
+      "criteria": "Consistent layout",
+      "points": 2,
+      "tier": "assist",
+      "description": "Same header, nav, footer on every page",
+      "note": "Máy chỉ thấy cả ba trang đều có header/nav/main/footer và đều nhúng CSS. Ba trang trông giống nhau thật hay không thì người chấm mở cả ba lên so sánh.",
+      "checks": [
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html"], "tag": "header" },
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html"], "tag": "nav" },
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html"], "tag": "main" },
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html"], "tag": "footer" },
+        { "type": "cssLinked", "files": ["index.html", "about.html", "contact.html"], "href": "css/style.css", "weight": 2 }
+      ]
+    },
+    {
+      "id": "contact-content",
+      "criteria": "Contact page content",
+      "points": 2,
+      "tier": "auto",
+      "description": "Has all required content elements",
+      "checks": [
+        { "type": "singleH1", "file": "contact.html" },
+        { "type": "hasElement", "file": "contact.html", "tag": "p", "minCount": 2 },
+        { "type": "hasElement", "file": "contact.html", "tag": "li", "minCount": 3 },
+        { "type": "countInRange", "file": "contact.html", "tag": "img", "min": 1 },
+        { "type": "imgHasAlt", "file": "contact.html", "minWords": 2 }
+      ]
+    },
+    {
+      "id": "home-content",
+      "criteria": "Home page content",
+      "points": 2,
+      "tier": "auto",
+      "description": "Has multiple sections and images",
+      "checks": [
+        { "type": "hasElement", "file": "index.html", "tag": "h2", "minCount": 3, "weight": 2 },
+        { "type": "hasElement", "file": "index.html", "tag": "p", "minCount": 3 },
+        { "type": "hasElement", "file": "index.html", "tag": "li", "minCount": 3 },
+        { "type": "countInRange", "file": "index.html", "tag": "img", "min": 2 },
+        { "type": "imgHasAlt", "file": "index.html", "minWords": 2 }
+      ]
+    },
+    {
+      "id": "overall-consistency",
+      "criteria": "Overall consistency",
+      "points": 1,
+      "tier": "manual",
+      "description": "Site feels unified and professional",
+      "note": "\"Cảm giác thống nhất và chuyên nghiệp\" không đo được bằng máy. Người chấm mở cả ba trang trong trình duyệt rồi cho điểm."
+    }
+  ]
+}

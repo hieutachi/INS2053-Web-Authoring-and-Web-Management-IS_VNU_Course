@@ -1,0 +1,41 @@
+body {
+  font-family: Arial;
+  line-height: 1.2;
+}
+
+h1 {
+   font-size: 32px;
+}
+
+header {
+  background-color: navy;
+  color: white;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 12px;
+}
+
+form {
+  margin-top: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  padding: 4px;
+}

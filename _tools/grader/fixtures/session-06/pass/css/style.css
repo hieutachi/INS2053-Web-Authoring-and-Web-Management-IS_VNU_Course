@@ -1,0 +1,53 @@
+/* Nen va font chung */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #22252b;
+  background-color: #fdfdfb;
+}
+
+/* Header: ten cau lac bo */
+header {
+  background-color: #1b3a5c;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Thanh dieu huong nam ngang */
+nav {
+  background-color: #2f6b4f;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Khu noi dung chinh, gioi han be rong cho de doc */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Chan trang */
+footer {
+  background-color: #22252b;
+  color: #e8e8e8;
+  padding: 16px;
+  text-align: center;
+}

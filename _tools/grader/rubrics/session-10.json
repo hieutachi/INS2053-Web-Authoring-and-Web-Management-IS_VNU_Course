@@ -1,0 +1,77 @@
+{
+  "session": 10,
+  "title": "Homework 10: Media Page",
+  "total": 10,
+  "expects": ["media.html", "index.html", "about.html", "contact.html", "activities.html", "css/style.css"],
+  "note": "Nộp media.html cùng các trang cũ và css/style.css.",
+  "rows": [
+    {
+      "id": "video-element",
+      "criteria": "Video element",
+      "points": 3,
+      "tier": "assist",
+      "description": "Uses video tag with controls, poster, fallback",
+      "note": "Máy đọc được thẻ <video> có controls, poster, width, có src và có text dự phòng. Grader chạy offline nên KHÔNG biết file video có phát được không — nếu src là URL w3schools thì người chấm phải tự mở thử.",
+      "checks": [
+        { "type": "mediaElement", "file": "media.html", "tag": "video", "attrs": ["controls", "poster", "width"], "fallback": true, "weight": 4 },
+        { "type": "hasElement", "file": "media.html", "tag": "source", "minCount": 1 },
+        { "type": "hasDoctype", "file": "media.html" },
+        { "type": "tagsBalanced", "file": "media.html" }
+      ]
+    },
+    {
+      "id": "audio-element",
+      "criteria": "Audio element",
+      "points": 3,
+      "tier": "assist",
+      "description": "Uses audio tag with controls and fallback",
+      "note": "Cũng như video: máy chỉ thấy cấu trúc thẻ, không nghe được file. Nếu src trỏ ra internet thì grader offline không kiểm tra được.",
+      "checks": [
+        { "type": "mediaElement", "file": "media.html", "tag": "audio", "attrs": ["controls"], "fallback": true, "weight": 3 },
+        { "type": "elementInside", "file": "media.html", "tag": "source", "inside": "video|audio" },
+        { "type": "tagsNested", "file": "media.html" }
+      ]
+    },
+    {
+      "id": "page-content",
+      "criteria": "Page content",
+      "points": 2,
+      "tier": "auto",
+      "description": "Has headings, descriptions, images",
+      "checks": [
+        { "type": "singleH1", "file": "media.html" },
+        { "type": "hasElement", "file": "media.html", "tag": "h2", "minCount": 2 },
+        { "type": "minWords", "file": "media.html", "tag": "p", "minWords": 10, "minCount": 2, "weight": 2 },
+        { "type": "countInRange", "file": "media.html", "tag": "img", "min": 1 },
+        { "type": "imgHasAlt", "file": "media.html", "minWords": 2 },
+        { "type": "noPlaceholderText", "file": "media.html" }
+      ]
+    },
+    {
+      "id": "media-styling",
+      "criteria": "Media styling",
+      "points": 1,
+      "tier": "auto",
+      "description": "Video centered, audio styled",
+      "checks": [
+        { "type": "cssLinked", "file": "media.html", "href": "css/style.css" },
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "video", "prop": "max-width", "value": "100%" },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "video", "props": ["display", "margin"] },
+        { "type": "cssMinDecls", "file": "css/style.css", "selectors": ["audio"], "minCount": 1 }
+      ]
+    },
+    {
+      "id": "navigation",
+      "criteria": "Navigation",
+      "points": 1,
+      "tier": "assist",
+      "description": "Media link added to all pages, links work",
+      "note": "Máy kiểm tra được href và file đích trong bài nộp. Liên kết ra ngoài internet thì người chấm phải click.",
+      "checks": [
+        { "type": "hasElement", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tag": "a", "attr": { "href": "~media.html" }, "weight": 2 },
+        { "type": "linksResolve", "files": ["index.html", "about.html", "contact.html", "activities.html", "media.html"], "tags": ["a"], "attrs": ["href"] },
+        { "type": "relativePaths", "files": ["media.html"] }
+      ]
+    }
+  ]
+}

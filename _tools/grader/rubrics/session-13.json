@@ -1,0 +1,74 @@
+{
+  "session": 13,
+  "title": "Homework 13: Building a Contact Form",
+  "total": 10,
+  "expects": ["contact.html", "css/style.css"],
+  "note": "Nộp project/contact.html đã có form và project/css/style.css đã thêm style cho form.",
+  "rows": [
+    {
+      "id": "input-types",
+      "criteria": "Input types",
+      "points": 3,
+      "tier": "auto",
+      "description": "Uses at least 5 different input types",
+      "checks": [
+        { "type": "inputTypes", "file": "contact.html", "minCount": 6, "weight": 3 },
+        { "type": "hasElement", "file": "contact.html", "tag": "input", "attr": { "type": "email" } },
+        { "type": "hasElement", "file": "contact.html", "tag": "input", "attr": { "type": "tel" } },
+        { "type": "hasElement", "file": "contact.html", "tag": "select" },
+        { "type": "hasElement", "file": "contact.html", "tag": "textarea" },
+        { "type": "countInRange", "file": "contact.html", "tag": "option", "min": 3, "max": 20 }
+      ]
+    },
+    {
+      "id": "form-structure",
+      "criteria": "Form structure",
+      "points": 2,
+      "tier": "auto",
+      "description": "Proper form, label, input connections",
+      "checks": [
+        { "type": "hasElement", "file": "contact.html", "tag": "form", "attr": { "action": "*", "method": "*" }, "weight": 2 },
+        { "type": "labelsMatch", "file": "contact.html", "weight": 3 },
+        { "type": "attrPresent", "file": "contact.html", "tag": "input", "attr": "name" },
+        { "type": "elementInside", "file": "contact.html", "tag": "input", "inside": "form", "all": true }
+      ]
+    },
+    {
+      "id": "required-fields",
+      "criteria": "Required fields",
+      "points": 1,
+      "tier": "auto",
+      "description": "Uses required attribute appropriately",
+      "checks": [
+        { "type": "hasElement", "file": "contact.html", "tag": "input", "attr": { "required": "*" }, "minCount": 2, "weight": 2 },
+        { "type": "hasElement", "file": "contact.html", "tag": "textarea", "attr": { "required": "*" } }
+      ]
+    },
+    {
+      "id": "buttons",
+      "criteria": "Buttons",
+      "points": 1,
+      "tier": "auto",
+      "description": "Has both submit and reset buttons",
+      "checks": [
+        { "type": "hasElement", "file": "contact.html", "tag": "button", "attr": { "type": "submit" } },
+        { "type": "hasElement", "file": "contact.html", "tag": "button", "attr": { "type": "reset" } }
+      ]
+    },
+    {
+      "id": "form-styling",
+      "criteria": "Form styling",
+      "points": 3,
+      "tier": "assist",
+      "description": "Labels, inputs, buttons all styled nicely",
+      "note": "Máy kiểm tra được có rule cho label/input/button, có :hover và có khoảng cách giữa các nhóm. Form \"trông gọn gàng, dễ dùng\" hay không thì người chấm mở trình duyệt mới biết.",
+      "checks": [
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "label", "props": ["display", "margin-bottom", "font-weight"], "loose": true, "weight": 2 },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "input", "props": ["width", "padding", "border"], "loose": true, "weight": 2 },
+        { "type": "cssSelectorPattern", "file": "css/style.css", "pattern": "button", "props": ["background-color", "color", "padding", "cursor"], "weight": 2 },
+        { "type": "cssHoverExists", "file": "css/style.css", "selector": "button", "weight": 2 },
+        { "type": "cssMinDecls", "file": "css/style.css", "selector": "form", "minCount": 2 }
+      ]
+    }
+  ]
+}

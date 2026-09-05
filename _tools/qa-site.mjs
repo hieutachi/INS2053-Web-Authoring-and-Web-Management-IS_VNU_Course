@@ -7,6 +7,10 @@
  *
  * Exits non-zero if any hard check fails, so it can gate a deploy.
  * Read-only.
+ *
+ * Checks 1–12 cover the generated course pages. Check 13 covers the one published
+ * build artefact, `cham-bai.html`, which is deliberately held out of the others —
+ * see the note on GRADER_PAGE below.
  */
 
 import { readdir, readFile } from "node:fs/promises";
@@ -37,9 +41,28 @@ async function pages(dir = SITE, out = []) {
   return out;
 }
 
+/**
+ * The self-check tool, held out of the checks written for generated course pages.
+ *
+ * It is not a generated page — it is a build artefact copied byte for byte from
+ * `_tools/grader/cham-bai.html`, and it breaks the site checks by design: it needs
+ * `input[type=file]` and `fetch()` to read a folder and a GitHub repo, it carries
+ * no `assets/site.css`, and its inline script mentions `<h1>` in the Vietnamese
+ * strings it shows the reader.
+ *
+ * Excluding it here would be a hole, so check 13 below audits it on its own terms:
+ * identical to the gated artefact, self-contained, and still uploading nothing.
+ * Nothing else may ever be added to this list — the whole point of check 11 is that
+ * the published site cannot grow a submission feature by accident.
+ */
+const GRADER_PAGE = "cham-bai.html";
+
 const list = (await pages()).sort();
 const src = new Map();
-for (const rel of list) src.set(rel, await readFile(path.join(SITE, rel), "utf8"));
+for (const rel of list) {
+  if (rel === GRADER_PAGE) continue;
+  src.set(rel, await readFile(path.join(SITE, rel), "utf8"));
+}
 
 const count = (s, re) => (s.match(re) || []).length;
 
@@ -54,7 +77,9 @@ console.log("== 1. page inventory ==============================================
     slides: list.filter((f) => f.startsWith("slides/")).length,
   };
   console.log(`      ${list.length} html page(s)  ` + JSON.stringify(groups));
-  if (groups.root !== 1) bad(`expected 1 root page, found ${groups.root}`);
+  // index.html + cham-bai.html. The count is asserted rather than relaxed, so a
+  // third file appearing at the root is a failure and not a shrug.
+  if (groups.root !== 2) bad(`expected 2 root pages (index + self-check tool), found ${groups.root}`);
   if (groups.ebook !== 17) bad(`expected 17 ebook pages (16 chapters + index), found ${groups.ebook}`);
   if (groups.homework !== 16) bad(`expected 16 homework pages (15 + index), found ${groups.homework}`);
   if (groups.sessions !== 16) bad(`expected 16 session pages (15 + index), found ${groups.sessions}`);
@@ -306,6 +331,64 @@ console.log("== 12. shared assets ==============================================
 for (const a of ["assets/site.css", "assets/site.js"]) {
   if (existsSync(path.join(SITE, a))) ok(a);
   else bad(`${a} missing`);
+}
+
+/* == 13. the published self-check tool ==================================== */
+console.log("== 13. self-check tool =============================================");
+{
+  const pub = path.join(SITE, GRADER_PAGE);
+  const gated = path.join(ROOT, "_tools", "grader", "cham-bai.html");
+  if (!existsSync(pub)) {
+    bad(`${GRADER_PAGE} missing — run: npm run build:grader && npm run build:site`);
+  } else if (!existsSync(gated)) {
+    bad("_tools/grader/cham-bai.html missing — cannot verify the published copy");
+  } else {
+    const a = await readFile(pub, "utf8");
+    const b = await readFile(gated, "utf8");
+    // Byte-identical is the whole argument for publishing it: the eleven gates in
+    // qa-grader.mjs audited `b`, and this is the only thing that makes them true
+    // of `a`. A "harmless" edit made directly in site/ would slip past all of them.
+    if (a !== b) bad(`${GRADER_PAGE} differs from the gated artefact — publish the built file, do not edit site/`);
+    else ok(`${GRADER_PAGE} is byte-identical to the artefact qa-grader.mjs checked`);
+
+    // Self-contained. Anything it loaded from the network or from a sibling file
+    // would be a page that works here and breaks when saved to a student's disk.
+    let external = 0;
+    for (const m of a.replace(/<script\b[\s\S]*?<\/script>/gi, "").matchAll(/\b(?:src|href)\s*=\s*"([^"]*)"/gi)) {
+      const v = m[1].trim();
+      if (!v || v.startsWith("#") || v.startsWith("data:") || v.startsWith("blob:")) continue;
+      bad(`${GRADER_PAGE} references an external file: ${v}`);
+      external++;
+    }
+    if (!external) ok("no external CSS, JS, image or font — one file, works offline");
+
+    // Still uploads nothing. It reads two GitHub endpoints; anything else — a POST,
+    // a form, a beacon — would mean student work leaving the browser.
+    const leaks = [
+      [/<form\b/i, "form element"],
+      [/\bFormData\s*\(/, "FormData"],
+      [/\bnavigator\s*\.\s*sendBeacon/i, "sendBeacon"],
+      [/\bXMLHttpRequest\b/, "XMLHttpRequest"],
+      [/method\s*:\s*["'](?:POST|PUT|PATCH|DELETE)["']/i, "writing HTTP method"],
+    ].filter(([re]) => re.test(a));
+    if (leaks.length) bad(`${GRADER_PAGE} can send data out: ${leaks.map(([, l]) => l).join("; ")}`);
+    else ok("no form, no FormData, no beacon, no POST — nothing is uploaded");
+
+    for (const m of a.matchAll(/fetch\w*\s*\(\s*["'`](https?:\/\/[a-z0-9.-]+)/gi)) {
+      const host = m[1].replace(/^https?:\/\//i, "").toLowerCase();
+      if (host !== "api.github.com" && host !== "raw.githubusercontent.com") {
+        bad(`${GRADER_PAGE} fetches ${host} — only the two read-only GitHub hosts are allowed`);
+      }
+    }
+
+    // Reachable. A published tool nobody can find is the same as an unpublished one.
+    const linkers = [...src.entries()].filter(([, s]) => s.includes(`"../${GRADER_PAGE}"`) || s.includes(`"${GRADER_PAGE}"`));
+    if (linkers.length < 32) {
+      bad(`only ${linkers.length} page(s) link the self-check tool — expected home + homework index + 15 sheets + 15 hubs`);
+    } else {
+      ok(`${linkers.length} pages link to it`);
+    }
+  }
 }
 
 console.log("");

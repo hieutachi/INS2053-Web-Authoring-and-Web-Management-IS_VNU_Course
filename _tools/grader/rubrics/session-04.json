@@ -1,0 +1,82 @@
+{
+  "session": 4,
+  "title": "Homework 4: Styling with CSS",
+  "total": 10,
+  "expects": ["about.html", "css/style.css"],
+  "note": "Nộp project/about.html và project/css/style.css.",
+  "rows": [
+    {
+      "id": "css-file",
+      "criteria": "CSS file",
+      "points": 2,
+      "tier": "auto",
+      "description": "File exists and is linked correctly",
+      "checks": [
+        { "type": "pathsExist", "paths": ["css/style.css"] },
+        { "type": "cssLinked", "file": "about.html", "href": "css/style.css", "weight": 2 },
+        { "type": "cssBalancedBraces", "file": "css/style.css", "weight": 2 }
+      ]
+    },
+    {
+      "id": "colors",
+      "criteria": "Colors",
+      "points": 2,
+      "tier": "auto",
+      "description": "Background, text, and heading colors are set",
+      "checks": [
+        { "type": "cssColorSet", "file": "css/style.css", "selector": "body", "props": ["background-color", "color"], "weight": 2 },
+        { "type": "cssColorSet", "file": "css/style.css", "selector": "h1", "prop": "color" },
+        { "type": "cssColorSet", "file": "css/style.css", "selector": "h2", "prop": "color" },
+        { "type": "cssRuleExists", "file": "css/style.css", "selector": "h3" }
+      ]
+    },
+    {
+      "id": "typography",
+      "criteria": "Typography",
+      "points": 2,
+      "tier": "auto",
+      "description": "Font family, sizes, line height are defined",
+      "checks": [
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "body", "props": ["font-family", "font-size"], "weight": 2 },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "h1", "props": ["font-size"] },
+        { "type": "cssNumberInRange", "file": "css/style.css", "selector": "p", "prop": "line-height", "min": 1.4 }
+      ]
+    },
+    {
+      "id": "spacing",
+      "criteria": "Spacing",
+      "points": 2,
+      "tier": "assist",
+      "description": "Margins, padding, and line height improve readability",
+      "note": "Máy thấy có khai báo margin/padding/line-height. Khoảng cách đó có thật sự dễ đọc hơn hay không thì người chấm phải mở trang bằng trình duyệt.",
+      "checks": [
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "p", "props": ["margin"] },
+        { "type": "cssPropSet", "file": "css/style.css", "selector": "body", "props": ["margin"] },
+        { "type": "cssMinDecls", "file": "css/style.css", "selectors": ["p"], "minCount": 2 }
+      ]
+    },
+    {
+      "id": "image-styling",
+      "criteria": "Image styling",
+      "points": 1,
+      "tier": "auto",
+      "description": "Images are sized and styled properly",
+      "checks": [
+        { "type": "cssDeclEquals", "file": "css/style.css", "selector": "img", "prop": "max-width", "value": "100%" },
+        { "type": "cssMinDecls", "file": "css/style.css", "selectors": ["img"], "minCount": 3 }
+      ]
+    },
+    {
+      "id": "overall-look",
+      "criteria": "Overall look",
+      "points": 1,
+      "tier": "assist",
+      "description": "Page looks clean and professional",
+      "note": "Máy chỉ đếm được số rule và biết list đã được style hay chưa. \"Trông sạch sẽ, chuyên nghiệp\" là đánh giá bằng mắt của người chấm.",
+      "checks": [
+        { "type": "cssMinDecls", "file": "css/style.css", "selectors": ["ul"], "minCount": 1 },
+        { "type": "cssHasComment", "file": "css/style.css", "minCount": 1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "session": 4,
+  "note": "Số liệu mong đợi cho fixtures/session-04. qa-grader.mjs so sánh với sai số 0.005. Sửa file này chỉ khi rubric hoặc fixture đổi có chủ đích.",
+  "cases": {
+    "pass": {
+      "autoAwarded": 10,
+      "autoPoints": 10,
+      "autoPercent": 100,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "css-file": { "state": "graded", "awarded": 2, "scores": [1, 1, 1] },
+        "colors": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1] },
+        "typography": { "state": "graded", "awarded": 2, "scores": [1, 1, 1] },
+        "spacing": { "state": "graded", "awarded": 2, "scores": [1, 1, 1] },
+        "image-styling": { "state": "graded", "awarded": 1, "scores": [1, 1] },
+        "overall-look": { "state": "graded", "awarded": 1, "scores": [1, 1] }
+      }
+    },
+    "fail": {
+      "autoAwarded": 1.8,
+      "autoPoints": 10,
+      "autoPercent": 18,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "css-file": { "state": "graded", "awarded": 0.4, "scores": [1, 0, 0] },
+        "colors": { "state": "graded", "awarded": 0.4, "scores": [0.5, 0, 0, 0] },
+        "typography": { "state": "graded", "awarded": 1, "scores": [0.5, 1, 0] },
+        "spacing": { "state": "graded", "awarded": 0, "scores": [0, 0, 0] },
+        "image-styling": { "state": "graded", "awarded": 0, "scores": [0, 0] },
+        "overall-look": { "state": "graded", "awarded": 0, "scores": [0, 0] }
+      }
+    },
+    "empty": {
+      "files": [],
+      "autoAwarded": 0,
+      "autoPoints": 0,
+      "autoPercent": null,
+      "blockedPoints": 10,
+      "manualPoints": 0,
+      "rows": {
+        "css-file": { "state": "blocked", "awarded": null },
+        "colors": { "state": "blocked", "awarded": null },
+        "typography": { "state": "blocked", "awarded": null },
+        "spacing": { "state": "blocked", "awarded": null },
+        "image-styling": { "state": "blocked", "awarded": null },
+        "overall-look": { "state": "blocked", "awarded": null }
+      }
+    }
+  }
+}

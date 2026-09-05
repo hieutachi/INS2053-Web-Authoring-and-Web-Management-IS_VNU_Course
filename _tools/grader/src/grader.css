@@ -1,0 +1,459 @@
+/* =============================================================================
+   INS2053 grader — stylesheet for cham-bai.html
+
+   Inlined into cham-bai.html by _tools/build-grader.mjs. No @import, no
+   external font, no url() to anything but data:/blob: — the CSP on the page is
+   default-src 'none' and the file must work from file:// with no network.
+
+   Tokens are copied from _tools/site-assets/site.css rather than linked,
+   because this file cannot fetch the site stylesheet when opened by
+   double-click. Keep the two in sync by hand if the palette changes.
+
+   The result card has a stable desktop width for screenshots. @media print hides
+   the controls and isolates the card on A4; longer rubrics may span two pages.
+   ============================================================================= */
+
+:root {
+  color-scheme: light;
+  --bg-page: #f4f6fb;
+  --bg-base: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-code: #101827;
+
+  --fill-primary: #dce5ff;
+  --fill-secondary: #e9edfb;
+  --fill-tertiary: #f0f3fa;
+
+  --stroke-primary: #8d9ab5;
+  --stroke-secondary: #ccd4e3;
+  --stroke-tertiary: #e1e6ef;
+
+  --text-primary: #111a2e;
+  --text-secondary: #46526b;
+  --text-tertiary: #6f7b94;
+  --text-inverse: #f8faff;
+
+  --accent: #3157d5;
+  --accent-strong: #2342ae;
+  --accent-soft: #e7edff;
+  --accent-warm: #f2b441;
+  --accent-green: #17845b;
+  --accent-orange: #e96a2c;
+  --accent-red: #c0392b;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 2px 8px rgb(24 39 75 / 7%);
+  --shadow-md: 0 14px 36px rgb(24 39 75 / 11%);
+  --font-sans: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "Cascadia Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-page: #090f1d;
+  --bg-base: #111a2b;
+  --bg-elevated: #162034;
+  --bg-code: #070c16;
+
+  --fill-primary: #243454;
+  --fill-secondary: #1d2942;
+  --fill-tertiary: #172238;
+
+  --stroke-primary: #526486;
+  --stroke-secondary: #33415d;
+  --stroke-tertiary: #25334a;
+
+  --text-primary: #edf2fb;
+  --text-secondary: #b7c3d8;
+  --text-tertiary: #8d9bb5;
+
+  --accent: #7aa7ff;
+  --accent-strong: #a8c6ff;
+  --accent-soft: #1c3157;
+  --accent-green: #4bd19a;
+  --accent-orange: #ff925f;
+  --accent-red: #ff8a7a;
+
+  --shadow-sm: 0 2px 8px rgb(0 0 0 / 28%);
+  --shadow-md: 0 18px 42px rgb(0 0 0 / 36%);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px 20px 64px;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.shell { max-width: 1180px; margin: 0 auto; }
+
+h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -0.01em; }
+h2 { font-size: 17px; margin: 0 0 10px; }
+h3 { font-size: 15px; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+code, kbd { font-family: var(--font-mono); font-size: 0.92em; }
+
+
+/* --- page header ----------------------------------------------------------- */
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.topbar > :first-child { min-width: 0; }
+.topbar .sub { color: var(--text-secondary); font-size: 13px; margin: 0; }
+.topbar .spacer { flex: 1 1 auto; }
+
+/* --- panels ---------------------------------------------------------------- */
+
+.panel {
+  background: var(--bg-base);
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field.grow { flex: 1 1 220px; }
+
+label { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+
+input[type="text"], select, textarea {
+  font: inherit;
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--stroke-secondary);
+  border-radius: var(--radius-sm);
+  padding: 7px 9px;
+}
+
+textarea {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 150px;
+  resize: vertical;
+  width: 100%;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+
+input[type="text"]:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+.tab:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--fill-secondary);
+  border: 1px solid var(--stroke-secondary);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+button:hover { background: var(--fill-primary); }
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent-strong);
+  color: #ffffff;
+}
+
+button.primary:hover { background: var(--accent-strong); }
+button[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+/* --- tabs ------------------------------------------------------------------ */
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid var(--stroke-tertiary);
+  margin-bottom: 14px;
+}
+
+.tab {
+  font: inherit;
+  font-weight: 600;
+  background: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.tab[aria-selected="true"] {
+  background: var(--bg-base);
+  border-color: var(--stroke-tertiary);
+  color: var(--text-primary);
+  margin-bottom: -1px;
+}
+
+.tabpanel[hidden] { display: none; }
+
+/* --- paste-code file list -------------------------------------------------- */
+
+.filecard {
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 12px;
+  background: var(--fill-tertiary);
+}
+
+.filecard .head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  margin-bottom: 8px;
+}
+
+.filecard .head .field { flex: 1 1 240px; }
+
+.hint { font-size: 13px; color: var(--text-tertiary); margin: 6px 0 0; }
+
+.dropzone {
+  border: 2px dashed var(--stroke-secondary);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+
+/* --- result card ----------------------------------------------------------
+   Everything below .card is what the student screenshots. Width is pinned so
+   the screenshot is reproducible across machines instead of following the
+   window.
+   ------------------------------------------------------------------------- */
+
+.card {
+  width: 1160px;
+  max-width: 100%;
+  background: var(--bg-base);
+  border: 1px solid var(--stroke-secondary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 20px 22px;
+  margin: 0 auto;
+}
+
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--stroke-tertiary);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+.card-head .who { flex: 1 1 260px; }
+.card-head .who .name { font-size: 18px; font-weight: 700; }
+.card-head .who .meta { font-size: 13px; color: var(--text-secondary); }
+.card-head .title { flex: 1 1 100%; order: -1; }
+.card-head .title .session { font-size: 13px; color: var(--text-tertiary); }
+.card-head .title .hw { font-size: 20px; font-weight: 700; }
+
+.bigscore {
+  flex: 0 0 auto;
+  text-align: right;
+  line-height: 1.15;
+}
+
+.bigscore .num { font-size: 44px; font-weight: 800; letter-spacing: -0.02em; }
+.bigscore .den { font-size: 20px; font-weight: 600; color: var(--text-secondary); }
+.bigscore .cap { font-size: 12px; color: var(--text-tertiary); }
+
+/* Three numbers, never added together: auto is final, assist needs a human,
+   manual is not machine-gradable at all. */
+.tallies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.tally {
+  flex: 1 1 170px;
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  background: var(--fill-tertiary);
+}
+
+.tally .k { font-size: 12px; font-weight: 700; color: var(--text-secondary); }
+.tally .v { font-size: 18px; font-weight: 700; }
+.tally .n { font-size: 12px; color: var(--text-tertiary); }
+
+/* --- criteria table -------------------------------------------------------- */
+
+table.rubric {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+table.rubric caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 6px;
+}
+
+table.rubric th, table.rubric td {
+  border: 1px solid var(--stroke-tertiary);
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+table.rubric thead th {
+  background: var(--fill-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+table.rubric td.pts { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.rubric tbody tr:nth-child(even) > td { background: var(--fill-tertiary); }
+
+/* Tier is a word, not a colour: colour-blind readers and black-and-white
+   screenshots must still carry the distinction. */
+.tier {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--stroke-primary);
+  border-radius: 999px;
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+.tier.auto { border-color: var(--accent-green); color: var(--accent-green); }
+.tier.assist { border-color: var(--accent-orange); color: var(--accent-orange); }
+.tier.manual { border-color: var(--stroke-primary); color: var(--text-secondary); }
+
+.state { font-weight: 700; }
+.state.blocked { color: var(--accent-orange); }
+.state.manual { color: var(--text-secondary); }
+
+.evidence {
+  margin: 4px 0 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--fill-secondary);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 4px 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.fixit { margin: 4px 0 0; font-size: 13px; }
+.fixit b { color: var(--accent-strong); }
+.note { margin: 4px 0 0; font-size: 12.5px; color: var(--text-secondary); }
+.checks { margin: 4px 0 0 16px; padding: 0; font-size: 12.5px; }
+.checks li { margin: 1px 0; }
+.checks .miss { color: var(--accent-red); }
+
+/* --- provenance footer ----------------------------------------------------- */
+
+.provenance {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--stroke-tertiary);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+}
+
+.provenance code { color: var(--text-secondary); }
+
+.alert {
+  border: 1px solid var(--accent-orange);
+  background: var(--fill-tertiary);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 13.5px;
+}
+
+.alert.error { border-color: var(--accent-red); }
+.alert b { display: block; margin-bottom: 2px; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- print: result card only, on A4 ---------------------------------------- */
+
+@media print {
+  /* Screenshots and prints are the deliverable, so the light palette is forced:
+     a dark-theme print wastes toner and scans badly. */
+  :root, :root[data-theme="dark"] {
+    color-scheme: light;
+    --bg-page: #ffffff;
+    --bg-base: #ffffff;
+    --bg-elevated: #ffffff;
+    --fill-primary: #eef2fc;
+    --fill-secondary: #f2f5fc;
+    --fill-tertiary: #f7f9fd;
+    --text-primary: #111a2e;
+    --text-secondary: #46526b;
+    --text-tertiary: #6f7b94;
+    --stroke-tertiary: #c9d1e0;
+    --stroke-secondary: #b3bece;
+  }
+
+  @page { size: A4 portrait; margin: 12mm; }
+
+  body { padding: 0; background: #ffffff; font-size: 11px; }
+  .noprint { display: none !important; }
+
+  .card {
+    width: auto;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    page-break-inside: avoid;
+  }
+
+  table.rubric { font-size: 10.5px; }
+  table.rubric tr, .tally, .evidence { page-break-inside: avoid; }
+}
+
+.dropzone.hot { border-color: var(--accent); background: var(--accent-soft); }

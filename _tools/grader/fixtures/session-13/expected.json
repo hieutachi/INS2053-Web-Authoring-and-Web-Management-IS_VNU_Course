@@ -1,0 +1,49 @@
+{
+  "session": 13,
+  "note": "Số liệu mong đợi cho fixtures/session-13. qa-grader.mjs so sánh với sai số 0.005. Sửa file này chỉ khi rubric hoặc fixture đổi có chủ đích.",
+  "cases": {
+    "pass": {
+      "autoAwarded": 10,
+      "autoPoints": 10,
+      "autoPercent": 100,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "input-types": { "state": "graded", "awarded": 3, "scores": [1, 1, 1, 1, 1, 1] },
+        "form-structure": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1] },
+        "required-fields": { "state": "graded", "awarded": 1, "scores": [1, 1] },
+        "buttons": { "state": "graded", "awarded": 1, "scores": [1, 1] },
+        "form-styling": { "state": "graded", "awarded": 3, "scores": [1, 1, 1, 1, 1] }
+      }
+    },
+    "fail": {
+      "autoAwarded": 1.86,
+      "autoPoints": 10,
+      "autoPercent": 19,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "input-types": { "state": "graded", "awarded": 0.94, "scores": [0.5, 0, 0, 0, 1, 0] },
+        "form-structure": { "state": "graded", "awarded": 0.48, "scores": [0, 0, 1, 0.6667] },
+        "required-fields": { "state": "graded", "awarded": 0, "scores": [0, 0] },
+        "buttons": { "state": "graded", "awarded": 0, "scores": [0, 0] },
+        "form-styling": { "state": "graded", "awarded": 0.44, "scores": [0.3333, 0.3333, 0, 0, 0] }
+      }
+    },
+    "empty": {
+      "files": [],
+      "autoAwarded": 0,
+      "autoPoints": 0,
+      "autoPercent": null,
+      "blockedPoints": 10,
+      "manualPoints": 0,
+      "rows": {
+        "input-types": { "state": "blocked", "awarded": null },
+        "form-structure": { "state": "blocked", "awarded": null },
+        "required-fields": { "state": "blocked", "awarded": null },
+        "buttons": { "state": "blocked", "awarded": null },
+        "form-styling": { "state": "blocked", "awarded": null }
+      }
+    }
+  }
+}

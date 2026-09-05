@@ -1,0 +1,49 @@
+{
+  "session": 5,
+  "note": "Số liệu mong đợi cho fixtures/session-05. qa-grader.mjs so sánh với sai số 0.005. Sửa file này chỉ khi rubric hoặc fixture đổi có chủ đích.",
+  "cases": {
+    "pass": {
+      "autoAwarded": 9,
+      "autoPoints": 9,
+      "autoPercent": 100,
+      "blockedPoints": 0,
+      "manualPoints": 1,
+      "rows": {
+        "semantic-html": { "state": "graded", "awarded": 3, "scores": [1, 1, 1, 1, 1, 1] },
+        "navigation": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1] },
+        "css-layout": { "state": "graded", "awarded": 3, "scores": [1, 1, 1, 1, 1, 1] },
+        "visual-quality": { "state": "manual", "awarded": null, "scores": [] },
+        "code-quality": { "state": "graded", "awarded": 1, "scores": [1, 1, 1] }
+      }
+    },
+    "fail": {
+      "autoAwarded": 1.82,
+      "autoPoints": 9,
+      "autoPercent": 20,
+      "blockedPoints": 0,
+      "manualPoints": 1,
+      "rows": {
+        "semantic-html": { "state": "graded", "awarded": 0, "scores": [0, 0, 0, 0, 0, 0] },
+        "navigation": { "state": "graded", "awarded": 1.07, "scores": [0.6667, 1, 0, 1] },
+        "css-layout": { "state": "graded", "awarded": 0.75, "scores": [1, 1, 0, 0, 0, 0] },
+        "visual-quality": { "state": "manual", "awarded": null, "scores": [] },
+        "code-quality": { "state": "graded", "awarded": 0, "scores": [0, 0, 0] }
+      }
+    },
+    "empty": {
+      "files": [],
+      "autoAwarded": 0,
+      "autoPoints": 0,
+      "autoPercent": null,
+      "blockedPoints": 9,
+      "manualPoints": 1,
+      "rows": {
+        "semantic-html": { "state": "blocked", "awarded": null },
+        "navigation": { "state": "blocked", "awarded": null },
+        "css-layout": { "state": "blocked", "awarded": null },
+        "visual-quality": { "state": "manual", "awarded": null },
+        "code-quality": { "state": "blocked", "awarded": null }
+      }
+    }
+  }
+}

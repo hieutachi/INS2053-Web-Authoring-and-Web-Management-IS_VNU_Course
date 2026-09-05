@@ -1,7 +1,9 @@
 # Prompt bàn giao cho Agent tiếp nhận
 
 Copy nguyên khối bên dưới cho agent mới. Xem thêm `HANDOVER-canvas-diagrams.md`
-để biết chi tiết công việc.
+để biết chi tiết công việc. Quy trình sử dụng và vận hành bộ chấm bài nằm tại
+[`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md); tài liệu kỹ thuật nằm tại
+[`_tools/grader/README.md`](_tools/grader/README.md).
 
 ---
 

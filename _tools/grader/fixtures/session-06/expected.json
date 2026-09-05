@@ -1,0 +1,49 @@
+{
+  "session": 6,
+  "note": "Số liệu mong đợi cho fixtures/session-06. qa-grader.mjs so sánh với sai số 0.005. Sửa file này chỉ khi rubric hoặc fixture đổi có chủ đích.",
+  "cases": {
+    "pass": {
+      "autoAwarded": 9,
+      "autoPoints": 9,
+      "autoPercent": 100,
+      "blockedPoints": 0,
+      "manualPoints": 1,
+      "rows": {
+        "navigation-links": { "state": "graded", "awarded": 3, "scores": [1, 1, 1, 1] },
+        "consistent-layout": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1, 1] },
+        "contact-content": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1, 1] },
+        "home-content": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1, 1] },
+        "overall-consistency": { "state": "manual", "awarded": null, "scores": [] }
+      }
+    },
+    "fail": {
+      "autoAwarded": 1.9,
+      "autoPoints": 9,
+      "autoPercent": 21,
+      "blockedPoints": 0,
+      "manualPoints": 1,
+      "rows": {
+        "navigation-links": { "state": "graded", "awarded": 1.29, "scores": [0, 0.5, 1, 1] },
+        "consistent-layout": { "state": "graded", "awarded": 0.44, "scores": [0.3333, 0.3333, 0.3333, 0.3333, 0] },
+        "contact-content": { "state": "graded", "awarded": 0, "scores": [0, 0, 0, 0, 0] },
+        "home-content": { "state": "graded", "awarded": 0.17, "scores": [0, 0, 0, 0.5, 0] },
+        "overall-consistency": { "state": "manual", "awarded": null, "scores": [] }
+      }
+    },
+    "empty": {
+      "files": [],
+      "autoAwarded": 0,
+      "autoPoints": 0,
+      "autoPercent": null,
+      "blockedPoints": 9,
+      "manualPoints": 1,
+      "rows": {
+        "navigation-links": { "state": "blocked", "awarded": null },
+        "consistent-layout": { "state": "blocked", "awarded": null },
+        "contact-content": { "state": "blocked", "awarded": null },
+        "home-content": { "state": "blocked", "awarded": null },
+        "overall-consistency": { "state": "manual", "awarded": null }
+      }
+    }
+  }
+}

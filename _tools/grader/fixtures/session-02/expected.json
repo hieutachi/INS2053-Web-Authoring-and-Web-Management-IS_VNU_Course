@@ -1,0 +1,52 @@
+{
+  "session": 2,
+  "note": "Số liệu mong đợi cho fixtures/session-02. qa-grader.mjs so sánh với sai số 0.005. Sửa file này chỉ khi rubric hoặc fixture đổi có chủ đích.",
+  "cases": {
+    "pass": {
+      "autoAwarded": 10,
+      "autoPoints": 10,
+      "autoPercent": 100,
+      "blockedPoints": 0,
+      "manualPoints": 0,
+      "rows": {
+        "folder-structure": { "state": "graded", "awarded": 3, "scores": [1, 1] },
+        "index-page": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1, 1] },
+        "about-page": { "state": "graded", "awarded": 1, "scores": [1, 1, 1] },
+        "contact-page": { "state": "graded", "awarded": 1, "scores": [1, 1, 1] },
+        "image-handling": { "state": "graded", "awarded": 2, "scores": [1, 1, 1, 1, 1] },
+        "file-naming": { "state": "graded", "awarded": 1, "scores": [1] }
+      }
+    },
+    "fail": {
+      "autoAwarded": 1.93,
+      "autoPoints": 8,
+      "autoPercent": 24,
+      "blockedPoints": 2,
+      "manualPoints": 0,
+      "rows": {
+        "folder-structure": { "state": "graded", "awarded": 0.83, "scores": [0.2, 0.5] },
+        "index-page": { "state": "graded", "awarded": 0, "scores": [0, 0, 0, 0, 0] },
+        "about-page": { "state": "blocked", "awarded": null, "scores": [null, null, null] },
+        "contact-page": { "state": "blocked", "awarded": null, "scores": [null, null, null] },
+        "image-handling": { "state": "graded", "awarded": 0.6, "scores": [0.5, 1, 0, 0, 0] },
+        "file-naming": { "state": "graded", "awarded": 0.5, "scores": [0.5] }
+      }
+    },
+    "empty": {
+      "files": [],
+      "autoAwarded": 0,
+      "autoPoints": 0,
+      "autoPercent": null,
+      "blockedPoints": 10,
+      "manualPoints": 0,
+      "rows": {
+        "folder-structure": { "state": "blocked", "awarded": null },
+        "index-page": { "state": "blocked", "awarded": null },
+        "about-page": { "state": "blocked", "awarded": null },
+        "contact-page": { "state": "blocked", "awarded": null },
+        "image-handling": { "state": "blocked", "awarded": null },
+        "file-naming": { "state": "blocked", "awarded": null }
+      }
+    }
+  }
+}

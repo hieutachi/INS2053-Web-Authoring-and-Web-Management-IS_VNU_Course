@@ -13,6 +13,7 @@
      ebook/       15 chapters + Appendix A   -> site/ebook/NN-slug.html
      slides-html/ 17 prebuilt decks (copied) -> site/slides/
      homework/    15 sheets                  -> site/homework/session-NN.html
+     grader       one vetted artifact         -> site/cham-bai.html
 
    Never published: exams/ (papers, rubrics, worked solutions), project/rubric.md,
    project/milestones.md, exercises/ (in-class, carries answer keys in <details>).
@@ -50,6 +51,24 @@ const PUBLISH_ONLY = ["ebook", "slides-html", "homework"];
 
 /** Kept out of the site even if a stray link points at them. */
 const NEVER_PUBLISH = ["exams", "exercises", "project", "canvases", "_tools", "_archive"];
+
+/**
+ * The one file published out of `_tools/`, by name and on purpose.
+ *
+ * `NEVER_PUBLISH` blocks the directory so a stray markdown link cannot leak the
+ * exercise answer keys or the rubric JSONs sitting next to it. The self-check tool
+ * is different in kind: it is a build artefact meant to be handed to students, it
+ * contains no answer key (`_tools/qa-grader.mjs` gate G11 fails the build if any
+ * exam or project-rubric prose reaches it), and it grades entirely in the reader's
+ * own browser — nothing is uploaded, so publishing it does not turn the practice
+ * site into a submission system.
+ *
+ * Copied byte for byte. `_tools/qa-site.mjs` check 13 compares the two files and
+ * fails if they differ, so the eleven grader gates that audited the source
+ * artefact also cover what ships.
+ */
+const GRADER_ARTEFACT = path.join(HERE, "grader", "cham-bai.html");
+const GRADER_PUBLIC = "cham-bai.html";
 
 /* --- helpers -------------------------------------------------------------- */
 
@@ -351,6 +370,14 @@ function sessionHub(s, chapterTitle) {
       href: `../homework/session-${nn}.html`,
       cta: `Homework ${nn}`,
     },
+    {
+      when: "Check yourself",
+      phase: "practice",
+      title: "Self-check tool",
+      note: "Grades the mechanical half of the rubric in your own browser — nothing is uploaded. It reports where you stand, not your final mark; your lecturer decides that.",
+      href: `../${GRADER_PUBLIC}`,
+      cta: "Open the self-check tool",
+    },
   ];
 
   const cards = steps
@@ -426,6 +453,7 @@ function homePage(chapters) {
       <li class="tile-ebook"><a href="ebook/index.html"><span class="tile-icon" aria-hidden="true">02</span><span class="tile-copy"><strong>Student ebook</strong><span>15 chapters + Appendix A</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-slides"><a href="slides/index.html"><span class="tile-icon" aria-hidden="true">03</span><span class="tile-copy"><strong>Lecture slides</strong><span>17 decks · 60 diagrams</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-homework"><a href="homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Homework</strong><span>15 practice sheets · submission later</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-grader"><a href="${GRADER_PUBLIC}"><span class="tile-icon" aria-hidden="true">05</span><span class="tile-copy"><strong>Self-check tool</strong><span>Score your homework against the rubric, in your own browser</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
     </ul>
   </section>
 
@@ -642,6 +670,7 @@ async function build() {
         toc: headings.filter((h) => h.depth === 2),
         body: `  <div class="callout status-note" role="status">
     <p><strong>Practice mode.</strong> Online submission and grading are not enabled yet. Complete the work locally and keep it in your own Git repository until your lecturer announces the submission flow.</p>
+    <p>Want to know how this sheet scores before you hand it in? Open the <a href="../${GRADER_PUBLIC}">self-check tool</a>, pick session ${s.n}, and paste or point it at your files. It runs entirely in your browser, uploads nothing, and marks only the mechanical half of the rubric — the rest is your lecturer's judgement.</p>
   </div>
   <nav class="pager" aria-label="Session navigation">
     <a class="up" href="../sessions/session-${nn}.html">Session ${s.n} overview</a>
@@ -712,7 +741,7 @@ async function build() {
       heading: "Homework",
       lead: "One practice sheet per session, with requirements and a reference rubric.",
       crumbLabel: "Homework",
-      note: "<strong>Practice mode:</strong> online submission and grading are not enabled yet. Complete each sheet locally and keep the result in your own Git repository until your lecturer announces the submission flow.",
+      note: "<strong>Practice mode:</strong> online submission and grading are not enabled yet. Complete each sheet locally and keep the result in your own Git repository until your lecturer announces the submission flow. To see how a sheet scores against its rubric, open the <a href=\"../cham-bai.html\">self-check tool</a> — it runs in your browser and uploads nothing.",
       items: sheets.map((h) => ({
         href: `session-${pad(h.n)}.html`,
         label: h.title,
@@ -744,6 +773,13 @@ async function build() {
     }),
     "utf8"
   );
+
+  /* 8. the self-check tool, copied byte for byte -------------------------- */
+  if (!existsSync(GRADER_ARTEFACT)) {
+    fail("_tools/grader/cham-bai.html is missing — run `npm run build:grader` first");
+  } else {
+    await cp(GRADER_ARTEFACT, path.join(OUT, GRADER_PUBLIC));
+  }
 
   console.log(
     `built site/ — ${chapters.length} chapters, ${sheets.length} homework sheets, ` +
