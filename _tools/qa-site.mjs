@@ -391,6 +391,25 @@ console.log("== 13. self-check tool ============================================
   }
 }
 
+/* == 14. no hollow tables ==================================================== */
+console.log("== 14. tables are never left hollow ================================");
+{
+  // build-site.mjs injects the shared empty state (table-empty-state.mjs)
+  // into every table without a data row; a hollow <tbody> surviving to the
+  // published page means that pass silently missed one. The grader's tables
+  // are DOM-built and are audited on their own terms in check 13.
+  let hollow = 0;
+  for (const [rel, s] of src) {
+    for (const m of s.matchAll(/<tbody\b[^>]*>([\s\S]*?)<\/tbody>/gi)) {
+      if (!/<tr[\s>]/i.test(m[1])) {
+        bad(`${rel} :: hollow <tbody> without the shared empty state`);
+        hollow++;
+      }
+    }
+  }
+  if (!hollow) ok("every <tbody> carries a data row or the shared empty state");
+}
+
 console.log("");
 console.log(fail ? "SITE QA FAIL" : "SITE QA PASS");
 process.exit(fail);

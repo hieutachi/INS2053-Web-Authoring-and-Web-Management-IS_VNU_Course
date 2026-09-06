@@ -74,3 +74,56 @@
     }
   });
 })();
+
+/* ---- shared empty state for tables ----------------------------------------
+   The build already gives every markdown table its empty row (see
+   _tools/table-empty-state.mjs); this pass covers tables that appear after
+   it. Same classes, same strings, so the two can never disagree visually.
+   Idempotent: a table that already carries a body row is left alone, which
+   includes the row the build injected. */
+(function () {
+  var EMPTY_TITLE = "No rows to display";
+  var EMPTY_TEXT = "This table is empty.";
+  var EMPTY_ICON =
+    '<svg class="table-empty-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" ' +
+    'stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" ' +
+    'aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect>' +
+    '<path d="M3 9h18"></path><path d="M3 14h18"></path><path d="M9 9v11"></path></svg>';
+
+  function columnCount(table) {
+    var n = 0;
+    var head = table.tHead && table.tHead.rows[0];
+    if (head) {
+      for (var i = 0; i < head.cells.length; i++) n += head.cells[i].colSpan || 1;
+      if (n) return n;
+    }
+    for (var r = 0; r < table.rows.length; r++) {
+      var row = table.rows[r];
+      if (table.tHead && table.tHead.contains(row)) continue;
+      return Math.max(1, row.cells.length);
+    }
+    return 1;
+  }
+
+  document.querySelectorAll("table").forEach(function (table) {
+    var dataRows = 0;
+    for (var i = 0; i < table.rows.length; i++) {
+      if (!(table.tHead && table.tHead.contains(table.rows[i]))) dataRows++;
+    }
+    if (dataRows > 0) return;
+
+    var body = table.tBodies[0] || table.appendChild(document.createElement("tbody"));
+    var tr = document.createElement("tr");
+    tr.className = "table-empty-row";
+    var td = document.createElement("td");
+    td.className = "table-empty-cell";
+    td.colSpan = columnCount(table);
+    // Static markup only — no user data ever reaches this string.
+    td.innerHTML =
+      '<div class="table-empty">' + EMPTY_ICON +
+      '<span class="table-empty-title">' + EMPTY_TITLE + "</span> " +
+      '<span class="table-empty-text">' + EMPTY_TEXT + "</span></div>";
+    tr.appendChild(td);
+    body.appendChild(tr);
+  });
+})();

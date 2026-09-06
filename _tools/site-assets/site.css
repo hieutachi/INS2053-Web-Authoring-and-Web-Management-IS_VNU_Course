@@ -454,9 +454,50 @@ td {
   border-bottom: 1px solid var(--stroke-tertiary);
 }
 
+/* Every header cell on the site is uppercase — the same rule the slide decks
+   (.c-table thead th) and the grader (table.rubric thead th) already apply,
+   so prose tables from markdown match them without per-table styling. */
 th {
   background: var(--fill-tertiary);
   font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* The shared empty state for tables with no data rows. build-site.mjs injects
+   the row at build time (see _tools/table-empty-state.mjs) and site.js repeats
+   the same markup for any table that appears later; both use these classes.
+   The dashed panel mirrors the decks' .c-table-empty and the grader's
+   .rubric-empty, so a hollow table reads as absence rather than breakage. */
+.table-empty-cell {
+  padding: 0.7rem;
+}
+
+.table-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.6rem 1rem;
+  border: 1px dashed var(--stroke-secondary);
+  border-radius: var(--radius);
+  background: var(--fill-tertiary);
+  text-align: center;
+}
+
+.table-empty-icon {
+  color: var(--text-tertiary);
+}
+
+.table-empty-title {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.table-empty-text {
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
 }
 
 /* A chapter's common-errors table is wide; let it scroll rather than squash. */

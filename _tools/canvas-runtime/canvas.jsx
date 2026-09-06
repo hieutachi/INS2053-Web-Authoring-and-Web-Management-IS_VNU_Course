@@ -368,15 +368,20 @@ export function Code({ children, language, style }) {
 
 /* --- data display -------------------------------------------------------- */
 
-export function Table({ headers = [], rows = [], caption, style }) {
+export function Table({ headers = [], rows = [], caption, emptyTitle, emptyText, style }) {
+  // Explicit null/undefined must read as "no data", not crash the render:
+  // decks pass computed props, and a broken table must not blank a slide.
+  const headerList = Array.isArray(headers) ? headers : [];
+  const rowList = Array.isArray(rows) ? rows : [];
+  const span = Math.max(1, headerList.length);
   return (
     <div className="c-table-wrap" style={style}>
       <table className="c-table">
         {caption ? <caption>{caption}</caption> : null}
-        {headers.length ? (
+        {headerList.length ? (
           <thead>
             <tr>
-              {headers.map((h, i) => (
+              {headerList.map((h, i) => (
                 <th key={i} scope="col">
                   {h}
                 </th>
@@ -385,13 +390,51 @@ export function Table({ headers = [], rows = [], caption, style }) {
           </thead>
         ) : null}
         <tbody>
-          {rows.map((row, r) => (
-            <tr key={r}>
-              {(Array.isArray(row) ? row : [row]).map((cell, c) => (
-                <td key={c}>{cell}</td>
-              ))}
+          {rowList.length ? (
+            rowList.map((row, r) => (
+              <tr key={r}>
+                {(Array.isArray(row) ? row : [row]).map((cell, c) => (
+                  <td key={c}>{cell}</td>
+                ))}
+              </tr>
+            ))
+          ) : (
+            /* The shared empty state: headers stay visible, one full-width
+               cell carries a dashed panel with icon, title and description.
+               The icon is decorative — the words do the announcing. */
+            <tr className="c-table-empty-row">
+              {/* Lowercase attribute on purpose: renderToStaticMarkup passes a
+                  camelCase `colSpan` through verbatim, which a browser would
+                  ignore and the table would collapse to one column. */}
+              <td colspan={span}>
+                <div className="c-table-empty">
+                  <svg
+                    className="c-table-empty-icon"
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="4" width="18" height="16" rx="2" />
+                    <path d="M3 9h18" />
+                    <path d="M3 14h18" />
+                    <path d="M9 9v11" />
+                  </svg>
+                  <p className="c-table-empty-title">
+                    {emptyTitle || "No rows to display"}
+                  </p>
+                  <p className="c-table-empty-text">
+                    {emptyText || "This table is empty."}
+                  </p>
+                </div>
+              </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

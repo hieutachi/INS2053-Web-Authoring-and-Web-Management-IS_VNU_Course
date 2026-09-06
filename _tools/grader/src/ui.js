@@ -502,6 +502,22 @@ function rubricRow(row, sessionKey) {
   ]);
 }
 
+/** The rubric table's shared empty state — the same dashed-panel design the
+    course site (.table-empty) and the slide decks (.c-table-empty) use.
+    Rubrics are validated to carry rows, so this should never render; it
+    exists so a rubric that slips through validation shows a message instead
+    of a hollow table. */
+function rubricEmptyRow() {
+  return el("tr", { class: "rubric-empty-row" }, [
+    el("td", { colspan: 4 }, [
+      el("div", { class: "rubric-empty" }, [
+        el("div", { class: "rubric-empty-title", text: "Chưa có tiêu chí nào" }),
+        el("div", { class: "rubric-empty-text", text: "Rubric buổi này không có dòng tiêu chí — hãy báo cho giảng viên." }),
+      ]),
+    ]),
+  ]);
+}
+
 function renderCard(report, meta) {
   const rubric = meta.rubric;
   const sessionKey = meta.sessionKey;
@@ -559,7 +575,9 @@ function renderCard(report, meta) {
         el("th", { scope: "col", text: "Điểm" }),
       ]),
     ]),
-    el("tbody", {}, (report.rows ?? []).map((r) => rubricRow(r, sessionKey))),
+    el("tbody", {}, (report.rows ?? []).length
+      ? (report.rows ?? []).map((r) => rubricRow(r, sessionKey))
+      : [rubricEmptyRow()]),
   ]);
 
   const legend = el("p", { class: "note", text:

@@ -341,6 +341,37 @@ table.rubric thead th {
 table.rubric td.pts { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 table.rubric tbody tr:nth-child(even) > td { background: var(--fill-tertiary); }
 
+/* The shared empty state — same dashed-panel design as the course site
+   (.table-empty) and the slide decks (.c-table-empty). Rubrics are validated
+   to carry rows, so this only renders if one slips through validation. */
+table.rubric tbody tr.rubric-empty-row > td,
+table.rubric tbody tr.rubric-empty-row:hover > td {
+  background: transparent;
+}
+
+table.rubric .rubric-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 14px 8px;
+  border: 1px dashed var(--stroke-secondary);
+  border-radius: 8px;
+  background: var(--fill-tertiary);
+  text-align: center;
+}
+
+table.rubric .rubric-empty-title {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+table.rubric .rubric-empty-text {
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
 /* Tier is a word, not a colour: colour-blind readers and black-and-white
    screenshots must still carry the distinction. */
 .tier {

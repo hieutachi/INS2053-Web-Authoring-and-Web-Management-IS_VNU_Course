@@ -37,6 +37,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { marked } from "marked";
+import { injectTableEmptyStates } from "./table-empty-state.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
@@ -168,11 +169,16 @@ function render(markdown) {
     }
   );
 
-  const html = marked.parse(prepared, {
-    renderer: makeRenderer(headings),
-    gfm: true,
-    breaks: false,
-  });
+  // The shared empty state is applied here, not in the template: every table
+  // a chapter ships — GFM tables and hand-written <table> examples alike —
+  // passes through one funnel, so one pass covers them all.
+  const html = injectTableEmptyStates(
+    marked.parse(prepared, {
+      renderer: makeRenderer(headings),
+      gfm: true,
+      breaks: false,
+    })
+  );
   return { html, headings };
 }
 
