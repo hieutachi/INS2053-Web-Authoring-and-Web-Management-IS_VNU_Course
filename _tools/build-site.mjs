@@ -460,6 +460,7 @@ function homePage(chapters) {
       <li class="tile-slides"><a href="slides/index.html"><span class="tile-icon" aria-hidden="true">03</span><span class="tile-copy"><strong>Lecture slides</strong><span>17 decks · 60 diagrams</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-homework"><a href="homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Homework</strong><span>15 practice sheets · submission later</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-grader"><a href="${GRADER_PUBLIC}"><span class="tile-icon" aria-hidden="true">05</span><span class="tile-copy"><strong>Self-check tool</strong><span>Score your homework against the rubric, in your own browser</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-guide"><a href="orientation.html"><span class="tile-icon" aria-hidden="true">06</span><span class="tile-copy"><strong>New here?</strong><span>How to use the ebook, slides, exercises and self-check tool</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
     </ul>
   </section>
 
@@ -527,6 +528,150 @@ ${items
     depth: 1,
     pageClass: "list-page",
     eyebrow: `${items.length} learning resources`,
+  });
+}
+
+/* --- orientation page ----------------------------------------------------- */
+
+function orientationPage() {
+  const body = `  <div class="doc">
+<h2 id="welcome">Welcome to INS2053</h2>
+<p>This course teaches you web authoring from scratch. Over 15 weeks you will learn HTML, CSS, and basic web design — and you will build a complete <strong>Student Club Website</strong> with five pages. No prior web development experience is needed; the prerequisite (INT1004) covers general computer skills.</p>
+<p>This page explains how the course materials are organized and how to get the most out of them.</p>
+
+<h2 id="materials">How the materials are organized</h2>
+<p>Every week has the same five pieces. They all share the same session number (01–15):</p>
+<table>
+  <caption>Course materials by type</caption>
+  <thead><tr><th scope="col">Material</th><th scope="col">What it is</th><th scope="col">When to use it</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Ebook chapter</strong></td><td>The textbook — theory, examples, and self-check questions</td><td><strong>Before</strong> class</td></tr>
+    <tr><td><strong>Lecture slides</strong></td><td>What your lecturer projects, with 60 teaching diagrams</td><td><strong>During</strong> class</td></tr>
+    <tr><td><strong>In-class exercise</strong></td><td>Hands-on practice your lecturer hands out</td><td><strong>During</strong> class</td></tr>
+    <tr><td><strong>Homework</strong></td><td>Practice brief with rubric — due Sunday 23:59</td><td><strong>After</strong> class</td></tr>
+    <tr><td><strong>Self-check tool</strong></td><td>Browser-only tool that checks your homework against the rubric</td><td>Before submitting homework</td></tr>
+  </tbody>
+</table>
+
+<h2 id="ebook">How to read the ebook</h2>
+<p>Each ebook chapter follows the same structure. Here's what each section means and how to use it:</p>
+
+<h3>📌 Session Information</h3>
+<p>A quick reference block at the top of every chapter: duration, prerequisites, learning objectives, preparation instructions, and which teaching diagrams your lecturer will project. Read this once to orient yourself.</p>
+
+<h3>🎯 Learning Objectives</h3>
+<p>What you'll be able to do after the session. Read these before starting, then check yourself against them at the end.</p>
+
+<h3>📖 Theory</h3>
+<p>The actual lesson, broken into short sections with code examples. Most paragraphs are 1–2 lines long — you won't face "walls of text." <strong>Don't just read — type the code examples yourself.</strong></p>
+
+<h3>🧪 Try It Yourself</h3>
+<p>Hands-on exercises embedded in the theory. Each one gives you step-by-step instructions and tells you the <strong>expected result</strong>. If your output doesn't match, re-read the preceding section. These take 2–5 minutes each.</p>
+
+<h3>🖼 Diagram References</h3>
+<p>Lines like <code>🖼 Diagram: canvases/buoi-04.canvas.tsx → BoxModelDiagram</code> point to visual diagrams your lecturer will project during class. You can also view them in the <a href="slides/index.html">lecture slide decks</a>.</p>
+
+<h3>🔍 Common Errors Table</h3>
+<p>A four-column table (Symptom → Cause → How to confirm → How to fix) listing the most common mistakes for that session. <strong>Bookmark these tables</strong> — you'll need them when debugging your homework.</p>
+
+<h3>✅ Self-Check (hidden answers)</h3>
+<p>Eight questions per chapter with answers hidden behind clickable toggles. <strong>Try to answer each question yourself first</strong>, then click to reveal. The last question typically provides no code — you write it yourself before checking.</p>
+
+<h3>📋 Self-Assessment Worksheet</h3>
+<p>A checklist to honestly rate your understanding of each learning objective.</p>
+
+<h2 id="sessions">How to use the session pages</h2>
+<p>Each <a href="sessions/index.html">session page</a> on this website has four steps:</p>
+<ol>
+  <li><strong>Before class</strong> — Read the ebook chapter and work the Try It Yourself blocks</li>
+  <li><strong>In class</strong> — Follow the lecture deck (press <kbd>j</kbd>/<kbd>k</kbd> to navigate, <kbd>n</kbd> for speaker notes)</li>
+  <li><strong>After class</strong> — Work on the homework brief</li>
+  <li><strong>Check yourself</strong> — Open the self-check tool to verify your work</li>
+</ol>
+<p>Start at <a href="sessions/session-01.html">Session 1</a> and follow the flow.</p>
+
+<h2 id="selfcheck">How to use the self-check tool</h2>
+<p>The <a href="${GRADER_PUBLIC}">self-check tool</a> runs entirely in your browser — <strong>nothing is uploaded</strong>. It checks the mechanical parts of the homework rubric.</p>
+<ol>
+  <li>Open the tool and select the correct session</li>
+  <li>Enter your name, student ID, and class</li>
+  <li>Provide your work: paste a GitHub link, drag-drop a folder, or paste code directly</li>
+  <li>Click <strong>Grade</strong> and read the results</li>
+  <li>Fix issues, re-grade, and save the final result (screenshot + JSON)</li>
+</ol>
+
+<h3>Reading the results</h3>
+<table>
+  <caption>Result card numbers explained</caption>
+  <thead><tr><th scope="col">Label</th><th scope="col">Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><strong>AUTO</strong></td><td>Points the machine confirmed — these are yours</td></tr>
+    <tr><td><strong>MANUAL</strong></td><td>Points that need your lecturer's judgment (not your score yet)</td></tr>
+    <tr><td><strong>BLOCKED</strong></td><td>Points blocked because a file was missing (not automatically zero)</td></tr>
+    <tr><td><strong>TOTAL RUBRIC</strong></td><td>Total rubric weight, usually 10 — not your final mark</td></tr>
+  </tbody>
+</table>
+<p>On each line: <code>✓</code> = pass, <code>~</code> = partial, <code>✗</code> = fail, <code>?</code> = needs human review.</p>
+<p><strong>The tool does not decide your final grade.</strong> It checks what a machine can check. Your lecturer reviews everything else.</p>
+
+<h2 id="project">The capstone project</h2>
+<p>You'll build a <strong>Student Club Website</strong> with five pages (index, about, activities, media, contact). You add features each week as you learn new skills. The full specification is in <code>project/spec.md</code>.</p>
+<p>Milestones M1–M8 fall at least one week <em>after</em> the session that teaches the required skills, so you're never asked to build something not yet covered.</p>
+
+<h2 id="exams">Exams</h2>
+<table>
+  <caption>Exam schedule</caption>
+  <thead><tr><th scope="col">Exam</th><th scope="col">When</th><th scope="col">Duration</th><th scope="col">Coverage</th></tr></thead>
+  <tbody>
+    <tr><td>Midterm</td><td>Week 8</td><td>90 min</td><td>Sessions 1–7</td></tr>
+    <tr><td>Final</td><td>Week 15</td><td>120 min</td><td>Whole course (focus on 9–15)</td></tr>
+  </tbody>
+</table>
+<p>Both exams are <strong>practical</strong> (you write HTML/CSS). <strong>No internet.</strong> You may bring your own notes, the ebook chapters offline, and your project files. Sample papers are on the website — practice under timed conditions.</p>
+
+<h2 id="deadlines">Key deadlines</h2>
+<ul>
+  <li><strong>Homework:</strong> every Sunday 23:59. Monday grace day at −20% of earned mark.</li>
+  <li><strong>Project milestones:</strong> M1–M6 follow the same rule (one grace day at −20%).</li>
+  <li><strong>Final ZIP (M7 + M8):</strong> Week 16, Sunday 23:59. −10% per day late.</li>
+  <li>If illness or a documented reason stops you from submitting, contact your lecturer <strong>before</strong> the deadline.</li>
+</ul>
+
+<h2 id="resources">All resources at a glance</h2>
+<ul>
+  <li><a href="sessions/index.html">Sessions</a> — 15 weeks, one hub per week</li>
+  <li><a href="ebook/index.html">Ebook</a> — 15 chapters + Appendix A</li>
+  <li><a href="slides/index.html">Lecture slides</a> — 17 decks with 60 teaching diagrams</li>
+  <li><a href="homework/index.html">Homework</a> — 15 practice briefs with rubrics</li>
+  <li><a href="${GRADER_PUBLIC}">Self-check tool</a> — browser-only homework grader</li>
+  <li><code>examples/student-club/</code> — a complete reference website (study it, don't copy it)</li>
+  <li><code>references/resources.md</code> — curated links: MDN, W3C, tools, tutorials</li>
+</ul>
+</div>`;
+
+  return page({
+    title: `How to Use This Course — ${COURSE}`,
+    heading: "How to Use This Course",
+    lead: "Everything you need to know about the ebook, slides, exercises, homework, and self-check tool — in one place.",
+    crumbs: [
+      { href: "index.html", label: "Home" },
+      { label: "Student Guide" },
+    ],
+    toc: [
+      { id: "welcome", label: "Welcome to INS2053", depth: 2 },
+      { id: "materials", label: "How the materials are organized", depth: 2 },
+      { id: "ebook", label: "How to read the ebook", depth: 2 },
+      { id: "sessions", label: "How to use the session pages", depth: 2 },
+      { id: "selfcheck", label: "How to use the self-check tool", depth: 2 },
+      { id: "project", label: "The capstone project", depth: 2 },
+      { id: "exams", label: "Exams", depth: 2 },
+      { id: "deadlines", label: "Key deadlines", depth: 2 },
+      { id: "resources", label: "All resources at a glance", depth: 2 },
+    ],
+    body,
+    depth: 0,
+    pageClass: "reading-page",
+    eyebrow: "INS2053 · Student guide",
   });
 }
 
@@ -707,6 +852,7 @@ async function build() {
 
   /* 6. index pages -------------------------------------------------------- */
   await writeFile(path.join(OUT, "index.html"), homePage(chapters), "utf8");
+  await writeFile(path.join(OUT, "orientation.html"), orientationPage(), "utf8");
 
   await writeFile(
     path.join(OUT, "sessions", "index.html"),
@@ -789,7 +935,7 @@ async function build() {
 
   console.log(
     `built site/ — ${chapters.length} chapters, ${sheets.length} homework sheets, ` +
-      `${SESSIONS.length} session hubs, ${deckList.length} decks`
+      `${SESSIONS.length} session hubs, ${deckList.length} decks, 1 orientation page`
   );
 
   // Example paths are expected (chapters illustrate paths in the student's own

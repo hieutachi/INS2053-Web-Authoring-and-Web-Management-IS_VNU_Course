@@ -77,9 +77,9 @@ console.log("== 1. page inventory ==============================================
     slides: list.filter((f) => f.startsWith("slides/")).length,
   };
   console.log(`      ${list.length} html page(s)  ` + JSON.stringify(groups));
-  // index.html + cham-bai.html. The count is asserted rather than relaxed, so a
-  // third file appearing at the root is a failure and not a shrug.
-  if (groups.root !== 2) bad(`expected 2 root pages (index + self-check tool), found ${groups.root}`);
+  // index.html + orientation.html + cham-bai.html. The count is asserted rather
+  // than relaxed, so an unexpected file appearing at the root is a failure.
+  if (groups.root !== 3) bad(`expected 3 root pages (index + orientation + self-check tool), found ${groups.root}`);
   if (groups.ebook !== 17) bad(`expected 17 ebook pages (16 chapters + index), found ${groups.ebook}`);
   if (groups.homework !== 16) bad(`expected 16 homework pages (15 + index), found ${groups.homework}`);
   if (groups.sessions !== 16) bad(`expected 16 session pages (15 + index), found ${groups.sessions}`);

@@ -401,7 +401,7 @@ chặn các yêu cầu này bị đổi thành `auto` ngoài ý muốn.
 | G10 | `cham-bai.html` không tự chứa hoặc có thể thực thi/chèn bài sinh viên. |
 | G11 | Nội dung thi hoặc `project/rubric.md` lọt vào grader. |
 
-### `qa:site` — 13 nhóm
+### `qa:site` — 14 nhóm
 
 1. Page inventory.
 2. Cấu trúc HTML document.
@@ -417,13 +417,15 @@ chặn các yêu cầu này bị đổi thành `auto` ngoài ý muốn.
 12. Shared assets tồn tại.
 13. Grader public byte-identical với artifact đã qua gate, tự chứa, không upload, chỉ
     đọc hai host GitHub và có ít nhất 32 trang dẫn tới.
+14. Không table nào rỗng ruột: mọi `<tbody>` phải chứa hàng dữ liệu hoặc hàng
+    empty-state dùng chung (tiêm lúc build bởi `_tools/table-empty-state.mjs`).
 
 ### Baseline một lượt phát hành
 
 | Lượt kiểm | Baseline phải tái lập |
 |---|---|
 | `npm run qa:grader` | 15/15 buổi, 76 dòng rubric, 42 loại check, G1–G11 PASS. |
-| `npm run build:site && npm run qa:site` | 69 trang HTML, 13/13 nhóm PASS. |
+| `npm run build:site && npm run qa:site` | 69 trang HTML, 14/14 nhóm PASS. |
 | Chrome/CDP | 28/28 PASS: `file://`, 15 fixture đúng, fixture sai/rỗng/thiếu file, injection, JSON/regrade/tamper, PDF, asset path, determinism, CSP và console. |
 | GitHub dưới production CSP | Repo public chỉ dùng `GET` tới `api.github.com` và `raw.githubusercontent.com`, không CSP violation. |
 | `npm run qa` và literal-strip test | Toàn bộ QA học liệu hiện có PASS. |

@@ -196,7 +196,7 @@ GitHub, đồng thời có ít nhất 32 link dẫn tới nó.
 | Lượt kiểm | Kết quả |
 |---|---|
 | `npm run qa:grader` | PASS 15/15 buổi, 42 loại check, đủ G1–G11. |
-| `npm run build:site && npm run qa:site` | PASS 13/13 nhóm trên 69 trang HTML. |
+| `npm run build:site && npm run qa:site` | PASS 14/14 nhóm trên 69 trang HTML. |
 | Chrome/CDP browser sweep | PASS 28/28: `file://`, 15 fixture đúng, fixture sai/rỗng/thiếu file, chống injection, JSON + regrade + tamper, PDF, asset path, tính tất định, CSP và console. |
 | GitHub live dưới production CSP | PASS với repo công khai: chỉ `GET`, `api.github.com` và `raw.githubusercontent.com`, không CSP violation. |
 | `npm run qa` + literal-strip test | PASS toàn bộ QA tài liệu hiện có. |
