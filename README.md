@@ -173,3 +173,7 @@ site QA group 13 rejects any mismatch or unsafe publishing behavior. Rebuild
 The builder is `_tools/build-site.mjs`, the shared stylesheet and script live in
 `_tools/site-assets/`, and markdown is rendered with `marked` (pinned). Every path in
 the output is relative, so the folder works when opened locally as well as when served.
+
+Deploy notes, including what to do when `vercel --prod` is refused with
+`BLOCKED` / `TEAM_ACCESS_REQUIRED`, are in
+[`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md) §12.

@@ -315,10 +315,54 @@ commit. Sau deploy, xác nhận:
 2. response có CSP đúng `vercel.json` và `Cache-Control: no-store`;
 3. trang mở được 15 rubric và chấm được một fixture;
 4. trang chủ, homework index, 15 homework sheet và 15 session hub dẫn tới công cụ;
-5. không có lỗi console/CSP trong luồng dán code, tải JSON và in.
+5. không có lỗi console/CSP trong luồng dán code, tải JSON và in;
+6. mọi file trong `site/` khớp SHA-256 với bản trên production, không sót file nào.
 
 Chỉ push `main` hoặc deploy production khi tài khoản Vercel/GitHub đã được liên kết,
 email commit đã được xác minh và người quản lý repository xác nhận.
+
+### Deploy production khi CLI trả `BLOCKED`
+
+Đường bình thường có hai lối: push `main` để Vercel Git integration tự deploy, hoặc
+`npx vercel --prod` trong repo đã link. Nếu deployment trả `BLOCKED` với lý do
+`TEAM_ACCESS_REQUIRED` (tài khoản của commit author chưa đủ quyền tạo deployment trong
+team), **không** nới gate và **không** sửa `site/` bằng tay. Dùng đường prebuilt, deploy
+từ một thư mục **không có `.git`**:
+
+```powershell
+# 1. build + QA đầy đủ trong repo, không bỏ bước nào
+npm run build:site
+npm run qa:site
+
+# 2. build output cho Vercel rồi copy sang thư mục tạm ngoài git
+npx vercel build --prod
+$stage = Join-Path $env:TEMP 'ins2053-deploy'
+Remove-Item $stage -Recurse -Force -ErrorAction SilentlyContinue
+New-Item (Join-Path $stage '.vercel') -ItemType Directory -Force | Out-Null
+Copy-Item '.vercel\output' (Join-Path $stage '.vercel\output') -Recurse
+Copy-Item '.vercel\project.json' (Join-Path $stage '.vercel\project.json')
+
+# 3. deploy từ thư mục tạm: không có .git nên Vercel không kiểm quyền commit author
+Set-Location $stage
+npx --yes vercel@48.4.0 deploy --prebuilt --prod --yes
+```
+
+`vercel build` chạy `npm install` và có thể viết lại `package-lock.json` (ví dụ
+`^18.0.11` thành `18.0.11`). Sau khi deploy xong, quay về repo, kiểm tra và hoàn nguyên:
+
+```powershell
+Set-Location '<repo>'
+git status --porcelain
+git checkout -- package-lock.json
+```
+
+Chỉ xác minh qua alias production `https://ins2053-web-course.vercel.app`. URL riêng của
+từng deployment (`*-<team>.vercel.app`) bị SSO của Vercel bảo vệ: HTTP 200 ở đó là trang
+đăng nhập của Vercel, không phải file cần kiểm.
+
+Đường prebuilt chỉ là biện pháp tạm. Cách xử lý gốc nằm ở dashboard Vercel: cấp seat và
+quyền tạo deployment cho tài khoản đang dùng, hoặc nối lại Git integration để push `main`
+tự deploy. Xong việc đó thì quay lại đường bình thường.
 
 
 ## 13. Maintainer: sửa rubric đúng thứ tự

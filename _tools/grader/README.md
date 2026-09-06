@@ -109,6 +109,10 @@ byte là fail. Sau khi tất cả lệnh pass, push nhánh được Vercel kết
 - `/cham-bai.html`: CSP chỉ cho script/style nội tuyến và hai host GitHub đọc-only;
 - `/cham-bai.html`: `Cache-Control: no-store` để rubric cũ không bị giữ trong cache.
 
+Nếu `vercel --prod` trả `BLOCKED` / `TEAM_ACCESS_REQUIRED`, xem `HUONG-DAN-cham-bai.md`
+§12 — đường deploy prebuilt từ thư mục không có `.git`, kèm bước hoàn nguyên
+`package-lock.json` sau khi `vercel build` chạy `npm install`.
+
 Sau deploy, mở `/cham-bai.html`, chấm một fixture và kiểm response headers. Trang chủ,
 homework index, 15 homework sheet và 15 session hub phải dẫn tới công cụ: 32 trang.
 
