@@ -36,6 +36,11 @@ jobs:
       - name: Build site
         run: npm run build:site
 
+      # Publish nothing that the local baseline would reject: the same gates the
+      # instructor runs before deploying, on the tree about to be uploaded.
+      - name: QA the built site
+        run: npm run qa:site
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 12: HTML &amp; CSS Validation and Code Cleanup — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../homework/session-12.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page homework-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../homework/session-12.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Bài tập</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Buổi 12</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Buổi 12 · Bài tập</p>
+    <h1>Homework 12: HTML &amp; CSS Validation and Code Cleanup</h1>
+    <p class="lead">Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.</p>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#practice-status">Practice Status</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
+        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../homework/session-12.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <div class="callout status-note" role="status">
+    <p><strong>Chế độ luyện tập.</strong> Việc nộp và chấm bài trực tuyến chưa mở. Hãy làm bài trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp.</p>
+    <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 12, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng buổi học">
+    <a class="up" href="../sessions/session-12.html">Tổng quan Buổi 12</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-12-html-css-validation-and-code-cleanup">Homework 12: HTML &amp; CSS Validation and Code Cleanup<a class="anchor" href="#homework-12-html-css-validation-and-code-cleanup" aria-label="Link to this section">#</a></h2>
+<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
+<p>Online submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Learn to validate HTML and CSS using online tools</li>
+<li>Find and fix errors in your code</li>
+<li>Practice clean code formatting habits</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-validate-your-html">Task 1: Validate Your HTML<a class="anchor" href="#task-1-validate-your-html" aria-label="Link to this section">#</a></h4>
+<p>Visit the <a href="https://validator.w3.org/">W3C HTML Validator</a> and check each of your HTML files.</p>
+<p><strong>How to validate:</strong></p>
+<ol>
+<li>Go to <a href="https://validator.w3.org/">https://validator.w3.org/</a></li>
+<li>Choose &quot;Validate by Direct Input&quot;</li>
+<li>Copy-paste your HTML code into the text box</li>
+<li>Click &quot;Check&quot;</li>
+<li>Review the errors and warnings</li>
+</ol>
+<p><strong>You must validate these files:</strong></p>
+<ul>
+<li><code>project/index.html</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/activities.html</code></li>
+<li><code>project/media.html</code></li>
+<li><code>project/contact.html</code></li>
+</ul>
+<p><strong>Fix ALL errors found.</strong> Common issues:</p>
+<ul>
+<li>Missing <code>alt</code> attributes on images</li>
+<li>Unclosed tags (like <code>&lt;p&gt;</code> without <code>&lt;/p&gt;</code>)</li>
+<li>Missing <code>lang</code> attribute on <code>&lt;html&gt;</code> tag</li>
+<li>Duplicate <code>id</code> values</li>
+<li>Incorrect nesting of elements</li>
+</ul>
+<h4 id="task-2-validate-your-css">Task 2: Validate Your CSS<a class="anchor" href="#task-2-validate-your-css" aria-label="Link to this section">#</a></h4>
+<p>Visit the <a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validator</a> and check your stylesheet.</p>
+<p><strong>How to validate:</strong></p>
+<ol>
+<li>Go to <a href="https://jigsaw.w3.org/css-validator/">https://jigsaw.w3.org/css-validator/</a></li>
+<li>Choose &quot;By direct input&quot;</li>
+<li>Copy-paste your CSS code</li>
+<li>Click &quot;Check&quot;</li>
+<li>Fix all errors</li>
+</ol>
+<p><strong>Common CSS errors:</strong></p>
+<ul>
+<li>Misspelled property names</li>
+<li>Missing semicolons</li>
+<li>Invalid property values</li>
+<li>Unknown properties</li>
+</ul>
+<h4 id="task-3-clean-up-code-formatting">Task 3: Clean Up Code Formatting<a class="anchor" href="#task-3-clean-up-code-formatting" aria-label="Link to this section">#</a></h4>
+<p>Reformat your HTML and CSS files to follow best practices.</p>
+<p><strong>HTML formatting rules:</strong></p>
+<ul>
+<li>Use 2-space indentation (not tabs, not 4 spaces)</li>
+<li>Each element on its own line when it has children</li>
+<li>Self-closing tags like <code>&lt;img&gt;</code> and <code>&lt;br&gt;</code> should be on their own line</li>
+<li>Add comments to separate sections: <code>&lt;!-- Navigation --&gt;</code>, <code>&lt;!-- Main Content --&gt;</code></li>
+</ul>
+<p><strong>CSS formatting rules:</strong></p>
+<ul>
+<li>One property per line</li>
+<li>Opening brace on the same line as the selector</li>
+<li>Closing brace on its own line</li>
+<li>Add blank lines between different selectors</li>
+<li>Group related rules together</li>
+<li>Add comments for sections: <code>/* Header Styles */</code>, <code>/* Navigation */</code></li>
+</ul>
+<p><strong>Example of clean HTML:</strong></p>
+<pre><code class="language-html">&lt;!-- Header Section --&gt;
+&lt;header&gt;
+  &lt;h1&gt;Club Name&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;!-- Navigation --&gt;
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<p><strong>Example of clean CSS:</strong></p>
+<pre><code class="language-css">/* Header Styles */
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Navigation */
+nav {
+  background-color: #34495e;
+}
+</code></pre>
+<p><strong>Files to clean up:</strong></p>
+<ul>
+<li>All HTML files in <code>project/</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW12: Validate HTML/CSS and clean up code&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTML validation</td>
+<td>3</td>
+<td>Zero errors on W3C validator</td>
+</tr>
+<tr>
+<td>CSS validation</td>
+<td>3</td>
+<td>Zero errors on W3C validator</td>
+</tr>
+<tr>
+<td>HTML formatting</td>
+<td>2</td>
+<td>Proper indentation, comments, structure</td>
+</tr>
+<tr>
+<td>CSS formatting</td>
+<td>2</td>
+<td>Clean formatting with comments</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Validation errors are normal — even professionals make mistakes</li>
+<li>Fix errors one file at a time and re-validate after each fix</li>
+<li>Clean code is easier to read, debug, and maintain</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>All your HTML files should pass W3C validation with zero errors. Your CSS file should also pass validation. The code should look neat and organized with proper indentation and helpful comments.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

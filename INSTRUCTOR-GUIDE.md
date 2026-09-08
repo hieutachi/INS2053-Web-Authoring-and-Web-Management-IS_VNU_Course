@@ -55,7 +55,7 @@ Every session `NN` (01–15) has **five matching pieces**. Replace `NN` with the
 
 | Resource | Path | Purpose |
 |---|---|---|
-| Student website | `site/` | Public portal (ebook + decks + homework), deployed to Vercel |
+| Student website | `site/` | Public portal (ebook + decks + homework), English + Vietnamese; push `main` to deploy to GitHub Pages |
 | HTML slides | `slides-html/` | Canvas decks rendered as standalone HTML — open `slides-html/index.html`, no install needed |
 | Self-check tool | `site/cham-bai.html` or `_tools/grader/cham-bai.html` | Browser-only homework grader (262 KB, offline) |
 | Example website | `examples/student-club/` | 5-page reference implementation — study, don't copy |
@@ -199,6 +199,7 @@ The site uses an **allowlist** (not a blocklist). These are excluded on purpose:
 - After editing any `canvases/*.canvas.tsx`: run `npm run build:slides` then `npm run build:site`
 - After editing any `ebook/`, `slides/`, or `homework/` source: run `npm run build:site`
 - After editing grader source/rubrics: run `npm run build:grader` then `npm run build:site`
+- After adding or editing a translation under `i18n/vi/` or a string in `_tools/i18n.mjs`: run `npm run build:site` (both trees regenerate every time; there is no separate Vietnamese build)
 
 ### Quick Reference
 
@@ -207,7 +208,7 @@ The site uses an **allowlist** (not a blocklist). These are excluded on purpose:
 npm run build:slides    # canvases → slides-html/
 npm run build:site      # grader artifact + site/
 npm run qa              # canvases + slides QA
-npm run qa:site         # 14 QA groups on site output
+npm run qa:site         # 16 QA groups on site output
 npm run qa:grader       # 11 gates on grader (15 sessions)
 ```
 
@@ -216,16 +217,23 @@ npm run qa:grader       # 11 gates on grader (15 sessions)
 | Check | Baseline |
 |---|---|
 | `npm run qa:grader` | 15/15 sessions, 76 rubric rows, 42 check types, G1–G11 PASS |
-| `npm run build:site && npm run qa:site` | 69+ pages, 14/14 groups PASS |
+| `npm run build:site && npm run qa:site` | 124 pages (2 trees), 16/16 groups PASS |
 | `npm run qa` | Canvases + slides QA PASS |
 
-### Deploying to Vercel
+### Deploying
 
-Normal path: push `main` for Vercel Git integration auto-deploy, or `npx vercel --prod`.
+Normal path: push `main`. `.github/workflows/deploy-pages.yml` rebuilds the slides and both
+site trees on GitHub and publishes `site/`; `.github/workflows/qa.yml` runs the same QA gates
+in parallel, so a broken build is caught even if the deploy that follows it is not.
 
-If CLI returns `BLOCKED` / `TEAM_ACCESS_REQUIRED`, see `HUONG-DAN-cham-bai.md` §12 for the prebuilt deploy workaround.
+Live URL: `https://hieutachi.github.io/INS2053-Web-Authoring-and-Web-Management-IS_VNU_Course/`
+(Vietnamese interface at `…/vi/`).
 
-**Always verify production through `https://ins2053-web-course.vercel.app` only.** Deployment-specific URLs sit behind SSO.
+Vercel is kept as an alternate target only for `site/cham-bai.html`, because `vercel.json` is
+where its CSP and `no-store` headers are set. If the CLI returns `BLOCKED` /
+`TEAM_ACCESS_REQUIRED`, see `HUONG-DAN-cham-bai.md` §12 for the prebuilt deploy workaround,
+and verify through `https://ins2053-web-course.vercel.app` only — deployment-specific URLs sit
+behind SSO.
 
 ---
 

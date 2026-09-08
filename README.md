@@ -26,7 +26,7 @@
 | `references/` | Curated links (MDN, W3C, tools) | Everyone |
 | `_tools/` | Re-runnable QA/build scripts and the homework self-check source; see [`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md) | Maintainers |
 | `slides-html/` | The `canvases/` decks rendered as standalone HTML — open `slides-html/index.html`, no build or install needed | Lecturer, students |
-| `site/` | The **public student website** (generated): ebook + decks + homework only, organised week by week. Deployed to Vercel | Students (published) |
+| `site/` | The **public student website** (generated): ebook + decks + homework only, organised week by week, in English and Vietnamese. Pushing `main` deploys it to GitHub Pages | Students (published) |
 
 ---
 
@@ -130,7 +130,27 @@ site/ebook/NN-slug.html         the chapter
 site/slides/buoi-NN.html        the deck (copied from slides-html/)
 site/homework/session-NN.html   the homework sheet
 site/cham-bai.html              the browser-only homework self-check tool
+site/vi/…                       the same pages with a Vietnamese interface
+i18n/vi/…                       Vietnamese prose sources, optional per file
 ```
+
+The site is bilingual. Every generated page exists twice — English at `site/`,
+Vietnamese at `site/vi/` — and each carries a language switch at the top right
+that links to its counterpart on the same document, so switching never drops a
+student on a home page. `assets/`, `slides/` and `cham-bai.html` exist once and
+are shared: the decks are the lecturer's own material and are not translated,
+and the self-check tool must stay a single byte-identical copy of the gated
+artefact.
+
+Interface wording lives in `_tools/i18n.mjs`, keyed, with both languages
+complete. Prose is handled differently on purpose: a Vietnamese translation is
+one optional markdown file under `i18n/vi/` mirroring the source's repo path
+(`ebook/01-…md` → `i18n/vi/ebook/01-…md`). Drop a file in, rebuild, and nothing
+else changes. Where no translation exists yet, the page is published with
+Vietnamese chrome around the English text and says so at the top, because
+silent fallback reads as a broken translation. Technical subject matter — HTML,
+CSS, `index.html`, rubric, repository — stays English in both languages; it is
+what the course teaches.
 
 Each session hub states the same three stages, so a student always knows where they
 are: **before class** read the chapter and work its `🧪 Try It Yourself` blocks, **in
@@ -163,7 +183,7 @@ Build and check:
 ```bash
 npm run qa:grader         # build + 11 grader gates across all 15 rubrics
 npm run build:site        # generate site/, including the vetted grader artifact
-npm run qa:site           # 13 QA groups on the 69-page public output
+npm run qa:site           # 16 QA groups on the 124-page bilingual public output
 npm run clean:site        # delete site/
 ```
 
@@ -174,6 +194,9 @@ The builder is `_tools/build-site.mjs`, the shared stylesheet and script live in
 `_tools/site-assets/`, and markdown is rendered with `marked` (pinned). Every path in
 the output is relative, so the folder works when opened locally as well as when served.
 
-Deploy notes, including what to do when `vercel --prod` is refused with
-`BLOCKED` / `TEAM_ACCESS_REQUIRED`, are in
+Deploy: pushing `main` runs `.github/workflows/deploy-pages.yml`, which rebuilds
+`slides-html/` and `site/` on GitHub and publishes `site/` to GitHub Pages. The
+Vercel config in `vercel.json` is kept as an alternate target for
+`site/cham-bai.html`; notes for when `vercel --prod` is refused with
+`BLOCKED` / `TEAM_ACCESS_REQUIRED` are in
 [`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md) §12.

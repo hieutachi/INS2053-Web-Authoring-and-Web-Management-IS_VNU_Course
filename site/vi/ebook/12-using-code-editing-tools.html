@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 12: Using Code-Editing Tools — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 12: Using Code-Editing Tools — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/12-using-code-editing-tools.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/12-using-code-editing-tools.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 12</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 12</p>
+    <h1>Buổi 12: Using Code-Editing Tools</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-vs-code-your-primary-development-tool">1. VS Code: Your Primary Development Tool</a></li>
+        <li class="d2"><a href="#2-essential-vs-code-extensions">2. Essential VS Code Extensions</a></li>
+        <li class="d2"><a href="#3-emmet-write-html-at-lightning-speed">3. Emmet: Write HTML at Lightning Speed</a></li>
+        <li class="d2"><a href="#4-essential-keyboard-shortcuts">4. Essential Keyboard Shortcuts</a></li>
+        <li class="d2"><a href="#5-integrated-terminal">5. Integrated Terminal</a></li>
+        <li class="d2"><a href="#6-html-validation">6. HTML Validation</a></li>
+        <li class="d2"><a href="#7-css-validation">7. CSS Validation</a></li>
+        <li class="d2"><a href="#8-browser-developer-tools-devtools">8. Browser Developer Tools (DevTools)</a></li>
+        <li class="d2"><a href="#9-debugging-common-errors">9. Debugging Common Errors</a></li>
+        <li class="d2"><a href="#10-code-formatting-and-comments">10. Code Formatting and Comments</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-using-emmet-to-build-a-page-skeleton">Example 1: Using Emmet to Build a Page Skeleton</a></li>
+        <li class="d2"><a href="#example-2-debugging-a-layout-issue-with-devtools">Example 2: Debugging a Layout Issue with DevTools</a></li>
+        <li class="d2"><a href="#example-3-finding-and-fixing-validation-errors">Example 3: Finding and Fixing Validation Errors</a></li>
+        <li class="d2"><a href="#example-4-using-find-and-replace-across-all-files">Example 4: Using Find-and-Replace Across All Files</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/12-using-code-editing-tools.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-12.html">Tổng quan Buổi 12</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-12">🟦 SESSION 12<a class="anchor" href="#session-12" aria-label="Link to this section">#</a></h2>
+<h2 id="using-code-editing-tools"><strong>Using Code-Editing Tools</strong><a class="anchor" href="#using-code-editing-tools" aria-label="Link to this section">#</a></h2>
+<p>Welcome to the final session of our web authoring journey, friend! You have learned HTML structure, CSS styling, images, multimedia, and site planning. Now it is time to level up your <strong>workflow</strong>. Professional developers do not just write code — they use powerful tools that make coding faster, catch errors automatically, and help debug problems in seconds. In this session you will master <strong>VS Code</strong> (Visual Studio Code), the industry-standard code editor used by millions of developers worldwide. You will also learn how to validate your HTML/CSS using official W3C validators and how to use browser Developer Tools to inspect, test, and fix issues in real time. Think of this session as upgrading from a bicycle to a sports car — same destination, but MUCH faster and smoother. Let us go!</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    VS Code documentation; W3C HTML/CSS Validators
+                 Chrome DevTools documentation (MDN)
+🎯 Objectives:   1. Master VS Code features (extensions, Emmet, shortcuts, terminal)
+                 2. Validate HTML and CSS with the W3C validators
+                 3. Use browser DevTools to inspect and debug a page
+                 4. Recognise and fix the most common markup and CSS errors
+📖 Prepare:      1. Install VS Code (https://code.visualstudio.com/)
+                 2. Have your club-website project open
+                 3. Install Chrome or Edge
+🖼 Diagrams:     canvases/buoi-12.canvas.tsx — VSCodeLayout, EmmetExpand, ValidatorReport,
+                 DevToolsLoop
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO3 (choose appropriate technologies for web development)
+                 CLO5 (evaluate, document, and present a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Navigate the VS Code interface confidently (Explorer, Editor, Terminal, Extensions)</li>
+<li>Install and configure essential VS Code extensions for web development</li>
+<li>Use <strong>Emmet</strong> abbreviations to generate HTML/CSS code instantly</li>
+<li>Apply keyboard shortcuts to edit code faster (multi-cursor, find/replace, formatting)</li>
+<li>Use the integrated terminal for file management and local server tasks</li>
+<li>Validate HTML using the W3C Markup Validator (online and via extension)</li>
+<li>Validate CSS using the W3C CSS Validator</li>
+<li>Open and use browser Developer Tools (Elements, Console, Network panels)</li>
+<li>Inspect and modify CSS properties live in the browser</li>
+<li>Identify and fix common HTML errors (unclosed tags, missing attributes, bad nesting)</li>
+<li>Identify and fix common CSS errors (missing semicolons, typos, wrong selectors)</li>
+<li>Format code consistently using auto-formatting tools</li>
+<li>Use comments effectively to document HTML and CSS</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-vs-code-your-primary-development-tool">1. VS Code: Your Primary Development Tool<a class="anchor" href="#1-vs-code-your-primary-development-tool" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-12.canvas.tsx</code> → <code>VSCodeLayout</code> — slide <code>s12-vscode</code> (&quot;VS Code Interface&quot;)</p>
+</blockquote>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Visual Studio Code (VS Code)</strong> is a free, open-source code editor created by Microsoft. It is NOT the same as &quot;Visual Studio&quot; (which is a much larger IDE). VS Code is lightweight, fast, extensible, and has become the most popular code editor for web development worldwide.</p>
+<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>According to the Stack Overflow Developer Survey, VS Code has been the #1 most-used development environment since 2019. Over 70% of professional web developers use it daily. When you join a tech company, chances are very high that your team uses VS Code.</p>
+<h4 id="12-vs-code-interface-overview">1.2 VS Code Interface Overview<a class="anchor" href="#12-vs-code-interface-overview" aria-label="Link to this section">#</a></h4>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│  ACTIVITY BAR  │  SIDEBAR      │  EDITOR AREA              │
+│                │               │                           │
+│  [Explorer]    │  File tree    │  index.html          [x]  │
+│  [Search]      │               │  ┌─────────────────────┐  │
+│  [Source Ctrl] │  - index.html │  │ 1 │ &lt;!DOCTYPE html&gt; │  │
+│  [Debug]       │  - about.html │  │ 2 │ &lt;html lang=&quot;en&quot;&gt;│  │
+│  [Extensions]  │  - css/       │  │ 3 │ &lt;head&gt;          │  │
+│                │    style.css  │  │ 4 │   &lt;meta ...&gt;    │  │
+│                │  - images/    │  │ 5 │   &lt;title&gt;...    │  │
+│                │               │  │   │                 │  │
+│                │               │  └─────────────────────┘  │
+│                │               │                           │
+│                ├───────────────┤  PANEL (Terminal/Output)  │
+│                │               │  $ cd club-website  │
+│                │               │  $ ls                     │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Activity Bar</strong> (far left)</td>
+<td>Icons to switch between Explorer, Search, Git, Debug, Extensions</td>
+</tr>
+<tr>
+<td><strong>Sidebar</strong></td>
+<td>Shows file explorer, search results, git changes, or extension marketplace</td>
+</tr>
+<tr>
+<td><strong>Editor Area</strong> (center)</td>
+<td>Where you write and edit code. Supports tabs for multiple files.</td>
+</tr>
+<tr>
+<td><strong>Panel</strong> (bottom)</td>
+<td>Integrated terminal, output console, problems list, debug console</td>
+</tr>
+<tr>
+<td><strong>Status Bar</strong> (very bottom)</td>
+<td>Shows language mode, line/column number, encoding, Git branch</td>
+</tr>
+</tbody></table>
+<h4 id="13-opening-your-project">1.3 Opening Your Project<a class="anchor" href="#13-opening-your-project" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Launch VS Code.</li>
+<li>Go to <strong>File → Open Folder...</strong></li>
+<li>Navigate to your <code>club-website</code> folder.</li>
+<li>Click <strong>Select Folder</strong>.</li>
+<li>The Sidebar now shows your entire project tree.</li>
+</ol>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>Always open the PROJECT FOLDER, not individual files. This enables features like search-across-files, relative paths, and workspace settings.</li>
+<li>If you see &quot;No Folder Opened&quot; in the sidebar, you opened a file instead of a folder. Close it and use <strong>Open Folder</strong> instead.</li>
+</ul>
+<hr>
+<h3 id="2-essential-vs-code-extensions">2. Essential VS Code Extensions<a class="anchor" href="#2-essential-vs-code-extensions" aria-label="Link to this section">#</a></h3>
+<h4 id="21-what-are-extensions">2.1 What Are Extensions?<a class="anchor" href="#21-what-are-extensions" aria-label="Link to this section">#</a></h4>
+<p>Extensions are plugins that add features to VS Code. The base editor is intentionally minimal; extensions let you customize it for your specific needs.</p>
+<h4 id="22-must-have-extensions-for-web-development">2.2 Must-Have Extensions for Web Development<a class="anchor" href="#22-must-have-extensions-for-web-development" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>What It Does</th>
+<th>Why You Need It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Live Server</strong> (ritwickdey.LiveServer)</td>
+<td>Launches a local development server with auto-refresh</td>
+<td>See changes instantly when you save — no manual refresh</td>
+</tr>
+<tr>
+<td><strong>HTML CSS Support</strong> (ecmel.vscode-html-css)</td>
+<td>Adds IntelliSense for HTML/CSS classes and IDs</td>
+<td>Auto-completes class names from your stylesheet</td>
+</tr>
+<tr>
+<td><strong>Prettier</strong> (esbenp.prettier-vscode)</td>
+<td>Auto-formats code on save</td>
+<td>Consistent indentation, spacing, and style</td>
+</tr>
+<tr>
+<td><strong>Auto Rename Tag</strong> (formulahendry.auto-rename-tag)</td>
+<td>Renames matching HTML tag when you edit one</td>
+<td>Change <code>&lt;div&gt;</code> to <code>&lt;section&gt;</code> and the closing tag updates automatically</td>
+</tr>
+<tr>
+<td><strong>Auto Close Tag</strong> (formulahendry.auto-close-tag)</td>
+<td>Automatically adds closing tags</td>
+<td>Type <code>&lt;div&gt;</code> and get <code>&lt;/div&gt;</code> inserted instantly</td>
+</tr>
+<tr>
+<td><strong>Path Intellisense</strong> (christian-kohler.path-intellisense)</td>
+<td>Auto-completes file paths</td>
+<td>Type <code>src=&quot;images/&quot;</code> and see available files</td>
+</tr>
+<tr>
+<td><strong>W3C Web Validator</strong> (umutcanbolat.vscode-w3c-web-validator)</td>
+<td>Validates HTML/CSS inside VS Code</td>
+<td>Catch errors without leaving the editor</td>
+</tr>
+<tr>
+<td><strong>Emmet</strong> <em>(built-in)</em></td>
+<td>Expands abbreviations into full HTML/CSS</td>
+<td>Type <code>ul&gt;li*5</code> and press Tab → full list generated</td>
+</tr>
+</tbody></table>
+<h4 id="23-how-to-install-extensions">2.3 How to Install Extensions<a class="anchor" href="#23-how-to-install-extensions" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Click the <strong>Extensions</strong> icon in the Activity Bar (or press <code>Ctrl+Shift+X</code>).</li>
+<li>Type the extension name in the search box.</li>
+<li>Click <strong>Install</strong> on the correct result.</li>
+<li>Some extensions require reloading VS Code — click <strong>Reload</strong> if prompted.</li>
+</ol>
+<h4 id="comparison-with-vs-without-extensions">🔍 Comparison: With vs Without Extensions<a class="anchor" href="#comparison-with-vs-without-extensions" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Without Extensions</th>
+<th>With Extensions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Preview changes</td>
+<td>Save → Switch to browser → Refresh → Switch back</td>
+<td>Save → Browser auto-refreshes (Live Server)</td>
+</tr>
+<tr>
+<td>Write HTML structure</td>
+<td>Type every tag manually</td>
+<td><code>div.container&gt;h2+p*3</code> + Tab = instant structure</td>
+</tr>
+<tr>
+<td>Format messy code</td>
+<td>Manually add spaces and newlines</td>
+<td><code>Ctrl+Shift+F</code> or save with Prettier = instant format</td>
+</tr>
+<tr>
+<td>Find validation errors</td>
+<td>Upload to W3C website → Wait → Read results</td>
+<td>Error squiggles appear in editor as you type</td>
+</tr>
+<tr>
+<td>Rename an HTML tag</td>
+<td>Edit opening tag → Scroll to find closing tag → Edit it too</td>
+<td>Edit opening tag → Closing tag updates automatically</td>
+</tr>
+<tr>
+<td>Reference an image path</td>
+<td>Type path from memory, hope it is correct</td>
+<td>Start typing → Autocomplete shows available files</td>
+</tr>
+</tbody></table>
+<h4 id="try-it-yourself-set-up-live-server">🧪 Try It Yourself — Set Up Live Server<a class="anchor" href="#try-it-yourself-set-up-live-server" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Stop pressing F5.</p>
+<ol>
+<li>In VS Code, open the Extensions panel (<strong>Ctrl+Shift+X</strong>) and install <strong>Live Server</strong> by Ritwick Dey.</li>
+<li>Open your project <em>folder</em> — <strong>File → Open Folder</strong> — not a single file.</li>
+<li>Right-click <code>index.html</code> in the Explorer and choose <strong>Open with Live Server</strong>.</li>
+<li>Arrange VS Code and the browser side by side. Edit a heading and press <strong>Ctrl+S</strong>.</li>
+</ol>
+<p><strong>Expected result:</strong> The browser reloads by itself the moment you save. The address bar reads <code>http://127.0.0.1:5500/</code>, not <code>file:///C:/...</code>.</p>
+<details>
+<summary>Why the URL change matters more than the convenience</summary><p>Live Server runs a real local web server, so your pages load over HTTP instead of directly from disk. Several things behave differently:</p>
+<ul>
+<li>Root-relative paths such as <code>/css/style.css</code> resolve properly, as they will on a real server.</li>
+<li>Features browsers block on <code>file://</code> — including <code>fetch</code> and some font loading — start working.</li>
+<li>The Network tab shows real status codes, so a 404 is unambiguous.</li>
+</ul>
+<p>This is also the fastest way to test on your phone: Live Server prints a second address on your local network, and typing it into your phone&#39;s browser loads the site from your laptop. That is real-device testing with no upload.</p>
+<p>Note the extension is scoped to the opened folder. If reloading does not happen, you almost certainly opened a file rather than a folder.</p>
+</details><hr>
+<h3 id="3-emmet-write-html-at-lightning-speed">3. Emmet: Write HTML at Lightning Speed<a class="anchor" href="#3-emmet-write-html-at-lightning-speed" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-12.canvas.tsx</code> → <code>EmmetExpand</code> — slide <code>s12-emmet</code> (&quot;Emmet Abbreviations&quot;)</p>
+</blockquote>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Emmet</strong> is a built-in VS Code feature that expands short abbreviations into full HTML or CSS code. You type a compact shorthand, press <strong>Tab</strong>, and VS Code generates the complete markup.</p>
+<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>Instead of typing 15 lines of HTML for a navigation menu, you type ONE line and press Tab. What took 2 minutes now takes 2 seconds.</p>
+<h4 id="32-common-emmet-abbreviations">3.2 Common Emmet Abbreviations<a class="anchor" href="#32-common-emmet-abbreviations" aria-label="Link to this section">#</a></h4>
+<h5 id="html-abbreviations">HTML Abbreviations<a class="anchor" href="#html-abbreviations" aria-label="Link to this section">#</a></h5>
+<table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Press Tab → Generates</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>!</code></td>
+<td>Full HTML5 boilerplate (<code>&lt;!DOCTYPE html&gt;&lt;html&gt;...</code>)</td>
+</tr>
+<tr>
+<td><code>div</code></td>
+<td><code>&lt;div&gt;&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td><code>.container</code></td>
+<td><code>&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td><code>#header</code></td>
+<td><code>&lt;div id=&quot;header&quot;&gt;&lt;/div&gt;</code></td>
+</tr>
+<tr>
+<td><code>h2.title</code></td>
+<td><code>&lt;h2 class=&quot;title&quot;&gt;&lt;/h2&gt;</code></td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td><code>&lt;a href=&quot;&quot;&gt;&lt;/a&gt;</code></td>
+</tr>
+<tr>
+<td><code>a.link</code></td>
+<td><code>&lt;a href=&quot;&quot; class=&quot;link&quot;&gt;&lt;/a&gt;</code></td>
+</tr>
+<tr>
+<td><code>img</code></td>
+<td><code>&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>ul&gt;li*5</code></td>
+<td><code>&lt;ul&gt;</code> with 5 <code>&lt;li&gt;</code> children</td>
+</tr>
+<tr>
+<td><code>nav&gt;ul&gt;li*6&gt;a</code></td>
+<td>Full navigation structure</td>
+</tr>
+<tr>
+<td><code>div.wrapper&gt;header+main+footer</code></td>
+<td>Page layout skeleton</td>
+</tr>
+<tr>
+<td><code>section.media&gt;h3+video[controls][poster=&quot;thumb.jpg&quot;]</code></td>
+<td>Video section</td>
+</tr>
+<tr>
+<td><code>p{Hello world}</code></td>
+<td><code>&lt;p&gt;Hello world&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td><code>a[href=&quot;about.html&quot;]{About Us}</code></td>
+<td><code>&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;</code></td>
+</tr>
+</tbody></table>
+<h5 id="css-abbreviations">CSS Abbreviations<a class="anchor" href="#css-abbreviations" aria-label="Link to this section">#</a></h5>
+<table>
+<thead>
+<tr>
+<th>Abbreviation</th>
+<th>Press Tab → Generates</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>m20</code></td>
+<td><code>margin: 20px;</code></td>
+</tr>
+<tr>
+<td><code>mt10</code></td>
+<td><code>margin-top: 10px;</code></td>
+</tr>
+<tr>
+<td><code>p15</code></td>
+<td><code>padding: 15px;</code></td>
+</tr>
+<tr>
+<td><code>w100p</code></td>
+<td><code>width: 100%;</code></td>
+</tr>
+<tr>
+<td><code>fz16</code></td>
+<td><code>font-size: 16px;</code></td>
+</tr>
+<tr>
+<td><code>bgc#1a5276</code></td>
+<td><code>background-color: #1a5276;</code></td>
+</tr>
+<tr>
+<td><code>c:white</code></td>
+<td><code>color: white;</code></td>
+</tr>
+<tr>
+<td><code>d:f</code></td>
+<td><code>display: flex;</code></td>
+</tr>
+<tr>
+<td><code>jc:c</code></td>
+<td><code>justify-content: center;</code></td>
+</tr>
+<tr>
+<td><code>ai:c</code></td>
+<td><code>align-items: center;</code></td>
+</tr>
+<tr>
+<td><code>bxsh</code></td>
+<td><code>box-shadow: ;</code></td>
+</tr>
+<tr>
+<td><code>bdrs8</code></td>
+<td><code>border-radius: 8px;</code></td>
+</tr>
+</tbody></table>
+<h4 id="33-emmet-syntax-cheat-sheet">3.3 Emmet Syntax Cheat Sheet<a class="anchor" href="#33-emmet-syntax-cheat-sheet" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.</code></td>
+<td>Class</td>
+<td><code>.nav</code> → <code>&lt;div class=&quot;nav&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>ID</td>
+<td><code>#header</code> → <code>&lt;div id=&quot;header&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Child (nest inside)</td>
+<td><code>ul&gt;li</code> → <code>&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</code></td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>Sibling (next to)</td>
+<td><code>h2+p</code> → <code>&lt;h2&gt;&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>Climb up (parent&#39;s sibling)</td>
+<td><code>div&gt;p^span</code> → p inside div, then span outside div</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Multiply</td>
+<td><code>li*3</code> → three <code>&lt;li&gt;</code> elements</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>Group</td>
+<td><code>(div&gt;h2+p)*3</code> → three groups of div with h2 and p</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td>Text content</td>
+<td><code>p{Hello}</code> → <code>&lt;p&gt;Hello&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Attribute</td>
+<td><code>a[href=&quot;#&quot;]</code> → <code>&lt;a href=&quot;#&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Number counter</td>
+<td><code>li.item$*3</code> → item1, item2, item3</td>
+</tr>
+</tbody></table>
+<h4 id="34-worked-emmet-examples">3.4 Worked Emmet Examples<a class="anchor" href="#34-worked-emmet-examples" aria-label="Link to this section">#</a></h4>
+<p><strong>Example A:</strong> Generate the HTML5 boilerplate</p>
+<pre><code>Type: !
+Press: Tab
+
+Result:
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Example B:</strong> Generate a navigation bar</p>
+<pre><code>Type: nav&gt;ul&gt;li*6&gt;a[href=&quot;#&quot;]
+Press: Tab
+
+Result:
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<p>Then fill in the links and text. Much faster than typing each tag!</p>
+<p><strong>Example C:</strong> Generate a media section</p>
+<pre><code>Type: section.media&gt;h3{Promo Video}+video[controls][width=&quot;640&quot;][poster=&quot;images/poster.jpg&quot;]&gt;source[src=&quot;video/promo.mp4&quot;][type=&quot;video/mp4&quot;]
+Press: Tab
+
+Result:
+&lt;section class=&quot;media&quot;&gt;
+    &lt;h3&gt;Promo Video&lt;/h3&gt;
+    &lt;video controls width=&quot;640&quot; poster=&quot;images/poster.jpg&quot;&gt;
+        &lt;source src=&quot;video/promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;/video&gt;
+&lt;/section&gt;
+</code></pre>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>Emmet works in <code>.html</code> files and inside <code>&lt;style&gt;</code> blocks. For <code>.css</code> files, CSS abbreviations work directly.</li>
+<li>If Tab does not expand the abbreviation, make sure:<ol>
+<li>You are in an HTML or CSS file (check status bar bottom-right)</li>
+<li>The cursor is NOT inside a string or comment</li>
+<li>Try <code>Ctrl+Space</code> to trigger IntelliSense, then select &quot;Emmet Abbreviation&quot;</li>
+</ol>
+</li>
+<li>Practice makes perfect. Spend 10 minutes experimenting with Emmet — it will save you HOURS over the course of the semester.</li>
+</ul>
+<h4 id="try-it-yourself-five-emmet-abbreviations">🧪 Try It Yourself — Five Emmet Abbreviations<a class="anchor" href="#try-it-yourself-five-emmet-abbreviations" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Type less HTML by hand.</p>
+<p>In an empty <code>.html</code> file, type each of these and press <strong>Tab</strong>:</p>
+<ol>
+<li><code>!</code> — the entire HTML5 boilerplate.</li>
+<li><code>nav&gt;ul&gt;li*4&gt;a</code> — a nav with four list items, each containing a link.</li>
+<li><code>.card*3</code> — three <code>&lt;div class=&quot;card&quot;&gt;</code> elements.</li>
+<li><code>table&gt;tr*3&gt;td*4</code> — a 3×4 table skeleton.</li>
+<li><code>section.events&gt;h2+p+ul&gt;li*3</code> — a section with a heading, a paragraph, and a three-item list.</li>
+</ol>
+<p><strong>Expected result:</strong> Each abbreviation expands into complete, correctly nested, correctly indented HTML with the cursor placed where you type next.</p>
+<details>
+<summary>The four operators that generate everything else</summary><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&gt;</code></td>
+<td>child</td>
+<td><code>ul&gt;li</code></td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>sibling</td>
+<td><code>h2+p</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>multiply</td>
+<td><code>li*4</code></td>
+</tr>
+<tr>
+<td><code>.</code> / <code>#</code></td>
+<td>class / id</td>
+<td><code>div.card</code>, <code>div#main</code></td>
+</tr>
+</tbody></table>
+<p>Two more worth knowing: <code>$</code> inserts the item number (<code>li.item$*3</code> gives <code>item1</code>, <code>item2</code>, <code>item3</code>), and <code>{}</code> sets text content (<code>a{Read more}</code>).</p>
+<p>If Tab does nothing, the file is not being treated as HTML. Check the language mode in the status bar at the bottom right — Emmet keys off it, not off the file extension alone.</p>
+<p>This is worth ten minutes of practice because the boilerplate and the nav are the two things you type most often in this course. <code>!</code> plus Tab replaces twelve lines of typing where a single typo costs you a debugging session.</p>
+</details><hr>
+<h3 id="4-essential-keyboard-shortcuts">4. Essential Keyboard Shortcuts<a class="anchor" href="#4-essential-keyboard-shortcuts" aria-label="Link to this section">#</a></h3>
+<h4 id="41-editing-shortcuts">4.1 Editing Shortcuts<a class="anchor" href="#41-editing-shortcuts" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl+Shift+K</code></td>
+<td>Delete entire line</td>
+<td>Remove a line quickly without selecting it</td>
+</tr>
+<tr>
+<td><code>Alt+↑ / Alt+↓</code></td>
+<td>Move line up/down</td>
+<td>Reorder lines without cut/paste</td>
+</tr>
+<tr>
+<td><code>Shift+Alt+↑ / Shift+Alt+↓</code></td>
+<td>Copy line up/down</td>
+<td>Duplicate a line</td>
+</tr>
+<tr>
+<td><code>Ctrl+D</code></td>
+<td>Select next occurrence</td>
+<td>Select the next instance of the current word for multi-edit</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+L</code></td>
+<td>Select ALL occurrences</td>
+<td>Edit every instance of a word simultaneously</td>
+</tr>
+<tr>
+<td><code>Ctrl+/</code></td>
+<td>Toggle comment</td>
+<td>Comment/uncomment selected code or current line</td>
+</tr>
+<tr>
+<td><code>Ctrl+Enter</code></td>
+<td>Insert line below</td>
+<td>Start a new line regardless of cursor position</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+Enter</code></td>
+<td>Insert line above</td>
+<td>Start a new line above the current one</td>
+</tr>
+<tr>
+<td><code>Ctrl+]</code> / <code>Ctrl+[</code></td>
+<td>Indent / Outdent</td>
+<td>Fix indentation quickly</td>
+</tr>
+</tbody></table>
+<h4 id="42-navigation-shortcuts">4.2 Navigation Shortcuts<a class="anchor" href="#42-navigation-shortcuts" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl+P</code></td>
+<td>Quick-open file by name (type part of filename)</td>
+</tr>
+<tr>
+<td><code>Ctrl+G</code></td>
+<td>Go to specific line number</td>
+</tr>
+<tr>
+<td><code>Ctrl+F</code></td>
+<td>Find in current file</td>
+</tr>
+<tr>
+<td><code>Ctrl+H</code></td>
+<td>Find and Replace in current file</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+F</code></td>
+<td>Find across ALL files in project</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+H</code></td>
+<td>Find and Replace across ALL files</td>
+</tr>
+<tr>
+<td><code>Ctrl+B</code></td>
+<td>Toggle sidebar visibility</td>
+</tr>
+<tr>
+<td><code>Ctrl+</code> <code>`</code> ``</td>
+<td>Toggle integrated terminal</td>
+</tr>
+</tbody></table>
+<h4 id="43-formatting-and-saving">4.3 Formatting and Saving<a class="anchor" href="#43-formatting-and-saving" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl+S</code></td>
+<td>Save current file</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+F</code></td>
+<td>Format entire document (with Prettier installed)</td>
+</tr>
+<tr>
+<td><code>Ctrl+K Ctrl+F</code></td>
+<td>Format selected code only</td>
+</tr>
+<tr>
+<td><code>Ctrl+Z</code></td>
+<td>Undo</td>
+</tr>
+<tr>
+<td><code>Ctrl+Y</code> or <code>Ctrl+Shift+Z</code></td>
+<td>Redo</td>
+</tr>
+</tbody></table>
+<h4 id="real-life-example-multi-cursor-editing">🎒 Real-life example: Multi-Cursor Editing<a class="anchor" href="#real-life-example-multi-cursor-editing" aria-label="Link to this section">#</a></h4>
+<p>Suppose you need to add <code>class=&quot;event-card&quot;</code> to five <code>&lt;div&gt;</code> tags:</p>
+<pre><code class="language-html">&lt;div&gt;Workshop&lt;/div&gt;
+&lt;div&gt;Social Night&lt;/div&gt;
+&lt;div&gt;Hackathon&lt;/div&gt;
+&lt;div&gt;Guest Talk&lt;/div&gt;
+&lt;div&gt;Field Trip&lt;/div&gt;
+</code></pre>
+<ol>
+<li>Click at the start of the first <code>&lt;div&gt;</code>.</li>
+<li>Press <code>Ctrl+D</code> four times to select all five <code>&lt;div&gt;</code> instances.</li>
+<li>Type <code>&lt;div class=&quot;event-card&quot;&gt;</code> — ALL five update simultaneously.</li>
+</ol>
+<p>Result:</p>
+<pre><code class="language-html">&lt;div class=&quot;event-card&quot;&gt;Workshop&lt;/div&gt;
+&lt;div class=&quot;event-card&quot;&gt;Social Night&lt;/div&gt;
+&lt;div class=&quot;event-card&quot;&gt;Hackathon&lt;/div&gt;
+&lt;div class=&quot;event-card&quot;&gt;Guest Talk&lt;/div&gt;
+&lt;div class=&quot;event-card&quot;&gt;Field Trip&lt;/div&gt;
+</code></pre>
+<p>What would have taken 5 separate edits is done in one action.</p>
+<hr>
+<h3 id="5-integrated-terminal">5. Integrated Terminal<a class="anchor" href="#5-integrated-terminal" aria-label="Link to this section">#</a></h3>
+<h4 id="51-what-is-it">5.1 What Is It?<a class="anchor" href="#51-what-is-it" aria-label="Link to this section">#</a></h4>
+<p>VS Code has a built-in terminal at the bottom of the window. It runs your system&#39;s command shell (PowerShell on Windows, Bash on Mac/Linux) without leaving the editor.</p>
+<h4 id="52-common-terminal-commands-for-web-projects">5.2 Common Terminal Commands for Web Projects<a class="anchor" href="#52-common-terminal-commands-for-web-projects" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ls</code> (or <code>dir</code> on Windows)</td>
+<td>List files in current directory</td>
+</tr>
+<tr>
+<td><code>cd folder-name</code></td>
+<td>Change into a subfolder</td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>Go up one directory level</td>
+</tr>
+<tr>
+<td><code>mkdir folder-name</code></td>
+<td>Create a new folder</td>
+</tr>
+<tr>
+<td><code>touch filename</code> (Mac/Linux) or <code>New-Item filename</code> (PowerShell)</td>
+<td>Create a new empty file</td>
+</tr>
+<tr>
+<td><code>rm filename</code> (Mac/Linux) or <code>Remove-Item filename</code> (PowerShell)</td>
+<td>Delete a file</td>
+</tr>
+<tr>
+<td><code>code .</code></td>
+<td>Open current directory in VS Code</td>
+</tr>
+</tbody></table>
+<h4 id="53-using-live-server-via-terminal">5.3 Using Live Server via Terminal<a class="anchor" href="#53-using-live-server-via-terminal" aria-label="Link to this section">#</a></h4>
+<p>If you installed the Live Server extension:</p>
+<ol>
+<li>Right-click any HTML file in the Explorer.</li>
+<li>Select <strong>Open with Live Server</strong>.</li>
+<li>Your browser opens at <code>http://127.0.0.1:5500/</code> with auto-refresh enabled.</li>
+<li>Every time you save a file, the browser refreshes automatically.</li>
+</ol>
+<p>Alternatively, from the terminal:</p>
+<pre><code class="language-bash">npx live-server
+</code></pre>
+<p>(Requires Node.js installed.)</p>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>The integrated terminal uses YOUR system shell. On Windows, it defaults to PowerShell. You can change it to CMD or Git Bash via <strong>Terminal → Select Default Profile</strong>.</li>
+<li>Never run commands you do not understand. The terminal has real system access.</li>
+<li>For basic web development, you rarely need the terminal beyond listing files and running Live Server. Do not feel pressured to learn advanced CLI commands yet.</li>
+</ul>
+<hr>
+<h3 id="6-html-validation">6. HTML Validation<a class="anchor" href="#6-html-validation" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-12.canvas.tsx</code> → <code>ValidatorReport</code> — slide <code>s12-validation</code> (&quot;W3C Validation&quot;)</p>
+</blockquote>
+<h4 id="61-what-is-validation">6.1 What Is Validation?<a class="anchor" href="#61-what-is-validation" aria-label="Link to this section">#</a></h4>
+<p><strong>Validation</strong> checks your HTML against the official W3C specification. It identifies:</p>
+<ul>
+<li>Missing or incorrect tags</li>
+<li>Missing required attributes (like <code>alt</code> on <code>&lt;img&gt;</code>)</li>
+<li>Deprecated elements or attributes</li>
+<li>Incorrectly nested elements</li>
+<li>Duplicate IDs</li>
+</ul>
+<p>Valid HTML ensures your page renders correctly across ALL browsers, not just the one you tested in.</p>
+<h4 id="62-online-validation-w3c-markup-validator">6.2 Online Validation (W3C Markup Validator)<a class="anchor" href="#62-online-validation-w3c-markup-validator" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Go to <a href="https://validator.w3.org/">https://validator.w3.org/</a></li>
+<li>Choose one of three methods:<ul>
+<li><strong>Validate by URI:</strong> Enter your website URL (only works for publicly hosted sites)</li>
+<li><strong>Validate by File Upload:</strong> Upload your <code>.html</code> file ← BEST for local projects</li>
+<li><strong>Validate by Direct Input:</strong> Paste your HTML code</li>
+</ul>
+</li>
+<li>Click <strong>Check</strong>.</li>
+<li>Review the results:<ul>
+<li>✅ Green = Valid! No errors found.</li>
+<li>❌ Red = Errors found. Each error lists the line number and description.</li>
+<li>⚠️ Yellow = Warnings. Not technically errors, but worth fixing.</li>
+</ul>
+</li>
+</ol>
+<h4 id="63-vs-code-validation-via-extension">6.3 VS Code Validation (via Extension)<a class="anchor" href="#63-vs-code-validation-via-extension" aria-label="Link to this section">#</a></h4>
+<p>If you installed the <strong>W3C Web Validator</strong> extension:</p>
+<ol>
+<li>Open an HTML file.</li>
+<li>Press <code>Ctrl+Shift+P</code> → Type &quot;W3C Validate&quot; → Select the command.</li>
+<li>Results appear in the Problems panel at the bottom.</li>
+<li>Click any error to jump to that line in the editor.</li>
+</ol>
+<h4 id="64-common-validation-errors-and-fixes">6.4 Common Validation Errors and Fixes<a class="anchor" href="#64-common-validation-errors-and-fixes" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Error Message</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;Element <code>img</code> is missing required attribute <code>alt</code>&quot;</td>
+<td>Image has no alt text</td>
+<td>Add <code>alt=&quot;description&quot;</code></td>
+</tr>
+<tr>
+<td>&quot;End tag <code>div</code> seen, but there were open elements&quot;</td>
+<td>Unclosed tag somewhere above</td>
+<td>Find and close the missing tag</td>
+</tr>
+<tr>
+<td>&quot;Element <code>font</code> not allowed&quot;</td>
+<td>Using deprecated HTML element</td>
+<td>Replace with CSS styling</td>
+</tr>
+<tr>
+<td>&quot;Duplicate ID <code>header</code>&quot;</td>
+<td>Two elements share the same ID</td>
+<td>Make each ID unique</td>
+</tr>
+<tr>
+<td>&quot;Stray end tag <code>p</code>&quot;</td>
+<td>Extra closing <code>&lt;/p&gt;</code> without matching open</td>
+<td>Remove the stray tag or add the opening tag</td>
+</tr>
+<tr>
+<td>&quot;Attribute <code>bgcolor</code> not allowed on element <code>table</code>&quot;</td>
+<td>Deprecated attribute</td>
+<td>Use CSS <code>background-color</code> instead</td>
+</tr>
+<tr>
+<td>&quot;Bad value <code>true</code> for attribute <code>autoplay</code>&quot;</td>
+<td>Boolean attribute should not have a value</td>
+<td>Change <code>autoplay=&quot;true&quot;</code> to just <code>autoplay</code></td>
+</tr>
+</tbody></table>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>Fix errors from TOP to BOTTOM. Early errors can cause false positives later in the file.</li>
+<li>Aim for ZERO errors. Warnings are acceptable but should be reviewed.</li>
+<li>Validate EVERY page, not just the home page.</li>
+</ul>
+<h4 id="try-it-yourself-break-your-html-then-let-the-validator-find-it">🧪 Try It Yourself — Break Your HTML, Then Let the Validator Find It<a class="anchor" href="#try-it-yourself-break-your-html-then-let-the-validator-find-it" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Learn what the validator catches that the browser hides.</p>
+<ol>
+<li>Open validator.w3.org and choose <strong>Validate by Direct Input</strong>. Paste a working page and confirm it passes.</li>
+<li>Now introduce three errors on purpose:<ul>
+<li>Delete one <code>&lt;/div&gt;</code>.</li>
+<li>Give two elements the same <code>id=&quot;card&quot;</code>.</li>
+<li>Remove the <code>alt</code> from an <code>&lt;img&gt;</code>.</li>
+</ul>
+</li>
+<li>Reload the page in the browser first. It still looks fine.</li>
+<li>Re-validate and read all three messages.</li>
+</ol>
+<p><strong>Expected result:</strong> The browser renders the broken page without complaint. The validator reports &quot;End tag for div omitted&quot;, &quot;Duplicate ID&quot;, and &quot;An img element must have an alt attribute&quot;.</p>
+<details>
+<summary>Why the browser does not tell you</summary><p>HTML parsers are required to be forgiving. Faced with a missing <code>&lt;/div&gt;</code>, the browser guesses where it should have gone and carries on — because a partly-rendered page serves the reader better than an error screen.</p>
+<p>The catch is that its guess is often not yours. An unclosed <code>&lt;div&gt;</code> before a footer can silently nest the footer inside a card, and your layout breaks in a way that looks like a CSS problem. You will spend an hour on the stylesheet for a structural bug.</p>
+<p>So run the validator when something looks wrong and the CSS seems correct. Compare <strong>Ctrl+U</strong> (what you wrote) against the <strong>Elements</strong> panel (what the browser built). Where they differ, the browser repaired something.</p>
+<p>Do the same for CSS at jigsaw.w3.org/css-validator. A missing <code>}</code> makes every rule after it vanish, and the browser reports nothing at all — the rules simply do not apply.</p>
+</details><hr>
+<h3 id="7-css-validation">7. CSS Validation<a class="anchor" href="#7-css-validation" aria-label="Link to this section">#</a></h3>
+<h4 id="71-w3c-css-validator">7.1 W3C CSS Validator<a class="anchor" href="#71-w3c-css-validator" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Go to <a href="https://jigsaw.w3.org/css-validator/">https://jigsaw.w3.org/css-validator/</a></li>
+<li>Choose validation method:<ul>
+<li><strong>By URI:</strong> For publicly hosted stylesheets</li>
+<li><strong>By file upload:</strong> Upload your <code>.css</code> file ← BEST for local projects</li>
+<li><strong>By direct input:</strong> Paste your CSS code</li>
+</ul>
+</li>
+<li>Click <strong>Check</strong>.</li>
+<li>Review errors and warnings.</li>
+</ol>
+<h4 id="72-common-css-validation-errors">7.2 Common CSS Validation Errors<a class="anchor" href="#72-common-css-validation-errors" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;Parse Error&quot;</td>
+<td>Syntax error (usually missing semicolon or brace)</td>
+<td>Check for <code>;</code> after every property-value pair</td>
+</tr>
+<tr>
+<td>&quot;Unknown property <code>colr</code>&quot;</td>
+<td>Typo in property name</td>
+<td>Correct to <code>color</code></td>
+</tr>
+<tr>
+<td>&quot;Value Error: <code>redish</code> is not a valid color&quot;</td>
+<td>Invalid color value</td>
+<td>Use valid color name, hex, rgb, or hsl</td>
+</tr>
+<tr>
+<td>&quot;Property <code>float</code> doesn&#39;t exist in this context&quot;</td>
+<td>Property used incorrectly</td>
+<td>Check if the property applies to the selector</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="8-browser-developer-tools-devtools">8. Browser Developer Tools (DevTools)<a class="anchor" href="#8-browser-developer-tools-devtools" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-12.canvas.tsx</code> → <code>DevToolsLoop</code> — slide <code>s12-devtools</code> (&quot;Browser DevTools&quot;)</p>
+</blockquote>
+<h4 id="81-what-are-devtools">8.1 What Are DevTools?<a class="anchor" href="#81-what-are-devtools" aria-label="Link to this section">#</a></h4>
+<p>Every modern browser includes built-in developer tools that let you:</p>
+<ul>
+<li><strong>Inspect</strong> any element on the page and see its HTML and CSS</li>
+<li><strong>Edit</strong> CSS properties live (changes are temporary — great for experimentation)</li>
+<li><strong>Debug</strong> JavaScript errors in the Console</li>
+<li><strong>Monitor</strong> network requests and loading performance</li>
+<li><strong>Simulate</strong> different screen sizes for responsive testing</li>
+</ul>
+<h4 id="82-opening-devtools">8.2 Opening DevTools<a class="anchor" href="#82-opening-devtools" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th>Shortcut</th>
+<th>Alternative</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td><code>F12</code> or <code>Ctrl+Shift+I</code></td>
+<td>Right-click element → Inspect</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td><code>F12</code> or <code>Ctrl+Shift+I</code></td>
+<td>Right-click element → Inspect</td>
+</tr>
+<tr>
+<td>Edge</td>
+<td><code>F12</code> or <code>Ctrl+Shift+I</code></td>
+<td>Right-click element → Inspect</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td><code>Cmd+Option+I</code></td>
+<td>Enable via Preferences → Advanced → Show Develop menu</td>
+</tr>
+</tbody></table>
+<h4 id="83-key-panels">8.3 Key Panels<a class="anchor" href="#83-key-panels" aria-label="Link to this section">#</a></h4>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│ Elements │ Console │ Sources │ Network │ Performance │ ...  │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ELEMENTS PANEL:                                            │
+│  ┌─────────────────────┐  ┌──────────────────────────────┐  │
+│  │ HTML DOM Tree       │  │ CSS Styles                   │  │
+│  │                     │  │                              │  │
+│  │ &lt;body&gt;              │  │  header {                    │  │
+│  │   &lt;header&gt; ◄─────── │  │    background: #1a5276;     │  │
+│  │     &lt;h1&gt;Club&lt;/h1&gt;   │  │    color: white;            │  │
+│  │   &lt;/header&gt;         │  │    padding: 30px;           │  │
+│  │   &lt;nav&gt;             │  │  }                          │  │
+│  │     &lt;ul&gt;            │  │                              │  │
+│  │       &lt;li&gt;...&lt;/li&gt;  │  │  [Click any value to edit!] │  │
+│  │     &lt;/ul&gt;           │  │                              │  │
+│  │   &lt;/nav&gt;            │  └──────────────────────────────┘  │
+│  │   &lt;main&gt;            │                                    │
+│  │     ...             │  ┌──────────────────────────────┐  │
+│  │   &lt;/main&gt;           │  │ Computed / Box Model         │  │
+│  │ &lt;/body&gt;             │  │ margin: 0                    │  │
+│  └─────────────────────┘  │ border: 0                    │  │
+│                           │ padding: 30px                 │  │
+│                           │ width: 1200px                 │  │
+│                           └──────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Panel</th>
+<th>Primary Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Elements</strong></td>
+<td>View/edit HTML structure and CSS styles in real time</td>
+</tr>
+<tr>
+<td><strong>Console</strong></td>
+<td>See JavaScript errors/warnings; run JS commands</td>
+</tr>
+<tr>
+<td><strong>Sources</strong></td>
+<td>Browse and set breakpoints in source files</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>Monitor HTTP requests, file sizes, loading times</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Record and analyze rendering performance</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>Inspect cookies, localStorage, service workers</td>
+</tr>
+</tbody></table>
+<h4 id="84-using-the-elements-panel-step-by-step">8.4 Using the Elements Panel Step by Step<a class="anchor" href="#84-using-the-elements-panel-step-by-step" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Open DevTools (<code>F12</code>).</li>
+<li>Click the <strong>Elements</strong> tab.</li>
+<li><strong>Hover</strong> over elements in the DOM tree — they highlight on the page.</li>
+<li><strong>Click</strong> an element to select it.</li>
+<li>The right panel shows all CSS rules applied to that element.</li>
+<li><strong>Click a CSS property value</strong> to edit it.</li>
+<li>Changes apply INSTANTLY — you see the result immediately.</li>
+<li>Press <strong>Enter</strong> to confirm, <strong>Escape</strong> to cancel.</li>
+<li>To add a new property, click the empty space at the end of a rule block and type.</li>
+<li><strong>Refresh the page</strong> to discard all changes (they are temporary!).</li>
+</ol>
+<h4 id="real-life-example-testing-a-color-change">🎒 Real-life example: Testing a Color Change<a class="anchor" href="#real-life-example-testing-a-color-change" aria-label="Link to this section">#</a></h4>
+<p>Your heading is navy blue (<code>#1a5276</code>). You want to try dark green.</p>
+<ol>
+<li>Right-click the heading → Inspect.</li>
+<li>In the Styles panel, find <code>color: #1a5276</code>.</li>
+<li>Click <code>#1a5276</code> — a color picker appears.</li>
+<li>Choose green or type <code>#1b5e20</code>.</li>
+<li>The heading turns green instantly on the page.</li>
+<li>Like it? Go to VS Code and update your CSS file.</li>
+<li>Don&#39;t like it? Click the original value or refresh to undo.</li>
+</ol>
+<p>This &quot;try before you commit&quot; workflow saves enormous time compared to editing CSS → saving → switching to browser → refreshing → checking → switching back.</p>
+<h4 id="85-using-the-device-toolbar-responsive-testing">8.5 Using the Device Toolbar (Responsive Testing)<a class="anchor" href="#85-using-the-device-toolbar-responsive-testing" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>In DevTools, click the <strong>device toggle button</strong> (phone/tablet icon) or press <code>Ctrl+Shift+M</code>.</li>
+<li>Select a preset device (iPhone SE, iPad, Pixel 5, etc.) or enter custom dimensions.</li>
+<li>The page renders at that exact screen size.</li>
+<li>Test your responsive layout at multiple sizes.</li>
+<li>Click the X or press <code>Ctrl+Shift+M</code> again to exit.</li>
+</ol>
+<h4 id="86-using-the-console-panel">8.6 Using the Console Panel<a class="anchor" href="#86-using-the-console-panel" aria-label="Link to this section">#</a></h4>
+<p>The Console shows JavaScript errors, warnings, and log messages. You can also run JavaScript commands directly:</p>
+<pre><code class="language-javascript">// Change all headings to red
+document.querySelectorAll(&#39;h2&#39;).forEach(h =&gt; h.style.color = &#39;red&#39;);
+
+// Check if an element exists
+console.log(document.querySelector(&#39;.gallery&#39;));
+
+// Count all links on the page
+console.log(document.querySelectorAll(&#39;a&#39;).length);
+</code></pre>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>Console commands are TEMPORARY. They disappear on page refresh.</li>
+<li>Red text = JavaScript errors (something is broken).</li>
+<li>Yellow text = Warnings (not critical but worth investigating).</li>
+<li>White/blue text = Normal log output.</li>
+</ul>
+<h4 id="try-it-yourself-edit-css-live-in-devtools">🧪 Try It Yourself — Edit CSS Live in DevTools<a class="anchor" href="#try-it-yourself-edit-css-live-in-devtools" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Find the right value in the browser, then write it once in your file.</p>
+<ol>
+<li>Open your site, press <strong>F12</strong>, and select a card in the <strong>Elements</strong> panel.</li>
+<li>In the <strong>Styles</strong> pane, click any padding value and press the <strong>up arrow</strong> repeatedly. The page updates on every keypress.</li>
+<li>Click the colour swatch next to a <code>background</code> and drag around the picker.</li>
+<li>Add a brand-new property: click the blank space inside the rule and type <code>border-radius: 12px</code>.</li>
+<li>When it looks right, copy the values into <code>css/style.css</code> and reload to confirm.</li>
+</ol>
+<p><strong>Expected result:</strong> You tune the design by eye in seconds instead of editing, saving, and reloading for each guess. Reloading discards every DevTools change — the file is the source of truth.</p>
+<details>
+<summary>The three panels worth knowing well</summary><p><strong>Elements → Styles.</strong> Every rule matching the selected element, winner on top, losers struck through. This is where &quot;why is my CSS not working&quot; gets answered. The box model diagram at the bottom shows content, padding, border, and margin as measured numbers.</p>
+<p><strong>Console.</strong> Errors with a file name and line number. Read the <em>first</em> error, not the last — later ones are often consequences of it.</p>
+<p><strong>Network.</strong> Every request with its status. <code>404</code> in red means a path is wrong, and the row shows the exact URL the browser tried. Filter by type (CSS, Img, Font) to narrow it down fast.</p>
+<p>One thing to be careful about: a struck-through property can mean two different things — either another rule won, or the value itself is invalid. DevTools shows a small warning triangle for the second case. <code>colour: red</code> is struck through because it is not a property; <code>color: reddish</code> because it is not a value.</p>
+</details><hr>
+<h3 id="9-debugging-common-errors">9. Debugging Common Errors<a class="anchor" href="#9-debugging-common-errors" aria-label="Link to this section">#</a></h3>
+<h4 id="91-common-html-errors">9.1 Common HTML Errors<a class="anchor" href="#91-common-html-errors" aria-label="Link to this section">#</a></h4>
+<h5 id="error-1-unclosed-tags">Error 1: Unclosed Tags<a class="anchor" href="#error-1-unclosed-tags" aria-label="Link to this section">#</a></h5>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;div id=&quot;wrapper&quot;&gt;
+    &lt;p&gt;Welcome to our club
+    &lt;p&gt;We meet every Wednesday
+&lt;/div&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;div id=&quot;wrapper&quot;&gt;
+    &lt;p&gt;Welcome to our club&lt;/p&gt;
+    &lt;p&gt;We meet every Wednesday&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>How to find unclosed tags:</p>
+<ul>
+<li>Run the W3C validator — it tells you exactly which tag is unclosed</li>
+<li>In VS Code, look for mismatched highlighting (the closing tag might be a different color)</li>
+<li>Use the <strong>Auto Close Tag</strong> extension to prevent this entirely</li>
+</ul>
+<h5 id="error-2-improperly-nested-tags">Error 2: Improperly Nested Tags<a class="anchor" href="#error-2-improperly-nested-tags" aria-label="Link to this section">#</a></h5>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;p&gt;This is &lt;strong&gt;bold and &lt;em&gt;italic&lt;/strong&gt;&lt;/em&gt; text.&lt;/p&gt;
+&lt;!--                          ^^^^ closes strong BEFORE em --&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;p&gt;This is &lt;strong&gt;bold and &lt;em&gt;italic&lt;/em&gt;&lt;/strong&gt; text.&lt;/p&gt;
+&lt;!-- Tags close in REVERSE order of opening: LIFO --&gt;
+</code></pre>
+<p>Think of tags like boxes. You cannot close the outer box before closing the inner box.</p>
+<pre><code>Opening order:  &lt;strong&gt; → &lt;em&gt;
+Closing order:  &lt;/em&gt; → &lt;/strong&gt;   (reverse!)
+</code></pre>
+<h5 id="error-3-missing-required-attributes">Error 3: Missing Required Attributes<a class="anchor" href="#error-3-missing-required-attributes" aria-label="Link to this section">#</a></h5>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;img src=&quot;images/photo.jpg&quot;&gt;
+&lt;a&gt;Click here&lt;/a&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;img src=&quot;images/photo.jpg&quot; alt=&quot;Club members at annual gala&quot;&gt;
+&lt;a href=&quot;events.html&quot;&gt;Click here&lt;/a&gt;
+</code></pre>
+<h5 id="error-4-wrong-attribute-values">Error 4: Wrong Attribute Values<a class="anchor" href="#error-4-wrong-attribute-values" aria-label="Link to this section">#</a></h5>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;a href=&quot;about html&quot;&gt;About&lt;/a&gt;          &lt;!-- Missing dot --&gt;
+&lt;img src=&quot;Images/photo.jpg&quot; alt=&quot;...&quot;&gt;  &lt;!-- Wrong case (on some servers) --&gt;
+&lt;video autoplay=&quot;true&quot; controls&gt;        &lt;!-- Boolean attribute should not have value --&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+&lt;img src=&quot;images/photo.jpg&quot; alt=&quot;...&quot;&gt;
+&lt;video autoplay controls&gt;
+</code></pre>
+<h4 id="92-common-css-errors">9.2 Common CSS Errors<a class="anchor" href="#92-common-css-errors" aria-label="Link to this section">#</a></h4>
+<h5 id="error-1-missing-semicolons">Error 1: Missing Semicolons<a class="anchor" href="#error-1-missing-semicolons" aria-label="Link to this section">#</a></h5>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-css">h1 {
+    color: navy          /* ← Missing semicolon! */
+    font-size: 32px;
+}
+</code></pre>
+<p>The browser may interpret <code>font-size</code> as part of the <code>color</code> value, causing BOTH properties to fail silently.</p>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-css">h1 {
+    color: navy;         /* ← Semicolon present */
+    font-size: 32px;
+}
+</code></pre>
+<p>⚠️ <strong>Pro tip:</strong> ALWAYS put a semicolon after EVERY property-value pair, even the last one. This prevents bugs when you add new properties later.</p>
+<h5 id="error-2-misspelled-properties">Error 2: Misspelled Properties<a class="anchor" href="#error-2-misspelled-properties" aria-label="Link to this section">#</a></h5>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-css">h1 {
+    colr: navy;           /* Should be &quot;color&quot; */
+    bakground: blue;      /* Should be &quot;background&quot; */
+    margn: 10px;          /* Should be &quot;margin&quot; */
+}
+</code></pre>
+<p>CSS does NOT show error messages for typos. The property is simply ignored. Your styles do not apply and you wonder why.</p>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-css">h1 {
+    color: navy;
+    background: blue;
+    margin: 10px;
+}
+</code></pre>
+<p>How to catch typos:</p>
+<ul>
+<li>VS Code IntelliSense suggests valid properties as you type — USE IT</li>
+<li>The W3C CSS Validator flags unknown properties</li>
+<li>DevTools shows struck-through properties that are invalid</li>
+</ul>
+<h5 id="error-3-wrong-selector-syntax">Error 3: Wrong Selector Syntax<a class="anchor" href="#error-3-wrong-selector-syntax" aria-label="Link to this section">#</a></h5>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-css">/* Missing dot for class */
+myClass {
+    color: red;
+}
+
+/* Missing hash for ID */
+header {
+    background: blue;
+}
+
+/* Space instead of dot for descendant class */
+nav .active {       /* This selects .active INSIDE nav — might be correct */
+    color: white;
+}
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-css">.myClass {          /* Dot prefix for class selectors */
+    color: red;
+}
+
+#header {           /* Hash prefix for ID selectors */
+    background: blue;
+}
+
+nav .active {       /* Descendant selector — intentional */
+    color: white;
+}
+</code></pre>
+<h5 id="error-4-specificity-confusion">Error 4: Specificity Confusion<a class="anchor" href="#error-4-specificity-confusion" aria-label="Link to this section">#</a></h5>
+<p>Your CSS rule is correct but the style does not apply because a MORE SPECIFIC rule overrides it.</p>
+<p>❌ <strong>Confused:</strong></p>
+<pre><code class="language-css">/* This rule exists but the link is still blue */
+a {
+    color: red;
+}
+
+/* But elsewhere in the CSS... */
+nav ul li a {
+    color: blue;    /* More specific! Overrides the general rule */
+}
+</code></pre>
+<p>✅ <strong>Fix:</strong> Either increase specificity or reorder:</p>
+<pre><code class="language-css">/* Option 1: Be more specific */
+nav ul li a {
+    color: red;
+}
+
+/* Option 2: Use DevTools to diagnose */
+/* Right-click element → Inspect → See which rule wins */
+</code></pre>
+<p>Use DevTools to see exactly which CSS rules apply to an element and which ones are overridden (shown with strikethrough).</p>
+<hr>
+<h3 id="10-code-formatting-and-comments">10. Code Formatting and Comments<a class="anchor" href="#10-code-formatting-and-comments" aria-label="Link to this section">#</a></h3>
+<h4 id="101-why-format-code">10.1 Why Format Code?<a class="anchor" href="#101-why-format-code" aria-label="Link to this section">#</a></h4>
+<p>Compare these two versions of the SAME code:</p>
+<p>❌ <strong>Unformatted (hard to read):</strong></p>
+<pre><code class="language-html">&lt;div id=&quot;wrapper&quot;&gt;&lt;header&gt;&lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;&lt;/header&gt;
+&lt;main&gt;&lt;h2&gt;Welcome&lt;/h2&gt;&lt;p&gt;Hello world&lt;/p&gt;&lt;/main&gt;&lt;/div&gt;
+</code></pre>
+<p>✅ <strong>Formatted (easy to read):</strong></p>
+<pre><code class="language-html">&lt;div id=&quot;wrapper&quot;&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        &lt;h2&gt;Welcome&lt;/h2&gt;
+        &lt;p&gt;Hello world&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Both produce identical output in the browser. But the formatted version is:</p>
+<ul>
+<li>Easier to READ</li>
+<li>Easier to DEBUG (you can spot nesting errors visually)</li>
+<li>Easier to MAINTAIN (adding/removing elements is straightforward)</li>
+<li>Expected PROFESSIONALLY (employers and instructors expect clean code)</li>
+</ul>
+<h4 id="102-auto-formatting-in-vs-code">10.2 Auto-Formatting in VS Code<a class="anchor" href="#102-auto-formatting-in-vs-code" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><strong>Format entire file:</strong> <code>Shift+Alt+F</code> (or right-click → Format Document)</li>
+<li><strong>Format selection:</strong> Select code → <code>Ctrl+K Ctrl+F</code></li>
+<li><strong>Format on save:</strong> Enable in Settings → Search &quot;format on save&quot; → Check the box</li>
+</ul>
+<p>With Prettier installed, formatting follows consistent rules automatically.</p>
+<h4 id="103-using-comments-effectively">10.3 Using Comments Effectively<a class="anchor" href="#103-using-comments-effectively" aria-label="Link to this section">#</a></h4>
+<h5 id="html-comments">HTML Comments<a class="anchor" href="#html-comments" aria-label="Link to this section">#</a></h5>
+<pre><code class="language-html">&lt;!-- ==========================================
+     HEADER SECTION
+     ========================================== --&gt;
+&lt;header&gt;
+    &lt;h1&gt;Student Club&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;!-- Main navigation — keep in sync across all pages --&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- TODO: Add search functionality in Session 13 --&gt;
+&lt;!-- FIXME: Mobile nav menu overlaps content on iPhone SE --&gt;
+</code></pre>
+<h5 id="css-comments">CSS Comments<a class="anchor" href="#css-comments" aria-label="Link to this section">#</a></h5>
+<pre><code class="language-css">/* ==========================================
+   MAIN NAVIGATION STYLES
+   ========================================== */
+nav {
+    background-color: #1a5276;
+}
+
+/* Navigation links — white text, no underline */
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+}
+
+/* Active page indicator — lighter blue background */
+nav a.active {
+    background-color: #2874a6;
+}
+
+/* TODO: Add hamburger menu for mobile screens */
+/* FIXME: Dropdown z-index conflict with video player */
+</code></pre>
+<p>Comment conventions:</p>
+<ul>
+<li>Use <code>===</code> banner comments for major sections</li>
+<li>Use inline comments for non-obvious decisions</li>
+<li>Use <code>TODO:</code> for future improvements</li>
+<li>Use <code>FIXME:</code> for known issues</li>
+<li>Keep comments concise — explain WHY, not WHAT (the code already shows what)</li>
+</ul>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>HTML comments use <code>&lt;!-- --&gt;</code>. CSS comments use <code>/* */</code>. They are NOT interchangeable.</li>
+<li>Comments are invisible in the browser. They do not affect rendering.</li>
+<li>Do NOT comment out large blocks of dead code. Delete them instead. Use Git history if you need to recover old code.</li>
+<li>Over-commenting is as bad as under-commenting. If the code is self-explanatory, skip the comment.</li>
+</ul>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><p><strong>Use VS Code as your primary editor.</strong> Not Notepad, not Word, not Dreamweaver Design View. VS Code is the industry standard.</p>
+</li>
+<li><p><strong>Install essential extensions early.</strong> Live Server, Prettier, Auto Close/Rename Tag, and Path Intellisense will save you hours.</p>
+</li>
+<li><p><strong>Learn Emmet.</strong> Spending 30 minutes learning Emmet abbreviations will save you dozens of hours over the semester.</p>
+</li>
+<li><p><strong>Format code consistently.</strong> Set up &quot;Format on Save&quot; and never think about indentation again.</p>
+</li>
+<li><p><strong>Validate before submitting.</strong> Run every HTML file through the W3C validator and every CSS file through the CSS validator. Zero errors should be your goal.</p>
+</li>
+<li><p><strong>Use DevTools for experimentation.</strong> Try CSS changes in the browser FIRST, then copy working values to your stylesheet. This is faster than the edit-save-refresh cycle.</p>
+</li>
+<li><p><strong>Read error messages carefully.</strong> Both the W3C validator and DevTools tell you EXACTLY what is wrong and WHERE. Do not ignore them.</p>
+</li>
+<li><p><strong>Use keyboard shortcuts.</strong> Learn 3-4 new shortcuts per week. After a month, you will code significantly faster.</p>
+</li>
+<li><p><strong>Comment strategically.</strong> Section banners for organization, inline notes for tricky parts, TODO/FIXME for tracking issues.</p>
+</li>
+<li><p><strong>Keep your VS Code updated.</strong> New features and bug fixes arrive monthly. Help → Check for Updates.</p>
+</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-coding-in-notepad-or-word">Mistake 1: Coding in Notepad or Word<a class="anchor" href="#mistake-1-coding-in-notepad-or-word" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Writing HTML in Notepad (no syntax highlighting, no autocomplete, no error detection).</p>
+<p>✅ <strong>Correct:</strong> Using VS Code with extensions for syntax highlighting, IntelliSense, Emmet, and validation.</p>
+<h4 id="mistake-2-ignoring-validation-errors">Mistake 2: Ignoring validation errors<a class="anchor" href="#mistake-2-ignoring-validation-errors" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> &quot;It looks fine in Chrome, so I don&#39;t need to validate.&quot;</p>
+<p>✅ <strong>Correct:</strong> Validating with W3C tools. Chrome forgives many errors that break other browsers. Valid HTML is insurance.</p>
+<h4 id="mistake-3-manual-formatting">Mistake 3: Manual formatting<a class="anchor" href="#mistake-3-manual-formatting" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Pressing Space/Tab manually to indent code, sometimes using 2 spaces, sometimes 4, sometimes tabs.</p>
+<p>✅ <strong>Correct:</strong> Setting up Prettier with &quot;Format on Save.&quot; Consistent formatting happens automatically.</p>
+<h4 id="mistake-4-not-using-devtools">Mistake 4: Not using DevTools<a class="anchor" href="#mistake-4-not-using-devtools" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Editing CSS → Saving → Switching to browser → Refreshing → Checking → Switching back to editor → Repeat 50 times.</p>
+<p>✅ <strong>Correct:</strong> Opening DevTools → Editing CSS live → Seeing instant results → Copying working values to your stylesheet.</p>
+<h4 id="mistake-5-guessing-at-css-properties">Mistake 5: Guessing at CSS properties<a class="anchor" href="#mistake-5-guessing-at-css-properties" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Typing <code>colour: red;</code> (British spelling) and wondering why it does not work.</p>
+<p>✅ <strong>Correct:</strong> Typing <code>col</code> and letting IntelliSense suggest <code>color</code>. Accepting the suggestion prevents typos.</p>
+<h4 id="mistake-6-leaving-debug-code-in-production">Mistake 6: Leaving debug code in production<a class="anchor" href="#mistake-6-leaving-debug-code-in-production" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Submitting a project with <code>console.log(&quot;test&quot;)</code>, commented-out blocks, and <code>border: 3px solid red</code> debugging outlines.</p>
+<p>✅ <strong>Correct:</strong> Removing all debug artifacts before submission. Clean code only.</p>
+<h4 id="mistake-7-not-using-version-control-mindset">Mistake 7: Not using version control mindset<a class="anchor" href="#mistake-7-not-using-version-control-mindset" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Making massive changes with no way to undo if something breaks. Creating <code>index_backup.html</code>, <code>index_backup2.html</code>, <code>index_final_FINAL.html</code>.</p>
+<p>✅ <strong>Correct:</strong> Using VS Code&#39;s built-in Undo history (<code>Ctrl+Z</code>) for small changes. Learning Git basics for larger projects (covered in advanced courses). At minimum, keep regular ZIP backups.</p>
+<h4 id="try-it-yourself-let-the-formatter-do-the-indenting">🧪 Try It Yourself — Let the Formatter Do the Indenting<a class="anchor" href="#try-it-yourself-let-the-formatter-do-the-indenting" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Stop indenting by hand.</p>
+<ol>
+<li>Deliberately mangle a page — remove all indentation, put three tags on one line.</li>
+<li>Press <strong>Shift+Alt+F</strong> (Format Document).</li>
+<li>Now enable it permanently: <strong>Ctrl+,</strong> → search &quot;format on save&quot; → tick <strong>Editor: Format On Save</strong>.</li>
+<li>Mangle the file again, then just press <strong>Ctrl+S</strong>.</li>
+</ol>
+<p><strong>Expected result:</strong> The file reformats itself with consistent indentation, one element per line, and nesting made visible.</p>
+<details>
+<summary>Why this is a correctness tool, not a tidiness tool</summary><p>Formatting reveals structure. When the formatter indents a closing tag somewhere you did not expect, it is telling you the nesting is not what you thought — an unclosed <code>&lt;div&gt;</code> shows up immediately as everything after it drifting one level right.</p>
+<p>Two habits to pair with it:</p>
+<p><strong>Comment the closing tag of long blocks.</strong> When <code>&lt;/div&gt;</code> is 200 lines from its opener, label it:</p>
+<pre><code class="language-html">&lt;/div&gt;&lt;!-- /.card-grid --&gt;
+</code></pre>
+<p><strong>Comment sections in CSS</strong>, so the file stays navigable:</p>
+<pre><code class="language-css">/* ===== Navigation ===== */
+</code></pre>
+<p>Neither adds a byte to the rendered page — HTML and CSS comments are stripped before rendering — but both make the file findable with Ctrl+F six weeks later.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VS Code</td>
+<td>Free, extensible code editor by Microsoft</td>
+<td>Industry-standard tool for web development</td>
+</tr>
+<tr>
+<td>Extension</td>
+<td>Plugin that adds features to VS Code</td>
+<td>Live Server, Prettier, Auto Close Tag</td>
+</tr>
+<tr>
+<td>Emmet</td>
+<td>Built-in abbreviation expander for HTML/CSS</td>
+<td><code>ul&gt;li*5</code> + Tab = full list structure</td>
+</tr>
+<tr>
+<td>Keyboard shortcut</td>
+<td>Key combination for fast actions</td>
+<td><code>Ctrl+D</code> = select next occurrence</td>
+</tr>
+<tr>
+<td>Integrated terminal</td>
+<td>Built-in command line inside VS Code</td>
+<td>Run <code>ls</code>, <code>cd</code>, Live Server without leaving editor</td>
+</tr>
+<tr>
+<td>W3C HTML Validator</td>
+<td>Official tool checking HTML against standards</td>
+<td><a href="https://validator.w3.org/">https://validator.w3.org/</a></td>
+</tr>
+<tr>
+<td>W3C CSS Validator</td>
+<td>Official tool checking CSS against standards</td>
+<td><a href="https://jigsaw.w3.org/css-validator/">https://jigsaw.w3.org/css-validator/</a></td>
+</tr>
+<tr>
+<td>DevTools</td>
+<td>Browser-built inspection and debugging suite</td>
+<td>F12 → Elements panel → Edit CSS live</td>
+</tr>
+<tr>
+<td>Elements panel</td>
+<td>DevTools panel showing HTML DOM and CSS styles</td>
+<td>Click element → See/modify its CSS</td>
+</tr>
+<tr>
+<td>Console panel</td>
+<td>DevTools panel for JS errors and commands</td>
+<td><code>document.querySelector(&#39;h1&#39;)</code></td>
+</tr>
+<tr>
+<td>Device toolbar</td>
+<td>DevTools feature simulating mobile screens</td>
+<td><code>Ctrl+Shift+M</code> → Select iPhone SE</td>
+</tr>
+<tr>
+<td>Code formatting</td>
+<td>Consistent indentation and spacing</td>
+<td>Prettier auto-formats on save</td>
+</tr>
+<tr>
+<td>Comments</td>
+<td>Invisible annotations in code</td>
+<td><code>&lt;!-- TODO: add search --&gt;</code> or <code>/* Section header */</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-using-emmet-to-build-a-page-skeleton">Example 1: Using Emmet to Build a Page Skeleton<a class="anchor" href="#example-1-using-emmet-to-build-a-page-skeleton" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You are creating a new page <code>schedule.html</code> for the Student Club Website. You need the basic HTML5 structure with header, nav, main content area, sidebar, and footer.</p>
+<p><strong>Code (typed as Emmet, then expanded):</strong></p>
+<p>Type this single line:</p>
+<pre><code>!
+</code></pre>
+<p>Press Tab → Get full HTML5 boilerplate.</p>
+<p>Then inside <code>&lt;body&gt;</code>, type:</p>
+<pre><code>div#wrapper&gt;header&gt;h1{Student Club}+p{Learn. Create. Connect.}^nav&gt;ul&gt;li*6&gt;a[href=&quot;#&quot;]^^div#main-area&gt;main&gt;h2{Weekly Schedule}+section*3&gt;h3+p^aside#sidebar&gt;h3{Quick Links}+ul&gt;li*4&gt;a[href=&quot;#&quot;]^^footer&gt;p{© 2024 Student Club}
+</code></pre>
+<p>Press Tab.</p>
+<p><strong>Expanded result:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;wrapper&quot;&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Student Club&lt;/h1&gt;
+            &lt;p&gt;Learn. Create. Connect.&lt;/p&gt;
+        &lt;/header&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+        &lt;div id=&quot;main-area&quot;&gt;
+            &lt;main&gt;
+                &lt;h2&gt;Weekly Schedule&lt;/h2&gt;
+                &lt;section&gt;
+                    &lt;h3&gt;&lt;/h3&gt;
+                    &lt;p&gt;&lt;/p&gt;
+                &lt;/section&gt;
+                &lt;section&gt;
+                    &lt;h3&gt;&lt;/h3&gt;
+                    &lt;p&gt;&lt;/p&gt;
+                &lt;/section&gt;
+                &lt;section&gt;
+                    &lt;h3&gt;&lt;/h3&gt;
+                    &lt;p&gt;&lt;/p&gt;
+                &lt;/section&gt;
+            &lt;/main&gt;
+            &lt;aside id=&quot;sidebar&quot;&gt;
+                &lt;h3&gt;Quick Links&lt;/h3&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/aside&gt;
+        &lt;/div&gt;
+        &lt;footer&gt;
+            &lt;p&gt;© 2024 Student Club&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Line-by-line explanation of the Emmet abbreviation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>div#wrapper</code></td>
+<td><code>&lt;div id=&quot;wrapper&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Child — nest everything inside wrapper</td>
+</tr>
+<tr>
+<td><code>header&gt;h1{Student Club}+p{...}</code></td>
+<td>Header with h1 and paragraph</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>Climb up one level (back to wrapper)</td>
+</tr>
+<tr>
+<td><code>nav&gt;ul&gt;li*6&gt;a[href=&quot;#&quot;]</code></td>
+<td>Nav with 6 list items containing links</td>
+</tr>
+<tr>
+<td><code>^^</code></td>
+<td>Climb up TWO levels (back to wrapper, past nav)</td>
+</tr>
+<tr>
+<td><code>div#main-area&gt;main&gt;...</code></td>
+<td>Main content area</td>
+</tr>
+<tr>
+<td><code>section*3&gt;h3+p</code></td>
+<td>Three sections, each with heading and paragraph</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>Climb up (back to main-area)</td>
+</tr>
+<tr>
+<td><code>aside#sidebar&gt;h3{Quick Links}+ul&gt;li*4&gt;a</code></td>
+<td>Sidebar with heading and 4 links</td>
+</tr>
+<tr>
+<td><code>^^</code></td>
+<td>Climb up to wrapper</td>
+</tr>
+<tr>
+<td><code>footer&gt;p{© 2024...}</code></td>
+<td>Footer with copyright</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> A complete page skeleton generated in under 5 seconds. Now fill in the actual content (link URLs, section headings, paragraph text).</p>
+<hr>
+<h3 id="example-2-debugging-a-layout-issue-with-devtools">Example 2: Debugging a Layout Issue with DevTools<a class="anchor" href="#example-2-debugging-a-layout-issue-with-devtools" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Your sidebar is appearing BELOW the main content instead of beside it. You expected a two-column layout.</p>
+<p><strong>Step 1 — Inspect the problem:</strong></p>
+<ol>
+<li>Right-click the sidebar → Inspect.</li>
+<li>In the Elements panel, you see:</li>
+</ol>
+<pre><code class="language-html">&lt;aside id=&quot;sidebar&quot; style=&quot;width: 30%; float: left;&quot;&gt;
+</code></pre>
+<p><strong>Step 2 — Check the CSS:</strong>
+In the Styles panel, you see:</p>
+<pre><code class="language-css">#sidebar {
+    width: 30%;
+    float: left;
+}
+</code></pre>
+<p>But the Computed panel shows the sidebar is 100% wide. Why?</p>
+<p><strong>Step 3 — Investigate:</strong>
+You notice the parent <code>#main-area</code> has no defined width and no <code>overflow: hidden</code>. The floated sidebar wraps because the container collapsed.</p>
+<p><strong>Step 4 — Test a fix LIVE in DevTools:</strong></p>
+<ol>
+<li>Click on the <code>#main-area</code> element in the DOM tree.</li>
+<li>In the Styles panel, click the empty space to add a new property.</li>
+<li>Type <code>overflow: hidden</code> and press Enter.</li>
+<li>The sidebar snaps into place beside the main content!</li>
+</ol>
+<p><strong>Step 5 — Apply the fix permanently:</strong></p>
+<ol>
+<li>Go to VS Code.</li>
+<li>Open <code>css/style.css</code>.</li>
+<li>Find the <code>#main-area</code> rule.</li>
+<li>Add <code>overflow: hidden;</code>.</li>
+<li>Save.</li>
+<li>Refresh the browser to confirm.</li>
+</ol>
+<p><strong>Result:</strong> Bug diagnosed and fixed in under 2 minutes using DevTools, without any guesswork.</p>
+<hr>
+<h3 id="example-3-finding-and-fixing-validation-errors">Example 3: Finding and Fixing Validation Errors<a class="anchor" href="#example-3-finding-and-fixing-validation-errors" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You validate <code>events.html</code> and the W3C validator reports 3 errors.</p>
+<p><strong>Error 1:</strong> Line 24 — &quot;Element <code>img</code> is missing required attribute <code>alt</code>.&quot;</p>
+<pre><code class="language-html">&lt;!-- Line 24 — WRONG --&gt;
+&lt;img src=&quot;images/workshop.jpg&quot; width=&quot;300&quot;&gt;
+
+&lt;!-- FIXED --&gt;
+&lt;img src=&quot;images/workshop.jpg&quot; width=&quot;300&quot; alt=&quot;Students collaborating at a coding workshop&quot;&gt;
+</code></pre>
+<p><strong>Error 2:</strong> Line 38 — &quot;End tag <code>div</code> seen, but there were open elements.&quot;</p>
+<pre><code class="language-html">&lt;!-- Lines 30-38 — WRONG: Missing closing &lt;/p&gt; --&gt;
+&lt;section&gt;
+    &lt;h3&gt;Social Night&lt;/h3&gt;
+    &lt;p&gt;Join us for a fun evening of games and networking.
+    &lt;p&gt;Date: Friday, November 15th&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;!-- FIXED --&gt;
+&lt;section&gt;
+    &lt;h3&gt;Social Night&lt;/h3&gt;
+    &lt;p&gt;Join us for a fun evening of games and networking.&lt;/p&gt;
+    &lt;p&gt;Date: Friday, November 15th&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+<p><strong>Error 3:</strong> Line 52 — &quot;Duplicate ID <code>event-details</code>.&quot;</p>
+<pre><code class="language-html">&lt;!-- Lines 45 and 52 — WRONG: Same ID used twice --&gt;
+&lt;div id=&quot;event-details&quot;&gt;Workshop info...&lt;/div&gt;
+&lt;div id=&quot;event-details&quot;&gt;Social Night info...&lt;/div&gt;
+
+&lt;!-- FIXED: Unique IDs --&gt;
+&lt;div id=&quot;workshop-details&quot;&gt;Workshop info...&lt;/div&gt;
+&lt;div id=&quot;social-details&quot;&gt;Social Night info...&lt;/div&gt;
+</code></pre>
+<p><strong>Process:</strong></p>
+<ol>
+<li>Fix errors from TOP to BOTTOM (line 24 first, then 38, then 52).</li>
+<li>After fixing all three, re-validate.</li>
+<li>Result: ✅ &quot;Document checking completed. No errors or warnings to show.&quot;</li>
+</ol>
+<hr>
+<h3 id="example-4-using-find-and-replace-across-all-files">Example 4: Using Find-and-Replace Across All Files<a class="anchor" href="#example-4-using-find-and-replace-across-all-files" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You changed the club email from <code>club@university.edu</code> to <code>studentclub@vnuis.edu.vn</code>. You need to update it everywhere, but you remember removing redundancy in Session 11 — it should only appear on <code>contact.html</code>. Let us verify.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li><p>Press <code>Ctrl+Shift+F</code> (Find in Files).</p>
+</li>
+<li><p>Search: <code>club@university.edu</code></p>
+</li>
+<li><p>Results show matches in:</p>
+<ul>
+<li><code>contact.html</code> line 45 ← Only expected location</li>
+<li><code>footer</code> in <code>index.html</code> line 89 ← Oops! Forgot to remove this one</li>
+<li><code>footer</code> in <code>about.html</code> line 92 ← Another leftover</li>
+</ul>
+</li>
+<li><p>Since footers often include contact info, decide: either update all footers OR remove email from footers and link to Contact page.</p>
+</li>
+</ol>
+<p><strong>Decision:</strong> Update the email in all locations since footer contact info is standard practice.</p>
+<ol start="5">
+<li>Press <code>Ctrl+Shift+H</code> (Replace in Files).</li>
+<li>Find: <code>club@university.edu</code></li>
+<li>Replace: <code>studentclub@vnuis.edu.vn</code></li>
+<li>Click <strong>Replace All</strong>.</li>
+<li>Review the diff preview to confirm only intended changes.</li>
+<li>Click <strong>Apply</strong>.</li>
+</ol>
+<p><strong>Result:</strong> Email updated across all files in one operation. No missed instances.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<ol>
+<li>Install VS Code from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> (if not already installed).</li>
+<li>Open your <strong>club-website</strong> folder in VS Code (<strong>File → Open Folder</strong>).</li>
+<li>Install these extensions (<strong>Ctrl+Shift+X</strong>):<ul>
+<li>Live Server</li>
+<li>Prettier - Code formatter</li>
+<li>Auto Close Tag</li>
+<li>Auto Rename Tag</li>
+<li>Path Intellisense</li>
+</ul>
+</li>
+<li>Enable &quot;Format on Save&quot;:<ul>
+<li><strong>Ctrl+,</strong> (Settings) → Search &quot;format on save&quot; → Check the box.</li>
+</ul>
+</li>
+<li>Open <code>index.html</code> and start Live Server (right-click → Open with Live Server).</li>
+</ol>
+<hr>
+<h4 id="task-1-practice-emmet-abbreviations">TASK 1: Practice Emmet Abbreviations<a class="anchor" href="#task-1-practice-emmet-abbreviations" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Build fluency with Emmet by generating common structures.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Create a new file <code>practice.html</code> in your project root.</li>
+<li>Type <code>!</code> and press Tab → Verify the HTML5 boilerplate appears.</li>
+<li>Inside <code>&lt;body&gt;</code>, practice these abbreviations (type each, press Tab, observe the result):</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Type This</th>
+<th>Expected Output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>div.container&gt;h2{Events}+p{Upcoming activities}</code></td>
+<td>Div with class, heading, paragraph</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ul&gt;li*5&gt;a[href=&quot;#&quot;]{Link $}</code></td>
+<td>UL with 5 LIs containing numbered links</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>section.card*3&gt;img[src=&quot;images/event$.jpg&quot;][alt=&quot;Event $&quot;]+h3{Event $}+p{Description $}</code></td>
+<td>3 card sections with images, headings, paragraphs</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>footer&gt;p{© 2024}+nav&gt;ul&gt;li*3&gt;a[href=&quot;#&quot;]</code></td>
+<td>Footer with copyright and mini-nav</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li>After practicing, delete the contents of <code>practice.html</code> (keep the file for Task 2).</li>
+</ol>
+<p>✅ <strong>Check:</strong> Each abbreviation expanded correctly. You understand the <code>&gt;</code>, <code>+</code>, <code>*</code>, <code>.</code>, <code>#</code>, <code>{}</code>, <code>[]</code>, and <code>$</code> syntax.</p>
+<p>💾 <strong>Save</strong> the file.</p>
+<hr>
+<h4 id="task-2-use-keyboard-shortcuts-to-edit-code">TASK 2: Use Keyboard Shortcuts to Edit Code<a class="anchor" href="#task-2-use-keyboard-shortcuts-to-edit-code" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Practice essential shortcuts on real code.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>index.html</code>.</li>
+<li>Practice these operations:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Shortcut</th>
+<th>Try It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Go to line 15</td>
+<td><code>Ctrl+G</code> → Type 15 → Enter</td>
+<td>Jump to line 15</td>
+</tr>
+<tr>
+<td>Find &quot;Student Club&quot;</td>
+<td><code>Ctrl+F</code> → Type &quot;Student Club&quot;</td>
+<td>Highlight all matches</td>
+</tr>
+<tr>
+<td>Select next match</td>
+<td><code>Ctrl+D</code></td>
+<td>Select second occurrence</td>
+</tr>
+<tr>
+<td>Move a line down</td>
+<td>Click a line → <code>Alt+↓</code></td>
+<td>Reorder lines</td>
+</tr>
+<tr>
+<td>Duplicate a line</td>
+<td>Click a line → <code>Shift+Alt+↓</code></td>
+<td>Copy line below</td>
+</tr>
+<tr>
+<td>Comment out a line</td>
+<td>Click a line → <code>Ctrl+/</code></td>
+<td>Toggle HTML comment</td>
+</tr>
+<tr>
+<td>Delete a line</td>
+<td>Click a line → <code>Ctrl+Shift+K</code></td>
+<td>Remove entire line</td>
+</tr>
+<tr>
+<td>Undo everything</td>
+<td><code>Ctrl+Z</code> repeatedly</td>
+<td>Restore original state</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li>After practicing, make sure <code>index.html</code> is back to its original state (undo all practice changes).</li>
+</ol>
+<p>✅ <strong>Check:</strong> You can perform each shortcut without looking at the keyboard reference.</p>
+<p>💾 <strong>Save</strong> (should be unchanged after undoing practice edits).</p>
+<hr>
+<h4 id="task-3-validate-all-html-pages">TASK 3: Validate All HTML Pages<a class="anchor" href="#task-3-validate-all-html-pages" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Validate every HTML file and fix all errors.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Go to <a href="https://validator.w3.org/#validate_by_upload">https://validator.w3.org/#validate_by_upload</a></li>
+<li>Upload <code>index.html</code> → Click Check.</li>
+<li>Record any errors. Fix them in VS Code.</li>
+<li>Re-upload and re-check until VALID.</li>
+<li>Repeat for: <code>about.html</code>, <code>events.html</code>, <code>gallery.html</code>, <code>media.html</code>, <code>contact.html</code>.</li>
+<li>If you installed the W3C Web Validator extension, you can also validate directly in VS Code: <code>Ctrl+Shift+P</code> → &quot;W3C Validate&quot;.</li>
+</ol>
+<p>✅ <strong>Check:</strong> ALL pages pass validation with zero errors.</p>
+<p>💾 <strong>Save</strong> all fixed files.</p>
+<hr>
+<h4 id="task-4-validate-your-css">TASK 4: Validate Your CSS<a class="anchor" href="#task-4-validate-your-css" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Validate <code>css/style.css</code> and fix all errors.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Go to <a href="https://jigsaw.w3.org/css-validator/#validator_by_upload">https://jigsaw.w3.org/css-validator/#validator_by_upload</a></li>
+<li>Upload <code>css/style.css</code> → Click Check.</li>
+<li>Review errors and warnings.</li>
+<li>Fix errors in VS Code.</li>
+<li>Re-validate until clean.</li>
+</ol>
+<p>✅ <strong>Check:</strong> CSS validates with zero errors (warnings are acceptable but review them).</p>
+<p>💾 <strong>Save</strong> the stylesheet.</p>
+<hr>
+<h4 id="task-5-debug-with-browser-devtools">TASK 5: Debug with Browser DevTools<a class="anchor" href="#task-5-debug-with-browser-devtools" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Use DevTools to inspect and experiment with your site&#39;s CSS.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>index.html</code> in Chrome/Edge (via Live Server or directly).</li>
+<li>Press <code>F12</code> to open DevTools.</li>
+<li><strong>Elements Panel:</strong><ul>
+<li>Click the <code>&lt;header&gt;</code> element in the DOM tree.</li>
+<li>In the Styles panel, change the <code>background-color</code> to a new color.</li>
+<li>Observe the instant change on the page.</li>
+<li>Change it back or refresh to undo.</li>
+</ul>
+</li>
+<li><strong>Device Toolbar:</strong><ul>
+<li>Press <code>Ctrl+Shift+M</code>.</li>
+<li>Select &quot;iPhone SE&quot; from the dropdown.</li>
+<li>Observe how your layout adapts.</li>
+<li>Try &quot;iPad Mini&quot; and &quot;Pixel 5&quot;.</li>
+<li>Exit device mode with <code>Ctrl+Shift+M</code>.</li>
+</ul>
+</li>
+<li><strong>Console Panel:</strong><ul>
+<li>Click the Console tab.</li>
+<li>Type: <code>document.querySelectorAll(&#39;a&#39;).length</code></li>
+<li>Press Enter → See the total number of links on the page.</li>
+<li>Type: <code>document.querySelector(&#39;h1&#39;).textContent</code></li>
+<li>Press Enter → See the heading text.</li>
+</ul>
+</li>
+<li><strong>Network Panel:</strong><ul>
+<li>Click the Network tab.</li>
+<li>Refresh the page (<code>F5</code>).</li>
+<li>Observe all files loading (HTML, CSS, images, fonts).</li>
+<li>Note file sizes and loading times.</li>
+<li>Identify any failed requests (red entries = broken links/missing files).</li>
+</ul>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> You can navigate all four DevTools panels confidently. You inspected elements, tested responsive layouts, ran console commands, and checked network requests.</p>
+<p>💾 No files changed (DevTools edits are temporary).</p>
+<hr>
+<h4 id="task-6-format-and-comment-your-code">TASK 6: Format and Comment Your Code<a class="anchor" href="#task-6-format-and-comment-your-code" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Ensure all code is properly formatted and documented.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open each HTML file.</li>
+<li>Press <code>Shift+Alt+F</code> to auto-format.</li>
+<li>Verify indentation is consistent (2 or 4 spaces — whatever Prettier configured).</li>
+<li>Add section comments to each HTML file:</li>
+</ol>
+<pre><code class="language-html">&lt;!-- ========== HEADER ========== --&gt;
+&lt;header&gt;...&lt;/header&gt;
+
+&lt;!-- ========== NAVIGATION ========== --&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+
+&lt;!-- ========== MAIN CONTENT ========== --&gt;
+&lt;main&gt;...&lt;/main&gt;
+
+&lt;!-- ========== SIDEBAR ========== --&gt;
+&lt;aside&gt;...&lt;/aside&gt;
+
+&lt;!-- ========== FOOTER ========== --&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</code></pre>
+<ol start="5">
+<li>Open <code>css/style.css</code>.</li>
+<li>Press <code>Shift+Alt+F</code> to auto-format.</li>
+<li>Add section banner comments:</li>
+</ol>
+<pre><code class="language-css">/* ==========================================
+   GLOBAL STYLES
+   ========================================== */
+
+/* ==========================================
+   HEADER STYLES
+   ========================================== */
+
+/* ==========================================
+   NAVIGATION STYLES
+   ========================================== */
+
+/* ==========================================
+   MAIN CONTENT STYLES
+   ========================================== */
+
+/* ==========================================
+   SIDEBAR STYLES
+   ========================================== */
+
+/* ==========================================
+   FOOTER STYLES
+   ========================================== */
+
+/* ==========================================
+   RESPONSIVE / MEDIA QUERIES
+   ========================================== */
+</code></pre>
+<ol start="8">
+<li>Save ALL files.</li>
+</ol>
+<p>✅ <strong>Check:</strong> All files are consistently formatted. Section comments make navigation easy. Anyone reading your code can find specific sections quickly.</p>
+<p>💾 <strong>Final save.</strong> Your codebase is now professional-grade.</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>This chapter is about the tools that find errors, so the table works the other way round: here is what each tool reports, and what it means.</p>
+<table>
+<thead>
+<tr>
+<th>What the tool tells you</th>
+<th>What it means</th>
+<th>Where you see it</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Failed to load resource: 404 (Not Found)</code></td>
+<td>The browser asked for a file that is not at that path</td>
+<td>Console and Network tabs</td>
+<td>Compare the requested URL against the real file name and location</td>
+</tr>
+<tr>
+<td><code>Uncaught SyntaxError: Unexpected token</code></td>
+<td>JavaScript could not be parsed — usually a missing bracket or quote</td>
+<td>Console, with a file and line number</td>
+<td>Go to that line; the real error is often just above it</td>
+</tr>
+<tr>
+<td><code>Uncaught ReferenceError: x is not defined</code></td>
+<td>A name is used before it exists, or is misspelled</td>
+<td>Console</td>
+<td>Check the spelling and the script load order</td>
+</tr>
+<tr>
+<td><code>End tag for &quot;div&quot; omitted</code> (validator)</td>
+<td>An element was never closed</td>
+<td>W3C HTML validator</td>
+<td>Add the closing tag at the right nesting level</td>
+</tr>
+<tr>
+<td><code>Stray end tag</code> (validator)</td>
+<td>A closing tag has no matching opener</td>
+<td>W3C HTML validator</td>
+<td>Delete it, or add the opening tag</td>
+</tr>
+<tr>
+<td><code>Duplicate ID</code> (validator)</td>
+<td>The same <code>id</code> appears twice</td>
+<td>W3C HTML validator</td>
+<td><code>id</code> must be unique per page; use a class for repeats</td>
+</tr>
+<tr>
+<td>A rule struck through in the Styles pane</td>
+<td>That declaration lost to a more specific or later rule</td>
+<td>DevTools Elements → Styles</td>
+<td>Read the winning rule above it and adjust specificity</td>
+</tr>
+<tr>
+<td><code>Parse Error</code> (CSS validator)</td>
+<td>Usually a missing <code>}</code> or <code>;</code></td>
+<td>W3C CSS validator</td>
+<td>Fix at the reported line; everything after it was ignored</td>
+</tr>
+<tr>
+<td>Lighthouse: &quot;Background and foreground colours do not have a sufficient contrast ratio&quot;</td>
+<td>Text fails WCAG AA</td>
+<td>Lighthouse accessibility audit</td>
+<td>Darken the text or lighten the background to 4.5:1</td>
+</tr>
+<tr>
+<td>Lighthouse: &quot;Image elements do not have <code>[alt]</code> attributes&quot;</td>
+<td>Missing alt text</td>
+<td>Lighthouse accessibility audit</td>
+<td>Add descriptive <code>alt</code>, or <code>alt=&quot;&quot;</code> for decoration</td>
+</tr>
+<tr>
+<td>Emmet expands nothing when you press Tab</td>
+<td>The file is not recognised as HTML, or Emmet is off</td>
+<td>The status bar shows the language mode</td>
+<td>Save with a <code>.html</code> extension; check the language mode</td>
+</tr>
+<tr>
+<td>Live Server does not reload on save</td>
+<td>The file is not inside the opened folder</td>
+<td>The browser URL is <code>file://</code>, not <code>127.0.0.1</code></td>
+<td>Open the project folder in VS Code, then start Live Server</td>
+</tr>
+</tbody></table>
+<p><strong>Order to debug in:</strong> Console first (it names the file and line), then Network (it shows what failed to load), then the validator (it finds structural HTML errors the browser silently repaired), then Lighthouse (it finds what works but should not ship). Reversing that order wastes time.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. What does Live Server give you that double-clicking an HTML file does not?</strong></p>
+<details>
+<summary>Answer</summary><p>Two things. <strong>Auto-reload:</strong> saving a file refreshes the browser automatically, so you never press F5. And a real <strong>HTTP context</strong> — the page is served from <code>http://127.0.0.1:5500</code> instead of <code>file:///C:/...</code>, so relative paths and anything else that depends on an origin behave the way they will on a real server.</p>
+</details><hr>
+<p><strong>Q2. Explain the Emmet abbreviation <code>ul&gt;li*3&gt;a[href=#]{Link $}</code>.</strong></p>
+<details>
+<summary>Answer</summary><ul>
+<li><code>ul&gt;li</code> — <code>&gt;</code> means child, so <code>&lt;li&gt;</code> goes inside <code>&lt;ul&gt;</code></li>
+<li><code>*3</code> — repeat the <code>&lt;li&gt;</code> three times</li>
+<li><code>&gt;a[href=#]</code> — each <code>&lt;li&gt;</code> gets a child <code>&lt;a&gt;</code> with <code>href=&quot;#&quot;</code></li>
+<li><code>{Link $}</code> — text content, where <code>$</code> auto-increments</li>
+</ul>
+<p>Result: a <code>&lt;ul&gt;</code> with three <code>&lt;li&gt;</code> items containing links labelled Link 1, Link 2, Link 3.</p>
+</details><hr>
+<p><strong>Q3. Why validate HTML at validator.w3.org when the page already looks fine?</strong></p>
+<details>
+<summary>Answer</summary><p>Browsers silently repair broken markup, and each one repairs it differently — so &quot;looks fine in Chrome&quot; is not evidence of valid HTML. The validator catches unclosed tags, duplicate IDs, missing <code>alt</code> attributes, and invalid nesting that will break in another browser, break your CSS selectors, or fail accessibility review.</p>
+</details><hr>
+<p><strong>Q4. What is the difference between the VS Code Problems panel and the W3C validator?</strong></p>
+<details>
+<summary>Answer</summary><p>The <strong>Problems panel</strong> is live and local: it flags syntax errors, unclosed tags, and unknown CSS properties as you type. The <strong>W3C validator</strong> is authoritative and complete: it checks the full document against the HTML specification, including semantic and accessibility rules the editor does not know about. Use the panel while writing, the validator before submitting.</p>
+</details><hr>
+<p><strong>Q5. Which DevTools panel do you open to find out why an element is the wrong colour?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Elements</strong> (Inspect). Select the element and read the Styles pane on the right: every matching rule is listed in cascade order, with overridden declarations struck through and the winning rule at the top. It also shows which file and line each rule came from, so you can find out exactly which selector is beating yours.</p>
+</details><hr>
+<p><strong>Q6. Are changes you make in DevTools permanent?</strong></p>
+<details>
+<summary>Answer</summary><p>No. DevTools edits live only in the browser&#39;s in-memory copy and vanish on reload. It is the ideal place to <strong>experiment</strong> — try five padding values in ten seconds — but once you find the value you want you must copy it into your real <code>.css</code> file and save.</p>
+</details><hr>
+<p><strong>Q7. What does Shift+Alt+F do, and why does consistent formatting matter?</strong></p>
+<details>
+<summary>Answer</summary><p>It runs VS Code&#39;s document formatter, re-indenting the whole file consistently. It matters because indentation is how you see structure: with consistent nesting, an unclosed <code>&lt;div&gt;</code> is visually obvious, whereas in ragged code it hides. It also makes diffs readable and is a basic professional courtesy to anyone else reading your file.</p>
+</details><hr>
+<p><strong>Q8. Why should you not mix tabs and spaces in one file?</strong></p>
+<details>
+<summary>Answer</summary><p>Tab width is a per-editor setting, so a file mixing both looks correctly aligned in your editor and jumbled in someone else&#39;s. Nesting becomes impossible to read, which hides structural bugs. Pick one — spaces are the common convention for HTML and CSS — and let the formatter enforce it.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Open a project folder in VS Code and navigate the interface</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Install and use essential extensions (Live Server, Prettier, Auto Close Tag)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Use Emmet abbreviations to generate HTML/CSS structures quickly</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Use keyboard shortcuts for editing, navigation, and formatting</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Validate HTML using the W3C Markup Validator and fix errors</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Validate CSS using the W3C CSS Validator and fix errors</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Use browser DevTools to inspect elements, edit CSS live, and test responsiveness</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Identify and fix common HTML/CSS errors (unclosed tags, typos, missing semicolons)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered &quot;No&quot; to any item, re-read the relevant Theory section and redo the corresponding Hands-On task.</p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://code.visualstudio.com/docs/getstarted/introvideos">VS Code Getting Started — Official Docs</a></li>
+<li><a href="https://docs.emmet.io/cheat-sheet/">Emmet cheat sheet — Official Docs</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools">Chrome DevTools overview — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Debugging_HTML">Debugging HTML — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS">Debugging CSS — MDN Learn</a></li>
+<li><a href="https://validator.w3.org/">W3C Markup Validator</a></li>
+<li><a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validator</a></li>
+<li><a href="https://code.visualstudio.com/docs/getstarted/keybindings">Keyboard shortcuts for VS Code — Official Docs</a></li>
+<li><a href="https://prettier.io/docs/en/">Prettier documentation</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>Congratulations! You have completed the core INS2053 web authoring curriculum. Your Student Club Website is now a polished, validated, multi-page site with multimedia, responsive design, and professional code quality. Continue building, experimenting, and exploring — the web is yours to create!</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

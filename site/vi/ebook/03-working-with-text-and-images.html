@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 3: Working with Text and Images — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 3: Working with Text and Images — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/03-working-with-text-and-images.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 3</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 03</p>
+    <h1>Buổi 3: Working with Text and Images</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-headings-creating-page-structure">1. Headings: Creating Page Structure</a></li>
+        <li class="d2"><a href="#2-paragraphs-and-inline-text-formatting">2. Paragraphs and Inline Text Formatting</a></li>
+        <li class="d2"><a href="#3-lists">3. Lists</a></li>
+        <li class="d2"><a href="#4-images-in-html">4. Images in HTML</a></li>
+        <li class="d2"><a href="#5-image-formats">5. Image Formats</a></li>
+        <li class="d2"><a href="#6-using-the-editor-to-insert-content">6. Using the Editor to Insert Content</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-formatted-about-page">Example 1: Formatted About Page</a></li>
+        <li class="d2"><a href="#example-2-adding-images-to-the-home-page">Example 2: Adding Images to the Home Page</a></li>
+        <li class="d2"><a href="#example-3-nested-lists-for-event-categories">Example 3: Nested Lists for Event Categories</a></li>
+        <li class="d2"><a href="#setup-tools-and-folders">Setup (Tools and Folders)</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/03-working-with-text-and-images.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-03.html">Tổng quan Buổi 3</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-3">🟦 SESSION 3<a class="anchor" href="#session-3" aria-label="Link to this section">#</a></h2>
+<h2 id="working-with-text-and-images"><strong>Working with Text and Images</strong><a class="anchor" href="#working-with-text-and-images" aria-label="Link to this section">#</a></h2>
+<p>Welcome to Session 3! In the previous sessions you set up your project, created multiple pages, and connected them with navigation. Today you will learn how to fill those pages with real content: formatted text (headings, paragraphs, bold, italic, lists) and images (with proper formats, sizing, and accessibility). By the end of this session your Student Club Website will look like a real website with rich, well-structured content that is accessible to all users.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    MDN &quot;HTML Text Fundamentals&quot;
+                 https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals
+🎯 Objectives:   1. Format text using headings (h1-h6), paragraphs, strong, em, lists, br, and hr
+                 2. Add images using &lt;img&gt; with src, alt, width, and height
+                 3. Choose the correct image format (JPG, PNG, GIF, SVG) for each use case
+                 4. Write meaningful alt text for accessibility
+                 5. Apply basic CSS styling to text and images
+📖 Prepare:      1. Complete Sessions 1 and 2 (all five pages exist with navigation)
+                 2. Gather 3-5 images for your site and save them in the images/ folder
+                 3. Read MDN &quot;Images in HTML&quot; (link in Further Reading below)
+🖼 Diagrams:     canvases/buoi-03.canvas.tsx — HeadingOutline, ImgAnatomy, AltTextCompare,
+                 FormatChooser
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO3 (choose appropriate technologies for web development)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>After this session you will be able to:</p>
+<ul>
+<li>Use heading tags (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>) correctly to create a logical page outline</li>
+<li>Format text with <code>&lt;p&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;br&gt;</code>, and <code>&lt;hr&gt;</code></li>
+<li>Create both unordered (<code>&lt;ul&gt;</code>) and ordered (<code>&lt;ol&gt;</code>) lists, including nested lists</li>
+<li>Insert images with the <code>&lt;img&gt;</code> tag and explain every required attribute</li>
+<li>Choose between JPG, PNG, GIF, and SVG based on the type of image</li>
+<li>Write descriptive <code>alt</code> text that serves visually impaired users and improves SEO</li>
+<li>Style text and images with CSS for a professional appearance</li>
+<li>Use Dreamweaver&#39;s Insert menu and Properties panel (or VS Code equivalents) to work efficiently</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-headings-creating-page-structure">1. Headings: Creating Page Structure<a class="anchor" href="#1-headings-creating-page-structure" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-03.canvas.tsx</code> → <code>HeadingOutline</code> — slide <code>headings</code> (&quot;Headings: Page Structure&quot;)</p>
+</blockquote>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>HTML provides six levels of headings: <code>&lt;h1&gt;</code> (largest/most important) through <code>&lt;h6&gt;</code> (smallest/least important). Headings create an <strong>outline</strong> of your page, similar to chapter titles and section headers in a textbook.</p>
+<p>Headings serve THREE critical purposes:</p>
+<ol>
+<li><strong>Visual hierarchy</strong> — Browsers display headings in decreasing font sizes, making it easy for readers to scan the page</li>
+<li><strong>Accessibility</strong> — Screen reader users navigate by jumping from heading to heading, skipping content they are not interested in</li>
+<li><strong>SEO (Search Engine Optimization)</strong> — Search engines use headings to understand what your page is about</li>
+</ol>
+<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think of headings like the <strong>table of contents in a textbook</strong>:</p>
+<ul>
+<li><code>&lt;h1&gt;</code> = Book title (only ONE per page)</li>
+<li><code>&lt;h2&gt;</code> = Chapter titles (main sections)</li>
+<li><code>&lt;h3&gt;</code> = Section headings within a chapter</li>
+<li><code>&lt;h4&gt;</code> = Subsection headings</li>
+<li><code>&lt;h5&gt;</code> and <code>&lt;h6&gt;</code> = Minor headings (rarely used)</li>
+</ul>
+<p>You would never put a subsection heading before a chapter heading. Similarly, never skip heading levels in HTML.</p>
+<h4 id="12-heading-hierarchy-rules">1.2 Heading Hierarchy Rules<a class="anchor" href="#12-heading-hierarchy-rules" aria-label="Link to this section">#</a></h4>
+<p>✅ Correct hierarchy:</p>
+<pre><code class="language-html">&lt;h1&gt;Student Club&lt;/h1&gt;
+    &lt;h2&gt;About Us&lt;/h2&gt;
+        &lt;h3&gt;Our Mission&lt;/h3&gt;
+        &lt;h3&gt;Our History&lt;/h3&gt;
+    &lt;h2&gt;Events&lt;/h2&gt;
+        &lt;h3&gt;Upcoming Events&lt;/h3&gt;
+        &lt;h3&gt;Past Events&lt;/h3&gt;
+    &lt;h2&gt;Contact&lt;/h2&gt;
+</code></pre>
+<p>❌ Wrong — skipping levels:</p>
+<pre><code class="language-html">&lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;h3&gt;About Us&lt;/h3&gt;       &lt;!-- WRONG: Skipped h2! --&gt;
+&lt;h5&gt;Our Mission&lt;/h5&gt;    &lt;!-- WRONG: Skipped h4! --&gt;
+</code></pre>
+<p>❌ Wrong — multiple h1 tags:</p>
+<pre><code class="language-html">&lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;h1&gt;Welcome Page&lt;/h1&gt;   &lt;!-- WRONG: Only ONE h1 per page! --&gt;
+</code></pre>
+<h4 id="heading-tag-comparison">🔍 Heading Tag Comparison<a class="anchor" href="#heading-tag-comparison" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Default Browser Size</th>
+<th>Semantic Meaning</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;h1&gt;</code></td>
+<td>~32px, bold</td>
+<td>Main page title</td>
+<td>Once per page, at the top</td>
+</tr>
+<tr>
+<td><code>&lt;h2&gt;</code></td>
+<td>~24px, bold</td>
+<td>Major section</td>
+<td>Multiple per page</td>
+</tr>
+<tr>
+<td><code>&lt;h3&gt;</code></td>
+<td>~20px, bold</td>
+<td>Subsection</td>
+<td>Under an <code>&lt;h2&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;h4&gt;</code></td>
+<td>~18px, bold</td>
+<td>Sub-subsection</td>
+<td>Under an <code>&lt;h3&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;h5&gt;</code></td>
+<td>~16px, bold</td>
+<td>Minor heading</td>
+<td>Rarely needed</td>
+</tr>
+<tr>
+<td><code>&lt;h6&gt;</code></td>
+<td>~14px, bold</td>
+<td>Smallest heading</td>
+<td>Very rarely needed</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li><strong>Only ONE <code>&lt;h1&gt;</code> per page.</strong> This is the most important rule. The <code>&lt;h1&gt;</code> should describe what the page is about.</li>
+<li><strong>Never skip heading levels.</strong> Go from <code>&lt;h1&gt;</code> to <code>&lt;h2&gt;</code> to <code>&lt;h3&gt;</code>. Do not jump from <code>&lt;h1&gt;</code> to <code>&lt;h3&gt;</code>.</li>
+<li><strong>Do not use headings just to make text big.</strong> If you want large text that is NOT a section heading, use CSS (<code>font-size</code>) instead.</li>
+<li>Headings are NOT for layout or decoration. They are for STRUCTURE and MEANING.</li>
+</ul>
+<h4 id="try-it-yourself-read-your-pages-outline">🧪 Try It Yourself — Read Your Page&#39;s Outline<a class="anchor" href="#try-it-yourself-read-your-pages-outline" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Check that your headings describe a real structure.</p>
+<ol>
+<li>Add headings to your home page: one <code>&lt;h1&gt;</code> for the club name, then <code>&lt;h2&gt;</code> for each section, and an <code>&lt;h3&gt;</code> under one of them.</li>
+<li>Install the <strong>HeadingsMap</strong> extension, or open F12 → Elements and read the nesting.</li>
+<li>Write the outline out on paper from the headings alone.</li>
+</ol>
+<p><strong>Expected result:</strong> The outline reads like a table of contents. Exactly one <code>&lt;h1&gt;</code>, no skipped levels, and each heading names what follows it.</p>
+<details>
+<summary>The mistake almost everyone makes first</summary><p>Choosing a heading level because of its size. <code>&lt;h4&gt;</code> is not &quot;small bold text&quot; — it is a fourth-level section, and jumping from <code>&lt;h2&gt;</code> to <code>&lt;h4&gt;</code> tells a screen reader user that a level is missing.</p>
+<p>Pick the level from the structure, then set the size in CSS:</p>
+<pre><code class="language-css">h3 { font-size: 1.1rem; }
+</code></pre>
+<p>That way the document outline stays correct and the page still looks the way you want.</p>
+</details><hr>
+<h3 id="2-paragraphs-and-inline-text-formatting">2. Paragraphs and Inline Text Formatting<a class="anchor" href="#2-paragraphs-and-inline-text-formatting" aria-label="Link to this section">#</a></h3>
+<h4 id="21-paragraphs-p">2.1 Paragraphs (<code>&lt;p&gt;</code>)<a class="anchor" href="#21-paragraphs-p" aria-label="Link to this section">#</a></h4>
+<p>The <code>&lt;p&gt;</code> tag defines a paragraph. Browsers automatically add vertical space (margin) above and below each paragraph.</p>
+<pre><code class="language-html">&lt;p&gt;This is the first paragraph. Browsers add space around it automatically.&lt;/p&gt;
+&lt;p&gt;This is the second paragraph. Notice the gap between paragraphs.&lt;/p&gt;
+</code></pre>
+<p>⚠️ Important: Pressing Enter in your HTML code does NOT create a new paragraph in the browser. HTML ignores extra whitespace. You MUST use <code>&lt;p&gt;</code> tags.</p>
+<h4 id="22-bold-and-italic-strong-vs-b-em-vs-i">2.2 Bold and Italic: <code>&lt;strong&gt;</code> vs <code>&lt;b&gt;</code>, <code>&lt;em&gt;</code> vs <code>&lt;i&gt;</code><a class="anchor" href="#22-bold-and-italic-strong-vs-b-em-vs-i" aria-label="Link to this section">#</a></h4>
+<p>There are TWO ways to make text bold and TWO ways to make text italic. They look the same visually but have DIFFERENT meanings:</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Visual Effect</th>
+<th>Semantic Meaning</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;strong&gt;</code></td>
+<td>Bold</td>
+<td>Important / serious</td>
+<td>For content that matters (&quot;Warning:&quot;, key terms)</td>
+</tr>
+<tr>
+<td><code>&lt;b&gt;</code></td>
+<td>Bold</td>
+<td>None (purely visual)</td>
+<td>For stylistic bold without importance (product names, lead sentences)</td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td>Italic</td>
+<td>Emphasis / stress</td>
+<td>For words you would stress when speaking aloud</td>
+</tr>
+<tr>
+<td><code>&lt;i&gt;</code></td>
+<td>Italic</td>
+<td>None (purely visual)</td>
+<td>For technical terms, foreign words, thoughts</td>
+</tr>
+</tbody></table>
+<p>For beginners, <strong>use <code>&lt;strong&gt;</code> for bold and <code>&lt;em&gt;</code> for italic</strong>. These are semantically correct in most situations and are better for accessibility.</p>
+<pre><code class="language-html">&lt;!-- Good: semantic emphasis --&gt;
+&lt;p&gt;The &lt;strong&gt;deadline&lt;/strong&gt; is &lt;em&gt;strictly&lt;/em&gt; March 20.&lt;/p&gt;
+
+&lt;!-- Also valid but less semantic --&gt;
+&lt;p&gt;The &lt;b&gt;product name&lt;/b&gt; is displayed in &lt;i&gt;italics&lt;/i&gt; by convention.&lt;/p&gt;
+</code></pre>
+<h4 id="23-line-break-br-and-horizontal-rule-hr">2.3 Line Break (<code>&lt;br&gt;</code>) and Horizontal Rule (<code>&lt;hr&gt;</code>)<a class="anchor" href="#23-line-break-br-and-horizontal-rule-hr" aria-label="Link to this section">#</a></h4>
+<p><strong><code>&lt;br&gt;</code></strong> inserts a line break WITHOUT starting a new paragraph. Use it ONLY for content where line breaks are meaningful:</p>
+<pre><code class="language-html">&lt;!-- GOOD use of &lt;br&gt;: an address --&gt;
+&lt;p&gt;
+    Student Club Office&lt;br&gt;
+    Building A, Room 101&lt;br&gt;
+    University Campus&lt;br&gt;
+    Ho Chi Minh City
+&lt;/p&gt;
+
+&lt;!-- BAD use of &lt;br&gt;: creating space between sections --&gt;
+&lt;p&gt;First section&lt;/p&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;          &lt;!-- WRONG! Use CSS margin instead --&gt;
+&lt;p&gt;Second section&lt;/p&gt;
+</code></pre>
+<p><strong><code>&lt;hr&gt;</code></strong> draws a horizontal line across the page. It represents a thematic break between sections:</p>
+<pre><code class="language-html">&lt;section&gt;
+    &lt;h2&gt;Club News&lt;/h2&gt;
+    &lt;p&gt;Latest updates...&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;hr&gt;
+
+&lt;section&gt;
+    &lt;h2&gt;Upcoming Events&lt;/h2&gt;
+    &lt;p&gt;Event details...&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+<h4 id="real-life-example-2">🎒 Real-life Example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>Think of text formatting like <strong>voice tone when giving a presentation</strong>:</p>
+<ul>
+<li><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, etc. = Speaking louder for section titles so everyone knows a new topic is starting</li>
+<li><code>&lt;strong&gt;</code> = Saying a word with extra weight: &quot;This deadline is <strong>FINAL</strong>&quot;</li>
+<li><code>&lt;em&gt;</code> = Stressing a word: &quot;We need to meet <em>tomorrow</em>&quot;</li>
+<li><code>&lt;br&gt;</code> = Taking a breath mid-sentence (like reading an address line by line)</li>
+<li><code>&lt;hr&gt;</code> = Pausing between topics (like saying &quot;Now, let us move on to...&quot;)</li>
+<li><code>&lt;p&gt;</code> = A complete thought, separated by natural pauses</li>
+</ul>
+<h4 id="important-notes">⚠️ Important Notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Do NOT use <code>&lt;br&gt;</code> to create vertical spacing. Use CSS <code>margin</code> and <code>padding</code> instead.</li>
+<li>Do NOT use <code>&lt;b&gt;</code> or <code>&lt;i&gt;</code> as your default bold/italic tags. Prefer <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>.</li>
+<li><code>&lt;br&gt;</code> and <code>&lt;hr&gt;</code> are self-closing (void) elements. They do NOT have closing tags.</li>
+<li>Extra spaces and line breaks in your HTML source code are IGNORED by the browser. To control spacing, always use CSS.</li>
+</ul>
+<h4 id="try-it-yourself-meaning-vs-appearance">🧪 Try It Yourself — Meaning vs. Appearance<a class="anchor" href="#try-it-yourself-meaning-vs-appearance" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Compare the two ways to make text bold.</p>
+<ol>
+<li>Add both lines to a page:<pre><code class="language-html">&lt;p&gt;Meetings are &lt;strong&gt;every Friday&lt;/strong&gt; at 5pm.&lt;/p&gt;
+&lt;p&gt;Meetings are &lt;b&gt;every Friday&lt;/b&gt; at 5pm.&lt;/p&gt;
+</code></pre>
+</li>
+<li>Reload. They look identical.</li>
+<li>Open F12 → <strong>Elements</strong>, then the <strong>Accessibility</strong> pane, and inspect each one.</li>
+</ol>
+<p><strong>Expected result:</strong> Both render bold. Only <code>&lt;strong&gt;</code> carries importance in the accessibility tree; <code>&lt;b&gt;</code> is styling with no meaning attached.</p>
+<details>
+<summary>Which to use, and when</summary><ul>
+<li><code>&lt;strong&gt;</code> — this text is <em>important</em>. A screen reader may emphasise it.</li>
+<li><code>&lt;em&gt;</code> — this text is <em>stressed</em>, changing the sentence&#39;s sense.</li>
+<li><code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> — visual only: a product name, a keyword, a term in another language.</li>
+</ul>
+<p>In practice, use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> for nearly everything, and do the purely visual work in CSS with <code>font-weight</code> and <code>font-style</code>. Never use <code>&lt;strong&gt;</code> just to make something bigger — that is a CSS job.</p>
+</details><hr>
+<h3 id="3-lists">3. Lists<a class="anchor" href="#3-lists" aria-label="Link to this section">#</a></h3>
+<h4 id="31-unordered-lists-ul">3.1 Unordered Lists (<code>&lt;ul&gt;</code>)<a class="anchor" href="#31-unordered-lists-ul" aria-label="Link to this section">#</a></h4>
+<p>An unordered list displays items with <strong>bullet points</strong>. Use it when the ORDER of items does NOT matter.</p>
+<pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;Web Design Workshop&lt;/li&gt;
+    &lt;li&gt;Photography Contest&lt;/li&gt;
+    &lt;li&gt;Music Night&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>Browser output:</p>
+<pre><code>• Web Design Workshop
+• Photography Contest
+• Music Night
+</code></pre>
+<h4 id="32-ordered-lists-ol">3.2 Ordered Lists (<code>&lt;ol&gt;</code>)<a class="anchor" href="#32-ordered-lists-ol" aria-label="Link to this section">#</a></h4>
+<p>An ordered list displays items with <strong>numbers</strong>. Use it when the ORDER MATTERS (steps, rankings, timelines).</p>
+<pre><code class="language-html">&lt;ol&gt;
+    &lt;li&gt;Fill out the membership form&lt;/li&gt;
+    &lt;li&gt;Pay the membership fee&lt;/li&gt;
+    &lt;li&gt;Attend the orientation session&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<p>Browser output:</p>
+<pre><code>1. Fill out the membership form
+2. Pay the membership fee
+3. Attend the orientation session
+</code></pre>
+<h4 id="33-nested-lists">3.3 Nested Lists<a class="anchor" href="#33-nested-lists" aria-label="Link to this section">#</a></h4>
+<p>You can place a list INSIDE a list item to create sub-items:</p>
+<pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;Workshops
+        &lt;ul&gt;
+            &lt;li&gt;HTML &amp;amp; CSS Basics&lt;/li&gt;
+            &lt;li&gt;JavaScript Introduction&lt;/li&gt;
+            &lt;li&gt;Responsive Design&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Social Events
+        &lt;ul&gt;
+            &lt;li&gt;Movie Night&lt;/li&gt;
+            &lt;li&gt;Campus Tour&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Competitions
+        &lt;ol&gt;
+            &lt;li&gt;Photography Contest&lt;/li&gt;
+            &lt;li&gt;Coding Challenge&lt;/li&gt;
+            &lt;li&gt;Design Sprint&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h4 id="when-to-use-which-list-type">🔍 When to Use Which List Type<a class="anchor" href="#when-to-use-which-list-type" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>List Type</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Menu items</td>
+<td><code>&lt;ul&gt;</code></td>
+<td>No particular order matters</td>
+</tr>
+<tr>
+<td>Navigation links</td>
+<td><code>&lt;ul&gt;</code></td>
+<td>Links are equal in importance</td>
+</tr>
+<tr>
+<td>Step-by-step instructions</td>
+<td><code>&lt;ol&gt;</code></td>
+<td>Order is critical</td>
+</tr>
+<tr>
+<td>Recipe ingredients</td>
+<td><code>&lt;ul&gt;</code></td>
+<td>Any order works</td>
+</tr>
+<tr>
+<td>Recipe steps</td>
+<td><code>&lt;ol&gt;</code></td>
+<td>Must follow sequence</td>
+</tr>
+<tr>
+<td>Top 10 ranking</td>
+<td><code>&lt;ol&gt;</code></td>
+<td>Ranking implies order</td>
+</tr>
+<tr>
+<td>Features/benefits</td>
+<td><code>&lt;ul&gt;</code></td>
+<td>No priority order</td>
+</tr>
+<tr>
+<td>Timeline of events</td>
+<td><code>&lt;ol&gt;</code></td>
+<td>Chronological order matters</td>
+</tr>
+</tbody></table>
+<h4 id="important-notes-2">⚠️ Important Notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Every list item MUST be wrapped in <code>&lt;li&gt;</code> tags. Nothing else goes directly inside <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>.</li>
+<li>Nested lists go INSIDE the <code>&lt;li&gt;</code> element, AFTER the text of the parent item.</li>
+<li>You can nest <code>&lt;ul&gt;</code> inside <code>&lt;ol&gt;</code> and vice versa. Mixing is allowed.</li>
+<li>The HTML entity <code>&amp;amp;</code> represents the ampersand character <code>&amp;</code>. Always use HTML entities for special characters in content.</li>
+</ul>
+<h4 id="try-it-yourself-nest-a-list-inside-a-list">🧪 Try It Yourself — Nest a List Inside a List<a class="anchor" href="#try-it-yourself-nest-a-list-inside-a-list" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Build the club&#39;s activity list with sub-items.</p>
+<ol>
+<li>Add this to your page:<pre><code class="language-html">&lt;h2&gt;What We Do&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Weekly workshops
+        &lt;ul&gt;
+            &lt;li&gt;HTML and CSS basics&lt;/li&gt;
+            &lt;li&gt;Responsive design&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Semester project showcase&lt;/li&gt;
+    &lt;li&gt;Guest talks from industry&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</li>
+<li>Reload and look at the indentation and bullet shapes.</li>
+<li>Now move the nested <code>&lt;ul&gt;</code> so it sits <em>between</em> two <code>&lt;li&gt;</code> elements instead of inside one, and reload.</li>
+</ol>
+<p><strong>Expected result:</strong> Correctly nested, the sub-list indents under its parent with a different bullet. Nested wrongly, it still renders — but the validator will reject it, and screen readers lose the parent-child relationship.</p>
+<details>
+<summary>The one nesting rule</summary><p>A nested list must live <strong>inside</strong> an <code>&lt;li&gt;</code>, not between them. Only <code>&lt;li&gt;</code> may be a direct child of <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>.</p>
+<p>Note where the parent&#39;s <code>&lt;/li&gt;</code> goes: after the nested <code>&lt;/ul&gt;</code>, not before it. That is what makes &quot;Weekly workshops&quot; the parent of the two sub-items rather than a sibling.</p>
+</details><hr>
+<h3 id="4-images-in-html">4. Images in HTML<a class="anchor" href="#4-images-in-html" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagrams:</strong> <code>canvases/buoi-03.canvas.tsx</code> → <code>ImgAnatomy</code> — slide <code>images</code> (&quot;The img Tag&quot;); <code>AltTextCompare</code> — slide <code>alt-text</code> (&quot;Alt Text &amp; Accessibility&quot;)</p>
+</blockquote>
+<h4 id="41-the-img-tag">4.1 The <code>&lt;img&gt;</code> Tag<a class="anchor" href="#41-the-img-tag" aria-label="Link to this section">#</a></h4>
+<p>The <code>&lt;img&gt;</code> tag embeds an image into your web page. It is a <strong>self-closing (void) element</strong> — it has NO closing tag.</p>
+<pre><code class="language-html">&lt;img src=&quot;images/club-logo.png&quot; alt=&quot;Student Club Logo&quot; width=&quot;200&quot; height=&quot;100&quot;&gt;
+</code></pre>
+<h4 id="42-required-attributes">4.2 Required Attributes<a class="anchor" href="#42-required-attributes" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Required?</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src</code></td>
+<td>✅ YES</td>
+<td>Path to the image file (relative path!)</td>
+<td><code>src=&quot;images/logo.png&quot;</code></td>
+</tr>
+<tr>
+<td><code>alt</code></td>
+<td>✅ YES</td>
+<td>Alternative text describing the image</td>
+<td><code>alt=&quot;Student Club Logo&quot;</code></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Recommended</td>
+<td>Display width in pixels</td>
+<td><code>width=&quot;200&quot;</code></td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Recommended</td>
+<td>Display height in pixels</td>
+<td><code>height=&quot;100&quot;</code></td>
+</tr>
+</tbody></table>
+<h4 id="43-why-alt-is-mandatory">4.3 Why <code>alt</code> Is Mandatory<a class="anchor" href="#43-why-alt-is-mandatory" aria-label="Link to this section">#</a></h4>
+<p>The <code>alt</code> attribute is NOT optional. It serves three critical purposes:</p>
+<ol>
+<li><strong>Accessibility:</strong> Screen readers read the alt text aloud to visually impaired users. Without alt text, they hear nothing or hear the filename.</li>
+<li><strong>Broken images:</strong> If the image fails to load (wrong path, slow connection, blocked by ad blocker), the browser displays the alt text instead.</li>
+<li><strong>SEO:</strong> Search engines cannot &quot;see&quot; images. They rely on alt text to understand what the image shows.</li>
+</ol>
+<p><strong>Writing good alt text:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Image Type</th>
+<th>Good Alt Text ✅</th>
+<th>Bad Alt Text ❌</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Club logo</td>
+<td><code>&quot;Student Club logo&quot;</code></td>
+<td><code>&quot;image&quot;</code> or <code>&quot;logo.png&quot;</code></td>
+</tr>
+<tr>
+<td>Team photo</td>
+<td><code>&quot;Five students posing at the 2024 orientation event&quot;</code></td>
+<td><code>&quot;photo&quot;</code> or <code>&quot;IMG_2341.jpg&quot;</code></td>
+</tr>
+<tr>
+<td>Decorative border</td>
+<td><code>&quot;&quot;</code> (empty string)</td>
+<td><code>&quot;border decoration&quot;</code></td>
+</tr>
+<tr>
+<td>Chart/graph</td>
+<td><code>&quot;Bar chart showing membership growth from 50 in 2020 to 200 in 2024&quot;</code></td>
+<td><code>&quot;chart&quot;</code></td>
+</tr>
+<tr>
+<td>Linked image</td>
+<td><code>&quot;Click to visit our Facebook page&quot;</code></td>
+<td><code>&quot;facebook&quot;</code></td>
+</tr>
+</tbody></table>
+<p>Rules for alt text:</p>
+<ul>
+<li>Describe WHAT THE IMAGE SHOWS, not what the file is named</li>
+<li>Keep it concise (under 125 characters for simple images)</li>
+<li>If the image is purely decorative, use <code>alt=&quot;&quot;</code> (empty string) — screen readers will skip it</li>
+<li>Never start with &quot;Image of...&quot; or &quot;Picture of...&quot; — the screen reader already announces it as an image</li>
+<li>If the image contains text, include that text in the alt attribute</li>
+</ul>
+<h4 id="44-width-and-height">4.4 Width and Height<a class="anchor" href="#44-width-and-height" aria-label="Link to this section">#</a></h4>
+<p>Setting <code>width</code> and <code>height</code> prevents <strong>layout shift</strong> — the jarring effect where content jumps around as images load. Always set BOTH attributes:</p>
+<pre><code class="language-html">&lt;!-- GOOD: Both dimensions specified --&gt;
+&lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Club team members&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;
+
+&lt;!-- OK: One dimension only (browser calculates the other proportionally) --&gt;
+&lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Club team members&quot; width=&quot;400&quot;&gt;
+
+&lt;!-- BAD: No dimensions (layout shifts as image loads) --&gt;
+&lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Club team members&quot;&gt;
+</code></pre>
+<p>⚠️ Important: The <code>width</code> and <code>height</code> attributes set the DISPLAY size, not the actual file size. Setting <code>width=&quot;200&quot;</code> on a 4000-pixel-wide photo makes it display small but still downloads the full file. Always resize images to the correct dimensions BEFORE adding them to your site.</p>
+<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<p>Think of the <code>&lt;img&gt;</code> tag like hanging a <strong>painting in a gallery</strong>:</p>
+<ul>
+<li><code>src</code> = Where the painting is stored (the storage room location)</li>
+<li><code>alt</code> = The plaque next to the painting that describes it for visitors who cannot see it</li>
+<li><code>width</code> and <code>height</code> = The frame size that determines how much wall space it takes up</li>
+<li>The browser = The gallery curator who hangs the painting in the right spot</li>
+</ul>
+<p>If you forget the plaque (alt text), visitors who cannot see the painting have no idea what it shows. If you use the wrong frame size (width/height), the painting looks distorted or the wall layout looks messy.</p>
+<h4 id="try-it-yourself-the-alt-text-test">🧪 Try It Yourself — The Alt Text Test<a class="anchor" href="#try-it-yourself-the-alt-text-test" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Write alt text that actually does its job.</p>
+<ol>
+<li>Add three images to a page: the club logo, a photo of members at a workshop, and a decorative divider line.</li>
+<li>Give each one alt text:<pre><code class="language-html">&lt;img src=&quot;images/logo.png&quot; alt=&quot;Student Web Club logo&quot;&gt;
+&lt;img src=&quot;images/workshop.jpg&quot; alt=&quot;Six students building websites at a workshop&quot;&gt;
+&lt;img src=&quot;images/divider.png&quot; alt=&quot;&quot;&gt;
+</code></pre>
+</li>
+<li>Now break one path on purpose: change <code>workshop.jpg</code> to <code>workshop-x.jpg</code> and reload.</li>
+<li>Finally, in F12 → Elements, delete each <code>&lt;img&gt;</code> in turn and read the page without it.</li>
+</ol>
+<p><strong>Expected result:</strong> The broken image shows its alt text in place of the photo — proof that alt text is also your fallback. Deleting the decorative divider costs the reader nothing, which is exactly why its alt is empty.</p>
+<details>
+<summary>The rule that decides every case</summary><p>Ask: <em>if this image failed to load, what would the reader need to be told?</em></p>
+<ul>
+<li>Conveys information → describe the information, not the file. &quot;Six students building websites at a workshop&quot;, not &quot;workshop.jpg&quot; or &quot;image of students&quot;.</li>
+<li>Purely decorative → <code>alt=&quot;&quot;</code>. The empty value tells a screen reader to skip it. Omitting <code>alt</code> entirely is different and worse: the screen reader then reads the file name aloud.</li>
+<li>Contains text (a poster, a logo with a tagline) → put that text in the alt.</li>
+</ul>
+<p>Do not start with &quot;Image of&quot; or &quot;Picture of&quot;. Screen readers already announce that it is an image.</p>
+</details><hr>
+<h3 id="5-image-formats">5. Image Formats<a class="anchor" href="#5-image-formats" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-03.canvas.tsx</code> → <code>FormatChooser</code> — slide <code>image-formats</code> (&quot;Choosing Image Formats&quot;)</p>
+</blockquote>
+<h4 id="51-choosing-the-right-format">5.1 Choosing the Right Format<a class="anchor" href="#51-choosing-the-right-format" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Full Name</th>
+<th>Best For</th>
+<th>Transparency</th>
+<th>Animation</th>
+<th>File Size</th>
+<th>Colors</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>JPG/JPEG</strong></td>
+<td>Joint Photographic Experts Group</td>
+<td>Photos, complex images with gradients</td>
+<td>❌ No</td>
+<td>❌ No</td>
+<td>Small (compressed)</td>
+<td>Millions</td>
+</tr>
+<tr>
+<td><strong>PNG</strong></td>
+<td>Portable Network Graphics</td>
+<td>Logos, icons, screenshots, images with transparency</td>
+<td>✅ Yes</td>
+<td>❌ No</td>
+<td>Medium-Large</td>
+<td>Millions</td>
+</tr>
+<tr>
+<td><strong>GIF</strong></td>
+<td>Graphics Interchange Format</td>
+<td>Simple animations, very simple graphics</td>
+<td>✅ Yes (1-bit)</td>
+<td>✅ Yes</td>
+<td>Small-Medium</td>
+<td>256 max</td>
+</tr>
+<tr>
+<td><strong>SVG</strong></td>
+<td>Scalable Vector Graphics</td>
+<td>Icons, logos, diagrams that must scale perfectly</td>
+<td>✅ Yes</td>
+<td>✅ Yes (CSS/JS)</td>
+<td>Very Small</td>
+<td>Unlimited</td>
+</tr>
+<tr>
+<td><strong>WebP</strong></td>
+<td>Web Picture Format</td>
+<td>Modern replacement for JPG/PNG (smaller files)</td>
+<td>✅ Yes</td>
+<td>✅ Yes</td>
+<td>Smallest</td>
+<td>Millions</td>
+</tr>
+</tbody></table>
+<h4 id="52-decision-flowchart">5.2 Decision Flowchart<a class="anchor" href="#52-decision-flowchart" aria-label="Link to this section">#</a></h4>
+<pre><code>What kind of image do you have?
+│
+├── Photograph or complex image with many colors?
+│   └── YES → Use JPG (or WebP if supported)
+│
+├── Logo, icon, or image with transparent background?
+│   └── YES → Use PNG (or SVG if it is a vector graphic)
+│
+├── Simple animation?
+│   └── YES → Use GIF (or animated WebP/APNG)
+│
+├── Icon or logo that must look sharp at ANY size?
+│   └── YES → Use SVG
+│
+└── Not sure?
+    └── Start with PNG (safe choice, supports everything except photographic compression)
+</code></pre>
+<h4 id="53-image-file-size-guidelines">5.3 Image File Size Guidelines<a class="anchor" href="#53-image-file-size-guidelines" aria-label="Link to this section">#</a></h4>
+<p>Large images make pages load slowly. Follow these guidelines:</p>
+<table>
+<thead>
+<tr>
+<th>Image Type</th>
+<th>Maximum File Size</th>
+<th>Typical Dimensions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Banner/header image</td>
+<td>100-200 KB</td>
+<td>1200x300 px</td>
+</tr>
+<tr>
+<td>Content photo</td>
+<td>50-150 KB</td>
+<td>600x400 px</td>
+</tr>
+<tr>
+<td>Thumbnail</td>
+<td>10-30 KB</td>
+<td>150x150 px</td>
+</tr>
+<tr>
+<td>Logo</td>
+<td>5-20 KB</td>
+<td>200x100 px</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>1-10 KB</td>
+<td>32x32 to 64x64 px</td>
+</tr>
+</tbody></table>
+<p>Tips for reducing file size:</p>
+<ul>
+<li>Resize images to the EXACT display dimensions before adding them</li>
+<li>Use online tools like TinyPNG (<a href="https://tinypng.com/">https://tinypng.com/</a>) or Squoosh (<a href="https://squoosh.app/">https://squoosh.app/</a>) to compress images</li>
+<li>Use JPG quality 70-80% for photos (barely noticeable quality loss, much smaller file)</li>
+<li>Never use images larger than 2 MB on a web page</li>
+</ul>
+<h4 id="important-notes-3">⚠️ Important Notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always save images in the <code>images/</code> subfolder of your project. Never link to images on your Desktop or external URLs (unless intentionally using a CDN).</li>
+<li>Use RELATIVE paths for all image sources: <code>src=&quot;images/photo.jpg&quot;</code> not <code>src=&quot;C:\Users\...\photo.jpg&quot;</code>.</li>
+<li>If an image does not display, check: (1) Is the path correct? (2) Is the filename spelled correctly (case-sensitive)? (3) Is the file actually in the <code>images/</code> folder?</li>
+<li>BMP and TIFF formats are NOT suitable for the web. They are too large and not universally supported.</li>
+</ul>
+<hr>
+<h3 id="6-using-the-editor-to-insert-content">6. Using the Editor to Insert Content<a class="anchor" href="#6-using-the-editor-to-insert-content" aria-label="Link to this section">#</a></h3>
+<h4 id="61-dreamweaver-insert-menu">6.1 Dreamweaver: Insert Menu<a class="anchor" href="#61-dreamweaver-insert-menu" aria-label="Link to this section">#</a></h4>
+<p>Dreamweaver provides visual tools for inserting elements:</p>
+<ul>
+<li><strong>Insert → HTML → Heading:</strong> Inserts a heading tag at the cursor position</li>
+<li><strong>Insert → Image:</strong> Opens a file browser to select an image and generates the <code>&lt;img&gt;</code> tag</li>
+<li><strong>Insert → HTML → Unordered List / Ordered List:</strong> Creates a list structure</li>
+<li><strong>Properties Panel:</strong> When you click on any element in Design View, the Properties panel shows editable options (format, font, alignment, link, etc.)</li>
+</ul>
+<h4 id="62-vs-code-emmet-shortcuts">6.2 VS Code: Emmet Shortcuts<a class="anchor" href="#62-vs-code-emmet-shortcuts" aria-label="Link to this section">#</a></h4>
+<p>VS Code supports <strong>Emmet</strong>, a toolkit that expands abbreviations into full HTML:</p>
+<table>
+<thead>
+<tr>
+<th>Type This</th>
+<th>Press Tab → Expands To</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>h1</code></td>
+<td><code>&lt;h1&gt;&lt;/h1&gt;</code></td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td><code>&lt;p&gt;&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td><code>img</code></td>
+<td><code>&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>ul&gt;li*3</code></td>
+<td><code>&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</code></td>
+</tr>
+<tr>
+<td><code>nav&gt;ul&gt;li*5&gt;a</code></td>
+<td>Full navigation structure with 5 linked items</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Complete HTML5 boilerplate</td>
+</tr>
+</tbody></table>
+<p>To use Emmet: type the abbreviation in an HTML file and press <strong>Tab</strong>.</p>
+<h4 id="important-notes-4">⚠️ Important Notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Visual tools (Dreamweaver Design View) generate HTML FOR YOU, but you should always verify the generated code in Code View.</li>
+<li>Learning to type HTML manually is ESSENTIAL. Visual tools are helpful shortcuts, not replacements for understanding code.</li>
+<li>In VS Code, install the &quot;HTML Snippets&quot; extension for additional shortcuts.</li>
+</ul>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><strong>Use exactly ONE <code>&lt;h1&gt;</code> per page.</strong> It should describe the page&#39;s main topic.</li>
+<li><strong>Follow heading hierarchy strictly.</strong> Never skip levels (h1 → h2 → h3, not h1 → h3).</li>
+<li><strong>Use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> instead of <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code></strong> for meaningful emphasis.</li>
+<li><strong>Always include <code>alt</code> text on every <code>&lt;img&gt;</code> tag.</strong> No exceptions.</li>
+<li><strong>Choose the right image format.</strong> JPG for photos, PNG for logos/transparency, SVG for scalable icons.</li>
+<li><strong>Resize images before adding them.</strong> Web images should match their display dimensions.</li>
+<li><strong>Set both <code>width</code> and <code>height</code> on images</strong> to prevent layout shift.</li>
+<li><strong>Use relative paths for all images:</strong> <code>src=&quot;images/photo.jpg&quot;</code>.</li>
+<li><strong>Keep image file sizes small.</strong> Aim for under 200 KB for photos, under 20 KB for logos.</li>
+<li><strong>Use lists for grouped items.</strong> Bulleted lists for unordered collections, numbered lists for sequences.</li>
+<li><strong>Do not use <code>&lt;br&gt;</code> for spacing.</strong> Use CSS margins and padding instead.</li>
+<li><strong>Test with images disabled</strong> in your browser to verify that alt text provides adequate information.</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-skipping-heading-levels">Mistake 1: Skipping heading levels<a class="anchor" href="#mistake-1-skipping-heading-levels" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;h3&gt;Our Events&lt;/h3&gt;     &lt;!-- Skipped h2! --&gt;
+&lt;h5&gt;Workshop&lt;/h5&gt;      &lt;!-- Skipped h4! --&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;h2&gt;Our Events&lt;/h2&gt;
+&lt;h3&gt;Workshop&lt;/h3&gt;
+</code></pre>
+<h4 id="mistake-2-missing-or-useless-alt-text">Mistake 2: Missing or useless alt text<a class="anchor" href="#mistake-2-missing-or-useless-alt-text" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;img src=&quot;images/team.jpg&quot; alt=&quot;image&quot;&gt;
+&lt;img src=&quot;images/logo.png&quot;&gt;
+&lt;img src=&quot;images/banner.jpg&quot; alt=&quot;banner.jpg&quot;&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;img src=&quot;images/team.jpg&quot; alt=&quot;Five club members posing at the 2024 orientation event&quot;&gt;
+&lt;img src=&quot;images/logo.png&quot; alt=&quot;Student Club logo featuring a blue shield and open book&quot;&gt;
+&lt;img src=&quot;images/banner.jpg&quot; alt=&quot;Students collaborating on laptops in the campus library&quot;&gt;
+</code></pre>
+<h4 id="mistake-3-using-huge-unoptimized-images">Mistake 3: Using huge unoptimized images<a class="anchor" href="#mistake-3-using-huge-unoptimized-images" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong: Linking to a 5 MB, 4000x3000 pixel photo straight from a camera
+✅ Correct: Resize to 800x600 pixels, compress to JPG quality 80%, resulting in ~100 KB</p>
+<h4 id="mistake-4-using-br-for-layout-spacing">Mistake 4: Using <code>&lt;br&gt;</code> for layout spacing<a class="anchor" href="#mistake-4-using-br-for-layout-spacing" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;h2&gt;About Us&lt;/h2&gt;
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;We are a student club...&lt;/p&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;h2&gt;About Us&lt;/h2&gt;
+&lt;p&gt;We are a student club...&lt;/p&gt;
+&lt;!-- Control spacing with CSS: h2 { margin-bottom: 20px; } --&gt;
+</code></pre>
+<h4 id="mistake-5-putting-content-outside-li-in-lists">Mistake 5: Putting content outside <code>&lt;li&gt;</code> in lists<a class="anchor" href="#mistake-5-putting-content-outside-li-in-lists" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;ul&gt;
+    Some text here          &lt;!-- WRONG: Text directly inside &lt;ul&gt; --&gt;
+    &lt;li&gt;Item one&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;Some text here&lt;/li&gt; &lt;!-- All content must be inside &lt;li&gt; --&gt;
+    &lt;li&gt;Item one&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h4 id="mistake-6-stretching-images-with-mismatched-dimensions">Mistake 6: Stretching images with mismatched dimensions<a class="anchor" href="#mistake-6-stretching-images-with-mismatched-dimensions" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;!-- Original image is 400x300, but forced to 400x400 — distorted! --&gt;
+&lt;img src=&quot;images/photo.jpg&quot; alt=&quot;Team photo&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;!-- Match the original aspect ratio: 400x300 --&gt;
+&lt;img src=&quot;images/photo.jpg&quot; alt=&quot;Team photo&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;
+</code></pre>
+<hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code></td>
+<td>Heading tags creating a page outline; h1 is largest</td>
+<td><code>&lt;h2&gt;Our Events&lt;/h2&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>Paragraph tag for blocks of text</td>
+<td><code>&lt;p&gt;Welcome to our club.&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;strong&gt;</code></td>
+<td>Bold text with semantic importance</td>
+<td><code>&lt;strong&gt;Deadline:&lt;/strong&gt; March 20</code></td>
+</tr>
+<tr>
+<td><code>&lt;em&gt;</code></td>
+<td>Italic text with semantic emphasis</td>
+<td><code>&lt;em&gt;Please note&lt;/em&gt; the time change</code></td>
+</tr>
+<tr>
+<td><code>&lt;br&gt;</code></td>
+<td>Self-closing line break (for addresses, poetry)</td>
+<td><code>Line 1&lt;br&gt;Line 2</code></td>
+</tr>
+<tr>
+<td><code>&lt;hr&gt;</code></td>
+<td>Self-closing horizontal rule / thematic break</td>
+<td>Between two sections</td>
+</tr>
+<tr>
+<td><code>&lt;ul&gt;</code> + <code>&lt;li&gt;</code></td>
+<td>Unordered (bulleted) list</td>
+<td>Navigation menus, feature lists</td>
+</tr>
+<tr>
+<td><code>&lt;ol&gt;</code> + <code>&lt;li&gt;</code></td>
+<td>Ordered (numbered) list</td>
+<td>Step-by-step instructions</td>
+</tr>
+<tr>
+<td><code>&lt;img&gt;</code></td>
+<td>Self-closing image tag</td>
+<td><code>&lt;img src=&quot;...&quot; alt=&quot;...&quot; width=&quot;...&quot; height=&quot;...&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>src</code> attribute</td>
+<td>Relative path to the image file</td>
+<td><code>src=&quot;images/logo.png&quot;</code></td>
+</tr>
+<tr>
+<td><code>alt</code> attribute</td>
+<td>Text description for accessibility and broken images</td>
+<td><code>alt=&quot;Student Club logo&quot;</code></td>
+</tr>
+<tr>
+<td>JPG</td>
+<td>Photo format, small file size, no transparency</td>
+<td>Team photos, banners</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>Lossless format, supports transparency</td>
+<td>Logos, icons, screenshots</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>Limited colors, supports animation</td>
+<td>Simple animated banners</td>
+</tr>
+<tr>
+<td>SVG</td>
+<td>Vector format, infinitely scalable</td>
+<td>Icons, logos, diagrams</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-formatted-about-page">Example 1: Formatted About Page<a class="anchor" href="#example-1-formatted-about-page" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You are building the About page for the Student Club Website. You need headings, paragraphs, bold text, italic text, and both types of lists.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - About Us&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;h2&gt;About Our Club&lt;/h2&gt;
+        &lt;p&gt;The &lt;strong&gt;Student Club&lt;/strong&gt; is a vibrant community of
+           learners and creators. We believe in the power of
+           &lt;em&gt;technology&lt;/em&gt; and &lt;em&gt;creativity&lt;/em&gt; to bring people together.&lt;/p&gt;
+
+        &lt;h3&gt;What We Do&lt;/h3&gt;
+        &lt;p&gt;Our activities include:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;strong&gt;Workshops:&lt;/strong&gt; Learn web design, programming, and graphic design&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Competitions:&lt;/strong&gt; Photography, coding, and design contests&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Social Events:&lt;/strong&gt; Movie nights, game tournaments, and meetups&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Community Service:&lt;/strong&gt; Volunteering and charity projects&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;h3&gt;How to Join&lt;/h3&gt;
+        &lt;p&gt;Follow these simple steps to become a member:&lt;/p&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Fill out the online membership form&lt;/li&gt;
+            &lt;li&gt;Attend the orientation session&lt;/li&gt;
+            &lt;li&gt;Pay the annual membership fee (50,000 VND)&lt;/li&gt;
+            &lt;li&gt;Receive your membership card and welcome kit&lt;/li&gt;
+        &lt;/ol&gt;
+
+        &lt;blockquote&gt;
+            &lt;p&gt;&quot;Together, we learn. Together, we grow.&quot;&lt;/p&gt;
+            &lt;p&gt;— Student Club Motto&lt;/p&gt;
+        &lt;/blockquote&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2024 Student Club. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>&lt;h2&gt;About Our Club&lt;/h2&gt;</code>: Main section heading. Only one <code>&lt;h1&gt;</code> exists (in the header), so <code>&lt;h2&gt;</code> starts the content sections.</li>
+<li><code>&lt;strong&gt;Student Club&lt;/strong&gt;</code>: Bold emphasis on the club name — this is important information.</li>
+<li><code>&lt;em&gt;technology&lt;/em&gt;</code> and <code>&lt;em&gt;creativity&lt;/em&gt;</code>: Italic emphasis on key values — words you would stress when speaking.</li>
+<li><code>&lt;ul&gt;</code> with <code>&lt;li&gt;</code> items: Bulleted list of activities. Order does not matter, so unordered list is appropriate.</li>
+<li><code>&lt;strong&gt;Workshops:&lt;/strong&gt;</code>: Bold label inside each list item to create a visual label-description pattern.</li>
+<li><code>&lt;ol&gt;</code> with <code>&lt;li&gt;</code> items: Numbered list of joining steps. Order IS critical (you must fill out the form BEFORE attending orientation), so ordered list is correct.</li>
+<li><code>&lt;blockquote&gt;</code>: Indented quotation block for the club motto. Screen readers announce this as a quotation.</li>
+</ul>
+<p><strong>Result:</strong> A well-structured About page with clear visual hierarchy. The bulleted list shows activities, the numbered list shows joining steps, and the blockquote displays the motto with distinctive styling.</p>
+<hr>
+<h3 id="example-2-adding-images-to-the-home-page">Example 2: Adding Images to the Home Page<a class="anchor" href="#example-2-adding-images-to-the-home-page" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to add the club logo and a banner image to the home page header, plus a team photo in the main content area.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;header&gt;
+    &lt;!-- Logo: PNG format because it has a transparent background --&gt;
+    &lt;img src=&quot;images/club-logo.png&quot; alt=&quot;Student Club logo with blue shield emblem&quot;
+         width=&quot;120&quot; height=&quot;60&quot;&gt;
+    &lt;h1&gt;Student Club&lt;/h1&gt;
+    &lt;!-- Banner: JPG format because it is a photograph --&gt;
+    &lt;img src=&quot;images/banner.jpg&quot; alt=&quot;Students collaborating on projects in the campus library&quot;
+         width=&quot;800&quot; height=&quot;200&quot;&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;h2&gt;Welcome to Our Club&lt;/h2&gt;
+    &lt;p&gt;The &lt;strong&gt;Student Club&lt;/strong&gt; is the most active student organization on campus.&lt;/p&gt;
+
+    &lt;h3&gt;Meet Our Team&lt;/h3&gt;
+    &lt;!-- Team photo: JPG format, sized to display dimensions --&gt;
+    &lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Five club leaders standing in front of the IT building&quot;
+         width=&quot;400&quot; height=&quot;300&quot;&gt;
+    &lt;p&gt;&lt;em&gt;Our team at the annual orientation event, September 2024.&lt;/em&gt;&lt;/p&gt;
+&lt;/main&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>&lt;img src=&quot;images/club-logo.png&quot;...&gt;</code>: PNG format chosen because logos typically need transparent backgrounds. The relative path <code>images/club-logo.png</code> navigates from the root (where index.html lives) into the <code>images/</code> subfolder.</li>
+<li><code>alt=&quot;Student Club logo with blue shield emblem&quot;</code>: Describes WHAT the logo looks like, not just &quot;logo.&quot; A screen reader user gets a mental picture.</li>
+<li><code>width=&quot;120&quot; height=&quot;60&quot;</code>: Matches the intended display size. Prevents layout shift during loading.</li>
+<li><code>&lt;img src=&quot;images/banner.jpg&quot;...&gt;</code>: JPG format chosen because the banner is a photograph with many colors and gradients.</li>
+<li><code>alt=&quot;Students collaborating on projects in the campus library&quot;</code>: Describes the scene in the photo. Specific and informative.</li>
+<li><code>&lt;p&gt;&lt;em&gt;Our team at the annual orientation event...&lt;/em&gt;&lt;/p&gt;</code>: An image caption placed directly after the image. Uses <code>&lt;em&gt;</code> for subtle emphasis. Captions provide context that supplements (but does not duplicate) the alt text.</li>
+</ul>
+<p><strong>Result:</strong> Three images displayed at appropriate sizes with descriptive alt text. If any image fails to load, the alt text appears in its place. Screen reader users hear meaningful descriptions.</p>
+<hr>
+<h3 id="example-3-nested-lists-for-event-categories">Example 3: Nested Lists for Event Categories<a class="anchor" href="#example-3-nested-lists-for-event-categories" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to organize events by category with sub-items, mixing unordered and ordered lists.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;h2&gt;Event Schedule&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Technical Workshops&lt;/strong&gt;
+        &lt;ol&gt;
+            &lt;li&gt;HTML &amp;amp; CSS Basics — March 15, 2:00 PM&lt;/li&gt;
+            &lt;li&gt;JavaScript Fundamentals — March 22, 2:00 PM&lt;/li&gt;
+            &lt;li&gt;Responsive Web Design — March 29, 2:00 PM&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Creative Events&lt;/strong&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Photography Contest — Submit by March 20&lt;/li&gt;
+            &lt;li&gt;Poster Design Challenge — April 5&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Social Activities&lt;/strong&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Movie Night — Every Friday, 7:00 PM&lt;/li&gt;
+            &lt;li&gt;Campus Tour for New Members — April 1&lt;/li&gt;
+            &lt;li&gt;End-of-Semester Party — June 15&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li>Outer <code>&lt;ul&gt;</code>: The top-level categories (Technical, Creative, Social) are not ordered, so we use an unordered list.</li>
+<li><code>&lt;li&gt;&lt;strong&gt;Technical Workshops&lt;/strong&gt;</code>: Each category is a list item with a bold label.</li>
+<li>Inner <code>&lt;ol&gt;</code>: Technical workshops have a SEQUENCE (Basics → Fundamentals → Responsive), so we use an ordered list nested inside the <code>&lt;li&gt;</code>.</li>
+<li><code>HTML &amp;amp; CSS</code>: The <code>&amp;amp;</code> entity renders as <code>&amp;</code> in the browser. You cannot type a raw <code>&amp;</code> in HTML because it starts an entity reference.</li>
+<li>Inner <code>&lt;ul&gt;</code> for Creative Events: These events have no specific order, so we nest an unordered list.</li>
+<li>The nesting creates a visual indentation that clearly shows the hierarchy.</li>
+</ul>
+<p><strong>Result:</strong> A hierarchical list showing three event categories, each containing sub-items. Technical workshops are numbered (sequential), while creative and social events are bulleted (non-sequential).</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup-tools-and-folders">Setup (Tools and Folders)<a class="anchor" href="#setup-tools-and-folders" aria-label="Link to this section">#</a></h3>
+<p>Before starting, make sure:</p>
+<ol>
+<li>Your <code>club-website</code> folder exists with all five HTML pages from Session 2</li>
+<li>Your <code>images/</code> folder contains at least these placeholder images (you can create simple placeholders using any image editor, or download free images):<ul>
+<li><code>club-logo.png</code> (120x60 pixels)</li>
+<li><code>banner.jpg</code> (800x200 pixels)</li>
+<li><code>team-photo.jpg</code> (400x300 pixels)</li>
+</ul>
+</li>
+<li>Your <code>css/style.css</code> file exists from Session 2</li>
+</ol>
+<p>If you do not have real images yet, create colored rectangles as placeholders using Paint or any image tool. Save them with the correct names and dimensions in the <code>images/</code> folder.</p>
+<hr>
+<h4 id="task-1-format-the-about-page-with-rich-text">TASK 1: Format the About Page with Rich Text<a class="anchor" href="#task-1-format-the-about-page-with-rich-text" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Apply headings, paragraphs, bold, italic, lists, and a blockquote to the About page.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Use proper heading hierarchy (h2 → h3)</li>
+<li>Include at least one unordered list and one ordered list</li>
+<li>Use <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> for emphasis</li>
+<li>Include a blockquote with the club motto</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Open <code>about.html</code> in your editor.</p>
+<p><strong>Step 2:</strong> Replace the entire <code>&lt;main&gt;</code> section content with this code:</p>
+<pre><code class="language-html">    &lt;main&gt;
+        &lt;h2&gt;About Our Club&lt;/h2&gt;
+        &lt;p&gt;The &lt;strong&gt;Student Club&lt;/strong&gt; was founded in 2020 with a mission to bring
+           students together through &lt;em&gt;technology&lt;/em&gt;, &lt;em&gt;creativity&lt;/em&gt;, and
+           &lt;em&gt;community service&lt;/em&gt;.&lt;/p&gt;
+
+        &lt;h3&gt;Our Mission&lt;/h3&gt;
+        &lt;p&gt;To provide a supportive environment where students can learn new skills,
+           share ideas, and grow together.&lt;/p&gt;
+
+        &lt;h3&gt;What We Offer&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;strong&gt;Weekly Workshops:&lt;/strong&gt; Hands-on sessions in web design, programming, and graphic design&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Monthly Competitions:&lt;/strong&gt; Photography, coding, and design contests with prizes&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Social Events:&lt;/strong&gt; Movie nights, game tournaments, and campus outings&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Community Service:&lt;/strong&gt; Volunteering at local schools and charities&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;h3&gt;How to Become a Member&lt;/h3&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Visit our office or fill out the online form&lt;/li&gt;
+            &lt;li&gt;Attend the orientation session (held every first Monday)&lt;/li&gt;
+            &lt;li&gt;Pay the annual membership fee&lt;/li&gt;
+            &lt;li&gt;Receive your membership card and welcome kit&lt;/li&gt;
+        &lt;/ol&gt;
+
+        &lt;h3&gt;Club Leadership&lt;/h3&gt;
+        &lt;p&gt;Our dedicated leadership team:&lt;/p&gt;
+        &lt;ol&gt;
+            &lt;li&gt;&lt;strong&gt;Nguyen Van A&lt;/strong&gt; — President&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Tran Thi B&lt;/strong&gt; — Vice President&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Le Van C&lt;/strong&gt; — Events Coordinator&lt;/li&gt;
+        &lt;/ol&gt;
+
+        &lt;blockquote&gt;
+            &lt;p&gt;&quot;Together, we learn. Together, we grow.&quot;&lt;/p&gt;
+            &lt;p&gt;— Student Club Motto&lt;/p&gt;
+        &lt;/blockquote&gt;
+    &lt;/main&gt;
+</code></pre>
+<p><strong>Step 3:</strong> Save (Ctrl+S) and preview in browser (F12).</p>
+<p><strong>Step 4:</strong> Verify:</p>
+<ul>
+<li>Headings decrease in size from h2 to h3</li>
+<li>Bold and italic text render correctly</li>
+<li>Bullet points appear for the unordered list</li>
+<li>Numbers appear for the ordered lists</li>
+<li>The blockquote is visually distinct (indented or styled differently)</li>
+</ul>
+<p>✅ <strong>Expected result:</strong> A richly formatted About page with clear visual hierarchy, properly structured lists, and emphasized text.</p>
+<p>💾 <strong>File to save:</strong> <code>about.html</code></p>
+<hr>
+<h4 id="task-2-add-images-to-the-home-page">TASK 2: Add Images to the Home Page<a class="anchor" href="#task-2-add-images-to-the-home-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Insert images with correct attributes, formats, and alt text into the home page.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Add the club logo in the header (PNG format)</li>
+<li>Add a banner image in the header (JPG format)</li>
+<li>Add a team photo in the main content (JPG format)</li>
+<li>Every image must have <code>src</code>, <code>alt</code>, <code>width</code>, and <code>height</code></li>
+<li>All paths must be relative</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Make sure your images exist in the <code>images/</code> folder:</p>
+<ul>
+<li><code>images/club-logo.png</code></li>
+<li><code>images/banner.jpg</code></li>
+<li><code>images/team-photo.jpg</code></li>
+</ul>
+<p><strong>Step 2:</strong> Open <code>index.html</code> and update the <code>&lt;header&gt;</code> section:</p>
+<pre><code class="language-html">    &lt;header&gt;
+        &lt;img src=&quot;images/club-logo.png&quot; alt=&quot;Student Club logo with blue shield emblem&quot;
+             width=&quot;120&quot; height=&quot;60&quot;&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;img src=&quot;images/banner.jpg&quot; alt=&quot;Students working together on laptops in the campus library&quot;
+             width=&quot;800&quot; height=&quot;200&quot;&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+</code></pre>
+<p><strong>Step 3:</strong> In the <code>&lt;main&gt;</code> section, add a team photo after the welcome paragraph:</p>
+<pre><code class="language-html">        &lt;h3&gt;Meet Our Team&lt;/h3&gt;
+        &lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Five club leaders posing in front of the IT building&quot;
+             width=&quot;400&quot; height=&quot;300&quot;&gt;
+        &lt;p&gt;&lt;em&gt;Our leadership team at the 2024 orientation event.&lt;/em&gt;&lt;/p&gt;
+</code></pre>
+<p><strong>Step 4:</strong> Save and preview. Check that:</p>
+<ul>
+<li>All three images display at the correct size</li>
+<li>The logo appears above the heading</li>
+<li>The banner appears below the heading</li>
+<li>The team photo appears in the main content area</li>
+<li>If you rename an image file temporarily to test, the alt text appears in place of the missing image</li>
+</ul>
+<p><strong>Step 5:</strong> Test accessibility: Right-click in Chrome → Inspect → find an <code>&lt;img&gt;</code> tag → delete the <code>src</code> attribute → observe the alt text appearing.</p>
+<p>✅ <strong>Expected result:</strong> Three images displayed correctly with proper sizing. Alt text is present and descriptive. Images use relative paths and appropriate formats.</p>
+<p>💾 <strong>File to save:</strong> <code>index.html</code></p>
+<hr>
+<h4 id="task-3-build-the-gallery-page-with-images">TASK 3: Build the Gallery Page with Images<a class="anchor" href="#task-3-build-the-gallery-page-with-images" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a photo gallery page with multiple images, captions, and proper structure.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Display at least 3 images in the gallery</li>
+<li>Each image must have descriptive alt text</li>
+<li>Each image must have a caption</li>
+<li>Use <code>&lt;section&gt;</code> elements to group related photos</li>
+<li>Images must use relative paths</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Place at least 3 images in your <code>images/</code> folder. If you do not have real photos, create colored placeholder images named:</p>
+<ul>
+<li><code>event-orientation.jpg</code> (400x300)</li>
+<li><code>event-workshop.jpg</code> (400x300)</li>
+<li><code>event-social.jpg</code> (400x300)</li>
+</ul>
+<p><strong>Step 2:</strong> Open <code>gallery.html</code> and replace the <code>&lt;main&gt;</code> content:</p>
+<pre><code class="language-html">    &lt;main&gt;
+        &lt;h2&gt;Photo Gallery&lt;/h2&gt;
+        &lt;p&gt;Browse photos from our events and activities throughout the year.&lt;/p&gt;
+
+        &lt;section&gt;
+            &lt;h3&gt;Orientation Day 2024&lt;/h3&gt;
+            &lt;img src=&quot;images/event-orientation.jpg&quot;
+                 alt=&quot;New members receiving welcome kits at the orientation booth&quot;
+                 width=&quot;400&quot; height=&quot;300&quot;&gt;
+            &lt;p&gt;&lt;em&gt;New members receiving their welcome kits at Orientation Day.&lt;/em&gt;&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h3&gt;Web Design Workshop&lt;/h3&gt;
+            &lt;img src=&quot;images/event-workshop.jpg&quot;
+                 alt=&quot;Students following along on laptops during the HTML workshop&quot;
+                 width=&quot;400&quot; height=&quot;300&quot;&gt;
+            &lt;p&gt;&lt;em&gt;Participants practicing HTML coding during our March workshop.&lt;/em&gt;&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h3&gt;Social Events&lt;/h3&gt;
+            &lt;img src=&quot;images/event-social.jpg&quot;
+                 alt=&quot;Club members playing board games at the monthly social night&quot;
+                 width=&quot;400&quot; height=&quot;300&quot;&gt;
+            &lt;p&gt;&lt;em&gt;Members enjoying board games at our monthly social night.&lt;/em&gt;&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+</code></pre>
+<p><strong>Step 3:</strong> Save and preview. Verify all images display and captions appear below each image.</p>
+<p><strong>Step 4:</strong> Add CSS to style the gallery. Open <code>css/style.css</code> and add:</p>
+<pre><code class="language-css">/* --- Gallery Styles --- */
+main section {
+    margin-bottom: 30px;
+}
+
+main img {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Caption style: targets &lt;p&gt; immediately after &lt;img&gt; */
+main img + p {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+}
+</code></pre>
+<p><strong>Step 5:</strong> Save the CSS file and refresh the browser. Images should now have borders, rounded corners, and centered italic captions.</p>
+<p>✅ <strong>Expected result:</strong> A gallery page with three sections, each containing a heading, an image with border styling, and an italic caption. All images use relative paths and have descriptive alt text.</p>
+<p>💾 <strong>Files to save:</strong> <code>gallery.html</code>, <code>css/style.css</code></p>
+<hr>
+<h4 id="task-4-style-text-and-images-with-css">TASK 4: Style Text and Images with CSS<a class="anchor" href="#task-4-style-text-and-images-with-css" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Update your stylesheet to professionally style headings, paragraphs, lists, blockquotes, and images across all pages.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Style all heading levels with consistent colors and spacing</li>
+<li>Style paragraphs for readability</li>
+<li>Style blockquotes with a left border</li>
+<li>Style images with borders and responsive behavior</li>
+<li>Ensure styles work consistently across all five pages</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Open <code>css/style.css</code>.</p>
+<p><strong>Step 2:</strong> Replace or update the content with this comprehensive stylesheet:</p>
+<pre><code class="language-css">/* ========================================
+   Student Club Website - Main Stylesheet
+   Updated for Session 3: Text &amp; Images
+   ======================================== */
+
+/* --- Reset &amp; Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #f5f5f5;
+}
+
+/* --- Header --- */
+header {
+    background-color: #1a5276;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+/* --- Navigation --- */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a:hover {
+    background-color: #2874a6;
+    border-radius: 3px;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+
+/* --- Main Content --- */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Headings --- */
+main h2 {
+    font-size: 28px;
+    color: #1a5276;
+    border-bottom: 2px solid #2874a6;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+main h3 {
+    font-size: 22px;
+    color: #2874a6;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+main h4 {
+    font-size: 18px;
+    color: #1a5276;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+/* --- Paragraphs --- */
+main p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* --- Emphasis --- */
+main strong {
+    color: #1a5276;
+}
+
+/* --- Lists --- */
+main ul, main ol {
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+main li {
+    margin-bottom: 5px;
+}
+
+/* Nested lists */
+main ul ul, main ol ul, main ul ol, main ol ol {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+    border-left: 4px solid #2874a6;
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: #555;
+}
+
+blockquote p {
+    margin-bottom: 5px;
+}
+
+/* --- Images in Main Content --- */
+main img {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    display: block;
+    margin: 15px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Image captions (paragraph immediately after image) */
+main img + p {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* --- Article Cards --- */
+main article {
+    margin-bottom: 20px;
+    padding: 15px;
+    padding-left: 20px;
+    border-left: 3px solid #2874a6;
+    background-color: #fafafa;
+}
+
+main article h4 {
+    color: #1a5276;
+    margin-bottom: 5px;
+}
+
+/* --- Links in Content --- */
+main a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+    color: #003366;
+}
+
+/* --- Sections --- */
+main section {
+    margin-bottom: 30px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+</code></pre>
+<p><strong>Step 3:</strong> Save the CSS file (Ctrl+S).</p>
+<p><strong>Step 4:</strong> Preview EACH of the five pages in the browser. Verify:</p>
+<ul>
+<li>Headings are styled consistently with the correct sizes and colors</li>
+<li>Paragraphs are justified with comfortable line spacing</li>
+<li>Lists have proper indentation and spacing</li>
+<li>Blockquotes have a blue left border and italic text</li>
+<li>Images are centered with borders and rounded corners</li>
+<li>Captions are centered and italic below images</li>
+<li>The navigation bar looks identical on every page</li>
+</ul>
+<p>✅ <strong>Expected result:</strong> All five pages share a professional, consistent design. Text is readable, images are well-presented, and the overall layout feels polished.</p>
+<p>💾 <strong>File to save:</strong> <code>css/style.css</code></p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Text and image bugs are visible, which makes them good practice at reading a symptom back to its cause.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Everything after one point is bold or italic</td>
+<td>A <code>&lt;/strong&gt;</code> or <code>&lt;/em&gt;</code> is missing</td>
+<td>Ctrl+U and count opening against closing tags</td>
+<td>Close the tag where the emphasis should end</td>
+</tr>
+<tr>
+<td>Broken-image icon with your alt text beside it</td>
+<td>The <code>src</code> path is wrong, but <code>alt</code> is doing its job</td>
+<td>Network tab shows a 404 for the image</td>
+<td>Fix the path; keep the alt text</td>
+</tr>
+<tr>
+<td>Photo overflows the page and forces sideways scrolling</td>
+<td>The image&#39;s natural width exceeds its container</td>
+<td>Inspect the element and read its intrinsic size</td>
+<td>Add <code>img { max-width: 100%; height: auto; }</code></td>
+</tr>
+<tr>
+<td>Page takes many seconds to load</td>
+<td>A camera-resolution image is being scaled down by the browser</td>
+<td>Network tab shows a multi-megabyte image</td>
+<td>Resize to display size and compress before uploading</td>
+</tr>
+<tr>
+<td>Bullets appear where you wanted numbers</td>
+<td><code>&lt;ul&gt;</code> used instead of <code>&lt;ol&gt;</code></td>
+<td>Read the opening tag</td>
+<td>Change to <code>&lt;ol&gt;</code></td>
+</tr>
+<tr>
+<td>A list item sits outside the bullet list</td>
+<td><code>&lt;p&gt;</code> or bare text used as a child of <code>&lt;ul&gt;</code></td>
+<td>The validator reports invalid nesting</td>
+<td>Only <code>&lt;li&gt;</code> may be a direct child of <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code></td>
+</tr>
+<tr>
+<td>Paragraph spacing looks uneven down the page</td>
+<td><code>&lt;br&gt;&lt;br&gt;</code> used in some places and <code>&lt;p&gt;</code> in others</td>
+<td>Ctrl+U and look for <code>&lt;br&gt;&lt;br&gt;</code></td>
+<td>Use <code>&lt;p&gt;</code> everywhere and control spacing with CSS <code>margin</code></td>
+</tr>
+<tr>
+<td>Screen reader says &quot;image&quot; and nothing else</td>
+<td><code>alt</code> is missing entirely</td>
+<td>Validator flags a missing alt attribute</td>
+<td>Add descriptive <code>alt</code>, or <code>alt=&quot;&quot;</code> if the image is purely decorative</td>
+</tr>
+<tr>
+<td>Heading looks right but the outline is wrong</td>
+<td>Heading level chosen for its font size</td>
+<td>Run Lighthouse or check the DevTools accessibility tree</td>
+<td>Use the correct level and set the size in CSS</td>
+</tr>
+</tbody></table>
+<p><strong>The alt-text test that takes ten seconds:</strong> in DevTools, right-click each <code>&lt;img&gt;</code> and delete it. Read the page. If a sentence is now missing information, that image&#39;s alt text needs to supply it.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. Why should there be only one <code>&lt;h1&gt;</code> per page?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;h1&gt;</code> names the topic of the whole page, so a second one is a contradiction. Screen reader users navigate by heading level and expect a single top-level heading; search engines use it as the strongest on-page signal of what the page is about. Multiple <code>&lt;h1&gt;</code> elements dilute both.</p>
+</details><hr>
+<p><strong>Q2. What is wrong with jumping from <code>&lt;h2&gt;</code> straight to <code>&lt;h4&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>It breaks the document outline. A screen reader announcing &quot;heading level 4&quot; after level 2 implies a missing level 3 section, so users assume they skipped content. Heading levels describe <strong>structure</strong>, not size — if <code>&lt;h3&gt;</code> looks too big, change it with CSS, do not swap in <code>&lt;h4&gt;</code>.</p>
+</details><hr>
+<p><strong>Q3. When should you use <code>&lt;strong&gt;</code> versus <code>&lt;b&gt;</code>, and <code>&lt;em&gt;</code> versus <code>&lt;i&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> carry <strong>meaning</strong> — importance and emphasis — and screen readers can convey them through tone. <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> are purely visual with no semantics. Default to <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>. Reserve <code>&lt;i&gt;</code> for conventional italics with no emphasis, like a scientific name or a foreign phrase.</p>
+</details><hr>
+<p><strong>Q4. What exactly should <code>alt</code> text say, and when should it be empty?</strong></p>
+<details>
+<summary>Answer</summary><p><code>alt</code> describes the image&#39;s <strong>function</strong> in context, not its appearance: <code>alt=&quot;Club members planting trees at the 2024 campus cleanup&quot;</code>, not <code>alt=&quot;photo&quot;</code> or <code>alt=&quot;image of people&quot;</code>. Do not start with &quot;Image of&quot; — screen readers already announce it as an image. Use <code>alt=&quot;&quot;</code> (empty, but present) for purely decorative images so screen readers skip them silently. Omitting <code>alt</code> entirely is always wrong.</p>
+</details><hr>
+<p><strong>Q5. A photo of the club committee, a transparent logo, and an icon set: which format for each, and why?</strong></p>
+<details>
+<summary>Answer</summary><ul>
+<li>Photo → <strong>JPG</strong>: lossy compression handles millions of colours in a small file; transparency is not needed.</li>
+<li>Transparent logo → <strong>PNG</strong> (or SVG): lossless with alpha transparency, and keeps text edges crisp.</li>
+<li>Icon set → <strong>SVG</strong>: vector, so it stays sharp at any size and on any screen density, with a tiny file size.</li>
+</ul>
+</details><hr>
+<p><strong>Q6. Why set <code>width</code> and <code>height</code> attributes on <code>&lt;img&gt;</code> even when CSS controls the size?</strong></p>
+<details>
+<summary>Answer</summary><p>They let the browser reserve the correct space <strong>before</strong> the image downloads, preventing layout shift where text jumps around as images load. Modern browsers use the ratio of the two attributes to compute the aspect ratio, so pair them with <code>max-width: 100%; height: auto;</code> in CSS for responsive behaviour without the jump.</p>
+</details><hr>
+<p><strong>Q7. When is <code>&lt;br&gt;</code> appropriate, and when is it a mistake?</strong></p>
+<details>
+<summary>Answer</summary><p>Appropriate where the line break is <strong>part of the content</strong>: postal addresses, poetry, song lyrics. A mistake when used for <strong>spacing</strong> — two or three <code>&lt;br&gt;</code> tags to push content down. Spacing is CSS&#39;s job: use <code>margin</code> or <code>padding</code>. Stacked <code>&lt;br&gt;</code> tags also create confusing pauses for screen reader users.</p>
+</details><hr>
+<p><strong>Q8. When do you use <code>&lt;ul&gt;</code> versus <code>&lt;ol&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;ol&gt;</code> when the <strong>order matters</strong> — installation steps, rankings, a recipe. <code>&lt;ul&gt;</code> when it does not — navigation links, feature lists, club benefits. Ask yourself: if I shuffled these items, would the meaning change? Yes → <code>&lt;ol&gt;</code>. No → <code>&lt;ul&gt;</code>. Never choose based on whether you want bullets or numbers; that is <code>list-style</code> in CSS.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes ☐</th>
+<th>No ☐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Use heading tags (h1-h6) in correct hierarchical order without skipping levels</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Explain why there should be only ONE <code>&lt;h1&gt;</code> per page</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Format text with <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;p&gt;</code>, and explain the difference between semantic and visual formatting</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create both unordered and ordered lists, including nested lists</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Insert an image with all four attributes: <code>src</code>, <code>alt</code>, <code>width</code>, <code>height</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Write meaningful alt text that describes the image content for screen reader users</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Choose the correct image format (JPG, PNG, GIF, SVG) based on the type of image</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Style text and images with CSS to create a professional-looking page</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p><strong>Self-scoring guide:</strong></p>
+<ul>
+<li>7-8 Yes: Excellent! You have mastered text and image fundamentals. Continue to the next session.</li>
+<li>5-6 Yes: Good. Review the sections where you answered &quot;No&quot; and redo the relevant practice task.</li>
+<li>0-4 Yes: Re-read the Theory section carefully. Focus on the worked examples and replicate them step by step. Ask your instructor or a classmate for help.</li>
+</ul>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals">HTML Text Fundamentals — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting">Advanced Text Formatting — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML">Images in HTML — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">Responsive Images — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text">CSS Text and Font Styling — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_lists">Styling Lists — MDN</a></li>
+<li><a href="https://www.w3.org/WAI/tutorials/images/">Web Accessibility: Images — W3C WAI</a></li>
+<li><a href="https://www.w3.org/WAI/tutorials/images/decision-tree/">Alt Text Decision Tree — W3C WAI</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 4, you will learn how to create hyperlinks between pages, build navigation systems, and use anchors to link to specific sections within a page — making your Student Club Website fully navigable.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

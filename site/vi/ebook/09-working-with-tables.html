@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 9: Working with Tables — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 9: Working with Tables — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/09-working-with-tables.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 9</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 09</p>
+    <h1>Buổi 9: Working with Tables</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-what-are-html-tables">1. What Are HTML Tables?</a></li>
+        <li class="d2"><a href="#2-basic-table-structure">2. Basic Table Structure</a></li>
+        <li class="d2"><a href="#3-semantic-table-sections-thead-tbody-tfoot-caption">3. Semantic Table Sections: thead, tbody, tfoot, caption</a></li>
+        <li class="d2"><a href="#4-merging-cells-colspan-and-rowspan">4. Merging Cells: colspan and rowspan</a></li>
+        <li class="d2"><a href="#5-styling-tables-with-css">5. Styling Tables with CSS</a></li>
+        <li class="d2"><a href="#example-1-basic-event-schedule-table">Example 1: Basic Event Schedule Table</a></li>
+        <li class="d2"><a href="#example-2-membership-fee-table-with-rowspan">Example 2: Membership Fee Table with rowspan</a></li>
+        <li class="d2"><a href="#example-3-club-leadership-table-with-mailto-links">Example 3: Club Leadership Table with Mailto Links</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/09-working-with-tables.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-09.html">Tổng quan Buổi 9</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-9">🟦 SESSION 9<a class="anchor" href="#session-9" aria-label="Link to this section">#</a></h2>
+<h2 id="working-with-tables"><strong>Working with Tables</strong><a class="anchor" href="#working-with-tables" aria-label="Link to this section">#</a></h2>
+<p>Welcome to Session 9! Today we are adding a powerful new tool to your HTML toolkit: <strong>tables</strong>. Tables let you display structured data — schedules, price lists, rosters, statistics — in neat rows and columns that are easy to scan and understand. You will learn every table element from <code>&lt;table&gt;</code> to <code>&lt;tfoot&gt;</code>, how to merge cells with <code>colspan</code> and <code>rowspan</code>, and how to style tables so they look professional on the Student Club Website. Equally important, you will learn when to use tables (data) and when absolutely NOT to use them (layout). Let us get started!</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    Chapter 9 — Working with Tables (course ebook)
+                 MDN: &quot;HTML tables&quot;, &quot;Table basics&quot;, &quot;Advanced tables&quot;
+🎯 Objectives:   1. Create HTML tables with proper semantic structure
+                 2. Use thead / tbody / tfoot and caption
+                 3. Merge cells with colspan and rowspan
+                 4. Style tables professionally with CSS
+                 5. Judge when a table is appropriate and when it is not
+📖 Prepare:      1. Complete the Sessions 1-8 hands-on tasks
+                 2. Have your student-club-site folder open
+                 3. Review the CSS box model and selectors (Session 4)
+🖼 Diagrams:     canvases/buoi-09.canvas.tsx — TableAnatomy, SpanGrid, TableStylePreview
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Create an HTML table using <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code>.</li>
+<li>Structure tables semantically with <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, and <code>&lt;caption&gt;</code>.</li>
+<li>Merge cells horizontally with <strong><code>colspan</code></strong> and vertically with <strong><code>rowspan</code></strong>.</li>
+<li>Style tables with CSS: borders, padding, alternating row colours, hover effects, and responsive wrappers.</li>
+<li>Explain <strong>when to use tables</strong> (tabular data) and <strong>when NOT to use tables</strong> (page layout).</li>
+<li>Add event schedule and membership fee tables to the <strong>Student Club Website</strong>.</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-what-are-html-tables">1. What Are HTML Tables?<a class="anchor" href="#1-what-are-html-tables" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>An <strong>HTML table</strong> is a structured grid of rows and columns used to display <strong>tabular data</strong> — information that naturally belongs in a spreadsheet-like format. Examples include class timetables, product comparison charts, financial reports, sports standings, and member directories.</p>
+<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think of a table like an Excel spreadsheet embedded in a web page. When you look at a train schedule, a restaurant menu with prices, or a university course catalogue, you are looking at tabular data. HTML tables are the semantic way to represent this kind of information on the web.</p>
+<h4 id="12-why-it-matters">1.2 Why it matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<p>Tables provide <strong>semantic meaning</strong> to data. Screen readers announce &quot;table with 4 rows and 3 columns&quot; and navigate cell by cell, helping visually impaired users understand the data structure. Search engines also recognise tables as structured data, which can improve SEO for data-heavy pages.</p>
+<h4 id="important-notes-when-not-to-use-tables">⚠️ Important notes — When NOT to use tables<a class="anchor" href="#important-notes-when-not-to-use-tables" aria-label="Link to this section">#</a></h4>
+<p>In the early days of the web (1990s–early 2000s), developers used tables to create page layouts — positioning headers, sidebars, and content areas using table cells. <strong>This is now considered bad practice.</strong> Here is why:</p>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Semantics</td>
+<td>Tables imply data relationships. Using them for layout confuses screen readers and search engines.</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>Screen readers try to read layout tables as data tables, producing nonsensical output.</td>
+</tr>
+<tr>
+<td>Flexibility</td>
+<td>Table-based layouts are rigid and difficult to make responsive for mobile devices.</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Nested tables for layout produce deeply nested, hard-to-read HTML.</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Browsers must download the entire table before rendering any of it.</td>
+</tr>
+</tbody></table>
+<p>✅ <strong>Use tables for:</strong> Schedules, price lists, statistics, comparisons, rosters, calendars.
+❌ <strong>Do NOT use tables for:</strong> Page layout, positioning elements, creating columns for text, spacing.</p>
+<p>For page layout, always use <code>&lt;div&gt;</code> elements with CSS floats (as learned in Session 5), or modern alternatives like Flexbox and Grid.</p>
+<h4 id="try-it-yourself-table-or-not-a-table">🧪 Try It Yourself — Table or Not a Table?<a class="anchor" href="#try-it-yourself-table-or-not-a-table" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (4 min):</strong> Decide correctly before you write any markup.</p>
+<p>For each of these, answer table or not:</p>
+<ol>
+<li>The club&#39;s weekly meeting schedule — day, time, room.</li>
+<li>A sidebar sitting beside the main article.</li>
+<li>A comparison of three membership tiers and their benefits.</li>
+<li>A photo gallery in a three-across grid.</li>
+<li>Semester 1 income and expenses with a totals row.</li>
+</ol>
+<details>
+<summary>Answers</summary><ol>
+<li><strong>Table.</strong> Rows are meetings, columns are attributes. Genuine row-and-column data.</li>
+<li><strong>Not a table.</strong> That is page layout — Flexbox or Grid.</li>
+<li><strong>Table.</strong> Tiers against benefits is a comparison matrix.</li>
+<li><strong>Not a table.</strong> A grid of images has no row-column <em>relationship</em>; a photo&#39;s position carries no meaning. Use <code>display: grid</code>.</li>
+<li><strong>Table</strong>, and use <code>&lt;tfoot&gt;</code> for the totals row.</li>
+</ol>
+<p>The deciding question: <strong>would this data still make sense as a spreadsheet?</strong> If yes, it is tabular and <code>&lt;table&gt;</code> is correct. If you are only arranging boxes on a screen, it is layout, and tables are the wrong tool.</p>
+<p>This distinction is historical as much as technical. Before CSS layout existed, everyone built pages from nested tables — you will still find it in tutorials written before about 2005. It produces unreadable markup and a terrible screen reader experience, because assistive technology announces &quot;table with 4 rows and 3 columns&quot; for something that is just a sidebar.</p>
+</details><hr>
+<h3 id="2-basic-table-structure">2. Basic Table Structure<a class="anchor" href="#2-basic-table-structure" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-09.canvas.tsx</code> → <code>TableAnatomy</code> — slide <code>s9-anatomy</code> (&quot;Table anatomy&quot;)</p>
+</blockquote>
+<h4 id="21-the-four-core-elements">2.1 The Four Core Elements<a class="anchor" href="#21-the-four-core-elements" aria-label="Link to this section">#</a></h4>
+<p>Every HTML table is built from four fundamental elements:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Tag</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table container</td>
+<td><code>&lt;table&gt;</code></td>
+<td>Wraps the entire table</td>
+</tr>
+<tr>
+<td>Table row</td>
+<td><code>&lt;tr&gt;</code></td>
+<td>Defines one horizontal row</td>
+</tr>
+<tr>
+<td>Header cell</td>
+<td><code>&lt;th&gt;</code></td>
+<td>A cell containing column/row header text (bold and centred by default)</td>
+</tr>
+<tr>
+<td>Data cell</td>
+<td><code>&lt;td&gt;</code></td>
+<td>A cell containing regular data</td>
+</tr>
+</tbody></table>
+<pre><code>VISUAL STRUCTURE OF A TABLE:
+
+┌─────────────────────────────────────────────┐
+│ &lt;table&gt;                                     │
+│  ┌─────────────────────────────────────────┐│
+│  │ &lt;tr&gt;                                    ││
+│  │  ┌────────┐ ┌────────┐ ┌────────┐     ││
+│  │  │  &lt;th&gt;  │ │  &lt;th&gt;  │ │  &lt;th&gt;  │     ││
+│  │  │ Event  │ │  Date  │ │  Time  │     ││
+│  │  └────────┘ └────────┘ └────────┘     ││
+│  └─────────────────────────────────────────┘│
+│  ┌─────────────────────────────────────────┐│
+│  │ &lt;tr&gt;                                    ││
+│  │  ┌────────┐ ┌────────┐ ┌────────┐     ││
+│  │  │  &lt;td&gt;  │ │  &lt;td&gt;  │ │  &lt;td&gt;  │     ││
+│  │  │Workshop│ │ Mar 15 │ │ 2:00PM │     ││
+│  │  └────────┘ └────────┘ └────────┘     ││
+│  └─────────────────────────────────────────┘│
+└─────────────────────────────────────────────┘
+</code></pre>
+<h4 id="22-your-first-table">2.2 Your First Table<a class="anchor" href="#22-your-first-table" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Event&lt;/th&gt;
+        &lt;th&gt;Date&lt;/th&gt;
+        &lt;th&gt;Location&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Web Workshop&lt;/td&gt;
+        &lt;td&gt;March 15&lt;/td&gt;
+        &lt;td&gt;Room 301&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Music Night&lt;/td&gt;
+        &lt;td&gt;March 29&lt;/td&gt;
+        &lt;td&gt;Auditorium&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<h5 id="line-by-line-explanation">Line-by-line explanation<a class="anchor" href="#line-by-line-explanation" aria-label="Link to this section">#</a></h5>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;table&gt;</code></td>
+<td>Opens the table container. All rows and cells go inside this.</td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code></td>
+<td>Opens a new table row. Each <code>&lt;tr&gt;</code> creates one horizontal line in the table.</td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;Event&lt;/th&gt;</code></td>
+<td>A header cell containing &quot;Event&quot;. Browsers render <code>&lt;th&gt;</code> text as bold and centred by default.</td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;Web Workshop&lt;/td&gt;</code></td>
+<td>A data cell containing &quot;Web Workshop&quot;. Regular weight, left-aligned by default.</td>
+</tr>
+<tr>
+<td><code>&lt;/table&gt;</code></td>
+<td>Closes the table container.</td>
+</tr>
+</tbody></table>
+<p>⚠️ <strong>Critical rule:</strong> <code>&lt;td&gt;</code> and <code>&lt;th&gt;</code> elements MUST be direct children of <code>&lt;tr&gt;</code>. You cannot put a <code>&lt;td&gt;</code> directly inside <code>&lt;table&gt;</code> without wrapping it in a <code>&lt;tr&gt;</code> first. This is a very common beginner mistake.</p>
+<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Cell outside a row</p>
+<pre><code class="language-html">&lt;table&gt;
+    &lt;td&gt;This is invalid!&lt;/td&gt;
+&lt;/table&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong> Cell inside a row</p>
+<pre><code class="language-html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;This is valid.&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p>❌ <strong>Wrong:</strong> Mixing <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> randomly</p>
+<pre><code class="language-html">&lt;tr&gt;
+    &lt;td&gt;Name&lt;/td&gt;   &lt;!-- Should be &lt;th&gt; because it is a header --&gt;
+    &lt;th&gt;John&lt;/th&gt;   &lt;!-- Should be &lt;td&gt; because it is data --&gt;
+&lt;/tr&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong> Headers in <code>&lt;th&gt;</code>, data in <code>&lt;td&gt;</code></p>
+<pre><code class="language-html">&lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;td&gt;John&lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+<h4 id="try-it-yourself-hear-the-difference-scope-makes">🧪 Try It Yourself — Hear the Difference <code>scope</code> Makes<a class="anchor" href="#try-it-yourself-hear-the-difference-scope-makes" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Make a table readable to a screen reader, not just to your eyes.</p>
+<ol>
+<li>Build a schedule table with a header row of <code>&lt;th&gt;</code> and three data rows.</li>
+<li>Open F12 → <strong>Elements</strong>, select a <code>&lt;td&gt;</code>, and look at the <strong>Accessibility</strong> pane.</li>
+<li>Now add <code>scope</code> to every header cell:<pre><code class="language-html">&lt;tr&gt;
+    &lt;th scope=&quot;col&quot;&gt;Day&lt;/th&gt;
+    &lt;th scope=&quot;col&quot;&gt;Activity&lt;/th&gt;
+    &lt;th scope=&quot;col&quot;&gt;Room&lt;/th&gt;
+&lt;/tr&gt;
+</code></pre>
+</li>
+<li>Also add a caption as the <strong>first</strong> child of <code>&lt;table&gt;</code>:<pre><code class="language-html">&lt;caption&gt;Weekly club schedule, Semester 1&lt;/caption&gt;
+</code></pre>
+</li>
+<li>Re-inspect a data cell.</li>
+</ol>
+<p><strong>Expected result:</strong> Visually nothing changes except the caption appearing above the table. In the accessibility tree, each data cell is now associated with its column header.</p>
+<details>
+<summary>What a screen reader user actually hears</summary><p>Without <code>scope</code>, moving across a row announces bare values: &quot;Friday, Workshop, B203.&quot; The listener must remember what the columns were.</p>
+<p>With <code>scope=&quot;col&quot;</code>, each value arrives labelled: &quot;Day: Friday. Activity: Workshop. Room: B203.&quot; That is the difference between data and noise.</p>
+<p>Use <code>scope=&quot;row&quot;</code> when the first cell of each row labels that row — a name, a date, a category. Tables often need both.</p>
+<p><code>&lt;caption&gt;</code> is the table&#39;s accessible name, which is how a user decides whether this is the table they were looking for. It must be the first element inside <code>&lt;table&gt;</code>; placed anywhere else the browser moves it, and the association is lost.</p>
+</details><hr>
+<h3 id="3-semantic-table-sections-thead-tbody-tfoot-caption">3. Semantic Table Sections: thead, tbody, tfoot, caption<a class="anchor" href="#3-semantic-table-sections-thead-tbody-tfoot-caption" aria-label="Link to this section">#</a></h3>
+<h4 id="31-definitions">3.1 Definitions<a class="anchor" href="#31-definitions" aria-label="Link to this section">#</a></h4>
+<p>HTML provides three section elements that divide a table into logical parts:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;caption&gt;</code></td>
+<td>Title/description displayed above the table</td>
+<td>No, but strongly recommended</td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code></td>
+<td>Groups header row(s) at the top</td>
+<td>No, but strongly recommended</td>
+</tr>
+<tr>
+<td><code>&lt;tbody&gt;</code></td>
+<td>Groups body/data rows in the middle</td>
+<td>No, but strongly recommended</td>
+</tr>
+<tr>
+<td><code>&lt;tfoot&gt;</code></td>
+<td>Groups footer row(s) at the bottom</td>
+<td>No, but useful for totals/summaries</td>
+</tr>
+</tbody></table>
+<h4 id="32-why-these-matter">3.2 Why these matter<a class="anchor" href="#32-why-these-matter" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Accessibility:</strong> Screen readers use these sections to navigate tables. Users can jump between header, body, and footer.</li>
+<li><strong>Styling:</strong> You can apply different CSS to each section independently (e.g., dark header, striped body, bold footer).</li>
+<li><strong>Print behaviour:</strong> When a table spans multiple printed pages, browsers repeat <code>&lt;thead&gt;</code> on each page.</li>
+<li><strong>Semantics:</strong> They communicate the table&#39;s structure to machines (search engines, data parsers).</li>
+</ol>
+<h4 id="33-complete-semantic-table">3.3 Complete semantic table<a class="anchor" href="#33-complete-semantic-table" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;table&gt;
+    &lt;caption&gt;Student Club Events Schedule&lt;/caption&gt;
+
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Event&lt;/th&gt;
+            &lt;th&gt;Date&lt;/th&gt;
+            &lt;th&gt;Time&lt;/th&gt;
+            &lt;th&gt;Location&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Web Workshop&lt;/td&gt;
+            &lt;td&gt;March 15&lt;/td&gt;
+            &lt;td&gt;2:00 PM&lt;/td&gt;
+            &lt;td&gt;Room 301&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Photo Contest&lt;/td&gt;
+            &lt;td&gt;March 22&lt;/td&gt;
+            &lt;td&gt;All Day&lt;/td&gt;
+            &lt;td&gt;Online&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Music Night&lt;/td&gt;
+            &lt;td&gt;March 29&lt;/td&gt;
+            &lt;td&gt;7:00 PM&lt;/td&gt;
+            &lt;td&gt;Auditorium&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan=&quot;4&quot;&gt;Total: 3 events scheduled&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+</code></pre>
+<h5 id="order-matters">Order matters!<a class="anchor" href="#order-matters" aria-label="Link to this section">#</a></h5>
+<p>The correct order inside <code>&lt;table&gt;</code> is:</p>
+<ol>
+<li><code>&lt;caption&gt;</code> (first, if present)</li>
+<li><code>&lt;thead&gt;</code> (second, if present)</li>
+<li><code>&lt;tbody&gt;</code> (third, if present)</li>
+<li><code>&lt;tfoot&gt;</code> (last, if present)</li>
+</ol>
+<p>⚠️ Note: In older HTML specs, <code>&lt;tfoot&gt;</code> was required to come BEFORE <code>&lt;tbody&gt;</code>. In HTML5, it can come after <code>&lt;tbody&gt;</code>, which is more intuitive. Modern browsers support both orders, but placing it last is the current best practice.</p>
+<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always include <code>&lt;caption&gt;</code> — even if it is hidden visually with CSS, screen readers need it.</li>
+<li>Always wrap header rows in <code>&lt;thead&gt;</code> and data rows in <code>&lt;tbody&gt;</code>.</li>
+<li>Use <code>&lt;tfoot&gt;</code> for summary rows (totals, counts, notes).</li>
+<li>Keep only ONE <code>&lt;thead&gt;</code> and ONE <code>&lt;tfoot&gt;</code> per table. You CAN have multiple <code>&lt;tbody&gt;</code> sections to group related data.</li>
+</ul>
+<h4 id="common-mistakes-2">❌ Common mistakes<a class="anchor" href="#common-mistakes-2" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Forgetting semantic sections entirely</p>
+<pre><code class="language-html">&lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Alice&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong> Using all semantic sections</p>
+<pre><code class="language-html">&lt;table&gt;
+    &lt;caption&gt;Member List&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;Alice&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<hr>
+<h3 id="4-merging-cells-colspan-and-rowspan">4. Merging Cells: colspan and rowspan<a class="anchor" href="#4-merging-cells-colspan-and-rowspan" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-09.canvas.tsx</code> → <code>SpanGrid</code> — slide <code>s9-merging</code> (&quot;Merging cells&quot;)</p>
+</blockquote>
+<h4 id="41-colspan-horizontal-merging">4.1 <code>colspan</code> — Horizontal Merging<a class="anchor" href="#41-colspan-horizontal-merging" aria-label="Link to this section">#</a></h4>
+<p>The <code>colspan</code> attribute makes a single cell span across multiple columns.</p>
+<pre><code class="language-html">&lt;tr&gt;
+    &lt;td colspan=&quot;3&quot;&gt;This cell spans 3 columns&lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+<pre><code>BEFORE colspan:                AFTER colspan=&quot;3&quot;:
++--------+--------+--------+   +------------------------+
+| Cell A | Cell B | Cell C |   |   Spans 3 columns      |
++--------+--------+--------+   +------------------------+
+</code></pre>
+<h4 id="42-rowspan-vertical-merging">4.2 <code>rowspan</code> — Vertical Merging<a class="anchor" href="#42-rowspan-vertical-merging" aria-label="Link to this section">#</a></h4>
+<p>The <code>rowspan</code> attribute makes a single cell span across multiple rows.</p>
+<pre><code class="language-html">&lt;tr&gt;
+    &lt;td rowspan=&quot;2&quot;&gt;Spans 2 rows&lt;/td&gt;
+    &lt;td&gt;Cell A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;!-- No first &lt;td&gt; here — it is occupied by the rowspan above --&gt;
+    &lt;td&gt;Cell B&lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+<pre><code>BEFORE rowspan:                AFTER rowspan=&quot;2&quot;:
++--------+--------+            +--------+--------+
+| Cell X | Cell A |            |        | Cell A |
++--------+--------+            | Spans  +--------+
+| Cell Y | Cell B |            | 2 rows | Cell B |
++--------+--------+            +--------+--------+
+</code></pre>
+<p>⚠️ <strong>Critical rule for rowspan:</strong> When a cell uses <code>rowspan=&quot;2&quot;</code>, the NEXT row has one fewer <code>&lt;td&gt;</code> because the spanning cell already occupies that position. Forgetting to remove the extra cell is the most common rowspan bug.</p>
+<h4 id="43-combining-colspan-and-rowspan">4.3 Combining colspan and rowspan<a class="anchor" href="#43-combining-colspan-and-rowspan" aria-label="Link to this section">#</a></h4>
+<p>You can use both attributes on the same cell:</p>
+<pre><code class="language-html">&lt;td colspan=&quot;2&quot; rowspan=&quot;3&quot;&gt;This cell spans 2 columns AND 3 rows&lt;/td&gt;
+</code></pre>
+<h4 id="best-practices-2">✅ Best practices<a class="anchor" href="#best-practices-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Plan your table on paper FIRST. Draw the grid and mark which cells span.</li>
+<li>Count cells in each row carefully. Every row must have the same total number of column positions (accounting for spans).</li>
+<li>Test merged tables thoroughly — visual bugs are easy to miss.</li>
+</ul>
+<h4 id="common-mistakes-3">❌ Common mistakes<a class="anchor" href="#common-mistakes-3" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Same number of cells in every row despite rowspan</p>
+<pre><code class="language-html">&lt;tr&gt;
+    &lt;td rowspan=&quot;2&quot;&gt;Category&lt;/td&gt;
+    &lt;td&gt;Item A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Category&lt;/td&gt;  &lt;!-- EXTRA cell! Row now has 3 column positions instead of 2 --&gt;
+    &lt;td&gt;Item B&lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong> Fewer cells in the second row</p>
+<pre><code class="language-html">&lt;tr&gt;
+    &lt;td rowspan=&quot;2&quot;&gt;Category&lt;/td&gt;
+    &lt;td&gt;Item A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Item B&lt;/td&gt;  &lt;!-- Only 1 cell; the rowspan fills the first column --&gt;
+&lt;/tr&gt;
+</code></pre>
+<h4 id="try-it-yourself-count-the-columns">🧪 Try It Yourself — Count the Columns<a class="anchor" href="#try-it-yourself-count-the-columns" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Build a merged-cell table, break it, then repair it by counting.</p>
+<ol>
+<li>Build a three-column fee table with a merged heading:<pre><code class="language-html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th colspan=&quot;3&quot;&gt;Membership Fees 2026&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Type&lt;/th&gt;&lt;th&gt;Term&lt;/th&gt;&lt;th&gt;Fee&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td rowspan=&quot;2&quot;&gt;Student&lt;/td&gt;&lt;td&gt;Semester 1&lt;/td&gt;&lt;td&gt;50,000 VND&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Semester 2&lt;/td&gt;&lt;td&gt;50,000 VND&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+</li>
+<li>Reload — the grid is even.</li>
+<li>Now break it: add a <code>&lt;td&gt;Extra&lt;/td&gt;</code> to the last row and reload.</li>
+<li>Fix it by removing that cell, then break it the other way: change <code>colspan=&quot;3&quot;</code> to <code>colspan=&quot;2&quot;</code>.</li>
+</ol>
+<p><strong>Expected result:</strong> The extra cell pushes a fourth column into existence and the table goes ragged. The wrong <code>colspan</code> leaves a visible gap in the top row.</p>
+<details>
+<summary>The arithmetic that prevents both bugs</summary><p>Every row must total the same number of columns, counting each span by its value:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Cells</th>
+<th>Counted width</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>one <code>&lt;th colspan=&quot;3&quot;&gt;</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>three <code>&lt;th&gt;</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>&lt;td rowspan=&quot;2&quot;&gt;</code> + 2 <code>&lt;td&gt;</code></td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>two <code>&lt;td&gt;</code> <strong>only</strong></td>
+<td>2 + 1 inherited from the rowspan above = 3</td>
+</tr>
+</tbody></table>
+<p>Row 4 is where students add a cell they should not. The <code>rowspan=&quot;2&quot;</code> in row 3 already occupies row 4&#39;s first column, so row 4 must supply only two cells. Writing three gives you four columns.</p>
+<p>When a merged table looks wrong, do not adjust CSS. Count the columns row by row on paper — the row that does not total correctly is the broken one.</p>
+</details><hr>
+<h3 id="5-styling-tables-with-css">5. Styling Tables with CSS<a class="anchor" href="#5-styling-tables-with-css" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-09.canvas.tsx</code> → <code>TableStylePreview</code> — slide <code>s9-styling</code> (&quot;CSS table styling&quot;)</p>
+</blockquote>
+<p>Raw HTML tables look plain — no borders, no spacing, no colour. CSS transforms them into professional, readable components.</p>
+<h4 id="51-essential-table-css-properties">5.1 Essential Table CSS Properties<a class="anchor" href="#51-essential-table-css-properties" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>border-collapse</code></td>
+<td>Merges adjacent cell borders into single lines</td>
+<td><code>border-collapse: collapse;</code></td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Sets table width</td>
+<td><code>width: 100%;</code></td>
+</tr>
+<tr>
+<td><code>padding</code> (on td/th)</td>
+<td>Adds space inside cells</td>
+<td><code>padding: 12px 15px;</code></td>
+</tr>
+<tr>
+<td><code>text-align</code> (on th)</td>
+<td>Aligns header text</td>
+<td><code>text-align: left;</code></td>
+</tr>
+<tr>
+<td><code>background-color</code></td>
+<td>Colours sections differently</td>
+<td><code>thead { background: #1a5276; }</code></td>
+</tr>
+<tr>
+<td><code>nth-child(even)</code></td>
+<td>Targets alternating rows for zebra striping</td>
+<td><code>tr:nth-child(even) { background: #f8f9fa; }</code></td>
+</tr>
+<tr>
+<td><code>:hover</code> (on tr)</td>
+<td>Highlights row on mouseover</td>
+<td><code>tr:hover { background: #eaf2f8; }</code></td>
+</tr>
+</tbody></table>
+<h4 id="52-border-collapse-collapse-the-most-important-table-css">5.2 <code>border-collapse: collapse</code> — THE Most Important Table CSS<a class="anchor" href="#52-border-collapse-collapse-the-most-important-table-css" aria-label="Link to this section">#</a></h4>
+<p>Without <code>border-collapse: collapse</code>, each cell draws its own border, resulting in ugly double borders:</p>
+<pre><code>WITHOUT collapse:              WITH collapse:
++========+========+           +--------+--------+
+║ Cell A ║ Cell B ║           | Cell A | Cell B |
++========+========+           +--------+--------+
+║ Cell C ║ Cell D ║           | Cell C | Cell D |
++========+========+           +--------+--------+
+(double borders)               (single clean borders)
+</code></pre>
+<p>Always set <code>border-collapse: collapse</code> on the <code>&lt;table&gt;</code> element unless you specifically want separated borders.</p>
+<h4 id="53-complete-styled-table-css">5.3 Complete Styled Table CSS<a class="anchor" href="#53-complete-styled-table-css" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* --- Base table styles --- */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden; /* Clips border-radius on inner elements */
+}
+
+/* --- Caption --- */
+.styled-table caption {
+    font-family: &#39;Montserrat&#39;, sans-serif;
+    font-size: 22px;
+    color: #1a5276;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* --- Header section --- */
+.styled-table thead {
+    background: linear-gradient(135deg, #1a5276, #2874a6);
+}
+
+.styled-table th {
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* --- Body cells --- */
+.styled-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Zebra striping: alternate row colours */
+.styled-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Hover highlight */
+.styled-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #eaf2f8;
+}
+
+/* --- Footer section --- */
+.styled-table tfoot {
+    background-color: #f0f4f8;
+    font-weight: bold;
+}
+
+.styled-table tfoot td {
+    padding: 12px 15px;
+    border-top: 2px solid #2874a6;
+}
+</code></pre>
+<h5 id="line-by-line-explanation-of-key-rules">Line-by-line explanation of key rules<a class="anchor" href="#line-by-line-explanation-of-key-rules" aria-label="Link to this section">#</a></h5>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>border-collapse: collapse</code></td>
+<td>Eliminates double borders for a clean look.</td>
+</tr>
+<tr>
+<td><code>overflow: hidden</code> on table</td>
+<td>Ensures <code>border-radius</code> clips child elements properly. Without this, header/footer backgrounds bleed past rounded corners.</td>
+</tr>
+<tr>
+<td><code>linear-gradient</code> on <code>thead</code></td>
+<td>Uses the same gradient style as our site header for visual consistency.</td>
+</tr>
+<tr>
+<td><code>text-transform: uppercase</code> on <code>th</code></td>
+<td>Makes headers feel more authoritative and scannable.</td>
+</tr>
+<tr>
+<td><code>tr:nth-child(even)</code></td>
+<td>Creates zebra stripes that help the eye track across wide rows.</td>
+</tr>
+<tr>
+<td><code>transition: background-color 0.2s</code></td>
+<td>Smoothly animates the hover highlight instead of snapping.</td>
+</tr>
+<tr>
+<td><code>border-top: 2px solid</code> on <code>tfoot td</code></td>
+<td>Visually separates the footer from body rows.</td>
+</tr>
+</tbody></table>
+<h4 id="54-responsive-table-wrapper">5.4 Responsive Table Wrapper<a class="anchor" href="#54-responsive-table-wrapper" aria-label="Link to this section">#</a></h4>
+<p>Tables do not shrink gracefully on small screens. Wrap them in a scrollable container:</p>
+<pre><code class="language-html">&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table class=&quot;styled-table&quot;&gt;
+        &lt;!-- ... --&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.table-wrapper {
+    overflow-x: auto; /* Horizontal scrollbar appears only when needed */
+    margin: 20px 0;
+}
+</code></pre>
+<p>This adds a horizontal scrollbar on narrow screens while keeping the table fully readable.</p>
+<h4 id="best-practices-3">✅ Best practices<a class="anchor" href="#best-practices-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always use <code>border-collapse: collapse</code>.</li>
+<li>Give headers a distinct visual treatment (different background, bold text, or both).</li>
+<li>Add zebra stripes for tables with more than 3–4 rows.</li>
+<li>Add hover effects for interactive feedback.</li>
+<li>Wrap wide tables in a scrollable container.</li>
+<li>Keep cell padding generous (10–15 px) for readability.</li>
+</ul>
+<h4 id="common-mistakes-4">❌ Common mistakes<a class="anchor" href="#common-mistakes-4" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> No border-collapse (double borders everywhere)</p>
+<pre><code class="language-css">table { border: 1px solid #ccc; }
+td { border: 1px solid #ccc; }
+/* Result: thick double borders between cells */
+</code></pre>
+<p>✅ <strong>Correct:</strong> Single clean borders</p>
+<pre><code class="language-css">table { border-collapse: collapse; }
+td { border: 1px solid #ccc; }
+/* Result: single-pixel borders between cells */
+</code></pre>
+<p>❌ <strong>Wrong:</strong> Headers look identical to data cells</p>
+<pre><code class="language-css">th, td { padding: 10px; }
+/* No visual distinction */
+</code></pre>
+<p>✅ <strong>Correct:</strong> Headers stand out</p>
+<pre><code class="language-css">th { background-color: #1a5276; color: white; padding: 12px; }
+td { padding: 10px; }
+</code></pre>
+<h4 id="try-it-yourself-make-a-wide-table-survive-a-phone">🧪 Try It Yourself — Make a Wide Table Survive a Phone<a class="anchor" href="#try-it-yourself-make-a-wide-table-survive-a-phone" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Fix the one table problem that only appears on a narrow screen.</p>
+<ol>
+<li>Build a table with six columns of event data and no width constraints.</li>
+<li>Open F12, press <strong>Ctrl+Shift+M</strong> for device mode, and choose iPhone SE (375px).</li>
+<li>Note that the whole page now scrolls sideways — the table has stretched the body.</li>
+<li>Wrap the table and give the wrapper one property:<pre><code class="language-html">&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table&gt; ... &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.table-wrapper { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 480px; }
+</code></pre>
+</li>
+<li>Reload at 375px and swipe the table itself.</li>
+</ol>
+<p><strong>Expected result:</strong> The page no longer scrolls sideways. The table scrolls within its wrapper while the header, nav, and footer stay put.</p>
+<details>
+<summary>Why not just shrink the table</summary><p>You can force a table into 375px, but the result is unreadable — three characters per line in every cell. Tabular data has a genuine minimum width, which is what <code>min-width</code> acknowledges.</p>
+<p>That is the reason for the pairing: <code>width: 100%</code> lets the table use the full space when there is room, and <code>min-width</code> stops it collapsing below legibility. <code>overflow-x: auto</code> on the wrapper then contains the overflow instead of letting it push the whole page.</p>
+<p>Two related touches worth knowing:</p>
+<pre><code class="language-css">th, td { padding: 8px 12px; text-align: left; }
+tbody tr:nth-child(even) { background: #f8f9fa; }
+</code></pre>
+<p>Scope the zebra striping to <code>tbody</code>, otherwise <code>nth-child</code> counts the header row and stripes the wrong rows.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;table&gt;</code></td>
+<td>Container element for an HTML table</td>
+<td><code>&lt;table class=&quot;events-table&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code></td>
+<td>Table row</td>
+<td><code>&lt;tr&gt;</code> ... <code>&lt;/tr&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code></td>
+<td>Header cell (bold, centred by default)</td>
+<td><code>&lt;th&gt;Event Name&lt;/th&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code></td>
+<td>Data cell (normal weight, left-aligned)</td>
+<td><code>&lt;td&gt;Web Workshop&lt;/td&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;caption&gt;</code></td>
+<td>Table title/description</td>
+<td><code>&lt;caption&gt;March Events&lt;/caption&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code></td>
+<td>Groups header rows</td>
+<td>Wraps <code>&lt;tr&gt;</code> containing <code>&lt;th&gt;</code> elements</td>
+</tr>
+<tr>
+<td><code>&lt;tbody&gt;</code></td>
+<td>Groups body/data rows</td>
+<td>Wraps data <code>&lt;tr&gt;</code> elements</td>
+</tr>
+<tr>
+<td><code>&lt;tfoot&gt;</code></td>
+<td>Groups footer/summary rows</td>
+<td>Wraps summary <code>&lt;tr&gt;</code> elements</td>
+</tr>
+<tr>
+<td><code>colspan</code></td>
+<td>Merges cell across multiple columns</td>
+<td><code>&lt;td colspan=&quot;3&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>rowspan</code></td>
+<td>Merges cell across multiple rows</td>
+<td><code>&lt;td rowspan=&quot;2&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>border-collapse</code></td>
+<td>Merges adjacent cell borders</td>
+<td><code>border-collapse: collapse;</code></td>
+</tr>
+<tr>
+<td><code>nth-child(even)</code></td>
+<td>Selects alternating rows</td>
+<td><code>tr:nth-child(even) { bg: #f8f9fa; }</code></td>
+</tr>
+<tr>
+<td><code>.table-wrapper</code></td>
+<td>Scrollable container for responsive tables</td>
+<td><code>overflow-x: auto;</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-basic-event-schedule-table">Example 1: Basic Event Schedule Table<a class="anchor" href="#example-1-basic-event-schedule-table" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You need to display upcoming events on the Student Club events page.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;table class=&quot;styled-table&quot;&gt;
+    &lt;caption&gt;Upcoming Events — March 2024&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;No.&lt;/th&gt;
+            &lt;th&gt;Event Name&lt;/th&gt;
+            &lt;th&gt;Date&lt;/th&gt;
+            &lt;th&gt;Time&lt;/th&gt;
+            &lt;th&gt;Venue&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;Web Design Workshop&lt;/td&gt;
+            &lt;td&gt;March 15&lt;/td&gt;
+            &lt;td&gt;2:00 PM – 4:00 PM&lt;/td&gt;
+            &lt;td&gt;Room 301, Building A&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;2&lt;/td&gt;
+            &lt;td&gt;Photography Contest&lt;/td&gt;
+            &lt;td&gt;March 22&lt;/td&gt;
+            &lt;td&gt;All Day&lt;/td&gt;
+            &lt;td&gt;Online Submission&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;3&lt;/td&gt;
+            &lt;td&gt;Music Night&lt;/td&gt;
+            &lt;td&gt;March 29&lt;/td&gt;
+            &lt;td&gt;7:00 PM – 10:00 PM&lt;/td&gt;
+            &lt;td&gt;University Auditorium&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan=&quot;4&quot;&gt;Total Events&lt;/td&gt;
+            &lt;td&gt;3&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;table class=&quot;styled-table&quot;&gt;</code></td>
+<td>Opens the table and assigns the CSS class for styling.</td>
+</tr>
+<tr>
+<td><code>&lt;caption&gt;</code></td>
+<td>Provides a visible title above the table and an accessible label for screen readers.</td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code> / <code>&lt;tbody&gt;</code> / <code>&lt;tfoot&gt;</code></td>
+<td>Divides the table into semantic sections.</td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code> in <code>&lt;thead&gt;</code></td>
+<td>Column headers: bold, white text on blue gradient (via CSS).</td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code> in <code>&lt;tbody&gt;</code></td>
+<td>Data cells with padding, bottom borders, and hover effect (via CSS).</td>
+</tr>
+<tr>
+<td><code>colspan=&quot;4&quot;</code> in <code>&lt;tfoot&gt;</code></td>
+<td>The &quot;Total Events&quot; label spans the first four columns; the count &quot;3&quot; sits in the fifth column.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> A clean, professionally styled table with a gradient header, zebra-striped rows, hover highlighting, and a bold summary footer. The caption &quot;Upcoming Events — March 2024&quot; appears above the table.</p>
+<hr>
+<h3 id="example-2-membership-fee-table-with-rowspan">Example 2: Membership Fee Table with rowspan<a class="anchor" href="#example-2-membership-fee-table-with-rowspan" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Students have two membership tiers (semester and full year), while guests pay per event. You want &quot;Student&quot; to appear once and span both rows.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;table class=&quot;styled-table&quot;&gt;
+    &lt;caption&gt;Membership Fee Structure&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Category&lt;/th&gt;
+            &lt;th&gt;Duration&lt;/th&gt;
+            &lt;th&gt;Price&lt;/th&gt;
+            &lt;th&gt;Benefits&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td rowspan=&quot;2&quot;&gt;Student&lt;/td&gt;
+            &lt;td&gt;1 Semester&lt;/td&gt;
+            &lt;td&gt;50,000 VND&lt;/td&gt;
+            &lt;td&gt;All events, workshops, online resources&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;!-- No &lt;td&gt; for Category here — rowspan covers it --&gt;
+            &lt;td&gt;Full Year&lt;/td&gt;
+            &lt;td&gt;80,000 VND&lt;/td&gt;
+            &lt;td&gt;All events, workshops, resources + T-shirt&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Guest&lt;/td&gt;
+            &lt;td&gt;Per Event&lt;/td&gt;
+            &lt;td&gt;Free&lt;/td&gt;
+            &lt;td&gt;Single event attendance only&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rowspan=&quot;2&quot;</code> on first <code>&lt;td&gt;</code></td>
+<td>The word &quot;Student&quot; occupies the Category column for BOTH the semester row and the full-year row.</td>
+</tr>
+<tr>
+<td>Second <code>&lt;tr&gt;</code> has only 3 <code>&lt;td&gt;</code></td>
+<td>Because the first column is already filled by the rowspan from the previous row. Adding a fourth <code>&lt;td&gt;</code> would break the table structure.</td>
+</tr>
+<tr>
+<td>Third <code>&lt;tr&gt;</code> (&quot;Guest&quot;) has 4 <code>&lt;td&gt;</code></td>
+<td>Normal row with no spanning — all four columns are explicitly defined.</td>
+</tr>
+</tbody></table>
+<p><strong>Visual result:</strong></p>
+<pre><code>+----------+-----------+-----------+----------------------------------+
+| Category | Duration  | Price     | Benefits                         |
++----------+-----------+-----------+----------------------------------+
+|          | 1 Semester| 50,000 VND| All events, workshops, resources |
+| Student  +-----------+-----------+----------------------------------+
+|          | Full Year | 80,000 VND| ...resources + T-shirt           |
++----------+-----------+-----------+----------------------------------+
+| Guest    | Per Event | Free      | Single event attendance only     |
++----------+-----------+-----------+----------------------------------+
+</code></pre>
+<hr>
+<h3 id="example-3-club-leadership-table-with-mailto-links">Example 3: Club Leadership Table with Mailto Links<a class="anchor" href="#example-3-club-leadership-table-with-mailto-links" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Display the club leadership team on the About page with clickable email links.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;table class=&quot;styled-table&quot;&gt;
+    &lt;caption&gt;Club Leadership Team 2024&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Position&lt;/th&gt;
+            &lt;th&gt;Faculty&lt;/th&gt;
+            &lt;th&gt;Email&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Nguyen Van A&lt;/td&gt;
+            &lt;td&gt;President&lt;/td&gt;
+            &lt;td&gt;Information Technology&lt;/td&gt;
+            &lt;td&gt;&lt;a href=&quot;mailto:president@club.edu&quot;&gt;president@club.edu&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Tran Thi B&lt;/td&gt;
+            &lt;td&gt;Vice President&lt;/td&gt;
+            &lt;td&gt;Business Administration&lt;/td&gt;
+            &lt;td&gt;&lt;a href=&quot;mailto:vp@club.edu&quot;&gt;vp@club.edu&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Le Van C&lt;/td&gt;
+            &lt;td&gt;Events Coordinator&lt;/td&gt;
+            &lt;td&gt;Communication&lt;/td&gt;
+            &lt;td&gt;&lt;a href=&quot;mailto:events@club.edu&quot;&gt;events@club.edu&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Pham Thi D&lt;/td&gt;
+            &lt;td&gt;Treasurer&lt;/td&gt;
+            &lt;td&gt;Finance&lt;/td&gt;
+            &lt;td&gt;&lt;a href=&quot;mailto:treasurer@club.edu&quot;&gt;treasurer@club.edu&lt;/a&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p><strong>Key detail:</strong> The <code>&lt;a href=&quot;mailto:...&quot;&gt;</code> tag inside a <code>&lt;td&gt;</code> creates a clickable email link. When clicked, it opens the user&#39;s default email client with the address pre-filled. This is perfectly valid HTML — table cells can contain any inline element.</p>
+<p><strong>Result:</strong> A four-row table listing each leader. Email addresses are blue clickable links. Rows highlight on hover.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Open your <code>student-club-site</code> project folder. Make sure <code>events.html</code>, <code>about.html</code>, and <code>css/style.css</code> are ready for editing.</p>
+<hr>
+<h4 id="task-1-add-an-event-schedule-table-to-the-events-page">TASK 1: Add an Event Schedule Table to the Events Page<a class="anchor" href="#task-1-add-an-event-schedule-table-to-the-events-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a fully structured, styled event schedule table on <code>events.html</code>.</p>
+<p>📝 <strong>What you will do:</strong> Add a table with <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, and <code>colspan</code> inside a responsive wrapper.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>events.html</code>. Inside <code>&lt;main&gt;</code>, after your existing event cards, add:<pre><code class="language-html">&lt;h3&gt;Complete Schedule&lt;/h3&gt;
+&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table class=&quot;styled-table&quot;&gt;
+        &lt;caption&gt;March – April 2024 Events&lt;/caption&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;No.&lt;/th&gt;
+                &lt;th&gt;Event&lt;/th&gt;
+                &lt;th&gt;Date&lt;/th&gt;
+                &lt;th&gt;Time&lt;/th&gt;
+                &lt;th&gt;Venue&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;Web Design Workshop&lt;/td&gt;
+                &lt;td&gt;Mar 15&lt;/td&gt;
+                &lt;td&gt;2:00 PM&lt;/td&gt;
+                &lt;td&gt;Room 301&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;Photography Contest&lt;/td&gt;
+                &lt;td&gt;Mar 22&lt;/td&gt;
+                &lt;td&gt;All Day&lt;/td&gt;
+                &lt;td&gt;Online&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;Music Night&lt;/td&gt;
+                &lt;td&gt;Mar 29&lt;/td&gt;
+                &lt;td&gt;7:00 PM&lt;/td&gt;
+                &lt;td&gt;Auditorium&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td&gt;Hackathon&lt;/td&gt;
+                &lt;td&gt;Apr 5–6&lt;/td&gt;
+                &lt;td&gt;48 Hours&lt;/td&gt;
+                &lt;td&gt;Lab B&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;5&lt;/td&gt;
+                &lt;td&gt;Career Talk&lt;/td&gt;
+                &lt;td&gt;Apr 12&lt;/td&gt;
+                &lt;td&gt;3:00 PM&lt;/td&gt;
+                &lt;td&gt;Room 201&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;6&lt;/td&gt;
+                &lt;td&gt;Sports Day&lt;/td&gt;
+                &lt;td&gt;Apr 20&lt;/td&gt;
+                &lt;td&gt;8:00 AM&lt;/td&gt;
+                &lt;td&gt;University Field&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+        &lt;tfoot&gt;
+            &lt;tr&gt;
+                &lt;td colspan=&quot;4&quot;&gt;Total Events&lt;/td&gt;
+                &lt;td&gt;6&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tfoot&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+<li>Save <code>events.html</code>.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Preview in browser. Table renders with all rows visible. Footer shows &quot;Total Events&quot; spanning four columns.</p>
+<p>💾 <strong>Save</strong> <code>events.html</code>.</p>
+<hr>
+<h4 id="task-2-add-table-css-styles">TASK 2: Add Table CSS Styles<a class="anchor" href="#task-2-add-table-css-styles" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Apply professional styling to all tables on the site.</p>
+<p>📝 <strong>What you will do:</strong> Add the complete table CSS to <code>style.css</code>.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>css/style.css</code>. At the bottom, add:<pre><code class="language-css">/* ========================================
+   TABLE STYLES
+   ======================================== */
+
+/* Responsive wrapper */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+/* Base table */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Caption */
+.styled-table caption {
+    font-family: &#39;Montserrat&#39;, sans-serif;
+    font-size: 22px;
+    color: #1a5276;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Header */
+.styled-table thead {
+    background: linear-gradient(135deg, #1a5276, #2874a6);
+}
+
+.styled-table th {
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* Body cells */
+.styled-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr {
+    background-color: white;
+    transition: background-color 0.2s ease;
+}
+
+.styled-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #eaf2f8;
+}
+
+/* Footer */
+.styled-table tfoot {
+    background-color: #f0f4f8;
+    font-weight: bold;
+}
+
+.styled-table tfoot td {
+    padding: 12px 15px;
+    border-top: 2px solid #2874a6;
+}
+
+/* Status indicators (optional) */
+.status-open {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.status-full {
+    color: #e74c3c;
+    font-weight: bold;
+}
+</code></pre>
+</li>
+<li>Save <code>style.css</code>.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Refresh <code>events.html</code>. The table now has a gradient header, zebra stripes, hover highlighting, and clean borders. Resize the browser window narrow — a horizontal scrollbar should appear.</p>
+<p>💾 <strong>Save</strong> <code>style.css</code>.</p>
+<hr>
+<h4 id="task-3-add-a-membership-fees-table-with-rowspan-to-the-about-page">TASK 3: Add a Membership Fees Table with rowspan to the About Page<a class="anchor" href="#task-3-add-a-membership-fees-table-with-rowspan-to-the-about-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a fee table that uses <code>rowspan</code> to merge the &quot;Student&quot; category across two rows.</p>
+<p>📝 <strong>What you will do:</strong> Add the fees table to <code>about.html</code>.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>about.html</code>. Inside <code>&lt;main&gt;</code>, add:<pre><code class="language-html">&lt;h3&gt;Membership Fees&lt;/h3&gt;
+&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table class=&quot;styled-table&quot;&gt;
+        &lt;caption&gt;Membership Fee Structure&lt;/caption&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Category&lt;/th&gt;
+                &lt;th&gt;Duration&lt;/th&gt;
+                &lt;th&gt;Price&lt;/th&gt;
+                &lt;th&gt;Benefits&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td rowspan=&quot;2&quot;&gt;Student&lt;/td&gt;
+                &lt;td&gt;1 Semester&lt;/td&gt;
+                &lt;td&gt;50,000 VND&lt;/td&gt;
+                &lt;td&gt;All events, workshops, and online resources&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Full Year&lt;/td&gt;
+                &lt;td&gt;80,000 VND&lt;/td&gt;
+                &lt;td&gt;All events, workshops, resources + T-shirt&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Guest&lt;/td&gt;
+                &lt;td&gt;Per Event&lt;/td&gt;
+                &lt;td&gt;Free&lt;/td&gt;
+                &lt;td&gt;One event only (no workshops)&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+<li>Save <code>about.html</code> and preview.</li>
+</ol>
+<p>✅ <strong>Check:</strong> The word &quot;Student&quot; appears once and spans both the semester and full-year rows. The Guest row is separate. All styling matches the events table.</p>
+<p>💾 <strong>Save</strong> <code>about.html</code>.</p>
+<hr>
+<h4 id="task-4-add-a-leadership-table-with-email-links">TASK 4: Add a Leadership Table with Email Links<a class="anchor" href="#task-4-add-a-leadership-table-with-email-links" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Display the club leadership team on the About page with clickable mailto links.</p>
+<p>📝 <strong>What you will do:</strong> Add a leadership table below the fees table.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>In <code>about.html</code>, after the fees table, add:<pre><code class="language-html">&lt;h3&gt;Club Leadership Team&lt;/h3&gt;
+&lt;div class=&quot;table-wrapper&quot;&gt;
+    &lt;table class=&quot;styled-table&quot;&gt;
+        &lt;caption&gt;Leadership Team 2024&lt;/caption&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Name&lt;/th&gt;
+                &lt;th&gt;Position&lt;/th&gt;
+                &lt;th&gt;Faculty&lt;/th&gt;
+                &lt;th&gt;Email&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Nguyen Van A&lt;/td&gt;
+                &lt;td&gt;President&lt;/td&gt;
+                &lt;td&gt;Information Technology&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;mailto:president@club.edu&quot;&gt;president@club.edu&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Tran Thi B&lt;/td&gt;
+                &lt;td&gt;Vice President&lt;/td&gt;
+                &lt;td&gt;Business Administration&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;mailto:vp@club.edu&quot;&gt;vp@club.edu&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Le Van C&lt;/td&gt;
+                &lt;td&gt;Events Coordinator&lt;/td&gt;
+                &lt;td&gt;Communication&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;mailto:events@club.edu&quot;&gt;events@club.edu&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Pham Thi D&lt;/td&gt;
+                &lt;td&gt;Treasurer&lt;/td&gt;
+                &lt;td&gt;Finance&lt;/td&gt;
+                &lt;td&gt;&lt;a href=&quot;mailto:treasurer@club.edu&quot;&gt;treasurer@club.edu&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+<li>Save and preview.</li>
+</ol>
+<p>✅ <strong>Check:</strong> All four leaders are listed. Email addresses are clickable (they open your email client). Rows highlight on hover. Table has the same consistent styling as other tables.</p>
+<p>💾 <strong>Save</strong> all files.</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Tables have strict nesting rules, and the browser silently repairs bad markup rather than reporting it — which is why a table can look broken with no error anywhere.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Every cell on its own line, no grid</td>
+<td><code>&lt;tr&gt;</code> missing, so cells have no rows to sit in</td>
+<td>Ctrl+U — are the <code>&lt;td&gt;</code> inside <code>&lt;tr&gt;</code>?</td>
+<td>Wrap each row&#39;s cells in <code>&lt;tr&gt;</code></td>
+</tr>
+<tr>
+<td>A row is shorter than the others</td>
+<td>Missing <code>&lt;td&gt;</code>, or a <code>colspan</code> that does not add up</td>
+<td>Count cells per row, counting spans</td>
+<td>Every row must total the same number of columns</td>
+</tr>
+<tr>
+<td>Text appears above the table, outside the border</td>
+<td>Content placed directly inside <code>&lt;table&gt;</code> instead of a cell</td>
+<td>Elements panel shows the browser moved it out</td>
+<td>Only <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, <code>&lt;tr&gt;</code> may be children of <code>&lt;table&gt;</code></td>
+</tr>
+<tr>
+<td>Borders look doubled or gappy</td>
+<td><code>border-collapse</code> left at its default <code>separate</code></td>
+<td>Inspect the computed value</td>
+<td><code>table { border-collapse: collapse }</code></td>
+</tr>
+<tr>
+<td>Header row is not bold or centred</td>
+<td><code>&lt;td&gt;</code> used where <code>&lt;th&gt;</code> belongs</td>
+<td>Read the tag in the first row</td>
+<td>Use <code>&lt;th&gt;</code> — it carries meaning, not just styling</td>
+</tr>
+<tr>
+<td>Screen reader reads the numbers with no context</td>
+<td><code>&lt;th&gt;</code> present but <code>scope</code> missing</td>
+<td>Check the accessibility tree</td>
+<td>Add <code>scope=&quot;col&quot;</code> or <code>scope=&quot;row&quot;</code></td>
+</tr>
+<tr>
+<td>Table pushes the page sideways on a phone</td>
+<td>Fixed widths, or simply too many columns</td>
+<td>DevTools device mode</td>
+<td>Wrap in a container with <code>overflow-x: auto</code></td>
+</tr>
+<tr>
+<td><code>rowspan</code> cell overlaps the row below</td>
+<td>The spanned rows still contain a cell for that column</td>
+<td>Count cells in each spanned row</td>
+<td>Remove the <code>&lt;td&gt;</code> from the rows the span covers</td>
+</tr>
+<tr>
+<td>Zebra striping colours the wrong rows</td>
+<td><code>nth-child</code> counting the header row too</td>
+<td>Inspect which rows matched</td>
+<td>Scope it: <code>tbody tr:nth-child(even)</code></td>
+</tr>
+<tr>
+<td>Caption sits at the bottom</td>
+<td>Default browser placement, or <code>caption-side</code> set</td>
+<td>Read the computed <code>caption-side</code></td>
+<td><code>caption { caption-side: top }</code> and keep <code>&lt;caption&gt;</code> first inside <code>&lt;table&gt;</code></td>
+</tr>
+</tbody></table>
+<p><strong>The browser fixes your table for you, and that is the trap.</strong> Compare Ctrl+U (what you wrote) against the Elements panel (what the browser built). If the two differ, the browser has repaired invalid nesting, and the repair is rarely what you intended.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. When is a <code>&lt;table&gt;</code> the right element, and when is it wrong?</strong></p>
+<details>
+<summary>Answer</summary><p>Right for <strong>tabular data</strong> — information with a genuine row-and-column relationship: a schedule, a price list, a comparison chart. Wrong for <strong>page layout</strong>. Using tables to position a sidebar next to content was 1990s practice; it produces unreadable markup and terrible screen reader output. Layout is Flexbox and Grid.</p>
+</details><hr>
+<p><strong>Q2. What is the difference between <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;th&gt;</code> is a <strong>header</strong> cell — it labels a row or column, renders bold and centred by default, and screen readers announce it when reading the data cells it governs. <code>&lt;td&gt;</code> is a plain <strong>data</strong> cell. Using <code>&lt;td&gt;</code> with <code>font-weight: bold</code> looks the same but conveys nothing to assistive technology.</p>
+</details><hr>
+<p><strong>Q3. What do <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code> add?</strong></p>
+<details>
+<summary>Answer</summary><p>They group rows semantically: headers, data, and summary rows. This lets you style groups cleanly (<code>thead th { background: #333; }</code>), lets screen readers distinguish labels from data, and allows browsers to repeat the header on each printed page of a long table.</p>
+</details><hr>
+<p><strong>Q4. Why does every table need a <code>&lt;caption&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;caption&gt;</code> is the table&#39;s accessible name. A screen reader user encountering a table hears the caption first and immediately knows whether the table is worth reading. Without it they must parse cells to guess the topic. It must be the <strong>first child</strong> of <code>&lt;table&gt;</code>.</p>
+</details><hr>
+<p><strong>Q5. What is the difference between <code>colspan</code> and <code>rowspan</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>colspan=&quot;3&quot;</code> makes one cell span three <strong>columns</strong> horizontally. <code>rowspan=&quot;2&quot;</code> makes one cell span two <strong>rows</strong> vertically. When you span cells you must remove the cells they absorb, otherwise the row gains extra columns and the table skews.</p>
+</details><hr>
+<p><strong>Q6. Why must <code>border-collapse: collapse</code> come before your other table rules?</strong></p>
+<details>
+<summary>Answer</summary><p>By default (<code>border-collapse: separate</code>) each cell draws its own border, so adjacent cells produce doubled lines and a visible gap. <code>collapse</code> merges shared edges into one line. Set it first, because it changes how every subsequent border and spacing declaration renders.</p>
+</details><hr>
+<p><strong>Q7. What does <code>scope</code> do, and what are its values?</strong></p>
+<details>
+<summary>Answer</summary><p><code>scope</code> tells assistive technology which cells a header applies to. <code>scope=&quot;col&quot;</code> on a top-row <code>&lt;th&gt;</code> means &quot;I label this whole column&quot;; <code>scope=&quot;row&quot;</code> on a first-column <code>&lt;th&gt;</code> means &quot;I label this whole row&quot;. Without it, screen readers must guess the association in anything more complex than a trivial grid.</p>
+</details><hr>
+<p><strong>Q8. How do you keep a wide table usable on a phone?</strong></p>
+<details>
+<summary>Answer</summary><p>Wrap it in a scrollable container:</p>
+<pre><code class="language-css">.table-wrapper { overflow-x: auto; }
+</code></pre>
+<p>with <code>&lt;div class=&quot;table-wrapper&quot;&gt;&lt;table&gt;...&lt;/table&gt;&lt;/div&gt;</code>. The table keeps its natural width and the user swipes horizontally, which preserves the row/column relationships. Shrinking a table to fit 375px makes the text unreadable instead.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Create a basic HTML table with <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Structure a table with <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Merge cells horizontally using <code>colspan</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Merge cells vertically using <code>rowspan</code> (and adjust subsequent rows)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Style tables with <code>border-collapse</code>, padding, zebra stripes, and hover effects</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Wrap tables in a responsive scrollable container</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Explain when to use tables (data) and when NOT to use them (layout)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Include links (<code>&lt;a&gt;</code>) and other inline elements inside table cells</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered <strong>No</strong> to any item, revisit the corresponding Theory section and redo the relevant Hands-On task. Pay special attention to rowspan (item 4) — it is the trickiest concept in this session.</p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables">HTML tables overview — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics">Table basics — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced">Advanced table features — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code> element reference — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/colspan"><code>colspan</code> attribute — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rowspan"><code>rowspan</code> attribute — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables">Styling tables — MDN Learn</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/tables.html">W3C HTML5 Specification: Tables</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 10 we will explore <strong>working with forms</strong> — input fields, labels, validation, and styling forms for the Student Club contact and registration pages.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

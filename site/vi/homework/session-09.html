@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 9: Creating HTML Tables — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../homework/session-09.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page homework-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../homework/session-09.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Bài tập</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Buổi 9</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Buổi 09 · Bài tập</p>
+    <h1>Homework 9: Creating HTML Tables</h1>
+    <p class="lead">Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.</p>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#practice-status">Practice Status</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
+        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../homework/session-09.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <div class="callout status-note" role="status">
+    <p><strong>Chế độ luyện tập.</strong> Việc nộp và chấm bài trực tuyến chưa mở. Hãy làm bài trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp.</p>
+    <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 9, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng buổi học">
+    <a class="up" href="../sessions/session-09.html">Tổng quan Buổi 9</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-9-creating-html-tables">Homework 9: Creating HTML Tables<a class="anchor" href="#homework-9-creating-html-tables" aria-label="Link to this section">#</a></h2>
+<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
+<p>Online submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Learn how to build HTML tables</li>
+<li>Practice using table elements: table, tr, th, td</li>
+<li>Style a table with CSS to make it readable</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-create-a-schedule-table">Task 1: Create a Schedule Table<a class="anchor" href="#task-1-create-a-schedule-table" aria-label="Link to this section">#</a></h4>
+<p>Create a new page for your project that displays a weekly schedule or activity timetable.</p>
+<p><strong>Create the file:</strong> <code>project/activities.html</code></p>
+<blockquote>
+<p>This is the page <code>project/spec.md</code> and milestone M5 grade — the file name must be exactly
+<code>activities.html</code>, at the project root beside <code>index.html</code>.</p>
+</blockquote>
+<p><strong>Your table must include:</strong></p>
+<ul>
+<li>A <code>&lt;caption&gt;</code> element describing the table (e.g., &quot;Weekly Club Activities&quot;)</li>
+<li>A <code>&lt;thead&gt;</code> section with column headers</li>
+<li>A <code>&lt;tbody&gt;</code> section with data rows</li>
+<li>At least 5 columns (e.g., Day, Time, Activity, Location, Leader)</li>
+<li>At least 5 rows of data</li>
+<li>Use <code>&lt;th&gt;</code> for header cells and <code>&lt;td&gt;</code> for data cells</li>
+<li>Use <code>colspan</code> or <code>rowspan</code> at least once</li>
+</ul>
+<p><strong>Example structure:</strong></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Weekly Club Activities&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Day&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Activity&lt;/th&gt;
+      &lt;th&gt;Location&lt;/th&gt;
+      &lt;th&gt;Leader&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Monday&lt;/td&gt;
+      &lt;td&gt;3:00 PM&lt;/td&gt;
+      &lt;td&gt;Coding Workshop&lt;/td&gt;
+      &lt;td&gt;Room 301&lt;/td&gt;
+      &lt;td&gt;Nguyen Van A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!-- more rows --&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h4 id="task-2-style-the-table">Task 2: Style the Table<a class="anchor" href="#task-2-style-the-table" aria-label="Link to this section">#</a></h4>
+<p>Add CSS to make the table look professional.</p>
+<p><strong>Your CSS must include:</strong></p>
+<ul>
+<li>Set <code>width: 100%</code> and <code>border-collapse: collapse</code> on the table</li>
+<li>Add borders to all cells</li>
+<li>Style header cells with a background color and white text</li>
+<li>Add alternating row colors (zebra striping) using <code>tr:nth-child(even)</code></li>
+<li>Add padding inside cells for readability</li>
+<li>Add a hover effect on rows</li>
+</ul>
+<h4 id="task-3-update-navigation">Task 3: Update Navigation<a class="anchor" href="#task-3-update-navigation" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Add an &quot;Activities&quot; link to the navigation menu on ALL pages</li>
+<li>All pages sit at the project root, so the link is simply <code>href=&quot;activities.html&quot;</code> everywhere</li>
+<li>Click it from every page to confirm</li>
+</ul>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/activities.html</code> (new page with table)</li>
+<li><code>project/css/style.css</code> (add table styles)</li>
+<li><code>project/index.html</code> (add Activities link to nav)</li>
+<li><code>project/about.html</code> (add Activities link to nav)</li>
+<li><code>project/contact.html</code> (add Activities link to nav)</li>
+</ul>
+<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW9: Add schedule page with styled table&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Table structure</td>
+<td>3</td>
+<td>Uses thead, tbody, caption, th, td correctly</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>2</td>
+<td>Has 5+ columns, 5+ rows, colspan/rowspan used</td>
+</tr>
+<tr>
+<td>Table styling</td>
+<td>3</td>
+<td>Borders, header colors, zebra striping, hover</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>1</td>
+<td>Activities link added to all pages</td>
+</tr>
+<tr>
+<td>Link accuracy</td>
+<td>1</td>
+<td>All navigation links work correctly</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Use <code>border-collapse: collapse</code> to avoid double borders</li>
+<li>Zebra striping makes tables much easier to read: <code>tr:nth-child(even) { background: #f2f2f2; }</code></li>
+<li>Make sure the Activities nav link is <code>href=&quot;activities.html&quot;</code> on every page — no <code>../</code></li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>A clean, professional-looking table on its own page. The header row should stand out with color, rows should alternate colors, and the navigation should include an Activities link on every page.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

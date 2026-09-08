@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 13: Creating Forms — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 13: Creating Forms — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/13-creating-forms.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 13</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 13</p>
+    <h1>Buổi 13: Creating Forms</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-what-is-a-form">1. What Is a Form?</a></li>
+        <li class="d2"><a href="#2-the-form-element-and-its-attributes">2. The &lt;form&gt; Element and Its Attributes</a></li>
+        <li class="d2"><a href="#3-input-types">3. Input Types</a></li>
+        <li class="d2"><a href="#4-select-dropdowns-and-textareas">4. Select Dropdowns and Textareas</a></li>
+        <li class="d2"><a href="#5-labels-fieldsets-and-legends">5. Labels, Fieldsets, and Legends</a></li>
+        <li class="d2"><a href="#6-form-validation-basics">6. Form Validation Basics</a></li>
+        <li class="d2"><a href="#7-styling-forms-with-css">7. Styling Forms with CSS</a></li>
+        <li class="d2"><a href="#example-1-simple-contact-form">Example 1: Simple Contact Form</a></li>
+        <li class="d2"><a href="#example-2-radio-and-checkbox-group">Example 2: Radio and Checkbox Group</a></li>
+        <li class="d2"><a href="#example-3-form-validation-demo">Example 3: Form Validation Demo</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/13-creating-forms.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-13.html">Tổng quan Buổi 13</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-13">🟦 SESSION 13<a class="anchor" href="#session-13" aria-label="Link to this section">#</a></h2>
+<h2 id="creating-forms"><strong>Creating Forms</strong><a class="anchor" href="#creating-forms" aria-label="Link to this section">#</a></h2>
+<p>Welcome to Session 13! Today we tackle one of the most practical skills in web development: <strong>forms</strong>. Every time you register for a website, log into your email, search Google, or send a message — you are using a form. Forms are how users <em>talk back</em> to a website. Up until now, our Student Club Website has been mostly one-way (we show information). Now we will make it interactive by building a membership registration form and a contact form. Do not worry if this feels new — we will walk through every single line together.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    Chapter 13 — Creating Forms (course textbook)
+                 MDN Web Docs &quot;Learn Forms&quot;
+🎯 Objectives:   1. Build complete HTML forms with multiple input types
+                 2. Associate every label with its control correctly
+                 3. Group related fields with fieldset and legend
+                 4. Apply basic client-side validation attributes
+                 5. Style forms consistently with your existing CSS
+📖 Prepare:      1. Finish Sessions 1-12
+                 2. Have your Student Club site open in Dreamweaver (or any code editor)
+                 3. Review the box model from Session 4
+🖼 Diagrams:     canvases/buoi-13.canvas.tsx — FormDataFlow, InputTypeGallery, LabelWiring
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>Explain what an HTML <code>&lt;form&gt;</code> is and why websites need forms.</li>
+<li>Describe the difference between <code>method=&quot;get&quot;</code> and <code>method=&quot;post&quot;</code>.</li>
+<li>Use at least eight different <code>&lt;input&gt;</code> types: text, email, password, tel, radio, checkbox, number, date.</li>
+<li>Create dropdown menus with <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code>.</li>
+<li>Create multi-line text areas with <code>&lt;textarea&gt;</code>.</li>
+<li>Associate every form control with a <code>&lt;label&gt;</code> using <code>for</code> / <code>id</code>.</li>
+<li>Group related controls with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
+<li>Apply the <code>required</code> and <code>placeholder</code> attributes for basic validation.</li>
+<li>Style form controls with CSS so they match the Student Club Website theme.</li>
+<li>Build a complete membership registration page (<code>join.html</code>) for the Student Club Website.</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-what-is-a-form">1. What Is a Form?<a class="anchor" href="#1-what-is-a-form" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-13.canvas.tsx</code> → <code>FormDataFlow</code> — slide <code>s13-what-is-form</code> (&quot;What Is a Form?&quot;)</p>
+</blockquote>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>An <strong>HTML form</strong> is a section of a web page that collects data from the user and (usually) sends it to a server for processing. The form is created with the <code>&lt;form&gt;</code> element, which acts as a container for all the input fields, buttons, and labels.</p>
+<p>Think of a form like a paper application form you fill out at a university office. Each blank space on the paper corresponds to an <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, or <code>&lt;textarea&gt;</code> in HTML. When you press &quot;Submit,&quot; it is like handing the completed paper to the clerk.</p>
+<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>On our <strong>Student Club Website</strong>, we want students to be able to:</p>
+<ul>
+<li>Register as new members → needs a registration form</li>
+<li>Send us a message → needs a contact form</li>
+<li>Sign up for an event → needs an event sign-up form</li>
+<li>Give feedback → needs a survey form</li>
+</ul>
+<p>Every one of these uses the same HTML concepts we learn today.</p>
+<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<p>Without forms, a website is just a digital poster — users can look but cannot interact. Forms turn a static page into a two-way conversation. They are essential for e-commerce, social media, education platforms, government services, and virtually every modern website.</p>
+<pre><code>┌─────────────────────────────────────────────┐
+│           HOW A FORM WORKS                   │
+│                                             │
+│   USER fills out fields ──► clicks SUBMIT   │
+│              │                              │
+│              ▼                              │
+│   Browser packages the data                 │
+│              │                              │
+│              ▼                              │
+│   Data sent to URL in action=&quot;&quot; attribute   │
+│              │                              │
+│              ▼                              │
+│   Server-side script processes data         │
+│   (PHP, Node.js, Python, etc.)             │
+│              │                              │
+│              ▼                              │
+│   Server responds (thank-you page, error)   │
+└─────────────────────────────────────────────┘
+</code></pre>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>In this course we focus on the <strong>HTML/CSS front-end</strong> of forms. Processing form data on the server requires PHP, Node.js, or another back-end language, which is beyond the scope of INS2053. We will use <code>action=&quot;#&quot;</code> as a placeholder.</li>
+<li>Every form control that should send data <strong>must</strong> have a <code>name</code> attribute. Without <code>name</code>, the field&#39;s value is never submitted.</li>
+<li>The <code>id</code> attribute is used to connect a <code>&lt;label&gt;</code> to its control. The <code>name</code> attribute is used to identify the data when it reaches the server. They serve different purposes!</li>
+</ul>
+<hr>
+<h3 id="2-the-form-element-and-its-attributes">2. The <code>&lt;form&gt;</code> Element and Its Attributes<a class="anchor" href="#2-the-form-element-and-its-attributes" aria-label="Link to this section">#</a></h3>
+<h4 id="21-basic-syntax">2.1 Basic Syntax<a class="anchor" href="#21-basic-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: form with action and method --&gt;
+&lt;form action=&quot;process.php&quot; method=&quot;post&quot;&gt;
+    &lt;!-- form controls go here --&gt;
+&lt;/form&gt;
+</code></pre>
+<h4 id="22-key-attributes">2.2 Key Attributes<a class="anchor" href="#22-key-attributes" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>action</code></td>
+<td>The URL where form data is sent when the user clicks Submit</td>
+<td><code>action=&quot;register.php&quot;</code></td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>How data is sent: <code>get</code> (appended to URL) or <code>post</code> (in request body)</td>
+<td><code>method=&quot;post&quot;</code></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Unique identifier for the form (used by JavaScript/CSS)</td>
+<td><code>id=&quot;regForm&quot;</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name for the form (legacy; prefer <code>id</code>)</td>
+<td><code>name=&quot;registration&quot;</code></td>
+</tr>
+<tr>
+<td><code>novalidate</code></td>
+<td>Disables browser built-in validation (useful during testing)</td>
+<td><code>novalidate</code></td>
+</tr>
+</tbody></table>
+<h4 id="comparison-table-get-vs-post">🔍 Comparison Table: GET vs POST<a class="anchor" href="#comparison-table-get-vs-post" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>method=&quot;get&quot;</code></th>
+<th><code>method=&quot;post&quot;</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Where data goes</td>
+<td>Appended to URL as query string</td>
+<td>Sent in HTTP request body</td>
+</tr>
+<tr>
+<td>Visible in address bar</td>
+<td>Yes (<code>?name=Alice&amp;email=a@b.com</code>)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Bookmarkable</td>
+<td>Yes (data is in the URL)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Size limit</td>
+<td>~2048 characters (browser dependent)</td>
+<td>Virtually unlimited</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Search forms, filters, non-sensitive data</td>
+<td>Registration, login, file uploads, sensitive data</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Low (data visible in URL/history)</td>
+<td>Higher (data not in URL, but still needs HTTPS)</td>
+</tr>
+<tr>
+<td>Our default for this course</td>
+<td>—</td>
+<td><strong>Use <code>post</code> for registration/contact forms</strong></td>
+</tr>
+</tbody></table>
+<h4 id="important-notes">⚠️ Important notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always use <code>method=&quot;post&quot;</code> when collecting personal information (names, emails, passwords).</li>
+<li>Use <code>method=&quot;get&quot;</code> only for things like search boxes where seeing the query in the URL is useful.</li>
+<li>Since we are not building a real server script, set <code>action=&quot;#&quot;</code> so the form does not navigate away when tested.</li>
+</ul>
+<hr>
+<h3 id="3-input-types">3. Input Types<a class="anchor" href="#3-input-types" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-13.canvas.tsx</code> → <code>InputTypeGallery</code> — slide <code>s13-input-types</code> (&quot;Input Types&quot;)</p>
+</blockquote>
+<p>The <code>&lt;input&gt;</code> element is the workhorse of forms. Its behavior changes completely depending on the <code>type</code> attribute.</p>
+<h4 id="31-text-input">3.1 Text Input<a class="anchor" href="#31-text-input" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Single-line text field --&gt;
+&lt;label for=&quot;fullname&quot;&gt;Full Name:&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;fullname&quot; name=&quot;fullname&quot;
+       placeholder=&quot;e.g., Nguyen Van An&quot; required&gt;
+</code></pre>
+<ul>
+<li><code>type=&quot;text&quot;</code> — standard single-line text entry.</li>
+<li><code>placeholder</code> — ghost text shown inside the field before the user types.</li>
+<li><code>required</code> — the browser blocks submission if the field is empty.</li>
+</ul>
+<h4 id="32-email-input">3.2 Email Input<a class="anchor" href="#32-email-input" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Email field with built-in format checking --&gt;
+&lt;label for=&quot;email&quot;&gt;Email Address:&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;
+       placeholder=&quot;you@university.edu&quot; required&gt;
+</code></pre>
+<ul>
+<li><code>type=&quot;email&quot;</code> — the browser checks for a basic <code>something@something.something</code> pattern.</li>
+<li>On mobile devices, the keyboard automatically shows the <code>@</code> and <code>.</code> keys.</li>
+</ul>
+<h4 id="33-password-input">3.3 Password Input<a class="anchor" href="#33-password-input" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Password field (characters hidden) --&gt;
+&lt;label for=&quot;pwd&quot;&gt;Password:&lt;/label&gt;
+&lt;input type=&quot;password&quot; id=&quot;pwd&quot; name=&quot;pwd&quot;
+       placeholder=&quot;At least 8 characters&quot; required minlength=&quot;8&quot;&gt;
+</code></pre>
+<ul>
+<li>Characters appear as dots or asterisks.</li>
+<li><code>minlength=&quot;8&quot;</code> enforces a minimum length.</li>
+</ul>
+<h4 id="34-telephone-input">3.4 Telephone Input<a class="anchor" href="#34-telephone-input" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Phone number field --&gt;
+&lt;label for=&quot;phone&quot;&gt;Phone Number:&lt;/label&gt;
+&lt;input type=&quot;tel&quot; id=&quot;phone&quot; name=&quot;phone&quot;
+       placeholder=&quot;+84 xxx xxx xxx&quot;&gt;
+</code></pre>
+<ul>
+<li><code>type=&quot;tel&quot;</code> — on mobile, shows the numeric keypad.</li>
+<li>No automatic format validation (phone formats vary worldwide). You can add a <code>pattern</code> attribute for stricter checking.</li>
+</ul>
+<h4 id="35-radio-buttons">3.5 Radio Buttons<a class="anchor" href="#35-radio-buttons" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Radio group: user picks exactly ONE option --&gt;
+&lt;p&gt;Gender:&lt;/p&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot;&gt; Male&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt; Female&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;other&quot;&gt; Other&lt;/label&gt;
+</code></pre>
+<ul>
+<li>All radios in the <strong>same group</strong> must share the <strong>same <code>name</code></strong>.</li>
+<li>Only one radio in a group can be selected at a time.</li>
+<li>The <code>value</code> attribute is what gets sent to the server.</li>
+</ul>
+<h4 id="36-checkboxes">3.6 Checkboxes<a class="anchor" href="#36-checkboxes" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Checkboxes: user picks ZERO OR MORE options --&gt;
+&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;web&quot;&gt; Web Design&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;photo&quot;&gt; Photography&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;music&quot;&gt; Music&lt;/label&gt;
+</code></pre>
+<ul>
+<li>Unlike radio buttons, checkboxes are independent — the user can check any combination.</li>
+<li>If no checkbox in a group is checked, nothing is sent for that <code>name</code>.</li>
+</ul>
+<h4 id="37-number-input">3.7 Number Input<a class="anchor" href="#37-number-input" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Numeric field with spinner arrows --&gt;
+&lt;label for=&quot;age&quot;&gt;Age:&lt;/label&gt;
+&lt;input type=&quot;number&quot; id=&quot;age&quot; name=&quot;age&quot;
+       min=&quot;16&quot; max=&quot;99&quot; step=&quot;1&quot;&gt;
+</code></pre>
+<ul>
+<li><code>min</code>, <code>max</code>, <code>step</code> constrain allowed values.</li>
+<li>Browser shows small up/down arrows.</li>
+</ul>
+<h4 id="38-date-input">3.8 Date Input<a class="anchor" href="#38-date-input" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Date picker --&gt;
+&lt;label for=&quot;dob&quot;&gt;Date of Birth:&lt;/label&gt;
+&lt;input type=&quot;date&quot; id=&quot;dob&quot; name=&quot;dob&quot;&gt;
+</code></pre>
+<ul>
+<li>Shows a calendar popup in modern browsers.</li>
+<li>Value format is always <code>YYYY-MM-DD</code>.</li>
+</ul>
+<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>In our Student Club registration form we use:</p>
+<ul>
+<li><code>text</code> for Full Name and Student ID</li>
+<li><code>email</code> for Email Address</li>
+<li><code>tel</code> for Phone Number</li>
+<li><code>date</code> for Date of Birth</li>
+<li><code>radio</code> for Gender</li>
+<li><code>checkbox</code> for Interests</li>
+<li><code>file</code> for Profile Photo upload</li>
+</ul>
+<h4 id="quick-reference-table">🔍 Quick Reference Table<a class="anchor" href="#quick-reference-table" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Keyboard (mobile)</th>
+<th>Built-in validation</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>text</code></td>
+<td>Standard</td>
+<td>None</td>
+<td>Names, addresses</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Email (@, .)</td>
+<td>Format check</td>
+<td>Email addresses</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Standard</td>
+<td>None (masked)</td>
+<td>Login passwords</td>
+</tr>
+<tr>
+<td><code>tel</code></td>
+<td>Numeric pad</td>
+<td>None</td>
+<td>Phone numbers</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>Numeric</td>
+<td>Min/max/step</td>
+<td>Age, quantity</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>Calendar picker</td>
+<td>Valid date</td>
+<td>Birthdays, events</td>
+</tr>
+<tr>
+<td><code>radio</code></td>
+<td>N/A</td>
+<td>One must be selected if required</td>
+<td>Single-choice</td>
+</tr>
+<tr>
+<td><code>checkbox</code></td>
+<td>N/A</td>
+<td>Required = at least one</td>
+<td>Multi-choice</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>File browser</td>
+<td>Accept filter</td>
+<td>Uploads</td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Submit button</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Clear form</td>
+</tr>
+</tbody></table>
+<h4 id="important-notes-2">⚠️ Important notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always provide a <code>&lt;label&gt;</code> for every input (except submit/reset buttons).</li>
+<li>The <code>name</code> attribute is mandatory for data submission.</li>
+<li><code>placeholder</code> is a hint, NOT a label. Always use both <code>placeholder</code> AND <code>&lt;label&gt;</code>.</li>
+</ul>
+<h4 id="try-it-yourself-let-the-input-type-do-the-work">🧪 Try It Yourself — Let the Input Type Do the Work<a class="anchor" href="#try-it-yourself-let-the-input-type-do-the-work" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> See what the right <code>type</code> gives you for free.</p>
+<ol>
+<li>Build four fields that all accept text:<pre><code class="language-html">&lt;input type=&quot;text&quot;  name=&quot;a&quot; placeholder=&quot;text&quot;&gt;
+&lt;input type=&quot;email&quot; name=&quot;b&quot; placeholder=&quot;email&quot;&gt;
+&lt;input type=&quot;tel&quot;   name=&quot;c&quot; placeholder=&quot;tel&quot;&gt;
+&lt;input type=&quot;date&quot;  name=&quot;d&quot;&gt;
+</code></pre>
+</li>
+<li>Reload on your laptop. The date field shows a picker.</li>
+<li>Now open the same page on your phone, or use F12 → <strong>Ctrl+Shift+M</strong> device mode and tap each field.</li>
+</ol>
+<p><strong>Expected result:</strong> On a phone, <code>email</code> brings up a keyboard with <code>@</code>, <code>tel</code> shows a numeric keypad, and <code>date</code> opens the native date picker. All four accept typed text; only the correct type makes it pleasant to enter.</p>
+<details>
+<summary>The types worth knowing, and the two traps</summary><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>email</code></td>
+<td><code>@</code> keyboard, format check</td>
+</tr>
+<tr>
+<td><code>tel</code></td>
+<td>numeric keypad, no format check</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>URL keyboard, protocol check</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td>numeric input with <code>min</code>/<code>max</code>/<code>step</code></td>
+</tr>
+<tr>
+<td><code>date</code>, <code>time</code></td>
+<td>native pickers</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>a clear button</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>masked characters</td>
+</tr>
+</tbody></table>
+<p><strong>Trap 1: <code>type=&quot;number&quot;</code> for phone numbers.</strong> It rejects <code>+</code>, spaces, and leading zeros, and it adds spinner arrows that make no sense on a phone number. Use <code>type=&quot;tel&quot;</code>.</p>
+<p><strong>Trap 2: forgetting <code>name</code>.</strong> A field with no <code>name</code> is never submitted — it simply does not appear in the data, with no error anywhere. <code>id</code> connects the label; <code>name</code> is what identifies the value in the submission. Most fields need both.</p>
+</details><hr>
+<h3 id="4-select-dropdowns-and-textareas">4. Select Dropdowns and Textareas<a class="anchor" href="#4-select-dropdowns-and-textareas" aria-label="Link to this section">#</a></h3>
+<h4 id="41-select-and-option">4.1 <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code><a class="anchor" href="#41-select-and-option" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Dropdown menu --&gt;
+&lt;label for=&quot;faculty&quot;&gt;Faculty:&lt;/label&gt;
+&lt;select id=&quot;faculty&quot; name=&quot;faculty&quot; required&gt;
+    &lt;option value=&quot;&quot;&gt;-- Select Faculty --&lt;/option&gt;
+    &lt;option value=&quot;it&quot;&gt;Information Technology&lt;/option&gt;
+    &lt;option value=&quot;ba&quot;&gt;Business Administration&lt;/option&gt;
+    &lt;option value=&quot;comm&quot;&gt;Communication and Media&lt;/option&gt;
+    &lt;option value=&quot;eco&quot;&gt;Economics&lt;/option&gt;
+    &lt;option value=&quot;law&quot;&gt;Law&lt;/option&gt;
+    &lt;option value=&quot;other&quot;&gt;Other&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<ul>
+<li>The first <code>&lt;option&gt;</code> has an empty <code>value=&quot;&quot;</code> so that if the user does not choose anything, the form sends an empty string (and <code>required</code> will block submission).</li>
+<li>The text between <code>&lt;option&gt;</code> tags is what the user sees; the <code>value</code> attribute is what gets submitted.</li>
+<li>Add <code>multiple</code> to allow selecting more than one option (Ctrl+click).</li>
+</ul>
+<h4 id="42-textarea">4.2 <code>&lt;textarea&gt;</code><a class="anchor" href="#42-textarea" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Multi-line text area --&gt;
+&lt;label for=&quot;why&quot;&gt;Why do you want to join?&lt;/label&gt;
+&lt;textarea id=&quot;why&quot; name=&quot;why&quot; rows=&quot;4&quot; cols=&quot;50&quot;
+          placeholder=&quot;Tell us about yourself...&quot;&gt;&lt;/textarea&gt;
+</code></pre>
+<ul>
+<li><code>rows</code> sets visible height (in lines).</li>
+<li><code>cols</code> sets visible width (in characters), but CSS <code>width</code> overrides this.</li>
+<li>Content goes between opening and closing tags (not in a <code>value</code> attribute).</li>
+<li>Unlike <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code> is NOT self-closing. Always write <code>&lt;/textarea&gt;</code>.</li>
+</ul>
+<h4 id="important-notes-3">⚠️ Important notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>❌ WRONG: <code>&lt;textarea value=&quot;default text&quot;&gt;&lt;/textarea&gt;</code> — there is no <code>value</code> attribute on textarea.</li>
+<li>✅ CORRECT: <code>&lt;textarea&gt;Default text&lt;/textarea&gt;</code></li>
+<li>❌ WRONG: <code>&lt;textarea /&gt;</code> — self-closing textarea does not work.</li>
+<li>✅ CORRECT: <code>&lt;textarea&gt;&lt;/textarea&gt;</code></li>
+</ul>
+<hr>
+<h3 id="5-labels-fieldsets-and-legends">5. Labels, Fieldsets, and Legends<a class="anchor" href="#5-labels-fieldsets-and-legends" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-13.canvas.tsx</code> → <code>LabelWiring</code> — slide <code>s13-labels</code> (&quot;Labels, Fieldsets &amp; Legends&quot;)</p>
+</blockquote>
+<h4 id="51-the-label-element">5.1 The <code>&lt;label&gt;</code> Element<a class="anchor" href="#51-the-label-element" aria-label="Link to this section">#</a></h4>
+<p>Labels are critical for accessibility and usability. When a user clicks a label, the associated input receives focus. Screen readers read the label aloud when the user navigates to the input.</p>
+<p><strong>Method 1: Explicit association (recommended)</strong></p>
+<pre><code class="language-html">&lt;!-- ✅ for/id matching --&gt;
+&lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+</code></pre>
+<p><strong>Method 2: Implicit association (wrapping)</strong></p>
+<pre><code class="language-html">&lt;!-- ✅ Label wraps the input --&gt;
+&lt;label&gt;
+    Email:
+    &lt;input type=&quot;email&quot; name=&quot;email&quot;&gt;
+&lt;/label&gt;
+</code></pre>
+<h4 id="critical-rule">⚠️ Critical rule<a class="anchor" href="#critical-rule" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>❌ WRONG: <code>&lt;label for=&quot;mail&quot;&gt;Email:&lt;/label&gt;</code> + <code>&lt;input id=&quot;email&quot;&gt;</code> — mismatched <code>for</code> and <code>id</code>!</li>
+<li>✅ CORRECT: <code>&lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;</code> + <code>&lt;input id=&quot;email&quot;&gt;</code> — exact match.</li>
+</ul>
+<h4 id="52-fieldset-and-legend">5.2 <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code><a class="anchor" href="#52-fieldset-and-legend" aria-label="Link to this section">#</a></h4>
+<p>These elements visually and semantically group related form controls.</p>
+<pre><code class="language-html">&lt;!-- ✅ Grouped fields --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Personal Information&lt;/legend&gt;
+
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;fullname&quot;&gt;Full Name:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;fullname&quot; name=&quot;fullname&quot; required&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+</code></pre>
+<ul>
+<li><code>&lt;fieldset&gt;</code> draws a border around the group (stylable with CSS).</li>
+<li><code>&lt;legend&gt;</code> provides a caption that sits on the border.</li>
+<li>Screen readers announce the legend when entering the group, giving context to each field.</li>
+</ul>
+<h4 id="real-life-example-3">🎒 Real-life example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<p>Our Student Club registration form uses four fieldsets:</p>
+<ol>
+<li><strong>Personal Information</strong> — name, student ID, email, phone, DOB, gender</li>
+<li><strong>Academic Information</strong> — faculty, year of study</li>
+<li><strong>Interests</strong> — checkboxes for activities</li>
+<li><strong>Additional Information</strong> — motivation text, profile photo, terms agreement</li>
+</ol>
+<p>This makes a long form feel organized and less overwhelming.</p>
+<h4 id="try-it-yourself-prove-your-labels-are-connected">🧪 Try It Yourself — Prove Your Labels Are Connected<a class="anchor" href="#try-it-yourself-prove-your-labels-are-connected" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> One click tells you whether a label is doing its job.</p>
+<ol>
+<li>Write a field with an unconnected label:<pre><code class="language-html">&lt;label&gt;Email&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+</code></pre>
+</li>
+<li>Reload and click the word &quot;Email&quot;. Nothing happens.</li>
+<li>Now connect them:<pre><code class="language-html">&lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+</code></pre>
+</li>
+<li>Click &quot;Email&quot; again. Then try a checkbox the same way.</li>
+</ol>
+<p><strong>Expected result:</strong> With <code>for</code> matching the input&#39;s <code>id</code>, clicking the label text focuses the field — and for a checkbox, clicking the label toggles it. That click is your test: if it does nothing, the label is not connected.</p>
+<details>
+<summary>Why this is the highest-value five minutes in the chapter</summary><p>A connected label does three jobs at once:</p>
+<ol>
+<li><strong>Screen readers</strong> announce the field&#39;s purpose. Without it, a user hears &quot;edit text&quot; with no clue what to type.</li>
+<li><strong>Click target</strong> grows to include the text, which matters most for checkboxes and radios on a phone.</li>
+<li><strong>Autofill</strong> works, because the browser can tell what the field is for.</li>
+</ol>
+<p>Two rules make it reliable: the <code>for</code> value must match the input&#39;s <code>id</code> exactly (case-sensitive), and every <code>id</code> must be unique on the page. Duplicate ids are the usual reason a label focuses the wrong field.</p>
+<p>Wrapping also works and needs no ids:</p>
+<pre><code class="language-html">&lt;label&gt;Email &lt;input type=&quot;email&quot; name=&quot;email&quot;&gt;&lt;/label&gt;
+</code></pre>
+<p>Placeholder text is <strong>not</strong> a label. It vanishes as soon as the user types, leaving them unable to check what the field was, and screen reader support for it is inconsistent. Use both if you like — but never a placeholder alone.</p>
+<p>Group related radios or checkboxes in a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code>; the legend gives the <em>group</em> a name, which is the only way &quot;Choose your membership type&quot; gets announced with the options.</p>
+</details><hr>
+<h3 id="6-form-validation-basics">6. Form Validation Basics<a class="anchor" href="#6-form-validation-basics" aria-label="Link to this section">#</a></h3>
+<p>Validation ensures the user enters correct data before the form is submitted. There are two kinds:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Where it runs</th>
+<th>When</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Client-side</td>
+<td>In the browser</td>
+<td>Before data leaves the computer</td>
+<td><code>required</code>, <code>type=&quot;email&quot;</code>, <code>minlength</code>, <code>pattern</code></td>
+</tr>
+<tr>
+<td>Server-side</td>
+<td>On the server</td>
+<td>After data arrives</td>
+<td>Database checks, business rules</td>
+</tr>
+</tbody></table>
+<p>In this course we focus on <strong>client-side validation</strong> using HTML attributes.</p>
+<h4 id="61-common-validation-attributes">6.1 Common Validation Attributes<a class="anchor" href="#61-common-validation-attributes" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Works on</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>required</code></td>
+<td>Most inputs</td>
+<td>Blocks submission if field is empty</td>
+</tr>
+<tr>
+<td><code>minlength=&quot;n&quot;</code></td>
+<td>text, password, textarea</td>
+<td>Minimum character count</td>
+</tr>
+<tr>
+<td><code>maxlength=&quot;n&quot;</code></td>
+<td>text, password, textarea</td>
+<td>Maximum character count</td>
+</tr>
+<tr>
+<td><code>min=&quot;n&quot;</code></td>
+<td>number, date</td>
+<td>Minimum value</td>
+</tr>
+<tr>
+<td><code>max=&quot;n&quot;</code></td>
+<td>number, date</td>
+<td>Maximum value</td>
+</tr>
+<tr>
+<td><code>pattern=&quot;regex&quot;</code></td>
+<td>text, email, tel, url</td>
+<td>Must match regular expression</td>
+</tr>
+<tr>
+<td><code>type=&quot;email&quot;</code></td>
+<td>email</td>
+<td>Built-in email format check</td>
+</tr>
+</tbody></table>
+<h4 id="62-example-putting-validation-together">6.2 Example: Putting Validation Together<a class="anchor" href="#62-example-putting-validation-together" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ Validated email field --&gt;
+&lt;label for=&quot;email&quot;&gt;University Email:&lt;/label&gt;
+&lt;input type=&quot;email&quot;
+       id=&quot;email&quot;
+       name=&quot;email&quot;
+       required
+       placeholder=&quot;student@vnu.edu.vn&quot;
+       title=&quot;Please enter a valid email address&quot;&gt;
+</code></pre>
+<ul>
+<li><code>required</code> — cannot be left blank.</li>
+<li><code>type=&quot;email&quot;</code> — must contain @ and domain.</li>
+<li><code>title</code> — tooltip shown when validation fails (some browsers display this as the error message).</li>
+</ul>
+<h4 id="important-notes-4">⚠️ Important notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Client-side validation can be bypassed (disable JS, use dev tools). NEVER trust it alone for security. Always validate again on the server.</li>
+<li>For this course, client-side validation is sufficient since we are learning front-end skills.</li>
+</ul>
+<h4 id="try-it-yourself-validation-the-browser-does-for-free">🧪 Try It Yourself — Validation the Browser Does for Free<a class="anchor" href="#try-it-yourself-validation-the-browser-does-for-free" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Add constraints and watch the browser enforce them.</p>
+<ol>
+<li>Build a small form and add validation attributes:<pre><code class="language-html">&lt;form&gt;
+    &lt;div class=&quot;field&quot;&gt;
+        &lt;label for=&quot;name&quot;&gt;Full name&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; required minlength=&quot;2&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;
+        &lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;
+        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; required&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;field&quot;&gt;
+        &lt;label for=&quot;age&quot;&gt;Age&lt;/label&gt;
+        &lt;input type=&quot;number&quot; id=&quot;age&quot; name=&quot;age&quot; min=&quot;16&quot; max=&quot;99&quot;&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;submit&quot;&gt;Join&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+</li>
+<li>Submit it empty. Then with <code>abc</code> in the email field. Then with <code>12</code> as the age.</li>
+<li>Now add this CSS and retry:<pre><code class="language-css">input:invalid  { border-color: #dc2626; }
+input:valid    { border-color: #16a34a; }
+</code></pre>
+</li>
+</ol>
+<p><strong>Expected result:</strong> The browser blocks submission and shows its own message next to the offending field — no JavaScript involved. The CSS colours each border as you type.</p>
+<details>
+<summary>What this validation is and is not</summary><p>It is a <strong>usability</strong> feature: it catches typos immediately, next to the field, before a round trip to the server.</p>
+<p>It is <strong>not security</strong>. Every one of these attributes can be removed in DevTools in three seconds, and a request can be sent without a browser at all. Any real application must revalidate on the server. Client-side validation improves the experience for cooperative users; it stops nobody who is trying.</p>
+<p>One refinement: <code>input:invalid</code> colours a field red the instant the page loads, because an empty required field is already invalid. That feels accusatory before the user has typed anything. Use <code>:user-invalid</code> where you can, which waits until the field has been interacted with:</p>
+<pre><code class="language-css">input:user-invalid { border-color: #dc2626; }
+</code></pre>
+</details><hr>
+<h3 id="7-styling-forms-with-css">7. Styling Forms with CSS<a class="anchor" href="#7-styling-forms-with-css" aria-label="Link to this section">#</a></h3>
+<p>Forms look plain by default. CSS makes them match your site&#39;s design.</p>
+<h4 id="71-core-styling-principles">7.1 Core Styling Principles<a class="anchor" href="#71-core-styling-principles" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ✅ Make inputs fill their container */
+.form-group input[type=&quot;text&quot;],
+.form-group input[type=&quot;email&quot;],
+.form-group input[type=&quot;tel&quot;],
+.form-group input[type=&quot;date&quot;],
+.form-group input[type=&quot;password&quot;],
+.form-group select,
+.form-group textarea {
+    width: 100%;            /* Fill the parent div */
+    padding: 10px 12px;     /* Comfortable internal spacing */
+    border: 2px solid #ddd; /* Subtle border */
+    border-radius: 6px;     /* Rounded corners */
+    font-size: 15px;        /* Readable text size */
+    font-family: inherit;   /* Match the page font */
+    background-color: white;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth focus effect */
+}
+</code></pre>
+<h4 id="72-focus-styles">7.2 Focus Styles<a class="anchor" href="#72-focus-styles" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ✅ Visual feedback when user clicks into a field */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2874a6;
+    outline: none;
+    box-shadow: 0 0 8px rgba(40, 116, 166, 0.3);
+}
+</code></pre>
+<h4 id="73-placeholder-styling">7.3 Placeholder Styling<a class="anchor" href="#73-placeholder-styling" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ✅ Lighter color for placeholder text */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa;
+}
+</code></pre>
+<h4 id="74-button-styling">7.4 Button Styling<a class="anchor" href="#74-button-styling" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ✅ Attractive, touch-friendly submit button */
+.btn {
+    background: linear-gradient(to right, #2874a6, #3498db);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #1a5276, #2874a6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+</code></pre>
+<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Always use <code>&lt;label&gt;</code></strong> for every form control.</li>
+<li><strong>Group related fields</strong> with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
+<li><strong>Use the correct <code>type</code></strong> for each input (email, tel, date, etc.).</li>
+<li><strong>Provide <code>placeholder</code> hints</strong> but never as a replacement for labels.</li>
+<li><strong>Add <code>required</code></strong> to mandatory fields and mark them visually with a red asterisk (*).</li>
+<li><strong>Style focus states</strong> so keyboard users see where they are.</li>
+<li><strong>Make buttons large enough</strong> for touch (minimum 44×44 px).</li>
+<li><strong>Keep form layout vertical</strong> (label above input) — it is the easiest to read on all screen sizes.</li>
+</ol>
+<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Mistake 1: Missing <code>name</code> attribute</strong></p>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: data will NOT be submitted --&gt;
+&lt;input type=&quot;text&quot; id=&quot;fullname&quot;&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: name attribute added --&gt;
+&lt;input type=&quot;text&quot; id=&quot;fullname&quot; name=&quot;fullname&quot;&gt;
+</code></pre>
+<p>❌ <strong>Mistake 2: Mismatched <code>for</code> and <code>id</code></strong></p>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: &quot;mail&quot; ≠ &quot;email&quot; --&gt;
+&lt;label for=&quot;mail&quot;&gt;Email:&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: exact match --&gt;
+&lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+</code></pre>
+<p>❌ <strong>Mistake 3: Using <code>type=&quot;text&quot;</code> for email</strong></p>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: no email validation, wrong mobile keyboard --&gt;
+&lt;input type=&quot;text&quot; name=&quot;email&quot;&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: proper type --&gt;
+&lt;input type=&quot;email&quot; name=&quot;email&quot;&gt;
+</code></pre>
+<p>❌ <strong>Mistake 4: Self-closing textarea</strong></p>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: content will not appear --&gt;
+&lt;textarea name=&quot;msg&quot; /&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: proper closing tag --&gt;
+&lt;textarea name=&quot;msg&quot;&gt;&lt;/textarea&gt;
+</code></pre>
+<p>❌ <strong>Mistake 5: Placeholder as only label</strong></p>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: screen readers cannot identify this field --&gt;
+&lt;input type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;Your Name&quot;&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: label + placeholder --&gt;
+&lt;label for=&quot;name&quot;&gt;Your Name&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; placeholder=&quot;e.g., Nguyen Van An&quot;&gt;
+</code></pre>
+<h4 id="try-it-yourself-style-a-form-without-breaking-it">🧪 Try It Yourself — Style a Form Without Breaking It<a class="anchor" href="#try-it-yourself-style-a-form-without-breaking-it" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Make a form look designed while keeping it usable.</p>
+<ol>
+<li>Style the fields consistently:<pre><code class="language-css">input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font: inherit;
+}
+label { display: block; margin-bottom: 4px; font-weight: 600; }
+.field { margin-bottom: 16px; }
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-color: #2563eb;
+}
+</code></pre>
+</li>
+<li>Reload, then remove <code>font: inherit</code> and reload again.</li>
+<li>Put it back, then replace the <code>:focus</code> rule with <code>outline: none</code> and try navigating with <strong>Tab</strong> only.</li>
+</ol>
+<p><strong>Expected result:</strong> Without <code>font: inherit</code>, form fields revert to the browser&#39;s default font and look pasted in from another site. With <code>outline: none</code>, you cannot see where you are when tabbing — the form becomes unusable without a mouse.</p>
+<details>
+<summary>The two rules to remember</summary><p><strong><code>font: inherit</code> on form controls.</strong> Inputs, selects, and textareas do not inherit typography by default; they use a browser-supplied font. One declaration makes them match the rest of your page.</p>
+<p><strong>Never <code>outline: none</code> without a replacement.</strong> The focus ring is the only thing telling a keyboard user where they are. If the default outline clashes with your design, replace it — do not delete it:</p>
+<pre><code class="language-css">input:focus-visible { outline: 2px solid #2563eb; outline-offset: 2px; }
+</code></pre>
+<p><code>:focus-visible</code> is the refinement worth knowing: it shows the ring for keyboard focus but not for mouse clicks, which is usually what designers actually wanted when they reached for <code>outline: none</code>.</p>
+<p><code>width: 100%</code> on inputs also relies on <code>box-sizing: border-box</code> being set globally. Without it, the padding pushes each field past the edge of its container.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;form&gt;</code></td>
+<td>Container for form controls; defines where/how data is sent</td>
+<td><code>&lt;form action=&quot;register.php&quot; method=&quot;post&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>URL that receives form data</td>
+<td><code>action=&quot;process.php&quot;</code></td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>HTTP method: <code>get</code> (URL) or <code>post</code> (body)</td>
+<td><code>method=&quot;post&quot;</code></td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;text&quot;&gt;</code></td>
+<td>Single-line text entry</td>
+<td>Name, city</td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;email&quot;&gt;</code></td>
+<td>Email field with format validation</td>
+<td><code>user@example.com</code></td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;password&quot;&gt;</code></td>
+<td>Masked text entry</td>
+<td>Login password</td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;tel&quot;&gt;</code></td>
+<td>Phone number field (numeric keypad on mobile)</td>
+<td><code>+84 123 456 789</code></td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;radio&quot;&gt;</code></td>
+<td>Single selection from a group</td>
+<td>Gender, membership type</td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;checkbox&quot;&gt;</code></td>
+<td>Toggle on/off; multiple selections possible</td>
+<td>Interests, agree to terms</td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;number&quot;&gt;</code></td>
+<td>Numeric entry with optional min/max/step</td>
+<td>Age, quantity</td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;date&quot;&gt;</code></td>
+<td>Calendar date picker</td>
+<td>Birthday, event date</td>
+</tr>
+<tr>
+<td><code>&lt;select&gt;</code> + <code>&lt;option&gt;</code></td>
+<td>Dropdown menu</td>
+<td>Faculty selection</td>
+</tr>
+<tr>
+<td><code>&lt;textarea&gt;</code></td>
+<td>Multi-line text entry</td>
+<td>Comments, motivation</td>
+</tr>
+<tr>
+<td><code>&lt;label for=&quot;x&quot;&gt;</code></td>
+<td>Accessible text linked to control with <code>id=&quot;x&quot;</code></td>
+<td><code>&lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code></td>
+<td>Visual/semantic grouping of related controls</td>
+<td>Personal Info section</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>Blocks submission if field is empty</td>
+<td>Mandatory fields</td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td>Ghost hint text inside an empty field</td>
+<td><code>&quot;e.g., student@vnu.edu.vn&quot;</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Identifies the field&#39;s data when submitted</td>
+<td><code>name=&quot;email&quot;</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-simple-contact-form">Example 1: Simple Contact Form<a class="anchor" href="#example-1-simple-contact-form" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong>
+We need a quick contact form for the Student Club Website&#39;s Contact page. It should collect the visitor&#39;s name, email, subject, and message.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;form action=&quot;#&quot; method=&quot;post&quot; class=&quot;contact-form&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Contact Us&lt;/legend&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;contact-name&quot;&gt;Your Name:&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;contact-name&quot; name=&quot;name&quot;
+                   placeholder=&quot;Full name&quot; required&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;contact-email&quot;&gt;Your Email:&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;contact-email&quot; name=&quot;email&quot;
+                   placeholder=&quot;you@example.com&quot; required&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;subject&quot;&gt;Subject:&lt;/label&gt;
+            &lt;select id=&quot;subject&quot; name=&quot;subject&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;-- Choose --&lt;/option&gt;
+                &lt;option value=&quot;general&quot;&gt;General Inquiry&lt;/option&gt;
+                &lt;option value=&quot;membership&quot;&gt;Membership Question&lt;/option&gt;
+                &lt;option value=&quot;event&quot;&gt;Event Information&lt;/option&gt;
+                &lt;option value=&quot;feedback&quot;&gt;Feedback&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;message&quot;&gt;Message:&lt;/label&gt;
+            &lt;textarea id=&quot;message&quot; name=&quot;message&quot; rows=&quot;5&quot;
+                      placeholder=&quot;Type your message here...&quot; required&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Send Message&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line(s)</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;</code></td>
+<td>Creates the form. <code>action=&quot;#&quot;</code> means no real server yet. <code>method=&quot;post&quot;</code> hides data from the URL.</td>
+</tr>
+<tr>
+<td><code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code></td>
+<td>Groups everything under a titled border: &quot;Contact Us&quot;.</td>
+</tr>
+<tr>
+<td><code>&lt;div class=&quot;form-group&quot;&gt;</code></td>
+<td>Wrapper div for each label+input pair. Makes CSS styling easier (margin, spacing).</td>
+</tr>
+<tr>
+<td><code>&lt;label for=&quot;contact-name&quot;&gt;</code></td>
+<td>The <code>for</code> value matches the input&#39;s <code>id</code>. Clicking the label focuses the input.</td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;text&quot; ... required&gt;</code></td>
+<td>Standard text field. <code>required</code> prevents empty submission.</td>
+</tr>
+<tr>
+<td><code>&lt;input type=&quot;email&quot; ... required&gt;</code></td>
+<td>Email field with automatic format validation.</td>
+</tr>
+<tr>
+<td><code>&lt;select&gt;</code> + <code>&lt;option&gt;</code></td>
+<td>Dropdown for choosing a subject category. Empty first option forces a choice.</td>
+</tr>
+<tr>
+<td><code>&lt;textarea ... rows=&quot;5&quot;&gt;</code></td>
+<td>Five-row text area for the message. Content goes between tags, not in <code>value</code>.</td>
+</tr>
+<tr>
+<td><code>&lt;button type=&quot;submit&quot;&gt;</code></td>
+<td>Submit button. <code>type=&quot;submit&quot;</code> is the default but writing it explicitly is good practice.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong>
+A clean, accessible contact form with four fields inside a labeled fieldset. The browser validates required fields and email format before allowing submission.</p>
+<hr>
+<h3 id="example-2-radio-and-checkbox-group">Example 2: Radio and Checkbox Group<a class="anchor" href="#example-2-radio-and-checkbox-group" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong>
+We need a section in the registration form where students pick their gender (one choice) and their interests (multiple choices).</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;!-- RADIO GROUP: pick exactly one --&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;Gender:&lt;/label&gt;
+    &lt;div class=&quot;radio-group&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot;&gt; Male
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt; Female
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;other&quot;&gt; Prefer not to say
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CHECKBOX GROUP: pick zero or more --&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;Interests (check all that apply):&lt;/label&gt;
+    &lt;div class=&quot;checkbox-group&quot;&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;web&quot;&gt; Web Design
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;programming&quot;&gt; Programming
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;photo&quot;&gt; Photography
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;music&quot;&gt; Music
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;sports&quot;&gt; Sports
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;volunteer&quot;&gt; Volunteering
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All radios share <code>name=&quot;gender&quot;</code></td>
+<td>This groups them so only one can be selected at a time.</td>
+</tr>
+<tr>
+<td>Each radio has a unique <code>value</code></td>
+<td><code>&quot;male&quot;</code>, <code>&quot;female&quot;</code>, <code>&quot;other&quot;</code> — this is what gets submitted.</td>
+</tr>
+<tr>
+<td>Each radio is wrapped in its own <code>&lt;label&gt;</code></td>
+<td>Clicking the text (&quot;Male&quot;) selects the radio button. This is implicit label association.</td>
+</tr>
+<tr>
+<td>All checkboxes share <code>name=&quot;interests&quot;</code></td>
+<td>Same name means the server receives all checked values as an array.</td>
+</tr>
+<tr>
+<td>Each checkbox has a unique <code>value</code></td>
+<td><code>&quot;web&quot;</code>, <code>&quot;programming&quot;</code>, etc. — only checked ones are submitted.</td>
+</tr>
+<tr>
+<td>Wrapping <code>&lt;label&gt;</code> around each checkbox</td>
+<td>Makes the entire text clickable, not just the tiny box.</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Gender: clicking &quot;Female&quot; selects it and deselects any previously chosen option.</li>
+<li>Interests: the user can check Web Design AND Music AND Sports simultaneously. Unchecked items are not submitted.</li>
+</ul>
+<hr>
+<h3 id="example-3-form-validation-demo">Example 3: Form Validation Demo<a class="anchor" href="#example-3-form-validation-demo" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong>
+We want to see browser validation in action. Create a mini form and test what happens when you leave required fields empty or enter invalid data.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;val-name&quot;&gt;Name (required):&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;val-name&quot; name=&quot;name&quot; required&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;val-email&quot;&gt;Email (required, must be valid):&lt;/label&gt;
+        &lt;input type=&quot;email&quot; id=&quot;val-email&quot; name=&quot;email&quot; required&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;val-age&quot;&gt;Age (18–65):&lt;/label&gt;
+        &lt;input type=&quot;number&quot; id=&quot;val-age&quot; name=&quot;age&quot;
+               min=&quot;18&quot; max=&quot;65&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;val-phone&quot;&gt;Phone (Vietnamese format):&lt;/label&gt;
+        &lt;input type=&quot;tel&quot; id=&quot;val-phone&quot; name=&quot;phone&quot;
+               pattern=&quot;[0-9]{10}&quot;
+               title=&quot;Enter exactly 10 digits&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Test Validation&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>What it validates</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>required</code> on name</td>
+<td>Cannot submit with empty name. Browser shows &quot;Please fill out this field.&quot;</td>
+</tr>
+<tr>
+<td><code>type=&quot;email&quot;</code> + <code>required</code> on email</td>
+<td>Cannot submit empty AND must match email pattern. Browser shows &quot;Please include &#39;@&#39;.&quot;</td>
+</tr>
+<tr>
+<td><code>min=&quot;18&quot; max=&quot;65&quot;</code> on age</td>
+<td>Spinner arrows stop at boundaries. Some browsers warn if value is outside range.</td>
+</tr>
+<tr>
+<td><code>pattern=&quot;[0-9]{10}&quot;</code> on phone</td>
+<td>Regular expression: exactly 10 digits. Browser shows the <code>title</code> text if it fails.</td>
+</tr>
+</tbody></table>
+<p><strong>How to test:</strong></p>
+<ol>
+<li>Leave Name empty → click Submit → browser highlights the field with an error message.</li>
+<li>Type &quot;not-an-email&quot; in Email → click Submit → browser warns about invalid format.</li>
+<li>Enter age 15 → some browsers show a warning (behavior varies).</li>
+<li>Enter phone &quot;123&quot; → click Submit → browser shows &quot;Enter exactly 10 digits&quot;.</li>
+<li>Fill everything correctly → form submits (goes nowhere because <code>action=&quot;#&quot;</code>).</li>
+</ol>
+<p><strong>Result:</strong>
+You experience firsthand how HTML5 validation works without any JavaScript. This is built into every modern browser.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Before starting, make sure:</p>
+<ol>
+<li>Your Student Club site folder is open in Dreamweaver (or VS Code).</li>
+<li>You have completed Sessions 1–12 and have the standard site structure:<pre><code>student-club/
+├── index.html
+├── about.html
+├── events.html
+├── gallery.html
+├── contact.html
+├── css/
+│   └── style.css
+└── images/
+</code></pre>
+</li>
+<li>Back up your site folder before making changes.</li>
+</ol>
+<hr>
+<h4 id="task-1-create-the-membership-registration-page">TASK 1: Create the Membership Registration Page 🎯<a class="anchor" href="#task-1-create-the-membership-registration-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create <code>join.html</code> with a complete membership registration form.</p>
+<p>📝 <strong>What you will build:</strong> A full-page form with four fieldsets (Personal Info, Academic Info, Interests, Additional Info), proper labels, validation, and styled buttons.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><p><strong>Create a new HTML file.</strong></p>
+<ul>
+<li>In Dreamweaver: File → New → HTML → Create.</li>
+<li>Save as <code>join.html</code> in your site root.</li>
+</ul>
+</li>
+<li><p><strong>Copy the standard page structure.</strong></p>
+<ul>
+<li>Open <code>about.html</code> and copy the entire HTML structure (DOCTYPE, head, header, nav, main, sidebar, footer).</li>
+<li>Paste it into <code>join.html</code>.</li>
+<li>Change the <code>&lt;title&gt;</code> to <code>Student Club - Join Us</code>.</li>
+<li>Add <code>&lt;li&gt;&lt;a href=&quot;join.html&quot; class=&quot;active&quot;&gt;Join Us&lt;/a&gt;&lt;/li&gt;</code> to the navigation on ALL pages (including join.html itself).</li>
+</ul>
+</li>
+<li><p><strong>Replace the <code>&lt;main&gt;</code> content with the registration form.</strong></p>
+<ul>
+<li>Delete everything inside <code>&lt;main&gt;</code> and replace it with the complete form below:</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-html">&lt;main&gt;
+    &lt;h2&gt;Join the Student Club&lt;/h2&gt;
+    &lt;p&gt;Fill out the form below to become a member. Fields marked with
+       &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt; are required.&lt;/p&gt;
+
+    &lt;form action=&quot;#&quot; method=&quot;post&quot; class=&quot;registration-form&quot;&gt;
+        &lt;!-- ===== PERSONAL INFORMATION ===== --&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;Personal Information&lt;/legend&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;fullname&quot;&gt;Full Name:
+                    &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;fullname&quot; name=&quot;fullname&quot;
+                       placeholder=&quot;Enter your full name&quot; required&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;studentid&quot;&gt;Student ID:
+                    &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;studentid&quot; name=&quot;studentid&quot;
+                       placeholder=&quot;e.g., 20240001&quot; required&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;email&quot;&gt;Email:
+                    &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;
+                       placeholder=&quot;your.email@university.edu&quot; required&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;phone&quot;&gt;Phone Number:&lt;/label&gt;
+                &lt;input type=&quot;tel&quot; id=&quot;phone&quot; name=&quot;phone&quot;
+                       placeholder=&quot;+84 xxx xxx xxx&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;dob&quot;&gt;Date of Birth:&lt;/label&gt;
+                &lt;input type=&quot;date&quot; id=&quot;dob&quot; name=&quot;dob&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;Gender:&lt;/label&gt;
+                &lt;div class=&quot;radio-group&quot;&gt;
+                    &lt;label&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;male&quot;&gt;
+                        Male
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;female&quot;&gt;
+                        Female
+                    &lt;/label&gt;
+                    &lt;label&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;other&quot;&gt;
+                        Other
+                    &lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+
+        &lt;!-- ===== ACADEMIC INFORMATION ===== --&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;Academic Information&lt;/legend&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;faculty&quot;&gt;Faculty:
+                    &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+                &lt;select id=&quot;faculty&quot; name=&quot;faculty&quot; required&gt;
+                    &lt;option value=&quot;&quot;&gt;-- Select Faculty --&lt;/option&gt;
+                    &lt;option value=&quot;it&quot;&gt;Information Technology&lt;/option&gt;
+                    &lt;option value=&quot;ba&quot;&gt;Business Administration&lt;/option&gt;
+                    &lt;option value=&quot;comm&quot;&gt;Communication and Media&lt;/option&gt;
+                    &lt;option value=&quot;eco&quot;&gt;Economics&lt;/option&gt;
+                    &lt;option value=&quot;law&quot;&gt;Law&lt;/option&gt;
+                    &lt;option value=&quot;other&quot;&gt;Other&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;year&quot;&gt;Year of Study:&lt;/label&gt;
+                &lt;select id=&quot;year&quot; name=&quot;year&quot;&gt;
+                    &lt;option value=&quot;1&quot;&gt;1st Year&lt;/option&gt;
+                    &lt;option value=&quot;2&quot;&gt;2nd Year&lt;/option&gt;
+                    &lt;option value=&quot;3&quot;&gt;3rd Year&lt;/option&gt;
+                    &lt;option value=&quot;4&quot;&gt;4th Year&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+
+        &lt;!-- ===== INTERESTS ===== --&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;Interests&lt;/legend&gt;
+            &lt;p&gt;What activities interest you? (Check all that apply)&lt;/p&gt;
+
+            &lt;div class=&quot;checkbox-group&quot;&gt;
+                &lt;label&gt;
+                    &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;web&quot;&gt;
+                    Web Design
+                &lt;/label&gt;
+                &lt;label&gt;
+                    &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;programming&quot;&gt;
+                    Programming
+                &lt;/label&gt;
+                &lt;label&gt;
+                    &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;photo&quot;&gt;
+                    Photography
+                &lt;/label&gt;
+                &lt;label&gt;
+                    &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;music&quot;&gt;
+                    Music
+                &lt;/label&gt;
+                &lt;label&gt;
+                    &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;sports&quot;&gt;
+                    Sports
+                &lt;/label&gt;
+                &lt;label&gt;
+                    &lt;input type=&quot;checkbox&quot; name=&quot;interests&quot; value=&quot;volunteer&quot;&gt;
+                    Volunteering
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+
+        &lt;!-- ===== ADDITIONAL INFORMATION ===== --&gt;
+        &lt;fieldset&gt;
+            &lt;legend&gt;Additional Information&lt;/legend&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;why&quot;&gt;Why do you want to join?&lt;/label&gt;
+                &lt;textarea id=&quot;why&quot; name=&quot;why&quot; rows=&quot;4&quot;
+                          placeholder=&quot;Tell us about yourself...&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;profile&quot;&gt;Profile Photo:&lt;/label&gt;
+                &lt;input type=&quot;file&quot; id=&quot;profile&quot; name=&quot;profile&quot;
+                       accept=&quot;image/*&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label&gt;
+                    &lt;input type=&quot;checkbox&quot; name=&quot;terms&quot; required&gt;
+                    I agree to the
+                    &lt;a href=&quot;#&quot;&gt;club rules and regulations&lt;/a&gt;.
+                    &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/fieldset&gt;
+
+        &lt;!-- ===== BUTTONS ===== --&gt;
+        &lt;div class=&quot;form-actions&quot;&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Register Now&lt;/button&gt;
+            &lt;button type=&quot;reset&quot; class=&quot;btn btn-secondary&quot;&gt;Clear Form&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/main&gt;
+</code></pre>
+<ol start="4">
+<li><strong>Save the file.</strong></li>
+</ol>
+<p>✅ <strong>Check:</strong> Open <code>join.html</code> in the browser. You should see a structured form with four grouped sections, all labels aligned, required markers visible, and working dropdowns/radios/checkboxes. Try submitting with empty required fields to see validation messages.</p>
+<p>💾 <strong>Save point:</strong> Commit or back up after completing Task 1.</p>
+<hr>
+<h4 id="task-2-style-the-form-with-css">TASK 2: Style the Form with CSS 🎯<a class="anchor" href="#task-2-style-the-form-with-css" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Add professional styling to the registration form that matches the Student Club Website theme.</p>
+<p>📝 <strong>What you will add:</strong> Fieldset styling, input formatting, focus effects, radio/checkbox layout, button gradients, and required-field indicators.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><p>Open <code>css/style.css</code> in your editor.</p>
+</li>
+<li><p>Scroll to the bottom and add the following CSS block:</p>
+</li>
+</ol>
+<pre><code class="language-css">/* =============================================
+   FORM STYLES (Session 13)
+   ============================================= */
+
+/* --- Fieldset &amp; Legend --- */
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fafafa;
+}
+
+legend {
+    font-family: &#39;Montserrat&#39;, sans-serif;
+    font-size: 18px;
+    color: #1a5276;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+/* --- Form Groups --- */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 14px;
+}
+
+/* --- Input Fields --- */
+.form-group input[type=&quot;text&quot;],
+.form-group input[type=&quot;email&quot;],
+.form-group input[type=&quot;tel&quot;],
+.form-group input[type=&quot;date&quot;],
+.form-group input[type=&quot;password&quot;],
+.form-group input[type=&quot;number&quot;],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: inherit;
+    background-color: white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Prevents overflow from padding */
+}
+
+/* --- Focus State --- */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2874a6;
+    outline: none;
+    box-shadow: 0 0 8px rgba(40, 116, 166, 0.3);
+}
+
+/* --- Placeholder --- */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa;
+}
+
+/* --- Radio &amp; Checkbox Groups --- */
+.radio-group,
+.checkbox-group {
+    margin-top: 5px;
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.radio-group input,
+.checkbox-group input {
+    margin-right: 8px;
+}
+
+/* --- Required Marker --- */
+.required {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* --- Form Action Buttons --- */
+.form-actions {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.btn {
+    background: linear-gradient(to right, #2874a6, #3498db);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 5px;
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #1a5276, #2874a6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+</code></pre>
+<ol start="3">
+<li><p><strong>Save</strong> <code>style.css</code>.</p>
+</li>
+<li><p><strong>Preview</strong> <code>join.html</code> in the browser (F12).</p>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong></p>
+<ul>
+<li>Fieldsets have rounded borders and light gray backgrounds.</li>
+<li>Legends are styled in Montserrat blue.</li>
+<li>Input fields have consistent padding, borders, and rounded corners.</li>
+<li>Clicking into a field shows a blue glow (focus state).</li>
+<li>Radio buttons and checkboxes are stacked vertically with clickable labels.</li>
+<li>Red asterisks mark required fields.</li>
+<li>Buttons have gradient backgrounds and lift on hover.</li>
+</ul>
+<p>💾 <strong>Save point:</strong> Back up after completing Task 2.</p>
+<hr>
+<h4 id="task-3-add-the-contact-form-to-contacthtml">TASK 3: Add the Contact Form to contact.html 🎯<a class="anchor" href="#task-3-add-the-contact-form-to-contacthtml" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Replace or enhance the existing contact page content with a styled contact form.</p>
+<p>📝 <strong>What you will build:</strong> A simpler form (name, email, subject dropdown, message textarea) on the contact page.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><p>Open <code>contact.html</code>.</p>
+</li>
+<li><p>Inside <code>&lt;main&gt;</code>, keep the heading and introductory paragraph. Below them, add:</p>
+</li>
+</ol>
+<pre><code class="language-html">&lt;form action=&quot;#&quot; method=&quot;post&quot; class=&quot;contact-form&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Send Us a Message&lt;/legend&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;c-name&quot;&gt;Your Name:
+                &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;input type=&quot;text&quot; id=&quot;c-name&quot; name=&quot;name&quot;
+                   placeholder=&quot;Full name&quot; required&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;c-email&quot;&gt;Your Email:
+                &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;input type=&quot;email&quot; id=&quot;c-email&quot; name=&quot;email&quot;
+                   placeholder=&quot;you@example.com&quot; required&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;c-subject&quot;&gt;Subject:&lt;/label&gt;
+            &lt;select id=&quot;c-subject&quot; name=&quot;subject&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;-- Choose --&lt;/option&gt;
+                &lt;option value=&quot;general&quot;&gt;General Inquiry&lt;/option&gt;
+                &lt;option value=&quot;membership&quot;&gt;Membership Question&lt;/option&gt;
+                &lt;option value=&quot;event&quot;&gt;Event Information&lt;/option&gt;
+                &lt;option value=&quot;feedback&quot;&gt;Feedback&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;c-message&quot;&gt;Message:
+                &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+            &lt;textarea id=&quot;c-message&quot; name=&quot;message&quot; rows=&quot;5&quot;
+                      placeholder=&quot;Type your message here...&quot;
+                      required&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;form-actions&quot;&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Send Message&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+<ol start="3">
+<li><p><strong>Save</strong> <code>contact.html</code>.</p>
+</li>
+<li><p><strong>Preview</strong> in the browser. Test validation by leaving required fields empty.</p>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> The contact form appears below the existing contact information. It uses the same CSS styles as the registration form (consistent design). Required fields trigger validation messages when left empty.</p>
+<p>💾 <strong>Save point:</strong> Final backup of Session 13 work.</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Form bugs are the most costly kind, because a form that looks fine can still be losing every submission.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Server receives nothing, though the form submits</td>
+<td>Inputs have no <code>name</code> attribute</td>
+<td>Network tab → the request payload is empty</td>
+<td>Every input that should be sent needs <code>name</code></td>
+</tr>
+<tr>
+<td>Clicking the label does not focus the field</td>
+<td><code>for</code> does not match the input&#39;s <code>id</code></td>
+<td>Inspect both values</td>
+<td><code>for</code> must equal the input&#39;s <code>id</code>, exactly</td>
+</tr>
+<tr>
+<td>Two fields both focus the same input</td>
+<td>Duplicate <code>id</code> values</td>
+<td>Validator reports a duplicate ID</td>
+<td>Make every <code>id</code> unique</td>
+</tr>
+<tr>
+<td>Nothing happens when the button is clicked</td>
+<td>Button is outside the <code>&lt;form&gt;</code>, or is <code>type=&quot;button&quot;</code></td>
+<td>Check nesting and the <code>type</code> attribute</td>
+<td>Put it inside the form; use <code>type=&quot;submit&quot;</code></td>
+</tr>
+<tr>
+<td>Page reloads and clears the form</td>
+<td>Normal default submission with no handler</td>
+<td>Watch the address bar gain <code>?name=...</code></td>
+<td>Expected for <code>method=&quot;get&quot;</code>; use POST or JavaScript to change it</td>
+</tr>
+<tr>
+<td>Passwords appear in the URL</td>
+<td>The form uses <code>method=&quot;get&quot;</code></td>
+<td>Read the address bar after submitting</td>
+<td>Use <code>method=&quot;post&quot;</code> for anything sensitive</td>
+</tr>
+<tr>
+<td><code>required</code> never blocks submission</td>
+<td>It is on a <code>&lt;div&gt;</code>, or <code>novalidate</code> is set on the form</td>
+<td>Inspect the attributes</td>
+<td>Put <code>required</code> on the input; remove <code>novalidate</code></td>
+</tr>
+<tr>
+<td>Radio buttons can all be selected at once</td>
+<td>They have different <code>name</code> values</td>
+<td>Compare the <code>name</code> attributes</td>
+<td>One shared <code>name</code> groups them; <code>value</code> differs per option</td>
+</tr>
+<tr>
+<td>Checkbox sends nothing when unticked</td>
+<td>Unchecked boxes are never submitted</td>
+<td>Network payload omits the key</td>
+<td>Handle the absent key server-side, or add a hidden default</td>
+</tr>
+<tr>
+<td>Mobile shows a full keyboard for an email field</td>
+<td><code>type=&quot;text&quot;</code> used instead of <code>type=&quot;email&quot;</code></td>
+<td>Test on a device</td>
+<td>Use the right <code>type</code> — <code>email</code>, <code>tel</code>, <code>number</code>, <code>url</code></td>
+</tr>
+<tr>
+<td>Screen reader announces &quot;edit text, blank&quot;</td>
+<td>No label associated with the input</td>
+<td>Accessibility tree shows no name</td>
+<td>Add <code>&lt;label for&gt;</code>, or <code>aria-label</code> if no visible label is possible</td>
+</tr>
+<tr>
+<td>Error message not announced</td>
+<td>Text added visually only</td>
+<td>The accessibility tree does not change</td>
+<td>Use <code>aria-describedby</code> on the input and <code>role=&quot;alert&quot;</code> on the message</td>
+</tr>
+</tbody></table>
+<p><strong>Never trust the browser as your only validation.</strong> HTML5 attributes such as <code>required</code> and <code>type=&quot;email&quot;</code> improve the experience, but a user can bypass them with DevTools in seconds. Every field must be validated again on the server. Client-side checks are for convenience; server-side checks are for correctness and security.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. Why does every form input need a <code>&lt;label&gt;</code>, and how do you connect them?</strong></p>
+<details>
+<summary>Answer</summary><p>The <code>&lt;label&gt;</code> names the field for screen readers, and clicking it focuses the input — a bigger, easier target, which matters most on touch screens. Connect them by matching <code>for</code> to <code>id</code>: <code>&lt;label for=&quot;email&quot;&gt;Email&lt;/label&gt;</code> with <code>&lt;input id=&quot;email&quot;&gt;</code>. Placeholder text is <strong>not</strong> a substitute: it disappears as soon as the user types.</p>
+</details><hr>
+<p><strong>Q2. What is the difference between <code>name</code> and <code>id</code> on an input?</strong></p>
+<details>
+<summary>Answer</summary><p><code>name</code> is what gets <strong>submitted</strong> — it becomes the key in the <code>name=value</code> pair the server receives, so an input without <code>name</code> sends nothing. <code>id</code> is for the page: it links the <code>&lt;label for&gt;</code> and gives CSS and JavaScript a handle. Most inputs need both, and using the same string for each is conventional.</p>
+</details><hr>
+<p><strong>Q3. What do <code>method=&quot;get&quot;</code> and <code>method=&quot;post&quot;</code> each do, and when do you use them?</strong></p>
+<details>
+<summary>Answer</summary><p><code>get</code> appends the data to the URL as a query string — visible, bookmarkable, length-limited. Use it for searches and filters. <code>post</code> sends the data in the request body — not visible in the URL, no practical size limit. Use it for anything that changes state or contains personal data: contact forms, registrations, passwords.</p>
+</details><hr>
+<p><strong>Q4. Why use <code>type=&quot;email&quot;</code> instead of <code>type=&quot;text&quot;</code> for an email field?</strong></p>
+<details>
+<summary>Answer</summary><p>The browser validates the format for free and blocks submission of obvious nonsense, and mobile keyboards switch to a layout with <code>@</code> and <code>.</code> visible. The cost is zero. The same reasoning applies to <code>type=&quot;tel&quot;</code>, <code>type=&quot;url&quot;</code>, <code>type=&quot;number&quot;</code>, and <code>type=&quot;date&quot;</code> — each gives you validation and a better on-screen keyboard.</p>
+</details><hr>
+<p><strong>Q5. What are <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> for?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;fieldset&gt;</code> groups related controls, and <code>&lt;legend&gt;</code> labels the group. They matter most for radio buttons and checkboxes: a screen reader reading &quot;Small&quot; in isolation is useless, but with a legend it announces &quot;T-shirt size: Small&quot;. Visually they also draw a border that shows which fields belong together.</p>
+</details><hr>
+<p><strong>Q6. Why must radio buttons in one group share the same <code>name</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>name</code> is what makes them a <strong>group</strong>, and a group allows only one selection. Give each radio a different <code>name</code> and they stop being mutually exclusive — the user can select all of them, which defeats the purpose. Checkboxes are the opposite: they are independent, so distinct names are normal.</p>
+</details><hr>
+<p><strong>Q7. Why is client-side validation not enough?</strong></p>
+<details>
+<summary>Answer</summary><p><code>required</code>, <code>pattern</code>, and <code>type=&quot;email&quot;</code> all run in the browser, and anyone can bypass them with DevTools or by sending the request directly. They exist to give <strong>fast, friendly feedback</strong> to honest users. Real security and data integrity require server-side validation, which is why you never trust form input.</p>
+</details><hr>
+<p><strong>Q8. What does <code>&lt;textarea rows=&quot;5&quot; cols=&quot;40&quot;&gt;</code> control, and what is the better approach?</strong></p>
+<details>
+<summary>Answer</summary><p><code>rows</code> sets the visible height in text lines and <code>cols</code> the width in characters. Set <code>rows</code> in HTML as a sensible default, but control width in CSS with <code>width: 100%</code> so the field fits its container responsively — a fixed <code>cols=&quot;40&quot;</code> overflows narrow phone screens. Note <code>&lt;textarea&gt;</code> needs a separate closing tag and its default value goes between the tags, not in a <code>value</code> attribute.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Create a <code>&lt;form&gt;</code> element with correct <code>action</code> and <code>method</code> attributes</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Use at least six different <code>&lt;input&gt;</code> types (text, email, password, tel, radio, checkbox, number, date)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Create a dropdown menu with <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create a multi-line text area with <code>&lt;textarea&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Associate every form control with a <code>&lt;label&gt;</code> using matching <code>for</code>/<code>id</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Group related fields with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Apply <code>required</code> and <code>placeholder</code> attributes correctly</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Style form controls with CSS (borders, focus states, buttons)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered <strong>No</strong> to any row, re-read the relevant Theory section and redo the corresponding Hands-On task before moving on.</p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms">MDN: Learn Forms (complete guide)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form">MDN: Your First Form</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">MDN: <code>&lt;input&gt;</code> Element Reference</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">MDN: <code>&lt;form&gt;</code> Element Reference</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">MDN: <code>&lt;label&gt;</code> Element Reference</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset">MDN: <code>&lt;fieldset&gt;</code> Element Reference</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select">MDN: <code>&lt;select&gt;</code> Element Reference</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea">MDN: <code>&lt;textarea&gt;</code> Element Reference</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">MDN: Form Validation</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Styling_web_forms">MDN: Styling Web Forms</a></li>
+<li><a href="https://www.w3.org/TR/html52/sec-forms.html">W3C: HTML5 Forms Specification</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 14 we explore the legacy Spry Framework (included with Dreamweaver CS6), understand why it is obsolete, and learn the modern CSS-only alternative for dropdown navigation menus.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

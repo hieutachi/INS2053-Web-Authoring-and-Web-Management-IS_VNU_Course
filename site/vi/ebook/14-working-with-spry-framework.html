@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 14: Working with Spry Framework — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 14: Working with Spry Framework — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/14-working-with-spry-framework.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/14-working-with-spry-framework.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 14</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 14</p>
+    <h1>Buổi 14: Working with Spry Framework</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#2-the-three-spry-widgets">2. The Three Spry Widgets</a></li>
+        <li class="d2"><a href="#5-css-only-accordion-modern-replacement-for-spry-accordion">5. CSS-Only Accordion (Modern Replacement for Spry Accordion)</a></li>
+        <li class="d2"><a href="#example-2-building-an-accordion-for-event-details">Example 2: Building an Accordion for Event Details</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/14-working-with-spry-framework.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-14.html">Tổng quan Buổi 14</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-14">🟦 SESSION 14<a class="anchor" href="#session-14" aria-label="Link to this section">#</a></h2>
+<h2 id="working-with-spry-framework"><strong>Working with Spry Framework</strong><a class="anchor" href="#working-with-spry-framework" aria-label="Link to this section">#</a></h2>
+<p>Welcome to Session 14! Today we explore something a bit different: a piece of web history. The <strong>Spry Framework</strong> was Adobe&#39;s JavaScript widget library bundled with Dreamweaver CS6. It let you drop interactive components — dropdown menus, accordions, tabbed panels — into your pages without writing JavaScript from scratch. But here is the important thing: <strong>Spry is legacy software</strong>. Adobe stopped maintaining it around 2012. So why do we study it? Because some older websites still use it, and because understanding what Spry did helps you appreciate the modern CSS-only techniques that replaced it. In this session we will look at how Spry worked, then build the same features using pure HTML5 and CSS3 — no JavaScript needed. Your Student Club Website will get a proper CSS-only dropdown navigation menu by the end.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    Chapter 14 — Working with Spry Framework (course textbook)
+                 MDN Web Docs &quot;&lt;details&gt;&quot;, &quot;&lt;summary&gt;&amp;quot;, &amp;quot;:hover&amp;quot; pseudo-class
+🎯 Objectives:   1. Explain what Spry was and why it is obsolete
+                 2. Recognise Spry widget HTML when you meet it in old code
+                 3. Build a CSS-only dropdown navigation bar as the modern replacement
+                 4. Create a CSS-only accordion using &amp;lt;details&amp;gt; / &amp;lt;summary&amp;gt;
+                 5. Decide when legacy code should be replaced rather than patched
+📖 Prepare:      1. Complete Sessions 1-13
+                 2. Have your Student Club site open
+                 3. Review CSS selectors and the box model (Sessions 4-5)
+🖼 Diagrams:     canvases/buoi-14.canvas.tsx — SpryVsModern, DetailsAccordion, DropdownAnatomy,
+                 SpryRemoval
+🔗 Outcomes:     CLO3 (choose appropriate technologies for web development)
+                 CLO4 (design and build a web application)
+                 CLO5 (evaluate, document, and present a web application)
+&lt;code&gt; ---  # 🎯 LEARNING OBJECTIVES  - Describe what the Spry Framework is and its relationship to Adobe Dreamweaver. - List the three main Spry widgets: Accordion, Tabbed Panels, Menu Bar. - Explain five reasons why Spry is considered legacy and should not be used in new projects. - Read and understand the basic HTML structure of a Spry widget. - Build a fully functional CSS-only dropdown navigation menu using `:hover` and nested `&amp;amp;lt;ul&amp;amp;gt;`. - Build a CSS-only accordion using the HTML5 `&amp;amp;lt;details&amp;amp;gt;` and `&amp;amp;lt;summary&amp;amp;gt;` elements. - Decide when to replace legacy Spry code with modern alternatives. - Apply the CSS-only dropdown to the Student Club Website&amp;#39;s navigation bar.  ---  # 📖 THEORY  ## 1. What Is the Spry Framework?  &amp;amp;gt; 🖼 **Diagram:** `canvases/buoi-14.canvas.tsx` → `SpryVsModern` — slide `s14-what-is-spry` (&amp;quot;What Is Spry?&amp;quot;)  ### 1.1 Definition  **Spry** is a JavaScript framework created by Adobe Systems. It was included with Adobe Dreamweaver starting from version CS3 (2007) through CS6 (2012). Spry provided pre-built **widgets** — interactive UI components like menus, accordions, and tabbed panels — that designers could insert into web pages through Dreamweaver&amp;#39;s visual interface without writing JavaScript manually.  Spry also included a data-binding system for connecting HTML to XML data sources and animation effects, but the widgets were by far the most commonly used feature.  ### 🎒 Real-life example  Imagine you are building the Student Club Website in 2010 using Dreamweaver CS6. You want a horizontal navigation bar where hovering over &amp;quot;Events&amp;quot; reveals a dropdown submenu showing &amp;quot;Workshops,&amp;quot; &amp;quot;Social Events,&amp;quot; and &amp;quot;Competitions.&amp;quot; Instead of writing JavaScript yourself, you would:  1. Click Insert → Spry → Spry Menu Bar 2. Dreamweaver inserts the HTML structure, links the CSS and JS files, and adds initialization code 3. You edit the menu text in the HTML 4. Done — a working dropdown menu in under a minute  This was revolutionary at the time because many web designers did not know JavaScript.  ### 1.2 Why It Matters (Historically)  Spry represented an important era in web development: &lt;/code&gt;
+┌───────────────────────────────────────────────────────┐
+│          TIMELINE OF WEB UI FRAMEWORKS                 │
+│                                                       │
+│  2005 ─── Prototype.js, early jQuery                  │
+│  2007 ─── Spry ships with Dreamweaver CS3             │
+│  2008 ─── jQuery UI released                          │
+│  2011 ─── Bootstrap 1.0 released                      │
+│  2012 ─── Spry development STOPS                      │
+│  2013 ─── Bootstrap 3.0 (mobile-first)                │
+│  2014 ─── React gains popularity                      │
+│  2015 ─── Vue.js 1.0                                 │
+│  2018 ─── CSS-only solutions mature (:hover, details) │
+│  2024 ─── Modern CSS handles most widget needs alone  │
+└───────────────────────────────────────────────────────┘
+&lt;code&gt; Understanding Spry helps you: - Maintain or migrate older websites that still use it - Appreciate how far CSS has come (we can now do with pure CSS what once required JavaScript) - Recognize patterns that appear in modern frameworks (the accordion pattern, the dropdown pattern)  ### ⚠️ Important notes  - **Do NOT use Spry in new projects.** It is unmaintained, insecure, and incompatible with modern browsers and mobile devices. - This session teaches Spry for **recognition and migration purposes**, then immediately shows the modern replacement. - If you encounter Spry on an existing site, plan to replace it.  ### 🧪 Try It Yourself — Recognise Spry in the Wild  **Task (4 min):** Learn the signature so you can identify it in inherited code.  1. Look for these markers in any HTML file:   &lt;/code&gt;html
+   &amp;lt;script src=&amp;quot;SpryAssets/SpryMenuBar.js&amp;quot; type=&amp;quot;text/javascript&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+   &amp;lt;link href=&amp;quot;SpryAssets/SpryMenuBarHorizontal.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+   &amp;lt;ul id=&amp;quot;MenuBar1&amp;quot; class=&amp;quot;MenuBarHorizontal&amp;quot;&amp;gt;
+   &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+       var MenuBar1 = new Spry.Widget.MenuBar(&amp;quot;MenuBar1&amp;quot;, {imgDown:&amp;quot;SpryAssets/SpryMenuBarDownHover.gif&amp;quot;});
+   &amp;lt;/script&amp;gt;
+</code></pre>
+<ol start="2">
+<li>Note the three-part pattern: a <code>SpryAssets/</code> folder, a CSS class starting <code>MenuBar</code> or <code>Accordion</code>, and an inline <code>new Spry.Widget...</code> constructor at the bottom of <code>&amp;lt;body&amp;gt;</code>.</li>
+<li>Now ask what happens to that page if <code>SpryMenuBar.js</code> fails to load.</li>
+</ol>
+<p><strong>Expected result:</strong> The nav collapses to a plain unordered list with no dropdown. The site&#39;s navigation depends entirely on a JavaScript file that is no longer maintained anywhere.</p>
+<p>&lt;details&gt;
+&lt;summary&gt;Why the constructor at the bottom is the real tell</summary></p>
+<p>Dreamweaver generated that <code>new Spry.Widget.MenuBar(...)</code> line automatically when you inserted a widget, and it had to run after the markup existed — which is why it sits at the end of <code>&lt;body&gt;</code>.</p>
+<p>That coupling is the whole problem. The HTML is inert on its own: the <code>&lt;ul&gt;</code> carries no semantic indication that it is a menu, and the behaviour lives in a script that must load, parse, and execute successfully. One 404 and the navigation is gone.</p>
+<p>The modern equivalents in this chapter invert that. A CSS dropdown works because the CSS <em>is</em> the behaviour, and <code>&lt;details&gt;</code> works because the browser implements it. Nothing to load, nothing to fail.</p>
+<p>When you inherit a Spry site, do not try to repair the library. Delete <code>SpryAssets/</code>, keep the <code>&lt;ul&gt;</code> structure, and add the CSS from the next section — the markup you need is already there.</p>
+</details><hr>
+<h3 id="2-the-three-spry-widgets">2. The Three Spry Widgets<a class="anchor" href="#2-the-three-spry-widgets" aria-label="Link to this section">#</a></h3>
+<h4 id="21-accordion">2.1 Accordion<a class="anchor" href="#21-accordion" aria-label="Link to this section">#</a></h4>
+<p>An accordion shows stacked panels. Only one panel is open at a time; clicking another panel header closes the current one and opens the new one.</p>
+<pre><code>┌──────────────────────────────────┐
+│ ▼ Web Design Workshop            │  ← Open panel (content visible)
+│   Learn HTML &amp; CSS basics.      │
+│   Date: March 15, 2024.         │
+├──────────────────────────────────┤
+│ ▶ Photography Contest            │  ← Closed panel (click to open)
+├──────────────────────────────────┤
+│ ▶ Music Night                    │  ← Closed panel
+└──────────────────────────────────┘
+</code></pre>
+<p><strong>Spry Accordion HTML structure:</strong></p>
+<pre><code class="language-html">&lt;!-- Spry Accordion (LEGACY - do not use in new projects) --&gt;
+&lt;div id=&quot;Accordion1&quot; class=&quot;Accordion&quot;&gt;
+    &lt;div class=&quot;AccordionPanel&quot;&gt;
+        &lt;div class=&quot;AccordionPanelTab&quot;&gt;Web Design Workshop&lt;/div&gt;
+        &lt;div class=&quot;AccordionPanelContent&quot;&gt;
+            &lt;p&gt;Learn HTML &amp; CSS basics. March 15, 2024.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;AccordionPanel&quot;&gt;
+        &lt;div class=&quot;AccordionPanelTab&quot;&gt;Photography Contest&lt;/div&gt;
+        &lt;div class=&quot;AccordionPanelContent&quot;&gt;
+            &lt;p&gt;Submit campus photos. Deadline: March 20.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Required Spry files:</strong></p>
+<pre><code class="language-html">&lt;!-- LEGACY Spry files --&gt;
+&lt;link href=&quot;SpryAssets/SpryAccordion.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;SpryAssets/SpryAccordion.js&quot;&gt;&lt;/script&gt;
+&lt;!-- Plus initialization script at bottom of page --&gt;
+&lt;script&gt;var Accordion1 = new Spry.Widget.Accordion(&quot;Accordion1&quot;);&lt;/script&gt;
+</code></pre>
+<h4 id="22-tabbed-panels">2.2 Tabbed Panels<a class="anchor" href="#22-tabbed-panels" aria-label="Link to this section">#</a></h4>
+<p>Tabbed panels show content organized under clickable tabs, similar to browser tabs.</p>
+<pre><code>┌──────────┬──────────┬──────────────┐
+│ Workshops│ Social   │ Competitions │  ← Tabs
+├──────────┴──────────┴──────────────┤
+│                                     │
+│  • Web Design - March 15           │  ← Content of active tab
+│  • JavaScript Basics - March 22    │
+│  • Graphic Design - March 29       │
+│                                     │
+└─────────────────────────────────────┘
+</code></pre>
+<p><strong>Spry Tabbed Panels HTML structure:</strong></p>
+<pre><code class="language-html">&lt;!-- Spry Tabbed Panels (LEGACY) --&gt;
+&lt;div id=&quot;TabbedPanels1&quot; class=&quot;TabbedPanels&quot;&gt;
+    &lt;ul class=&quot;TabbedPanelsTabGroup&quot;&gt;
+        &lt;li class=&quot;TabbedPanelsTab&quot;&gt;Workshops&lt;/li&gt;
+        &lt;li class=&quot;TabbedPanelsTab&quot;&gt;Social Events&lt;/li&gt;
+        &lt;li class=&quot;TabbedPanelsTab&quot;&gt;Competitions&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class=&quot;TabbedPanelsContentGroup&quot;&gt;
+        &lt;div class=&quot;TabbedPanelsContent&quot;&gt;
+            &lt;h3&gt;Workshops&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Web Design - March 15&lt;/li&gt;
+                &lt;li&gt;JavaScript Basics - March 22&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;TabbedPanelsContent&quot;&gt;
+            &lt;h3&gt;Social Events&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Movie Night - April 5&lt;/li&gt;
+                &lt;li&gt;Game Tournament - April 12&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;TabbedPanelsContent&quot;&gt;
+            &lt;h3&gt;Competitions&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Photography Contest - March 22&lt;/li&gt;
+                &lt;li&gt;Hackathon - April 5-6&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="23-menu-bar-horizontal-vertical">2.3 Menu Bar (Horizontal / Vertical)<a class="anchor" href="#23-menu-bar-horizontal-vertical" aria-label="Link to this section">#</a></h4>
+<p>The Spry Menu Bar creates a navigation bar with dropdown submenus. This is the widget most relevant to our Student Club Website.</p>
+<pre><code>┌──────┬────────────┬────────────┬─────────┬─────────┐
+│ Home │ About ▾    │ Events ▾   │ Gallery │ Contact │
+│      ├────────────┼────────────┤         │         │
+│      │ Mission    │ Workshops  │         │         │
+│      │ Team       │ Social     │         │         │
+│      │ History    │ Compete    │         │         │
+└──────┴────────────┴────────────┴─────────┴─────────┘
+</code></pre>
+<p><strong>Spry Menu Bar HTML structure:</strong></p>
+<pre><code class="language-html">&lt;!-- Spry MenuBar (LEGACY) --&gt;
+&lt;ul id=&quot;MenuBar1&quot; class=&quot;MenuBarHorizontal&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot; class=&quot;MenuBarItemSubmenu&quot;&gt;About&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Our Mission&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;about.html#team&quot;&gt;Our Team&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;about.html#history&quot;&gt;Our History&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot; class=&quot;MenuBarItemSubmenu&quot;&gt;Events&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;events.html#workshops&quot;&gt;Workshops&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;events.html#social&quot;&gt;Social Events&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;events.html#competitions&quot;&gt;Competitions&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h4 id="comparison-table-spry-widgets-vs-modern-alternatives">🔍 Comparison Table: Spry Widgets vs Modern Alternatives<a class="anchor" href="#comparison-table-spry-widgets-vs-modern-alternatives" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Spry Widget</th>
+<th>What It Does</th>
+<th>Modern Replacement</th>
+<th>Technology Needed</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accordion</td>
+<td>Collapsible panels (one open at a time)</td>
+<td><code>&lt;details&gt;</code> + `<summary><code></td>
+<td>Pure HTML5</td>
+</tr>
+</tbody></table>
+<h4 id="31-five-reasons-spry-is-obsolete">3.1 Five Reasons Spry Is Obsolete<a class="anchor" href="#31-five-reasons-spry-is-obsolete" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Reason</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>No longer maintained</strong></td>
+<td>Adobe stopped updating Spry around 2012. No bug fixes, no security patches, no new features.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Not mobile-friendly</strong></td>
+<td>Spry was designed before smartphones. Touch events (tap, swipe) are not handled. Dropdowns cannot be opened on touch screens.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Security risks</strong></td>
+<td>Unmaintained JavaScript libraries may contain vulnerabilities that are never patched.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Better alternatives exist</strong></td>
+<td>Modern CSS can replicate all Spry widgets without ANY JavaScript. For more complex needs, Bootstrap, jQuery UI, and other actively-maintained libraries exist.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Browser compatibility issues</strong></td>
+<td>Spry uses outdated JavaScript patterns that may break in modern browsers (Chrome 100+, Firefox 100+, Safari 16+).</td>
+</tr>
+</tbody></table>
+<h4 id="32-the-modern-approach-css-only-widgets">3.2 The Modern Approach: CSS-Only Widgets<a class="anchor" href="#32-the-modern-approach-css-only-widgets" aria-label="Link to this section">#</a></h4>
+<p>Modern CSS is powerful enough to handle most interactive UI patterns that previously required JavaScript:</p>
+<p><code>┌────────────────────────────────────────────────────┐ │        WHAT MODERN CSS CAN DO ALONE                 │ │                                                    │ │  ✅ Dropdown menus      (:hover, :focus-within)    │ │  ✅ Accordions          (&amp;lt;details&amp;gt;/&amp;lt;summary&amp;gt;)      │ │  ✅ Tooltips            (::after + :hover)         │ │  ✅ Modal dialogs       (:target or checkbox hack) │ │  ✅ Tab panels          (radio button hack)        │ │  ✅ Smooth transitions  (transition, animation)    │ │  ✅ Responsive layouts  (media queries, flexbox,   │ │                           grid)                    │ └────────────────────────────────────────────────────┘</code></p>
+<p>The key insight: if a behavior can be triggered by user interaction (hover, focus, click on a checkbox/details), CSS can respond to it without JavaScript.</p>
+<h4 id="try-it-yourself-translate-a-spry-widget">🧪 Try It Yourself — Translate a Spry Widget<a class="anchor" href="#try-it-yourself-translate-a-spry-widget" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Map each legacy widget onto what you would write today.</p>
+<p>For each Spry widget, name the modern replacement and the reason:</p>
+<ol>
+<li>Spry MenuBar</li>
+<li>Spry Accordion</li>
+<li>Spry Tabbed Panels</li>
+<li>Spry Validation Text Field</li>
+<li>Spry Collapsible Panel</li>
+</ol>
+<p>&lt;details&gt;
+&lt;summary&gt;Answers</summary></p>
+<table>
+<thead>
+<tr>
+<th>Spry widget</th>
+<th>Modern replacement</th>
+<th>Why it wins</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MenuBar</td>
+<td><code>&lt;nav&gt;</code> + CSS <code>:hover</code> / <code>:focus-within</code></td>
+<td>No JS dependency; keyboard accessible</td>
+</tr>
+<tr>
+<td>Accordion</td>
+<td><code>&lt;details&gt;</code> / `<summary><code></td>
+<td>Built into the browser, correct ARIA for free</td>
+</tr>
+</tbody></table>
+<p>&lt;details&gt;
+&lt;summary&gt;The one line that makes this accessible, and the limit you cannot CSS away</summary></p>
+<p><code>:focus-within</code> is what separates a usable dropdown from a decorative one. It matches the parent <code>&lt;li&gt;</code> whenever anything inside it has focus, so tabbing to the Events link reveals the submenu exactly as hovering does. A hover-only dropdown is invisible to every keyboard user.</p>
+<p>The touch problem is genuinely unsolvable in CSS. A tap is a click, and a parent link that is also a menu trigger has two conflicting jobs. The real options are:</p>
+<ol>
+<li><strong>Make the parent non-navigable</strong> — use <code>&lt;span&gt;</code> or <code>&lt;button&gt;</code> instead of <code>&lt;a href&gt;</code>, so tapping it only opens the submenu.</li>
+<li><strong>Duplicate the parent as the first submenu item</strong> — Events opens the menu, and "Events overview" inside it goes to the page.</li>
+<li><strong>Accept it and use JavaScript</strong> for the touch case only.</li>
+</ol>
+<p>For this course, option 2 is the pragmatic answer: no JavaScript, and nothing is unreachable.</p>
+<p>Also note <code>position: absolute</code> on the submenu requires <code>position: relative</code> on the parent <code>&lt;li&gt;</code>. Without it the submenu positions itself against the page instead of the menu item — the classic "why is my dropdown in the top-left corner" bug.</p>
+</details><hr>
+<h3 id="5-css-only-accordion-modern-replacement-for-spry-accordion">5. CSS-Only Accordion (Modern Replacement for Spry Accordion)<a class="anchor" href="#5-css-only-accordion-modern-replacement-for-spry-accordion" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-14.canvas.tsx</code> → <code>DetailsAccordion</code> — slide <code>s14-modern-css</code> ("Modern CSS Alternatives")</p>
+</blockquote>
+<p>HTML5 introduced the <code>&lt;details&gt;</code> and <code>&lt;summary&gt;&lt;code&gt;elements, which create a native, accessible, no-JavaScript accordion.  ### 5.1 How&lt;/code&gt;&amp;lt;details&amp;gt;&lt;code&gt;and&lt;/code&gt;&amp;lt;summary&amp;gt;</code> Work</p>
+<pre><code class="language-html">&lt;!-- ✅ Native HTML5 accordion panel --&gt;
+&amp;lt;details&amp;gt;
+    &amp;lt;summary&amp;gt;Click me to reveal content&lt;/summary&gt;
+    &lt;p&gt;This content is hidden until the user clicks the summary.&lt;/p&gt;
+&lt;/details&gt;
+</code></pre>
+<ul>
+<li><code>&lt;details&gt;</code> is the container. It has two states: closed (default) and open.</li>
+<li><code>&lt;summary&gt;&lt;code&gt;is the clickable heading. Browsers render a disclosure triangle (▶ / ▼) automatically. - Everything after&lt;/code&gt;&amp;lt;summary&amp;gt;&lt;code&gt;inside&lt;/code&gt;&amp;lt;details&amp;gt;&lt;code&gt;is the collapsible content. - Add the&lt;/code&gt;open&lt;code&gt;attribute to make a panel open by default:&lt;/code&gt;&lt;details open&gt;</code>.</li>
+<li>The browser handles all open/close logic natively — NO JavaScript required.</li>
+</ul>
+<h4 id="52-styled-accordion-for-student-club-events">5.2 Styled Accordion for Student Club Events<a class="anchor" href="#52-styled-accordion-for-student-club-events" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ✅ CSS-only accordion for events page --&gt;
+&lt;div class=&quot;css-accordion&quot;&gt;
+    &lt;details open&gt;
+        &amp;lt;summary&amp;gt;Web Design Workshop&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;Learn the basics of HTML and CSS in this hands-on workshop.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; March 15, 2024 | &lt;strong&gt;Time:&lt;/strong&gt; 2:00 PM – 4:00 PM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Location:&lt;/strong&gt; Computer Lab A, Building 3&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Photography Contest&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;Submit your best campus photographs and win prizes!&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Deadline:&lt;/strong&gt; March 20, 2024&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Categories:&lt;/strong&gt; Landscape, Portrait, Architecture&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Music Night&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;An evening of live music featuring student bands and solo performers.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; March 29, 2024 | &lt;strong&gt;Time:&lt;/strong&gt; 7:00 PM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Venue:&lt;/strong&gt; University Auditorium&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Hackathon 2024&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;48-hour coding challenge. Teams of 2–4 students compete to build the best web app.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; April 5–6, 2024&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Prizes:&lt;/strong&gt; Certificates, tech gadgets, and bragging rights!&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">/* =============================================
+   CSS-ONLY ACCORDION (Session 14)
+   ============================================= */
+
+.css-accordion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.css-accordion details {
+    border-bottom: 1px solid #ddd;
+}
+
+.css-accordion details:last-child {
+    border-bottom: none;
+}
+
+.css-accordion summary {
+    padding: 15px 20px;
+    background-color: #f0f4f8;
+    cursor: pointer;
+    font-weight: 600;
+    color: #1a5276;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    list-style: none;       /* Hide default triangle in some browsers */
+}
+
+/* Restore custom marker */
+.css-accordion summary::before {
+    content: &quot;▶ &quot;;
+    font-size: 12px;
+    display: inline-block;
+    margin-right: 8px;
+    transition: transform 0.3s;
+}
+
+.css-accordion details[open] summary::before {
+    content: &quot;▼ &quot;;
+}
+
+.css-accordion summary:hover {
+    background-color: #e0e8f0;
+}
+
+.css-accordion details[open] summary {
+    background-color: #2874a6;
+    color: white;
+}
+
+.accordion-content {
+    padding: 15px 20px;
+    line-height: 1.6;
+}
+
+.accordion-content p {
+    margin: 5px 0;
+}
+</code></pre>
+<h4 id="comparison-spry-accordion-vs-html5-detailssummary">🔍 Comparison: Spry Accordion vs HTML5 Details/Summary<a class="anchor" href="#comparison-spry-accordion-vs-html5-detailssummary" aria-label="Link to this section">#</a></h4>
+<p>| Feature | Spry Accordion | HTML5 <code>&lt;details&gt;</code>/<code>&lt;summary&gt;&lt;code&gt;| |---------|---------------|-------------------------------| | JavaScript required | Yes (SpryAccordion.js) | No | | CSS file required | Yes (SpryAccordion.css) | Optional (styled with your own CSS) | | Initialization script | Required | Not needed | | Mobile/touch support | Poor | Excellent (native browser behavior) | | Accessibility (screen readers) | Partial | Full (semantic HTML) | | Browser support | Degrading | All modern browsers | | File size overhead | ~30 KB JS + CSS | Zero | | Maintenance | Dead since 2012 | Part of HTML standard forever |  ### ✅ Best practices  1. **Never start a new project with Spry.** Use CSS-only solutions or actively maintained libraries. 2. **Always include&lt;/code&gt;:focus-within&lt;code&gt;** alongside &lt;/code&gt;:hover&lt;code&gt;for dropdown menus (keyboard accessibility). 3. **Use&lt;/code&gt;&amp;lt;details&amp;gt;&lt;code&gt;/&lt;/code&gt;&amp;lt;summary&amp;gt;&lt;code&gt;** for accordions — they are semantic, accessible, and require zero JavaScript. 4. **Add visual indicators** (▾ arrows, +/- signs) to signal that elements are expandable. 5. **Test on mobile** — hover-based dropdowns need a tap-friendly fallback for touch devices (Session 15 covers this). 6. **If migrating from Spry,** replace the widget HTML entirely rather than trying to patch the old code.  ### ❌ Common mistakes  ❌ **Mistake 1: Using Spry in a new project** ```html &amp;amp;lt;!-- ❌ WRONG: Spry is dead --&amp;amp;gt; &amp;amp;lt;script src=&amp;quot;SpryAssets/SpryMenuBar.js&amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt; ``` ```html &amp;amp;lt;!-- ✅ CORRECT: CSS-only dropdown --&amp;amp;gt; &amp;amp;lt;ul class=&amp;quot;main-nav&amp;quot;&amp;amp;gt;     &amp;amp;lt;li class=&amp;quot;has-dropdown&amp;quot;&amp;amp;gt;         &amp;amp;lt;a href=&amp;quot;#&amp;quot;&amp;amp;gt;Menu ▾&amp;amp;lt;/a&amp;amp;gt;         &amp;amp;lt;ul class=&amp;quot;dropdown&amp;quot;&amp;amp;gt;...&amp;amp;lt;/ul&amp;amp;gt;     &amp;amp;lt;/li&amp;amp;gt; &amp;amp;lt;/ul&amp;amp;gt; ```  ❌ **Mistake 2: Forgetting &lt;/code&gt;position: relative&lt;code&gt;on parent&lt;/code&gt;&amp;lt;li&amp;gt;&lt;code&gt;** ```css /* ❌ WRONG: dropdown floats to wrong position */ .main-nav &amp;amp;gt; li { } .dropdown { position: absolute; top: 100%; } ``` ```css /* ✅ CORRECT: parent establishes positioning context */ .main-nav &amp;amp;gt; li { position: relative; } .dropdown { position: absolute; top: 100%; left: 0; } ```  ❌ **Mistake 3: Only using &lt;/code&gt;:hover&lt;code&gt;(no keyboard support)** ```css /* ❌ WRONG: keyboard users cannot access dropdown */ .has-dropdown:hover .dropdown { display: block; } ``` ```css /* ✅ CORRECT: both mouse and keyboard */ .has-dropdown:hover .dropdown, .has-dropdown:focus-within .dropdown { display: block; } ```  ❌ **Mistake 4: Forgetting&lt;/code&gt;z-index&lt;code&gt;on dropdown** ```css /* ❌ WRONG: dropdown hides behind page content */ .dropdown { position: absolute; } ``` ```css /* ✅ CORRECT: dropdown renders on top */ .dropdown { position: absolute; z-index: 1000; } ```  ❌ **Mistake 5: Using&lt;/code&gt;&amp;lt;div&amp;gt;&lt;code&gt;instead of&lt;/code&gt;&amp;lt;details&amp;gt;</code> for accordions**
+<code>html &amp;lt;!-- ❌ WRONG: not semantic, requires JavaScript for toggle --&amp;gt; &amp;lt;div class=&quot;panel&quot; onclick=&quot;toggle()&quot;&amp;gt;...&amp;lt;/div&amp;gt; </code></p>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: native HTML5 accordion --&gt;
+&amp;lt;details&amp;gt;
+    &amp;lt;summary&amp;gt;Panel Title&lt;/summary&gt;
+    &lt;p&gt;Content&lt;/p&gt;
+&lt;/details&gt;
+</code></pre>
+<h4 id="try-it-yourself-an-accordion-with-no-javascript">🧪 Try It Yourself — An Accordion With No JavaScript<a class="anchor" href="#try-it-yourself-an-accordion-with-no-javascript" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Build a collapsible FAQ from two HTML elements.</p>
+<ol>
+<li>Write three collapsible items:<pre><code class="language-html">&lt;details&gt;
+    &lt;summary&gt;When does the club meet?&lt;/summary&gt;
+    &lt;p&gt;Every Friday at 5pm in Room B203.&lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+    &lt;summary&gt;Do I need experience?&lt;/summary&gt;
+    &lt;p&gt;No. We start from HTML basics every semester.&lt;/p&gt;
+&lt;/details&gt;
+&lt;details open&gt;
+    &lt;summary&gt;How do I join?&lt;/summary&gt;
+    &lt;p&gt;Fill in the form on the Contact page.&lt;/p&gt;
+&lt;/details&gt;
+</code></pre>
+</li>
+<li>Reload. Click each summary. Note that the third starts open.</li>
+<li>Now style it:<pre><code class="language-css">details {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    padding: 12px;
+}
+summary { cursor: pointer; font-weight: 600; }
+details[open] summary { margin-bottom: 8px; }
+</code></pre>
+</li>
+<li>Close the browser, reopen the page, then navigate the accordion using <strong>Tab</strong> and <strong>Enter</strong> only.</li>
+</ol>
+<p><strong>Expected result:</strong> Fully working collapsible panels — keyboard accessible, announced correctly by screen readers, with zero JavaScript and zero CSS tricks.</p>
+<details>
+<summary>Why this beats the checkbox hack</summary><p>The old CSS-only accordion used a hidden <code>&lt;input type=&quot;checkbox&quot;&gt;</code> with a <code>&lt;label&gt;</code> and a sibling selector. It works visually, but it lies to assistive technology: a screen reader announces &quot;checkbox&quot; for something that is a disclosure widget, and the expanded state is not conveyed.</p>
+<p><code>&lt;details&gt;</code> and <code>&lt;summary&gt;&lt;code&gt;are the real thing. The browser supplies the expand/collapse behaviour, the correct ARIA role, keyboard support, and the&lt;/code&gt;open&lt;code&gt;state — all of which you would otherwise have to build and get wrong.  Two useful details:  -&lt;/code&gt;open&lt;code&gt;as an attribute sets the initial state. Adding it to the first item is a good default so the panel does not look like a dead list. - Multiple&lt;/code&gt;&amp;lt;details&amp;gt;&lt;code&gt;can be open at once. If you want only one at a time, that genuinely needs JavaScript — or a shared&lt;/code&gt;name&lt;code&gt;attribute, which is supported in current browsers but not in older ones.  This is the pattern that replaces the Spry Accordion. It is shorter, accessible by default, and has no dependencies.  &amp;amp;lt;/details&amp;amp;gt;   ---  # 📋 THEORY SUMMARY  | Concept | Definition | Example | |---------|-----------|---------| | Spry Framework | Legacy Adobe JavaScript widget library for Dreamweaver (discontinued ~2012) | SpryAccordion.js, SpryMenuBar.js | | Spry Accordion | Collapsible panels widget; one panel open at a time | Events FAQ section | | Spry Tabbed Panels | Content organized under clickable tabs | Workshop / Social / Competition tabs | | Spry Menu Bar | Horizontal/vertical dropdown navigation widget | Site navigation with submenus | | Legacy software | Software no longer maintained or supported | Spry, Flash, jQuery 1.x | | CSS-only dropdown | Navigation submenu shown via&lt;/code&gt;:hover&lt;code&gt;on nested&lt;/code&gt;&amp;lt;ul&amp;gt;&lt;code&gt;|&lt;/code&gt;.has-dropdown:hover .dropdown { display: block; }&lt;code&gt;| |&lt;/code&gt;&amp;lt;details&amp;gt;&lt;code&gt;| HTML5 element creating a native collapsible section |&lt;/code&gt;&amp;lt;details&amp;gt;&amp;lt;summary&amp;gt;Title&lt;/summary&gt;Content&lt;/details&gt;</code> |
+| <code>&lt;summary&gt;&lt;code&gt;| Clickable heading inside&lt;/code&gt;&amp;lt;details&amp;gt;&lt;code&gt;| Acts as the accordion panel title | |&lt;/code&gt;:hover&lt;code&gt;| CSS pseudo-class matching when mouse is over an element |&lt;/code&gt;li:hover ul { display: block; }&lt;code&gt;| |&lt;/code&gt;:focus-within&lt;code&gt;| CSS pseudo-class matching when any descendant has focus | Enables keyboard-accessible dropdowns | |&lt;/code&gt;position: relative&lt;code&gt;| Establishes a positioning context for children | Applied to parent&lt;/code&gt;&amp;lt;li&amp;gt;&lt;code&gt;for dropdown placement | |&lt;/code&gt;position: absolute&lt;code&gt;| Positions element relative to nearest positioned ancestor | Used on&lt;/code&gt;.dropdown&lt;code&gt;to place it below parent | |&lt;/code&gt;z-index&lt;code&gt;| Controls stacking order of overlapping elements |&lt;/code&gt;z-index: 1000&lt;code&gt;keeps dropdown on top |  ---  # 💡 WORKED EXAMPLES  ## Example 1: Converting a Spry MenuBar to CSS-Only  **Situation:** You inherit an old Student Club website that uses a Spry MenuBar. You need to replace it with a modern CSS-only dropdown while keeping the same menu structure.  **Original Spry code (to be replaced):** ```html &amp;amp;lt;!-- OLD SPRY CODE - REMOVE THIS --&amp;amp;gt; &amp;amp;lt;ul id=&amp;quot;MenuBar1&amp;quot; class=&amp;quot;MenuBarHorizontal&amp;quot;&amp;amp;gt;     &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;index.html&amp;quot;&amp;amp;gt;Home&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;     &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;#&amp;quot; class=&amp;quot;MenuBarItemSubmenu&amp;quot;&amp;amp;gt;About&amp;amp;lt;/a&amp;amp;gt;         &amp;amp;lt;ul&amp;amp;gt;             &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;about.html#mission&amp;quot;&amp;amp;gt;Mission&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;             &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;about.html#team&amp;quot;&amp;amp;gt;Team&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;         &amp;amp;lt;/ul&amp;amp;gt;     &amp;amp;lt;/li&amp;amp;gt;     &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;gallery.html&amp;quot;&amp;amp;gt;Gallery&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt; &amp;amp;lt;/ul&amp;amp;gt; &amp;amp;lt;link href=&amp;quot;SpryAssets/SpryMenuBarHorizontal.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;amp;gt; &amp;amp;lt;script src=&amp;quot;SpryAssets/SpryMenuBar.js&amp;quot;&amp;amp;gt;&amp;amp;lt;/script&amp;amp;gt; &amp;amp;lt;script&amp;amp;gt;var MenuBar1 = new Spry.Widget.MenuBar(&amp;quot;MenuBar1&amp;quot;);&amp;amp;lt;/script&amp;amp;gt; ```  **Replacement CSS-only code:** ```html &amp;amp;lt;!-- NEW CSS-ONLY CODE --&amp;amp;gt; &amp;amp;lt;nav&amp;amp;gt;     &amp;amp;lt;ul class=&amp;quot;main-nav&amp;quot;&amp;amp;gt;         &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;index.html&amp;quot;&amp;amp;gt;Home&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;         &amp;amp;lt;li class=&amp;quot;has-dropdown&amp;quot;&amp;amp;gt;             &amp;amp;lt;a href=&amp;quot;about.html&amp;quot;&amp;amp;gt;About &amp;amp;#9662;&amp;amp;lt;/a&amp;amp;gt;             &amp;amp;lt;ul class=&amp;quot;dropdown&amp;quot;&amp;amp;gt;                 &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;about.html#mission&amp;quot;&amp;amp;gt;Mission&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;                 &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;about.html#team&amp;quot;&amp;amp;gt;Team&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;             &amp;amp;lt;/ul&amp;amp;gt;         &amp;amp;lt;/li&amp;amp;gt;         &amp;amp;lt;li&amp;amp;gt;&amp;amp;lt;a href=&amp;quot;gallery.html&amp;quot;&amp;amp;gt;Gallery&amp;amp;lt;/a&amp;amp;gt;&amp;amp;lt;/li&amp;amp;gt;     &amp;amp;lt;/ul&amp;amp;gt; &amp;amp;lt;/nav&amp;amp;gt; ```  **Line-by-line explanation:**  | Change | Why | |--------|-----| | Removed&lt;/code&gt;&amp;lt;link&amp;gt;&lt;code&gt;to SpryMenuBarHorizontal.css | No longer needed; replaced by our own CSS | | Removed&lt;/code&gt;&amp;lt;script&amp;gt;&lt;code&gt;for SpryMenuBar.js | No JavaScript needed for CSS-only dropdown | | Removed initialization&lt;/code&gt;&amp;lt;script&amp;gt;&lt;code&gt;| No widget to initialize | | Changed&lt;/code&gt;class=&amp;quot;MenuBarHorizontal&amp;quot;&lt;code&gt;to&lt;/code&gt;class=&amp;quot;main-nav&amp;quot;&lt;code&gt;| Our own class name for our own CSS | | Added&lt;/code&gt;class=&amp;quot;has-dropdown&amp;quot;&lt;code&gt;to parent&lt;/code&gt;&amp;lt;li&amp;gt;&lt;code&gt;| Identifies which items have submenus | | Changed&lt;/code&gt;class=&amp;quot;MenuBarItemSubmenu&amp;quot;&lt;code&gt;to plain&lt;/code&gt;&amp;lt;a&amp;gt;&lt;code&gt;| Spry-specific class no longer needed | | Changed inner&lt;/code&gt;&amp;lt;ul&amp;gt;&lt;code&gt;to&lt;/code&gt;class=&amp;quot;dropdown&amp;quot;&lt;code&gt;| Matches our CSS selector | | Added&lt;/code&gt;&amp;#9662;&lt;code&gt;to About link text | Visual indicator that a dropdown exists | | Wrapped in&lt;/code&gt;&amp;lt;nav&amp;gt;</code> element | Semantic HTML5 landmark for navigation |</p>
+<p><strong>Result:</strong>
+Identical visual appearance and behavior to the Spry menu, but with zero JavaScript, smaller file size, better accessibility, and full mobile compatibility (with media query adjustments from Session 15).</p>
+<hr>
+<h3 id="example-2-building-an-accordion-for-event-details">Example 2: Building an Accordion for Event Details<a class="anchor" href="#example-2-building-an-accordion-for-event-details" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong>
+The Events page needs an expandable list of event details. Students should be able to click an event name to see the full description without scrolling past everything.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&amp;lt;h2&amp;gt;Upcoming Events&amp;lt;/h2&amp;gt;
+
+&lt;div class=&quot;css-accordion&quot;&gt;
+    &lt;details open&gt;
+        &amp;lt;summary&amp;gt;Web Design Workshop — March 15&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;A beginner-friendly workshop covering HTML structure, CSS styling,
+               and responsive design principles. Bring your laptop!&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 2:00 PM – 4:00 PM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Room:&lt;/strong&gt; Lab A, Building 3&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Capacity:&lt;/strong&gt; 30 students&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Campus Photo Walk — March 22&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;Explore the university campus with fellow photography enthusiasts.
+               All skill levels and camera types welcome (including phones).&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Meeting Point:&lt;/strong&gt; Main Gate&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 9:00 AM – 11:00 AM&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Guest Speaker: Career in Tech — April 2&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;Industry professional shares insights about career paths in
+               technology. Q&amp;A session included.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Speaker:&lt;/strong&gt; Ms. Tran Thi Mai, Senior Developer at ABC Corp&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 3:00 PM – 5:00 PM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Venue:&lt;/strong&gt; Lecture Hall B2&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;div class=&quot;css-accordion&quot;&gt;</code></td>
+<td>Outer wrapper for styling (border, rounded corners).</td>
+</tr>
+<tr>
+<td><code>&lt;details open&gt;</code></td>
+<td>First panel starts open so visitors immediately see content.</td>
+</tr>
+<tr>
+<td><code>&lt;details&gt;</code> (without <code>open</code>)</td>
+<td>Remaining panels start closed.</td>
+</tr>
+<tr>
+<td>`<summary><code></td>
+<td>Clickable header text. Browser adds a disclosure triangle automatically.</td>
+</tr>
+</tbody></table>
+<pre><code class="language-html">&amp;lt;h2&amp;gt;Event Details&amp;lt;/h2&amp;gt;
+&amp;lt;p&amp;gt;Click on an event to see full details.&amp;lt;/p&amp;gt;
+
+&lt;div class=&quot;css-accordion&quot;&gt;
+    &lt;details open&gt;
+        &amp;lt;summary&amp;gt;Web Design Workshop — March 15&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;Learn HTML structure, CSS styling, and responsive design
+               in this hands-on workshop for beginners.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 2:00 PM – 4:00 PM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Room:&lt;/strong&gt; Computer Lab A, Building 3&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Capacity:&lt;/strong&gt; 30 students&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Requirements:&lt;/strong&gt; Bring your laptop&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Campus Photo Walk — March 22&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;Explore campus with fellow photographers. All skill levels
+               and equipment welcome (including smartphones).&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Meeting Point:&lt;/strong&gt; Main Gate&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 9:00 AM – 11:00 AM&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Guest Speaker: Career in Tech — April 2&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;Industry professional Ms. Tran Thi Mai discusses career
+               paths in web development and software engineering.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 3:00 PM – 5:00 PM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Venue:&lt;/strong&gt; Lecture Hall B2&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Includes:&lt;/strong&gt; Q&amp;A session and networking&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+
+    &lt;details&gt;
+        &lt;summary&gt;Hackathon 2024 — April 5-6&lt;/summary&gt;
+        &lt;div class=&quot;accordion-content&quot;&gt;
+            &lt;p&gt;48-hour coding challenge! Teams of 2–4 build a web application
+               from scratch. Prizes for top three teams.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Start:&lt;/strong&gt; April 5, 9:00 AM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;End:&lt;/strong&gt; April 6, 9:00 AM&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Venue:&lt;/strong&gt; Innovation Hub, Building 5&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Registration:&lt;/strong&gt; Sign up via the Join Us page&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/details&gt;
+&lt;/div&gt;
+</code></pre>
+<ol start="3">
+<li><strong>Add the accordion CSS</strong> to <code>css/style.css</code> (if not already added from the Theory section):</li>
+</ol>
+<pre><code class="language-css">/* CSS-Only Accordion */
+.css-accordion {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.css-accordion details {
+    border-bottom: 1px solid #ddd;
+}
+
+.css-accordion details:last-child {
+    border-bottom: none;
+}
+
+.css-accordion summary {
+    padding: 15px 20px;
+    background-color: #f0f4f8;
+    cursor: pointer;
+    font-weight: 600;
+    color: #1a5276;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    list-style: none;
+}
+
+.css-accordion summary::before {
+    content: &quot;▶ &quot;;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.css-accordion details[open] summary::before {
+    content: &quot;▼ &quot;;
+}
+
+.css-accordion summary:hover {
+    background-color: #e0e8f0;
+}
+
+.css-accordion details[open] summary {
+    background-color: #2874a6;
+    color: white;
+}
+
+.accordion-content {
+    padding: 15px 20px;
+    line-height: 1.6;
+}
+
+.accordion-content p {
+    margin: 5px 0;
+}
+</code></pre>
+<ol start="4">
+<li><p><strong>Save</strong> both files.</p>
+</li>
+<li><p><strong>Preview</strong> <code>events.html</code> in the browser. Click each event summary to expand/collapse.</p>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong></p>
+<ul>
+<li>First panel (Web Design Workshop) is open by default.</li>
+<li>Clicking another panel opens it (first panel stays open — this is native <code>&lt;details&gt;</code> behavior).</li>
+<li>Summary backgrounds change color when open (blue) and on hover (light gray).</li>
+<li>Custom triangle markers (▶/▼) indicate state.</li>
+<li>Works on mobile without any JavaScript.</li>
+</ul>
+<p>💾 <strong>Save point:</strong> Final backup of Session 14 work.</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Interactive widgets fail in a specific way: they look right until someone uses a keyboard, or until the JavaScript does not run.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dropdown menu opens on hover but not on tap</td>
+<td>Only <code>:hover</code> is implemented</td>
+<td>Test on a phone or in device mode</td>
+<td>Add <code>:focus-within</code>, or toggle a class with JavaScript</td>
+</tr>
+<tr>
+<td>Submenu vanishes as you move the mouse toward it</td>
+<td>A gap between the parent and the submenu</td>
+<td>Inspect the boxes and their positions</td>
+<td>Remove the gap, or use padding instead of margin to bridge it</td>
+</tr>
+<tr>
+<td>Tabs are unreachable by keyboard</td>
+<td><code>&lt;div&gt;</code> used where a <code>&lt;button&gt;</code> belongs</td>
+<td>Press Tab and watch the focus ring</td>
+<td>Use real <code>&lt;button&gt;</code> elements, or add <code>tabindex=&quot;0&quot;</code> plus key handlers</td>
+</tr>
+<tr>
+<td>Accordion opens all panels at once</td>
+<td>Every panel shares one <code>id</code> or one target</td>
+<td>Validator reports duplicate IDs</td>
+<td>Unique <code>id</code> per panel; point each control at its own</td>
+</tr>
+<tr>
+<td>Widget does nothing at all</td>
+<td>The script is missing, or loads before the markup</td>
+<td>Console shows a 404 or a null reference</td>
+<td>Load the script at the end of <code>&lt;body&gt;</code>, or use <code>defer</code></td>
+</tr>
+<tr>
+<td>Console: <code>Cannot read properties of null</code></td>
+<td>The element was not in the DOM when the script ran</td>
+<td>The error names the line</td>
+<td>Move the script after the markup, or wrap in <code>DOMContentLoaded</code></td>
+</tr>
+<tr>
+<td>Screen reader does not announce an opened panel</td>
+<td>No <code>aria-expanded</code> on the control</td>
+<td>Check the accessibility tree</td>
+<td>Toggle <code>aria-expanded=&quot;true&quot;/&quot;false&quot;</code> in the click handler</td>
+</tr>
+<tr>
+<td>Focus is lost after closing a dialog</td>
+<td>Focus was never returned</td>
+<td>Tab after closing and see where you land</td>
+<td>Store the previously focused element and restore it on close</td>
+</tr>
+<tr>
+<td>Old Spry code produces <code>SpryTabbedPanels is not defined</code></td>
+<td>Spry was discontinued in 2012</td>
+<td>Console reports the undefined constructor</td>
+<td>Rebuild with CSS and modern JavaScript, or <code>&lt;details&gt;</code> for disclosure</td>
+</tr>
+<tr>
+<td>Animation is smooth on a laptop, janky on a phone</td>
+<td>Animating layout properties like <code>height</code> or <code>top</code></td>
+<td>Performance panel shows layout thrashing</td>
+<td>Animate <code>transform</code> and <code>opacity</code> only</td>
+</tr>
+</tbody></table>
+<p><strong>Do not use Spry in new work.</strong> Adobe stopped developing it in 2012, and it depends on scripts that are no longer maintained. Everything Spry offered has a native replacement: <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> for disclosure, CSS transitions for animation, and a small amount of plain JavaScript with correct ARIA attributes for tabs and accordions.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. What was the Spry Framework, and why is it legacy?</strong></p>
+<p>&lt;details&gt;
+&lt;summary&gt;Answer</summary></p>
+<p>Spry was Adobe's Ajax/JavaScript library bundled with Dreamweaver (2006–2012), providing drop-in Accordion, Tabbed Panels, and Menu Bar widgets. It is legacy because Adobe discontinued it in 2012 — no updates, no security patches — and because modern CSS and HTML do the same jobs natively, with less code, better accessibility, and no dependency.</p>
+</details><hr>
+<p><strong>Q2. Name the three Spry widgets and their modern replacements.</strong></p>
+<details>
+<summary>Answer</summary><ul>
+<li><strong>Spry Accordion</strong> → <code>&lt;details&gt;</code> / <code>&lt;summary&gt;&lt;code&gt;(pure HTML, no CSS or JS needed) - **Spry Tabbed Panels** → CSS radio-button technique, or a small amount of JavaScript - **Spry Menu Bar** → nested&lt;/code&gt;&amp;lt;ul&amp;gt;&lt;code&gt;with&lt;/code&gt;position: absolute&lt;code&gt;and&lt;/code&gt;:hover&lt;code&gt;/&lt;/code&gt;:focus-within&lt;code&gt; &amp;amp;lt;/details&amp;amp;gt;  ---  **Q3. In a CSS dropdown, which element gets&lt;/code&gt;position: relative&lt;code&gt;and which gets&lt;/code&gt;position: absolute</code>?**</li>
+</ul>
+<p>&lt;details&gt;
+&lt;summary&gt;Answer</summary></p>
+<p>The parent <code>&lt;li&gt;</code> gets <code>position: relative</code>; the nested <code>&lt;ul&gt;</code> submenu gets <code>position: absolute</code> plus <code>top: 100%; left: 0</code>. The relative parent creates the positioning context, so <code>top: 100%</code> means "just below the bottom of my parent" rather than "below the viewport top". Omit the relative parent and the submenu flies to the corner of the page.</p>
+</details><hr>
+<p><strong>Q4. Why is <code>display: none</code> → <code>display: block</code> the standard show/hide pair for submenus?</strong></p>
+<details>
+<summary>Answer</summary><p><code>display: none</code> removes the submenu from rendering <strong>and</strong> from the accessibility tree, so it is genuinely hidden rather than merely invisible. Switching to <code>block</code> on <code>:hover</code> reveals it. Alternatives like <code>visibility: hidden</code> or <code>opacity: 0</code> leave the element occupying space and still focusable, which produces invisible clickable areas.</p>
+</details><hr>
+<p><strong>Q5. Why is a <code>:hover</code>-only dropdown inaccessible, and what is the one-line fix?</strong></p>
+<details>
+<summary>Answer</summary><p><code>:hover</code> requires a pointing device, so keyboard users tabbing through the nav never open the submenu, and touch-screen users have no hover state at all. The fix is to pair it with <code>:focus-within</code>:</p>
+<pre><code class="language-css">.dropdown:hover .submenu,
+.dropdown:focus-within .submenu { display: block; }
+</code></pre>
+<p><code>:focus-within</code> matches while any descendant has keyboard focus.</p>
+</details><hr>
+<p><strong>Q6. How do <code>&lt;details&gt;</code> and <code>&lt;summary&gt;&lt;code&gt;work, and what does&lt;/code&gt;open</code> do?</strong></p>
+<p>&lt;details&gt;
+&lt;summary&gt;Answer</summary></p>
+<p><code>&lt;details&gt;</code> is a collapsible container; <code>&lt;summary&gt;&lt;code&gt;is its always-visible clickable heading. Everything after&lt;/code&gt;&amp;lt;summary&amp;gt;&lt;code&gt;shows or hides when clicked. Adding the&lt;/code&gt;open</code> attribute makes the panel expanded on page load. The toggle behaviour, the keyboard support, and the correct screen reader announcements are all built in — zero CSS, zero JavaScript.</p>
+<p>&lt;/details&gt;</p>
+<hr>
+<p><strong>Q7. How does the checkbox hack create a toggle menu without JavaScript?</strong></p>
+<p>&lt;details&gt;
+&lt;summary&gt;Answer</summary></p>
+<p>A hidden <code>&lt;input type=&quot;checkbox&quot; id=&quot;menu-toggle&quot;&gt;</code> holds the state, and a <code>&lt;label for=&quot;menu-toggle&quot;&gt;</code> acts as the visible button — clicking a label toggles its associated checkbox. Then <code>#menu-toggle:checked ~ nav { display: block; }</code> reveals the menu, using the general sibling selector <code>~</code>, which requires the nav to appear <strong>after</strong> the checkbox in the markup.</p>
+</details><hr>
+<p><strong>Q8. You inherit a site using Spry widgets. What is your migration plan?</strong></p>
+<details>
+<summary>Answer</summary><p>Identify each widget by its <code>Spry*.js</code> / <code>Spry*.css</code> includes and <code>SpryAssets/</code> folder. Replace them one at a time: accordions become <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>, menu bars become nested <code>&lt;ul&gt;</code> with CSS, tabbed panels become the radio-button technique. Test each replacement with the keyboard before moving on, then delete the Spry files and their <code>&lt;script&gt;</code>/<code>&lt;link&gt;</code> tags. Expect the result to be dramatically less code.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Explain what the Spry Framework is and why it is considered legacy</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Name the three main Spry widgets (Accordion, Tabbed Panels, Menu Bar)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Identify the three files/components needed for a Spry widget to work</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Build a CSS-only dropdown navigation using nested <code>&lt;ul&gt;</code> and <code>:hover</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Add <code>:focus-within</code> for keyboard-accessible dropdowns</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create an accordion using HTML5 <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Explain why CSS-only solutions are preferred over Spry for new projects</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Apply the dropdown navigation consistently across all site pages</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered <strong>No</strong> to any row, re-read the relevant Theory section and redo the corresponding Hands-On task.</p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details">MDN: <code>&lt;details&gt;</code> Element</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary">MDN: <code>&lt;summary&gt;</code> Element</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:hover">MDN: <code>:hover</code> Pseudo-class</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within">MDN: <code>:focus-within</code> Pseudo-class</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning">MDN: CSS Positioning</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_lists">MDN: Styling Lists</a></li>
+<li><a href="https://getbootstrap.com/docs/5.3/components/accordion/">Bootstrap Accordion Component</a></li>
+<li><a href="https://web.archive.org/web/2012/https://labs.adobe.com/technologies/spry/">Adobe Spry Framework (archived)</a></li>
+<li><a href="https://www.w3.org/TR/html52/interactive-elements.html">W3C: HTML5 Interactive Elements</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 15 (our final session!) we learn mobile-responsive design with viewport meta tags and media queries, then review ALL 15 sessions and prepare for the final exam.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

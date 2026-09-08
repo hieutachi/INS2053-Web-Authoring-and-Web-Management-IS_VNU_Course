@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 11: Polish Your Compact Site — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../homework/session-11.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page homework-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../homework/session-11.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Bài tập</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Buổi 11</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Buổi 11 · Bài tập</p>
+    <h1>Homework 11: Polish Your Compact Site</h1>
+    <p class="lead">Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.</p>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#practice-status">Practice Status</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
+        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../homework/session-11.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <div class="callout status-note" role="status">
+    <p><strong>Chế độ luyện tập.</strong> Việc nộp và chấm bài trực tuyến chưa mở. Hãy làm bài trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp.</p>
+    <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 11, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng buổi học">
+    <a class="up" href="../sessions/session-11.html">Tổng quan Buổi 11</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-11-polish-your-compact-site">Homework 11: Polish Your Compact Site<a class="anchor" href="#homework-11-polish-your-compact-site" aria-label="Link to this section">#</a></h2>
+<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
+<p>Online submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Refine your website into a polished, professional-looking project</li>
+<li>Review and improve content quality across all pages</li>
+<li>Write a README file to document your project</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-polish-all-pages">Task 1: Polish All Pages<a class="anchor" href="#task-1-polish-all-pages" aria-label="Link to this section">#</a></h4>
+<p>Review your entire site and make improvements for a professional look.</p>
+<p><strong>Go through each page and check:</strong></p>
+<ul>
+<li>Are there at least 3-5 pages total? (Home, About, Contact, Schedule, Media)</li>
+<li>Is the content well-written with no spelling/grammar errors?</li>
+<li>Are all images loading and properly sized?</li>
+<li>Do all navigation links work on every page?</li>
+<li>Is the layout consistent across all pages?</li>
+<li>Does the CSS look clean and professional?</li>
+</ul>
+<p><strong>Improvements to make:</strong></p>
+<ul>
+<li>Fix any broken images or links</li>
+<li>Ensure consistent heading styles on every page</li>
+<li>Add smooth transitions or hover effects where appropriate</li>
+<li>Make sure the footer looks the same on every page</li>
+</ul>
+<h4 id="task-2-add-a-favicon">Task 2: Add a Favicon<a class="anchor" href="#task-2-add-a-favicon" aria-label="Link to this section">#</a></h4>
+<p>Add a small icon (favicon) to your website.</p>
+<ul>
+<li>Create or find a small square image (16x16 or 32x32 pixels)</li>
+<li>Save it as <code>favicon.ico</code> or <code>favicon.png</code> in the <code>images/</code> folder</li>
+<li>Add this link in the <code>&lt;head&gt;</code> of every HTML page:<ul>
+<li>Every page sits at the project root, so the same line works on all five:</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-html">&lt;link rel=&quot;icon&quot; href=&quot;images/favicon.png&quot; type=&quot;image/png&quot;&gt;
+</code></pre>
+<h4 id="task-3-write-a-readme-file">Task 3: Write a README File<a class="anchor" href="#task-3-write-a-readme-file" aria-label="Link to this section">#</a></h4>
+<p>Create a README file that documents your project.</p>
+<p><strong>Create the file:</strong> <code>project/README.md</code></p>
+<p><strong>Your README must include:</strong></p>
+<ul>
+<li>Project title (your club name)</li>
+<li>A brief description of what the site is about (2-3 sentences)</li>
+<li>A list of pages in the site (e.g., Home, About, Contact, Schedule, Media)</li>
+<li>A list of technologies used (HTML5, CSS3, Google Fonts)</li>
+<li>Instructions on how to open the site locally</li>
+<li>Your name and student ID</li>
+</ul>
+<p><strong>Example README:</strong></p>
+<pre><code class="language-markdown"># Student Club Website
+
+A website for the [Club Name] at VNU-IS.
+
+## Pages
+- Home (index.html)
+- About (about.html)
+- Activities (activities.html)
+- Media (media.html)
+- Contact (contact.html)
+
+## Technologies
+- HTML5
+- CSS3
+- Google Fonts
+
+## How to Run
+Open `index.html` in any web browser.
+
+## Author
+[Your Name] - [Student ID]
+</code></pre>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>project/README.md</code> (new file)</li>
+<li><code>project/index.html</code> (polish + favicon)</li>
+<li><code>project/about.html</code> (polish + favicon)</li>
+<li><code>project/activities.html</code> (polish + favicon)</li>
+<li><code>project/media.html</code> (polish + favicon)</li>
+<li><code>project/contact.html</code> (polish + favicon)</li>
+<li><code>project/css/style.css</code> (final polish)</li>
+</ul>
+<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW11: Polish site and add README&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Page count</td>
+<td>1</td>
+<td>Has 3-5 pages</td>
+</tr>
+<tr>
+<td>Content quality</td>
+<td>2</td>
+<td>Well-written, no errors, good images</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>2</td>
+<td>All links work across all pages</td>
+</tr>
+<tr>
+<td>Visual polish</td>
+<td>2</td>
+<td>Consistent, professional appearance</td>
+</tr>
+<tr>
+<td>Favicon</td>
+<td>1</td>
+<td>Favicon shows in browser tab</td>
+</tr>
+<tr>
+<td>README</td>
+<td>2</td>
+<td>Has all required sections</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Read your content aloud to catch spelling and grammar errors</li>
+<li>Open each page in the browser and click every link to test them</li>
+<li>A good README helps others understand your project</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>Your site should feel like a complete, finished product — clean, consistent, and professional. The browser tab should show your favicon. Anyone reading the README should understand what your project is about.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

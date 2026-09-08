@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 11: Designing a Compact Site — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 11: Designing a Compact Site — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/11-designing-a-compact-site.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/11-designing-a-compact-site.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 11</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 11</p>
+    <h1>Buổi 11: Designing a Compact Site</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-what-is-a-compact-site">1. What Is a &quot;Compact Site&quot;?</a></li>
+        <li class="d2"><a href="#2-site-planning-think-before-you-code">2. Site Planning: Think Before You Code</a></li>
+        <li class="d2"><a href="#3-site-maps-visualizing-your-structure">3. Site Maps: Visualizing Your Structure</a></li>
+        <li class="d2"><a href="#4-grouping-content-and-avoiding-redundancy">4. Grouping Content and Avoiding Redundancy</a></li>
+        <li class="d2"><a href="#5-visual-hierarchy-and-polishing">5. Visual Hierarchy and Polishing</a></li>
+        <li class="d2"><a href="#6-writing-a-project-readme">6. Writing a Project README</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-creating-a-site-map-for-your-project">Example 1: Creating a Site Map for Your Project</a></li>
+        <li class="d2"><a href="#example-2-eliminating-redundancy">Example 2: Eliminating Redundancy</a></li>
+        <li class="d2"><a href="#example-3-polishing-adding-visual-hierarchy">Example 3: Polishing — Adding Visual Hierarchy</a></li>
+        <li class="d2"><a href="#example-4-writing-a-readme">Example 4: Writing a README</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#r1-why-analysis-comes-before-building">R1. Why Analysis Comes Before Building</a></li>
+        <li class="d2"><a href="#r2-gathering-requirements-questions-to-ask">R2. Gathering Requirements — Questions to Ask</a></li>
+        <li class="d2"><a href="#r3-writing-a-simple-requirements-specification">R3. Writing a Simple Requirements Specification</a></li>
+        <li class="d2"><a href="#r4-from-requirements-to-site-map">R4. From Requirements to Site Map</a></li>
+        <li class="d2"><a href="#r5-worked-example-a-business-brief">R5. Worked Example — A Business Brief</a></li>
+        <li class="d2"><a href="#r6-practice-your-turn">R6. Practice — Your Turn</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/11-designing-a-compact-site.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-11.html">Tổng quan Buổi 11</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-11">🟦 SESSION 11<a class="anchor" href="#session-11" aria-label="Link to this section">#</a></h2>
+<h2 id="designing-a-compact-site"><strong>Designing a Compact Site</strong><a class="anchor" href="#designing-a-compact-site" aria-label="Link to this section">#</a></h2>
+<p>Hello again, friend! So far you have built several pages for your Student Club Website — a home page, about page, events page, gallery, media page, and contact page. But now comes an important question: <em>how do you make sure all these pages feel like one cohesive, well-organized website instead of a random pile of files?</em> In this session you will learn how to plan, structure, and polish a <strong>compact site</strong> — a small, focused website where every page has a clear purpose, navigation is simple, content is organized logically, and nothing is wasted. This is exactly the kind of site you will submit as your course project. Grab a notebook (yes, paper!) and let us plan before we code.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    Web design fundamentals; Information Architecture basics (MDN)
+🎯 Objectives:   1. Define what a &quot;compact site&quot; is and when it is the right choice
+                 2. Draw a site map before writing any HTML
+                 3. Group and organise content; remove redundancy (DRY)
+                 4. Polish a 3-5 page site to a presentable standard
+                 5. Write a project README that explains your own site
+📖 Prepare:      1. Review all previous sessions
+                 2. Have your club-website folder open in VS Code
+                 3. Bring pen and paper for the planning exercise
+🖼 Diagrams:     canvases/buoi-11.canvas.tsx — SiteMap, DryPrinciple, VisualHierarchy,
+                 BriefToSpec
+🔗 Outcomes:     CLO2 (analyse requirements for a business website)
+                 CLO4 (design and build a web application)
+                 CLO5 (evaluate, document, and present a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Define what a &quot;compact site&quot; is and explain why compact design matters</li>
+<li>Plan a small website BEFORE writing any code using paper sketches and site maps</li>
+<li>Draw an ASCII/text site map showing page hierarchy and relationships</li>
+<li>Group related content into logical pages without overlap or redundancy</li>
+<li>Apply visual hierarchy principles (headings, spacing, contrast) to guide the reader</li>
+<li>Polish a 3-5 page website so it looks professional and consistent</li>
+<li>Write a clear README file documenting your project structure and decisions</li>
+<li>Audit your Student Club Website for consistency, broken links, and quality issues</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-what-is-a-compact-site">1. What Is a &quot;Compact Site&quot;?<a class="anchor" href="#1-what-is-a-compact-site" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>compact site</strong> is a small website (typically 3-10 pages) that communicates its message clearly and efficiently. Every page serves a distinct purpose. Navigation is simple and predictable. Content is concise but complete. There is no filler, no duplication, and no confusion.</p>
+<p>Think of it like a well-organized brochure: each panel covers one topic, the flow makes sense, and the reader can find what they need quickly.</p>
+<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Consider a local restaurant&#39;s website. It probably has: Home (welcome + hours), Menu, About Us, Reservations, and Contact. Five pages. Each page does ONE job. You never wonder &quot;where do I find the menu?&quot; because there is a big &quot;Menu&quot; button right there. That is a compact site done well.</p>
+<p>Your Student Club Website is the same concept: Home, About, Events, Gallery, Media, Contact. Six pages. Each has a clear role.</p>
+<h4 id="12-characteristics-of-a-good-compact-site">1.2 Characteristics of a Good Compact Site<a class="anchor" href="#12-characteristics-of-a-good-compact-site" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th>Description</th>
+<th>Bad Example</th>
+<th>Good Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Clear purpose</strong></td>
+<td>Every page answers &quot;why does this exist?&quot;</td>
+<td>A page called &quot;Stuff&quot; with random content</td>
+<td>An &quot;Events&quot; page listing upcoming activities</td>
+</tr>
+<tr>
+<td><strong>Simple navigation</strong></td>
+<td>User can reach any page in 1-2 clicks</td>
+<td>Deep nested menus, hidden pages</td>
+<td>Flat nav bar with 4-6 items</td>
+</tr>
+<tr>
+<td><strong>Consistent design</strong></td>
+<td>Same header, footer, fonts, colors on every page</td>
+<td>Different styles on different pages</td>
+<td>Shared CSS stylesheet applied everywhere</td>
+</tr>
+<tr>
+<td><strong>No redundancy</strong></td>
+<td>Information appears in ONE place only</td>
+<td>Address on Home, About, AND Contact</td>
+<td>Address only on Contact page</td>
+</tr>
+<tr>
+<td><strong>Visual hierarchy</strong></td>
+<td>Important things stand out; less important things recede</td>
+<td>Everything the same size and color</td>
+<td>Large headings, medium subheadings, smaller body text</td>
+</tr>
+<tr>
+<td><strong>Fast loading</strong></td>
+<td>Small images, minimal CSS, no unnecessary scripts</td>
+<td>5 MB hero images, 10 Google Fonts</td>
+<td>Optimized images, 1-2 fonts, lean CSS</td>
+</tr>
+<tr>
+<td><strong>Mobile-friendly</strong></td>
+<td>Works on phones and tablets</td>
+<td>Horizontal scrollbars, tiny text</td>
+<td>Responsive layout, readable text at all sizes</td>
+</tr>
+</tbody></table>
+<h4 id="13-why-compact-design-matters">1.3 Why Compact Design Matters<a class="anchor" href="#13-why-compact-design-matters" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Your audience is busy.</strong> Visitors spend seconds deciding whether to stay. Clear structure keeps them engaged.</li>
+<li><strong>You are a beginner.</strong> Managing 5 pages well is better than managing 20 pages poorly.</li>
+<li><strong>Small sites load fast.</strong> Speed matters for user experience AND search engine ranking.</li>
+<li><strong>It is easier to maintain.</strong> Fewer pages = fewer places for bugs to hide.</li>
+<li><strong>It demonstrates mastery.</strong> A polished 5-page site impresses more than a sloppy 20-page site.</li>
+</ol>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>&quot;Compact&quot; does NOT mean &quot;cramped.&quot; You still need whitespace, breathing room, and readability.</li>
+<li>&quot;Compact&quot; means <strong>efficient</strong> — every pixel earns its place.</li>
+<li>The goal is clarity, not cramming.</li>
+</ul>
+<hr>
+<h3 id="2-site-planning-think-before-you-code">2. Site Planning: Think Before You Code<a class="anchor" href="#2-site-planning-think-before-you-code" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-11.canvas.tsx</code> → <code>BriefToSpec</code> — slide <code>s11-clo2</code> (&quot;Requirements Analysis (CLO2)&quot;)</p>
+</blockquote>
+<h4 id="21-the-planning-process">2.1 The Planning Process<a class="anchor" href="#21-the-planning-process" aria-label="Link to this section">#</a></h4>
+<p>Professional web developers NEVER start coding immediately. They plan first. Here is the process:</p>
+<pre><code>STEP 1: Define Purpose
+    &quot;What is this site FOR? Who is the AUDIENCE?&quot;
+         │
+         ▼
+STEP 2: List Content
+    &quot;What information do we need to communicate?&quot;
+         │
+         ▼
+STEP 3: Group Content
+    &quot;Which pieces belong together on the same page?&quot;
+         │
+         ▼
+STEP 4: Create Site Map
+    &quot;How do pages relate to each other?&quot;
+         │
+         ▼
+STEP 5: Sketch Wireframes
+    &quot;What does each page LOOK like?&quot;
+         │
+         ▼
+STEP 6: Code
+    Now (and only now) open VS Code
+</code></pre>
+<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>Before building the Student Club Website, you should have asked:</p>
+<ul>
+<li><strong>Purpose:</strong> Showcase our club to attract new members</li>
+<li><strong>Audience:</strong> Fellow students, faculty advisors, prospective members</li>
+<li><strong>Content needed:</strong> Club description, member info, event calendar, photos, videos, contact details</li>
+<li><strong>Grouping:</strong> Description → About page; Calendar → Events page; Photos → Gallery; Videos/Audio → Media; Contact form → Contact page</li>
+</ul>
+<h4 id="22-defining-your-pages">2.2 Defining Your Pages<a class="anchor" href="#22-defining-your-pages" aria-label="Link to this section">#</a></h4>
+<p>For a compact student club site, here is a recommended page structure:</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Purpose</th>
+<th>Key Content</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Home</strong> (index.html)</td>
+<td>Welcome + overview</td>
+<td>Hero section, brief intro, highlights, call-to-action</td>
+</tr>
+<tr>
+<td><strong>About</strong> (about.html)</td>
+<td>Who we are</td>
+<td>Mission, history, team members, values</td>
+</tr>
+<tr>
+<td><strong>Events</strong> (events.html)</td>
+<td>What we do</td>
+<td>Upcoming events, past events, calendar</td>
+</tr>
+<tr>
+<td><strong>Gallery</strong> (gallery.html)</td>
+<td>Visual showcase</td>
+<td>Photo grid from events and activities</td>
+</tr>
+<tr>
+<td><strong>Media</strong> (media.html)</td>
+<td>Multimedia content</td>
+<td>Videos, audio, YouTube embeds</td>
+</tr>
+<tr>
+<td><strong>Contact</strong> (contact.html)</td>
+<td>How to reach us</td>
+<td>Form, email, social links, location</td>
+</tr>
+</tbody></table>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>Keep it between 3-7 pages for a compact site. More than 10 and you are losing focus.</li>
+<li>Every page MUST be reachable from the main navigation. No orphan pages.</li>
+<li>Every page MUST link back to Home. Users should never get stuck.</li>
+</ul>
+<h4 id="try-it-yourself-write-the-brief-before-the-code">🧪 Try It Yourself — Write the Brief Before the Code<a class="anchor" href="#try-it-yourself-write-the-brief-before-the-code" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Answer seven questions about your capstone in one sitting.</p>
+<ol>
+<li>Open a plain text file and answer these, one line each:<ul>
+<li><strong>Goal</strong> — what should this site achieve?</li>
+<li><strong>Audience</strong> — who visits, and what do they want?</li>
+<li><strong>Pages</strong> — the list, each with one purpose.</li>
+<li><strong>Functional requirements</strong> — features: contact form, events table, photo gallery.</li>
+<li><strong>Non-functional requirements</strong> — mobile-friendly, accessible, fast, easy to update.</li>
+<li><strong>Out of scope</strong> — what you will deliberately <em>not</em> build.</li>
+<li><strong>Success metric</strong> — how you would know it worked.</li>
+</ul>
+</li>
+<li>Now compare your <strong>Pages</strong> list against your <strong>Functional requirements</strong>. Every feature must live on a named page.</li>
+</ol>
+<p><strong>Expected result:</strong> A one-page brief. Any feature with no page to live on, or any page with no purpose, is a gap you found before writing code.</p>
+<details>
+<summary>The section students skip and later regret</summary><p><strong>Out of scope.</strong> Writing down what you will not build is what stops a four-page club site from acquiring a login system, a payment gateway, and a blog in week three.</p>
+<p>It is also the section that protects you at marking time. &quot;Online payment is out of scope&quot; is a design decision. Payment silently missing is an incomplete project. Same code, different reading.</p>
+<p>The other high-value line is <strong>Success metric</strong>. &quot;A new member can find the meeting time in under ten seconds&quot; is testable — hand your laptop to a classmate and time them. &quot;Looks professional&quot; is not testable, so it cannot guide any decision.</p>
+<p>Do this on paper or in a text file, not in your head. Fifteen minutes of writing routinely saves a full session of rework.</p>
+</details><hr>
+<h3 id="3-site-maps-visualizing-your-structure">3. Site Maps: Visualizing Your Structure<a class="anchor" href="#3-site-maps-visualizing-your-structure" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-11.canvas.tsx</code> → <code>SiteMap</code> — slide <code>s11-sitemap</code> (&quot;Site Maps&quot;)</p>
+</blockquote>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>site map</strong> is a diagram showing all the pages in your website and how they connect. It is your blueprint before construction.</p>
+<h4 id="32-ascii-site-map-for-student-club-website">3.2 ASCII Site Map for Student Club Website<a class="anchor" href="#32-ascii-site-map-for-student-club-website" aria-label="Link to this section">#</a></h4>
+<pre><code>                    ┌─────────────┐
+                    │   HOME      │
+                    │ index.html  │
+                    └──────┬──────┘
+                           │
+          ┌────────┬───────┼───────┬────────┬──────────┐
+          │        │       │       │        │          │
+     ┌────▼───┐ ┌──▼───┐ ┌▼────┐ ┌▼─────┐ ┌▼──────┐ ┌▼────────┐
+     │ ABOUT  │ │EVENTS│ │GALL │ │MEDIA │ │CONTCT │ │ (future │
+     │about   │ │events│ │gall │ │media │ │contact│ │  pages) │
+     │.html   │ │.html │ │.html│ │.html │ │.html  │ │         │
+     └────────┘ └──────┘ └─────┘ └──────┘ └───────┘ └─────────┘
+</code></pre>
+<p>Key observations from this map:</p>
+<ul>
+<li><strong>Flat hierarchy:</strong> All pages are ONE level deep (no sub-pages). This is ideal for compact sites.</li>
+<li><strong>Home is the hub:</strong> Every page connects back to Home.</li>
+<li><strong>Maximum 6 pages:</strong> Manageable scope for a student project.</li>
+<li><strong>Each page has a unique filename:</strong> No ambiguity.</li>
+</ul>
+<h4 id="33-site-map-rules">3.3 Site Map Rules<a class="anchor" href="#33-site-map-rules" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Every page must appear in the site map.</strong> If it is not in the map, it should not exist.</li>
+<li><strong>Every page must be reachable from Home</strong> within 1-2 clicks.</li>
+<li><strong>No dead ends.</strong> Every page should link back to Home at minimum.</li>
+<li><strong>No orphan pages.</strong> A page with no incoming links is invisible to users.</li>
+<li><strong>Label each node</strong> with both the page name AND the filename.</li>
+</ol>
+<h4 id="34-deeper-hierarchy-if-needed">3.4 Deeper Hierarchy (If Needed)<a class="anchor" href="#34-deeper-hierarchy-if-needed" aria-label="Link to this section">#</a></h4>
+<p>If your site grows beyond ~7 pages, you might need sub-pages:</p>
+<pre><code>                    ┌─────────────┐
+                    │   HOME      │
+                    └──────┬──────┘
+                           │
+              ┌────────────┼────────────┐
+              │            │            │
+         ┌────▼───┐  ┌────▼───┐  ┌────▼────┐
+         │ ABOUT  │  │ EVENTS │  │ CONTACT │
+         └────┬───┘  └────┬───┘  └─────────┘
+              │           │
+         ┌────▼───┐  ┌───▼────┐  ┌──────────┐
+         │ TEAM   │  │WORKSHPS│  │COMPETITNS│
+         │team    │  │workshps│  │competitns│
+         │.html   │  │.html   │  │.html     │
+         └────────┘  └────────┘  └──────────┘
+</code></pre>
+<p>But for INS2053, stick with the flat structure unless your instructor says otherwise.</p>
+<h4 id="try-it-yourself-draw-the-site-map-then-count-the-clicks">🧪 Try It Yourself — Draw the Site Map, Then Count the Clicks<a class="anchor" href="#try-it-yourself-draw-the-site-map-then-count-the-clicks" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Check that nothing on your site is buried.</p>
+<ol>
+<li>Draw your pages as boxes, with Home at the top and arrows for every link.</li>
+<li>For each page, count the minimum clicks from Home.</li>
+<li>Mark any page reachable only from one other page.</li>
+<li>Now check the reverse: from your deepest page, can you get back to Home in one click?</li>
+</ol>
+<p><strong>Expected result:</strong> Every page is two clicks or fewer from Home, and every page links back to Home. A four-page club site should be entirely flat — one click each.</p>
+<details>
+<summary>What the map tells you that the folder tree does not</summary><p>The folder tree shows where files <em>live</em>. The site map shows how visitors <em>move</em>. They are different, and confusing them is how pages get orphaned.</p>
+<p>Two things to look for on your drawing:</p>
+<p><strong>Dead ends.</strong> A page you can reach but not leave, except with the Back button. The fix is the shared nav on every page — which is exactly why it is worth duplicating.</p>
+<p><strong>Orphans.</strong> A file that exists but nothing links to it. Nobody will ever find it. Search your HTML for the file name; if the only occurrence is the file itself, it is an orphan.</p>
+<p>The three-click rule is the usual guideline: any content within three clicks of the entry point. For a compact site it should be one. If something needs four, your grouping is wrong — the content probably belongs on an existing page rather than a new one.</p>
+</details><hr>
+<h3 id="4-grouping-content-and-avoiding-redundancy">4. Grouping Content and Avoiding Redundancy<a class="anchor" href="#4-grouping-content-and-avoiding-redundancy" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-11.canvas.tsx</code> → <code>DryPrinciple</code> — slide <code>s11-dry</code> (&quot;DRY — Don&#39;t Repeat Yourself&quot;)</p>
+</blockquote>
+<h4 id="41-the-principle-of-single-responsibility">4.1 The Principle of Single Responsibility<a class="anchor" href="#41-the-principle-of-single-responsibility" aria-label="Link to this section">#</a></h4>
+<p>Each page should have <strong>ONE primary purpose</strong>. Ask yourself: &quot;If a visitor lands on this page, what is the ONE thing they should learn or do?&quot;</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>ONE Primary Purpose</th>
+<th>Should NOT Include</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home</td>
+<td>Welcome + direct visitors to the right page</td>
+<td>Full event details, full member bios</td>
+</tr>
+<tr>
+<td>About</td>
+<td>Tell the club&#39;s story and introduce the team</td>
+<td>Event dates, photo galleries</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>List upcoming and past events with details</td>
+<td>Club history, contact forms</td>
+</tr>
+<tr>
+<td>Gallery</td>
+<td>Show photos in a visual grid</td>
+<td>Long text descriptions, video players</td>
+</tr>
+<tr>
+<td>Media</td>
+<td>Present video and audio content</td>
+<td>Static photos, event listings</td>
+</tr>
+<tr>
+<td>Contact</td>
+<td>Provide ways to get in touch</td>
+<td>Club history, event calendars</td>
+</tr>
+</tbody></table>
+<h4 id="42-identifying-and-eliminating-redundancy">4.2 Identifying and Eliminating Redundancy<a class="anchor" href="#42-identifying-and-eliminating-redundancy" aria-label="Link to this section">#</a></h4>
+<p><strong>Redundancy</strong> means the same information appearing on multiple pages. This causes problems:</p>
+<ul>
+<li><strong>Maintenance nightmare:</strong> If the club email changes, you have to update it in 5 places instead of 1.</li>
+<li><strong>Inconsistency risk:</strong> You might update one copy but forget another, creating conflicting information.</li>
+<li><strong>User confusion:</strong> &quot;I saw different dates on two different pages — which is correct?&quot;</li>
+</ul>
+<p>❌ <strong>Redundant (BAD):</strong></p>
+<pre><code>Home page: &quot;Contact us at club@university.edu&quot;
+About page: &quot;Email us at club@university.edu&quot;
+Events page: &quot;Questions? Email club@university.edu&quot;
+Contact page: &quot;club@university.edu&quot;
+</code></pre>
+<p>✅ <strong>Non-redundant (GOOD):</strong></p>
+<pre><code>Home page: &quot;Get in touch → [link to Contact]&quot;
+About page: &quot;Have questions? Visit our Contact page.&quot;
+Events page: &quot;For registration, see Contact page.&quot;
+Contact page: &quot;Email: club@university.edu&quot; ← ONE canonical location
+</code></pre>
+<h4 id="43-cross-linking-instead-of-repeating">4.3 Cross-Linking Instead of Repeating<a class="anchor" href="#43-cross-linking-instead-of-repeating" aria-label="Link to this section">#</a></h4>
+<p>When Page A needs to reference content that belongs on Page B, <strong>link to Page B</strong> instead of copying the content:</p>
+<pre><code class="language-html">&lt;!-- On the Events page --&gt;
+&lt;p&gt;Want to see photos from past events?
+   Visit our &lt;a href=&quot;gallery.html&quot;&gt;Photo Gallery&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- On the Home page --&gt;
+&lt;p&gt;We have exciting events coming up!
+   Check the &lt;a href=&quot;events.html&quot;&gt;Events page&lt;/a&gt; for details.&lt;/p&gt;
+</code></pre>
+<p>This keeps content DRY (Don&#39;t Repeat Yourself) while still guiding users to where they need to go.</p>
+<h4 id="try-it-yourself-find-the-duplication">🧪 Try It Yourself — Find the Duplication<a class="anchor" href="#try-it-yourself-find-the-duplication" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Audit your own site for content that exists twice.</p>
+<ol>
+<li>List every page and write down what appears on each: nav, footer, contact details, opening hours, the club&#39;s mission statement.</li>
+<li>Mark anything that appears on more than one page.</li>
+<li>For each duplicate, decide: should this be identical everywhere, or does it belong on exactly one page?</li>
+<li>Fix the worst case — the one where two copies have already drifted apart.</li>
+</ol>
+<p><strong>Expected result:</strong> The nav and footer <em>should</em> be duplicated (identically). Substantive content should not be. Most students find the contact email in three places with two different values.</p>
+<details>
+<summary>The distinction that matters</summary><p>Duplication is not automatically wrong. It becomes wrong when the copies can disagree.</p>
+<ul>
+<li><strong>Site furniture</strong> — nav and footer. Repeated on every page by necessity, and must be identical. Copy them deliberately and update all pages together.</li>
+<li><strong>Content</strong> — the mission statement, the meeting time, the contact address. This should live in exactly one place, with links pointing to it.</li>
+</ul>
+<p>The failure mode is always the same: you change the meeting room on the Home page, forget the About page, and now the site contradicts itself. A visitor who trusts the wrong page turns up at the wrong room.</p>
+<p>A static site has no templating, so the practical discipline is:</p>
+<ol>
+<li>Keep a list of what is repeated.</li>
+<li>When you change a repeated item, use <strong>Ctrl+Shift+F</strong> in VS Code to find every occurrence before you save.</li>
+<li>For anything longer than a line, prefer one canonical page plus links: &quot;See the <code class="path">full schedule</code>.&quot;</li>
+</ol>
+</details><hr>
+<h3 id="5-visual-hierarchy-and-polishing">5. Visual Hierarchy and Polishing<a class="anchor" href="#5-visual-hierarchy-and-polishing" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-11.canvas.tsx</code> → <code>VisualHierarchy</code> — slide <code>s11-hierarchy</code> (&quot;Visual Hierarchy&quot;)</p>
+</blockquote>
+<h4 id="51-what-is-visual-hierarchy">5.1 What Is Visual Hierarchy?<a class="anchor" href="#51-what-is-visual-hierarchy" aria-label="Link to this section">#</a></h4>
+<p><strong>Visual hierarchy</strong> is the arrangement of elements so that the most important things catch the eye first. You control hierarchy through:</p>
+<ol>
+<li><strong>Size:</strong> Larger = more important</li>
+<li><strong>Color/Contrast:</strong> Bold colors draw attention; muted colors recede</li>
+<li><strong>Spacing:</strong> Whitespace around an element gives it emphasis</li>
+<li><strong>Position:</strong> Top-left gets noticed first (in left-to-right reading cultures)</li>
+<li><strong>Typography weight:</strong> Bold &gt; Regular &gt; Light</li>
+</ol>
+<h4 id="real-life-example-3">🎒 Real-life example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<p>Look at any newspaper front page. The headline is HUGE and bold. The subheadline is smaller. The body text is even smaller. Your eye naturally flows from headline → subheadline → body. That is visual hierarchy.</p>
+<h4 id="52-applying-hierarchy-to-your-site">5.2 Applying Hierarchy to Your Site<a class="anchor" href="#52-applying-hierarchy-to-your-site" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* STRONG HIERARCHY */
+h1 {
+    font-size: 36px;       /* Largest — page title */
+    font-weight: 700;
+    color: #1a5276;        /* Dark, authoritative */
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 26px;       /* Medium — section titles */
+    font-weight: 600;
+    color: #2874a6;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 20px;       /* Smaller — subsection titles */
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+}
+
+p {
+    font-size: 16px;       /* Base reading size */
+    line-height: 1.6;      /* Comfortable reading */
+    color: #444;           /* Slightly softer than headings */
+    margin-bottom: 15px;
+}
+
+.caption {
+    font-size: 13px;       /* Smallest — supplementary info */
+    color: #888;           /* Muted color */
+    font-style: italic;
+}
+</code></pre>
+<p>The visual flow:</p>
+<pre><code>H1 (biggest, darkest)        ← User sees this FIRST
+    │
+    ▼
+H2 (medium, medium-dark)     ← Then scans sections
+    │
+    ▼
+H3 (smaller)                 ← Then reads subsections
+    │
+    ▼
+P (base size, comfortable)   ← Then reads body text
+    │
+    ▼
+Caption (smallest, muted)    ← Notices details last
+</code></pre>
+<h4 id="53-polishing-checklist">5.3 Polishing Checklist<a class="anchor" href="#53-polishing-checklist" aria-label="Link to this section">#</a></h4>
+<p>Before submitting your compact site, run through this checklist:</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Navigation</strong></td>
+<td>Same nav bar on every page? Links work? Active page highlighted?</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Same fonts, colors, spacing across all pages? Shared CSS file?</td>
+</tr>
+<tr>
+<td><strong>Headings</strong></td>
+<td>One <code>&lt;h1&gt;</code> per page? Logical h2→h3 nesting? No skipped levels?</td>
+</tr>
+<tr>
+<td><strong>Images</strong></td>
+<td>All have <code>alt</code> text? Optimized file sizes? Correct paths?</td>
+</tr>
+<tr>
+<td><strong>Links</strong></td>
+<td>No broken links? External links open correctly? Email links use <code>mailto:</code>?</td>
+</tr>
+<tr>
+<td><strong>Text</strong></td>
+<td>No lorem ipsum placeholder text? No spelling errors? Readable font size?</td>
+</tr>
+<tr>
+<td><strong>Meta tags</strong></td>
+<td><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> present? Viewport meta tag present? Title tags descriptive?</td>
+</tr>
+<tr>
+<td><strong>Validation</strong></td>
+<td>HTML validates at validator.w3.org? CSS validates at jigsaw.w3.org/css-validator?</td>
+</tr>
+<tr>
+<td><strong>Responsiveness</strong></td>
+<td>Tested at desktop, tablet, and mobile widths? No horizontal scrollbar?</td>
+</tr>
+<tr>
+<td><strong>File organization</strong></td>
+<td>Files in proper folders (css/, images/, video/, audio/)? No stray files?</td>
+</tr>
+<tr>
+<td><strong>README</strong></td>
+<td>Project documented with description, file list, and instructions?</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="6-writing-a-project-readme">6. Writing a Project README<a class="anchor" href="#6-writing-a-project-readme" aria-label="Link to this section">#</a></h3>
+<h4 id="61-why-write-a-readme">6.1 Why Write a README?<a class="anchor" href="#61-why-write-a-readme" aria-label="Link to this section">#</a></h4>
+<p>A README file tells anyone who opens your project:</p>
+<ul>
+<li>What the project IS</li>
+<li>How to VIEW/RUN it</li>
+<li>What FILES are included</li>
+<li>What TECHNOLOGIES were used</li>
+<li>Any SPECIAL NOTES or credits</li>
+</ul>
+<p>Even if your instructor does not require one, writing a README is a professional habit that employers value.</p>
+<h4 id="62-readme-template-for-student-club-website">6.2 README Template for Student Club Website<a class="anchor" href="#62-readme-template-for-student-club-website" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-markdown"># Student Club Website
+
+A multi-page website for the VNU-IS Student Club, built as the course
+project for INS2053 — Web Authoring and Web Management.
+
+## How to View
+
+1. Open `index.html` in any modern web browser (Chrome, Firefox, Edge).
+2. Navigate using the top menu bar.
+3. No server required — all files are static HTML/CSS.
+
+## File Structure
+
+club-website/
+├── index.html          ← Home page
+├── about.html          ← About Us page
+├── events.html         ← Events page
+├── gallery.html        ← Photo Gallery page
+├── media.html          ← Media Center (video/audio)
+├── contact.html        ← Contact page
+├── css/
+│   └── style.css       ← Main stylesheet (shared by all pages)
+├── images/
+│   ├── logo.png        ← Club logo
+│   ├── hero.jpg        ← Home page hero image
+│   ├── gallery-*.jpg   ← Gallery photos
+│   └── video-poster.jpg← Video thumbnail
+├── video/
+│   └── club-promo.mp4  ← Promotional video
+├── audio/
+│   └── club-anthem.mp3 ← Club anthem audio
+└── README.md           ← This file
+
+## Technologies Used
+
+- HTML5 (semantic elements, multimedia)
+- CSS3 (Flexbox, responsive design, media queries)
+- Google Fonts (Montserrat, Open Sans)
+- No JavaScript frameworks (pure HTML/CSS)
+
+## Design Decisions
+
+- Color scheme: Navy blue (#1a5276) and white for professionalism
+- Font pairing: Montserrat (headings) + Open Sans (body)
+- Responsive: Stacks to single column below 768px
+- Navigation: Flat structure, 6 pages, consistent across all pages
+
+## Author
+
+[Your Name] — INS2053, Semester X, 2024
+</code></pre>
+<h4 id="63-readme-best-practices">6.3 README Best Practices<a class="anchor" href="#63-readme-best-practices" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Keep it concise (under 100 lines for a small project)</li>
+<li>Use plain language — assume the reader is not a developer</li>
+<li>Include the file structure tree (use <code>tree</code> command or type manually)</li>
+<li>Mention HOW to view the site (most common question)</li>
+<li>Credit any free resources used (images, fonts, sample media)</li>
+</ul>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><p><strong>Plan before coding.</strong> Spend at least 30 minutes sketching your site map and grouping content on paper before touching VS Code.</p>
+</li>
+<li><p><strong>Keep navigation flat.</strong> For a compact site, all pages should be accessible from a single-level navigation bar. No dropdowns-within-dropdowns.</p>
+</li>
+<li><p><strong>One purpose per page.</strong> If a page tries to do three things, split it into three pages or remove two of those things.</p>
+</li>
+<li><p><strong>DRY (Don&#39;t Repeat Yourself).</strong> Each piece of information lives in ONE canonical location. Other pages LINK to it.</p>
+</li>
+<li><p><strong>Use consistent templates.</strong> Copy your HTML skeleton (header, nav, footer) identically across all pages. Only change the <code>&lt;main&gt;</code> content and the <code>&lt;title&gt;</code>.</p>
+</li>
+<li><p><strong>Optimize assets.</strong> Compress images (use <a href="https://tinypng.com/">https://tinypng.com/</a>), compress videos (use HandBrake), minify CSS when ready to deploy.</p>
+</li>
+<li><p><strong>Test navigation thoroughly.</strong> Click EVERY link on EVERY page. Broken links destroy credibility instantly.</p>
+</li>
+<li><p><strong>Validate before submitting.</strong> Run your HTML through <a href="https://validator.w3.org/">https://validator.w3.org/</a> and your CSS through <a href="https://jigsaw.w3.org/css-validator/">https://jigsaw.w3.org/css-validator/</a>. Fix all errors.</p>
+</li>
+<li><p><strong>Write a README.</strong> Document your project structure, technologies, and how to view it.</p>
+</li>
+<li><p><strong>Get feedback.</strong> Show your site to a friend who has never seen it. Ask: &quot;Can you find the events page? Can you contact us?&quot; Their confusion reveals your design flaws.</p>
+</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-starting-to-code-without-a-plan">Mistake 1: Starting to code without a plan<a class="anchor" href="#mistake-1-starting-to-code-without-a-plan" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Opening VS Code and creating <code>page1.html</code>, <code>page2.html</code>, <code>page3.html</code> with no idea what goes where.</p>
+<p>✅ <strong>Correct:</strong> Drawing a site map on paper first. Deciding page names, purposes, and content groupings BEFORE writing a single line of HTML.</p>
+<h4 id="mistake-2-too-many-pages">Mistake 2: Too many pages<a class="anchor" href="#mistake-2-too-many-pages" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Creating 15 pages for a student club site (History, Mission, Vision, Team, Advisors, Alumni, Workshops, Social Events, Competitions, Newsletter, Blog, FAQ, Sponsors, Partners, Downloads).</p>
+<p>✅ <strong>Correct:</strong> Consolidating into 5-6 focused pages. Put workshops/social/competitions under one Events page. Put mission/vision/history under About. Link to external platforms for newsletters and blogs.</p>
+<h4 id="mistake-3-inconsistent-navigation">Mistake 3: Inconsistent navigation<a class="anchor" href="#mistake-3-inconsistent-navigation" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code>Page 1 nav: Home | About | Events | Contact
+Page 2 nav: Home | About Us | Gallery | Contact Us
+Page 3 nav: Main | Info | Pics | Reach Us
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code>ALL pages: Home | About Us | Events | Gallery | Media | Contact
+(Same labels, same order, same links, every page)
+</code></pre>
+<h4 id="mistake-4-orphan-pages">Mistake 4: Orphan pages<a class="anchor" href="#mistake-4-orphan-pages" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Creating <code>awards.html</code> but forgetting to add it to the navigation bar. Nobody can find it.</p>
+<p>✅ <strong>Correct:</strong> Every page appears in the site map AND in the navigation bar. If it is not worth linking to, it is not worth creating.</p>
+<h4 id="mistake-5-duplicate-content-across-pages">Mistake 5: Duplicate content across pages<a class="anchor" href="#mistake-5-duplicate-content-across-pages" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Pasting the full club description on Home, About, AND Events pages.</p>
+<p>✅ <strong>Correct:</strong> Full description on About page only. Home has a 2-sentence summary with a &quot;Learn more →&quot; link to About.</p>
+<h4 id="mistake-6-no-visual-hierarchy">Mistake 6: No visual hierarchy<a class="anchor" href="#mistake-6-no-visual-hierarchy" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> All text is 16px, same color, same weight. The page looks like a wall of text.</p>
+<p>✅ <strong>Correct:</strong> H1 at 36px dark blue, H2 at 26px medium blue, body at 16px dark gray, captions at 13px light gray. Clear visual flow.</p>
+<h4 id="mistake-7-submitting-without-testing">Mistake 7: Submitting without testing<a class="anchor" href="#mistake-7-submitting-without-testing" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Zipping the folder and submitting without checking links, images, or responsiveness.</p>
+<p>✅ <strong>Correct:</strong> Testing every link, viewing at multiple screen sizes, validating HTML/CSS, and having someone else test it too.</p>
+<h4 id="try-it-yourself-write-the-readme-a-marker-will-read">🧪 Try It Yourself — Write the README a Marker Will Read<a class="anchor" href="#try-it-yourself-write-the-readme-a-marker-will-read" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Document your project in the file that gets opened first.</p>
+<ol>
+<li>Create <code>README.md</code> in your project root.</li>
+<li>Write these six sections, one or two lines each:<pre><code class="language-markdown"># Student Web Club Website
+
+## What this is
+A four-page site for the VNU Student Web Club, built for INS2053.
+
+## Pages
+- `index.html` — home, upcoming events
+- `pages/about.html` — who we are
+- `pages/events.html` — full schedule table
+- `pages/contact.html` — contact form
+
+## How to run it
+Open `index.html` in any browser. No build step or server required.
+
+## Built with
+Hand-written HTML5 and CSS3. No frameworks.
+
+## Known limitations
+The contact form has no backend; submissions are not stored.
+
+## Author
+[Your name], [student ID]
+</code></pre>
+</li>
+<li>Open it in VS Code and press <strong>Ctrl+Shift+V</strong> to preview the rendered Markdown.</li>
+</ol>
+<p><strong>Expected result:</strong> A formatted document with headings and a bulleted list. GitHub renders this automatically on the repository home page.</p>
+<details>
+<summary>Why &quot;known limitations&quot; earns marks rather than losing them</summary><p>Students routinely omit it, fearing it draws attention to what is missing. It does the opposite: it shows you know the difference between a bug you missed and a boundary you chose.</p>
+<p>&quot;The contact form has no backend&quot; tells a marker you understand that HTML alone cannot store a submission — which is a <em>correct</em> observation about the technology, not an admission of failure. Silence on the point leaves them wondering whether you noticed.</p>
+<p>Keep &quot;How to run it&quot; literal, too. &quot;Open <code>index.html</code> in a browser&quot; is the whole instruction for a static site. If a reader has to guess the entry point, the README has failed at its one job.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Compact site</td>
+<td>Small (3-10 pages), focused, efficient website</td>
+<td>Student Club Website with 6 pages</td>
+</tr>
+<tr>
+<td>Site map</td>
+<td>Diagram showing all pages and their connections</td>
+<td>ASCII tree of page hierarchy</td>
+</tr>
+<tr>
+<td>Flat hierarchy</td>
+<td>All pages at the same level, no deep nesting</td>
+<td>Home → About, Events, Gallery, Media, Contact</td>
+</tr>
+<tr>
+<td>Single responsibility</td>
+<td>Each page has ONE primary purpose</td>
+<td>Events page = events only, not bios or history</td>
+</tr>
+<tr>
+<td>DRY principle</td>
+<td>Don&#39;t Repeat Yourself — one canonical location per fact</td>
+<td>Email address only on Contact page</td>
+</tr>
+<tr>
+<td>Cross-linking</td>
+<td>Link to content on other pages instead of duplicating</td>
+<td>&quot;See our Gallery&quot; link on Events page</td>
+</tr>
+<tr>
+<td>Visual hierarchy</td>
+<td>Arrange elements so importance is visually obvious</td>
+<td>H1 &gt; H2 &gt; H3 &gt; P &gt; Caption in size/weight/color</td>
+</tr>
+<tr>
+<td>Polishing</td>
+<td>Final review pass for consistency, quality, and completeness</td>
+<td>Navigation check, validation, responsiveness test</td>
+</tr>
+<tr>
+<td>README</td>
+<td>Documentation file explaining the project</td>
+<td>Markdown file with structure, tech stack, instructions</td>
+</tr>
+<tr>
+<td>Wireframe</td>
+<td>Low-fidelity sketch of page layout</td>
+<td>Paper drawing showing header/nav/content/sidebar/footer</td>
+</tr>
+<tr>
+<td>Consistent template</td>
+<td>Same header/nav/footer structure on every page</td>
+<td>Copy-paste skeleton, change only <code>&lt;main&gt;</code> content</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-creating-a-site-map-for-your-project">Example 1: Creating a Site Map for Your Project<a class="anchor" href="#example-1-creating-a-site-map-for-your-project" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You are starting a new compact site for a university coding club. You need to decide what pages to include before writing any code.</p>
+<p><strong>Step 1 — List all possible content:</strong></p>
+<ul>
+<li>Club description and mission</li>
+<li>Member profiles and leadership team</li>
+<li>Weekly meeting schedule</li>
+<li>Upcoming hackathons and workshops</li>
+<li>Photos from past events</li>
+<li>Tutorial videos and recordings</li>
+<li>Sponsor logos</li>
+<li>Contact form and social media links</li>
+<li>Application form for new members</li>
+<li>Blog posts and announcements</li>
+</ul>
+<p><strong>Step 2 — Group into pages:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Page Name</th>
+<th>Filename</th>
+<th>Content Included</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Welcome + overview</td>
+<td>Home</td>
+<td>index.html</td>
+<td>Brief intro, highlights, links to other pages</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>About</td>
+<td>about.html</td>
+<td>Mission, team, sponsors</td>
+</tr>
+<tr>
+<td>Activities</td>
+<td>Events</td>
+<td>events.html</td>
+<td>Meetings, hackathons, workshops, schedule</td>
+</tr>
+<tr>
+<td>Visuals</td>
+<td>Gallery</td>
+<td>gallery.html</td>
+<td>Event photos</td>
+</tr>
+<tr>
+<td>Multimedia</td>
+<td>Media</td>
+<td>media.html</td>
+<td>Tutorial videos, recordings</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Contact</td>
+<td>contact.html</td>
+<td>Form, email, social links, join application</td>
+</tr>
+</tbody></table>
+<p>Note: &quot;Blog posts&quot; were excluded — too much maintenance for a compact site. Link to a Facebook page or Medium blog instead. &quot;Application form&quot; goes on Contact page as a link or embedded form.</p>
+<p><strong>Step 3 — Draw the site map:</strong></p>
+<pre><code>                    ┌─────────────┐
+                    │   HOME      │
+                    │ index.html  │
+                    └──────┬──────┘
+                           │
+          ┌────────┬───────┼───────┬────────┐
+          │        │       │       │        │
+     ┌────▼───┐ ┌──▼───┐ ┌▼────┐ ┌▼─────┐ ┌▼────────┐
+     │ ABOUT  │ │EVENTS│ │GALL │ │MEDIA │ │ CONTACT │
+     │about   │ │events│ │gall │ │media │ │ contact │
+     │.html   │ │.html │ │.html│ │.html │ │ .html   │
+     └────────┘ └──────┘ └─────┘ └──────┘ └─────────┘
+</code></pre>
+<p><strong>Result:</strong> A clear 6-page flat structure. Every page has a defined purpose. No redundancy. Ready to code.</p>
+<hr>
+<h3 id="example-2-eliminating-redundancy">Example 2: Eliminating Redundancy<a class="anchor" href="#example-2-eliminating-redundancy" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Your Student Club Website currently has the club email address on four different pages. You want to fix this.</p>
+<p><strong>BEFORE (redundant):</strong></p>
+<p>On <code>index.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;Contact us at club@university.edu for more information.&lt;/p&gt;
+</code></pre>
+<p>On <code>about.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;Email: club@university.edu&lt;/p&gt;
+</code></pre>
+<p>On <code>events.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;For registration, email club@university.edu&lt;/p&gt;
+</code></pre>
+<p>On <code>contact.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;Email: club@university.edu&lt;/p&gt;
+</code></pre>
+<p><strong>AFTER (DRY):</strong></p>
+<p>On <code>index.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;Have questions? &lt;a href=&quot;contact.html&quot;&gt;Get in touch&lt;/a&gt; with us!&lt;/p&gt;
+</code></pre>
+<p>On <code>about.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;Want to reach us? Visit our &lt;a href=&quot;contact.html&quot;&gt;Contact page&lt;/a&gt;.&lt;/p&gt;
+</code></pre>
+<p>On <code>events.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;For registration details, please &lt;a href=&quot;contact.html&quot;&gt;contact us&lt;/a&gt;.&lt;/p&gt;
+</code></pre>
+<p>On <code>contact.html</code>:</p>
+<pre><code class="language-html">&lt;p&gt;Email: &lt;a href=&quot;mailto:club@university.edu&quot;&gt;club@university.edu&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Removed raw email from Home, About, Events</td>
+<td>Email now lives ONLY on Contact page</td>
+</tr>
+<tr>
+<td>Added <code>&lt;a href=&quot;contact.html&quot;&gt;</code> links</td>
+<td>Directs users to the canonical location</td>
+</tr>
+<tr>
+<td>Kept <code>mailto:</code> link only on Contact page</td>
+<td>If the email changes, you update ONE file</td>
+</tr>
+<tr>
+<td>Used descriptive link text (&quot;Get in touch&quot;, &quot;contact us&quot;)</td>
+<td>Better for accessibility and SEO than &quot;click here&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> If the club email changes to <code>studentclub@vnuis.edu.vn</code>, you edit ONE file (<code>contact.html</code>) instead of four.</p>
+<hr>
+<h3 id="example-3-polishing-adding-visual-hierarchy">Example 3: Polishing — Adding Visual Hierarchy<a class="anchor" href="#example-3-polishing-adding-visual-hierarchy" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Your About page looks flat and boring. All text is the same size. You want to add visual hierarchy.</p>
+<p><strong>BEFORE (flat, no hierarchy):</strong></p>
+<pre><code class="language-html">&lt;h2&gt;About Us&lt;/h2&gt;
+&lt;p&gt;The Student Club was founded in 2018. We are a community of passionate
+students who love technology. Our mission is to help students learn web
+development through hands-on projects. We meet every Wednesday at 5pm in
+Room 301. Our team includes 5 officers and over 50 active members.&lt;/p&gt;
+</code></pre>
+<p><strong>AFTER (clear hierarchy):</strong></p>
+<pre><code class="language-html">&lt;h2&gt;About Us&lt;/h2&gt;
+
+&lt;h3&gt;Our Mission&lt;/h3&gt;
+&lt;p&gt;We empower students to become confident web developers through
+hands-on projects, peer learning, and real-world experience.&lt;/p&gt;
+
+&lt;h3&gt;Our Story&lt;/h3&gt;
+&lt;p&gt;Founded in 2018, the Student Club started with just 5 members
+and a shared passion for web technology. Today, we have grown to
+over 50 active members who meet every Wednesday at 5pm in Room 301.&lt;/p&gt;
+
+&lt;h3&gt;Leadership Team&lt;/h3&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;President:&lt;/strong&gt; Nguyen Van A&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Vice President:&lt;/strong&gt; Tran Thi B&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Secretary:&lt;/strong&gt; Le Van C&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Treasurer:&lt;/strong&gt; Pham Thi D&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Technical Lead:&lt;/strong&gt; Hoang Van E&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p><strong>Why this is better:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Scannability</td>
+<td>Must read entire paragraph to find info</td>
+<td>Headings let users jump to relevant section</td>
+</tr>
+<tr>
+<td>Organization</td>
+<td>Everything jumbled together</td>
+<td>Logical sections: Mission, Story, Team</td>
+</tr>
+<tr>
+<td>Visual variety</td>
+<td>Wall of text</td>
+<td>Mix of paragraphs and lists</td>
+</tr>
+<tr>
+<td>Readability</td>
+<td>Dense, intimidating</td>
+<td>Bite-sized chunks, easy to digest</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> A visitor who only cares about meeting times can scan to &quot;Our Story&quot; in seconds. Someone interested in joining can jump straight to &quot;Leadership Team.&quot; The page breathes.</p>
+<hr>
+<h3 id="example-4-writing-a-readme">Example 4: Writing a README<a class="anchor" href="#example-4-writing-a-readme" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You are preparing to submit your Student Club Website project. You need to create a README.md file.</p>
+<p><strong>Code (README.md):</strong></p>
+<pre><code class="language-markdown"># Student Club Website
+
+A responsive, multi-page website for the VNU-IS Student Club.
+Built as the capstone project for INS2053 — Web Authoring and
+Web Management (Fall 2024).
+
+## Quick Start
+
+Open `index.html` in Chrome, Firefox, or Edge. No server needed.
+
+## Pages
+
+| Page | File | Description |
+|------|------|-------------|
+| Home | index.html | Welcome page with hero image and highlights |
+| About | about.html | Club mission, history, and leadership team |
+| Events | events.html | Upcoming and past events with details |
+| Gallery | gallery.html | Photo grid from club activities |
+| Media | media.html | Promo video, YouTube embed, club anthem audio |
+| Contact | contact.html | Contact form, email, social media links |
+
+## Tech Stack
+
+- HTML5 semantic markup
+- CSS3 (Flexbox, Grid, media queries)
+- Google Fonts: Montserrat + Open Sans
+- No JavaScript frameworks
+
+## Folder Structure
+
+club-website/
+├── index.html
+├── about.html
+├── events.html
+├── gallery.html
+├── media.html
+├── contact.html
+├── css/style.css
+├── images/ (logo, hero, gallery photos, poster)
+├── video/ (club-promo.mp4)
+├── audio/ (club-anthem.mp3)
+└── README.md
+
+## Credits
+
+- Sample video: sample-videos.com
+- Sample audio: soundhelix.com
+- Icons: Font Awesome (free tier)
+- Fonts: Google Fonts (open source)
+
+## Author
+
+Nguyen Van Sinh Vien — Student ID: 2024XXXXX
+INS2053, Fall 2024, VNU-IS
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Title + description</td>
+<td>Tells the reader WHAT this project is</td>
+</tr>
+<tr>
+<td>Quick Start</td>
+<td>Answers &quot;how do I view this?&quot; in one sentence</td>
+</tr>
+<tr>
+<td>Pages table</td>
+<td>Shows the complete site structure at a glance</td>
+</tr>
+<tr>
+<td>Tech Stack</td>
+<td>Lists technologies used (helpful for grading)</td>
+</tr>
+<tr>
+<td>Folder Structure</td>
+<td>Shows file organization (demonstrates good practices)</td>
+</tr>
+<tr>
+<td>Credits</td>
+<td>Acknowledges free resources (academic honesty)</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Identifies the student and course context</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> Anyone opening this project folder immediately understands what it is, how to use it, and who made it. Professional and complete.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<ol>
+<li>Open your <strong>club-website</strong> folder in VS Code.</li>
+<li>Make sure you have all pages from previous sessions: <code>index.html</code>, <code>about.html</code>, <code>events.html</code>, <code>gallery.html</code>, <code>media.html</code>, <code>contact.html</code>.</li>
+<li>Have a pen and paper (or digital note app) ready for planning.</li>
+<li>Open your browser&#39;s Developer Tools (F12) for testing.</li>
+</ol>
+<hr>
+<h4 id="task-1-draw-your-site-map">TASK 1: Draw Your Site Map<a class="anchor" href="#task-1-draw-your-site-map" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a visual site map for your current Student Club Website.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>On paper (or in a text file), list ALL pages you currently have.</li>
+<li>For each page, write its PRIMARY PURPOSE in one sentence.</li>
+<li>Draw the site map using ASCII art:</li>
+</ol>
+<pre><code>                    ┌─────────────┐
+                    │   HOME      │
+                    │ index.html  │
+                    └──────┬──────┘
+                           │
+          ┌────────┬───────┼───────┬────────┐
+          │        │       │       │        │
+     ┌────▼───┐ ┌──▼───┐ ┌▼────┐ ┌▼─────┐ ┌▼────────┐
+     │ ABOUT  │ │EVENTS│ │GALL │ │MEDIA │ │ CONTACT │
+     └────────┘ └──────┘ └─────┘ └──────┘ └─────────┘
+</code></pre>
+<ol start="4">
+<li><p>Verify:</p>
+<ul>
+<li>Every page appears in the map</li>
+<li>Every page is reachable from Home</li>
+<li>No orphan pages exist</li>
+<li>Maximum 7 pages</li>
+</ul>
+</li>
+<li><p>Below the map, write a one-sentence purpose for each page:</p>
+<pre><code>Home: Welcome visitors and direct them to specific pages
+About: Tell the club&#39;s story and introduce the team
+Events: List upcoming activities with dates and details
+Gallery: Showcase photos from club activities
+Media: Present video and audio content
+Contact: Provide ways to get in touch
+</code></pre>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> Your site map is complete and matches your actual files. Every page has a clear, unique purpose.</p>
+<p>💾 <strong>Save</strong> your site map as <code>sitemap.txt</code> in your project folder (optional but recommended).</p>
+<hr>
+<h4 id="task-2-audit-for-redundancy">TASK 2: Audit for Redundancy<a class="anchor" href="#task-2-audit-for-redundancy" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Find and eliminate duplicate content across your pages.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><p>Open ALL your HTML files in VS Code.</p>
+</li>
+<li><p>Search for repeated content. In VS Code, use <strong>Ctrl+Shift+F</strong> (Find in Files) and search for:</p>
+<ul>
+<li>Your club email address</li>
+<li>Your club phone number</li>
+<li>Your meeting location/address</li>
+<li>The club description paragraph</li>
+<li>Any other factual content that appears on multiple pages</li>
+</ul>
+</li>
+<li><p>For each piece of duplicated content:</p>
+<ul>
+<li>Decide which page is the CANONICAL location (the one place it should live)</li>
+<li>Replace duplicates on other pages with LINKS to the canonical page</li>
+</ul>
+</li>
+<li><p>Example fixes:</p>
+<pre><code class="language-html">&lt;!-- BEFORE: Email on Events page --&gt;
+&lt;p&gt;Email: club@university.edu&lt;/p&gt;
+
+&lt;!-- AFTER: Link to Contact page --&gt;
+&lt;p&gt;For inquiries, &lt;a href=&quot;contact.html&quot;&gt;contact us&lt;/a&gt;.&lt;/p&gt;
+</code></pre>
+</li>
+<li><p>Save all modified files.</p>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> Search again for the duplicated content. It should now appear in only ONE file. All other pages link to that file.</p>
+<p>💾 <strong>Save</strong> all changes.</p>
+<hr>
+<h4 id="task-3-standardize-navigation-across-all-pages">TASK 3: Standardize Navigation Across All Pages<a class="anchor" href="#task-3-standardize-navigation-across-all-pages" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Ensure identical navigation on every page.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><p>Choose your final navigation order. Recommended:</p>
+<pre><code>Home | About Us | Events | Gallery | Media | Contact
+</code></pre>
+</li>
+<li><p>Create the canonical navigation HTML block:</p>
+<pre><code class="language-html">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+</li>
+<li><p>Open EACH page and replace its existing <code>&lt;nav&gt;</code> section with this block.</p>
+</li>
+<li><p>On each page, add <code>class=&quot;active&quot;</code> to the CURRENT page&#39;s link:</p>
+<ul>
+<li>On <code>index.html</code>: <code>&lt;a href=&quot;index.html&quot; class=&quot;active&quot;&gt;Home&lt;/a&gt;</code></li>
+<li>On <code>about.html</code>: <code>&lt;a href=&quot;about.html&quot; class=&quot;active&quot;&gt;About Us&lt;/a&gt;</code></li>
+<li>And so on for each page.</li>
+</ul>
+</li>
+<li><p>Save ALL files.</p>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> Open each page in the browser. Verify:</p>
+<ul>
+<li>Same links, same order, same labels on every page</li>
+<li>Current page is highlighted (different color/background via <code>.active</code> CSS)</li>
+<li>All links navigate correctly</li>
+</ul>
+<p>💾 <strong>Save</strong> all files.</p>
+<hr>
+<h4 id="task-4-polish-visual-hierarchy">TASK 4: Polish Visual Hierarchy<a class="anchor" href="#task-4-polish-visual-hierarchy" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Ensure consistent, clear visual hierarchy across all pages.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>css/style.css</code>.</li>
+<li>Verify/add these heading styles:</li>
+</ol>
+<pre><code class="language-css">/* === VISUAL HIERARCHY === */
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a5276;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #2874a6;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 8px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 15px;
+}
+</code></pre>
+<ol start="3">
+<li><p>Check every page to ensure:</p>
+<ul>
+<li>Exactly ONE <code>&lt;h1&gt;</code> per page (the page title)</li>
+<li><code>&lt;h2&gt;</code> for major sections</li>
+<li><code>&lt;h3&gt;</code> for subsections within <code>&lt;h2&gt;</code> sections</li>
+<li>No skipped heading levels (don&#39;t jump from h2 to h4)</li>
+<li>No <code>&lt;h1&gt;</code> inside <code>&lt;main&gt;</code> if it is already in <code>&lt;header&gt;</code></li>
+</ul>
+</li>
+<li><p>Save the CSS file.</p>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> Open each page. The visual flow should be: large dark title → medium section headings → smaller subsection headings → readable body text.</p>
+<p>💾 <strong>Save</strong> all changes.</p>
+<hr>
+<h4 id="task-5-final-quality-audit">TASK 5: Final Quality Audit<a class="anchor" href="#task-5-final-quality-audit" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Run through the complete polishing checklist before submission.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><strong>Link check:</strong> Click EVERY link on EVERY page. Fix any broken links.</li>
+<li><strong>Image check:</strong> Verify all images load. Check <code>alt</code> attributes exist and are descriptive.</li>
+<li><strong>Responsive check:</strong> Resize browser to 375px (iPhone width). Verify no horizontal scrollbar, text is readable, layout stacks properly.</li>
+<li><strong>HTML validation:</strong> Go to <a href="https://validator.w3.org/#validate_by_upload">https://validator.w3.org/#validate_by_upload</a> and upload each HTML file. Fix errors.</li>
+<li><strong>CSS validation:</strong> Go to <a href="https://jigsaw.w3.org/css-validator/#validator_by_upload">https://jigsaw.w3.org/css-validator/#validator_by_upload</a> and upload <code>style.css</code>. Fix errors.</li>
+<li><strong>Placeholder check:</strong> Search for &quot;lorem ipsum&quot;, &quot;TODO&quot;, &quot;placeholder&quot;, &quot;xxx&quot; in all files. Replace with real content.</li>
+<li><strong>Title check:</strong> Verify each page has a unique, descriptive <code>&lt;title&gt;</code> tag.</li>
+<li><strong>Meta check:</strong> Verify <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> and viewport meta tag on every page.</li>
+<li><strong>Folder check:</strong> Verify clean folder structure (no stray files, proper organization).</li>
+<li><strong>README check:</strong> Create/update <code>README.md</code> following the template from Theory Section 6.</li>
+</ol>
+<p>✅ <strong>Check:</strong> All 10 items pass. Your site is polished and ready for submission.</p>
+<p>💾 <strong>Final save.</strong> Consider zipping the project folder as backup.</p>
+<hr>
+<h4 id="task-6-write-your-project-readme">TASK 6: Write Your Project README<a class="anchor" href="#task-6-write-your-project-readme" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a professional README.md for your Student Club Website.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><p>Create a new file <code>README.md</code> in your project root.</p>
+</li>
+<li><p>Fill in the template from Example 4 above, customizing:</p>
+<ul>
+<li>Your name and student ID</li>
+<li>Actual pages you created</li>
+<li>Actual technologies and resources used</li>
+<li>Your specific design decisions (colors, fonts, layout choices)</li>
+</ul>
+</li>
+<li><p>Include the file structure tree. You can generate it with:</p>
+<ul>
+<li>Windows Command Prompt: <code>tree /F</code> (run inside your project folder)</li>
+<li>Or type it manually</li>
+</ul>
+</li>
+<li><p>Proofread for spelling and clarity.</p>
+</li>
+<li><p>Save the file.</p>
+</li>
+</ol>
+<p>✅ <strong>Check:</strong> Open <code>README.md</code> in VS Code (it renders Markdown preview with Ctrl+Shift+V). Verify it looks professional and contains all required sections.</p>
+<p>💾 <strong>Save.</strong> Your project is now fully documented.</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Whole-site errors show up as inconsistency: pages that do not quite match, or links that work in one direction only.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Each page looks slightly different</td>
+<td>Every page has its own copy of the CSS, edited separately</td>
+<td>Compare the <code>&lt;head&gt;</code> blocks</td>
+<td>One shared external stylesheet linked from every page</td>
+</tr>
+<tr>
+<td>One page is unstyled while the rest are fine</td>
+<td>That page&#39;s <code>&lt;link&gt;</code> path is wrong for its folder depth</td>
+<td>Network tab shows a 404 on that page only</td>
+<td>Fix the <code>href</code> for that page&#39;s location</td>
+</tr>
+<tr>
+<td>Some pages have no nav, or an older nav</td>
+<td>The nav was copied before the last edit</td>
+<td>Diff the nav block across pages</td>
+<td>Update all pages together; keep the nav identical</td>
+</tr>
+<tr>
+<td>Site works locally, links break once uploaded</td>
+<td>Absolute local paths, or case mismatches</td>
+<td>Compare local and server file names</td>
+<td>Relative paths, all-lowercase names</td>
+</tr>
+<tr>
+<td>Typing the folder URL shows a file list</td>
+<td>No <code>index.html</code> in that folder</td>
+<td>Look at the folder contents</td>
+<td>Add <code>index.html</code> as the entry point</td>
+</tr>
+<tr>
+<td>Browser tab shows a generic globe icon</td>
+<td>No favicon</td>
+<td>Network tab shows a 404 for <code>favicon.ico</code></td>
+<td>Add <code>&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Search engines and social previews show nothing useful</td>
+<td>Missing <code>&lt;meta name=&quot;description&quot;&gt;</code> and Open Graph tags</td>
+<td>View Source and read <code>&lt;head&gt;</code></td>
+<td>Add a description per page; add OG tags for sharing</td>
+</tr>
+<tr>
+<td>Fine on a laptop, unusable on a phone</td>
+<td>No viewport meta, or fixed pixel widths</td>
+<td>DevTools device mode</td>
+<td>Add the viewport tag; use relative units and media queries</td>
+</tr>
+<tr>
+<td>Different heading sizes on visually similar pages</td>
+<td>Heading levels chosen by size, not by structure</td>
+<td>Compare heading levels across pages</td>
+<td>One <code>&lt;h1&gt;</code> per page; nest levels without skipping</td>
+</tr>
+<tr>
+<td>Files hard to find as the site grows</td>
+<td>Everything sits in the root folder</td>
+<td>Look at the folder listing</td>
+<td>Structure it: <code>css/</code>, <code>img/</code>, <code>js/</code>, <code>pages/</code></td>
+</tr>
+</tbody></table>
+<p><strong>Pre-submission sweep, in this order:</strong> run every page through the W3C HTML validator, click every link from the deepest page, load the site in DevTools device mode at 375px, and confirm all file names are lowercase with no spaces. Those four passes catch most of what gets marked down.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. What makes a site &quot;compact&quot;, and why is that a design goal?</strong></p>
+<details>
+<summary>Answer</summary><p>A compact site delivers everything the audience needs in roughly 3–5 pages, with no filler. It is a goal because visitors want to find one thing quickly: a focused 4-page site beats a sprawling 15-page site with thin content on every page. Fewer pages also means less navigation to maintain and fewer chances for links to rot.</p>
+</details><hr>
+<p><strong>Q2. Why draw a site map before writing any HTML?</strong></p>
+<details>
+<summary>Answer</summary><p>The site map fixes your page list, filenames, and link structure while they are still cheap to change. Discovering after building five pages that Events should be part of About means renaming files, rewriting every nav block, and fixing every relative path. Ten minutes with a pencil prevents two hours of restructuring.</p>
+</details><hr>
+<p><strong>Q3. What does DRY mean in the context of a static website?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Don&#39;t Repeat Yourself</strong> — every piece of knowledge should live in exactly one place. In practice: one shared <code>style.css</code> instead of per-page <code>&lt;style&gt;</code> blocks, one <code>.card</code> class instead of five near-identical rule sets, one nav markup block copied verbatim rather than five hand-written variants. Duplication is where sites drift out of sync.</p>
+</details><hr>
+<p><strong>Q4. What is visual hierarchy, and which CSS properties create it?</strong></p>
+<details>
+<summary>Answer</summary><p>Visual hierarchy is the order in which the eye takes things in, so the most important element is noticed first. It is built with <strong>size</strong> (<code>font-size</code>), <strong>weight</strong> (<code>font-weight</code>), <strong>colour and contrast</strong>, <strong>whitespace</strong> (<code>margin</code>, <code>padding</code>), and <strong>position</strong> (things higher and further left read as more important). A page where every element shouts equally has no hierarchy and is exhausting to scan.</p>
+</details><hr>
+<p><strong>Q5. Why does a favicon matter for a student project?</strong></p>
+<details>
+<summary>Answer</summary><p>It appears in the browser tab, bookmarks, and history. Without one the tab shows a blank or generic icon, which reads as unfinished. It is two lines of work — <code>&lt;link rel=&quot;icon&quot; href=&quot;images/favicon.png&quot;&gt;</code> plus a small square image — and it is one of the cheapest signals of care in the whole project.</p>
+</details><hr>
+<p><strong>Q6. Which meta tags belong on every page, and what does each do?</strong></p>
+<details>
+<summary>Answer</summary><ul>
+<li><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> — declares the character encoding so accented and Vietnamese characters render correctly. Must be first in <code>&lt;head&gt;</code>.</li>
+<li><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code> — makes the page respect the real device width. Without it, phones render at 980px and shrink everything.</li>
+<li><code>&lt;meta name=&quot;description&quot; content=&quot;...&quot;&gt;</code> — the ~155-character summary search engines show under your link.</li>
+</ul>
+</details><hr>
+<p><strong>Q7. What are the seven lines of the spec template, and why write one?</strong></p>
+<details>
+<summary>Answer</summary><p>Purpose · Audience · Pages · Content per page · Visual style · Constraints · Success criteria. Writing them takes five minutes and forces the decisions you would otherwise make accidentally halfway through coding. It also gives you something concrete to check the finished site against, instead of relying on a vague sense of &quot;looks done&quot;.</p>
+</details><hr>
+<p><strong>Q8. What should a project README contain?</strong></p>
+<details>
+<summary>Answer</summary><p>The project name and one-line purpose; how to view it (open <code>index.html</code>, or run Live Server); the file and folder structure; a list of pages with what each contains; technologies used; credits for any images or fonts you did not create; and known limitations. Graders read it first, and it is the note your future self will need when returning to the project.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Define what a &quot;compact site&quot; is and list its key characteristics</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Draw a site map showing all pages and their relationships</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Assign a single primary purpose to each page in my site</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Identify and eliminate redundant content across pages</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Standardize navigation consistently across all pages</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Apply visual hierarchy (size, color, spacing) to improve readability</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Run a quality audit (links, images, validation, responsiveness)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Write a clear README documenting my project structure and decisions</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered &quot;No&quot; to any item, re-read the relevant Theory section and redo the corresponding Hands-On task.</p>
+<hr>
+<h2 id="requirements-analysis-from-business-brief-to-site-spec-clo2">🏢 REQUIREMENTS ANALYSIS — FROM BUSINESS BRIEF TO SITE SPEC (CLO2)<a class="anchor" href="#requirements-analysis-from-business-brief-to-site-spec-clo2" aria-label="Link to this section">#</a></h2>
+<blockquote>
+<p>So far you have built a <strong>pre-defined</strong> Student Club Website. But <strong>CLO2</strong> asks for more:
+<em>ANALYZE requirements for building a Website for a business.</em> In real jobs you rarely get a finished
+specification — you get a vague request from a client, and YOU must turn it into a concrete plan.
+This section teaches that analytical skill.</p>
+</blockquote>
+<h3 id="r1-why-analysis-comes-before-building">R1. Why Analysis Comes Before Building<a class="anchor" href="#r1-why-analysis-comes-before-building" aria-label="Link to this section">#</a></h3>
+<h4 id="real-life-example-4">🎒 Real-life Example<a class="anchor" href="#real-life-example-4" aria-label="Link to this section">#</a></h4>
+<p>A client says: <em>&quot;I want a website for my restaurant.&quot;</em></p>
+<p>If you start coding immediately, you will guess wrong: How many pages? A menu? Online ordering? A photo
+gallery? Each guess you get wrong costs you rework. The professional move is to <strong>ask questions first</strong> and
+write down the answers BEFORE writing any code.</p>
+<h3 id="r2-gathering-requirements-questions-to-ask">R2. Gathering Requirements — Questions to Ask<a class="anchor" href="#r2-gathering-requirements-questions-to-ask" aria-label="Link to this section">#</a></h3>
+<p>Use this checklist when a client gives you a brief. Group answers into <strong>functional</strong> (what the site must DO)
+and <strong>non-functional</strong> (how it must BEHAVE) requirements.</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Questions to ask the client</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Purpose</td>
+<td>What is the ONE main goal? (sell / inform / collect sign-ups?)</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>Who visits? Age, device (phone or desktop?), technical level?</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>What pages are needed? Who writes the text? Who supplies photos?</td>
+</tr>
+<tr>
+<td>Features</td>
+<td>Contact form? Booking? Menu? News? Anything the client must update themselves?</td>
+</tr>
+<tr>
+<td>Constraints</td>
+<td>Budget? Deadline? Brand colors/logo? Languages?</td>
+</tr>
+<tr>
+<td>Success</td>
+<td>How will the client know the site &quot;worked&quot;? (more calls? more sign-ups?)</td>
+</tr>
+</tbody></table>
+<h3 id="r3-writing-a-simple-requirements-specification">R3. Writing a Simple Requirements Specification<a class="anchor" href="#r3-writing-a-simple-requirements-specification" aria-label="Link to this section">#</a></h3>
+<p>Turn the answers into a short document. Template:</p>
+<pre><code># Requirements Specification — [Client name]
+## 1. Goal            : [one sentence]
+## 2. Target audience : [who]
+## 3. Pages           : [list, each with one purpose]
+## 4. Functional req. : [list of features, e.g. contact form, menu table]
+## 5. Non-functional  : [mobile-friendly, fast, accessible, easy to update]
+## 6. Out of scope    : [what we will NOT build, e.g. online payment]
+## 7. Success metric  : [how we measure success]
+</code></pre>
+<p>Writing &quot;out of scope&quot; is a professional habit: it prevents <strong>scope creep</strong> (the client quietly adding work).</p>
+<h3 id="r4-from-requirements-to-site-map">R4. From Requirements to Site Map<a class="anchor" href="#r4-from-requirements-to-site-map" aria-label="Link to this section">#</a></h3>
+<p>Each <strong>functional requirement</strong> should map to a page or feature. Example:</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Becomes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;Show the menu with prices&quot;</td>
+<td><code>menu.html</code> with an HTML <strong>table</strong> (Session 9)</td>
+</tr>
+<tr>
+<td>&quot;Let customers message us&quot;</td>
+<td><code>contact.html</code> with a <strong>form</strong> (Session 13)</td>
+</tr>
+<tr>
+<td>&quot;Show the restaurant&#39;s story&quot;</td>
+<td><code>about.html</code> with headings + images (Session 3)</td>
+</tr>
+<tr>
+<td>&quot;Owner updates prices weekly&quot;</td>
+<td>Non-functional → choose a simple structure the owner can edit</td>
+</tr>
+</tbody></table>
+<h3 id="r5-worked-example-a-business-brief">R5. Worked Example — A Business Brief<a class="anchor" href="#r5-worked-example-a-business-brief" aria-label="Link to this section">#</a></h3>
+<p><strong>Brief:</strong> <em>&quot;I run a small yoga studio. I want a site so people can see the class schedule and contact me.
+I don&#39;t want to pay anyone to update it — I&#39;ll edit it myself. Most of my customers are on phones.&quot;</em></p>
+<p><strong>Analysis (filled spec):</strong></p>
+<ol>
+<li>Goal: attract new students and make them contact the studio.</li>
+<li>Audience: adults 20–45, mostly on <strong>phones</strong> → responsive is a hard requirement.</li>
+<li>Pages: Home, Schedule, Contact (3 pages = compact, easy for owner to edit).</li>
+<li>Functional: schedule table; contact form with name/phone/message.</li>
+<li>Non-functional: mobile-first; simple HTML/CSS the owner can edit; fast loading.</li>
+<li>Out of scope: online booking/payment (not requested).</li>
+<li>Success: more phone enquiries per month.</li>
+</ol>
+<p>Notice how every sentence of the vague brief became a concrete, checkable line.</p>
+<h3 id="r6-practice-your-turn">R6. Practice — Your Turn<a class="anchor" href="#r6-practice-your-turn" aria-label="Link to this section">#</a></h3>
+<h4 id="task-r1-analyze-a-new-brief">TASK R1: Analyze a new brief<a class="anchor" href="#task-r1-analyze-a-new-brief" aria-label="Link to this section">#</a></h4>
+<p><strong>Brief:</strong> <em>&quot;A local bookstore wants a website. They want to show new arrivals and opening hours, and let
+customers ask if a book is in stock. The owner is not technical.&quot;</em>
+Using the template in R3, write a full Requirements Specification and a site map.
+✅ Check: Did you list &quot;owner is not technical&quot; as a non-functional requirement and let it influence your
+structure choice?  💾 File: <code>notes/requirements-bookstore.md</code></p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design">Responsive web design basics — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">Document and website structure — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/Information_architecture">Information architecture basics — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media queries — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">Viewport meta tag — MDN</a></li>
+<li><a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes">Writing good README files — GitHub Docs</a></li>
+<li><a href="https://validator.w3.org/">W3C HTML Validator</a></li>
+<li><a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validator</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In <strong>Session 12: Using Code-Editing Tools</strong>, you will master VS Code features (extensions, Emmet shortcuts, integrated terminal), learn to validate HTML/CSS professionally, and use browser DevTools to debug common errors — making you a faster, more confident coder.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

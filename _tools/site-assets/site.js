@@ -1,40 +1,76 @@
 /* site.js — shared behaviour for the reading pages (ebook, homework, hubs).
  *
- * Only one feature: the light/dark toggle. It deliberately reuses the SAME
- * storage key and the SAME `data-theme` attribute as the slide decks
- * (assets/deck.js), so a lecturer who picks dark on a deck still gets dark
- * when they click through to a chapter, and the other way round.
+ * Three small features: the light/dark toggle, the language switch's memory,
+ * the current-section marker and a reading-progress bar.
  *
- * The pre-paint script inlined in <head> is what actually stops the flash of
- * light theme; this file only handles the click.
+ * The theme toggle deliberately reuses the SAME storage key and the SAME
+ * `data-theme` attribute as the slide decks (assets/deck.js), so a lecturer who
+ * picks dark on a deck still gets dark when they click through to a chapter,
+ * and the other way round.
+ *
+ * Language is handled the other way round from theme: the switch is a set of
+ * real links, so it works with scripting off and lands the reader on the same
+ * document in the other language rather than on a home page. This file only
+ * REMEMBERS the choice, which the pre-paint script inlined in <head> then
+ * honours on later navigations.
  *
  * No build step, no dependencies — plain ES5-era syntax so it runs anywhere.
+ * Everything language-specific is read from data-* attributes the generator
+ * writes, because this one file serves both the English and the Vietnamese
+ * tree and must not hard-code either language's wording.
  */
 (function () {
   "use strict";
 
   var KEY_THEME = "ins2053.theme"; // must match slides-html/assets/deck.js
+  var KEY_LANG = "ins2053.lang"; // must match the pre-paint script in page()
   var root = document.documentElement;
+
+  function text(el, attribute, value) {
+    if (el && value) el.setAttribute(attribute, value);
+  }
 
   function applyTheme(name) {
     root.setAttribute("data-theme", name);
     var buttons = document.querySelectorAll("[data-theme-toggle]");
     var labels = document.querySelectorAll("[data-theme-label]");
-    var nextName = name === "dark" ? "light" : "dark";
+    var dark = name === "dark";
     for (var i = 0; i < buttons.length; i++) {
       // The button is a toggle, so announce its state rather than relying on
-      // the visual colour change alone.
-      buttons[i].setAttribute("aria-pressed", String(name === "dark"));
-      buttons[i].setAttribute("aria-label", "Switch to " + nextName + " theme");
+      // the visual colour change alone. The wording itself comes from the page:
+      // a Vietnamese page must not be relabelled back into English here.
+      buttons[i].setAttribute("aria-pressed", String(dark));
+      text(
+        buttons[i],
+        "aria-label",
+        buttons[i].getAttribute(dark ? "data-word-light" : "data-word-dark")
+      );
     }
     for (var j = 0; j < labels.length; j++) {
-      labels[j].textContent = name === "dark" ? "Light" : "Dark";
+      var next =
+        labels[j].parentNode &&
+        labels[j].parentNode.getAttribute(dark ? "data-label-light" : "data-label-dark");
+      if (next) labels[j].textContent = next;
     }
   }
 
   // The inline head script already set the attribute. Re-apply so the buttons
   // pick up their aria-pressed state now that the DOM exists.
   applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+
+  /* Remember an explicit language pick. Without this the page would happily
+     navigate once and forget, so a reader who chose Vietnamese would be served
+     English again on their next deep link. The links themselves do the
+     navigating; this only records the preference for the pre-paint script. */
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("[data-lang-opt]");
+    if (!link || !link.hasAttribute("href")) return;
+    try {
+      localStorage.setItem(KEY_LANG, link.getAttribute("data-lang-opt"));
+    } catch (err) {
+      /* Private browsing throws on write; the link still works. */
+    }
+  });
 
   // Mark the current resource section in the persistent course navigation.
   var section = window.location.pathname.match(/\/(sessions|ebook|slides|homework)\//);

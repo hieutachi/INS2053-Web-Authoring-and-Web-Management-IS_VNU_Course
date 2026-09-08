@@ -12,6 +12,13 @@
 (function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
 t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="en")location.replace("./vi/orientation.html");}catch(e){}})();
 </script>
 </head>
 <body class="reading-page">
@@ -19,7 +26,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
 <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
   <div class="bar-inner">
-    <a class="home" href="./index.html" aria-label="INS2053 course home">
+    <a class="home" href="./index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
       <span class="brand-mark" aria-hidden="true">W</span>
       <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
     </a>
@@ -29,7 +36,11 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
       <a data-course-nav="slides" href="./slides/index.html">Slides</a>
       <a data-course-nav="homework" href="./homework/index.html">Homework</a>
     </nav>
-    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
+    <nav class="lang-switch" aria-label="Change language">
+      <a class="lang-opt on" aria-current="true" data-lang-opt="en" aria-label="English" title="Current language: English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt" href="./vi/orientation.html" hreflang="vi" lang="vi" data-lang-opt="vi" aria-label="Tiếng Việt" title="Also available in Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme" data-label-light="Light" data-label-dark="Dark" data-word-light="Switch to light theme" data-word-dark="Switch to dark theme">
       <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
     </button>
   </div>
@@ -91,7 +102,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
 <p>Hands-on exercises embedded in the theory. Each one gives you step-by-step instructions and tells you the <strong>expected result</strong>. If your output doesn't match, re-read the preceding section. These take 2–5 minutes each.</p>
 
 <h3>🖼 Diagram References</h3>
-<p>Lines like <code>🖼 Diagram: canvases/buoi-04.canvas.tsx → BoxModelDiagram</code> point to visual diagrams your lecturer will project during class. You can also view them in the <a href="slides/index.html">lecture slide decks</a>.</p>
+<p>Lines like <code>🖼 Diagram: canvases/buoi-04.canvas.tsx → BoxModelDiagram</code> point to visual diagrams your lecturer will project during class. You can also view them in the <a href="./slides/index.html">lecture slide decks</a>.</p>
 
 <h3>🔍 Common Errors Table</h3>
 <p>A four-column table (Symptom → Cause → How to confirm → How to fix) listing the most common mistakes for that session. <strong>Bookmark these tables</strong> — you'll need them when debugging your homework.</p>
@@ -103,17 +114,17 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
 <p>A checklist to honestly rate your understanding of each learning objective.</p>
 
 <h2 id="sessions">How to use the session pages</h2>
-<p>Each <a href="sessions/index.html">session page</a> on this website has four steps:</p>
+<p>Each <a href="./sessions/index.html">session page</a> on this website has four steps:</p>
 <ol>
   <li><strong>Before class</strong> — Read the ebook chapter and work the Try It Yourself blocks</li>
   <li><strong>In class</strong> — Follow the lecture deck (press <kbd>j</kbd>/<kbd>k</kbd> to navigate, <kbd>n</kbd> for speaker notes)</li>
   <li><strong>After class</strong> — Work on the homework brief</li>
   <li><strong>Check yourself</strong> — Open the self-check tool to verify your work</li>
 </ol>
-<p>Start at <a href="sessions/session-01.html">Session 1</a> and follow the flow.</p>
+<p>Start at <a href="./sessions/session-01.html">Session 1</a> and follow the flow.</p>
 
 <h2 id="selfcheck">How to use the self-check tool</h2>
-<p>The <a href="cham-bai.html">self-check tool</a> runs entirely in your browser — <strong>nothing is uploaded</strong>. It checks the mechanical parts of the homework rubric.</p>
+<p>The <a href="./cham-bai.html">self-check tool</a> runs entirely in your browser — <strong>nothing is uploaded</strong>. It checks the mechanical parts of the homework rubric.</p>
 <ol>
   <li>Open the tool and select the correct session</li>
   <li>Enter your name, student ID, and class</li>
@@ -161,11 +172,11 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
 
 <h2 id="resources">All resources at a glance</h2>
 <ul>
-  <li><a href="sessions/index.html">Sessions</a> — 15 weeks, one hub per week</li>
-  <li><a href="ebook/index.html">Ebook</a> — 15 chapters + Appendix A</li>
-  <li><a href="slides/index.html">Lecture slides</a> — 17 decks with 60 teaching diagrams</li>
-  <li><a href="homework/index.html">Homework</a> — 15 practice briefs with rubrics</li>
-  <li><a href="cham-bai.html">Self-check tool</a> — browser-only homework grader</li>
+  <li><a href="./sessions/index.html">Sessions</a> — 15 weeks, one hub per week</li>
+  <li><a href="./ebook/index.html">Ebook</a> — 15 chapters + Appendix A</li>
+  <li><a href="./slides/index.html">Lecture slides</a> — 17 decks with 60 teaching diagrams</li>
+  <li><a href="./homework/index.html">Homework</a> — 15 practice briefs with rubrics</li>
+  <li><a href="./cham-bai.html">Self-check tool</a> — browser-only homework grader</li>
   <li><code>examples/student-club/</code> — a complete reference website (study it, don't copy it)</li>
   <li><code>references/resources.md</code> — curated links: MDN, W3C, tools, tutorials</li>
 </ul>

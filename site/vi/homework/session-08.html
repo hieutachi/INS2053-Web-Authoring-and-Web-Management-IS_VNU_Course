@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 8: Midterm Review and Table Preparation — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../homework/session-08.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page homework-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../homework/session-08.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Bài tập</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Buổi 8</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Buổi 08 · Bài tập</p>
+    <h1>Homework 8: Midterm Review and Table Preparation</h1>
+    <p class="lead">Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.</p>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#practice-status">Practice Status</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
+        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../homework/session-08.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <div class="callout status-note" role="status">
+    <p><strong>Chế độ luyện tập.</strong> Việc nộp và chấm bài trực tuyến chưa mở. Hãy làm bài trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp.</p>
+    <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 8, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng buổi học">
+    <a class="up" href="../sessions/session-08.html">Tổng quan Buổi 8</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-8-midterm-review-and-table-preparation">Homework 8: Midterm Review and Table Preparation<a class="anchor" href="#homework-8-midterm-review-and-table-preparation" aria-label="Link to this section">#</a></h2>
+<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
+<p>Online submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Fix any weak areas identified during the midterm exam</li>
+<li>Learn the basics of HTML tables before Session 9</li>
+<li>Keep your Student Club Website project up to date</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-midterm-reflection">Task 1: Midterm Reflection<a class="anchor" href="#task-1-midterm-reflection" aria-label="Link to this section">#</a></h4>
+<p>Open your midterm exam (or the practice exam in <code>exercises/session-08/</code>). Identify <strong>three mistakes</strong> you made or three topics where you were unsure.</p>
+<p>For each one:</p>
+<ul>
+<li>Write what the correct answer is</li>
+<li>Write a one-sentence explanation of why</li>
+<li>Find the matching section in the <code>ebook/</code> chapters (1–7) and re-read it</li>
+</ul>
+<p>Create a file called <code>midterm-review.md</code> inside <code>homework/session-08/</code> with your three items:</p>
+<pre><code class="language-markdown"># Midterm Review
+
+## Mistake 1: [topic]
+- **My answer:** ...
+- **Correct answer:** ...
+- **Why:** ...
+- **Where to review:** ebook/0X-...md, section ...
+
+## Mistake 2: [topic]
+...
+
+## Mistake 3: [topic]
+...
+</code></pre>
+<h4 id="task-2-build-a-simple-table-practice-file-not-the-project-yet">Task 2: Build a Simple Table — practice file, not the project yet<a class="anchor" href="#task-2-build-a-simple-table-practice-file-not-the-project-yet" aria-label="Link to this section">#</a></h4>
+<p>Create a <strong>practice</strong> file at <code>homework/session-08/table-practice.html</code> with a table showing
+your club&#39;s weekly activities. This is a warm-up: in Homework 9 you will build the real
+<code>project/activities.html</code> page, with more columns and <code>colspan</code>. Keeping this one separate
+means you can experiment freely without breaking your project.</p>
+<p><strong>Your table must include:</strong></p>
+<ul>
+<li>A <code>&lt;caption&gt;</code> describing the table</li>
+<li>A <code>&lt;thead&gt;</code> with column headers (Day, Time, Activity, Location)</li>
+<li>A <code>&lt;tbody&gt;</code> with at least 4 rows of data</li>
+<li>Use <code>&lt;th&gt;</code> for header cells and <code>&lt;td&gt;</code> for data cells</li>
+</ul>
+<p><strong>Example structure:</strong></p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;caption&gt;Weekly Club Schedule&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Day&lt;/th&gt;
+      &lt;th&gt;Time&lt;/th&gt;
+      &lt;th&gt;Activity&lt;/th&gt;
+      &lt;th&gt;Location&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Monday&lt;/td&gt;
+      &lt;td&gt;3:00 PM&lt;/td&gt;
+      &lt;td&gt;Coding Workshop&lt;/td&gt;
+      &lt;td&gt;Room 301&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;!-- add more rows --&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<h4 id="task-3-basic-table-styling">Task 3: Basic Table Styling<a class="anchor" href="#task-3-basic-table-styling" aria-label="Link to this section">#</a></h4>
+<p>Add CSS for the table. Put it in <code>homework/session-08/table-practice.css</code> (linked from your
+practice page) — you will move the rules that work into <code>project/css/style.css</code> in Homework 9:</p>
+<pre><code class="language-css">table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</code></pre>
+<h4 id="task-4-check-your-project-navigation">Task 4: Check Your Project Navigation<a class="anchor" href="#task-4-check-your-project-navigation" aria-label="Link to this section">#</a></h4>
+<p>Your project pages (<code>index.html</code>, <code>about.html</code>, <code>contact.html</code>) all sit at the project root,
+so each nav link is a plain file name. Open every page and click every link — fix any that
+404 before Homework 9 adds two more pages.</p>
+<p><strong>File paths:</strong></p>
+<ul>
+<li><code>homework/session-08/midterm-review.md</code> (new file)</li>
+<li><code>homework/session-08/table-practice.html</code> (new practice page with table)</li>
+<li><code>homework/session-08/table-practice.css</code> (table styles)</li>
+</ul>
+<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add homework/session-08/ project/</code></li>
+<li>Commit: <code>git commit -m &quot;HW8: Midterm review and table practice&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Midterm reflection</td>
+<td>3</td>
+<td>Three mistakes identified with correct answers and explanations</td>
+</tr>
+<tr>
+<td>Table structure</td>
+<td>3</td>
+<td>Uses caption, thead, tbody, th, td correctly</td>
+</tr>
+<tr>
+<td>Table styling</td>
+<td>2</td>
+<td>Borders, header colors, zebra striping applied</td>
+</tr>
+<tr>
+<td>Project links verified</td>
+<td>2</td>
+<td>Every nav link on every project page clicks through correctly</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>The midterm reflection is about learning from mistakes — there is no penalty for honest answers</li>
+<li>You will learn tables in detail in Session 9; this homework gives you a head start</li>
+<li>Use <code>border-collapse: collapse</code> to avoid double borders</li>
+<li>Keep the practice table simple; Homework 9 is where it becomes a real project page</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>A <code>midterm-review.md</code> with three honest reflections, plus a clean practice table page — and a project whose every navigation link you have personally clicked.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

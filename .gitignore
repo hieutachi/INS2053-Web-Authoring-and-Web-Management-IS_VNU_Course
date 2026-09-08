@@ -5,10 +5,14 @@ Desktop.ini
 .vscode/
 .idea/
 .claude/
+.commandcode/
 
 # Local archives and rollback snapshots
 _archive/
 _tools/backups/
+
+# Vendored third-party drops — not course content, nothing in the build reads them
+_tools/grader/ClaudeKit-Clean/
 
 # Generated audit output (recreate with the scripts in _tools/)
 _tools/*.txt

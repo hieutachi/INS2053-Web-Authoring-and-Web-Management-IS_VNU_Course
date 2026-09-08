@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Toàn bộ lộ trình học INS2053 — giáo trình, slide bài giảng và bài tập mỗi tuần — được sắp xếp thành một mạch học rõ ràng.">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../index.html");}catch(e){}})();
+</script>
+</head>
+<body class="home-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="./index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="./sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="./ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="./slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="./homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../index.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">INS2053 · Cổng học tập cho sinh viên</p>
+    <h1>Học làm web bằng cách làm thật.</h1>
+    <p class="lead">Toàn bộ lộ trình học INS2053 — giáo trình, slide bài giảng và bài tập mỗi tuần — được sắp xếp thành một mạch học rõ ràng.</p>
+    <div class="hero-actions"><a class="primary-action" href="./sessions/session-01.html">Bắt đầu từ Buổi 1 <span aria-hidden="true">→</span></a><a class="secondary-action" href="#schedule">Xem 15 tuần học</a></div>
+    <dl class="hero-stats"><div><dt>15</dt><dd>buổi học có hướng dẫn</dd></div><div><dt>16</dt><dd>chương giáo trình</dd></div><div><dt>17</dt><dd>slide bài giảng</dd></div></dl>
+  </header>
+
+  <section class="resource-section" aria-labelledby="resources-h">
+    <div class="section-head"><div><p class="section-kicker">Mọi thứ nằm chung một chỗ</p><h2 id="resources-h">Học liệu khóa học</h2></div><p>Bắt đầu từ buổi học của bạn, hoặc mở thẳng tới tài liệu bạn cần.</p></div>
+    <ul class="tiles">
+      <li class="tile-sessions"><a href="./sessions/index.html"><span class="tile-icon" aria-hidden="true">01</span><span class="tile-copy"><strong>Buổi học</strong><span>Từng tuần, theo đúng thứ tự lên lớp</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-ebook"><a href="./ebook/index.html"><span class="tile-icon" aria-hidden="true">02</span><span class="tile-copy"><strong>Giáo trình sinh viên</strong><span>15 chương + Phụ lục A</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-slides"><a href="./slides/index.html"><span class="tile-icon" aria-hidden="true">03</span><span class="tile-copy"><strong>Slide bài giảng</strong><span>17 bộ slide · 60 sơ đồ</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-homework"><a href="./homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Bài tập</strong><span>15 đề luyện tập · nộp bài sau</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-grader"><a href="../cham-bai.html"><span class="tile-icon" aria-hidden="true">05</span><span class="tile-copy"><strong>Công cụ tự chấm</strong><span>Tự chấm bài theo rubric ngay trên trình duyệt của bạn</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-guide"><a href="./orientation.html"><span class="tile-icon" aria-hidden="true">06</span><span class="tile-copy"><strong>Bạn mới tới?</strong><span>Cách dùng giáo trình, slide, bài tập và công cụ tự chấm</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-agents"><a href="./ai-agents.html"><span class="tile-icon" aria-hidden="true">07</span><span class="tile-copy"><strong>Hướng dẫn AI Agents</strong><span>VS Code + Copilot hoặc Cline — cài và dùng AI cho bài tập của bạn</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+    </ul>
+  </section>
+
+  <section class="flow-section" aria-labelledby="how-it-works">
+    <div class="section-head"><div><p class="section-kicker">Một nhịp học mỗi tuần</p><h2 id="how-it-works">Mỗi tuần học diễn ra thế nào</h2></div><p>Chuẩn bị trước khi lên lớp, học chung trên lớp, rồi biến kiến thức thành bài làm.</p></div>
+    <ol class="flow">
+      <li><span class="flow-index" aria-hidden="true">01</span><div><strong>Trước khi lên lớp</strong><span>Đọc chương giáo trình và làm hết các khối <em>Try It Yourself</em> trong đó.</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">02</span><div><strong>Trên lớp</strong><span>150 phút gồm lý thuyết, thực hành có hướng dẫn và bắt đầu làm bài tập.</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">03</span><div><strong>Sau khi lên lớp</strong><span>Luyện tiếp theo đề bài và giữ kết quả trong repository của bạn. Việc nộp và chấm bài trực tuyến chưa mở.</span></div></li>
+    </ol>
+  </section>
+
+  <h2 id="schedule">15 tuần học</h2>
+  <table class="sched">
+    <caption>Mỗi dòng dẫn tới chương, slide và đề bài tập của tuần đó.</caption>
+    <thead>
+      <tr><th scope="col">Tuần</th><th scope="col">Buổi</th><th scope="col">Đọc</th><th scope="col">Slide</th><th scope="col">Bài tập</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>01</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-01.html">Introduction to Dreamweaver &amp; Web Fundamentals</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/01-introduction-to-dreamweaver.html">Chương 1</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-01.html">Slide 1</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-01.html">HW 01</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>02</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-02.html">Creating a New Site &amp; Organizing Your Project</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/02-creating-a-new-site.html">Chương 2</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-02.html">Slide 2</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-02.html">HW 02</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>03</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-03.html">Working with Text and Images</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/03-working-with-text-and-images.html">Chương 3</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-03.html">Slide 3</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-03.html">HW 03</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>04</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-04.html">Applying CSS to Your Website</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/04-applying-css-to-website.html">Chương 4</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-04.html">Slide 4</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-04.html">HW 04</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>05</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-05.html">Creating Page Layouts</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/05-creating-page-layouts.html">Chương 5</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-05.html">Slide 5</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-05.html">HW 05</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>06</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-06.html">Creating Page Layouts (Continued)</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/06-creating-page-layouts-continued.html">Chương 6</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-06.html">Slide 6</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-06.html">HW 06</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>07</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-07.html">CSS3 and Web Fonts</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/07-css3-and-web-fonts.html">Chương 7</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-07.html">Slide 7</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-07.html">HW 07</a></td>
+      </tr>
+      <tr class="mid">
+        <td class="wk" data-label="Tuần"><span>08</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-08.html">Review &amp; Midterm Exam Preparation</a><small>Tuần thi giữa kỳ</small></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/08-review-and-midterm.html">Chương 8</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-08.html">Slide 8</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-08.html">HW 08</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>09</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-09.html">Working with Tables</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/09-working-with-tables.html">Chương 9</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-09.html">Slide 9</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-09.html">HW 09</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>10</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-10.html">Embedding Flash, Video and Sound</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/10-embedding-flash-video-and-sound.html">Chương 10</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-10.html">Slide 10</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-10.html">HW 10</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>11</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-11.html">Designing a Compact Site</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/11-designing-a-compact-site.html">Chương 11</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-11.html">Slide 11</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-11.html">HW 11</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>12</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-12.html">Using Code-Editing Tools</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/12-using-code-editing-tools.html">Chương 12</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-12.html">Slide 12</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-12.html">HW 12</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>13</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-13.html">Creating Forms</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/13-creating-forms.html">Chương 13</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-13.html">Slide 13</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-13.html">HW 13</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>14</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-14.html">Working with Spry Framework</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/14-working-with-spry-framework.html">Chương 14</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-14.html">Slide 14</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-14.html">HW 14</a></td>
+      </tr>
+      <tr>
+        <td class="wk" data-label="Tuần"><span>15</span></td>
+        <td class="topic" data-label="Buổi"><a href="./sessions/session-15.html">Mobile Interface Design and Review</a></td>
+        <td data-label="Đọc"><a class="resource-link" href="./ebook/15-mobile-interface-design-and-review.html">Chương 15</a></td>
+        <td data-label="Slide"><a class="resource-link" href="../slides/buoi-15.html">Slide 15</a></td>
+        <td data-label="Bài tập"><a class="resource-link" href="./homework/session-15.html">HW 15</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 id="extra">Nên đọc thêm</h2>
+  <p><a href="./ebook/appendix-a-technology-landscape.html">Chọn công nghệ web — cẩm nang ra quyết định cho người mới bắt đầu</a> — cách chọn giữa các công nghệ web sau khi khóa học đã kết thúc.</p>
+
+  <h2 id="not-here">Những gì không có trên trang này</h2>
+  <p>Đề thi, rubric chấm điểm, bài giải mẫu và các bài tập trên lớp kèm đáp án đều dành riêng cho giảng viên. Việc nộp và chấm bài tập cũng không diễn ra ở đây — hãy làm theo hướng dẫn giảng viên thông báo trên lớp.</p>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

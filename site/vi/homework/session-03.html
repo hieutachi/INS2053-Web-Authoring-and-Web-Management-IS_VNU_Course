@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 3: Building the About Page — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../homework/session-03.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page homework-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../homework/session-03.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Bài tập</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Buổi 3</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Buổi 03 · Bài tập</p>
+    <h1>Homework 3: Building the About Page</h1>
+    <p class="lead">Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.</p>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#practice-status">Practice Status</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
+        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../homework/session-03.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <div class="callout status-note" role="status">
+    <p><strong>Chế độ luyện tập.</strong> Việc nộp và chấm bài trực tuyến chưa mở. Hãy làm bài trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp.</p>
+    <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 3, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng buổi học">
+    <a class="up" href="../sessions/session-03.html">Tổng quan Buổi 3</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-3-building-the-about-page">Homework 3: Building the About Page<a class="anchor" href="#homework-3-building-the-about-page" aria-label="Link to this section">#</a></h2>
+<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
+<p>Online submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Practice using heading levels, paragraphs, and lists</li>
+<li>Learn how to add images with meaningful alt text</li>
+<li>Build rich content using semantic HTML elements</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-enhance-the-about-page">Task 1: Enhance the About Page<a class="anchor" href="#task-1-enhance-the-about-page" aria-label="Link to this section">#</a></h4>
+<p>Update your <code>project/about.html</code> file to make it a complete, rich content page about your Student Club.</p>
+<p><strong>Your About page must include:</strong></p>
+<ol>
+<li><p><strong>Headings:</strong> Use at least 3 different heading levels:</p>
+<ul>
+<li><code>&lt;h1&gt;</code> for the club name</li>
+<li><code>&lt;h2&gt;</code> for section titles (e.g., &quot;Our Mission&quot;, &quot;Our Activities&quot;)</li>
+<li><code>&lt;h3&gt;</code> for sub-sections (e.g., &quot;Weekly Events&quot;)</li>
+</ul>
+</li>
+<li><p><strong>Paragraphs:</strong> At least 3 paragraphs covering:</p>
+<ul>
+<li>What your club is about (purpose)</li>
+<li>Who can join (membership)</li>
+<li>Why someone should join (benefits)</li>
+</ul>
+</li>
+<li><p><strong>Lists:</strong> At least 2 different lists:</p>
+<ul>
+<li>An unordered list (<code>&lt;ul&gt;</code>) of at least 5 club activities or events</li>
+<li>An ordered list (<code>&lt;ol&gt;</code>) of at least 3 steps (e.g., &quot;How to Join&quot;)</li>
+</ul>
+</li>
+<li><p><strong>Images:</strong> At least 2 images with descriptive alt text:</p>
+<ul>
+<li>One image representing your club</li>
+<li>One image showing an activity or event (can be any relevant photo)</li>
+<li>Each <code>&lt;img&gt;</code> must have a meaningful <code>alt</code> attribute (not empty, not &quot;image&quot;)</li>
+</ul>
+</li>
+</ol>
+<h4 id="task-2-add-an-image-gallery-section">Task 2: Add an Image Gallery Section<a class="anchor" href="#task-2-add-an-image-gallery-section" aria-label="Link to this section">#</a></h4>
+<p>Create a section with the heading <code>&lt;h2&gt;Photo Gallery&lt;/h2&gt;</code> that contains at least 3 images arranged in a simple layout.</p>
+<ul>
+<li>Each image must have a different <code>alt</code> text describing what it shows</li>
+<li>Add a short <code>&lt;p&gt;</code> caption below each image</li>
+</ul>
+<p><strong>File path:</strong> <code>project/about.html</code></p>
+<p><strong>Requirements checklist:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Uses h1, h2, and h3 headings</li>
+<li><input disabled="" type="checkbox"> Has 3+ paragraphs</li>
+<li><input disabled="" type="checkbox"> Has 1 unordered list with 5+ items</li>
+<li><input disabled="" type="checkbox"> Has 1 ordered list with 3+ items</li>
+<li><input disabled="" type="checkbox"> Has 2+ images with descriptive alt text</li>
+<li><input disabled="" type="checkbox"> Has a photo gallery section with 3+ images and captions</li>
+</ul>
+<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Add changes: <code>git add project/about.html</code></li>
+<li>Commit: <code>git commit -m &quot;HW3: Enhance About page with rich content&quot;</code></li>
+<li>Push: <code>git push</code></li>
+</ul>
+<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Heading hierarchy</td>
+<td>2</td>
+<td>Uses h1, h2, h3 correctly</td>
+</tr>
+<tr>
+<td>Paragraphs</td>
+<td>2</td>
+<td>Has 3+ well-written paragraphs</td>
+</tr>
+<tr>
+<td>Lists</td>
+<td>2</td>
+<td>Has both ordered and unordered lists</td>
+</tr>
+<tr>
+<td>Images + alt text</td>
+<td>3</td>
+<td>Images load, alt text is descriptive</td>
+</tr>
+<tr>
+<td>Photo gallery</td>
+<td>1</td>
+<td>Has gallery section with captions</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Headings should follow a logical order: don&#39;t skip from h1 to h3</li>
+<li>Alt text should describe what the image shows (e.g., &quot;Students working together on a coding project&quot;)</li>
+<li>Use your own images or free images from sites like Unsplash or Pixabay</li>
+<li>Because <code>about.html</code> sits at the project root next to <code>index.html</code>, image paths are plain:
+<code>images/logo.png</code> — no <code>../</code></li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>Your About page should look like a detailed club profile with sections, lists of activities, and photos. A visitor should be able to learn everything about your club from this page alone.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 6: Creating Page Layouts (Continued) — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Tuần 6 trong 15 tuần. Đọc chương trước khi lên lớp, theo slide trên lớp, rồi dùng đề bài tập để luyện thêm.">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../sessions/session-06.html");}catch(e){}})();
+</script>
+</head>
+<body class="session-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../sessions/session-06.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../sessions/index.html">Buổi học</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Buổi 6</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Tuần 06 · Mạch học</p>
+    <h1>Buổi 6: Creating Page Layouts (Continued)</h1>
+    <p class="lead">Tuần 6 trong 15 tuần. Đọc chương trước khi lên lớp, theo slide trên lớp, rồi dùng đề bài tập để luyện thêm.</p>
+
+  </header>
+
+  <ol class="steps">
+    <li class="step step-prepare">
+      <span class="step-number" aria-hidden="true">01</span>
+      <p class="when">Trước khi lên lớp</p>
+      <h2>Đọc chương</h2>
+      <p class="note">Vừa đọc vừa làm các khối 🧪 Try It Yourself — mỗi khối đều ghi rõ kết quả mong đợi, nên bạn tự kiểm tra được ngay.</p>
+      <a class="cta" href="../ebook/06-creating-page-layouts-continued.html">Chương 6<span aria-hidden="true">→</span></a>
+    </li>
+    <li class="step step-learn">
+      <span class="step-number" aria-hidden="true">02</span>
+      <p class="when">Trên lớp</p>
+      <h2>Slide bài giảng</h2>
+      <p class="note">Bộ slide giảng viên chiếu trên lớp, kèm các sơ đồ giảng dạy. Dùng phím <kbd>j</kbd> và <kbd>k</kbd> để chuyển slide, <kbd>n</kbd> để xem ghi chú giảng viên.</p>
+      <a class="cta" href="../../slides/buoi-06.html">Slide 6<span aria-hidden="true">→</span></a>
+    </li>
+    <li class="step step-practice">
+      <span class="step-number" aria-hidden="true">03</span>
+      <p class="when">Sau khi lên lớp</p>
+      <h2>Bài tập 06</h2>
+      <p class="note">Dùng đề đã công bố để luyện tập và giữ bài làm trong repository của bạn. Việc nộp và chấm bài trực tuyến chưa mở.</p>
+      <a class="cta" href="../homework/session-06.html">Bài tập 06<span aria-hidden="true">→</span></a>
+    </li>
+    <li class="step step-practice">
+      <span class="step-number" aria-hidden="true">04</span>
+      <p class="when">Tự kiểm tra</p>
+      <h2>Công cụ tự chấm</h2>
+      <p class="note">Chấm phần cơ học của rubric ngay trên trình duyệt của bạn — không tải gì lên. Công cụ cho biết bạn đang đứng ở đâu, chưa phải điểm cuối; giảng viên mới là người quyết định.</p>
+      <a class="cta" href="../../cham-bai.html">Mở công cụ tự chấm<span aria-hidden="true">→</span></a>
+    </li>
+  </ol>
+  <div class="callout">
+    <p><strong>Bài tập trên lớp không có trên trang này.</strong> Vì nó kèm đáp án chi tiết nên giảng viên sẽ phát trực tiếp trong buổi học.</p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng buổi học">
+    <a class="prev" href="session-05.html">← Buổi 5</a>
+    <a class="next" href="session-07.html">Buổi 7 →</a>
+  </nav>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

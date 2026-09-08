@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 10: Embedding Flash, Video and Sound — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 10: Embedding Flash, Video and Sound — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/10-embedding-flash-video-and-sound.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 10</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 10</p>
+    <h1>Buổi 10: Embedding Flash, Video and Sound</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-the-rise-and-fall-of-adobe-flash">1. The Rise and Fall of Adobe Flash</a></li>
+        <li class="d2"><a href="#2-html5-video-the-video-element">2. HTML5 Video: The &lt;video&gt; Element</a></li>
+        <li class="d2"><a href="#3-html5-audio-the-audio-element">3. HTML5 Audio: The &lt;audio&gt; Element</a></li>
+        <li class="d2"><a href="#4-image-formats-recap">4. Image Formats Recap</a></li>
+        <li class="d2"><a href="#5-embedding-third-party-videos-youtube-vimeo">5. Embedding Third-Party Videos (YouTube / Vimeo)</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-basic-video-with-controls-and-poster">Example 1: Basic Video with Controls and Poster</a></li>
+        <li class="d2"><a href="#example-2-background-decorative-video">Example 2: Background Decorative Video</a></li>
+        <li class="d2"><a href="#example-3-audio-player-with-styling">Example 3: Audio Player with Styling</a></li>
+        <li class="d2"><a href="#example-4-responsive-youtube-embed">Example 4: Responsive YouTube Embed</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/10-embedding-flash-video-and-sound.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-10.html">Tổng quan Buổi 10</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-10">🟦 SESSION 10<a class="anchor" href="#session-10" aria-label="Link to this section">#</a></h2>
+<h2 id="embedding-flash-video-and-sound"><strong>Embedding Flash, Video and Sound</strong><a class="anchor" href="#embedding-flash-video-and-sound" aria-label="Link to this section">#</a></h2>
+<p>Welcome back, friend! In this session we are going to make your Student Club Website come alive with <strong>video</strong> and <strong>audio</strong>. Imagine a visitor landing on your club page and immediately seeing a promo video of your last event, or hearing your club anthem playing softly in the background — that is the power of multimedia on the web. You will also learn why an old technology called &quot;Flash&quot; is no longer used, so you never waste time on something that is dead. By the end of this session you will be able to embed videos and audio players confidently, using modern HTML5 standards that work in every browser. Let us get started!</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    MDN &quot;Video and audio content&quot;; MDN &quot;Multimedia and embedding&quot;
+🎯 Objectives:   1. Explain why Flash was deprecated and what replaced it
+                 2. Embed video with &lt;video&gt; and audio with &lt;audio&gt;
+                 3. Supply multiple source formats and a text fallback
+                 4. Embed third-party content safely with &lt;iframe&gt;
+                 5. Add multimedia to the Student Club Website
+📖 Prepare:      1. Review Sessions 4-9 (HTML structure, CSS styling, images)
+                 2. Install VS Code
+                 3. Download the sample media files
+🖼 Diagrams:     canvases/buoi-10.canvas.tsx — VideoAnatomy, CodecFallback, AutoplayRules,
+                 IframeEmbed
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO3 (choose appropriate technologies for web development)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Explain what Adobe Flash was and why it has been completely discontinued</li>
+<li>Describe the timeline of Flash&#39;s decline and the rise of HTML5 multimedia</li>
+<li>Embed a video in a web page using the HTML5 <code>&lt;video&gt;</code> element with proper attributes</li>
+<li>Embed an audio file using the HTML5 <code>&lt;audio&gt;</code> element</li>
+<li>Provide multiple video/audio formats (<code>&lt;source&gt;</code>) for maximum browser compatibility</li>
+<li>Use the <code>poster</code> attribute to display a thumbnail before a video plays</li>
+<li>Write meaningful fallback text inside <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> for accessibility</li>
+<li>Embed a YouTube or Vimeo video using an <code>&lt;iframe&gt;</code></li>
+<li>Style video and audio elements with CSS for a polished look</li>
+<li>Add a fully functional Media page to the Student Club Website project</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-the-rise-and-fall-of-adobe-flash">1. The Rise and Fall of Adobe Flash<a class="anchor" href="#1-the-rise-and-fall-of-adobe-flash" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Adobe Flash</strong> (originally Macromedia Flash) was a multimedia software platform used from the late 1990s through the 2010s to create animations, interactive games, video players, and rich web applications. Flash content was delivered as <code>.swf</code> (ShockWave Flash) files and required a browser plugin called &quot;Flash Player&quot; to run.</p>
+<p>For nearly two decades, Flash was <em>the</em> way to put anything animated or interactive on a website. Early YouTube, countless banner ads, entire game portals, and fancy restaurant menus were all built in Flash.</p>
+<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think about the early 2000s internet. When you visited a cool website, you often saw a loading bar that said &quot;Loading Flash Player...&quot; before any content appeared. That was Flash. Many students&#39; first experience with online games (like those on Miniclip or Newgrounds) was through Flash. Even YouTube originally used Flash to play videos — before switching to HTML5 in 2015.</p>
+<h4 id="12-why-flash-was-discontinued">1.2 Why Flash Was Discontinued<a class="anchor" href="#12-why-flash-was-discontinued" aria-label="Link to this section">#</a></h4>
+<p>Flash had serious problems that eventually killed it:</p>
+<ol>
+<li><p><strong>Security vulnerabilities</strong>: Flash Player was one of the most exploited pieces of software in history. Hackers constantly found bugs in it to install malware on users&#39; computers. Adobe released emergency security patches almost every month.</p>
+</li>
+<li><p><strong>Poor mobile performance</strong>: Flash consumed enormous amounts of CPU and battery on mobile devices. Apple famously refused to support Flash on iPhone and iPad. Steve Jobs published an open letter in 2010 titled &quot;Thoughts on Flash&quot; explaining why Apple would never allow it.</p>
+</li>
+<li><p><strong>Not accessible</strong>: Screen readers used by blind or visually impaired people could not read Flash content. This made Flash websites unusable for millions of people and violated accessibility laws in many countries.</p>
+</li>
+<li><p><strong>Required a plugin</strong>: Users had to install and update Flash Player separately. Many corporate networks blocked it. Browsers eventually began blocking it by default.</p>
+</li>
+<li><p><strong>Open web standards emerged</strong>: HTML5, CSS3, and JavaScript matured to provide everything Flash could do — but natively in the browser, without plugins, with better performance and security.</p>
+</li>
+</ol>
+<h5 id="flash-death-timeline">Flash Death Timeline<a class="anchor" href="#flash-death-timeline" aria-label="Link to this section">#</a></h5>
+<pre><code>1996 ──── Flash created (Macromedia)
+  │
+2005 ──── YouTube launches using Flash video player
+  │
+2008 ──── Adobe buys Macromedia, renames to Adobe Flash
+  │
+2010 ──── Steve Jobs publishes &quot;Thoughts on Flash&quot;
+  │         Apple blocks Flash on iOS forever
+  │
+2012 ──── Adobe stops developing Flash Player for Android
+  │
+2015 ──── YouTube switches to HTML5 video by default
+  │         Facebook begins replacing Flash with HTML5
+  │
+2017 ──── Adobe announces Flash will reach End-of-Life
+  │         by December 31, 2020
+  │
+2020 ──── Dec 31: Adobe officially kills Flash Player
+  │         All major browsers remove Flash support
+  │
+2021+ ─── Flash content no longer runs in ANY modern browser
+           Using Flash today = guaranteed broken website
+</code></pre>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li><strong>NEVER use Flash for any new project.</strong> It is completely dead.</li>
+<li>If you find old tutorials or textbooks that teach Flash, <strong>ignore them</strong>. They are outdated.</li>
+<li>Any <code>.swf</code> file embedded in a webpage today will show a blank space or an error.</li>
+<li>Modern replacements: HTML5 <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, <code>&lt;canvas&gt;</code>, CSS animations, JavaScript/WebGL.</li>
+</ul>
+<h4 id="try-it-yourself-spot-legacy-media-code">🧪 Try It Yourself — Spot Legacy Media Code<a class="anchor" href="#try-it-yourself-spot-legacy-media-code" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (4 min):</strong> Learn to recognise the markup you must never copy.</p>
+<ol>
+<li>Search the web for a 2008-era tutorial on &quot;embed video in HTML&quot;.</li>
+<li>Look for any of these signals:<pre><code class="language-html">&lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;movie.swf&quot;&gt;
+&lt;embed src=&quot;movie.swf&quot;&gt;
+&lt;param name=&quot;movie&quot; value=&quot;movie.swf&quot;&gt;
+</code></pre>
+</li>
+<li>Now write the modern equivalent of the same intent:<pre><code class="language-html">&lt;video controls width=&quot;640&quot;&gt;
+    &lt;source src=&quot;video/movie.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+</li>
+</ol>
+<p><strong>Expected result:</strong> Four lines of plugin configuration collapse into three lines of standard HTML that needs no plugin at all.</p>
+<details>
+<summary>Why this chapter still mentions Flash</summary><p>Flash was removed from every browser on <strong>31 December 2020</strong>. Adobe ended support, and the runtime actively blocks content. A <code>.swf</code> file today is unplayable — not deprecated, not discouraged, but dead.</p>
+<p>It stays in the syllabus for two reasons. First, the course textbook predates its removal, and you will meet the terminology. Second, you will be asked to maintain sites built in that era, and the job is recognising <code>&lt;object&gt;</code>/<code>&lt;embed&gt;</code>/<code>.swf</code> and knowing what replaces it:</p>
+<table>
+<thead>
+<tr>
+<th>Old Flash use</th>
+<th>Modern replacement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Video player</td>
+<td><code>&lt;video&gt;</code></td>
+</tr>
+<tr>
+<td>Audio player</td>
+<td><code>&lt;audio&gt;</code></td>
+</tr>
+<tr>
+<td>Animation</td>
+<td>CSS animations, or SVG</td>
+</tr>
+<tr>
+<td>Interactive widget</td>
+<td>HTML, CSS, and JavaScript</td>
+</tr>
+<tr>
+<td>Games</td>
+<td><code>&lt;canvas&gt;</code> and JavaScript, or WebGL</td>
+</tr>
+</tbody></table>
+<p>The lesson underneath is worth more than the history: proprietary plugins requiring a separate runtime lose to open standards built into the browser. That is why <code>&lt;video&gt;</code> won.</p>
+</details><hr>
+<h3 id="2-html5-video-the-video-element">2. HTML5 Video: The <code>&lt;video&gt;</code> Element<a class="anchor" href="#2-html5-video-the-video-element" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagrams:</strong> <code>canvases/buoi-10.canvas.tsx</code> → <code>VideoAnatomy</code> — slide <code>s10-video</code> (&quot;The video Element&quot;); <code>CodecFallback</code> — slide <code>s10-codec</code> (&quot;Source &amp; Codec Selection&quot;)</p>
+</blockquote>
+<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<p>The HTML5 <code>&lt;video&gt;</code> element is a <strong>built-in browser feature</strong> that lets you embed video directly into a web page — no plugins, no downloads, no Flash. Every modern browser (Chrome, Firefox, Edge, Safari) supports it natively.</p>
+<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>Every time you watch a video on a news website, a university lecture recording, or a product demo page that is NOT YouTube/Vimeo, it is probably using the HTML5 <code>&lt;video&gt;</code> element. Netflix&#39;s web player, for instance, uses HTML5 video under the hood.</p>
+<h4 id="22-basic-syntax">2.2 Basic Syntax<a class="anchor" href="#22-basic-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- BASIC VIDEO EMBED --&gt;
+&lt;video src=&quot;video/club-promo.mp4&quot; controls width=&quot;640&quot; height=&quot;360&quot;&gt;
+    Your browser does not support the video element.
+&lt;/video&gt;
+</code></pre>
+<p>Let us break down every part:</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;video&gt;</code></td>
+<td>Opens the video element</td>
+</tr>
+<tr>
+<td><code>src=&quot;video/club-promo.mp4&quot;</code></td>
+<td>Path to the video file (relative to your HTML file)</td>
+</tr>
+<tr>
+<td><code>controls</code></td>
+<td>Shows the browser&#39;s built-in play/pause/volume/fullscreen buttons</td>
+</tr>
+<tr>
+<td><code>width=&quot;640&quot;</code></td>
+<td>Display width in pixels</td>
+</tr>
+<tr>
+<td><code>height=&quot;360&quot;</code></td>
+<td>Display height in pixels</td>
+</tr>
+<tr>
+<td>Text between tags</td>
+<td><strong>Fallback text</strong> shown if the browser cannot play the video</td>
+</tr>
+<tr>
+<td><code>&lt;/video&gt;</code></td>
+<td>Closes the element</td>
+</tr>
+</tbody></table>
+<h4 id="23-all-important-attributes">2.3 All Important Attributes<a class="anchor" href="#23-all-important-attributes" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src</code></td>
+<td>URL/path</td>
+<td>Specifies the video file location</td>
+</tr>
+<tr>
+<td><code>controls</code></td>
+<td><em>(no value needed)</em></td>
+<td>Displays playback controls (play, pause, volume, seek, fullscreen)</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>number (pixels)</td>
+<td>Sets the display width</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>number (pixels)</td>
+<td>Sets the display height</td>
+</tr>
+<tr>
+<td><code>autoplay</code></td>
+<td><em>(no value needed)</em></td>
+<td>Starts playing automatically when the page loads</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td><em>(no value needed)</em></td>
+<td>Restarts the video from the beginning when it ends</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td><em>(no value needed)</em></td>
+<td>Starts the video with sound turned off</td>
+</tr>
+<tr>
+<td><code>poster</code></td>
+<td>URL/path</td>
+<td>Shows an image thumbnail BEFORE the user clicks play</td>
+</tr>
+<tr>
+<td><code>preload</code></td>
+<td><code>auto</code>, <code>metadata</code>, <code>none</code></td>
+<td>Controls how much of the video loads before playing</td>
+</tr>
+<tr>
+<td><code>playsinline</code></td>
+<td><em>(no value needed)</em></td>
+<td>On iOS, plays the video inside the page instead of going fullscreen</td>
+</tr>
+</tbody></table>
+<p>⚠️ <strong>Important notes about <code>autoplay</code></strong></p>
+<p>Modern browsers <strong>block autoplay if the video has sound</strong>. This is a user-experience protection — nobody wants a loud video blasting when they open a page. If you truly need autoplay, you MUST also add <code>muted</code>:</p>
+<pre><code class="language-html">&lt;!-- This WILL autoplay (muted) --&gt;
+&lt;video autoplay muted loop playsinline&gt;
+    &lt;source src=&quot;video/background.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+
+&lt;!-- This will PROBABLY NOT autoplay (has sound) --&gt;
+&lt;video autoplay&gt;
+    &lt;source src=&quot;video/promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+<h4 id="24-video-file-formats">2.4 Video File Formats<a class="anchor" href="#24-video-file-formats" aria-label="Link to this section">#</a></h4>
+<p>Not all browsers support all video formats. Here is the comparison:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Extension</th>
+<th>MIME Type</th>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>MP4 (H.264)</strong></td>
+<td><code>.mp4</code></td>
+<td><code>video/mp4</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Universal compatibility — always include this</td>
+</tr>
+<tr>
+<td><strong>WebM (VP8/VP9)</strong></td>
+<td><code>.webm</code></td>
+<td><code>video/webm</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No*</td>
+<td>Yes</td>
+<td>Smaller file size, open format</td>
+</tr>
+<tr>
+<td><strong>Ogg (Theora)</strong></td>
+<td><code>.ogv</code></td>
+<td><code>video/ogg</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Partial</td>
+<td>Legacy fallback, rarely needed now</td>
+</tr>
+</tbody></table>
+<p>*Safari added limited WebM support in version 14.1+ but MP4 is still safer for Safari.</p>
+<p>✅ <strong>Best practice:</strong> Always provide <strong>MP4 as your primary format</strong>. Optionally add WebM as a secondary source for browsers that prefer it.</p>
+<h4 id="25-multiple-sources-with-source">2.5 Multiple Sources with <code>&lt;source&gt;</code><a class="anchor" href="#25-multiple-sources-with-source" aria-label="Link to this section">#</a></h4>
+<p>Instead of a single <code>src</code> attribute, you can nest multiple <code>&lt;source&gt;</code> elements. The browser picks the <strong>first format it supports</strong>:</p>
+<pre><code class="language-html">&lt;video controls width=&quot;640&quot; height=&quot;360&quot; poster=&quot;images/video-poster.jpg&quot;&gt;
+    &lt;!-- Browser tries MP4 first (most compatible) --&gt;
+    &lt;source src=&quot;video/club-promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;!-- If MP4 fails, try WebM --&gt;
+    &lt;source src=&quot;video/club-promo.webm&quot; type=&quot;video/webm&quot;&gt;
+    &lt;!-- If neither works, show this message --&gt;
+    &lt;p&gt;Your browser does not support HTML5 video.
+       You can &lt;a href=&quot;video/club-promo.mp4&quot;&gt;download the video&lt;/a&gt; instead.&lt;/p&gt;
+&lt;/video&gt;
+</code></pre>
+<p>How the browser decides:</p>
+<pre><code>Browser opens &lt;video&gt;
+    │
+    ├── Can I play video/mp4? ──YES──▶ Play club-promo.mp4 ✓
+    │
+    └── NO ──▶ Can I play video/webm? ──YES──▶ Play club-promo.webm ✓
+                                      │
+                                      └── NO ──▶ Show fallback &lt;p&gt; text
+</code></pre>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>The <code>type</code> attribute on <code>&lt;source&gt;</code> tells the browser the MIME type so it can decide WITHOUT downloading the file first.</li>
+<li>Always put the <strong>most compatible format first</strong> (MP4).</li>
+<li>Always include <strong>fallback text</strong> inside the <code>&lt;video&gt;</code> tag for very old browsers or assistive technologies.</li>
+<li>The fallback text should include a <strong>download link</strong> so users can still access the content.</li>
+</ul>
+<h4 id="26-the-poster-attribute-explained">2.6 The <code>poster</code> Attribute Explained<a class="anchor" href="#26-the-poster-attribute-explained" aria-label="Link to this section">#</a></h4>
+<p>The <code>poster</code> attribute specifies an image that appears as a thumbnail before the video starts playing. Without a poster, some browsers show a black rectangle or the first frame of the video (which might be blurry or unattractive).</p>
+<pre><code class="language-html">&lt;video controls width=&quot;640&quot; poster=&quot;images/video-thumbnail.jpg&quot;&gt;
+    &lt;source src=&quot;video/club-promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+<p>Tips for good poster images:</p>
+<ul>
+<li>Use the same aspect ratio as the video (e.g., 16:9 → 640×360)</li>
+<li>Choose a visually appealing frame that represents the video content</li>
+<li>Optimize the image (JPEG, under 200KB) so it loads quickly</li>
+<li>Include text overlay like &quot;Click to Play&quot; if appropriate</li>
+</ul>
+<h4 id="27-preload-options">2.7 Preload Options<a class="anchor" href="#27-preload-options" aria-label="Link to this section">#</a></h4>
+<p>The <code>preload</code> attribute hints to the browser how much of the video to load before the user presses play:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Behavior</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>auto</code></td>
+<td>Download the entire video immediately</td>
+<td>Short clips where instant playback matters</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>Only download headers (duration, dimensions)</td>
+<td>Most pages — balances speed and data usage</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>Do not download anything until play is pressed</td>
+<td>Pages with many videos; saves bandwidth</td>
+</tr>
+</tbody></table>
+<pre><code class="language-html">&lt;!-- Recommended default for most cases --&gt;
+&lt;video controls preload=&quot;metadata&quot;&gt;
+    &lt;source src=&quot;video/club-promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+<p>⚠️ Note: <code>preload</code> is only a <em>hint</em>. Mobile browsers often ignore it to save data.</p>
+<h4 id="try-it-yourself-a-video-element-that-behaves">🧪 Try It Yourself — A Video Element That Behaves<a class="anchor" href="#try-it-yourself-a-video-element-that-behaves" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Add a video and remove each attribute in turn to see what it was doing.</p>
+<ol>
+<li>Start with the complete element:<pre><code class="language-html">&lt;video controls width=&quot;640&quot; height=&quot;360&quot; poster=&quot;images/video-cover.jpg&quot; preload=&quot;metadata&quot;&gt;
+    &lt;source src=&quot;video/intro.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;track kind=&quot;captions&quot; src=&quot;video/intro.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot; default&gt;
+    &lt;p&gt;Your browser does not support HTML5 video.
+       &lt;a href=&quot;video/intro.mp4&quot;&gt;Download the video&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;
+</code></pre>
+</li>
+<li>Reload and confirm it plays and the CC button appears.</li>
+<li>Now remove <code>controls</code>, reload, and try to play it.</li>
+<li>Put <code>controls</code> back, remove <code>poster</code>, and reload.</li>
+<li>Remove <code>width</code> and <code>height</code>, then reload with the Network tab throttled to Slow 3G.</li>
+</ol>
+<p><strong>Expected result:</strong> No <code>controls</code> gives a frozen first frame with no way to start it. No <code>poster</code> shows a black rectangle until playback begins. No <code>width</code>/<code>height</code> makes the page jump as the video&#39;s real size arrives.</p>
+<details>
+<summary>What each attribute is actually for</summary><table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Without it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>controls</code></td>
+<td>No play button. The video is unusable unless you script your own controls.</td>
+</tr>
+<tr>
+<td><code>poster</code></td>
+<td>A black box before play. The poster is your one chance to make the video look inviting.</td>
+</tr>
+<tr>
+<td><code>width</code> / <code>height</code></td>
+<td>Layout shift as the metadata loads — content jumps under the reader&#39;s cursor.</td>
+</tr>
+<tr>
+<td><code>preload=&quot;metadata&quot;</code></td>
+<td>Either the whole file downloads (<code>auto</code>) or the duration is unknown (<code>none</code>).</td>
+</tr>
+<tr>
+<td><code>&lt;track&gt;</code></td>
+<td>No captions. The video is inaccessible to deaf users and unusable in a silent room.</td>
+</tr>
+</tbody></table>
+<p>On <code>autoplay</code>: mobile browsers block it unless the video is also <code>muted</code>, and even then it is intrusive. If you must autoplay, use <code>autoplay muted loop playsinline</code> and no audio track — that combination is for background decoration, not for content anyone needs to hear.</p>
+<p>Always provide MP4 (H.264). WebM is smaller and fine as an additional <code>&lt;source&gt;</code>, but MP4 is the one format every browser and device can play.</p>
+</details><hr>
+<h3 id="3-html5-audio-the-audio-element">3. HTML5 Audio: The <code>&lt;audio&gt;</code> Element<a class="anchor" href="#3-html5-audio-the-audio-element" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-10.canvas.tsx</code> → <code>AutoplayRules</code> — slide <code>s10-audio</code> (&quot;Audio &amp; Autoplay Rules&quot;)</p>
+</blockquote>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p>The <code>&lt;audio&gt;</code> element works almost identically to <code>&lt;video&gt;</code>, but for sound files. It displays a compact audio player with play/pause, volume, and seek controls.</p>
+<h4 id="real-life-example-3">🎒 Real-life example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<p>Podcast websites, music streaming previews, pronunciation guides on dictionary sites, and notification sound demos all use the <code>&lt;audio&gt;</code> element.</p>
+<h4 id="32-basic-syntax">3.2 Basic Syntax<a class="anchor" href="#32-basic-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;audio src=&quot;audio/club-anthem.mp3&quot; controls&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;
+</code></pre>
+<h4 id="33-audio-file-formats">3.3 Audio File Formats<a class="anchor" href="#33-audio-file-formats" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Extension</th>
+<th>MIME Type</th>
+<th>Chrome</th>
+<th>Firefox</th>
+<th>Safari</th>
+<th>Edge</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>MP3</strong></td>
+<td><code>.mp3</code></td>
+<td><code>audio/mpeg</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Universal — always include this</td>
+</tr>
+<tr>
+<td><strong>WAV</strong></td>
+<td><code>.wav</code></td>
+<td><code>audio/wav</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Uncompressed, large files</td>
+</tr>
+<tr>
+<td><strong>Ogg Vorbis</strong></td>
+<td><code>.ogg</code></td>
+<td><code>audio/ogg</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Partial</td>
+<td>Open format, smaller than MP3</td>
+</tr>
+<tr>
+<td><strong>AAC</strong></td>
+<td><code>.aac</code></td>
+<td><code>audio/aac</code></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Better quality than MP3 at same bitrate</td>
+</tr>
+</tbody></table>
+<p>✅ <strong>Best practice:</strong> MP3 is the safest choice for universal compatibility. Provide Ogg as a secondary source if you want.</p>
+<h4 id="34-multiple-audio-sources">3.4 Multiple Audio Sources<a class="anchor" href="#34-multiple-audio-sources" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;audio controls&gt;
+    &lt;source src=&quot;audio/club-anthem.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+    &lt;source src=&quot;audio/club-anthem.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+    &lt;p&gt;Your browser does not support the audio element.
+       &lt;a href=&quot;audio/club-anthem.mp3&quot;&gt;Download the MP3&lt;/a&gt;.&lt;/p&gt;
+&lt;/audio&gt;
+</code></pre>
+<h4 id="35-shared-attributes-with-video">3.5 Shared Attributes with <code>&lt;video&gt;</code><a class="anchor" href="#35-shared-attributes-with-video" aria-label="Link to this section">#</a></h4>
+<p>The <code>&lt;audio&gt;</code> element shares these attributes with <code>&lt;video&gt;</code>:</p>
+<ul>
+<li><code>controls</code> — show playback controls</li>
+<li><code>autoplay</code> — start automatically (same browser restrictions apply)</li>
+<li><code>loop</code> — repeat when finished</li>
+<li><code>muted</code> — start silent</li>
+<li><code>preload</code> — <code>auto</code>, <code>metadata</code>, or <code>none</code></li>
+</ul>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>Unlike <code>&lt;video&gt;</code>, the <code>&lt;audio&gt;</code> element does NOT have <code>width</code>, <code>height</code>, or <code>poster</code> attributes. The browser renders a fixed-size audio widget.</li>
+<li>You CAN style the surrounding container with CSS, but the player controls themselves are browser-rendered and vary between browsers.</li>
+</ul>
+<h4 id="try-it-yourself-audio-with-a-real-fallback">🧪 Try It Yourself — Audio With a Real Fallback<a class="anchor" href="#try-it-yourself-audio-with-a-real-fallback" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Add a podcast clip that stays usable when playback fails.</p>
+<ol>
+<li>Add the element:<pre><code class="language-html">&lt;audio controls preload=&quot;metadata&quot;&gt;
+    &lt;source src=&quot;audio/interview.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+    &lt;source src=&quot;audio/interview.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+    &lt;p&gt;Your browser cannot play audio.
+       &lt;a href=&quot;audio/interview.mp3&quot;&gt;Download the interview (4 MB)&lt;/a&gt;.&lt;/p&gt;
+&lt;/audio&gt;
+</code></pre>
+</li>
+<li>Reload and confirm the controls appear and play.</li>
+<li>Now break both <code>src</code> paths on purpose and reload.</li>
+<li>Watch the Console and Network tabs.</li>
+</ol>
+<p><strong>Expected result:</strong> With broken paths you get a player that will not play and a Console error — but the download link never appears, because the fallback text only shows in browsers that do not support <code>&lt;audio&gt;</code> at all.</p>
+<details>
+<summary>The distinction worth understanding</summary><p>There are two different failure modes, and they need different handling:</p>
+<ol>
+<li><strong>The element is unsupported</strong> — the fallback <code>&lt;p&gt;</code> inside <code>&lt;audio&gt;</code> renders. This is now rare; every current browser supports <code>&lt;audio&gt;</code>.</li>
+<li><strong>The file will not load or the codec is unsupported</strong> — the element renders, the fallback does not, and the user gets a dead player.</li>
+</ol>
+<p>Case 2 is the realistic one, and the fix is a visible download link <em>outside</em> the element as well:</p>
+<pre><code class="language-html">&lt;p&gt;&lt;a href=&quot;audio/interview.mp3&quot;&gt;Download the interview (MP3, 4 MB)&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<p>Stating the format and size is a small courtesy that matters on a metered mobile connection.</p>
+<p><code>preload=&quot;metadata&quot;</code> is the right default: it fetches duration and track info so the controls are accurate, without downloading the whole file for someone who may never press play.</p>
+</details><hr>
+<h3 id="4-image-formats-recap">4. Image Formats Recap<a class="anchor" href="#4-image-formats-recap" aria-label="Link to this section">#</a></h3>
+<p>Since we are discussing media, let us quickly review image formats relevant to multimedia pages (especially for <code>poster</code> images):</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Best For</th>
+<th>Transparency</th>
+<th>Animation</th>
+<th>Compression</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>JPEG</strong> (.jpg)</td>
+<td>Photos, complex images</td>
+<td>No</td>
+<td>No</td>
+<td>Lossy — small files</td>
+</tr>
+<tr>
+<td><strong>PNG</strong> (.png)</td>
+<td>Logos, screenshots, graphics</td>
+<td>Yes</td>
+<td>No</td>
+<td>Lossless — larger files</td>
+</tr>
+<tr>
+<td><strong>GIF</strong> (.gif)</td>
+<td>Simple animations</td>
+<td>Limited (1-bit)</td>
+<td>Yes (limited colors)</td>
+<td>Lossless but limited palette</td>
+</tr>
+<tr>
+<td><strong>WebP</strong> (.webp)</td>
+<td>Modern replacement for JPEG/PNG</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Both lossy and lossless</td>
+</tr>
+<tr>
+<td><strong>SVG</strong> (.svg)</td>
+<td>Icons, logos, vector graphics</td>
+<td>Yes</td>
+<td>Yes (CSS/JS)</td>
+<td>Scalable, tiny for simple shapes</td>
+</tr>
+</tbody></table>
+<p>✅ For video poster images: use <strong>JPEG</strong> (small file, photographic quality).
+✅ For icons and logos on your media page: use <strong>SVG</strong> or <strong>PNG</strong>.
+✅ For modern projects: consider <strong>WebP</strong> for better compression.</p>
+<hr>
+<h3 id="5-embedding-third-party-videos-youtube-vimeo">5. Embedding Third-Party Videos (YouTube / Vimeo)<a class="anchor" href="#5-embedding-third-party-videos-youtube-vimeo" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-10.canvas.tsx</code> → <code>IframeEmbed</code> — slide <code>s10-iframe</code> (&quot;YouTube / Vimeo Embeds&quot;)</p>
+</blockquote>
+<h4 id="51-why-use-an-iframe-instead-of-self-hosting">5.1 Why Use an Iframe Instead of Self-Hosting?<a class="anchor" href="#51-why-use-an-iframe-instead-of-self-hosting" aria-label="Link to this section">#</a></h4>
+<p>Hosting your own video files has drawbacks:</p>
+<ul>
+<li>Large files consume YOUR server bandwidth and storage</li>
+<li>You must convert to multiple formats yourself</li>
+<li>No adaptive streaming (quality adjustment based on connection speed)</li>
+<li>No built-in analytics, captions, or sharing features</li>
+</ul>
+<p>Platforms like YouTube and Vimeo handle all of this for free. You simply embed their player.</p>
+<h4 id="52-how-to-get-the-embed-code">5.2 How to Get the Embed Code<a class="anchor" href="#52-how-to-get-the-embed-code" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Go to the YouTube video</li>
+<li>Click <strong>Share</strong> → <strong>Embed</strong></li>
+<li>Copy the <code>&lt;iframe&gt;</code> code provided</li>
+<li>Paste it into your HTML</li>
+</ol>
+<h4 id="53-iframe-embed-syntax">5.3 Iframe Embed Syntax<a class="anchor" href="#53-iframe-embed-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;iframe
+    width=&quot;560&quot;
+    height=&quot;315&quot;
+    src=&quot;https://www.youtube.com/embed/VIDEO_ID&quot;
+    title=&quot;Student Club Promo Video&quot;
+    frameborder=&quot;0&quot;
+    allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
+    allowfullscreen&gt;
+&lt;/iframe&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src</code></td>
+<td>YouTube embed URL with the video ID</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>Descriptive title for accessibility (screen readers announce this)</td>
+</tr>
+<tr>
+<td><code>frameborder=&quot;0&quot;</code></td>
+<td>Removes the border around the iframe</td>
+</tr>
+<tr>
+<td><code>allow</code></td>
+<td>Lists permissions the embedded player needs</td>
+</tr>
+<tr>
+<td><code>allowfullscreen</code></td>
+<td>Allows the user to go fullscreen</td>
+</tr>
+</tbody></table>
+<p>⚠️ <strong>Important notes</strong></p>
+<ul>
+<li>Replace <code>VIDEO_ID</code> with the actual ID from the YouTube URL. For example, if the URL is <code>https://www.youtube.com/watch?v=dQw4w9WgXcQ</code>, the ID is <code>dQw4w9WgXcQ</code>.</li>
+<li>Always include the <code>title</code> attribute for accessibility.</li>
+<li>For responsive iframes, wrap them in a container (see CSS below).</li>
+</ul>
+<h4 id="54-responsive-iframe-container">5.4 Responsive Iframe Container<a class="anchor" href="#54-responsive-iframe-container" aria-label="Link to this section">#</a></h4>
+<p>Iframes have a fixed aspect ratio. To make them responsive, use the &quot;padding-bottom hack&quot;:</p>
+<pre><code class="language-css">.video-container {
+    position: relative;
+    padding-bottom: 56.25%;   /* 16:9 aspect ratio = 9/16 = 0.5625 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</code></pre>
+<p>How this works:</p>
+<pre><code>.video-container
+┌─────────────────────────────────────┐
+│  padding-bottom: 56.25%             │ ← Creates height proportional to width
+│  ┌───────────────────────────────┐  │
+│  │                               │  │
+│  │     iframe (absolute)         │  │ ← Fills the container exactly
+│  │     width: 100%               │  │
+│  │     height: 100%              │  │
+│  │                               │  │
+│  └───────────────────────────────┘  │
+└─────────────────────────────────────┘
+</code></pre>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><p><strong>Always include <code>controls</code></strong> unless you are building a custom JavaScript player. Users need to be able to pause, adjust volume, and seek.</p>
+</li>
+<li><p><strong>Always provide fallback text</strong> inside <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> elements. Include a download link so users on incompatible browsers can still access the content.</p>
+</li>
+<li><p><strong>Provide MP4 as the primary video format.</strong> It has the widest browser support. Add WebM as a bonus for smaller file sizes.</p>
+</li>
+<li><p><strong>Use <code>poster</code> for videos.</strong> A good thumbnail invites clicks and looks professional.</p>
+</li>
+<li><p><strong>Compress your media files.</strong> Use tools like HandBrake (free, <a href="https://handbrake.fr/">https://handbrake.fr/</a>) for video and Audacity (free, <a href="https://www.audacityteam.org/">https://www.audacityteam.org/</a>) for audio. Target:</p>
+<ul>
+<li>Video: Under 10 MB for short clips (under 2 minutes)</li>
+<li>Audio: Under 3 MB for songs (MP3, 128-192 kbps)</li>
+<li>Poster images: Under 200 KB (JPEG, optimized)</li>
+</ul>
+</li>
+<li><p><strong>Use YouTube/Vimeo for long videos</strong> (over 5 minutes). Self-hosting long videos wastes bandwidth and provides a worse experience.</p>
+</li>
+<li><p><strong>Never rely on <code>autoplay</code> with sound.</strong> Always pair <code>autoplay</code> with <code>muted</code>. Better yet, let users choose when to play.</p>
+</li>
+<li><p><strong>Add <code>preload=&quot;metadata&quot;</code></strong> to avoid downloading full videos before the user interacts with them.</p>
+</li>
+<li><p><strong>Make iframes responsive</strong> using the padding-bottom container technique.</p>
+</li>
+<li><p><strong>Include descriptive <code>title</code> attributes</strong> on iframes and meaningful fallback text for screen reader users.</p>
+</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-trying-to-use-flash">Mistake 1: Trying to use Flash<a class="anchor" href="#mistake-1-trying-to-use-flash" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;!-- DO NOT DO THIS — Flash is dead --&gt;
+&lt;object type=&quot;application/x-shockwave-flash&quot; data=&quot;intro.swf&quot; width=&quot;640&quot; height=&quot;360&quot;&gt;
+    &lt;param name=&quot;movie&quot; value=&quot;intro.swf&quot;&gt;
+&lt;/object&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;video controls width=&quot;640&quot; height=&quot;360&quot;&gt;
+    &lt;source src=&quot;video/intro.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;p&gt;Your browser does not support HTML5 video.
+       &lt;a href=&quot;video/intro.mp4&quot;&gt;Download the video&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;
+</code></pre>
+<h4 id="mistake-2-forgetting-controls">Mistake 2: Forgetting <code>controls</code><a class="anchor" href="#mistake-2-forgetting-controls" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;!-- User sees a frozen video with NO way to play it --&gt;
+&lt;video src=&quot;video/promo.mp4&quot; width=&quot;640&quot;&gt;&lt;/video&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;video src=&quot;video/promo.mp4&quot; controls width=&quot;640&quot;&gt;&lt;/video&gt;
+</code></pre>
+<h4 id="mistake-3-using-only-one-obscure-format">Mistake 3: Using only one obscure format<a class="anchor" href="#mistake-3-using-only-one-obscure-format" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;!-- Only Ogg — won&#39;t work in Safari --&gt;
+&lt;video controls&gt;
+    &lt;source src=&quot;video/promo.ogv&quot; type=&quot;video/ogg&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;!-- MP4 first (universal), then Ogg as fallback --&gt;
+&lt;video controls&gt;
+    &lt;source src=&quot;video/promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;source src=&quot;video/promo.ogv&quot; type=&quot;video/ogg&quot;&gt;
+    &lt;p&gt;&lt;a href=&quot;video/promo.mp4&quot;&gt;Download video&lt;/a&gt;&lt;/p&gt;
+&lt;/video&gt;
+</code></pre>
+<h4 id="mistake-4-autoplay-with-sound">Mistake 4: Autoplay with sound<a class="anchor" href="#mistake-4-autoplay-with-sound" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;!-- Browser will BLOCK this --&gt;
+&lt;video autoplay src=&quot;video/promo.mp4&quot;&gt;&lt;/video&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;!-- Muted autoplay works; OR just use controls and let users click play --&gt;
+&lt;video autoplay muted loop playsinline&gt;
+    &lt;source src=&quot;video/background.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+<h4 id="mistake-5-huge-uncompressed-video-files">Mistake 5: Huge uncompressed video files<a class="anchor" href="#mistake-5-huge-uncompressed-video-files" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong> Uploading a 500 MB raw video file directly to your website folder.</p>
+<p>✅ <strong>Correct:</strong> Compress with HandBrake first. Target H.264 codec, 720p or 1080p, reasonable bitrate (2-5 Mbps). Result: 10-30 MB for a 2-minute clip.</p>
+<h4 id="mistake-6-missing-title-on-iframes">Mistake 6: Missing <code>title</code> on iframes<a class="anchor" href="#mistake-6-missing-title-on-iframes" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;iframe src=&quot;https://www.youtube.com/embed/abc123&quot; allowfullscreen&gt;&lt;/iframe&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;iframe
+    src=&quot;https://www.youtube.com/embed/abc123&quot;
+    title=&quot;Student Club Annual Gala Highlights&quot;
+    allowfullscreen&gt;
+&lt;/iframe&gt;
+</code></pre>
+<h4 id="mistake-7-no-fallback-text">Mistake 7: No fallback text<a class="anchor" href="#mistake-7-no-fallback-text" aria-label="Link to this section">#</a></h4>
+<p>❌ <strong>Wrong:</strong></p>
+<pre><code class="language-html">&lt;video controls&gt;
+    &lt;source src=&quot;video/promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+<p>✅ <strong>Correct:</strong></p>
+<pre><code class="language-html">&lt;video controls&gt;
+    &lt;source src=&quot;video/promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;p&gt;Your browser does not support HTML5 video.
+       &lt;a href=&quot;video/promo.mp4&quot;&gt;Download the video&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;
+</code></pre>
+<h4 id="try-it-yourself-embed-youtube-without-slowing-the-page">🧪 Try It Yourself — Embed YouTube Without Slowing the Page<a class="anchor" href="#try-it-yourself-embed-youtube-without-slowing-the-page" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Add a third-party video and measure what it costs.</p>
+<ol>
+<li>On YouTube, use <strong>Share → Embed</strong> and copy the iframe. Add the accessibility and performance attributes yourself:<pre><code class="language-html">&lt;iframe
+    width=&quot;560&quot; height=&quot;315&quot;
+    src=&quot;https://www.youtube-nocookie.com/embed/VIDEO_ID&quot;
+    title=&quot;Student Web Club showcase 2026&quot;
+    loading=&quot;lazy&quot;
+    allowfullscreen&gt;
+&lt;/iframe&gt;
+</code></pre>
+</li>
+<li>Reload with F12 → <strong>Network</strong> open and read the total transferred size at the bottom.</li>
+<li>Now remove <code>loading=&quot;lazy&quot;</code>, put the iframe far down the page, and compare.</li>
+</ol>
+<p><strong>Expected result:</strong> A YouTube embed pulls in roughly a megabyte of player code before anyone presses play. With <code>loading=&quot;lazy&quot;</code> and the iframe below the fold, none of it loads until the visitor scrolls near it.</p>
+<details>
+<summary>The four attributes and why each is there</summary><ul>
+<li><strong><code>title</code></strong> — required for accessibility. An iframe with no title is announced only as &quot;frame&quot;, so a screen reader user cannot tell what it contains. This is the most commonly missed attribute on the web.</li>
+<li><strong><code>loading=&quot;lazy&quot;</code></strong> — defers the whole embed until it is near the viewport. One attribute, large win.</li>
+<li><strong><code>youtube-nocookie.com</code></strong> — the same player without tracking cookies set on load. Better for your visitors&#39; privacy and often required by university policy.</li>
+<li><strong><code>allowfullscreen</code></strong> — without it the fullscreen button is disabled.</li>
+</ul>
+<p>Use the <code>/embed/</code> URL, not the <code>watch?v=</code> address bar URL. The watch URL refuses to load in a frame, and the console reports a frame-ancestors error rather than anything about YouTube.</p>
+<p>Host your own file with <code>&lt;video&gt;</code> when the content is yours and small. Embed when the video is long — you get YouTube&#39;s bandwidth, adaptive quality, and captions for free.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Adobe Flash</td>
+<td>Deprecated multimedia plugin, discontinued Dec 2020</td>
+<td>Old YouTube player, <code>.swf</code> banner ads</td>
+</tr>
+<tr>
+<td><code>&lt;video&gt;</code></td>
+<td>HTML5 element for embedding video natively</td>
+<td><code>&lt;video controls src=&quot;clip.mp4&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;audio&gt;</code></td>
+<td>HTML5 element for embedding audio natively</td>
+<td><code>&lt;audio controls src=&quot;song.mp3&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;source&gt;</code></td>
+<td>Child element specifying alternative media formats</td>
+<td><code>&lt;source src=&quot;v.mp4&quot; type=&quot;video/mp4&quot;&gt;</code></td>
+</tr>
+<tr>
+<td><code>controls</code></td>
+<td>Attribute showing browser playback UI</td>
+<td>Play, pause, volume, seek bar, fullscreen</td>
+</tr>
+<tr>
+<td><code>poster</code></td>
+<td>Thumbnail image displayed before video plays</td>
+<td><code>poster=&quot;images/thumb.jpg&quot;</code></td>
+</tr>
+<tr>
+<td><code>autoplay</code></td>
+<td>Auto-starts media (must be muted for video)</td>
+<td><code>&lt;video autoplay muted&gt;</code></td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>Repeats media when it reaches the end</td>
+<td><code>&lt;audio loop controls&gt;</code></td>
+</tr>
+<tr>
+<td><code>preload</code></td>
+<td>Hint for how much media to pre-download</td>
+<td><code>preload=&quot;metadata&quot;</code></td>
+</tr>
+<tr>
+<td><code>&lt;iframe&gt;</code></td>
+<td>Embeds external content (YouTube, Vimeo)</td>
+<td><code>&lt;iframe src=&quot;youtube.com/embed/...&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Fallback text</td>
+<td>Content inside <code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code> for unsupported browsers</td>
+<td><code>&lt;p&gt;Download the video instead&lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td>MP4 (H.264)</td>
+<td>Most universally supported video format</td>
+<td><code>.mp4</code> files</td>
+</tr>
+<tr>
+<td>WebM</td>
+<td>Open video format with smaller file sizes</td>
+<td><code>.webm</code> files</td>
+</tr>
+<tr>
+<td>MP3</td>
+<td>Most universally supported audio format</td>
+<td><code>.mp3</code> files</td>
+</tr>
+<tr>
+<td>Responsive iframe</td>
+<td>Padding-bottom technique for fluid video embeds</td>
+<td><code>padding-bottom: 56.25%</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-basic-video-with-controls-and-poster">Example 1: Basic Video with Controls and Poster<a class="anchor" href="#example-1-basic-video-with-controls-and-poster" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to add a promotional video for the Student Club on the home page. The video file is <code>club-promo.mp4</code> stored in the <code>video/</code> folder. You have a thumbnail image <code>promo-thumb.jpg</code> in the <code>images/</code> folder.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;section class=&quot;media-section&quot;&gt;
+    &lt;h3&gt;Watch Our Promo Video&lt;/h3&gt;
+    &lt;video controls
+           width=&quot;640&quot;
+           height=&quot;360&quot;
+           poster=&quot;images/promo-thumb.jpg&quot;
+           preload=&quot;metadata&quot;&gt;
+        &lt;source src=&quot;video/club-promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+        &lt;source src=&quot;video/club-promo.webm&quot; type=&quot;video/webm&quot;&gt;
+        &lt;p&gt;Your browser does not support HTML5 video.
+           &lt;a href=&quot;video/club-promo.mp4&quot;&gt;Download the video&lt;/a&gt;.&lt;/p&gt;
+    &lt;/video&gt;
+    &lt;p class=&quot;caption&quot;&gt;See what our club is all about!&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;section class=&quot;media-section&quot;&gt;</code></td>
+<td>Wraps the video in a semantic section with a class for CSS styling</td>
+</tr>
+<tr>
+<td><code>&lt;h3&gt;Watch Our Promo Video&lt;/h3&gt;</code></td>
+<td>Heading describing the video content</td>
+</tr>
+<tr>
+<td><code>&lt;video controls</code></td>
+<td>Opens the video element; <code>controls</code> shows the playback toolbar</td>
+</tr>
+<tr>
+<td><code>width=&quot;640&quot;</code></td>
+<td>Sets display width to 640 pixels</td>
+</tr>
+<tr>
+<td><code>height=&quot;360&quot;</code></td>
+<td>Sets display height to 360 pixels (16:9 ratio)</td>
+</tr>
+<tr>
+<td><code>poster=&quot;images/promo-thumb.jpg&quot;</code></td>
+<td>Shows this image before the user clicks play</td>
+</tr>
+<tr>
+<td><code>preload=&quot;metadata&quot;&gt;</code></td>
+<td>Only loads video metadata (duration, size) initially — saves bandwidth</td>
+</tr>
+<tr>
+<td><code>&lt;source src=&quot;video/club-promo.mp4&quot; type=&quot;video/mp4&quot;&gt;</code></td>
+<td>First choice: MP4 format (widest support)</td>
+</tr>
+<tr>
+<td><code>&lt;source src=&quot;video/club-promo.webm&quot; type=&quot;video/webm&quot;&gt;</code></td>
+<td>Second choice: WebM format (smaller file, works in Chrome/Firefox/Edge)</td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;Your browser does not...</code></td>
+<td>Fallback paragraph shown only if NO source format is supported</td>
+</tr>
+<tr>
+<td><code>&lt;a href=&quot;video/club-promo.mp4&quot;&gt;Download the video&lt;/a&gt;</code></td>
+<td>Provides a direct download link as last resort</td>
+</tr>
+<tr>
+<td><code>&lt;/video&gt;</code></td>
+<td>Closes the video element</td>
+</tr>
+<tr>
+<td><code>&lt;p class=&quot;caption&quot;&gt;...</code></td>
+<td>Caption text below the video</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> The browser displays a 640×360 video player with the thumbnail image visible. When the user clicks play, the video starts with full controls (play/pause, volume, timeline, fullscreen). If the browser cannot play either format, the user sees a message with a download link.</p>
+<hr>
+<h3 id="example-2-background-decorative-video">Example 2: Background Decorative Video<a class="anchor" href="#example-2-background-decorative-video" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want a subtle looping video as a decorative background behind your hero section. It should autoplay silently and loop forever.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;hero-background&quot;&gt;
+    &lt;video autoplay muted loop playsinline&gt;
+        &lt;source src=&quot;video/campus-aerial.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;/video&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.hero-background {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.hero-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>autoplay</code></td>
+<td>Video starts playing as soon as the page loads</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>REQUIRED for autoplay to work in modern browsers</td>
+</tr>
+<tr>
+<td><code>loop</code></td>
+<td>Video restarts from the beginning when it ends — infinite loop</td>
+</tr>
+<tr>
+<td><code>playsinline</code></td>
+<td>On iOS, prevents the video from popping into fullscreen mode</td>
+</tr>
+<tr>
+<td>No <code>controls</code></td>
+<td>Intentional — this is decorative, users should not interact with it</td>
+</tr>
+<tr>
+<td><code>position: absolute</code> + <code>transform</code></td>
+<td>Centers the video within its container regardless of aspect ratio</td>
+</tr>
+<tr>
+<td><code>object-fit: cover</code></td>
+<td>Ensures the video fills the container without distortion (crops edges if needed)</td>
+</tr>
+<tr>
+<td><code>overflow: hidden</code></td>
+<td>Clips any part of the video that extends beyond the container</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> A silent, looping video fills the hero section background. It autoplays on all modern browsers including mobile. There are no visible controls because this is purely decorative.</p>
+<p>⚠️ <strong>Accessibility warning:</strong> Decorative background videos can be distracting for some users. Consider adding a &quot;Pause animation&quot; button nearby, and always ensure text on top of the video remains readable (add a semi-transparent overlay if needed).</p>
+<hr>
+<h3 id="example-3-audio-player-with-styling">Example 3: Audio Player with Styling<a class="anchor" href="#example-3-audio-player-with-styling" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to add the Student Club anthem as an audio player on the Media page, wrapped in a styled container.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;audio-player&quot;&gt;
+    &lt;h3&gt;🎵 Club Anthem&lt;/h3&gt;
+    &lt;audio controls&gt;
+        &lt;source src=&quot;audio/club-anthem.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+        &lt;source src=&quot;audio/club-anthem.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+        &lt;p&gt;Your browser does not support the audio element.
+           &lt;a href=&quot;audio/club-anthem.mp3&quot;&gt;Download the MP3&lt;/a&gt;.&lt;/p&gt;
+    &lt;/audio&gt;
+    &lt;p class=&quot;caption&quot;&gt;Listen to the official Student Club anthem.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.audio-player {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+.audio-player h3 {
+    margin-bottom: 10px;
+    color: #1a5276;
+    font-size: 20px;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 400px;
+}
+
+.audio-player .caption {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;div class=&quot;audio-player&quot;&gt;</code></td>
+<td>Wrapper div for styling the entire audio section</td>
+</tr>
+<tr>
+<td><code>&lt;h3&gt;🎵 Club Anthem&lt;/h3&gt;</code></td>
+<td>Title above the player</td>
+</tr>
+<tr>
+<td><code>&lt;audio controls&gt;</code></td>
+<td>Audio element with browser-native playback controls</td>
+</tr>
+<tr>
+<td><code>&lt;source ... type=&quot;audio/mpeg&quot;&gt;</code></td>
+<td>Primary format: MP3 (universal)</td>
+</tr>
+<tr>
+<td><code>&lt;source ... type=&quot;audio/ogg&quot;&gt;</code></td>
+<td>Secondary format: Ogg (open format, smaller)</td>
+</tr>
+<tr>
+<td>Fallback <code>&lt;p&gt;</code> with download link</td>
+<td>Shown only if browser cannot play either format</td>
+</tr>
+<tr>
+<td><code>.audio-player { background-color: #f8f9fa }</code></td>
+<td>Light gray background to visually separate the player</td>
+</tr>
+<tr>
+<td><code>text-align: center</code></td>
+<td>Centers the heading, player, and caption</td>
+</tr>
+<tr>
+<td><code>audio { width: 100%; max-width: 400px }</code></td>
+<td>Makes the audio player responsive but caps its width</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> A neatly styled card containing the audio player. The player shows standard browser controls (play/pause, timeline, volume). Below it, an italic caption describes the audio.</p>
+<hr>
+<h3 id="example-4-responsive-youtube-embed">Example 4: Responsive YouTube Embed<a class="anchor" href="#example-4-responsive-youtube-embed" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to embed a YouTube video on the Media page so it resizes properly on mobile devices.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;video-container&quot;&gt;
+    &lt;iframe
+        src=&quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot;
+        title=&quot;Student Club Annual Event Highlights&quot;
+        frameborder=&quot;0&quot;
+        allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
+        allowfullscreen&gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.video-container {
+    position: relative;
+    padding-bottom: 56.25%;   /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.video-container</code></td>
+<td>Wrapper div that maintains the 16:9 aspect ratio</td>
+</tr>
+<tr>
+<td><code>position: relative</code></td>
+<td>Establishes a positioning context for the absolutely-positioned iframe</td>
+</tr>
+<tr>
+<td><code>padding-bottom: 56.25%</code></td>
+<td>Creates vertical space equal to 56.25% of the container&#39;s WIDTH (= 9÷16). This is the magic that preserves aspect ratio.</td>
+</tr>
+<tr>
+<td><code>height: 0</code></td>
+<td>Actual height comes from padding, not from the height property</td>
+</tr>
+<tr>
+<td><code>overflow: hidden</code></td>
+<td>Clips anything that spills outside the container</td>
+</tr>
+<tr>
+<td><code>iframe { position: absolute }</code></td>
+<td>Takes the iframe out of normal flow and stretches it to fill the container</td>
+</tr>
+<tr>
+<td><code>width: 100%; height: 100%</code></td>
+<td>Fills the entire container area</td>
+</tr>
+<tr>
+<td><code>border: none</code></td>
+<td>Removes any default iframe border</td>
+</tr>
+<tr>
+<td><code>title=&quot;...&quot;</code></td>
+<td>Accessibility: screen readers announce this description</td>
+</tr>
+<tr>
+<td><code>allowfullscreen</code></td>
+<td>Permits the YouTube player to enter fullscreen mode</td>
+</tr>
+</tbody></table>
+<p><strong>Result:</strong> The YouTube video scales fluidly from desktop to mobile, always maintaining the correct 16:9 proportions. No horizontal scrollbar, no squished video.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Before starting the tasks, prepare your project:</p>
+<ol>
+<li>Open your <strong>club-website</strong> folder in VS Code.</li>
+<li>Create two new folders inside the project root:<pre><code>club-website/
+    video/          ← put video files here
+    audio/          ← put audio files here
+    images/         ← already exists; add poster images here
+</code></pre>
+</li>
+<li>Download sample media files for testing:<ul>
+<li>Video: <a href="https://sample-videos.com/">https://sample-videos.com/</a> (download a short MP4, rename to <code>club-promo.mp4</code>)</li>
+<li>Audio: <a href="https://www.soundhelix.com/audio-examples">https://www.soundhelix.com/audio-examples</a> (download an MP3, rename to <code>club-anthem.mp3</code>)</li>
+<li>Alternatively, use any short video/audio files you already have</li>
+</ul>
+</li>
+<li>Create a poster image (640×360 JPEG) and save it as <code>images/video-poster.jpg</code>. You can take a screenshot from the video or use any relevant photo.</li>
+</ol>
+<hr>
+<h4 id="task-1-add-a-promo-video-section-to-the-home-page">TASK 1: Add a Promo Video Section to the Home Page<a class="anchor" href="#task-1-add-a-promo-video-section-to-the-home-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Embed a self-hosted HTML5 video on <code>index.html</code>.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>index.html</code> in VS Code.</li>
+<li>Inside the <code>&lt;main&gt;</code> element, after the welcome/intro section, add a new <code>&lt;section&gt;</code>:</li>
+</ol>
+<pre><code class="language-html">&lt;section class=&quot;media-section&quot;&gt;
+    &lt;h3&gt;Watch Our Promo Video&lt;/h3&gt;
+    &lt;video controls
+           poster=&quot;images/video-poster.jpg&quot;
+           preload=&quot;metadata&quot;&gt;
+        &lt;source src=&quot;video/club-promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+        &lt;p&gt;Your browser does not support HTML5 video.
+           &lt;a href=&quot;video/club-promo.mp4&quot;&gt;Download the video&lt;/a&gt;.&lt;/p&gt;
+    &lt;/video&gt;
+    &lt;p class=&quot;caption&quot;&gt;See what our Student Club is all about!&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+<ol start="3">
+<li>Save the file.</li>
+<li>Open <code>css/style.css</code> and add these styles:</li>
+</ol>
+<pre><code class="language-css">/* --- Media Section --- */
+.media-section {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.media-section video {
+    display: block;
+    margin: 15px auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.caption {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    margin-top: 8px;
+}
+</code></pre>
+<ol start="5">
+<li>Save the CSS file.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Open <code>index.html</code> in your browser (F12 or double-click). You should see:</p>
+<ul>
+<li>The poster image displayed in the video player</li>
+<li>Clicking play starts the video</li>
+<li>Controls (play/pause, volume, fullscreen) are visible</li>
+<li>The video resizes when you resize the browser window</li>
+</ul>
+<p>💾 <strong>Save</strong> both files. Commit mentally: &quot;Added promo video to home page.&quot;</p>
+<hr>
+<h4 id="task-2-create-a-full-media-page">TASK 2: Create a Full Media Page<a class="anchor" href="#task-2-create-a-full-media-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create <code>media.html</code> with video, audio, and YouTube embed.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Create a new file <code>media.html</code> in your project root.</li>
+<li>Add the complete HTML structure:</li>
+</ol>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - Media&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;wrapper&quot;&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Student Club&lt;/h1&gt;
+            &lt;p&gt;Learn. Create. Connect.&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;media.html&quot; class=&quot;active&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+
+        &lt;div id=&quot;main-area&quot;&gt;
+            &lt;main&gt;
+                &lt;h2&gt;Media Center&lt;/h2&gt;
+
+                &lt;!-- SECTION: Promotional Video --&gt;
+                &lt;section&gt;
+                    &lt;h3&gt;Club Promotional Video&lt;/h3&gt;
+                    &lt;video controls
+                           poster=&quot;images/video-poster.jpg&quot;
+                           preload=&quot;metadata&quot;&gt;
+                        &lt;source src=&quot;video/club-promo.mp4&quot; type=&quot;video/mp4&quot;&gt;
+                        &lt;source src=&quot;video/club-promo.webm&quot; type=&quot;video/webm&quot;&gt;
+                        &lt;p&gt;Your browser does not support HTML5 video.
+                           &lt;a href=&quot;video/club-promo.mp4&quot;&gt;Download the video&lt;/a&gt;.&lt;/p&gt;
+                    &lt;/video&gt;
+                    &lt;p class=&quot;caption&quot;&gt;Our latest promotional video showcasing club activities.&lt;/p&gt;
+                &lt;/section&gt;
+
+                &lt;!-- SECTION: YouTube Embed --&gt;
+                &lt;section&gt;
+                    &lt;h3&gt;Event Highlights on YouTube&lt;/h3&gt;
+                    &lt;div class=&quot;video-container&quot;&gt;
+                        &lt;iframe
+                            src=&quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot;
+                            title=&quot;Student Club Event Highlights&quot;
+                            frameborder=&quot;0&quot;
+                            allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
+                            allowfullscreen&gt;
+                        &lt;/iframe&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;caption&quot;&gt;Highlights from our annual gala event.&lt;/p&gt;
+                &lt;/section&gt;
+
+                &lt;!-- SECTION: Audio Player --&gt;
+                &lt;section&gt;
+                    &lt;h3&gt;Club Anthem&lt;/h3&gt;
+                    &lt;div class=&quot;audio-player&quot;&gt;
+                        &lt;audio controls&gt;
+                            &lt;source src=&quot;audio/club-anthem.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+                            &lt;source src=&quot;audio/club-anthem.ogg&quot; type=&quot;audio/ogg&quot;&gt;
+                            &lt;p&gt;Your browser does not support the audio element.
+                               &lt;a href=&quot;audio/club-anthem.mp3&quot;&gt;Download the MP3&lt;/a&gt;.&lt;/p&gt;
+                        &lt;/audio&gt;
+                        &lt;p class=&quot;caption&quot;&gt;Listen to the official Student Club anthem.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/section&gt;
+            &lt;/main&gt;
+
+            &lt;aside id=&quot;sidebar&quot;&gt;
+                &lt;h3&gt;Media Library&lt;/h3&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Promo Videos&lt;/a&gt; (3)&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Event Recordings&lt;/a&gt; (12)&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Music&lt;/a&gt; (5)&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Podcasts&lt;/a&gt; (8)&lt;/li&gt;
+                &lt;/ul&gt;
+
+                &lt;h3&gt;Follow Us&lt;/h3&gt;
+                &lt;p&gt;
+                    &lt;a href=&quot;#&quot;&gt;Facebook&lt;/a&gt; |
+                    &lt;a href=&quot;#&quot;&gt;Instagram&lt;/a&gt; |
+                    &lt;a href=&quot;#&quot;&gt;YouTube&lt;/a&gt;
+                &lt;/p&gt;
+            &lt;/aside&gt;
+        &lt;/div&gt;
+
+        &lt;footer&gt;
+            &lt;p&gt;&amp;copy; 2024 Student Club. All rights reserved.&lt;/p&gt;
+            &lt;p&gt;Email: &lt;a href=&quot;mailto:club@university.edu&quot;&gt;club@university.edu&lt;/a&gt;&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ol start="3">
+<li>Save the file.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Open <code>media.html</code> in your browser. Verify:</p>
+<ul>
+<li>The self-hosted video plays with controls</li>
+<li>The YouTube embed loads and plays</li>
+<li>The audio player shows and plays audio</li>
+<li>Sidebar and footer render correctly</li>
+<li>Navigation links work (including the highlighted &quot;Media&quot; link)</li>
+</ul>
+<p>💾 <strong>Save</strong> the file.</p>
+<hr>
+<h4 id="task-3-update-navigation-on-all-other-pages">TASK 3: Update Navigation on ALL Other Pages<a class="anchor" href="#task-3-update-navigation-on-all-other-pages" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Ensure every page in the site links to <code>media.html</code>.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><p>Open each of these files in VS Code:</p>
+<ul>
+<li><code>index.html</code></li>
+<li><code>about.html</code></li>
+<li><code>events.html</code></li>
+<li><code>gallery.html</code></li>
+<li><code>contact.html</code></li>
+</ul>
+</li>
+<li><p>In EACH file, find the <code>&lt;nav&gt;&lt;ul&gt;</code> section and add this line AFTER the Gallery link:</p>
+</li>
+</ol>
+<pre><code class="language-html">&lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+<ol start="3">
+<li><p>Make sure the navigation order is consistent across ALL pages:
+Home → About Us → Events → Gallery → <strong>Media</strong> → Contact</p>
+</li>
+<li><p>On <code>media.html</code> itself, ensure the Media link has <code>class=&quot;active&quot;</code>:</p>
+</li>
+</ol>
+<pre><code class="language-html">&lt;li&gt;&lt;a href=&quot;media.html&quot; class=&quot;active&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+<ol start="5">
+<li>Save ALL modified files.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Navigate through every page using the nav bar. Click &quot;Media&quot; from each page. Verify you land on <code>media.html</code> every time. Verify the &quot;Media&quot; link is highlighted on <code>media.html</code>.</p>
+<p>💾 <strong>Save</strong> all files.</p>
+<hr>
+<h4 id="task-4-add-multimedia-css-to-your-stylesheet">TASK 4: Add Multimedia CSS to Your Stylesheet<a class="anchor" href="#task-4-add-multimedia-css-to-your-stylesheet" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Add all necessary CSS for video, audio, and iframe elements.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li>Open <code>css/style.css</code>.</li>
+<li>Scroll to the bottom and add:</li>
+</ol>
+<pre><code class="language-css">/* ==========================================
+   MULTIMEDIA STYLES (Session 10)
+   ========================================== */
+
+/* --- Video Styles --- */
+video {
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Audio Player Container --- */
+.audio-player {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 400px;
+}
+
+.audio-player h3 {
+    margin-bottom: 10px;
+    color: #1a5276;
+}
+
+/* --- Responsive YouTube/Iframe Container --- */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;   /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- Captions --- */
+.caption {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* --- Media Section --- */
+.media-section {
+    margin: 30px 0;
+    text-align: center;
+}
+</code></pre>
+<ol start="3">
+<li>Save the CSS file.</li>
+</ol>
+<p>✅ <strong>Check:</strong> Reload <code>media.html</code> in the browser. Verify:</p>
+<ul>
+<li>Videos have rounded corners and shadow</li>
+<li>Audio player has a light gray background card</li>
+<li>YouTube embed maintains 16:9 ratio when resizing the browser</li>
+<li>Captions are italicized and centered</li>
+</ul>
+<p>💾 <strong>Save</strong> the stylesheet.</p>
+<hr>
+<h4 id="task-5-test-across-scenarios">TASK 5: Test Across Scenarios<a class="anchor" href="#task-5-test-across-scenarios" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Verify your multimedia works correctly in different conditions.</p>
+<p>🔧 <strong>Steps:</strong></p>
+<ol>
+<li><strong>Test video controls:</strong> Play, pause, adjust volume, seek to different timestamps, toggle fullscreen.</li>
+<li><strong>Test poster image:</strong> Refresh the page. Confirm the poster image shows before clicking play.</li>
+<li><strong>Test audio:</strong> Play the audio, adjust volume, verify it loops (if you added <code>loop</code>).</li>
+<li><strong>Test YouTube embed:</strong> Click play, verify it loads, test fullscreen.</li>
+<li><strong>Test responsiveness:</strong> Resize the browser window from wide to narrow. Verify:<ul>
+<li>Video scales down proportionally</li>
+<li>YouTube embed maintains aspect ratio</li>
+<li>Audio player stays within bounds</li>
+</ul>
+</li>
+<li><strong>Test fallback:</strong> Temporarily rename your video file (e.g., <code>club-promo.mp4</code> → <code>club-promo.mp4.bak</code>). Reload the page. Verify the fallback text and download link appear. Rename the file back afterward.</li>
+<li><strong>Test navigation:</strong> Visit every page and click the Media link.</li>
+</ol>
+<p>✅ <strong>Check:</strong> All tests pass. If any fail, revisit the relevant task above.</p>
+<p>💾 <strong>Final save.</strong> Your Student Club Website now has a fully functional multimedia page!</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Media bugs are mostly path and format problems, and the browser&#39;s failure mode is a blank box rather than a message.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Black rectangle where the video should be</td>
+<td>The <code>src</code> path is wrong</td>
+<td>Network tab shows 404 for the video file</td>
+<td>Fix the path, usually <code>video/name.mp4</code></td>
+</tr>
+<tr>
+<td>Video visible but no way to play it</td>
+<td>The <code>controls</code> attribute is missing</td>
+<td>Read the <code>&lt;video&gt;</code> tag</td>
+<td>Add <code>controls</code></td>
+</tr>
+<tr>
+<td>Nothing happens on a phone but it works on a laptop</td>
+<td>Mobile blocks autoplay with sound</td>
+<td>Test on a real device</td>
+<td><code>autoplay</code> requires <code>muted</code>; prefer letting the user press play</td>
+</tr>
+<tr>
+<td>Works in Chrome, blank in Safari</td>
+<td>Codec unsupported — often WebM only</td>
+<td>Console reports no supported source</td>
+<td>Always provide an MP4 (H.264) source</td>
+</tr>
+<tr>
+<td>Audio player is a tiny sliver</td>
+<td><code>&lt;audio&gt;</code> given a small width, or a CSS reset shrank it</td>
+<td>Inspect the element&#39;s box</td>
+<td>Set an explicit width, or leave the default</td>
+</tr>
+<tr>
+<td>Layout jumps as the video loads</td>
+<td>No <code>width</code>/<code>height</code>, so the box has no size until metadata arrives</td>
+<td>Watch a throttled reload</td>
+<td>Set <code>width</code> and <code>height</code>, or use <code>aspect-ratio</code> in CSS</td>
+</tr>
+<tr>
+<td>Page load is very slow</td>
+<td>The whole video preloads</td>
+<td>Network tab shows a large early request</td>
+<td><code>preload=&quot;metadata&quot;</code> and add a <code>poster</code> image</td>
+</tr>
+<tr>
+<td>Downloaded YouTube embed shows nothing</td>
+<td>The iframe was blocked, or the URL is the watch link</td>
+<td>Console shows a frame error</td>
+<td>Use the <code>/embed/</code> URL form from the Share → Embed dialog</td>
+</tr>
+<tr>
+<td>Fallback text never appears in any browser</td>
+<td>It is only for browsers with no <code>&lt;video&gt;</code> support</td>
+<td>Nothing to confirm — it is correct behaviour</td>
+<td>Keep it, plus a download link, for the rare case</td>
+</tr>
+<tr>
+<td>Deaf students cannot follow the video</td>
+<td>No captions track</td>
+<td>Check for a <code>&lt;track&gt;</code> element</td>
+<td>Add <code>&lt;track kind=&quot;captions&quot; src=&quot;captions.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot;&gt;</code></td>
+</tr>
+</tbody></table>
+<p><strong>Never use Flash.</strong> If you find <code>&lt;object type=&quot;application/x-shockwave-flash&quot;&gt;</code> in any tutorial, that tutorial predates 2020. Flash was removed from every browser on 31 December 2020; the replacement is <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code>, which need no plugin.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. Why is Flash dead, and what replaced it?</strong></p>
+<details>
+<summary>Answer</summary><p>Flash was a proprietary browser plugin with a long history of security vulnerabilities, poor mobile support (iOS never shipped it), and heavy battery use. Adobe ended support on 31 December 2020 and browsers removed the runtime. It was replaced by <strong>native HTML5</strong> <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code>, which need no plugin and work everywhere.</p>
+</details><hr>
+<p><strong>Q2. What happens if you omit the <code>controls</code> attribute on <code>&lt;video&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>The video renders with <strong>no play button, timeline, or volume control</strong>. Unless you build your own controls with JavaScript, the user cannot start it — the page looks broken. Native controls are also keyboard accessible for free, so always include <code>controls</code>.</p>
+</details><hr>
+<p><strong>Q3. Why supply multiple <code>&lt;source&gt;</code> elements inside <code>&lt;video&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>Browsers support different codecs. The browser walks the <code>&lt;source&gt;</code> list top to bottom and plays the first format it recognises. Providing MP4 (H.264) plus WebM covers essentially every browser. The <code>type</code> attribute matters: it lets the browser skip formats it cannot play without downloading them first.</p>
+</details><hr>
+<p><strong>Q4. What does <code>poster</code> do, and why does it matter?</strong></p>
+<details>
+<summary>Answer</summary><p><code>poster=&quot;images/thumb.jpg&quot;</code> sets the still image shown before playback starts. Without it most browsers display the first frame — often black — so the page looks unfinished or broken. A deliberate poster frame makes the video look intentional and gives the user a reason to press play.</p>
+</details><hr>
+<p><strong>Q5. Why do browsers block <code>autoplay</code> with sound?</strong></p>
+<details>
+<summary>Answer</summary><p>Unexpected audio is hostile: it startles users, wastes mobile data, and disorients screen reader users whose speech is drowned out. Chrome, Safari, and Firefox all require a user gesture before audio can play. Autoplay is only permitted when the video is also <code>muted</code> — and even then, use it sparingly.</p>
+</details><hr>
+<p><strong>Q6. What does <code>preload=&quot;metadata&quot;</code> do, and why prefer it over <code>preload=&quot;auto&quot;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>metadata</code> fetches only enough of the file to know its duration and dimensions, so the player renders correctly without downloading the media. <code>auto</code> may pull the entire file before the user clicks anything, wasting bandwidth on mobile plans. Use <code>metadata</code> unless you are confident the user will play.</p>
+</details><hr>
+<p><strong>Q7. Explain why <code>padding-bottom: 56.25%</code> makes an iframe responsive.</strong></p>
+<details>
+<summary>Answer</summary><p>Percentage padding is calculated from the element&#39;s <strong>width</strong>, not its height. With <code>height: 0</code> and <code>padding-bottom: 56.25%</code> (9 ÷ 16), the wrapper&#39;s height always equals 56.25% of its width — a locked 16:9 box. The iframe is then absolutely positioned to fill that box at 100% width and height. For 4:3 content the value is 75%.</p>
+</details><hr>
+<p><strong>Q8. What makes a video accessible?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Captions</strong> via <code>&lt;track kind=&quot;captions&quot; src=&quot;captions.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot;&gt;</code> for deaf and hard-of-hearing users. A <strong>text transcript</strong> below the player, which also helps search engines and anyone who prefers reading. Native <code>controls</code>, which are keyboard operable. And <strong>no autoplay</strong>. A video with no captions and no transcript excludes deaf users completely.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Explain why Adobe Flash was discontinued and should never be used</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Write a <code>&lt;video&gt;</code> element with <code>controls</code>, <code>poster</code>, and <code>preload</code> attributes</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Provide multiple video formats using <code>&lt;source&gt;</code> elements</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Write meaningful fallback text with a download link inside <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Embed a YouTube video using <code>&lt;iframe&gt;</code> with a responsive container</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Embed an audio file using <code>&lt;audio&gt;</code> with multiple format sources</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Explain why <code>autoplay</code> requires <code>muted</code> in modern browsers</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Add multimedia CSS styles (video, audio, responsive iframe) to a stylesheet</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p>If you answered &quot;No&quot; to any item, re-read the relevant Theory section and redo the corresponding Hands-On task.</p>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content">Video and audio content — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code> element reference — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code> element reference — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source&gt;</code> element reference — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code> element reference — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">Responsive images and media — MDN Learn</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers">Media container formats — MDN</a></li>
+<li><a href="https://www.adobe.com/products/flashplayer/end-of-life.html">Adobe Flash End of Life — Adobe</a></li>
+<li><a href="https://web.archive.org/web/20170610021536/https://www.apple.com/hotnews/thoughts-on-flash/">Steve Jobs: Thoughts on Flash (2010) — Apple Archive</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In <strong>Session 11: Designing a Compact Site</strong>, you will learn how to plan, organize, and polish a small multi-page website — making your Student Club Website tighter, cleaner, and ready for submission.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

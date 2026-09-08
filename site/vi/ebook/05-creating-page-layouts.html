@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 5: Creating Page Layouts — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 5: Creating Page Layouts — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/05-creating-page-layouts.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/05-creating-page-layouts.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 5</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 05</p>
+    <h1>Buổi 5: Creating Page Layouts</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-semantic-html5-elements">1. Semantic HTML5 Elements</a></li>
+        <li class="d2"><a href="#2-the-display-property">2. The Display Property</a></li>
+        <li class="d2"><a href="#3-flexbox-basics">3. Flexbox Basics</a></li>
+        <li class="d2"><a href="#4-building-a-page-skeleton">4. Building a Page Skeleton</a></li>
+        <li class="d2"><a href="#5-float-based-layouts-legacy-knowledge">5. Float-Based Layouts (Legacy Knowledge)</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-converting-div-soup-to-semantic-html">Example 1: Converting Div Soup to Semantic HTML</a></li>
+        <li class="d2"><a href="#example-2-creating-a-horizontal-navigation-bar-with-flexbox">Example 2: Creating a Horizontal Navigation Bar with Flexbox</a></li>
+        <li class="d2"><a href="#example-3-two-column-layout-with-flexbox">Example 3: Two-Column Layout with Flexbox</a></li>
+        <li class="d2"><a href="#example-4-centre-a-wrapper-on-the-page">Example 4: Centre a Wrapper on the Page</a></li>
+        <li class="d2"><a href="#example-5-sticky-footer-with-flexbox">Example 5: Sticky Footer with Flexbox</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/05-creating-page-layouts.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-05.html">Tổng quan Buổi 5</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-5">🟦 SESSION 5<a class="anchor" href="#session-5" aria-label="Link to this section">#</a></h2>
+<h2 id="creating-page-layouts"><strong>Creating Page Layouts</strong><a class="anchor" href="#creating-page-layouts" aria-label="Link to this section">#</a></h2>
+<p>Great job making your Student Club Website colourful in Session 4! But right now everything stacks vertically — header, then navigation, then content, then footer — like a single column of blocks. Real websites have <strong>layouts</strong>: a header across the top, a main content area beside a sidebar, and a footer at the bottom. Today you will learn how to arrange elements on the page using semantic HTML and modern CSS layout techniques. By the end, your Student Club Website will have a professional two-column layout.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    MDN &quot;CSS Layout&quot; guide; MDN &quot;Flexbox&quot; guide
+                 Course slides (Week 5)
+🎯 Objectives:   1. Use semantic HTML5 elements (header, nav, main, section, aside, footer)
+                 2. Explain the box model in the context of layout
+                 3. Create layouts using Flexbox (display: flex)
+                 4. Build a page skeleton with header, nav, main+sidebar, and footer
+                 5. Understand the difference between block and inline display
+📖 Prepare:      1. Complete Session 4 (you need a working stylesheet)
+                 2. Have index.html open in your editor
+                 3. Review the box model section from Session 4
+🖼 Diagrams:     canvases/buoi-05.canvas.tsx — SemanticSkeleton, DisplayTypes, FlexAxesDiagram
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Replace generic <code>&lt;div&gt;</code> containers with <strong>semantic HTML5</strong> elements (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>)</li>
+<li>Explain why semantic HTML matters for accessibility and SEO</li>
+<li>Describe the difference between <code>block</code>, <code>inline</code>, and <code>inline-block</code> display types</li>
+<li>Use <strong>Flexbox</strong> (<code>display: flex</code>) to create horizontal and vertical layouts</li>
+<li>Control alignment with <code>justify-content</code> and <code>align-items</code></li>
+<li>Build a complete two-column page layout (main content + sidebar)</li>
+<li>Wrap a page in a centred container with <code>max-width</code></li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-semantic-html5-elements">1. Semantic HTML5 Elements<a class="anchor" href="#1-semantic-html5-elements" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-05.canvas.tsx</code> → <code>SemanticSkeleton</code> — slide <code>s05-semantic</code> (&quot;Semantic HTML5&quot;)</p>
+</blockquote>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Semantic HTML</strong> means using HTML elements that describe their <strong>meaning</strong>, not just their appearance. Instead of wrapping everything in meaningless <code>&lt;div&gt;</code> tags, HTML5 provides elements that tell the browser (and screen readers, and search engines) what role each section plays.</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Meaning</th>
+<th>Use For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;header&gt;</code></td>
+<td>Introductory content or navigation aids</td>
+<td>Site title, logo, banner</td>
+</tr>
+<tr>
+<td><code>&lt;nav&gt;</code></td>
+<td>Navigation links</td>
+<td>Menu bar, breadcrumbs</td>
+</tr>
+<tr>
+<td><code>&lt;main&gt;</code></td>
+<td>Primary content of the page</td>
+<td>Articles, main text</td>
+</tr>
+<tr>
+<td><code>&lt;section&gt;</code></td>
+<td>Thematic grouping of content</td>
+<td>News section, features section</td>
+</tr>
+<tr>
+<td><code>&lt;article&gt;</code></td>
+<td>Self-contained, independently distributable content</td>
+<td>Blog post, news item</td>
+</tr>
+<tr>
+<td><code>&lt;aside&gt;</code></td>
+<td>Content tangentially related to main content</td>
+<td>Sidebar, pull quotes</td>
+</tr>
+<tr>
+<td><code>&lt;footer&gt;</code></td>
+<td>Footer for its nearest sectioning ancestor</td>
+<td>Copyright, contact info</td>
+</tr>
+</tbody></table>
+<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Compare these two approaches:</p>
+<pre><code class="language-html">&lt;!-- ❌ NON-SEMANTIC: div soup --&gt;
+&lt;div id=&quot;header&quot;&gt;
+    &lt;div id=&quot;title&quot;&gt;Student Club&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;nav&quot;&gt;
+    &lt;div class=&quot;link&quot;&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;content&quot;&gt;
+    &lt;div class=&quot;article&quot;&gt;Welcome!&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;sidebar&quot;&gt;Quick Links&lt;/div&gt;
+&lt;div id=&quot;footer&quot;&gt;&amp;copy; 2024&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ SEMANTIC: clear meaning --&gt;
+&lt;header&gt;
+    &lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;/header&gt;
+&lt;nav&gt;
+    &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+    &lt;article&gt;Welcome!&lt;/article&gt;
+&lt;/main&gt;
+&lt;aside&gt;Quick Links&lt;/aside&gt;
+&lt;footer&gt;&amp;copy; 2024&lt;/footer&gt;
+</code></pre>
+<p>Both render identically with CSS. But the semantic version tells screen readers &quot;this is the navigation,&quot; &quot;this is the main content,&quot; etc. Search engines also understand the structure better.</p>
+<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><strong>Accessibility:</strong> Screen readers announce &quot;navigation region&quot; when they reach <code>&lt;nav&gt;</code>, helping blind users navigate.</li>
+<li><strong>SEO:</strong> Search engines give more weight to content inside <code>&lt;main&gt;</code> and <code>&lt;article&gt;</code>.</li>
+<li><strong>Maintainability:</strong> When you read <code>&lt;header&gt;</code>, you instantly know what it is. When you read <code>&lt;div class=&quot;top-box&quot;&gt;</code>, you have to guess.</li>
+<li><strong>Future-proofing:</strong> Browsers may add default behaviours for semantic elements over time.</li>
+</ul>
+<h4 id="important-notes">⚠️ Important Notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>You can only have <strong>one</strong> <code>&lt;main&gt;</code> per page.</li>
+<li><code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> can appear inside <code>&lt;article&gt;</code> or <code>&lt;section&gt;</code> too (not just at the page level).</li>
+<li><code>&lt;nav&gt;</code> should contain <strong>navigation links</strong>, not random content.</li>
+<li>Never use <code>&lt;section&gt;</code> as a generic wrapper — that is what <code>&lt;div&gt;</code> is for. Use <code>&lt;section&gt;</code> only when the content forms a thematic group with a heading.</li>
+</ul>
+<h4 id="try-it-yourself-swap-div-for-landmarks">🧪 Try It Yourself — Swap <code>&lt;div&gt;</code> for Landmarks<a class="anchor" href="#try-it-yourself-swap-div-for-landmarks" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Give a screen reader something to navigate.</p>
+<ol>
+<li>Start from a page built only from generic containers:<pre><code class="language-html">&lt;div class=&quot;header&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;nav&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;...&lt;/div&gt;
+</code></pre>
+</li>
+<li>Open F12 → <strong>Elements</strong> → the <strong>Accessibility</strong> pane and look at the tree.</li>
+<li>Replace each one with its semantic equivalent: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>.</li>
+<li>Re-open the accessibility tree.</li>
+</ol>
+<p><strong>Expected result:</strong> The <code>&lt;div&gt;</code> version shows a flat list of unnamed groups. The semantic version shows named landmarks — banner, navigation, main, contentinfo — which a screen reader user can jump between directly.</p>
+<details>
+<summary>Why this is not just tidiness</summary><p>Screen reader users navigate by landmark the way you skim by heading. With only <code>&lt;div&gt;</code>s there is nothing to jump to, so the whole page must be read linearly.</p>
+<p>Two rules keep it correct:</p>
+<ul>
+<li>One <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code> per page. <code>&lt;main&gt;</code> in particular must be unique — it marks the primary content.</li>
+<li><code>&lt;section&gt;</code> needs a heading to be useful. A <code>&lt;section&gt;</code> with no <code>&lt;h2&gt;</code> inside it is just a <code>&lt;div&gt;</code> with extra letters; use <code>&lt;div&gt;</code> when you only need a styling hook.</li>
+</ul>
+<p><code>&lt;div&gt;</code> is not banned. It is the right choice for a purely visual wrapper such as <code>.container</code> — one that groups things for layout but means nothing to a reader.</p>
+</details><hr>
+<h3 id="2-the-display-property">2. The Display Property<a class="anchor" href="#2-the-display-property" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-05.canvas.tsx</code> → <code>DisplayTypes</code> — slide <code>s05-display</code> (&quot;Display Types&quot;)</p>
+</blockquote>
+<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<p>The <code>display</code> property controls how an element behaves in the document flow. Understanding display types is essential before learning any layout technique.</p>
+<h4 id="22-block-vs-inline-vs-inline-block">2.2 Block vs. Inline vs. Inline-Block<a class="anchor" href="#22-block-vs-inline-vs-inline-block" aria-label="Link to this section">#</a></h4>
+<pre><code>BLOCK ELEMENTS              INLINE ELEMENTS
+┌─────────────────────┐     Hello [world] how are [you]?
+│ Takes FULL width    │     ↑ inline elements flow
+│ Starts on NEW line  │       within text, no line break
+│ Height = content    │
+│ Width/height SET    │     INLINE-BLOCK ELEMENTS
+│ Examples: div, p,   │     ┌────────┐ ┌────────┐
+│   h1-h6, header,    │     │ Like   │ │ Like   │
+│   nav, main, footer │     │ inline │ │ inline │
+└─────────────────────┘     │ but W/H│ │ but W/H│
+                            │ works! │ │ works! │
+                            └────────┘ └────────┘
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Display Value</th>
+<th>Width</th>
+<th>Line Break</th>
+<th>Can Set Width/Height?</th>
+<th>Common Elements</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>block</code></td>
+<td>Full parent width</td>
+<td>Yes, new line</td>
+<td>Yes</td>
+<td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code></td>
+</tr>
+<tr>
+<td><code>inline</code></td>
+<td>Only as wide as content</td>
+<td>No</td>
+<td>No</td>
+<td><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code></td>
+</tr>
+<tr>
+<td><code>inline-block</code></td>
+<td>Only as wide as content</td>
+<td>No</td>
+<td>Yes</td>
+<td>(set via CSS)</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>Hidden</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>(removed from flow)</td>
+</tr>
+<tr>
+<td><code>flex</code></td>
+<td>Block-level flex container</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>(set via CSS)</td>
+</tr>
+</tbody></table>
+<h4 id="comparison-table">🔍 Comparison Table<a class="anchor" href="#comparison-table" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>block</code></th>
+<th><code>inline</code></th>
+<th><code>inline-block</code></th>
+<th><code>flex</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Starts new line?</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Accepts width/height?</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Accepts margin/padding?</td>
+<td>All sides</td>
+<td>Horizontal only*</td>
+<td>All sides</td>
+<td>All sides</td>
+</tr>
+<tr>
+<td>Children behaviour</td>
+<td>Normal flow</td>
+<td>Normal flow</td>
+<td>Normal flow</td>
+<td>Flex items</td>
+</tr>
+</tbody></table>
+<p>*Vertical margin/padding on inline elements does NOT push other elements away.</p>
+<h4 id="important-notes-2">⚠️ Important Notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Changing <code>display</code> does NOT change the element&#39;s semantic meaning. A <code>&lt;nav&gt;</code> with <code>display: inline</code> is still semantically a navigation element.</li>
+<li><code>display: none</code> completely removes the element from the page. It takes up zero space. This is different from <code>visibility: hidden</code>, which hides the element but keeps its space.</li>
+<li>We will focus on <code>display: flex</code> today because it is the modern standard for page layouts.</li>
+</ul>
+<hr>
+<h3 id="3-flexbox-basics">3. Flexbox Basics<a class="anchor" href="#3-flexbox-basics" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-05.canvas.tsx</code> → <code>FlexAxesDiagram</code> — slide <code>s05-flexbox</code> (&quot;Flexbox Basics&quot;)</p>
+</blockquote>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Flexbox</strong> (Flexible Box Layout) is a CSS layout system designed for arranging items in <strong>one dimension</strong> — either a row or a column. You apply <code>display: flex</code> to a <strong>container</strong>, and its direct children become <strong>flex items</strong> that you can align, distribute, and resize.</p>
+<pre><code>FLEX CONTAINER (display: flex)
+┌──────────────────────────────────────────┐
+│  ┌────────┐  ┌────────┐  ┌────────┐     │
+│  │ Item 1 │  │ Item 2 │  │ Item 3 │     │  ← flex items
+│  └────────┘  └────────┘  └────────┘     │
+└──────────────────────────────────────────┘
+         ← main axis (horizontal by default) →
+                  ↕ cross axis (vertical)
+</code></pre>
+<h4 id="32-key-concepts">3.2 Key Concepts<a class="anchor" href="#32-key-concepts" aria-label="Link to this section">#</a></h4>
+<p><strong>Main Axis</strong> — The direction flex items are laid out. Default is horizontal (left to right). Controlled by <code>flex-direction</code>.</p>
+<p><strong>Cross Axis</strong> — Perpendicular to the main axis. If main axis is horizontal, cross axis is vertical.</p>
+<p><strong>Flex Container</strong> — The parent element with <code>display: flex</code>.</p>
+<p><strong>Flex Items</strong> — Direct children of the flex container. Only direct children are affected; grandchildren are not.</p>
+<h4 id="33-essential-flex-container-properties">3.3 Essential Flex Container Properties<a class="anchor" href="#33-essential-flex-container-properties" aria-label="Link to this section">#</a></h4>
+<h5 id="display-flex"><code>display: flex</code><a class="anchor" href="#display-flex" aria-label="Link to this section">#</a></h5>
+<p>Activates Flexbox on the container.</p>
+<pre><code class="language-css">.container {
+    display: flex;
+}
+</code></pre>
+<h5 id="flex-direction"><code>flex-direction</code><a class="anchor" href="#flex-direction" aria-label="Link to this section">#</a></h5>
+<p>Sets the main axis direction.</p>
+<pre><code class="language-css">.container {
+    flex-direction: row;          /* default: left to right */
+    flex-direction: row-reverse;  /* right to left */
+    flex-direction: column;       /* top to bottom */
+    flex-direction: column-reverse; /* bottom to top */
+}
+</code></pre>
+<h5 id="justify-content"><code>justify-content</code><a class="anchor" href="#justify-content" aria-label="Link to this section">#</a></h5>
+<p>Aligns items along the <strong>main axis</strong>.</p>
+<pre><code class="language-css">.container {
+    justify-content: flex-start;    /* default: pack to start */
+    justify-content: flex-end;      /* pack to end */
+    justify-content: center;        /* centre */
+    justify-content: space-between; /* equal space BETWEEN items */
+    justify-content: space-around;  /* equal space AROUND items */
+    justify-content: space-evenly;  /* truly equal space everywhere */
+}
+</code></pre>
+<p>Visual guide:</p>
+<pre><code>flex-start:     [A][B][C]__________________
+flex-end:       __________________[A][B][C]
+center:         _______[A][B][C]___________
+space-between:  [A]__________[B]__________[C]
+space-around:   ___[A]_______[B]_______[C]___
+space-evenly:   __[A]________[B]________[C]__
+</code></pre>
+<h5 id="align-items"><code>align-items</code><a class="anchor" href="#align-items" aria-label="Link to this section">#</a></h5>
+<p>Aligns items along the <strong>cross axis</strong>.</p>
+<pre><code class="language-css">.container {
+    align-items: stretch;     /* default: fill container height */
+    align-items: flex-start;  /* align to top */
+    align-items: flex-end;    /* align to bottom */
+    align-items: center;      /* centre vertically */
+}
+</code></pre>
+<h5 id="flex-wrap"><code>flex-wrap</code><a class="anchor" href="#flex-wrap" aria-label="Link to this section">#</a></h5>
+<p>Controls whether items wrap to the next line.</p>
+<pre><code class="language-css">.container {
+    flex-wrap: nowrap;       /* default: all items on one line */
+    flex-wrap: wrap;         /* items wrap to next line if needed */
+}
+</code></pre>
+<h5 id="gap"><code>gap</code><a class="anchor" href="#gap" aria-label="Link to this section">#</a></h5>
+<p>Adds space between flex items (without adding outer margins).</p>
+<pre><code class="language-css">.container {
+    gap: 20px;           /* 20px between all items */
+    gap: 10px 20px;      /* row-gap: 10px, column-gap: 20px */
+}
+</code></pre>
+<h4 id="34-essential-flex-item-properties">3.4 Essential Flex Item Properties<a class="anchor" href="#34-essential-flex-item-properties" aria-label="Link to this section">#</a></h4>
+<h5 id="flex-grow"><code>flex-grow</code><a class="anchor" href="#flex-grow" aria-label="Link to this section">#</a></h5>
+<p>How much an item should grow relative to siblings.</p>
+<pre><code class="language-css">.main-content {
+    flex-grow: 2;   /* grows twice as much as sidebar */
+}
+.sidebar {
+    flex-grow: 1;
+}
+</code></pre>
+<h5 id="flex-shrink"><code>flex-shrink</code><a class="anchor" href="#flex-shrink" aria-label="Link to this section">#</a></h5>
+<p>How much an item should shrink when there is not enough space.</p>
+<pre><code class="language-css">.sidebar {
+    flex-shrink: 0;   /* never shrink below its base size */
+}
+</code></pre>
+<h5 id="flex-basis"><code>flex-basis</code><a class="anchor" href="#flex-basis" aria-label="Link to this section">#</a></h5>
+<p>The starting size of an item before growing/shrinking. Similar to <code>width</code> but flex-aware.</p>
+<pre><code class="language-css">.sidebar {
+    flex-basis: 300px;   /* start at 300px, then grow/shrink */
+}
+</code></pre>
+<h5 id="shorthand-flex">Shorthand: <code>flex</code><a class="anchor" href="#shorthand-flex" aria-label="Link to this section">#</a></h5>
+<pre><code class="language-css">/* flex: grow shrink basis */
+.main-content {
+    flex: 2 1 0;       /* grow:2, shrink:1, basis:0 */
+}
+.sidebar {
+    flex: 1 0 300px;   /* grow:1, shrink:0, basis:300px */
+}
+</code></pre>
+<h4 id="real-life-example-two-column-layout">🎒 Real-life Example: Two-Column Layout<a class="anchor" href="#real-life-example-two-column-layout" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">.page-body {
+    display: flex;
+}
+
+main {
+    flex: 3;           /* takes 3 parts of available space */
+    padding: 25px;
+}
+
+aside {
+    flex: 1;           /* takes 1 part */
+    padding: 25px;
+    background-color: #f0f4f8;
+}
+</code></pre>
+<p>This creates a layout where main content gets 75% of the width and sidebar gets 25%, automatically adjusting when the window resizes.</p>
+<h4 id="best-practices-for-flexbox">✅ Best Practices for Flexbox<a class="anchor" href="#best-practices-for-flexbox" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always set <code>display: flex</code> on the <strong>parent</strong>, not the children.</li>
+<li>Use <code>gap</code> instead of margins between flex items — it is cleaner.</li>
+<li>Use <code>flex-basis</code> instead of <code>width</code> for flex items (more predictable).</li>
+<li>Combine <code>flex-wrap: wrap</code> with percentage-based <code>flex-basis</code> for responsive grids.</li>
+<li>Test by resizing the browser window to see how items behave.</li>
+</ul>
+<h4 id="important-notes-3">⚠️ Important Notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Flexbox is <strong>one-dimensional</strong>: it handles rows OR columns, not both simultaneously. For two-dimensional grids, use CSS Grid (covered in later sessions).</li>
+<li>Only <strong>direct children</strong> of the flex container become flex items. Nested elements are unaffected.</li>
+<li><code>margin: auto</code> on a flex item absorbs extra space, pushing the item to the opposite side. Useful for separating nav items.</li>
+</ul>
+<h4 id="try-it-yourself-find-the-main-axis">🧪 Try It Yourself — Find the Main Axis<a class="anchor" href="#try-it-yourself-find-the-main-axis" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Make <code>justify-content</code> and <code>align-items</code> swap meaning.</p>
+<ol>
+<li>Build a row of three cards:<pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;card&quot;&gt;One&lt;/div&gt;
+    &lt;div class=&quot;card&quot;&gt;Two&lt;/div&gt;
+    &lt;div class=&quot;card&quot;&gt;Three&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.row {
+    display: flex;
+    gap: 12px;
+    height: 240px;
+    border: 2px dashed #999;
+    justify-content: center;
+    align-items: flex-start;
+}
+.card { background: #dbeafe; padding: 16px; }
+</code></pre>
+</li>
+<li>Reload: the cards are centred left-to-right and pinned to the top.</li>
+<li>Add one line — <code>flex-direction: column;</code> — and reload without changing anything else.</li>
+</ol>
+<p><strong>Expected result:</strong> The same two properties now do the opposite. <code>justify-content: center</code> centres vertically, and <code>align-items: flex-start</code> pins the cards to the left.</p>
+<details>
+<summary>The rule to memorise</summary><p><code>justify-content</code> always works along the <strong>main</strong> axis. <code>align-items</code> always works along the <strong>cross</strong> axis. <code>flex-direction</code> decides which is which:</p>
+<table>
+<thead>
+<tr>
+<th><code>flex-direction</code></th>
+<th>main axis</th>
+<th>cross axis</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>row</code> (default)</td>
+<td>horizontal</td>
+<td>vertical</td>
+</tr>
+<tr>
+<td><code>column</code></td>
+<td>vertical</td>
+<td>horizontal</td>
+</tr>
+</tbody></table>
+<p>So &quot;how do I centre something vertically?&quot; has no single answer — it depends on the direction. In a row, vertical centring is <code>align-items: center</code>. In a column, it is <code>justify-content: center</code>.</p>
+<p>Also remember <code>display: flex</code> goes on the <strong>container</strong>, never on the items. Putting it on the items is the most common reason a flex layout does nothing at all.</p>
+</details><hr>
+<h3 id="4-building-a-page-skeleton">4. Building a Page Skeleton<a class="anchor" href="#4-building-a-page-skeleton" aria-label="Link to this section">#</a></h3>
+<h4 id="41-standard-layout-pattern">4.1 Standard Layout Pattern<a class="anchor" href="#41-standard-layout-pattern" aria-label="Link to this section">#</a></h4>
+<p>Most websites follow this structure:</p>
+<pre><code>+---------------------------------------------------------------+
+|  HEADER                                                       |
+|  (Logo, site title, tagline)                                  |
++---------------------------------------------------------------+
+|  NAVIGATION BAR                                               |
+|  (Home | About | Events | Gallery | Contact)                  |
++------------------------------------+--------------------------+
+|                                    |                          |
+|  MAIN CONTENT                      |  SIDEBAR                 |
+|  (Articles, text, images)          |  (Quick links,           |
+|                                    |   upcoming events,       |
+|                                    |   social media)          |
+|                                    |                          |
++------------------------------------+--------------------------+
+|  FOOTER                                                       |
+|  (Copyright, contact info)                                    |
++---------------------------------------------------------------+
+</code></pre>
+<h4 id="42-html-structure">4.2 HTML Structure<a class="anchor" href="#42-html-structure" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;body&gt;
+    &lt;div class=&quot;wrapper&quot;&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Student Club&lt;/h1&gt;
+            &lt;p&gt;Learn. Create. Connect.&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+
+        &lt;div class=&quot;page-body&quot;&gt;
+            &lt;main&gt;
+                &lt;h2&gt;Welcome to the Student Club&lt;/h2&gt;
+                &lt;p&gt;Main content goes here...&lt;/p&gt;
+            &lt;/main&gt;
+
+            &lt;aside&gt;
+                &lt;h3&gt;Quick Links&lt;/h3&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;Join the Club&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/aside&gt;
+        &lt;/div&gt;
+
+        &lt;footer&gt;
+            &lt;p&gt;&amp;copy; 2024 Student Club. All rights reserved.&lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>Notice:</p>
+<ul>
+<li><code>.wrapper</code> centres the entire page</li>
+<li><code>.page-body</code> is the flex container holding <code>&lt;main&gt;</code> and <code>&lt;aside&gt;</code> side by side</li>
+<li>Everything else stacks naturally (block elements)</li>
+</ul>
+<h4 id="43-css-for-the-skeleton">4.3 CSS for the Skeleton<a class="anchor" href="#43-css-for-the-skeleton" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* === WRAPPER === */
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;           /* centres horizontally */
+    background-color: white;
+    min-height: 100vh;        /* at least full viewport height */
+}
+
+/* === PAGE BODY (two-column flex container) === */
+.page-body {
+    display: flex;
+}
+
+/* === MAIN CONTENT === */
+main {
+    flex: 3;                  /* 75% of available space */
+    padding: 25px;
+}
+
+/* === SIDEBAR === */
+aside {
+    flex: 1;                  /* 25% of available space */
+    padding: 25px;
+    background-color: #f0f4f8;
+    border-left: 1px solid #ddd;
+}
+
+/* === FOOTER === */
+footer {
+    background-color: #1a5276;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+</code></pre>
+<h4 id="important-notes-4">⚠️ Important Notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>min-height: 100vh</code> ensures the wrapper fills the full viewport even if content is short. The footer stays at the bottom.</li>
+<li><code>margin: 0 auto</code> only works when the element has a defined width or max-width. Without it, <code>auto</code> margins do nothing.</li>
+<li>The <code>flex: 3</code> / <code>flex: 1</code> ratio means main gets 3/(3+1) = 75% and sidebar gets 25%. Change the numbers to adjust proportions.</li>
+</ul>
+<h4 id="try-it-yourself-a-footer-that-stays-down">🧪 Try It Yourself — A Footer That Stays Down<a class="anchor" href="#try-it-yourself-a-footer-that-stays-down" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Fix the footer that floats up the page when there is little content.</p>
+<ol>
+<li>Build a page with a header, a short <code>&lt;main&gt;</code>, and a footer. Give the footer a background colour so you can see it.</li>
+<li>Reload with only one paragraph in <code>&lt;main&gt;</code>. The footer sits in the middle of the window with blank space below it.</li>
+<li>Now apply the sticky-footer pattern:<pre><code class="language-css">body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+main { flex: 1; }
+</code></pre>
+</li>
+<li>Reload with one paragraph, then paste in twenty paragraphs and reload again.</li>
+</ol>
+<p><strong>Expected result:</strong> With little content the footer sits at the bottom of the window. With a lot of content it sits below the content and scrolls normally. No <code>position: fixed</code> involved.</p>
+<details>
+<summary>How the three lines cooperate</summary><ul>
+<li><code>min-height: 100vh</code> — the body is at least as tall as the viewport, so there is space to push into.</li>
+<li><code>display: flex; flex-direction: column</code> — header, main, and footer become a vertical flex line.</li>
+<li><code>main { flex: 1 }</code> — main absorbs all the leftover space, which pushes the footer to the bottom.</li>
+</ul>
+<p>Note this is <em>not</em> <code>position: fixed</code>. A fixed footer sits on top of the content permanently and covers it on short screens. This pattern keeps the footer in normal flow, which is what &quot;sticky footer&quot; actually means.</p>
+</details><hr>
+<h3 id="5-float-based-layouts-legacy-knowledge">5. Float-Based Layouts (Legacy Knowledge)<a class="anchor" href="#5-float-based-layouts-legacy-knowledge" aria-label="Link to this section">#</a></h3>
+<h4 id="51-why-learn-floats">5.1 Why Learn Floats?<a class="anchor" href="#51-why-learn-floats" aria-label="Link to this section">#</a></h4>
+<p>Before Flexbox, developers used <code>float</code> to create multi-column layouts. You may encounter float-based code in older tutorials, Dreamweaver templates, or existing websites. Understanding floats helps you maintain legacy code.</p>
+<h4 id="52-how-float-works">5.2 How Float Works<a class="anchor" href="#52-how-float-works" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">main {
+    width: 65%;
+    float: left;
+}
+
+aside {
+    width: 35%;
+    float: left;
+}
+</code></pre>
+<p>Floated elements are taken out of normal flow and pushed to the left or right. Subsequent content wraps around them.</p>
+<h4 id="53-the-clearfix-problem">5.3 The Clearfix Problem<a class="anchor" href="#53-the-clearfix-problem" aria-label="Link to this section">#</a></h4>
+<p>After floating elements, the parent container collapses because floated children are &quot;out of flow.&quot; The footer would slide up next to the columns. Solutions:</p>
+<pre><code class="language-css">/* Solution 1: overflow on parent */
+.page-body {
+    overflow: hidden;   /* forces parent to contain floats */
+}
+
+/* Solution 2: clear on next element */
+footer {
+    clear: both;        /* pushes footer below all floats */
+}
+</code></pre>
+<h4 id="float-vs-flexbox">🔍 Float vs. Flexbox<a class="anchor" href="#float-vs-flexbox" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Float</th>
+<th>Flexbox</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Purpose</td>
+<td>Originally for text wrapping around images</td>
+<td>Designed for layout</td>
+</tr>
+<tr>
+<td>Vertical alignment</td>
+<td>Difficult</td>
+<td>Easy (<code>align-items</code>)</td>
+</tr>
+<tr>
+<td>Equal height columns</td>
+<td>Requires hacks</td>
+<td>Automatic</td>
+</tr>
+<tr>
+<td>Source order independence</td>
+<td>Not possible</td>
+<td><code>order</code> property</td>
+</tr>
+<tr>
+<td>Browser support</td>
+<td>Universal</td>
+<td>Modern browsers (IE10+)</td>
+</tr>
+<tr>
+<td>Recommended for new projects?</td>
+<td>❌ No</td>
+<td>✅ Yes</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>For the Student Club Website, use Flexbox.</strong> Learn floats only so you can read older code.</p>
+</blockquote>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><strong>Use semantic elements first.</strong> Structure your HTML with <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code> before adding any CSS.</li>
+<li><strong>Wrap your page</strong> in a <code>.wrapper</code> with <code>max-width</code> and <code>margin: 0 auto</code> to prevent content from stretching across ultra-wide monitors.</li>
+<li><strong>Use Flexbox for layout.</strong> Reserve floats for their original purpose (wrapping text around images).</li>
+<li><strong>Set <code>box-sizing: border-box</code> globally</strong> so padding does not break your column widths.</li>
+<li><strong>Use <code>gap</code> in flex containers</strong> instead of margins between items.</li>
+<li><strong>Test responsiveness early.</strong> Resize the browser after every layout change.</li>
+<li><strong>Comment your CSS sections</strong> so you can find layout rules quickly:<pre><code class="language-css">/* === LAYOUT: PAGE BODY === */
+/* === LAYOUT: SIDEBAR === */
+</code></pre>
+</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-putting-flex-properties-on-children-instead-of-the-parent">Mistake 1: Putting Flex properties on children instead of the parent<a class="anchor" href="#mistake-1-putting-flex-properties-on-children-instead-of-the-parent" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ❌ WRONG: display:flex on the child */
+main {
+    display: flex;
+}
+</code></pre>
+<pre><code class="language-css">/* ✅ CORRECT: display:flex on the PARENT container */
+.page-body {
+    display: flex;
+}
+</code></pre>
+<h4 id="mistake-2-forgetting-that-only-direct-children-are-flex-items">Mistake 2: Forgetting that only direct children are flex items<a class="anchor" href="#mistake-2-forgetting-that-only-direct-children-are-flex-items" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;div class=&quot;flex-container&quot;&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;         &lt;!-- ✅ flex item --&gt;
+    &lt;div&gt;
+        &lt;p&gt;Nested text&lt;/p&gt;   &lt;!-- ❌ NOT a flex item --&gt;
+    &lt;/div&gt;                     &lt;!-- ✅ THIS div is the flex item --&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="mistake-3-sidebar-drops-below-main-content">Mistake 3: Sidebar drops below main content<a class="anchor" href="#mistake-3-sidebar-drops-below-main-content" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ❌ WRONG: fixed widths + padding exceed container */
+main { width: 70%; padding: 30px; }
+aside { width: 30%; padding: 30px; }
+/* Total: 100% + 120px padding = OVERFLOW! */
+</code></pre>
+<pre><code class="language-css">/* ✅ CORRECT: use flex ratios or include box-sizing: border-box */
+.page-body { display: flex; }
+main { flex: 3; padding: 30px; }
+aside { flex: 1; padding: 30px; }
+</code></pre>
+<h4 id="mistake-4-using-div-when-a-semantic-element-exists">Mistake 4: Using <code>&lt;div&gt;</code> when a semantic element exists<a class="anchor" href="#mistake-4-using-div-when-a-semantic-element-exists" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ❌ NON-SEMANTIC --&gt;
+&lt;div class=&quot;header&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;footer&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ SEMANTIC --&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+</code></pre>
+<h4 id="mistake-5-confusing-justify-content-and-align-items">Mistake 5: Confusing <code>justify-content</code> and <code>align-items</code><a class="anchor" href="#mistake-5-confusing-justify-content-and-align-items" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* justify-content = MAIN axis (horizontal by default) */
+/* align-items     = CROSS axis (vertical by default)  */
+
+/* To centre items BOTH horizontally and vertically: */
+.container {
+    display: flex;
+    justify-content: center;  /* horizontal centre */
+    align-items: center;      /* vertical centre */
+}
+</code></pre>
+<h4 id="try-it-yourself-why-floats-were-replaced">🧪 Try It Yourself — Why Floats Were Replaced<a class="anchor" href="#try-it-yourself-why-floats-were-replaced" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Reproduce the bug that made floats painful, then fix it two ways.</p>
+<ol>
+<li>Build a floated two-column layout:<pre><code class="language-html">&lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;col&quot;&gt;Left&lt;/div&gt;
+    &lt;div class=&quot;col&quot;&gt;Right&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.wrap { border: 3px solid red; }
+.col  { float: left; width: 50%; background: #eee; }
+</code></pre>
+</li>
+<li>Reload. The red border collapses to a thin line above the columns — the parent has lost its height.</li>
+<li>Fix it the old way: <code>.wrap { overflow: auto; }</code></li>
+<li>Now delete the floats entirely and use <code>.wrap { display: flex; }</code> with <code>.col { flex: 1; }</code>.</li>
+</ol>
+<p><strong>Expected result:</strong> Floated children are removed from normal flow, so the parent measures as empty. <code>overflow: auto</code> forces it to contain them; Flexbox never had the problem.</p>
+<details>
+<summary>What to take from this</summary><p><code>float</code> was designed for one job: wrapping text around an image. That still works and is still the right tool for it:</p>
+<pre><code class="language-css">img.portrait { float: left; margin: 0 1rem 1rem 0; }
+</code></pre>
+<p>Using float for <em>layout</em> was a workaround from before Flexbox and Grid existed, and it required clearfix hacks, fixed widths, and careful source ordering. You need to recognise it in legacy code and in older tutorials — but write new layouts with Flexbox or Grid.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Semantic HTML</td>
+<td>Elements that describe their meaning</td>
+<td><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code></td>
+</tr>
+<tr>
+<td><code>display: block</code></td>
+<td>Full width, new line, accepts dimensions</td>
+<td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;header&gt;</code></td>
+</tr>
+<tr>
+<td><code>display: inline</code></td>
+<td>Content width, no line break, no dimensions</td>
+<td><code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code></td>
+</tr>
+<tr>
+<td><code>display: flex</code></td>
+<td>Activates Flexbox layout on container</td>
+<td><code>.page-body { display: flex; }</code></td>
+</tr>
+<tr>
+<td>Main axis</td>
+<td>Direction flex items are laid out</td>
+<td>Horizontal by default (<code>row</code>)</td>
+</tr>
+<tr>
+<td>Cross axis</td>
+<td>Perpendicular to main axis</td>
+<td>Vertical when main is horizontal</td>
+</tr>
+<tr>
+<td><code>justify-content</code></td>
+<td>Alignment along the main axis</td>
+<td><code>center</code>, <code>space-between</code></td>
+</tr>
+<tr>
+<td><code>align-items</code></td>
+<td>Alignment along the cross axis</td>
+<td><code>center</code>, <code>stretch</code></td>
+</tr>
+<tr>
+<td><code>flex-grow</code></td>
+<td>How much an item grows relative to siblings</td>
+<td><code>flex: 3</code> vs <code>flex: 1</code></td>
+</tr>
+<tr>
+<td>Wrapper</td>
+<td>Centred container limiting page width</td>
+<td><code>max-width: 1000px; margin: 0 auto;</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-converting-div-soup-to-semantic-html">Example 1: Converting Div Soup to Semantic HTML<a class="anchor" href="#example-1-converting-div-soup-to-semantic-html" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Your current <code>index.html</code> uses <code>&lt;div id=&quot;header&quot;&gt;</code>, <code>&lt;div id=&quot;content&quot;&gt;</code>, etc. Convert to semantic HTML.</p>
+<p><strong>Code (before):</strong></p>
+<pre><code class="language-html">&lt;div id=&quot;header&quot;&gt;
+    &lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&quot;nav&quot;&gt;
+    &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+&lt;/div&gt;
+&lt;div id=&quot;content&quot;&gt;
+    &lt;h2&gt;Welcome&lt;/h2&gt;
+    &lt;p&gt;Hello!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&quot;sidebar&quot;&gt;
+    &lt;h3&gt;Links&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&quot;footer&quot;&gt;
+    &lt;p&gt;&amp;copy; 2024&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p><strong>Code (after):</strong></p>
+<pre><code class="language-html">&lt;header&gt;
+    &lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;/header&gt;
+&lt;nav&gt;
+    &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+    &lt;h2&gt;Welcome&lt;/h2&gt;
+    &lt;p&gt;Hello!&lt;/p&gt;
+&lt;/main&gt;
+&lt;aside&gt;
+    &lt;h3&gt;Links&lt;/h3&gt;
+&lt;/aside&gt;
+&lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2024&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>&lt;div id=&quot;header&quot;&gt;</code> becomes <code>&lt;header&gt;</code> — the element name itself says &quot;this is the header.&quot;</li>
+<li><code>&lt;div id=&quot;nav&quot;&gt;</code> becomes <code>&lt;nav&gt;</code> — explicitly marks navigation.</li>
+<li><code>&lt;div id=&quot;content&quot;&gt;</code> becomes <code>&lt;main&gt;</code> — identifies primary page content.</li>
+<li><code>&lt;div id=&quot;sidebar&quot;&gt;</code> becomes <code>&lt;aside&gt;</code> — indicates supplementary content.</li>
+<li><code>&lt;div id=&quot;footer&quot;&gt;</code> becomes <code>&lt;footer&gt;</code> — clearly the page footer.</li>
+<li>No IDs needed for styling anymore (unless you want them for JavaScript). Use the element selectors directly: <code>header { ... }</code>, <code>nav { ... }</code>, etc.</li>
+</ul>
+<p><strong>Result:</strong> The page looks identical (CSS targets the same visual areas), but the HTML now communicates structure to screen readers and search engines.</p>
+<hr>
+<h3 id="example-2-creating-a-horizontal-navigation-bar-with-flexbox">Example 2: Creating a Horizontal Navigation Bar with Flexbox<a class="anchor" href="#example-2-creating-a-horizontal-navigation-bar-with-flexbox" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Turn a vertical list of links into a horizontal navigation bar.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<pre><code class="language-css">nav ul {
+    list-style: none;          /* remove bullet points */
+    margin: 0;
+    padding: 0;
+    display: flex;             /* make the UL a flex container */
+    justify-content: center;   /* centre the links horizontally */
+    background-color: #2874a6;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #1a5276;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>list-style: none;</code> — removes the default bullet points from <code>&lt;ul&gt;</code>.</li>
+<li><code>display: flex;</code> on the <code>&lt;ul&gt;</code> — makes list items sit in a row instead of stacking vertically.</li>
+<li><code>justify-content: center;</code> — centres the nav links within the bar.</li>
+<li><code>display: block;</code> on <code>&lt;a&gt;</code> — makes the entire padding area clickable (not just the text).</li>
+<li><code>transition: background-color 0.3s;</code> — creates a smooth 0.3-second colour animation on hover.</li>
+</ul>
+<p><strong>Result:</strong> Navigation links appear in a centred horizontal row with blue backgrounds and smooth hover effects.</p>
+<hr>
+<h3 id="example-3-two-column-layout-with-flexbox">Example 3: Two-Column Layout with Flexbox<a class="anchor" href="#example-3-two-column-layout-with-flexbox" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Place main content and sidebar side by side.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;div class=&quot;page-body&quot;&gt;
+    &lt;main&gt;
+        &lt;h2&gt;Welcome to the Student Club&lt;/h2&gt;
+        &lt;p&gt;We are a community of creative students who love technology.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;aside&gt;
+        &lt;h3&gt;Quick Links&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;Join the Club&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Event Calendar&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">.page-body {
+    display: flex;       /* activates flexbox */
+}
+
+main {
+    flex: 3;             /* takes 3/4 of the space */
+    padding: 25px;
+}
+
+aside {
+    flex: 1;             /* takes 1/4 of the space */
+    padding: 25px;
+    background-color: #f0f4f8;
+    border-left: 1px solid #ddd;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>.page-body { display: flex; }</code> — the wrapper becomes a flex container. Its direct children (<code>&lt;main&gt;</code> and <code>&lt;aside&gt;</code>) become flex items arranged in a row.</li>
+<li><code>main { flex: 3; }</code> — shorthand for <code>flex-grow: 3; flex-shrink: 1; flex-basis: 0;</code>. Main gets 3 shares of available space.</li>
+<li><code>aside { flex: 1; }</code> — sidebar gets 1 share. Ratio is 3:1, so main gets 75%, sidebar gets 25%.</li>
+<li><code>border-left: 1px solid #ddd;</code> — adds a subtle divider between main and sidebar.</li>
+</ul>
+<p><strong>Result:</strong> Main content occupies the left 75% and sidebar occupies the right 25%. Both columns stretch to equal height automatically (Flexbox default <code>align-items: stretch</code>).</p>
+<hr>
+<h3 id="example-4-centre-a-wrapper-on-the-page">Example 4: Centre a Wrapper on the Page<a class="anchor" href="#example-4-centre-a-wrapper-on-the-page" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Prevent content from stretching edge-to-edge on wide monitors.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-css">.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>max-width: 1000px;</code> — the wrapper never exceeds 1000px. On smaller screens, it shrinks to fit.</li>
+<li><code>margin: 0 auto;</code> — <code>0</code> for top/bottom margin, <code>auto</code> for left/right. The browser distributes remaining horizontal space equally, centring the wrapper.</li>
+<li><code>background-color: white;</code> — gives the content area a white background against the body&#39;s light blue-grey.</li>
+<li><code>min-height: 100vh;</code> — ensures the wrapper is at least as tall as the viewport. <code>100vh</code> = 100% of viewport height.</li>
+<li><code>box-shadow: 0 0 20px rgba(0,0,0,0.05);</code> — adds a very subtle shadow around the wrapper for depth.</li>
+</ul>
+<p><strong>Result:</strong> The page content appears as a centred white card on the light background, looking clean and professional at any screen width.</p>
+<hr>
+<h3 id="example-5-sticky-footer-with-flexbox">Example 5: Sticky Footer with Flexbox<a class="anchor" href="#example-5-sticky-footer-with-flexbox" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> The footer should always be at the bottom of the viewport, even when content is short.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-css">.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-body {
+    flex: 1;             /* grows to fill remaining space */
+    display: flex;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>.wrapper { display: flex; flex-direction: column; }</code> — the entire page is a vertical flex container. Header, nav, page-body, and footer stack vertically.</li>
+<li><code>min-height: 100vh;</code> — the wrapper is at least viewport height.</li>
+<li><code>.page-body { flex: 1; }</code> — the page body grows to fill all remaining vertical space, pushing the footer to the bottom.</li>
+<li><code>.page-body { display: flex; }</code> — nested flexbox! The page body is ALSO a flex container (horizontal) for main + sidebar.</li>
+</ul>
+<p><strong>Result:</strong> Short pages still show the footer at the bottom of the viewport. Long pages push the footer down naturally. No JavaScript needed.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Open your Student Club Website project. Make sure <code>css/style.css</code> contains the reset and base styles from Session 4. Open <code>index.html</code> in your editor.</p>
+<hr>
+<h4 id="task-1-convert-to-semantic-html">TASK 1: Convert to Semantic HTML<a class="anchor" href="#task-1-convert-to-semantic-html" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Replace all generic <code>&lt;div&gt;</code> wrappers with semantic HTML5 elements.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Use <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code> appropriately</li>
+<li>Wrap main + aside in a <code>&lt;div class=&quot;page-body&quot;&gt;</code> flex container</li>
+<li>Wrap everything in a <code>&lt;div class=&quot;wrapper&quot;&gt;</code></li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open <code>index.html</code>.</li>
+<li>Replace <code>&lt;div id=&quot;header&quot;&gt;</code> with <code>&lt;header&gt;</code>.</li>
+<li>Replace <code>&lt;div id=&quot;nav&quot;&gt;</code> with <code>&lt;nav&gt;</code>.</li>
+<li>Wrap your main content area and sidebar in:<pre><code class="language-html">&lt;div class=&quot;page-body&quot;&gt;
+    &lt;main&gt;
+        &lt;!-- your main content --&gt;
+    &lt;/main&gt;
+    &lt;aside&gt;
+        &lt;!-- your sidebar content --&gt;
+    &lt;/aside&gt;
+&lt;/div&gt;
+</code></pre>
+</li>
+<li>Replace <code>&lt;div id=&quot;footer&quot;&gt;</code> with <code>&lt;footer&gt;</code>.</li>
+<li>Wrap everything inside <code>&lt;body&gt;</code> with <code>&lt;div class=&quot;wrapper&quot;&gt;</code>.</li>
+<li>Save. Preview. The page will look unstyled until you update CSS.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> HTML uses semantic elements. Page renders without errors (but may look unstyled until Task 2).</p>
+<p>📁 <strong>File to save:</strong> <code>index.html</code></p>
+<hr>
+<h4 id="task-2-build-the-flexbox-layout">TASK 2: Build the Flexbox Layout<a class="anchor" href="#task-2-build-the-flexbox-layout" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create the two-column layout using Flexbox.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Centre the page with a wrapper (max-width 1000px)</li>
+<li>Main content and sidebar side by side using <code>display: flex</code></li>
+<li>Main gets 75%, sidebar gets 25%</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>In <code>css/style.css</code>, add/update:<pre><code class="language-css">/* === WRAPPER === */
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === PAGE BODY === */
+.page-body {
+    display: flex;
+    flex: 1;
+}
+
+/* === MAIN CONTENT === */
+main {
+    flex: 3;
+    padding: 25px;
+}
+
+/* === SIDEBAR === */
+aside {
+    flex: 1;
+    padding: 25px;
+    background-color: #f0f4f8;
+    border-left: 1px solid #ddd;
+}
+</code></pre>
+</li>
+<li>Update header, nav, and footer selectors if you changed from ID-based to element-based selectors.</li>
+<li>Save. Preview in browser.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong></p>
+<ul>
+<li>Page is centred with max width 1000px</li>
+<li>Main content and sidebar appear side by side</li>
+<li>Footer is at the bottom even with little content</li>
+<li>Sidebar has a light background and left border</li>
+</ul>
+<p>📁 <strong>File to save:</strong> <code>css/style.css</code></p>
+<hr>
+<h4 id="task-3-style-the-navigation-with-flexbox">TASK 3: Style the Navigation with Flexbox<a class="anchor" href="#task-3-style-the-navigation-with-flexbox" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a horizontal navigation bar using Flexbox.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Nav links displayed horizontally</li>
+<li>Centred within the nav bar</li>
+<li>Hover effect with smooth transition</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Add/update in <code>css/style.css</code>:<pre><code class="language-css">/* === NAVIGATION === */
+nav {
+    background-color: #2874a6;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #1a5276;
+}
+</code></pre>
+</li>
+<li>Save. Preview.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> Navigation links appear in a centred horizontal row. Hovering smoothly changes the background colour.</p>
+<p>📁 <strong>File to save:</strong> <code>css/style.css</code></p>
+<hr>
+<h4 id="task-4-add-sidebar-content-and-test">TASK 4: Add Sidebar Content and Test<a class="anchor" href="#task-4-add-sidebar-content-and-test" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Populate the sidebar and verify the layout works with real content.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Add Quick Links, Upcoming Events, and Follow Us sections to the sidebar</li>
+<li>Verify both columns have appropriate heights</li>
+<li>Test in at least two browser window sizes</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>In <code>index.html</code>, add sidebar content:<pre><code class="language-html">&lt;aside&gt;
+    &lt;h3&gt;Quick Links&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;Join the Club&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Event Calendar&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;documents/constitution.pdf&quot;&gt;Club Constitution&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Upcoming Events&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Mar 15 - Web Workshop&lt;/li&gt;
+        &lt;li&gt;Mar 22 - Photo Contest&lt;/li&gt;
+        &lt;li&gt;Mar 29 - Music Night&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Follow Us&lt;/h3&gt;
+    &lt;p&gt;
+        &lt;a href=&quot;#&quot;&gt;Facebook&lt;/a&gt; |
+        &lt;a href=&quot;#&quot;&gt;Instagram&lt;/a&gt; |
+        &lt;a href=&quot;#&quot;&gt;YouTube&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/aside&gt;
+</code></pre>
+</li>
+<li>Add sidebar-specific styles:<pre><code class="language-css">aside h3 {
+    color: #1a5276;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+aside h3:first-child {
+    margin-top: 0;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+aside ul li a {
+    color: #2874a6;
+    text-decoration: none;
+}
+
+aside ul li a:hover {
+    color: #1a5276;
+    text-decoration: underline;
+}
+</code></pre>
+</li>
+<li>Save. Preview. Resize the browser window narrow and wide.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> Sidebar shows three sections with styled headings and dotted separators. Both columns stretch to equal height. Layout adjusts when resizing.</p>
+<p>📁 <strong>Files to save:</strong> <code>index.html</code>, <code>css/style.css</code></p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Layout bugs look dramatic but come from a short list of causes. Work down this table before rewriting your CSS.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Flex items stack vertically instead of in a row</td>
+<td><code>display: flex</code> is on the items, not on the parent</td>
+<td>Inspect the parent — it has no <code>display: flex</code></td>
+<td>Move <code>display: flex</code> to the container</td>
+</tr>
+<tr>
+<td><code>justify-content</code> appears to do nothing</td>
+<td>The items already fill the main axis, so there is no free space to distribute</td>
+<td>Inspect: total item width equals container width</td>
+<td>Remove <code>flex: 1</code>, or set a narrower width on the items</td>
+</tr>
+<tr>
+<td><code>align-items: center</code> centres horizontally, not vertically</td>
+<td><code>flex-direction: column</code> swapped the axes</td>
+<td>Read <code>flex-direction</code> on the container</td>
+<td>Use <code>justify-content</code> for the main axis; remember the axes swap</td>
+</tr>
+<tr>
+<td>Grid items land in the wrong cells</td>
+<td><code>grid-template-columns</code> count does not match the markup</td>
+<td>Turn on the DevTools grid overlay</td>
+<td>Fix the column list, or set explicit <code>grid-column</code> values</td>
+</tr>
+<tr>
+<td>A <code>&lt;section&gt;</code> ignores <code>width</code></td>
+<td>It is <code>display: inline</code> from a reset, or it is a flex item</td>
+<td>Inspect the computed <code>display</code> value</td>
+<td>Set <code>display: block</code>, or use <code>flex-basis</code></td>
+</tr>
+<tr>
+<td>Sideways scrollbar on a page that should fit</td>
+<td>An element is wider than the viewport, usually from padding plus a fixed width</td>
+<td>Set <code>* { outline: 1px solid red }</code> temporarily and find the overflowing box</td>
+<td>Use <code>box-sizing: border-box</code> and percentage or <code>fr</code> widths</td>
+</tr>
+<tr>
+<td>Sticky footer floats in the middle of tall pages</td>
+<td>The layout has no minimum height</td>
+<td>Inspect the wrapper height</td>
+<td><code>body { min-height: 100vh; display: flex; flex-direction: column }</code> and <code>main { flex: 1 }</code></td>
+</tr>
+<tr>
+<td>Two <code>&lt;header&gt;</code> elements confuse a screen reader</td>
+<td>Landmark elements duplicated at page level</td>
+<td>Check the DevTools accessibility tree</td>
+<td>One page-level <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>; use <code>&lt;section&gt;</code> inside</td>
+</tr>
+<tr>
+<td><code>gap</code> does nothing</td>
+<td>The container is not flex or grid</td>
+<td>Inspect the computed <code>display</code> value</td>
+<td><code>gap</code> only applies to flex, grid, and multi-column layouts</td>
+</tr>
+</tbody></table>
+<p><strong>Turn the overlay on.</strong> In DevTools, the small <code>flex</code> or <code>grid</code> badge beside an element in the Elements panel draws the actual tracks and free space over the page. Most layout confusion disappears the moment you can see where the lines really are.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. Which element do you put <code>display: flex</code> on — the parent or the children?</strong></p>
+<details>
+<summary>Answer</summary><p>The <strong>parent</strong> (the flex container). It turns its direct children into flex items. Putting <code>display: flex</code> on a child does nothing for its position within the parent — it only affects that child&#39;s own children. This is the single most common flexbox mistake.</p>
+</details><hr>
+<p><strong>Q2. What is the difference between <code>justify-content</code> and <code>align-items</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>justify-content</code> aligns items along the <strong>main axis</strong>; <code>align-items</code> aligns them along the <strong>cross axis</strong>. With the default <code>flex-direction: row</code>, main is horizontal and cross is vertical. Set <code>flex-direction: column</code> and they swap — <code>justify-content</code> now controls vertical placement.</p>
+</details><hr>
+<p><strong>Q3. Explain <code>flex: 1</code> in plain language.</strong></p>
+<details>
+<summary>Answer</summary><p>It is shorthand for <code>flex-grow: 1; flex-shrink: 1; flex-basis: 0%</code> — &quot;ignore my natural width and take an equal share of the available space&quot;. Three siblings all set to <code>flex: 1</code> become equal columns. One at <code>flex: 2</code> next to one at <code>flex: 1</code> takes two-thirds of the space.</p>
+</details><hr>
+<p><strong>Q4. When do you reach for Grid instead of Flexbox?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Flexbox</strong> is one-dimensional — a row or a column: navigation bars, button groups, a sidebar beside main content. <strong>Grid</strong> is two-dimensional — rows <em>and</em> columns at once: photo galleries, card layouts, whole-page templates. If you find yourself nesting three levels of flex containers to line things up in both directions, switch to Grid.</p>
+</details><hr>
+<p><strong>Q5. Why is <code>gap</code> better than putting <code>margin</code> on flex items?</strong></p>
+<details>
+<summary>Answer</summary><p><code>gap</code> only inserts space <strong>between</strong> items, never before the first or after the last, so you do not need <code>:last-child</code> overrides to strip a trailing margin. It also does not interact with margin collapsing. One declaration on the container replaces margin rules plus exceptions on the children.</p>
+</details><hr>
+<p><strong>Q6. What is the difference between <code>position: relative</code> and <code>position: absolute</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>relative</code> keeps the element in normal flow and nudges it visually from where it would have been; the space it occupied is preserved. <code>absolute</code> <strong>removes</strong> it from flow — surrounding content closes the gap — and positions it against the nearest ancestor that has a position other than <code>static</code>. The classic pairing is <code>position: relative</code> on a parent plus <code>position: absolute</code> on a child.</p>
+</details><hr>
+<p><strong>Q7. Why does <code>float</code> cause a parent to collapse to zero height?</strong></p>
+<details>
+<summary>Answer</summary><p>Floated children are taken out of normal flow, so the parent no longer measures them and may compute a height of zero, with borders and backgrounds collapsing. The historical fixes were a clearfix pseudo-element or <code>overflow: hidden</code>. Modern layout avoids the problem entirely — use Flexbox or Grid and reserve <code>float</code> for wrapping text around an image.</p>
+</details><hr>
+<p><strong>Q8. What does <code>repeat(auto-fit, minmax(250px, 1fr))</code> do?</strong></p>
+<details>
+<summary>Answer</summary><p>It creates as many columns as fit, where each is at least 250px wide and otherwise shares space equally. As the viewport narrows, the column count drops automatically — four columns, then three, then two, then one — with <strong>no media queries</strong>. It is the most useful single line in responsive CSS.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Name five semantic HTML5 elements and explain their purpose</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Explain the difference between block and inline display</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Activate Flexbox on a container element</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Use <code>justify-content</code> to control horizontal alignment</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Use <code>align-items</code> to control vertical alignment</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Create a two-column layout using flex ratios</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Centre a page wrapper using <code>max-width</code> and <code>margin: 0 auto</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Explain why Flexbox is preferred over floats for new layouts</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 If you answered &quot;No&quot; to any item, re-read that section and redo the corresponding practice task. Pay special attention to the worked examples.</p>
+</blockquote>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout">CSS layout overview — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">Flexbox — MDN</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox — CSS-Tricks</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">The box model — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats">Floats — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html">HTML5 semantic elements — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">Document and website structure — MDN</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 6, you will extend this layout into a complete multi-page website — building the About, Events, Gallery, and Contact pages, creating a navigation menu that highlights the current page, and sharing one CSS file across all pages.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

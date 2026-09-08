@@ -265,6 +265,58 @@ body {
   box-shadow: inset -5px -3px 0 0 var(--accent);
 }
 
+/* --- language switch ------------------------------------------------------
+   The pair sits at the right-hand end of the bar, before the theme button. It
+   is a set of links, not a menu, so the active language is marked rather than
+   "selected": .on carries aria-current and gets no href at all. */
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.16rem;
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: 999px;
+  background: var(--bg-elevated);
+}
+
+.lang-opt {
+  padding: 0.3rem 0.62rem;
+  border-radius: 999px;
+  color: var(--text-tertiary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.lang-opt:hover {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+
+.lang-opt.on {
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg-base));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* Narrow screens swap the language names for two-letter codes. The accessible
+   name is unaffected — it comes from aria-label, which always carries the full
+   name. */
+.lang-short {
+  display: none;
+}
+
+/* The "no translation yet" notice is a warn callout with one extra line of
+   breathing room, because it is the first thing on the page. */
+.lang-fallback {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
 /* --- breadcrumbs ---------------------------------------------------------- */
 
 .crumbs {
@@ -1471,6 +1523,27 @@ kbd {
 
   .crumbs {
     margin-top: 1rem;
+  }
+
+  /* The bar wraps here: the resource navigation drops to its own scrolling
+     row, so the switch stays on the first row with the brand and the theme
+     button, at the right-hand end of it. */
+  .lang-switch {
+    margin-left: 0.5rem;
+  }
+
+  .lang-name {
+    display: none;
+  }
+
+  .lang-short {
+    display: inline;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  .lang-opt {
+    padding: 0.28rem 0.5rem;
   }
 
   main {

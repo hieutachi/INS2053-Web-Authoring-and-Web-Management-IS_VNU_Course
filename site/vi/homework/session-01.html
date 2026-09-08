@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homework 1: My First Web Page — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../homework/session-01.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page homework-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../homework/session-01.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../homework/index.html">Bài tập</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Buổi 1</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Buổi 01 · Bài tập</p>
+    <h1>Homework 1: My First Web Page</h1>
+    <p class="lead">Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.</p>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#practice-status">Practice Status</a></li>
+        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
+        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#tips">Tips</a></li>
+        <li class="d2"><a href="#example-output">Example Output</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../homework/session-01.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <div class="callout status-note" role="status">
+    <p><strong>Chế độ luyện tập.</strong> Việc nộp và chấm bài trực tuyến chưa mở. Hãy làm bài trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp.</p>
+    <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 1, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng buổi học">
+    <a class="up" href="../sessions/session-01.html">Tổng quan Buổi 1</a>
+  </nav>
+  <article class="doc">
+<h2 id="homework-1-my-first-web-page">Homework 1: My First Web Page<a class="anchor" href="#homework-1-my-first-web-page" aria-label="Link to this section">#</a></h2>
+<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
+<p>Online submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.</p>
+<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Practise the HTML5 document structure until you can type it from memory</li>
+<li>Understand what each line of the boilerplate does</li>
+<li>Create the folder layout you will use for the rest of the course</li>
+</ul>
+<h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
+<h4 id="task-1-create-your-page">Task 1: Create Your Page<a class="anchor" href="#task-1-create-your-page" aria-label="Link to this section">#</a></h4>
+<p>Build a page that introduces yourself to the class, using <strong>only the tags taught in
+Session 1</strong>: <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;p&gt;</code>, and HTML comments.</p>
+<p><strong>Your page must include:</strong></p>
+<ul>
+<li>The full HTML5 boilerplate — all five lines:
+<code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html lang=&quot;en&quot;&gt;</code>, <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>,
+<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code>, <code>&lt;title&gt;</code></li>
+<li>A <code>&lt;title&gt;</code> containing your own name (check it appears in the browser tab, not on the page)</li>
+<li>One <code>&lt;h1&gt;</code> with your name</li>
+<li>At least two <code>&lt;p&gt;</code> paragraphs: who you are, and one thing you want to build this semester</li>
+<li>One <code>&lt;h2&gt;</code> subheading with at least one paragraph under it</li>
+<li>At least one HTML comment (<code>&lt;!-- ... --&gt;</code>) labelling a region of your page</li>
+</ul>
+<p><strong>File path:</strong> create the file at</p>
+<pre><code>homework/session-01/index.html
+</code></pre>
+<h4 id="task-2-create-the-folder-layout">Task 2: Create the Folder Layout<a class="anchor" href="#task-2-create-the-folder-layout" aria-label="Link to this section">#</a></h4>
+<p>Inside <code>homework/session-01/</code>, create two empty subfolders:</p>
+<pre><code>homework/session-01/
+├── index.html
+├── css/          &lt;-- empty for now, you will use it in Session 4
+└── images/       &lt;-- empty for now, you will use it in Session 3
+</code></pre>
+<p>Git does not track empty folders, so put a file named <code>.gitkeep</code> (empty file, no
+extension issues) inside each one so they survive the push.</p>
+<p><strong>Requirements checklist:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> All five boilerplate lines present</li>
+<li><input disabled="" type="checkbox"> <code>&lt;title&gt;</code> is your name and shows in the browser tab</li>
+<li><input disabled="" type="checkbox"> One <code>&lt;h1&gt;</code>, one <code>&lt;h2&gt;</code>, at least three <code>&lt;p&gt;</code> in total</li>
+<li><input disabled="" type="checkbox"> At least one HTML comment</li>
+<li><input disabled="" type="checkbox"> <code>css/</code> and <code>images/</code> exist</li>
+<li><input disabled="" type="checkbox"> Every opening tag has a closing tag</li>
+<li><input disabled="" type="checkbox"> Consistent indentation</li>
+</ul>
+<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Save your files in the correct location</li>
+<li>Add your work to Git: <code>git add homework/session-01/</code></li>
+<li>Commit with message: <code>git commit -m &quot;HW1: Add first web page&quot;</code></li>
+<li>Push to your GitHub repository: <code>git push</code></li>
+</ul>
+<blockquote>
+<p>New to Git? Session 2 teaches it properly. For this week, follow the three commands
+above exactly; if they fail, bring the error message to Session 2 and we fix it together.</p>
+</blockquote>
+<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTML structure</td>
+<td>3</td>
+<td>Correct DOCTYPE, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>, all tags closed and properly nested</td>
+</tr>
+<tr>
+<td>Boilerplate completeness</td>
+<td>2</td>
+<td>All five lines present, <code>charset</code> before <code>title</code>, <code>lang</code> set</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>2</td>
+<td>Own words: h1, h2, and three or more paragraphs</td>
+</tr>
+<tr>
+<td>Folder layout</td>
+<td>2</td>
+<td><code>css/</code> and <code>images/</code> exist alongside <code>index.html</code></td>
+</tr>
+<tr>
+<td>Code cleanliness</td>
+<td>1</td>
+<td>Consistent indentation, at least one useful comment</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Type the boilerplate by hand rather than copying it. You will write it in all fifteen
+sessions, so it is worth knowing from memory.</li>
+<li>Save (<code>Ctrl+S</code>) before you reload the browser. Unsaved changes do not appear.</li>
+<li>Check the browser tab: if it still says &quot;Untitled Document&quot;, your <code>&lt;title&gt;</code> is missing
+or is in the wrong place.</li>
+<li>Not yet required this week: images, links, <code>&lt;hr&gt;</code>, <code>&lt;br&gt;</code>, and CSS. Images and links
+arrive in Session 3, CSS in Session 4. Adding them now costs no marks and earns none.</li>
+</ul>
+<h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
+<p>A page with your name as the large heading, two or three paragraphs about you, one
+subheading with a paragraph under it, and your name in the browser tab. Plain black text
+on white — no styling yet. That is exactly right for Week 1.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

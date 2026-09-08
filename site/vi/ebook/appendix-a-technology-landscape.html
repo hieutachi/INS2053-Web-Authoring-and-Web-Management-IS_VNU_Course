@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chọn công nghệ web — cẩm nang ra quyết định cho người mới bắt đầu — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Chọn công nghệ web — cẩm nang ra quyết định cho người mới bắt đầu — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/appendix-a-technology-landscape.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/appendix-a-technology-landscape.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Phụ lục A</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Phụ lục</p>
+    <h1>Chọn công nghệ web — cẩm nang ra quyết định cho người mới bắt đầu</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-chọn-cũng-là-một-kỹ-năng">1. Chọn cũng là một kỹ năng</a></li>
+        <li class="d2"><a href="#2-khung-ra-quyết-định-5-tiêu-chí">2. Khung ra quyết định 5 tiêu chí</a></li>
+        <li class="d2"><a href="#3-toàn-cảnh-công-nghệ-web-để-biết">3. Toàn cảnh công nghệ web (để biết)</a></li>
+      </ol>
+    </nav>
+  <article class="doc">
+<h2 id="appendix-a">🧭 APPENDIX A<a class="anchor" href="#appendix-a" aria-label="Link to this section">#</a></h2>
+<h2 id="chọn-công-nghệ-web-cẩm-nang-ra-quyết-định-cho-người-mới-bắt-đầu"><strong>Chọn công nghệ web — cẩm nang ra quyết định cho người mới bắt đầu</strong><a class="anchor" href="#chọn-công-nghệ-web-cẩm-nang-ra-quyết-định-cho-người-mới-bắt-đầu" aria-label="Link to this section">#</a></h2>
+<blockquote>
+<p>Phụ lục này hỗ trợ <strong>CLO3: CHOOSE (lựa chọn) công nghệ phù hợp cho phát triển ứng dụng web.</strong>
+Khóa học dạy bạn BUILD (xây dựng) bằng HTML + CSS (+ Dreamweaver/VS Code). Nhưng một người làm
+nghề chuyên nghiệp cũng phải biết còn gì KHÁC tồn tại và CHỌN thế nào. Phụ lục này cho bạn nhận
+biết đó và một cách ra quyết định đơn giản, lặp lại được. Đây là tài liệu đọc thêm — bạn KHÔNG
+bị buộc phải học các công cụ khác.</p>
+</blockquote>
+<hr>
+<h2 id="thông-tin-phụ-lục">📌 THÔNG TIN PHỤ LỤC<a class="anchor" href="#thông-tin-phụ-lục" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Khi nào đọc:      Bất kỳ lúc nào sau Buổi 11 — tốt nhất là trước khi chọn công nghệ
+                     cho đồ án cuối kỳ. Không gắn với buổi học nào; khoảng 45 phút đọc.
+📚 Tài liệu gốc:     MDN &quot;Web technology for developers&quot; (chỉ các trang tổng quan)
+🎯 Mục tiêu:         1. Giải thích vì sao chọn công nghệ là kỹ năng riêng, khác với viết code
+                     2. Áp dụng khung 5 tiêu chí để so sánh hai công nghệ
+                     3. Gọi tên các tầng chính của toàn cảnh công nghệ web
+                     4. Viết ra lý do cho một lựa chọn công nghệ
+📖 Chuẩn bị:         1. Có đề bài đồ án cuối kỳ của bạn ngay trước mặt
+                     2. Sẵn sàng nêu tên hai công nghệ ứng viên để so sánh
+🖼 Sơ đồ:            không có sơ đồ riêng; bộ slide toàn khóa: canvases/ins2053-overview.canvas.tsx
+                     (tour đề cương) và canvases/ins2053-bai-giang.canvas.tsx (9 sơ đồ)
+🔗 Kết quả học tập:  CLO3 (lựa chọn công nghệ phù hợp cho phát triển ứng dụng web)
+                     CLO5 (đánh giá, tài liệu hóa và trình bày một ứng dụng web)
+</code></pre>
+<hr>
+<h2 id="bạn-sẽ-học-được-gì">🎯 BẠN SẼ HỌC ĐƯỢC GÌ<a class="anchor" href="#bạn-sẽ-học-được-gì" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>Vì sao &quot;chọn một công nghệ&quot; là một kỹ năng thật sự, tách biệt với việc viết code</li>
+<li>Một <strong>khung ra quyết định gồm 5 tiêu chí</strong> đơn giản, áp dụng được cho mọi lựa chọn</li>
+<li><strong>Bản đồ toàn cảnh công nghệ web</strong> (còn gì ngoài HTML/CSS)</li>
+<li>Cách viết ra lý do cho một lựa chọn (kỹ năng nhà tuyển dụng đánh giá cao)</li>
+</ul>
+<hr>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
+<h3 id="1-chọn-cũng-là-một-kỹ-năng">1. Chọn cũng là một kỹ năng<a class="anchor" href="#1-chọn-cũng-là-một-kỹ-năng" aria-label="Link to this section">#</a></h3>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
+<p><strong>Lựa chọn công nghệ</strong> là quá trình chọn công cụ, ngôn ngữ và nền tảng cho một dự án
+<em>sau khi so sánh các phương án với nhu cầu thật của dự án</em> — không phải cứ dùng cái
+mình đã biết sẵn.</p>
+<h4 id="ví-dụ-đời-thực">🎒 Ví dụ đời thực<a class="anchor" href="#ví-dụ-đời-thực" aria-label="Link to this section">#</a></h4>
+<p>Hình dung bạn cần đi từ Hà Nội tới một thị xã bên cạnh:</p>
+<ul>
+<li><strong>Xe máy</strong> = rẻ, linh hoạt, ổn cho 1–2 người, nhưng mệt nếu đi xa</li>
+<li><strong>Xe buýt</strong> = rẻ và an toàn, nhưng chậm và đi theo tuyến cố định</li>
+<li><strong>Ô tô</strong> = thoải mái và nhanh, nhưng đắt và cần người lái</li>
+</ul>
+<p>Không có &quot;phương tiện tốt nhất&quot;. Lựa chọn tốt nhất phụ thuộc vào: <strong>đi mấy người, xa bao
+nhiêu, ngân sách, và thời gian.</strong> Chọn công nghệ web cũng đúng như vậy.</p>
+<h4 id="12-vì-sao-quan-trọng">1.2 Vì sao quan trọng<a class="anchor" href="#12-vì-sao-quan-trọng" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Lý do</th>
+<th>Giải thích</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fit (phù hợp)</td>
+<td>Sai công cụ khiến một việc đơn giản thành khó (ví dụ dùng framework cho site 3 trang kiểu brochure)</td>
+</tr>
+<tr>
+<td>Chi phí</td>
+<td>Có công cụ tốn tiền license hoặc cần hosting đắt</td>
+</tr>
+<tr>
+<td>Khả năng bảo trì</td>
+<td>Một công cụ không ai trong nhóm biết sẽ thành gánh nặng</td>
+</tr>
+<tr>
+<td>Cơ hội nghề nghiệp</td>
+<td>Cử nhân MIS thường được yêu cầu <em>khuyến nghị</em> công cụ, không chỉ dùng chúng</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="2-khung-ra-quyết-định-5-tiêu-chí">2. Khung ra quyết định 5 tiêu chí<a class="anchor" href="#2-khung-ra-quyết-định-5-tiêu-chí" aria-label="Link to this section">#</a></h3>
+<p>Khi so sánh hai (hoặc nhiều) công nghệ, cho điểm chúng theo <strong>năm tiêu chí</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tiêu chí</th>
+<th>Câu hỏi cần đặt</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Requirements fit</strong></td>
+<td>Nó có thật sự làm được điều dự án cần không?</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Chi phí</strong></td>
+<td>Phí license? Phí hosting? Thời gian của lập trình viên?</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Đường cong học</strong></td>
+<td>Nhóm có học được trong khoảng thời gian cho phép không?</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Cộng đồng &amp; hỗ trợ</strong></td>
+<td>Có tài liệu, hướng dẫn và chỗ nhờ khi bí không?</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Bảo trì &amp; tương lai</strong></td>
+<td>Nó có đang được cập nhật, hay đã chết (như Flash)?</td>
+</tr>
+</tbody></table>
+<h4 id="cách-dùng">Cách dùng<a class="anchor" href="#cách-dùng" aria-label="Link to this section">#</a></h4>
+<ol>
+<li>Liệt kê các công nghệ ứng viên.</li>
+<li>Cho điểm từng tiêu chí từ 1 (kém) đến 5 (xuất sắc).</li>
+<li>Cộng điểm; tổng cao nhất là khuyến nghị của bạn.</li>
+<li><strong>Viết một câu giải thích cho mỗi điểm</strong> — phần giải thích mới là kỹ năng thật.</li>
+</ol>
+<h4 id="bài-mẫu-website-câu-lạc-bộ-3-trang">🔍 Bài mẫu: &quot;Website câu lạc bộ 3 trang&quot;<a class="anchor" href="#bài-mẫu-website-câu-lạc-bộ-3-trang" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>Plain HTML/CSS</th>
+<th>WordPress</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Requirements fit</td>
+<td>5 (site tĩnh nhỏ chính là đây)</td>
+<td>3 (quá tay)</td>
+<td>1 (quá xa rời nhu cầu)</td>
+</tr>
+<tr>
+<td>Chi phí</td>
+<td>5 (miễn phí, hosting rẻ)</td>
+<td>3 (hosting + plugin)</td>
+<td>3 (bộ công cụ build)</td>
+</tr>
+<tr>
+<td>Đường cong học</td>
+<td>5 (bạn vừa học xong)</td>
+<td>3</td>
+<td>1 (dốc)</td>
+</tr>
+<tr>
+<td>Cộng đồng</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Bảo trì</td>
+<td>5 (chuẩn thì không chết)</td>
+<td>3 (cần cập nhật)</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Tổng</strong></td>
+<td><strong>25</strong> ✅</td>
+<td>17</td>
+<td>13</td>
+</tr>
+</tbody></table>
+<p><strong>Kết luận:</strong> Với một site tĩnh nhỏ, plain HTML/CSS thắng. Đó chính xác là lý do khóa học dùng nó.</p>
+<hr>
+<h3 id="3-toàn-cảnh-công-nghệ-web-để-biết">3. Toàn cảnh công nghệ web (để biết)<a class="anchor" href="#3-toàn-cảnh-công-nghệ-web-để-biết" aria-label="Link to this section">#</a></h3>
+<p>Bạn không cần học những thứ này — chỉ cần biết chúng tồn tại và mỗi thứ giải quyết vấn đề gì.</p>
+<h4 id="31-chiếc-bánh-nhiều-lớp">3.1 Chiếc bánh nhiều lớp<a class="anchor" href="#31-chiếc-bánh-nhiều-lớp" aria-label="Link to this section">#</a></h4>
+<pre><code>┌────────────────────────────────────────────┐
+│  Content / Structure      HTML             │  ← you know this
+│  Presentation             CSS              │  ← you know this
+│  Behaviour                JavaScript       │  ← awareness
+├────────────────────────────────────────────┤
+│  CSS helpers        Bootstrap, Tailwind,   │  ← awareness
+│                     Sass (preprocessor)    │
+│  CMS (no-code)      WordPress, Wix,        │  ← awareness
+│                     Google Sites           │
+│  Static generators  Jekyll, Hugo,          │  ← awareness
+│                     Eleventy               │
+│  JS frameworks      React, Vue, Angular    │  ← awareness
+│  Backend            PHP, Node.js, Python   │  ← out of scope
+│  Hosting            GitHub Pages, Netlify, │  ← awareness
+│                     Vercel, shared hosting │
+└────────────────────────────────────────────┘
+</code></pre>
+<h4 id="32-bảng-định-hướng-nhanh">3.2 Bảng định hướng nhanh<a class="anchor" href="#32-bảng-định-hướng-nhanh" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Họ</th>
+<th>Ví dụ</th>
+<th>Hợp với</th>
+<th>Quá thừa cho</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSS framework</td>
+<td>Bootstrap, Tailwind</td>
+<td>UI nhanh và thống nhất trên site lớn</td>
+<td>một trang cá nhân nhỏ</td>
+</tr>
+<tr>
+<td>CSS preprocessor</td>
+<td>Sass</td>
+<td>stylesheet lớn có biến/mixin</td>
+<td>stylesheet chỉ 1 file</td>
+</tr>
+<tr>
+<td>CMS</td>
+<td>WordPress, Wix</td>
+<td>chủ site không chuyên, sửa nội dung thường xuyên</td>
+<td>site không bao giờ thay đổi</td>
+</tr>
+<tr>
+<td>Static site generator</td>
+<td>Jekyll, Hugo</td>
+<td>blog/docs nhiều trang giống nhau</td>
+<td>site 3 trang</td>
+</tr>
+<tr>
+<td>JS framework</td>
+<td>React, Vue, Angular</td>
+<td>app tương tác (dashboard, SPA)</td>
+<td>site tĩnh kiểu brochure</td>
+</tr>
+<tr>
+<td>Static hosting</td>
+<td>GitHub Pages, Netlify, Vercel</td>
+<td>host miễn phí/rẻ cho site tĩnh</td>
+<td>site cần database</td>
+</tr>
+</tbody></table>
+<h4 id="lưu-ý-quan-trọng-phạm-vi-khóa-học">⚠️ Lưu ý quan trọng (phạm vi khóa học)<a class="anchor" href="#lưu-ý-quan-trọng-phạm-vi-khóa-học" aria-label="Link to this section">#</a></h4>
+<p>Khóa học cố ý giữ stack <strong>bắt buộc</strong> ở mức HTML + CSS (+ Dreamweaver/VS Code), đúng theo đề cương.
+Các công cụ ở trên là để bạn <strong>biết</strong>, nhờ đó <em>chọn</em> sáng suốt hơn ở các dự án sau (CLO3) —
+chúng KHÔNG bị kiểm tra và KHÔNG bắt buộc cho đồ án cuối kỳ.</p>
+<hr>
+<h2 id="tóm-tắt">📋 TÓM TẮT<a class="anchor" href="#tóm-tắt" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Ý tưởng</th>
+<th>Điều cần nhớ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chọn ≠ viết code</td>
+<td>Lựa chọn là so sánh các phương án với nhu cầu</td>
+</tr>
+<tr>
+<td>5 tiêu chí</td>
+<td>Fit, Chi phí, Đường cong học, Cộng đồng, Bảo trì</td>
+</tr>
+<tr>
+<td>Cho điểm + giải thích</td>
+<td>Chấm 1–5 mỗi tiêu chí và viết một lý do cho mỗi điểm</td>
+</tr>
+<tr>
+<td>Biết toàn cảnh</td>
+<td>Framework, CMS, generator, hosting — mỗi thứ giải quyết một vấn đề khác nhau</td>
+</tr>
+<tr>
+<td>Chọn đúng cỡ</td>
+<td>Site tĩnh nhỏ → plain HTML/CSS thường là đáp án đúng</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="thực-hành-bài-tập-ra-quyết-định">🛠️ THỰC HÀNH — BÀI TẬP RA QUYẾT ĐỊNH<a class="anchor" href="#thực-hành-bài-tập-ra-quyết-định" aria-label="Link to this section">#</a></h2>
+<h4 id="task-1-cho-điểm-một-tình-huống-thật">TASK 1: Cho điểm một tình huống thật<a class="anchor" href="#task-1-cho-điểm-một-tình-huống-thật" aria-label="Link to this section">#</a></h4>
+<p><strong>Tình huống:</strong> Chủ một nhà hàng địa phương (không chuyên kỹ thuật) muốn một website để giới thiệu
+menu, giờ mở cửa và số điện thoại. Cô ấy sẽ muốn tự đổi giá mỗi tuần và không có ngân sách dành cho
+lập trình viên.</p>
+<p>Dùng khung 5 tiêu chí, so sánh <strong>plain HTML/CSS</strong>, <strong>WordPress</strong> và <strong>Wix</strong>, điền vào một bảng
+giống bài mẫu ở trên. Sau đó viết một khuyến nghị gồm 3 câu gửi cô chủ, bằng ngôn ngữ dễ hiểu.</p>
+<p>✅ **Tự kiểm tra câu trả lời: **</p>
+<ul>
+<li>Bạn có chấm cao tiêu chí &quot;chủ tự sửa được mà không cần lập trình viên&quot; không? (Tiêu chí này ủng hộ CMS/site-builder.)</li>
+<li>Bạn có xét chi phí và đường cong học cho cô chủ, chứ không phải cho chính bạn không?</li>
+<li>Khuyến nghị của bạn có lý do, hay chỉ là đoán?</li>
+</ul>
+<p>💾 **File cần lưu:  ** <code>notes/technology-choice-restaurant.md</code></p>
+<h4 id="task-2-biện-hộ-cho-chính-lựa-chọn-của-khóa-học">TASK 2: Biện hộ cho chính lựa chọn của khóa học<a class="anchor" href="#task-2-biện-hộ-cho-chính-lựa-chọn-của-khóa-học" aria-label="Link to this section">#</a></h4>
+<p>Viết 5 câu giải thích vì sao khóa học này dùng plain HTML/CSS cho Student Club Website,
+dựa trên 5 tiêu chí. (Đây cũng là một cách ôn tập tốt cho kỳ thi cuối kỳ.)</p>
+<hr>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software">MDN — Choosing and installing tools</a></li>
+<li><a href="https://pages.github.com/">GitHub Pages</a></li>
+<li><a href="https://www.netlify.com/">Netlify</a></li>
+<li><a href="https://wordpress.org/">WordPress.org</a></li>
+</ul>
+<hr>
+<h2 id="phụ-lục-này-đứng-ở-đâu">⏭️ PHỤ LỤC NÀY ĐỨNG Ở ĐÂU<a class="anchor" href="#phụ-lục-này-đứng-ở-đâu" aria-label="Link to this section">#</a></h2>
+<p>Hãy đọc phụ lục này sau <strong>Buổi 11</strong> (lập kế hoạch site) và đọc lại trước <strong>kỳ thi cuối kỳ</strong>,
+khi bạn có thể được yêu cầu biện hộ cho một lựa chọn công nghệ hoặc cấu trúc.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

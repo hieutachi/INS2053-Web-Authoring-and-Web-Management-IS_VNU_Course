@@ -13,7 +13,13 @@
      ebook/       15 chapters + Appendix A   -> site/ebook/NN-slug.html
      slides-html/ 17 prebuilt decks (copied) -> site/slides/
      homework/    15 sheets                  -> site/homework/session-NN.html
-     grader       one vetted artifact         -> site/cham-bai.html
+     grader       one vetted artifact        -> site/cham-bai.html
+     i18n/vi/     optional VN prose sources  -> site/vi/  (translation or fallback)
+
+    Everything is generated twice: once as English under site/, once as
+    Vietnamese under site/vi/. Interface strings come from _tools/i18n.mjs and
+    are complete in both languages; prose comes from i18n/vi/<repo path> when
+    such a file exists, and from the English source when it does not.
 
    Never published: exams/ (papers, rubrics, worked solutions), project/rubric.md,
    project/milestones.md, exercises/ (in-class, carries answer keys in <details>).
@@ -38,6 +44,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { marked } from "marked";
 import { injectTableEmptyStates } from "./table-empty-state.mjs";
+import { LANGS, LANG_KEY, UI, VI_SOURCE, t } from "./i18n.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
@@ -46,6 +53,70 @@ const ASSETS = path.join(HERE, "site-assets");
 
 const COURSE = "INS2053 · Web Authoring & Web Management";
 const SCHOOL = "International School, Vietnam National University, Hanoi";
+
+/* --- language plumbing ------------------------------------------------------
+ *
+ * `site/` holds two trees that share one `assets/`, one `slides/` and one
+ * `cham-bai.html`:
+ *
+ *   site/index.html            English chrome + English prose
+ *   site/vi/index.html         Vietnamese chrome + Vietnamese prose if a
+ *                              translation exists under i18n/vi/, otherwise the
+ *                              English prose with a notice saying so.
+ *
+ * Two bases per page, and keeping them apart is the whole trick:
+ *
+ *   w() — "within". A page inside the CURRENT language tree. The base string is
+ *         identical for both languages, so every English href in this file
+ *         stays byte-identical after the refactor; only the Vietnamese tree
+ *         ever resolves it differently.
+ *   p() — "published". A shared, language-neutral resource under site/: the
+ *         slide decks, the self-check tool, the stylesheet and the script. One
+ *         level further up for `vi`, because site/vi/ is one directory deeper.
+ *
+ * Both always emit "./" / "../" style prefixes as the original builder did, so
+ * generated English output is unchanged.
+ */
+
+/** "en" | "vi" -> the directory under site/ that tree is written to. */
+const treeDir = (lang) =>
+  lang === "en" ? OUT : path.join(OUT, LANGS[lang].dir.replace(/\/$/, ""));
+
+/** Where the optional Vietnamese prose source for a repo-relative path lives. */
+const viPath = (repoPath) => path.join(ROOT, VI_SOURCE, repoPath);
+
+function hrefs(depth, lang) {
+  const base = depth === 0 ? "." : "..";
+  const pub =
+    lang === "en" ? base : depth === 0 ? ".." : "../..";
+  return {
+    base,
+    pub,
+    /** link to a page inside this language tree */
+    w: (p) => `${base}/${p}`,
+    /** link to a shared, language-neutral resource under site/ */
+    p: (p) => `${pub}/${p}`,
+  };
+}
+
+/**
+ * Href from a page that lives in `lang`, `depth` directories below its tree
+ * root, to the SAME document as published in `target`.
+ *
+ * There is only ever one physical copy of each page per language, so the
+ * answer is: climb to site/ (`pub`), then step into the target tree — which for
+ * English is site/ itself and for Vietnamese is site/vi/.
+ */
+function crossHref(rel, depth, lang, target) {
+  const { pub } = hrefs(depth, lang);
+  return `${pub}/${LANGS[target].dir}${rel}`;
+}
+
+/** The other language, or English if more than two are ever configured. */
+function otherLang(lang) {
+  return Object.keys(LANGS).find((code) => code !== lang) || "en";
+}
+
 
 /** Allowlist. Anything absent from this list is not published. */
 const PUBLISH_ONLY = ["ebook", "slides-html", "homework"];
@@ -237,6 +308,14 @@ const pad = (n) => String(n).padStart(2, "0");
  * One shell for every page. `crumbs` is an array of {href,label}; the last entry
  * is rendered as plain text because it is the current page.
  */
+/**
+ * One shell for every page. `crumbs` is an array of {href,label}; the last entry
+ * is rendered as plain text because it is the current page.
+ *
+ * `lang` selects the chrome strings; `rel` is this page's path inside its own
+ * language tree and is what makes the language switch land on the same document
+ * rather than on the other language's home page.
+ */
 function page({
   title,
   heading,
@@ -246,10 +325,16 @@ function page({
   body,
   depth = 0,
   pageClass = "content-page",
-  eyebrow = "INS2053 learning materials",
+  eyebrow = null,
   introExtra = "",
+  lang = "en",
+  rel = "index.html",
+  untranslated = false,
 }) {
-  const base = depth === 0 ? "." : "..";
+  const L = UI[lang];
+  const meta = LANGS[lang];
+  const { base, w, p } = hrefs(depth, lang);
+  const twin = crossHref(rel, depth, lang, otherLang(lang));
   const nav = crumbs
     .map((c, i) =>
       i === crumbs.length - 1
@@ -260,7 +345,7 @@ function page({
 
   const contents = toc.length
     ? `<nav class="toc" aria-labelledby="toc-h">
-      <h2 id="toc-h">On this page</h2>
+      <h2 id="toc-h">${esc(L.onThisPage)}</h2>
       <ol>
 ${toc
   .map(
@@ -272,66 +357,126 @@ ${toc
     </nav>`
     : "";
 
+  // A page whose chrome is Vietnamese but whose prose fell back to English says
+  // so out loud. Silent fallback reads as a broken translation.
+  const fallback =
+    lang === "vi" && untranslated
+      ? `  <div class="callout warn lang-fallback" role="note">
+    <p><strong>${esc(L.fallbackTitle)}</strong> ${esc(L.fallbackBody)}</p>
+    <p><a href="${twin}" hreflang="en" lang="en">${esc(L.fallbackCta)}</a></p>
+  </div>\n`
+      : "";
+
+  /* The switch is a pair of links, not a button: it goes somewhere real, it
+     works with scripting off, and it keeps the reader on the same document
+     rather than dumping them on the other language's home page. aria-label is
+     always the language name, so the two labels stay meaningful even where CSS
+     swaps the long name for the short code on narrow screens. */
+  const langSwitch = `    <nav class="lang-switch" aria-label="${esc(L.langAria)}">
+${Object.keys(LANGS)
+  .map((code) => {
+    const M = LANGS[code];
+    const here = code === lang;
+    const href = here ? null : crossHref(rel, depth, lang, code);
+    const tip = here
+      ? t(L.langCurrent, { name: M.name })
+      : t(L.langSwitchNotice, { name: M.name });
+    return `      <a class="lang-opt${here ? " on" : ""}"${
+      href
+        ? ` href="${href}" hreflang="${M.htmlLang}" lang="${M.htmlLang}"`
+        : ` aria-current="true"`
+    } data-lang-opt="${code}" aria-label="${esc(
+      M.name
+    )}" title="${esc(tip)}"><span class="lang-name">${esc(
+      M.name
+    )}</span><span class="lang-short" aria-hidden="true">${esc(
+      M.short
+    )}</span></a>`;
+  })
+  .join("\n")}
+    </nav>`;
+
   return `<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="${meta.htmlLang}" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(lead || title)}">
-<link rel="stylesheet" href="${base}/assets/site.css">
+<link rel="stylesheet" href="${p("assets/site.css")}">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
 (function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
 t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("${LANG_KEY}");
+if(w&&w!=="${lang}")location.replace("${twin}");}catch(e){}})();
 </script>
 </head>
 <body class="${esc(pageClass)}">
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">${esc(L.skipToContent)}</a>
 <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
   <div class="bar-inner">
-    <a class="home" href="${base}/index.html" aria-label="INS2053 course home">
+    <a class="home" href="${base}/index.html" aria-label="${esc(
+    COURSE
+  )}">
       <span class="brand-mark" aria-hidden="true">W</span>
-      <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
+      <span class="brand-copy"><strong>INS2053</strong><span>${esc(L.brandSub)}</span></span>
     </a>
-    <nav class="primary-nav" aria-label="Course resources">
-      <a data-course-nav="sessions" href="${base}/sessions/index.html">Sessions</a>
-      <a data-course-nav="ebook" href="${base}/ebook/index.html">Ebook</a>
-      <a data-course-nav="slides" href="${base}/slides/index.html">Slides</a>
-      <a data-course-nav="homework" href="${base}/homework/index.html">Homework</a>
+    <nav class="primary-nav" aria-label="${esc(L.courseResources)}">
+      <a data-course-nav="sessions" href="${base}/sessions/index.html">${esc(L.navSessions)}</a>
+      <a data-course-nav="ebook" href="${base}/ebook/index.html">${esc(L.navEbook)}</a>
+      <a data-course-nav="slides" href="${w("slides/index.html")}">${esc(L.navSlides)}</a>
+      <a data-course-nav="homework" href="${base}/homework/index.html">${esc(L.navHomework)}</a>
     </nav>
-    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
-      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
+${langSwitch}
+    <button class="theme" type="button" data-theme-toggle aria-label="${esc(
+    t(L.switchTheme, { name: L.themeDark })
+  )}" data-label-light="${esc(L.themeLabelLight)}" data-label-dark="${esc(
+    L.themeLabelDark
+  )}" data-word-light="${esc(t(L.switchTheme, { name: L.themeLight }))}" data-word-dark="${esc(
+    t(L.switchTheme, { name: L.themeDark })
+  )}">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>${esc(
+    L.themeWord
+  )}</span>
     </button>
   </div>
 </header>
-${nav ? `<nav class="crumbs" aria-label="Breadcrumb">${nav}</nav>` : ""}
+${nav ? `<nav class="crumbs" aria-label="${esc(L.breadcrumb)}">${nav}</nav>` : ""}
 <main id="main">
   <header class="page-head">
-    <p class="eyebrow">${esc(eyebrow)}</p>
+    <p class="eyebrow">${esc(eyebrow || L.defaultEyebrow)}</p>
     <h1>${esc(heading)}</h1>
 ${lead ? `    <p class="lead">${esc(lead)}</p>\n` : ""}${introExtra}
   </header>
 ${contents}
-${body}
+${fallback}${body}
 </main>
 <footer class="foot">
   <div class="foot-inner">
-    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Web Authoring &amp; Web Management</span></p></div>
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>${esc(
+    L.footTagline
+  )}</span></p></div>
     <div class="foot-copy">
       <p>${esc(SCHOOL)}</p>
-      <p>Student learning materials only. Exam papers, marking rubrics and in-class answer keys are not published here.</p>
+      <p>${esc(L.footNote)}</p>
     </div>
   </div>
 </footer>
-<script src="${base}/assets/site.js" defer></script>
+<script src="${p("assets/site.js")}" defer></script>
 </body>
 </html>
 `;
 }
+
 
 /* --- session hub ---------------------------------------------------------- */
 
@@ -346,43 +491,46 @@ ${body}
  * in <details> blocks and stays unpublished. The card says so rather than
  * leaving a hole a student would read as a missing link.
  */
-function sessionHub(s, chapterTitle) {
+function sessionHub(s, chapterTitle, lang) {
   const nn = pad(s.n);
+  const L = UI[lang];
+  const { base, w, p } = hrefs(1, lang);
   const prev = s.n > 1 ? `session-${pad(s.n - 1)}.html` : null;
   const next = s.n < 15 ? `session-${pad(s.n + 1)}.html` : null;
 
   const steps = [
     {
-      when: "Before class",
+      when: L.whenBefore,
       phase: "prepare",
-      title: "Read the chapter",
-      note: "Work the 🧪 Try It Yourself blocks as you go — each one tells you the expected result, so you can check yourself.",
-      href: `../ebook/${nn}-${chapterTitle.slug}.html`,
-      cta: `Chapter ${s.n}`,
+      title: L.stepReadTitle,
+      note: L.stepReadNote,
+      href: w(`ebook/${nn}-${chapterTitle.slug}.html`),
+      cta: t(L.chapterCta, { n: s.n }),
     },
     {
-      when: "In class",
+      when: L.whenIn,
       phase: "learn",
-      title: "Lecture deck",
-      note: "The slides your lecturer projects, with the teaching diagrams. Press <kbd>j</kbd> and <kbd>k</kbd> to move, <kbd>n</kbd> for speaker notes.",
-      href: `../slides/buoi-${nn}.html`,
-      cta: `Deck ${s.n}`,
+      title: L.stepDeckTitle,
+      note: L.stepDeckNote,
+      href: p(`slides/buoi-${nn}.html`),
+      cta: t(L.deckCta, { n: s.n }),
     },
     {
-      when: "After class",
+      when: L.whenAfter,
       phase: "practice",
-      title: s.n === 8 ? "Homework 07 review" : `Homework ${nn}`,
-      note: "Use the published brief for practice and keep your work in your own repository. Online submission and grading are not enabled yet.",
-      href: `../homework/session-${nn}.html`,
-      cta: `Homework ${nn}`,
+      title:
+        s.n === 8 ? L.stepHwTitle8 : t(L.stepHwTitle, { nn }),
+      note: L.stepHwNote,
+      href: w(`homework/session-${nn}.html`),
+      cta: t(L.homeworkCta, { nn }),
     },
     {
-      when: "Check yourself",
+      when: L.whenCheck,
       phase: "practice",
-      title: "Self-check tool",
-      note: "Grades the mechanical half of the rubric in your own browser — nothing is uploaded. It reports where you stand, not your final mark; your lecturer decides that.",
-      href: `../${GRADER_PUBLIC}`,
-      cta: "Open the self-check tool",
+      title: L.stepToolTitle,
+      note: L.stepToolNote,
+      href: p(GRADER_PUBLIC),
+      cta: L.stepToolCta,
     },
   ];
 
@@ -400,10 +548,7 @@ function sessionHub(s, chapterTitle) {
 
   const midterm = s.midterm
     ? `  <div class="callout warn">
-    <p><strong>Week 8 is the midterm.</strong> The paper is practical, 90 minutes,
-    with no internet. You may bring your own notes, the ebook chapters offline, and
-    your project files. This chapter is the revision guide — the exam paper itself
-    is not published here.</p>
+    <p><strong>${esc(L.midtermTitle)}</strong>${esc(L.midtermBody)}</p>
   </div>\n`
     : "";
 
@@ -411,74 +556,119 @@ function sessionHub(s, chapterTitle) {
 ${cards}
   </ol>
   <div class="callout">
-    <p><strong>The in-class exercise is not on this site.</strong> It carries the
-    worked answer key, so your lecturer hands it out during the session.</p>
+    <p>${L.exerciseNote}</p>
   </div>
-  <nav class="pager" aria-label="Session navigation">
-${prev ? `    <a class="prev" href="${prev}">← Session ${s.n - 1}</a>` : `    <span></span>`}
-${next ? `    <a class="next" href="${next}">Session ${s.n + 1} →</a>` : `    <span></span>`}
+  <nav class="pager" aria-label="${esc(L.sessionNav)}">
+${prev ? `    <a class="prev" href="${prev}">${esc(t(L.pagerPrev, { n: s.n - 1 }))}</a>` : `    <span></span>`}
+${next ? `    <a class="next" href="${next}">${esc(t(L.pagerNext, { n: s.n + 1 }))}</a>` : `    <span></span>`}
   </nav>`;
 
+  const heading = t(L.hubTitle, { n: s.n, topic: s.topic });
   return page({
-    title: `Session ${s.n}: ${s.topic} — ${COURSE}`,
-    heading: `Session ${s.n}: ${s.topic}`,
-    lead: `Week ${s.n} of 15. Read the chapter before class, follow the deck in class, then use the homework brief for practice.`,
+    lang,
+    rel: `sessions/session-${nn}.html`,
+    title: `${heading} — ${COURSE}`,
+    heading,
+    lead: t(L.hubLead, { n: s.n }),
     crumbs: [
-      { href: "../index.html", label: "Home" },
-      { href: "../sessions/index.html", label: "Sessions" },
-      { label: `Session ${s.n}` },
+      { href: `${base}/index.html`, label: L.crumbHome },
+      { href: w("sessions/index.html"), label: L.navSessions },
+      { label: t(L.sessionCrumbLabel, { n: s.n }) },
     ],
     body,
     depth: 1,
     pageClass: "session-page",
-    eyebrow: `Week ${pad(s.n)} · Learning flow`,
+    eyebrow: t(L.hubEyebrow, { nn }),
   });
 }
 
 /* --- index pages ---------------------------------------------------------- */
 
-function homePage(chapters) {
+function homePage(chapters, lang) {
+  const L = UI[lang];
+  const { w, p } = hrefs(0, lang);
   const rows = SESSIONS.map((s) => {
     const nn = pad(s.n);
     const ch = chapters.find((c) => c.session === s.n);
     return `      <tr${s.midterm ? ' class="mid"' : ""}>
-        <td class="wk" data-label="Week"><span>${pad(s.n)}</span></td>
-        <td class="topic" data-label="Session"><a href="sessions/session-${nn}.html">${esc(s.topic)}</a>${s.midterm ? '<small>Midterm week</small>' : ""}</td>
-        <td data-label="Read">${ch ? `<a class="resource-link" href="ebook/${ch.out}">Chapter ${s.n}</a>` : "—"}</td>
-        <td data-label="Slides"><a class="resource-link" href="slides/buoi-${nn}.html">Deck ${s.n}</a></td>
-        <td data-label="Homework"><a class="resource-link" href="homework/session-${nn}.html">HW ${nn}</a></td>
+        <td class="wk" data-label="${esc(L.thWeek)}"><span>${pad(s.n)}</span></td>
+        <td class="topic" data-label="${esc(
+          L.thSession
+        )}"><a href="${w(`sessions/session-${nn}.html`)}">${esc(
+      s.topic
+    )}</a>${
+      s.midterm ? `<small>${esc(L.smallMidterm)}</small>` : ""
+    }</td>
+        <td data-label="${esc(L.thRead)}">${
+          ch
+            ? `<a class="resource-link" href="${w(
+                `ebook/${ch.out}`
+              )}">${esc(t(L.chapterCta, { n: s.n }))}</a>`
+            : "—"
+        }</td>
+        <td data-label="${esc(L.thSlides)}"><a class="resource-link" href="${p(
+      `slides/buoi-${nn}.html`
+    )}">${esc(t(L.deckCta, { n: s.n }))}</a></td>
+        <td data-label="${esc(L.thHomework)}"><a class="resource-link" href="${w(
+      `homework/session-${nn}.html`
+    )}">HW ${nn}</a></td>
       </tr>`;
   }).join("\n");
 
   const appendix = chapters.find((c) => c.session === null);
 
+  const tile = (cls, n, href, label, sub, shared) =>
+    `      <li class="${cls}"><a href="${
+      shared ? p(href) : w(href)
+    }"><span class="tile-icon" aria-hidden="true">${n}</span><span class="tile-copy"><strong>${esc(
+      label
+    )}</strong><span>${esc(sub)}</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>`;
+
   const body = `  <section class="resource-section" aria-labelledby="resources-h">
-    <div class="section-head"><div><p class="section-kicker">Everything in one place</p><h2 id="resources-h">Course resources</h2></div><p>Start with your session, or jump straight to the material you need.</p></div>
+    <div class="section-head"><div><p class="section-kicker">${esc(
+      L.resKicker
+    )}</p><h2 id="resources-h">${esc(L.resHeading)}</h2></div><p>${esc(
+    L.resSub
+  )}</p></div>
     <ul class="tiles">
-      <li class="tile-sessions"><a href="sessions/index.html"><span class="tile-icon" aria-hidden="true">01</span><span class="tile-copy"><strong>Sessions</strong><span>Week by week, in teaching order</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
-      <li class="tile-ebook"><a href="ebook/index.html"><span class="tile-icon" aria-hidden="true">02</span><span class="tile-copy"><strong>Student ebook</strong><span>15 chapters + Appendix A</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
-      <li class="tile-slides"><a href="slides/index.html"><span class="tile-icon" aria-hidden="true">03</span><span class="tile-copy"><strong>Lecture slides</strong><span>17 decks · 60 diagrams</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
-      <li class="tile-homework"><a href="homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Homework</strong><span>15 practice sheets · submission later</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
-      <li class="tile-grader"><a href="${GRADER_PUBLIC}"><span class="tile-icon" aria-hidden="true">05</span><span class="tile-copy"><strong>Self-check tool</strong><span>Score your homework against the rubric, in your own browser</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
-      <li class="tile-guide"><a href="orientation.html"><span class="tile-icon" aria-hidden="true">06</span><span class="tile-copy"><strong>New here?</strong><span>How to use the ebook, slides, exercises and self-check tool</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
-      <li class="tile-agents"><a href="ai-agents.html"><span class="tile-icon" aria-hidden="true">07</span><span class="tile-copy"><strong>AI Agents guide</strong><span>VS Code + Copilot or Cline — set up and use AI for your homework</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+${tile("tile-sessions", "01", "sessions/index.html", L.tileSessions, L.tileSessionsSub)}
+${tile("tile-ebook", "02", "ebook/index.html", L.tileEbook, L.tileEbookSub)}
+${tile("tile-slides", "03", "slides/index.html", L.tileSlides, L.tileSlidesSub)}
+${tile("tile-homework", "04", "homework/index.html", L.tileHomework, L.tileHomeworkSub)}
+${tile("tile-grader", "05", GRADER_PUBLIC, L.tileTool, L.tileToolSub, true)}
+${tile("tile-guide", "06", "orientation.html", L.tileGuide, L.tileGuideSub)}
+${tile("tile-agents", "07", "ai-agents.html", L.tileAgents, L.tileAgentsSub)}
     </ul>
   </section>
 
   <section class="flow-section" aria-labelledby="how-it-works">
-    <div class="section-head"><div><p class="section-kicker">A simple weekly rhythm</p><h2 id="how-it-works">How each week works</h2></div><p>Prepare before class, learn together, then turn that knowledge into practice.</p></div>
+    <div class="section-head"><div><p class="section-kicker">${esc(
+      L.flowKicker
+    )}</p><h2 id="how-it-works">${esc(
+    L.flowHeading
+  )}</h2></div><p>${esc(L.flowSub)}</p></div>
     <ol class="flow">
-      <li><span class="flow-index" aria-hidden="true">01</span><div><strong>Before class</strong><span>Read the ebook chapter and complete its <em>Try It Yourself</em> blocks.</span></div></li>
-      <li><span class="flow-index" aria-hidden="true">02</span><div><strong>In class</strong><span>150 minutes of lecture, guided practice and a homework start.</span></div></li>
-      <li><span class="flow-index" aria-hidden="true">03</span><div><strong>After class</strong><span>Practise with the homework brief and keep the result in your repository. Online submission and grading are not enabled yet.</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">01</span><div><strong>${esc(
+    L.whenBefore
+  )}</strong><span>${L.flow1Body}</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">02</span><div><strong>${esc(
+    L.whenIn
+  )}</strong><span>${esc(L.flow2Body)}</span></div></li>
+      <li><span class="flow-index" aria-hidden="true">03</span><div><strong>${esc(
+    L.whenAfter
+  )}</strong><span>${esc(L.flow3Body)}</span></div></li>
     </ol>
   </section>
 
-  <h2 id="schedule">The 15 weeks</h2>
+  <h2 id="schedule">${esc(L.schedHeading)}</h2>
   <table class="sched">
-    <caption>Each row links to that week's chapter, deck and homework sheet.</caption>
+    <caption>${esc(L.schedCaption)}</caption>
     <thead>
-      <tr><th scope="col">Week</th><th scope="col">Session</th><th scope="col">Read</th><th scope="col">Slides</th><th scope="col">Homework</th></tr>
+      <tr><th scope="col">${esc(L.thWeek)}</th><th scope="col">${esc(
+    L.thSession
+  )}</th><th scope="col">${esc(L.thRead)}</th><th scope="col">${esc(
+    L.thSlides
+  )}</th><th scope="col">${esc(L.thHomework)}</th></tr>
     </thead>
     <tbody>
 ${rows}
@@ -486,30 +676,41 @@ ${rows}
   </table>
 ${
   appendix
-    ? `  <h2 id="extra">Also worth reading</h2>
-  <p><a href="ebook/${appendix.out}">${esc(appendix.title)}</a> — how to choose
-  between web technologies once the course is over.</p>\n`
+    ? `  <h2 id="extra">${esc(L.extraHeading)}</h2>
+  <p><a href="${w(`ebook/${appendix.out}`)}">${esc(
+    appendix.title
+  )}</a> — ${esc(L.extraSub)}</p>\n`
     : ""
 }
-  <h2 id="not-here">What is not on this site</h2>
-  <p>Exam papers, marking rubrics, worked solutions and the in-class exercises with
-  their answer keys stay with your lecturer. Homework submission and marking are not
-  handled here either — follow the instructions your lecturer gives in class.</p>`;
+  <h2 id="not-here">${esc(L.notHereHeading)}</h2>
+  <p>${esc(L.notHereBody)}</p>`;
 
   return page({
+    lang,
+    rel: "index.html",
     title: `${COURSE}`,
-    heading: "Build for the web. Learn by doing.",
-    lead: "Your complete INS2053 learning path — ebook, lecture slides and weekly homework, organised into one clear flow.",
-    eyebrow: "INS2053 · Student learning portal",
-    introExtra: `    <div class="hero-actions"><a class="primary-action" href="sessions/session-01.html">Start with Session 1 <span aria-hidden="true">→</span></a><a class="secondary-action" href="#schedule">Explore 15 weeks</a></div>
-    <dl class="hero-stats"><div><dt>15</dt><dd>guided sessions</dd></div><div><dt>16</dt><dd>ebook chapters</dd></div><div><dt>17</dt><dd>lecture decks</dd></div></dl>`,
+    heading: L.homeTitle,
+    lead: L.homeLead,
+    eyebrow: L.homeEyebrow,
+    introExtra: `    <div class="hero-actions"><a class="primary-action" href="${w(
+      "sessions/session-01.html"
+    )}">${esc(L.startCta)} <span aria-hidden="true">→</span></a><a class="secondary-action" href="#schedule">${esc(
+      L.exploreCta
+    )}</a></div>
+    <dl class="hero-stats"><div><dt>15</dt><dd>${esc(
+      L.statSessions
+    )}</dd></div><div><dt>16</dt><dd>${esc(
+      L.statChapters
+    )}</dd></div><div><dt>17</dt><dd>${esc(L.statDecks)}</dd></div></dl>`,
     body,
     depth: 0,
     pageClass: "home-page",
   });
 }
 
-function listPage({ title, heading, lead, crumbLabel, items, note }) {
+function listPage({ title, heading, lead, crumbLabel, items, note, rel }, lang) {
+  const L = UI[lang];
+  const { base, w } = hrefs(1, lang);
   const body = `${note ? `  <div class="callout"><p>${note}</p></div>\n` : ""}  <ul class="list">
 ${items
   .map(
@@ -521,20 +722,29 @@ ${items
   </ul>`;
 
   return page({
+    lang,
+    rel,
     title: `${title} — ${COURSE}`,
     heading,
     lead,
-    crumbs: [{ href: "../index.html", label: "Home" }, { label: crumbLabel }],
+    crumbs: [
+      { href: `${base}/index.html`, label: L.crumbHome },
+      { label: crumbLabel },
+    ],
     body,
     depth: 1,
     pageClass: "list-page",
-    eyebrow: `${items.length} learning resources`,
+    eyebrow: t(L.eyebrowCount, { n: items.length }),
   });
 }
 
 /* --- orientation page ----------------------------------------------------- */
 
-function orientationPage() {
+function orientationPage(lang = "en") {
+  // Only the chrome is Vietnamese here; the guide body stays English and the
+  // page says so. Links still have to resolve from site/vi/, so they are built
+  // from the same helpers as everywhere else.
+  const { w, p } = hrefs(0, lang);
   const body = `  <div class="doc">
 <h2 id="welcome">Welcome to INS2053</h2>
 <p>This course teaches you web authoring from scratch. Over 15 weeks you will learn HTML, CSS, and basic web design — and you will build a complete <strong>Student Club Website</strong> with five pages. No prior web development experience is needed; the prerequisite (INT1004) covers general computer skills.</p>
@@ -570,7 +780,7 @@ function orientationPage() {
 <p>Hands-on exercises embedded in the theory. Each one gives you step-by-step instructions and tells you the <strong>expected result</strong>. If your output doesn't match, re-read the preceding section. These take 2–5 minutes each.</p>
 
 <h3>🖼 Diagram References</h3>
-<p>Lines like <code>🖼 Diagram: canvases/buoi-04.canvas.tsx → BoxModelDiagram</code> point to visual diagrams your lecturer will project during class. You can also view them in the <a href="slides/index.html">lecture slide decks</a>.</p>
+<p>Lines like <code>🖼 Diagram: canvases/buoi-04.canvas.tsx → BoxModelDiagram</code> point to visual diagrams your lecturer will project during class. You can also view them in the <a href="${w("slides/index.html")}">lecture slide decks</a>.</p>
 
 <h3>🔍 Common Errors Table</h3>
 <p>A four-column table (Symptom → Cause → How to confirm → How to fix) listing the most common mistakes for that session. <strong>Bookmark these tables</strong> — you'll need them when debugging your homework.</p>
@@ -582,17 +792,17 @@ function orientationPage() {
 <p>A checklist to honestly rate your understanding of each learning objective.</p>
 
 <h2 id="sessions">How to use the session pages</h2>
-<p>Each <a href="sessions/index.html">session page</a> on this website has four steps:</p>
+<p>Each <a href="${w("sessions/index.html")}">session page</a> on this website has four steps:</p>
 <ol>
   <li><strong>Before class</strong> — Read the ebook chapter and work the Try It Yourself blocks</li>
   <li><strong>In class</strong> — Follow the lecture deck (press <kbd>j</kbd>/<kbd>k</kbd> to navigate, <kbd>n</kbd> for speaker notes)</li>
   <li><strong>After class</strong> — Work on the homework brief</li>
   <li><strong>Check yourself</strong> — Open the self-check tool to verify your work</li>
 </ol>
-<p>Start at <a href="sessions/session-01.html">Session 1</a> and follow the flow.</p>
+<p>Start at <a href="${w("sessions/session-01.html")}">Session 1</a> and follow the flow.</p>
 
 <h2 id="selfcheck">How to use the self-check tool</h2>
-<p>The <a href="${GRADER_PUBLIC}">self-check tool</a> runs entirely in your browser — <strong>nothing is uploaded</strong>. It checks the mechanical parts of the homework rubric.</p>
+<p>The <a href="${p(GRADER_PUBLIC)}">self-check tool</a> runs entirely in your browser — <strong>nothing is uploaded</strong>. It checks the mechanical parts of the homework rubric.</p>
 <ol>
   <li>Open the tool and select the correct session</li>
   <li>Enter your name, student ID, and class</li>
@@ -640,22 +850,25 @@ function orientationPage() {
 
 <h2 id="resources">All resources at a glance</h2>
 <ul>
-  <li><a href="sessions/index.html">Sessions</a> — 15 weeks, one hub per week</li>
-  <li><a href="ebook/index.html">Ebook</a> — 15 chapters + Appendix A</li>
-  <li><a href="slides/index.html">Lecture slides</a> — 17 decks with 60 teaching diagrams</li>
-  <li><a href="homework/index.html">Homework</a> — 15 practice briefs with rubrics</li>
-  <li><a href="${GRADER_PUBLIC}">Self-check tool</a> — browser-only homework grader</li>
+  <li><a href="${w("sessions/index.html")}">Sessions</a> — 15 weeks, one hub per week</li>
+  <li><a href="${w("ebook/index.html")}">Ebook</a> — 15 chapters + Appendix A</li>
+  <li><a href="${w("slides/index.html")}">Lecture slides</a> — 17 decks with 60 teaching diagrams</li>
+  <li><a href="${w("homework/index.html")}">Homework</a> — 15 practice briefs with rubrics</li>
+  <li><a href="${p(GRADER_PUBLIC)}">Self-check tool</a> — browser-only homework grader</li>
   <li><code>examples/student-club/</code> — a complete reference website (study it, don't copy it)</li>
   <li><code>references/resources.md</code> — curated links: MDN, W3C, tools, tutorials</li>
 </ul>
 </div>`;
 
   return page({
+    lang,
+    rel: "orientation.html",
+    untranslated: lang === "vi",
     title: `How to Use This Course — ${COURSE}`,
     heading: "How to Use This Course",
     lead: "Everything you need to know about the ebook, slides, exercises, homework, and self-check tool — in one place.",
     crumbs: [
-      { href: "index.html", label: "Home" },
+      { href: "index.html", label: UI[lang].crumbHome },
       { label: "Student Guide" },
     ],
     toc: [
@@ -678,7 +891,7 @@ function orientationPage() {
 
 /* --- AI agent guide page -------------------------------------------------- */
 
-function agentGuidePage() {
+function agentGuidePage(lang = "en") {
   const body = `  <div class="doc">
 <h2 id="why-agents">Why use an AI agent for web development?</h2>
 <p>An AI coding agent lives inside your editor and helps you write, debug, and understand code in real time. For INS2053, that means:</p>
@@ -859,6 +1072,9 @@ function agentGuidePage() {
 </div>`;
 
   return page({
+    lang,
+    rel: "ai-agents.html",
+    untranslated: lang === "vi",
     title: `Using AI Agents for INS2053 — ${COURSE}`,
     heading: "Using AI Agents for Web Development",
     lead: "Two simple setups — VS Code + Copilot or Cline — that help you write, debug, and understand HTML/CSS faster. Works with any API provider.",
@@ -898,19 +1114,21 @@ const exampleLinks = [];
  * all. Unpublished targets become plain text with a short note, because a link
  * that 404s teaches a student that the site is broken.
  */
-function rewriteLinks(html, { fromDepth }) {
-  const up = fromDepth === 1 ? ".." : ".";
+function rewriteLinks(html, { lang, depth }) {
+  const { base: up, pub } = hrefs(depth, lang);
 
   return html
-    // ebook/NN-slug.md  ->  ../ebook/NN-slug.html
+    // ebook/NN-slug.md  ->  ../ebook/NN-slug.html  (translated pages live in
+    // this tree, so this link stays inside it)
     .replace(
       /href="(?:\.\.\/)?ebook\/([0-9]{2}|appendix-a)-([a-z0-9-]+)\.md(#[^"]*)?"/g,
       (_m, num, slug, hash) => `href="${up}/ebook/${num}-${slug}.html${hash || ""}"`
     )
-    // canvases/buoi-NN.canvas.tsx  ->  ../slides/buoi-NN.html
+    // canvases/buoi-NN.canvas.tsx  ->  ../slides/buoi-NN.html  (the decks are
+    // shared between languages, so this link climbs out of the tree)
     .replace(
       /href="(?:\.\.\/)?canvases\/buoi-([0-9]{2})\.canvas\.tsx"/g,
-      (_m, nn) => `href="${up}/slides/buoi-${nn}.html"`
+      (_m, nn) => `href="${pub}/slides/buoi-${nn}.html"`
     )
     // homework/session-NN/homework.md  ->  ../homework/session-NN.html
     .replace(
@@ -921,7 +1139,7 @@ function rewriteLinks(html, { fromDepth }) {
     .replace(
       /<a href="(?:\.\.\/)?(?:exercises|exams|project)\/[^"]*">([\s\S]*?)<\/a>/g,
       (_m, label) =>
-        `<span class="unpub" title="Handed out in class, not published on this site">${label}</span>`
+        `<span class="unpub" title="${esc(UI[lang].unpubTitle)}">${label}</span>`
     )
     // Whatever relative link is LEFT is not site navigation. The chapters use
     // markdown link syntax to *illustrate* paths in the student's own project —
@@ -938,14 +1156,41 @@ function rewriteLinks(html, { fromDepth }) {
     );
 }
 
+/**
+ * Wipe site/ before regenerating it, waiting out a transient lock.
+ *
+ * The repo lives under OneDrive, so a directory inside site/ is regularly held
+ * open by the sync client, by antivirus, or by an Explorer window at the moment
+ * the build clears it, and rm() then throws EPERM / EBUSY / ENOTEMPTY. The
+ * danger is not the failed build — it is a build that deletes part of the
+ * published site and stops there, which is exactly what a plain `await rm()`
+ * does on this machine. A short bounded retry keeps one lock from eating the
+ * output, and QA then always reads a complete tree.
+ */
+async function wipe(dir) {
+  const lockErrors = ["EPERM", "EBUSY", "ENOTEMPTY", "EACCES"];
+  for (let attempt = 1; ; attempt++) {
+    try {
+      await rm(dir, { recursive: true, force: true });
+      return;
+    } catch (err) {
+      if (!lockErrors.includes(err.code) || attempt >= 5) throw err;
+      await new Promise((resolve) => setTimeout(resolve, 200 * attempt));
+    }
+  }
+}
+
 async function build() {
-  await rm(OUT, { recursive: true, force: true });
+  await wipe(OUT);
   await mkdir(OUT, { recursive: true });
 
-  /* 1. assets ------------------------------------------------------------- */
+  /* 1. assets — one copy. The Vietnamese tree reaches it as ../assets, so a
+        stylesheet change can never drift out of step between the languages. -- */
   await cp(ASSETS, path.join(OUT, "assets"), { recursive: true });
 
-  /* 2. slide decks — copied as-is, already standalone HTML ----------------- */
+  /* 2. slide decks — copied as-is, already standalone HTML. The decks are the
+        lecturer's own material and are not translated, so both trees point at
+        this single copy instead of each carrying a duplicate. --------------- */
   const decks = path.join(ROOT, "slides-html");
   if (!existsSync(decks)) {
     fail("slides-html/ is missing — run `npm run build:slides` first");
@@ -953,199 +1198,33 @@ async function build() {
   }
   await cp(decks, path.join(OUT, "slides"), { recursive: true });
 
-  /* 3. ebook chapters ----------------------------------------------------- */
-  await mkdir(path.join(OUT, "ebook"), { recursive: true });
-  const chapterFiles = (await readdir(path.join(ROOT, "ebook")))
-    .filter((f) => f.endsWith(".md"))
-    .sort();
-
-  const chapters = [];
-  for (const file of chapterFiles) {
-    const md = await readFile(path.join(ROOT, "ebook", file), "utf8");
-    const { html, headings } = render(md);
-
-    // The title is the chapter's own SECOND line; the first is "# SESSION NN".
-    const lines = md.split(/\r?\n/);
-    const title = plain((lines[1] || lines[0] || file).replace(/^#\s*/, ""));
-    const num = file.slice(0, 2);
-    const session = /^[0-9]{2}$/.test(num) ? Number(num) : null;
-    const out = file.replace(/\.md$/, ".html");
-    const slug = file.replace(/^([0-9]{2}|appendix-a)-/, "").replace(/\.md$/, "");
-    const heading = session ? `Session ${session}: ${title}` : title;
-
-    const nav = session
-      ? `  <nav class="pager" aria-label="Chapter navigation">
-    <a class="up" href="../sessions/session-${pad(session)}.html">Session ${session} overview</a>
-  </nav>\n`
-      : "";
-
-    await writeFile(
-      path.join(OUT, "ebook", out),
-      page({
-        title: `${heading} — ${COURSE}`,
-        heading,
-        crumbs: [
-          { href: "../index.html", label: "Home" },
-          { href: "../ebook/index.html", label: "Ebook" },
-          { label: session ? `Chapter ${session}` : "Appendix A" },
-        ],
-        toc: headings.filter((h) => h.depth === 2),
-        body: `${nav}  <article class="doc">\n${rewriteLinks(html, { fromDepth: 1 })}\n  </article>`,
-        depth: 1,
-        pageClass: "reading-page ebook-page",
-        eyebrow: session ? `Ebook · Chapter ${pad(session)}` : "Ebook · Appendix",
-      }),
-      "utf8"
-    );
-
-    chapters.push({ file, out, slug, title, session });
-  }
-
-  /* 4. homework ----------------------------------------------------------- */
-  await mkdir(path.join(OUT, "homework"), { recursive: true });
-  const sheets = [];
-  for (const s of SESSIONS) {
-    const nn = pad(s.n);
-    const src = path.join(ROOT, "homework", `session-${nn}`, "homework.md");
-    if (!existsSync(src)) {
-      fail(`homework/session-${nn}/homework.md is missing`);
-      continue;
-    }
-    const md = await readFile(src, "utf8");
-    const publicMd = prepareHomeworkMarkdown(md);
-    const { html, headings } = render(publicMd);
-    const title = plain((md.split(/\r?\n/)[0] || "").replace(/^#\s*/, ""));
-
-    await writeFile(
-      path.join(OUT, "homework", `session-${nn}.html`),
-      page({
-        title: `${title} — ${COURSE}`,
-        heading: title,
-        lead: "Practice brief for this session. Online submission and grading are not enabled yet.",
-        crumbs: [
-          { href: "../index.html", label: "Home" },
-          { href: "../homework/index.html", label: "Homework" },
-          { label: `Session ${s.n}` },
-        ],
-        toc: headings.filter((h) => h.depth === 2),
-        body: `  <div class="callout status-note" role="status">
-    <p><strong>Practice mode.</strong> Online submission and grading are not enabled yet. Complete the work locally and keep it in your own Git repository until your lecturer announces the submission flow.</p>
-    <p>Want to know how this sheet scores before you hand it in? Open the <a href="../${GRADER_PUBLIC}">self-check tool</a>, pick session ${s.n}, and paste or point it at your files. It runs entirely in your browser, uploads nothing, and marks only the mechanical half of the rubric — the rest is your lecturer's judgement.</p>
-  </div>
-  <nav class="pager" aria-label="Session navigation">
-    <a class="up" href="../sessions/session-${nn}.html">Session ${s.n} overview</a>
-  </nav>\n  <article class="doc">\n${rewriteLinks(html, { fromDepth: 1 })}\n  </article>`,
-        depth: 1,
-        pageClass: "reading-page homework-page",
-        eyebrow: `Session ${pad(s.n)} · Homework`,
-      }),
-      "utf8"
-    );
-    sheets.push({ n: s.n, title });
-  }
-
-  /* 5. session hubs — the teaching flow ----------------------------------- */
-  await mkdir(path.join(OUT, "sessions"), { recursive: true });
-  for (const s of SESSIONS) {
-    const ch = chapters.find((c) => c.session === s.n);
-    if (!ch) {
-      fail(`no ebook chapter found for session ${s.n}`);
-      continue;
-    }
-    await writeFile(
-      path.join(OUT, "sessions", `session-${pad(s.n)}.html`),
-      sessionHub(s, ch),
-      "utf8"
-    );
-  }
-
-  /* 6. index pages -------------------------------------------------------- */
-  await writeFile(path.join(OUT, "index.html"), homePage(chapters), "utf8");
-  await writeFile(path.join(OUT, "orientation.html"), orientationPage(), "utf8");
-  await writeFile(path.join(OUT, "ai-agents.html"), agentGuidePage(), "utf8");
-
-  await writeFile(
-    path.join(OUT, "sessions", "index.html"),
-    listPage({
-      title: "Sessions",
-      heading: "Sessions",
-      lead: "Fifteen weeks, in teaching order. Each session page gathers that week's chapter, deck and homework.",
-      crumbLabel: "Sessions",
-      items: SESSIONS.map((s) => ({
-        href: `session-${pad(s.n)}.html`,
-        label: `Session ${s.n} — ${s.topic}`,
-        sub: s.midterm ? "Week 8 · midterm exam" : `Week ${s.n}`,
-      })),
-    }),
-    "utf8"
-  );
-
-  await writeFile(
-    path.join(OUT, "ebook", "index.html"),
-    listPage({
-      title: "Ebook",
-      heading: "The student ebook",
-      lead: "Fifteen chapters plus an appendix. Read the week's chapter before class.",
-      crumbLabel: "Ebook",
-      items: chapters.map((c) => ({
-        href: c.out,
-        label: c.session ? `Chapter ${c.session} — ${c.title}` : c.title,
-        sub: c.session ? `Session ${c.session}` : "Appendix A",
-      })),
-    }),
-    "utf8"
-  );
-
-  await writeFile(
-    path.join(OUT, "homework", "index.html"),
-    listPage({
-      title: "Homework",
-      heading: "Homework",
-      lead: "One practice sheet per session, with requirements and a reference rubric.",
-      crumbLabel: "Homework",
-      note: "<strong>Practice mode:</strong> online submission and grading are not enabled yet. Complete each sheet locally and keep the result in your own Git repository until your lecturer announces the submission flow. To see how a sheet scores against its rubric, open the <a href=\"../cham-bai.html\">self-check tool</a> — it runs in your browser and uploads nothing.",
-      items: sheets.map((h) => ({
-        href: `session-${pad(h.n)}.html`,
-        label: h.title,
-        sub: `Session ${h.n}`,
-      })),
-    }),
-    "utf8"
-  );
-
-  /* 7. slides index — the copied deck index links to itself, so give the
-        site its own entry point that matches the rest of the navigation. */
-  const deckList = SESSIONS.map((s) => ({
-    href: `buoi-${pad(s.n)}.html`,
-    label: `Deck ${s.n} — ${s.topic}`,
-    sub: `Session ${s.n}`,
-  }));
-  deckList.push(
-    { href: "ins2053-bai-giang.html", label: "Course-wide lecture deck", sub: "All sessions" },
-    { href: "ins2053-overview.html", label: "Course overview deck", sub: "Orientation" }
-  );
-  await writeFile(
-    path.join(OUT, "slides", "index.html"),
-    listPage({
-      title: "Lecture slides",
-      heading: "Lecture slides",
-      lead: "Seventeen decks with 60 teaching diagrams. Use j and k to move between slides, n for speaker notes.",
-      crumbLabel: "Lecture slides",
-      items: deckList,
-    }),
-    "utf8"
-  );
-
-  /* 8. the self-check tool, copied byte for byte -------------------------- */
+  /* 3. the self-check tool, copied byte for byte, shared the same way. Its QA
+        gate compares the published copy against the built artefact, so it has
+        to exist exactly once. ---------------------------------------------- */
   if (!existsSync(GRADER_ARTEFACT)) {
-    fail("_tools/grader/cham-bai.html is missing — run `npm run build:grader` first");
+    fail(
+      "_tools/grader/cham-bai.html is missing — run `npm run build:grader` first"
+    );
   } else {
     await cp(GRADER_ARTEFACT, path.join(OUT, GRADER_PUBLIC));
   }
 
+  const built = [];
+  for (const lang of Object.keys(LANGS)) built.push(await buildTree(lang));
+
   console.log(
-    `built site/ — ${chapters.length} chapters, ${sheets.length} homework sheets, ` +
-      `${SESSIONS.length} session hubs, ${deckList.length} decks, 1 orientation page`
+    built
+      .map(
+        (b) =>
+          `built ${b.dirLabel} — ${b.chapters} chapters, ${b.sheets} homework sheets, ` +
+          `${b.hubs} session hubs, ${b.decks} decks indexed` +
+          // The English tree is the source, so a translation count is only
+          // meaningful for the other trees.
+          (b.lang === "en"
+            ? ""
+            : `  [${b.translated} of ${b.chapters + b.sheets} documents translated]`)
+      )
+      .join("\n")
   );
 
   // Example paths are expected (chapters illustrate paths in the student's own
@@ -1159,10 +1238,278 @@ async function build() {
   }
 }
 
+/**
+ * Generate one language tree: English into site/, Vietnamese into site/vi/.
+ *
+ * Prose comes from i18n/vi/<same repo path> when that file exists and from the
+ * English source when it does not. `untranslated` carries that fact into the
+ * page shell so the reader is told rather than left to wonder why a Vietnamese
+ * page is suddenly English.
+ */
+async function buildTree(lang) {
+  const TREE = treeDir(lang);
+  const L = UI[lang];
+  const { w, p } = hrefs(1, lang);
+  await mkdir(TREE, { recursive: true });
+
+  /* 4. ebook chapters ----------------------------------------------------- */
+  await mkdir(path.join(TREE, "ebook"), { recursive: true });
+  const chapterFiles = (await readdir(path.join(ROOT, "ebook")))
+    .filter((f) => f.endsWith(".md"))
+    .sort();
+
+  const chapters = [];
+  let translated = 0;
+  for (const file of chapterFiles) {
+    const viSrc = path.join(ROOT, "i18n/vi/ebook", file);
+    const hasVi = lang === "vi" && existsSync(viSrc);
+    const md = await readFile(hasVi ? viSrc : path.join(ROOT, "ebook", file), "utf8");
+    const { html, headings } = render(md);
+
+    // The title is the chapter's own SECOND line; the first is "# SESSION NN".
+    const lines = md.split(/\r?\n/);
+    const title = plain((lines[1] || lines[0] || file).replace(/^#\s*/, ""));
+    const num = file.slice(0, 2);
+    const session = /^[0-9]{2}$/.test(num) ? Number(num) : null;
+    const out = file.replace(/\.md$/, ".html");
+    const slug = file.replace(/^([0-9]{2}|appendix-a)-/, "").replace(/\.md$/, "");
+    const heading = session
+      ? t(L.hubTitle, { n: session, topic: title })
+      : title;
+    if (hasVi) translated++;
+
+    const nav = session
+      ? `  <nav class="pager" aria-label="${esc(L.chapterNav)}">
+    <a class="up" href="${w(
+      `sessions/session-${pad(session)}.html`
+    )}">${esc(t(L.sessionOverview, { n: session }))}</a>
+  </nav>\n`
+      : "";
+
+    await writeFile(
+      path.join(TREE, "ebook", out),
+      page({
+        lang,
+        rel: `ebook/${out}`,
+        untranslated: lang === "vi" && !hasVi,
+        title: `${heading} — ${COURSE}`,
+        heading,
+        crumbs: [
+          { href: "../index.html", label: L.crumbHome },
+          { href: "../ebook/index.html", label: L.navEbook },
+          { label: session ? t(L.chapterCta, { n: session }) : L.subAppendix },
+        ],
+        toc: headings.filter((h) => h.depth === 2),
+        body: `${nav}  <article class="doc">\n${rewriteLinks(html, {
+          lang,
+          depth: 1,
+        })}\n  </article>`,
+        depth: 1,
+        pageClass: "reading-page ebook-page",
+        eyebrow: session
+          ? t(L.eyebrowChapter, { nn: pad(session) })
+          : L.eyebrowAppendix,
+      }),
+      "utf8"
+    );
+
+    chapters.push({ file, out, slug, title, session });
+  }
+  /* 5. homework ----------------------------------------------------------- */
+  await mkdir(path.join(TREE, "homework"), { recursive: true });
+  const sheets = [];
+  for (const s of SESSIONS) {
+    const nn = pad(s.n);
+    const enSrc = path.join(ROOT, "homework", `session-${nn}`, "homework.md");
+    const viSrc = path.join(ROOT, "i18n/vi/homework", `session-${nn}`, "homework.md");
+    const hasVi = lang === "vi" && existsSync(viSrc);
+    if (!existsSync(enSrc)) {
+      fail(`homework/session-${nn}/homework.md is missing`);
+      continue;
+    }
+    const md = await readFile(hasVi ? viSrc : enSrc, "utf8");
+    const publicMd = prepareHomeworkMarkdown(md);
+    const { html, headings } = render(publicMd);
+    const title = plain((md.split(/\r?\n/)[0] || "").replace(/^#\s*/, ""));
+    if (hasVi) translated++;
+
+    await writeFile(
+      path.join(TREE, "homework", `session-${nn}.html`),
+      page({
+        lang,
+        rel: `homework/session-${nn}.html`,
+        untranslated: lang === "vi" && !hasVi,
+        title: `${title} — ${COURSE}`,
+        heading: title,
+        lead: L.sheetLead,
+        crumbs: [
+          { href: "../index.html", label: L.crumbHome },
+          { href: "../homework/index.html", label: L.navHomework },
+          { label: t(L.sessionCrumbLabel, { n: s.n }) },
+        ],
+        toc: headings.filter((h) => h.depth === 2),
+        body: `  <div class="callout status-note" role="status">
+    <p><strong>${esc(L.practiceModeTitle)}</strong> ${esc(L.practiceModeBody)}</p>
+    <p>${t(L.practiceModeTool, { href: p(GRADER_PUBLIC), n: s.n })}</p>
+  </div>
+  <nav class="pager" aria-label="${esc(L.sessionNav)}">
+    <a class="up" href="${w(
+      `sessions/session-${nn}.html`
+    )}">${esc(t(L.sessionOverview, { n: s.n }))}</a>
+  </nav>\n  <article class="doc">\n${rewriteLinks(html, {
+    lang,
+    depth: 1,
+  })}\n  </article>`,
+        depth: 1,
+        pageClass: "reading-page homework-page",
+        eyebrow: t(L.eyebrowHomework, { nn }),
+      }),
+      "utf8"
+    );
+    sheets.push({ n: s.n, title });
+  }
+
+  /* 6. session hubs — the teaching flow ----------------------------------- */
+  await mkdir(path.join(TREE, "sessions"), { recursive: true });
+  for (const s of SESSIONS) {
+    const ch = chapters.find((c) => c.session === s.n);
+    if (!ch) {
+      fail(`no ebook chapter found for session ${s.n}`);
+      continue;
+    }
+    await writeFile(
+      path.join(TREE, "sessions", `session-${pad(s.n)}.html`),
+      sessionHub(s, ch, lang),
+      "utf8"
+    );
+  }
+
+  /* 7. index and guide pages ---------------------------------------------- */
+  await writeFile(path.join(TREE, "index.html"), homePage(chapters, lang), "utf8");
+  await writeFile(
+    path.join(TREE, "orientation.html"),
+    orientationPage(lang),
+    "utf8"
+  );
+  await writeFile(
+    path.join(TREE, "ai-agents.html"),
+    agentGuidePage(lang),
+    "utf8"
+  );
+
+  await writeFile(
+    path.join(TREE, "sessions", "index.html"),
+    listPage(
+      {
+        title: L.navSessions,
+        heading: L.idxSessionsHeading,
+        lead: L.idxSessionsLead,
+        crumbLabel: L.navSessions,
+        rel: "sessions/index.html",
+        items: SESSIONS.map((s) => ({
+          href: `session-${pad(s.n)}.html`,
+          label: t(L.idxSessionLabel, { n: s.n, topic: s.topic }),
+          sub: s.midterm ? L.idxWeekMidterm : t(L.idxWeekN, { n: s.n }),
+        })),
+      },
+      lang
+    ),
+    "utf8"
+  );
+
+  await writeFile(
+    path.join(TREE, "ebook", "index.html"),
+    listPage(
+      {
+        title: L.navEbook,
+        heading: L.idxEbookHeading,
+        lead: L.idxEbookLead,
+        crumbLabel: L.navEbook,
+        rel: "ebook/index.html",
+        items: chapters.map((c) => ({
+          href: c.out,
+          label: c.session
+            ? t(L.idxChapterLabel, { n: c.session, title: c.title })
+            : c.title,
+          sub: c.session ? t(L.idxSessionN, { n: c.session }) : L.subAppendix,
+        })),
+      },
+      lang
+    ),
+    "utf8"
+  );
+
+  await writeFile(
+    path.join(TREE, "homework", "index.html"),
+    listPage(
+      {
+        title: L.navHomework,
+        heading: L.idxHomeworkHeading,
+        lead: L.idxHomeworkLead,
+        crumbLabel: L.navHomework,
+        rel: "homework/index.html",
+        note: t(L.idxPracticeNote, { href: p(GRADER_PUBLIC) }),
+        items: sheets.map((h) => ({
+          href: `session-${pad(h.n)}.html`,
+          label: h.title,
+          sub: t(L.idxSessionN, { n: h.n }),
+        })),
+      },
+      lang
+    ),
+    "utf8"
+  );
+
+  /* 8. slides index. The decks themselves are shared from site/slides/, so the
+        Vietnamese tree gets its own index page that points back up at them. -- */
+  // The English index is written INTO site/slides/, beside the decks, so it
+  // links to them as siblings. The Vietnamese index sits in site/vi/slides/ and
+  // has to climb to the single shared copy.
+  const deckHref = (file) => (lang === "en" ? file : `${p("slides")}/${file}`);
+  const deckList = SESSIONS.map((s) => ({
+    href: deckHref(`buoi-${pad(s.n)}.html`),
+    label: t(L.idxDeckLabel, { n: s.n, topic: s.topic }),
+    sub: t(L.idxSessionN, { n: s.n }),
+  }));
+  deckList.push(
+    {
+      href: deckHref("ins2053-bai-giang.html"),
+      label: L.idxCourseWide,
+      sub: L.idxAllSessions,
+    },
+    {
+      href: deckHref("ins2053-overview.html"),
+      label: L.idxOverviewDeck,
+      sub: L.idxOrientation,
+    }
+  );
+  await mkdir(path.join(TREE, "slides"), { recursive: true });
+  await writeFile(
+    path.join(TREE, "slides", "index.html"),
+    listPage(
+      {
+        title: L.idxSlidesHeading,
+        heading: L.idxSlidesHeading,
+        lead: L.idxSlidesLead,
+        crumbLabel: L.idxSlidesHeading,
+        rel: "slides/index.html",
+        items: deckList,
+      },
+      lang
+    ),
+    "utf8"
+  );
+
+  return {
+    lang,
+    dirLabel: lang === "en" ? "site/" : `site/${LANGS[lang].dir}`,
+    chapters: chapters.length,
+    translated,
+    sheets: sheets.length,
+    hubs: SESSIONS.length,
+    decks: deckList.length,
+  };
+}
+
 build().catch((err) => fail("build threw", err));
-
-
-
-
-
 

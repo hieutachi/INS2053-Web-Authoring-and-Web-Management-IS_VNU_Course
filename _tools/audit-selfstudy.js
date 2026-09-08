@@ -54,9 +54,21 @@ function count(hay, needle) {
   return hay.split(needle).length - 1;
 }
 
+/**
+ * Directories the audit never descends into.
+ *
+ * `ClaudeKit-Clean` is a ~1500-file vendored third-party agent-skills bundle
+ * parked under `_tools/grader/`. Nothing in the course build reads it —
+ * `build-grader.mjs` only touches `grader/src/` and `grader/rubrics/`, and
+ * `qa-site.mjs` blocks every `_tools/` link — so counting its markdown as
+ * course content produces false integrity failures that fail `npm run qa`.
+ * It is excluded the same way `_archive/` and `backups/` already are.
+ */
+const SKIP_DIRS = new Set(['node_modules', '_archive', 'backups', 'ClaudeKit-Clean']);
+
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name === 'node_modules' || e.name === '_archive' || e.name === 'backups') continue;
+    if (SKIP_DIRS.has(e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, out);
     else out.push(p);

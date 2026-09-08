@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 1: Introduction to Dreamweaver &amp; Web Fundamentals — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 1: Introduction to Dreamweaver &amp; Web Fundamentals — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/01-introduction-to-dreamweaver.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/01-introduction-to-dreamweaver.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 1</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 01</p>
+    <h1>Buổi 1: Introduction to Dreamweaver &amp; Web Fundamentals</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-what-is-a-website">1. What Is a Website?</a></li>
+        <li class="d2"><a href="#2-what-is-an-html-file">2. What Is an HTML File?</a></li>
+        <li class="d2"><a href="#3-web-browsers">3. Web Browsers</a></li>
+        <li class="d2"><a href="#4-code-editors-dreamweaver-vs-vs-code">4. Code Editors: Dreamweaver vs. VS Code</a></li>
+        <li class="d2"><a href="#5-project-folder-structure">5. Project Folder Structure</a></li>
+        <li class="d2"><a href="#6-creating-your-first-html-file">6. Creating Your First HTML File</a></li>
+        <li class="d2"><a href="#7-file-extensions-and-types">7. File Extensions and Types</a></li>
+        <li class="d2"><a href="#8-html-comments">8. HTML Comments</a></li>
+        <li class="d2"><a href="#9-how-browsers-render-a-page">9. How Browsers Render a Page</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-the-simplest-possible-web-page">Example 1: The Simplest Possible Web Page</a></li>
+        <li class="d2"><a href="#example-2-student-club-home-page">Example 2: Student Club Home Page</a></li>
+        <li class="d2"><a href="#example-3-understanding-nested-tags">Example 3: Understanding Nested Tags</a></li>
+        <li class="d2"><a href="#setup-tools-and-folders">Setup (Tools and Folders)</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/01-introduction-to-dreamweaver.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-01.html">Tổng quan Buổi 1</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-1">🟦 SESSION 1<a class="anchor" href="#session-1" aria-label="Link to this section">#</a></h2>
+<h2 id="introduction-to-dreamweaver-web-fundamentals"><strong>Introduction to Dreamweaver &amp; Web Fundamentals</strong><a class="anchor" href="#introduction-to-dreamweaver-web-fundamentals" aria-label="Link to this section">#</a></h2>
+<p>Welcome to your very first session in INS2053 — Web Authoring and Web Management! Today you will learn what a website actually is, how web pages work behind the scenes, and how to use a code editor (Dreamweaver CS6 or VS Code) to create your very first HTML file. By the end of this session you will have a real, working web page saved on your computer that you can open in any browser. Do not worry if everything feels new — we will walk through every single step together, and by the end of the course you will have built a complete <strong>Student Club Website</strong> from scratch.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    MDN &quot;Getting Started with the Web&quot;
+                 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web
+🎯 Objectives:   1. Explain what a website, webpage, and HTML file are
+                 2. Identify the main parts of a code editor workspace (Dreamweaver / VS Code)
+                 3. Create a proper project folder structure for a website
+                 4. Write, save, and preview your first HTML5 page
+                 5. Understand the basic anatomy of an HTML document
+📖 Prepare:      1. Install Adobe Dreamweaver CS6 OR Visual Studio Code (free) on your laptop
+                 2. Create an empty folder called &quot;club-website&quot; inside your Documents folder
+                 3. Read MDN &quot;How the Web works&quot; (link in Further Reading below)
+🖼 Diagrams:     canvases/buoi-01.canvas.tsx — RequestResponseCycle, TagAnatomy, HeadVsBody
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>After this session you will be able to:</p>
+<ul>
+<li>Define the terms <strong>website</strong>, <strong>webpage</strong>, <strong>HTML file</strong>, and <strong>web browser</strong> in your own words</li>
+<li>Describe the difference between Design View, Code View, and Split View in Dreamweaver</li>
+<li>Navigate the Dreamweaver (or VS Code) workspace confidently</li>
+<li>Create a well-organized project folder with subfolders for images, CSS, and JavaScript</li>
+<li>Write a valid HTML5 document from scratch and preview it in a web browser</li>
+<li>Explain the purpose of each part of the basic HTML boilerplate (<code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>)</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-what-is-a-website">1. What Is a Website?<a class="anchor" href="#1-what-is-a-website" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-01.canvas.tsx</code> → <code>RequestResponseCycle</code> — slide <code>how-web-works</code> (&quot;How the Web Works&quot;)</p>
+</blockquote>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>website</strong> is a collection of related <strong>web pages</strong> that are stored on a computer (either your own computer or a server on the internet) and connected to each other through <strong>hyperlinks</strong>. Each web page is a separate file written in a language called <strong>HTML</strong> (HyperText Markup Language).</p>
+<p>When someone types a website address (like <code>www.studentclub.edu.vn</code>) into their browser, the browser downloads the HTML files from a server and displays them as a visual page.</p>
+<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Think of a website like a <strong>textbook</strong>:</p>
+<ul>
+<li>The <strong>textbook</strong> = the entire website</li>
+<li>Each <strong>chapter</strong> = one web page (one <code>.html</code> file)</li>
+<li>The <strong>table of contents</strong> = the navigation menu that links to each chapter</li>
+<li>The <strong>printing press</strong> = the web server that stores and delivers the book</li>
+<li>The <strong>reader&#39;s eyes</strong> = the web browser that reads and displays the content</li>
+</ul>
+<p>Just as a textbook has many chapters bound together, a website has many HTML pages linked together.</p>
+<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Understanding structure</td>
+<td>You cannot build a good website if you do not understand that it is made of individual files</td>
+</tr>
+<tr>
+<td>Planning your project</td>
+<td>Knowing that each page is a separate file helps you plan your folder structure before you start coding</td>
+</tr>
+<tr>
+<td>Debugging</td>
+<td>When something breaks, knowing the difference between a page, a file, and a site helps you find the problem faster</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>In a team project, everyone needs to agree on what &quot;page,&quot; &quot;site,&quot; and &quot;file&quot; mean</td>
+</tr>
+</tbody></table>
+<pre><code>HOW A WEBSITE WORKS (simplified):
+
++------------------+       +----------------+       +------------------+
+|  YOU (Author)    | ----&gt; |  WEB SERVER    | ----&gt; |  USER&#39;S BROWSER  |
+|                  |       |                |       |                  |
+| Write HTML files |       | Stores files   |       | Reads HTML       |
+| Upload to server |       | Sends files    |       | Displays page    |
++------------------+       +----------------+       +------------------+
+
+For local testing (this course):
++------------------+       +------------------+
+|  YOU (Author)    | ----&gt; |  YOUR BROWSER    |
+|                  |       |                  |
+| Write HTML files |       | Opens local file |
+| Save to folder   |       | Displays page    |
++------------------+       +------------------+
+</code></pre>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>A website is NOT a single file. It is many files working together.</li>
+<li>The main page of any website should always be named <code>index.html</code>. This is a universal convention — web servers automatically look for this file when someone visits your site.</li>
+<li>Even though we are working locally (on your own computer) during this course, the same principles apply when you publish to the internet later.</li>
+</ul>
+<hr>
+<h3 id="2-what-is-an-html-file">2. What Is an HTML File?<a class="anchor" href="#2-what-is-an-html-file" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-01.canvas.tsx</code> → <code>TagAnatomy</code> — slide <code>what-is-html</code> (&quot;What Is an HTML File?&quot;)</p>
+</blockquote>
+<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<p>An <strong>HTML file</strong> is a plain text file that contains instructions for a web browser. These instructions are written using special markers called <strong>tags</strong>. Tags tell the browser things like &quot;this is a heading,&quot; &quot;this is a paragraph,&quot; &quot;this is an image,&quot; and so on.</p>
+<p>The file extension <code>.html</code> tells the operating system and the browser that this file contains HTML code.</p>
+<h4 id="real-life-example-2">🎒 Real-life Example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>Think of an HTML file like a <strong>recipe card</strong>:</p>
+<ul>
+<li>The recipe card itself = the <code>.html</code> file</li>
+<li>The ingredients list = the content (text, images)</li>
+<li>The cooking instructions = the HTML tags that tell the browser how to display each ingredient</li>
+<li>The person cooking = the web browser that follows the instructions</li>
+</ul>
+<p>If you hand a recipe card to two different cooks, they will produce similar dishes. Similarly, if you give an HTML file to Chrome, Firefox, or Edge, they will all display roughly the same page.</p>
+<h4 id="22-why-it-matters">2.2 Why It Matters<a class="anchor" href="#22-why-it-matters" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Why You Need to Know It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Plain text format</td>
+<td>HTML files are just text — you can open them in Notepad, but a code editor makes life much easier</td>
+</tr>
+<tr>
+<td>File extension <code>.html</code></td>
+<td>If you save a file as <code>.txt</code> instead of <code>.html</code>, the browser will not treat it as a web page</td>
+</tr>
+<tr>
+<td>Tags</td>
+<td>Tags are the building blocks of every web page; without understanding tags, you cannot write HTML</td>
+</tr>
+<tr>
+<td>Browser independence</td>
+<td>Any modern browser can read any valid HTML file — you are not locked into one tool</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>HTML is <strong>not</strong> a programming language. It is a <strong>markup language</strong> — it describes the structure of content, not logic or calculations.</li>
+<li>HTML files are human-readable. You can right-click any <code>.html</code> file and open it with Notepad to see the raw code.</li>
+<li>Always use lowercase for HTML tags: <code>&lt;p&gt;</code> not <code>&lt;P&gt;</code>. Both may work, but lowercase is the standard.</li>
+</ul>
+<h4 id="try-it-yourself-read-a-real-pages-html">🧪 Try It Yourself — Read a Real Page&#39;s HTML<a class="anchor" href="#try-it-yourself-read-a-real-pages-html" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (4 min):</strong> Confirm that every site you use is built from the same tags you are learning.</p>
+<ol>
+<li>Open any news site or your university&#39;s home page.</li>
+<li>Press <strong>Ctrl+U</strong> to view the source.</li>
+<li>Press <strong>Ctrl+F</strong> inside that view and search for <code>&lt;h1</code>, then for <code>&lt;img</code>, then for <code>&lt;a href</code>.</li>
+</ol>
+<p><strong>Expected result:</strong> You find all three. The page is longer and messier than yours, but the vocabulary is identical.</p>
+<details>
+<summary>What the mess is</summary><p>Real pages carry generated class names, analytics scripts, and framework output. None of that is a different language — it is the same HTML, produced by tools instead of typed by hand. The skill you are building is reading structure through the noise: find <code>&lt;body&gt;</code>, then look for the landmark elements inside it.</p>
+</details><hr>
+<h3 id="3-web-browsers">3. Web Browsers<a class="anchor" href="#3-web-browsers" aria-label="Link to this section">#</a></h3>
+<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>web browser</strong> is a software application that reads HTML files and renders (displays) them as visual web pages. Popular browsers include Google Chrome, Mozilla Firefox, Microsoft Edge, and Safari.</p>
+<p>The browser does three things:</p>
+<ol>
+<li><strong>Downloads</strong> the HTML file (from a server or from your local hard drive)</li>
+<li><strong>Parses</strong> the HTML code (reads and interprets each tag)</li>
+<li><strong>Renders</strong> the page (draws the text, images, colors, and layout on screen)</li>
+</ol>
+<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<p>Think of a browser like a <strong>translator at the United Nations</strong>:</p>
+<ul>
+<li>The speaker gives a speech in one language (the HTML code)</li>
+<li>The translator listens carefully to every word (parses the HTML)</li>
+<li>The translator speaks the meaning in another language (renders the visual page)</li>
+</ul>
+<p>Different translators might phrase things slightly differently, but the meaning stays the same. Similarly, Chrome and Firefox might render a page with tiny differences, but the overall result is the same.</p>
+<h4 id="32-why-it-matters">3.2 Why It Matters<a class="anchor" href="#32-why-it-matters" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Reason</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Testing</td>
+<td>You should test your pages in at least two browsers to catch rendering differences</td>
+</tr>
+<tr>
+<td>Developer Tools</td>
+<td>Every modern browser has built-in Developer Tools (press F12) that let you inspect your page</td>
+</tr>
+<tr>
+<td>Default behavior</td>
+<td>Each browser has default styles for headings, paragraphs, links, etc. — this is why unstyled pages still look readable</td>
+</tr>
+<tr>
+<td>Updates</td>
+<td>Browsers update frequently; new features become available over time</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>For this course, we recommend <strong>Google Chrome</strong> or <strong>Microsoft Edge</strong> as your primary testing browser.</li>
+<li>Press <strong>F12</strong> in any browser to open Developer Tools — this is one of the most important debugging tools you will ever use.</li>
+<li>Never assume your page looks the same in every browser. Always check.</li>
+</ul>
+<hr>
+<h3 id="4-code-editors-dreamweaver-vs-vs-code">4. Code Editors: Dreamweaver vs. VS Code<a class="anchor" href="#4-code-editors-dreamweaver-vs-vs-code" aria-label="Link to this section">#</a></h3>
+<h4 id="41-definition">4.1 Definition<a class="anchor" href="#41-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>code editor</strong> is a specialized text editor designed for writing code. Unlike a regular word processor (like Microsoft Word), a code editor provides:</p>
+<ul>
+<li><strong>Syntax highlighting</strong> — different colors for tags, attributes, and values</li>
+<li><strong>Auto-completion</strong> — suggests tags and attributes as you type</li>
+<li><strong>Line numbers</strong> — easy to find errors when the browser reports &quot;error on line 47&quot;</li>
+<li><strong>File management</strong> — see all your project files in one panel</li>
+<li><strong>Live preview</strong> — see changes instantly without switching windows</li>
+</ul>
+<h4 id="42-dreamweaver-cs6">4.2 Dreamweaver CS6<a class="anchor" href="#42-dreamweaver-cs6" aria-label="Link to this section">#</a></h4>
+<p>Adobe Dreamweaver CS6 was released in 2012. It was one of the most popular web development tools of its era. Key features:</p>
+<ul>
+<li><strong>Design View</strong> — a WYSIWYG (What You See Is What You Get) editor where you can visually drag and drop elements</li>
+<li><strong>Code View</strong> — a traditional code editor with syntax highlighting</li>
+<li><strong>Split View</strong> — shows both Design and Code side by side</li>
+<li><strong>Site Management</strong> — built-in tools to define and manage your project files</li>
+<li><strong>Properties Panel</strong> — lets you modify element properties visually</li>
+</ul>
+<pre><code>DREAMWEAVER CS6 WORKSPACE (simplified):
+
++---------------------------------------------------------------+
+|  Menu Bar                                                     |
+|  (File | Edit | View | Insert | Modify | Text | Site)         |
++---------------------------------------------------------------+
+|  Document Toolbar                                             |
+|  [ Design | Split | Code ]  [ Title field ]  [ Preview btn ]  |
++---------------------+-----------------------------------------+
+|                     |                                         |
+|  Files Panel        |   Document Window                       |
+|  (Your project      |   (Shows Design View, Code View,        |
+|   files listed      |    or Split View depending on           |
+|   here)             |    which mode you selected)             |
+|                     |                                         |
+|  - index.html       |                                         |
+|  - about.html       |                                         |
+|  - images/          |                                         |
+|  - css/             |                                         |
+|                     |                                         |
++---------------------+-----------------------------------------+
+|  Properties Panel                                             |
+|  (Shows options for whatever element is currently selected)   |
++---------------------------------------------------------------+
+</code></pre>
+<h4 id="43-vs-code-visual-studio-code">4.3 VS Code (Visual Studio Code)<a class="anchor" href="#43-vs-code-visual-studio-code" aria-label="Link to this section">#</a></h4>
+<p>VS Code is a free, open-source code editor made by Microsoft. It is the industry standard today. Key features:</p>
+<ul>
+<li><strong>Lightweight and fast</strong> — opens instantly, even on older computers</li>
+<li><strong>Extensions</strong> — thousands of free extensions for HTML, CSS, live preview, Git, and more</li>
+<li><strong>Integrated Terminal</strong> — run commands without leaving the editor</li>
+<li><strong>Git integration</strong> — version control built right in</li>
+<li><strong>Live Server extension</strong> — auto-refreshes the browser when you save</li>
+</ul>
+<h4 id="comparison-table">🔍 Comparison Table<a class="anchor" href="#comparison-table" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Dreamweaver CS6</th>
+<th>VS Code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Price</td>
+<td>Paid (expensive)</td>
+<td>Free and open-source</td>
+</tr>
+<tr>
+<td>Release year</td>
+<td>2012</td>
+<td>2015 (actively updated)</td>
+</tr>
+<tr>
+<td>Design View (WYSIWYG)</td>
+<td>Yes</td>
+<td>No (use Live Server extension instead)</td>
+</tr>
+<tr>
+<td>Code editing</td>
+<td>Good</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>Extensions / Plugins</td>
+<td>Limited</td>
+<td>Thousands available</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Slower on modern systems</td>
+<td>Fast and lightweight</td>
+</tr>
+<tr>
+<td>Industry usage today</td>
+<td>Rare</td>
+<td>Very common</td>
+</tr>
+<tr>
+<td>Built-in site management</td>
+<td>Yes</td>
+<td>Use extensions or manual setup</td>
+</tr>
+<tr>
+<td>Git support</td>
+<td>Basic</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>Best for this course</td>
+<td>Learning visual + code together</td>
+<td>Professional workflow</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li><strong>For this course, you may use either Dreamweaver CS6 or VS Code.</strong> The instructor will demonstrate Dreamweaver, but all code examples work identically in both editors.</li>
+<li>If you choose VS Code, install the <strong>&quot;Live Server&quot;</strong> extension by Ritwick Dey — it gives you a preview feature similar to Dreamweaver&#39;s Design View.</li>
+<li>Dreamweaver CS6 is old software. Some features may not work perfectly on Windows 11. VS Code is recommended for long-term use.</li>
+<li>Regardless of which editor you use, <strong>you must learn to read and write HTML code directly.</strong> Do not rely solely on visual drag-and-drop tools.</li>
+</ul>
+<hr>
+<h3 id="5-project-folder-structure">5. Project Folder Structure<a class="anchor" href="#5-project-folder-structure" aria-label="Link to this section">#</a></h3>
+<h4 id="51-definition">5.1 Definition<a class="anchor" href="#51-definition" aria-label="Link to this section">#</a></h4>
+<p>A <strong>project folder structure</strong> is the way you organize all the files that make up your website. Good organization prevents confusion, broken links, and lost files.</p>
+<p>Every professional website uses a consistent folder structure. For our Student Club Website, we will use this structure throughout the entire course:</p>
+<pre><code>club-website/              &lt;-- Root folder (your &quot;site&quot;)
+│
+├── index.html                   &lt;-- Home page (MUST be named index.html)
+├── about.html                   &lt;-- About Us page
+├── events.html                  &lt;-- Events page
+├── contact.html                 &lt;-- Contact page
+│
+├── images/                      &lt;-- ALL images go here
+│   ├── club-logo.png
+│   ├── banner.jpg
+│   └── team-photo.jpg
+│
+├── css/                         &lt;-- ALL stylesheets go here
+│   └── style.css
+│
+├── js/                          &lt;-- ALL JavaScript files go here
+│   └── main.js
+│
+└── documents/                   &lt;-- Downloads, PDFs, etc.
+    └── club-constitution.pdf
+</code></pre>
+<h4 id="real-life-example-4">🎒 Real-life Example<a class="anchor" href="#real-life-example-4" aria-label="Link to this section">#</a></h4>
+<p>Think of your project folder like a <strong>filing cabinet in an office</strong>:</p>
+<ul>
+<li>The filing cabinet itself = the root folder (<code>club-website/</code>)</li>
+<li>Each drawer = a subfolder (<code>images/</code>, <code>css/</code>, <code>js/</code>, <code>documents/</code>)</li>
+<li>Each file inside a drawer = an actual file (<code>logo.png</code>, <code>style.css</code>, <code>main.js</code>)</li>
+</ul>
+<p>If you throw all papers into one drawer without sorting, you will never find anything. The same is true for website files.</p>
+<h4 id="52-why-it-matters">5.2 Why It Matters<a class="anchor" href="#52-why-it-matters" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Benefit</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Easy navigation</td>
+<td>You always know where to find images, styles, or scripts</td>
+</tr>
+<tr>
+<td>Relative paths work correctly</td>
+<td>Links between files depend on predictable folder locations</td>
+</tr>
+<tr>
+<td>Team collaboration</td>
+<td>Everyone on the team knows where to put new files</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>When you upload to a server, the entire folder structure is copied as-is</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Six months from now, you can still find and update files quickly</td>
+</tr>
+</tbody></table>
+<p>⚠️ Important notes:</p>
+<ul>
+<li><strong>Never</strong> store website files on your Desktop or scattered across multiple folders.</li>
+<li><strong>Always</strong> create the folder structure BEFORE you start writing code.</li>
+<li>Keep folder and file names <strong>lowercase</strong>, use <strong>hyphens</strong> instead of spaces, and avoid special characters.</li>
+<li>The root folder name should match your project name: <code>club-website</code>.</li>
+</ul>
+<h4 id="try-it-yourself-build-the-folder-structure-now">🧪 Try It Yourself — Build the Folder Structure Now<a class="anchor" href="#try-it-yourself-build-the-folder-structure-now" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Create the structure you will use for the whole capstone.</p>
+<ol>
+<li>Inside <code>Documents</code>, create a folder named exactly <code>club-website</code>.</li>
+<li>Inside it, create four subfolders — the same four as the tree in section 5: <code>images</code>, <code>css</code>, <code>js</code>, <code>documents</code>.</li>
+<li>In VS Code use <strong>File → Open Folder</strong> and select <code>club-website</code>.</li>
+<li>In the Explorer sidebar, create an empty <code>index.html</code> in the root and an empty <code>style.css</code> inside <code>css</code>.</li>
+</ol>
+<p><strong>Expected result:</strong> The sidebar shows <code>club-website</code> at the top with <code>css</code>, <code>documents</code>, <code>images</code>, <code>js</code>, and <code>index.html</code> beneath it.</p>
+<blockquote>
+<p>Keep these exact names. Every later session, every homework and the capstone all
+assume this tree, so <code>images</code> (not <code>img</code>) and <code>css</code> (not <code>styles</code>) matter from day one.</p>
+</blockquote>
+<details>
+<summary>Why open the folder, not the file</summary><p>Opening a <em>folder</em> gives VS Code a project root. That is what makes Live Server, relative-path autocomplete, and project-wide search work. Opening a single file gives you a text editor and nothing else.</p>
+<p>Also note: every name here is lowercase with no spaces. Web servers on Linux treat <code>IMG/</code> and <code>img/</code> as different folders, so lowercase from day one saves you a broken-image hunt after your first upload.</p>
+</details><hr>
+<h3 id="6-creating-your-first-html-file">6. Creating Your First HTML File<a class="anchor" href="#6-creating-your-first-html-file" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-01.canvas.tsx</code> → <code>HeadVsBody</code> — slide <code>head-vs-body</code> (&quot;Where Does Each Part Show Up?&quot;)</p>
+</blockquote>
+<h4 id="61-the-html5-boilerplate">6.1 The HTML5 Boilerplate<a class="anchor" href="#61-the-html5-boilerplate" aria-label="Link to this section">#</a></h4>
+<p>Every HTML5 page starts with the same basic structure. This is called the <strong>boilerplate</strong>. Memorize this — you will use it for every single page you create:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Page Title Here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- All visible content goes here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="62-line-by-line-breakdown">6.2 Line-by-Line Breakdown<a class="anchor" href="#62-line-by-line-breakdown" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Code</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>&lt;!DOCTYPE html&gt;</code></td>
+<td>Tells the browser &quot;this is an HTML5 document.&quot; Without it, browsers may enter &quot;quirks mode&quot; and render pages incorrectly.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>&lt;html lang=&quot;en&quot;&gt;</code></td>
+<td>The root element. Everything else lives inside this tag. <code>lang=&quot;en&quot;</code> tells the browser and search engines the page is in English.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>&lt;head&gt;</code></td>
+<td>Contains metadata — information ABOUT the page that is NOT displayed on the page itself.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></td>
+<td>Sets the character encoding to UTF-8, which supports virtually all languages and symbols. ALWAYS include this.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>&lt;meta name=&quot;viewport&quot;...&gt;</code></td>
+<td>Makes the page responsive on mobile devices. Essential for modern web design.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>&lt;title&gt;</code></td>
+<td>Sets the text shown in the browser tab. Also used by search engines as the page title in results.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>&lt;/head&gt;</code></td>
+<td>Closes the head section.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>&lt;body&gt;</code></td>
+<td>Contains EVERYTHING that is visible on the page — text, images, links, videos, etc.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>&lt;!-- comment --&gt;</code></td>
+<td>An HTML comment. Comments are invisible in the browser but help developers understand the code.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>&lt;/body&gt;</code></td>
+<td>Closes the body section.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>&lt;/html&gt;</code></td>
+<td>Closes the root element. End of document.</td>
+</tr>
+</tbody></table>
+<h4 id="real-life-example-5">🎒 Real-life Example<a class="anchor" href="#real-life-example-5" aria-label="Link to this section">#</a></h4>
+<p>Think of the HTML boilerplate like a <strong>formal letter</strong>:</p>
+<ul>
+<li><code>&lt;!DOCTYPE html&gt;</code> = the letterhead that identifies the type of document</li>
+<li><code>&lt;head&gt;</code> = the envelope — it contains the sender, recipient, and stamp (metadata), but none of this appears in the letter body</li>
+<li><code>&lt;title&gt;</code> = the subject line on the envelope</li>
+<li><code>&lt;body&gt;</code> = the actual letter content that the recipient reads</li>
+<li><code>&lt;/html&gt;</code> = the signature that closes the letter</li>
+</ul>
+<h4 id="important-notes-about-tags">⚠️ Important Notes About Tags<a class="anchor" href="#important-notes-about-tags" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Most HTML tags come in <strong>pairs</strong>: an opening tag <code>&lt;p&gt;</code> and a closing tag <code>&lt;/p&gt;</code></li>
+<li>Some tags are <strong>self-closing</strong> (also called void elements): <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code>. They do NOT have a closing tag.</li>
+<li>Tags can be <strong>nested</strong> inside each other, but they must nest properly:<ul>
+<li>✅ Correct: <code>&lt;p&gt;&lt;strong&gt;Hello&lt;/strong&gt;&lt;/p&gt;</code></li>
+<li>❌ Wrong: <code>&lt;p&gt;&lt;strong&gt;Hello&lt;/p&gt;&lt;/strong&gt;</code> (tags cross over each other)</li>
+</ul>
+</li>
+<li>Indentation does not affect how the browser renders the page, but it makes your code readable for humans. Always indent nested elements.</li>
+</ul>
+<h4 id="try-it-yourself-your-first-page-start-to-finish">🧪 Try It Yourself — Your First Page, Start to Finish<a class="anchor" href="#try-it-yourself-your-first-page-start-to-finish" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (8 min):</strong> Build and preview a complete HTML5 page without copying anything.</p>
+<ol>
+<li>In VS Code, create <code>club-website/index.html</code>.</li>
+<li>Type this from memory — do not paste:<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Student Web Club&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Student Web Club&lt;/h1&gt;
+    &lt;p&gt;We meet every Friday at 5pm in Room B203.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li>Save with <strong>Ctrl+S</strong>, then open the file in your browser.</li>
+</ol>
+<p><strong>Expected result:</strong> The tab reads &quot;Student Web Club&quot;, the heading is large and bold, and the sentence sits below it in normal text.</p>
+<details>
+<summary>Check yourself</summary><ul>
+<li>Tab shows <code>index.html</code> instead of the title → your <code>&lt;title&gt;</code> is missing or outside <code>&lt;head&gt;</code>.</li>
+<li>You see the code as text → the file was saved as <code>.txt</code>; rename it to <code>.html</code>.</li>
+<li>The heading is not bold or large → check for a typo in <code>&lt;h1&gt;</code>.</li>
+</ul>
+<p>Type this boilerplate by hand several times this week. It is the one block you will write at the start of every page for the rest of the course.</p>
+</details><hr>
+<h3 id="7-file-extensions-and-types">7. File Extensions and Types<a class="anchor" href="#7-file-extensions-and-types" aria-label="Link to this section">#</a></h3>
+<h4 id="71-common-web-file-extensions">7.1 Common Web File Extensions<a class="anchor" href="#71-common-web-file-extensions" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.html</code></td>
+<td>HTML document</td>
+<td>The structure and content of a web page</td>
+</tr>
+<tr>
+<td><code>.css</code></td>
+<td>CSS stylesheet</td>
+<td>Controls colors, fonts, layout, spacing</td>
+</tr>
+<tr>
+<td><code>.js</code></td>
+<td>JavaScript</td>
+<td>Adds interactivity (menus, animations, form validation)</td>
+</tr>
+<tr>
+<td><code>.jpg</code> / <code>.jpeg</code></td>
+<td>Image (JPEG)</td>
+<td>Photographs and complex images</td>
+</tr>
+<tr>
+<td><code>.png</code></td>
+<td>Image (PNG)</td>
+<td>Logos, icons, images with transparency</td>
+</tr>
+<tr>
+<td><code>.gif</code></td>
+<td>Image (GIF)</td>
+<td>Simple animations</td>
+</tr>
+<tr>
+<td><code>.svg</code></td>
+<td>Scalable Vector Graphics</td>
+<td>Icons and logos that scale without pixelation</td>
+</tr>
+<tr>
+<td><code>.pdf</code></td>
+<td>PDF document</td>
+<td>Downloadable documents</td>
+</tr>
+</tbody></table>
+<h4 id="72-why-extensions-matter">7.2 Why Extensions Matter<a class="anchor" href="#72-why-extensions-matter" aria-label="Link to this section">#</a></h4>
+<p>The file extension tells the browser how to handle the file. If you save an HTML file as <code>page.txt</code>, the browser will display the raw code instead of rendering the page. Always double-check your file extensions when saving.</p>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>Windows sometimes hides file extensions by default. Go to <strong>View &gt; Show &gt; File name extensions</strong> in File Explorer to make sure you can see them.</li>
+<li>When saving in Dreamweaver or VS Code, always select <strong>&quot;All Files&quot;</strong> or <strong>&quot;HTML&quot;</strong> as the file type to avoid accidentally adding <code>.txt</code>.</li>
+</ul>
+<hr>
+<h3 id="8-html-comments">8. HTML Comments<a class="anchor" href="#8-html-comments" aria-label="Link to this section">#</a></h3>
+<h4 id="81-definition">8.1 Definition<a class="anchor" href="#81-definition" aria-label="Link to this section">#</a></h4>
+<p>An <strong>HTML comment</strong> is text in your code that is completely ignored by the browser. Comments are visible only when someone reads the source code. They are used to leave notes for yourself or other developers.</p>
+<p>The syntax is:</p>
+<pre><code class="language-html">&lt;!-- This is a comment --&gt;
+</code></pre>
+<p>Comments can span multiple lines:</p>
+<pre><code class="language-html">&lt;!--
+    This section contains the main navigation.
+    Last updated: March 2024
+    Author: Nguyen Van A
+--&gt;
+</code></pre>
+<h4 id="82-when-to-use-comments">8.2 When to Use Comments<a class="anchor" href="#82-when-to-use-comments" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Example Comment</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Marking sections of a page</td>
+<td><code>&lt;!-- ===== HEADER SECTION ===== --&gt;</code></td>
+</tr>
+<tr>
+<td>Explaining WHY something is done</td>
+<td><code>&lt;!-- Using UTF-8 to support Vietnamese characters --&gt;</code></td>
+</tr>
+<tr>
+<td>Temporarily hiding code</td>
+<td><code>&lt;!-- &lt;p&gt;This paragraph is hidden for now&lt;/p&gt; --&gt;</code></td>
+</tr>
+<tr>
+<td>Leaving TODO notes</td>
+<td><code>&lt;!-- TODO: Add team photos here --&gt;</code></td>
+</tr>
+<tr>
+<td>Documenting complex structures</td>
+<td><code>&lt;!-- Navigation: 5 links, active class on current page --&gt;</code></td>
+</tr>
+</tbody></table>
+<h4 id="important-notes-about-comments">⚠️ Important Notes About Comments<a class="anchor" href="#important-notes-about-comments" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Comments are INVISIBLE in the browser but VISIBLE in View Source. Never put passwords or sensitive data in comments.</li>
+<li>Comments do NOT affect page performance in any meaningful way.</li>
+<li>Good comments explain WHY, not WHAT. The code already shows what it does; comments should explain the reasoning.</li>
+<li>Remove commented-out code before publishing. Dead code clutters the file.</li>
+</ul>
+<h4 id="try-it-yourself-comments-that-earn-their-place">🧪 Try It Yourself — Comments That Earn Their Place<a class="anchor" href="#try-it-yourself-comments-that-earn-their-place" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (4 min):</strong> Use comments to label the regions of your page.</p>
+<ol>
+<li>In <code>index.html</code>, add a comment above each major block:<pre><code class="language-html">&lt;!-- ===== Header: club name and navigation ===== --&gt;
+&lt;!-- ===== Main: welcome text and events ===== --&gt;
+&lt;!-- ===== Footer: contact and copyright ===== --&gt;
+</code></pre>
+</li>
+<li>Save and reload the page in the browser.</li>
+<li>Now press <strong>Ctrl+U</strong> to view the source.</li>
+</ol>
+<p><strong>Expected result:</strong> The comments are invisible on the page but plainly readable in View Source.</p>
+<details>
+<summary>The point students miss</summary><p>Comments are stripped from the rendered page but <strong>not</strong> from the file the browser downloads. Anyone can read them. So comment the <em>structure</em> (&quot;navigation starts here&quot;), never anything private — no passwords, no personal notes, no &quot;TODO: fix this security hole&quot;.</p>
+</details><hr>
+<h3 id="9-how-browsers-render-a-page">9. How Browsers Render a Page<a class="anchor" href="#9-how-browsers-render-a-page" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-01.canvas.tsx</code> → <code>RequestResponseCycle</code> — slide <code>how-web-works</code> (&quot;How the Web Works&quot;)</p>
+</blockquote>
+<h4 id="91-the-rendering-pipeline">9.1 The Rendering Pipeline<a class="anchor" href="#91-the-rendering-pipeline" aria-label="Link to this section">#</a></h4>
+<p>When you open an HTML file in a browser, several steps happen behind the scenes:</p>
+<pre><code>STEP 1: LOAD        Browser reads the HTML file from disk or server
+         |
+STEP 2: PARSE       Browser reads each tag and builds the DOM (Document Object Model)
+         |          The DOM is a tree structure representing every element
+         |
+STEP 3: STYLE       Browser applies CSS rules to each DOM element
+         |          Default styles + your stylesheet = computed styles
+         |
+STEP 4: LAYOUT      Browser calculates the size and position of every element
+         |          (also called &quot;reflow&quot;)
+         |
+STEP 5: PAINT       Browser draws pixels on the screen
+                    Text, colors, borders, images all rendered visually
+</code></pre>
+<h4 id="92-why-this-matters-for-you">9.2 Why This Matters for You<a class="anchor" href="#92-why-this-matters-for-you" aria-label="Link to this section">#</a></h4>
+<p>Understanding the rendering pipeline helps you debug problems:</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Likely Cause</th>
+<th>Which Step?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Page shows raw HTML code</td>
+<td>File saved as <code>.txt</code> instead of <code>.html</code></td>
+<td>Step 1: Load</td>
+</tr>
+<tr>
+<td>Element appears but looks wrong</td>
+<td>CSS rule missing or overridden</td>
+<td>Step 3: Style</td>
+</tr>
+<tr>
+<td>Element is invisible</td>
+<td>Display: none or wrong positioning</td>
+<td>Step 4: Layout</td>
+</tr>
+<tr>
+<td>Image shows broken icon</td>
+<td>Wrong path in <code>src</code> attribute</td>
+<td>Step 1: Load</td>
+</tr>
+<tr>
+<td>Page layout jumps when images load</td>
+<td>Missing width/height attributes</td>
+<td>Step 4: Layout</td>
+</tr>
+</tbody></table>
+<h4 id="real-life-example-6">🎒 Real-life Example<a class="anchor" href="#real-life-example-6" aria-label="Link to this section">#</a></h4>
+<p>Think of browser rendering like a <strong>restaurant kitchen</strong>:</p>
+<ul>
+<li>The waiter brings the order (HTML file) to the kitchen</li>
+<li>The chef reads each item on the ticket (parses HTML into DOM)</li>
+<li>The sous chef adds seasoning and garnish (applies CSS styles)</li>
+<li>The plating station arranges everything on the plate (layout calculation)</li>
+<li>The finished dish goes to the table (painted on screen)</li>
+</ul>
+<p>If the ticket is written in a language the chef does not understand (wrong file type), nothing gets cooked. If the seasoning is wrong (bad CSS), the dish tastes off. If the plating is sloppy (layout issues), the dish looks unappealing even if it tastes fine.</p>
+<p>⚠️ Important notes:</p>
+<ul>
+<li>The browser processes HTML from TOP TO BOTTOM. Elements at the top of your file are parsed first.</li>
+<li>This is why CSS <code>&lt;link&gt;</code> tags go in the <code>&lt;head&gt;</code> — the browser needs styles BEFORE it starts painting the body.</li>
+<li>JavaScript <code>&lt;script&gt;</code> tags traditionally go at the bottom of <code>&lt;body&gt;</code> so they do not block HTML parsing (though modern <code>defer</code> and <code>async</code> attributes change this).</li>
+</ul>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><strong>Always start with the HTML5 boilerplate.</strong> Copy-paste it for every new page. Never skip <code>&lt;!DOCTYPE html&gt;</code>.</li>
+<li><strong>Create your folder structure first.</strong> Before writing a single line of code, create <code>images/</code>, <code>css/</code>, <code>js/</code>, and <code>documents/</code> subfolders.</li>
+<li><strong>Name your home page <code>index.html</code>.</strong> This is non-negotiable — it is a universal web convention.</li>
+<li><strong>Use lowercase for all file names and folder names.</strong> <code>About.html</code> and <code>about.html</code> are different files on Linux servers.</li>
+<li><strong>Use hyphens, not spaces, in file names.</strong> <code>my-page.html</code> is correct; <code>my page.html</code> causes problems.</li>
+<li><strong>Save frequently.</strong> Press Ctrl+S after every few changes. Unsaved work is lost work.</li>
+<li><strong>Preview in the browser often.</strong> Press F12 (Dreamweaver) or use Live Server (VS Code) to check your work regularly.</li>
+<li><strong>Add comments to your code.</strong> Use <code>&lt;!-- comment --&gt;</code> to label sections of your HTML so you can find things later.</li>
+<li><strong>Indent your code consistently.</strong> Use 4 spaces (or 1 tab) per indentation level. Consistent indentation makes debugging much easier.</li>
+<li><strong>Test in at least two browsers.</strong> What looks perfect in Chrome might look different in Firefox.</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-forgetting-doctype-html">Mistake 1: Forgetting <code>&lt;!DOCTYPE html&gt;</code><a class="anchor" href="#mistake-1-forgetting-doctype-html" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Without <code>&lt;!DOCTYPE html&gt;</code>, browsers enter &quot;quirks mode&quot; and may render your page incorrectly.</p>
+<h4 id="mistake-2-saving-files-with-spaces-in-the-name">Mistake 2: Saving files with spaces in the name<a class="anchor" href="#mistake-2-saving-files-with-spaces-in-the-name" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong: <code>My Home Page.html</code> → becomes <code>My%20Home%20Page.html</code> in URLs
+✅ Correct: <code>index.html</code> or <code>my-home-page.html</code></p>
+<h4 id="mistake-3-not-saving-before-previewing">Mistake 3: Not saving before previewing<a class="anchor" href="#mistake-3-not-saving-before-previewing" aria-label="Link to this section">#</a></h4>
+<p>If you edit your code and press F12 without saving (Ctrl+S), the browser will show the OLD version. Always save first.</p>
+<h4 id="mistake-4-mixing-up-the-head-and-body">Mistake 4: Mixing up the <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code><a class="anchor" href="#mistake-4-mixing-up-the-head-and-body" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong:</p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;  &lt;!-- Headings do NOT belong in head! --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;title&gt;My Page&lt;/title&gt;  &lt;!-- Title does NOT belong in body! --&gt;
+&lt;/body&gt;
+</code></pre>
+<p>✅ Correct:</p>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;  &lt;!-- Metadata goes in head --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome&lt;/h1&gt;  &lt;!-- Visible content goes in body --&gt;
+&lt;/body&gt;
+</code></pre>
+<p>Remember: <code>&lt;head&gt;</code> = information ABOUT the page. <code>&lt;body&gt;</code> = content ON the page.</p>
+<h4 id="mistake-5-not-creating-a-project-folder">Mistake 5: Not creating a project folder<a class="anchor" href="#mistake-5-not-creating-a-project-folder" aria-label="Link to this section">#</a></h4>
+<p>❌ Wrong: Saving files directly on the Desktop or in Downloads
+✅ Correct: Creating <code>C:\Users\YourName\Documents\club-website\</code> and saving everything inside it</p>
+<h4 id="try-it-yourself-watch-the-browser-build-your-page">🧪 Try It Yourself — Watch the Browser Build Your Page<a class="anchor" href="#try-it-yourself-watch-the-browser-build-your-page" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> See the render pipeline happen on your own file.</p>
+<ol>
+<li>Open your <code>index.html</code> in Chrome or Edge and press <strong>F12</strong>.</li>
+<li>Click the <strong>Elements</strong> tab. Hover over the <code>&lt;h1&gt;</code> line — the heading highlights on the page.</li>
+<li>Double-click the heading text in the Elements panel, type something else, press Enter.</li>
+<li>Now reload the page (F5).</li>
+</ol>
+<p><strong>Expected result:</strong> Your edit appears instantly, then disappears on reload. DevTools edits change the DOM in memory, not the file on disk.</p>
+<details>
+<summary>Why this matters</summary><p>The browser reads your file once, builds the DOM from it, and renders from the DOM. DevTools lets you edit the DOM directly, which is why changes appear with no save and vanish on reload. This is the fastest way to try a fix — but you must then make the same change in your file for it to persist.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Website</td>
+<td>A collection of connected web pages stored on a server or local computer</td>
+<td>studentclub.edu.vn with Home, About, Events pages</td>
+</tr>
+<tr>
+<td>Webpage</td>
+<td>A single HTML document that a browser can display</td>
+<td><code>about.html</code></td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>HyperText Markup Language — the standard language for creating web pages</td>
+<td><code>&lt;h1&gt;Welcome&lt;/h1&gt;</code></td>
+</tr>
+<tr>
+<td>Web Browser</td>
+<td>Software that reads HTML and displays it visually</td>
+<td>Chrome, Firefox, Edge</td>
+</tr>
+<tr>
+<td>Code Editor</td>
+<td>A specialized text editor for writing code</td>
+<td>Dreamweaver CS6, VS Code</td>
+</tr>
+<tr>
+<td>Boilerplate</td>
+<td>The standard starting template for every HTML5 page</td>
+<td><code>&lt;!DOCTYPE html&gt;&lt;html&gt;...</code></td>
+</tr>
+<tr>
+<td>Project Folder</td>
+<td>The root directory containing all website files organized in subfolders</td>
+<td><code>club-website/images/</code>, <code>css/</code>, <code>js/</code></td>
+</tr>
+<tr>
+<td><code>index.html</code></td>
+<td>The default home page filename that servers look for automatically</td>
+<td>The first page users see when visiting your site</td>
+</tr>
+<tr>
+<td>Tag</td>
+<td>A marker in HTML that tells the browser how to display content</td>
+<td><code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;img&gt;</code></td>
+</tr>
+<tr>
+<td>Self-closing tag</td>
+<td>A tag that does not need a closing partner</td>
+<td><code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;meta&gt;</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-the-simplest-possible-web-page">Example 1: The Simplest Possible Web Page<a class="anchor" href="#example-1-the-simplest-possible-web-page" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to create the absolute minimum HTML page that still works correctly in a browser.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Simple Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is my first web page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>&lt;!DOCTYPE html&gt;</code> — Declares this as an HTML5 document so the browser renders it in standards mode</li>
+<li><code>&lt;html lang=&quot;en&quot;&gt;</code> — Opens the root element; <code>lang=&quot;en&quot;</code> declares English as the page language</li>
+<li><code>&lt;head&gt;</code> — Opens the metadata section (nothing here is visible on the page)</li>
+<li><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> — Ensures all characters (including Vietnamese diacritics like ă, ê, ô) display correctly</li>
+<li><code>&lt;title&gt;Simple Page&lt;/title&gt;</code> — Sets the browser tab title to &quot;Simple Page&quot;</li>
+<li><code>&lt;/head&gt;</code> — Closes the metadata section</li>
+<li><code>&lt;body&gt;</code> — Opens the visible content area</li>
+<li><code>&lt;h1&gt;Hello, World!&lt;/h1&gt;</code> — Creates a top-level heading. Browsers display <code>&lt;h1&gt;</code> text in large, bold font by default</li>
+<li><code>&lt;p&gt;This is my first web page.&lt;/p&gt;</code> — Creates a paragraph. Browsers add space above and below paragraphs automatically</li>
+<li><code>&lt;/body&gt;</code> — Closes the visible content area</li>
+<li><code>&lt;/html&gt;</code> — Closes the root element; end of document</li>
+</ul>
+<p><strong>Result:</strong> The browser shows a page with a large heading &quot;Hello, World!&quot; followed by a normal-sized paragraph &quot;This is my first web page.&quot; The browser tab reads &quot;Simple Page.&quot;</p>
+<hr>
+<h3 id="example-2-student-club-home-page">Example 2: Student Club Home Page<a class="anchor" href="#example-2-student-club-home-page" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You are building the home page for the Student Club Website. You want a heading, a welcome message, a list of upcoming events, and a contact email link.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - Home&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to the Student Club&lt;/h1&gt;
+    &lt;p&gt;We are a community of students who love technology and creativity.&lt;/p&gt;
+
+    &lt;h2&gt;Upcoming Events&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Web Design Workshop — March 15&lt;/li&gt;
+        &lt;li&gt;Photography Contest — March 22&lt;/li&gt;
+        &lt;li&gt;Music Night — March 29&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Contact us at: &lt;a href=&quot;mailto:club@university.edu&quot;&gt;club@university.edu&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li>Lines 1-7: Standard HTML5 boilerplate with viewport meta tag for mobile responsiveness</li>
+<li><code>&lt;h1&gt;Welcome to the Student Club&lt;/h1&gt;</code>: Main page heading — only ONE <code>&lt;h1&gt;</code> per page</li>
+<li><code>&lt;p&gt;We are a community...&lt;/p&gt;</code>: Welcome paragraph describing the club</li>
+<li><code>&lt;h2&gt;Upcoming Events&lt;/h2&gt;</code>: Section heading — <code>&lt;h2&gt;</code> is smaller than <code>&lt;h1&gt;</code> but larger than normal text</li>
+<li><code>&lt;ul&gt;</code>: Opens an unordered (bulleted) list</li>
+<li><code>&lt;li&gt;Web Design Workshop — March 15&lt;/li&gt;</code>: First list item — each event is wrapped in <code>&lt;li&gt;</code> tags</li>
+<li><code>&lt;/ul&gt;</code>: Closes the list</li>
+<li><code>&lt;a href=&quot;mailto:club@university.edu&quot;&gt;</code>: Creates a hyperlink. The <code>mailto:</code> prefix tells the browser to open the user&#39;s email client</li>
+<li><code>club@university.edu&lt;/a&gt;</code>: The visible link text, followed by the closing anchor tag</li>
+</ul>
+<p><strong>Result:</strong> The browser displays a large heading, a welcome paragraph, a bulleted list of three events, and a clickable email link. Clicking the email link opens the default email application.</p>
+<hr>
+<h3 id="example-3-understanding-nested-tags">Example 3: Understanding Nested Tags<a class="anchor" href="#example-3-understanding-nested-tags" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want to create a paragraph where some words are bold and some are italic, to understand how tags nest inside each other.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Nesting Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Tag Nesting Demo&lt;/h1&gt;
+    &lt;p&gt;The &lt;strong&gt;Student Club&lt;/strong&gt; offers &lt;em&gt;amazing&lt;/em&gt; workshops.&lt;/p&gt;
+    &lt;p&gt;Join our &lt;strong&gt;&lt;em&gt;free&lt;/em&gt; coding bootcamp&lt;/strong&gt; today!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><p><code>&lt;p&gt;The &lt;strong&gt;Student Club&lt;/strong&gt; offers &lt;em&gt;amazing&lt;/em&gt; workshops.&lt;/p&gt;</code>:</p>
+<ul>
+<li>The <code>&lt;p&gt;</code> tag wraps the entire paragraph</li>
+<li><code>&lt;strong&gt;</code> makes &quot;Student Club&quot; bold (semantically means &quot;important&quot;)</li>
+<li><code>&lt;em&gt;</code> makes &quot;amazing&quot; italic (semantically means &quot;emphasis&quot;)</li>
+<li>Notice that <code>&lt;strong&gt;</code> opens AND closes within the <code>&lt;p&gt;</code> — proper nesting</li>
+</ul>
+</li>
+<li><p><code>&lt;p&gt;Join our &lt;strong&gt;&lt;em&gt;free&lt;/em&gt; coding bootcamp&lt;/strong&gt; today!&lt;/p&gt;</code>:</p>
+<ul>
+<li><code>&lt;strong&gt;</code> wraps around <code>&lt;em&gt;</code> — the <code>&lt;em&gt;</code> tag is fully inside <code>&lt;strong&gt;</code></li>
+<li><code>&lt;em&gt;free&lt;/em&gt;</code> is nested inside <code>&lt;strong&gt;</code>, so &quot;free&quot; is both bold AND italic</li>
+<li>&quot;coding bootcamp&quot; is only bold (inside <code>&lt;strong&gt;</code> but outside <code>&lt;em&gt;</code>)</li>
+<li>This is CORRECT nesting: inner tags close before outer tags</li>
+</ul>
+</li>
+</ul>
+<p><strong>Result:</strong> The first paragraph shows &quot;Student Club&quot; in bold and &quot;amazing&quot; in italic. The second paragraph shows &quot;free&quot; in bold italic and &quot;coding bootcamp&quot; in bold only.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup-tools-and-folders">Setup (Tools and Folders)<a class="anchor" href="#setup-tools-and-folders" aria-label="Link to this section">#</a></h3>
+<p>Before starting the tasks, make sure you have:</p>
+<ol>
+<li><strong>A code editor installed:</strong> Either Dreamweaver CS6 or VS Code</li>
+<li><strong>A web browser:</strong> Google Chrome or Microsoft Edge (latest version)</li>
+<li><strong>A project folder created:</strong></li>
+</ol>
+<p>Open File Explorer and create this exact structure:</p>
+<pre><code>C:\Users\YourName\Documents\club-website\
+    images\
+    css\
+    js\
+    documents\
+</code></pre>
+<p>To create a folder: Right-click in File Explorer → New → Folder → type the name → press Enter.</p>
+<p>If using <strong>VS Code</strong>: Open the <code>club-website</code> folder via File → Open Folder. Install the &quot;Live Server&quot; extension from the Extensions panel (Ctrl+Shift+X).</p>
+<p>If using <strong>Dreamweaver CS6</strong>: Go to Site → New Site → set Site Name to &quot;Student Club Website&quot; → set Local Site Folder to your <code>club-website</code> folder → click Save.</p>
+<hr>
+<h4 id="task-1-create-your-first-html-page">TASK 1: Create Your First HTML Page<a class="anchor" href="#task-1-create-your-first-html-page" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a basic HTML5 page from scratch and view it in a browser.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>The page must have valid HTML5 structure</li>
+<li>It must contain a heading and at least one paragraph</li>
+<li>It must be saved as <code>index.html</code> in the root of your project folder</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Open your code editor (Dreamweaver or VS Code).</p>
+<p><strong>Step 2:</strong> Create a new file:</p>
+<ul>
+<li>Dreamweaver: File → New → HTML → Create</li>
+<li>VS Code: File → New File → save as <code>index.html</code></li>
+</ul>
+<p><strong>Step 3:</strong> Type the following code EXACTLY (do not copy-paste — typing helps you memorize):</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - Home&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to the Student Club&lt;/h1&gt;
+    &lt;p&gt;This is the official website of our university student club.&lt;/p&gt;
+    &lt;p&gt;We are a community of creative and enthusiastic students.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Step 4:</strong> Save the file:</p>
+<ul>
+<li>Press Ctrl+S</li>
+<li>Navigate to <code>C:\Users\YourName\Documents\club-website\</code></li>
+<li>Make sure the filename is exactly <code>index.html</code> (not <code>index.html.txt</code>)</li>
+<li>Click Save</li>
+</ul>
+<p><strong>Step 5:</strong> Preview in browser:</p>
+<ul>
+<li>Dreamweaver: Press F12 or go to File → Preview in Browser → Chrome</li>
+<li>VS Code: Right-click the file → Open with Live Server (or right-click → Reveal in Explorer → double-click the file to open in Chrome)</li>
+</ul>
+<p><strong>Step 6:</strong> Verify the page shows a large heading and two paragraphs. Check the browser tab says &quot;Student Club - Home.&quot;</p>
+<p>✅ <strong>Expected result:</strong> A simple web page with a large heading &quot;Welcome to the Student Club&quot; and two paragraphs of text. The browser tab displays &quot;Student Club - Home.&quot;</p>
+<p>💾 <strong>File to save:</strong> <code>club-website/index.html</code></p>
+<hr>
+<h4 id="task-2-explore-the-editor-workspace">TASK 2: Explore the Editor Workspace<a class="anchor" href="#task-2-explore-the-editor-workspace" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Become familiar with the key panels and views in your chosen editor.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Switch between different views (if using Dreamweaver)</li>
+<li>Locate the Files panel / Explorer panel</li>
+<li>Find the Properties panel (Dreamweaver) or Status bar (VS Code)</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1 (Dreamweaver):</strong> Click the &quot;Design&quot; button in the toolbar. Observe how the page appears visually. Then click &quot;Code&quot; to see the raw HTML. Then click &quot;Split&quot; to see both simultaneously.</p>
+<p><strong>Step 1 (VS Code):</strong> Open the Explorer panel (Ctrl+Shift+E) on the left. You should see <code>index.html</code> listed. Click it to open. Look at the status bar at the bottom — it shows the line number, column, file encoding, and language.</p>
+<p><strong>Step 2:</strong> In the Files/Explorer panel, verify that you can see your <code>club-website</code> folder and the subfolders (<code>images/</code>, <code>css/</code>, <code>js/</code>, <code>documents/</code>).</p>
+<p><strong>Step 3:</strong> Add a comment to your code. Place your cursor at the top of the <code>&lt;body&gt;</code> and type:</p>
+<pre><code class="language-html">&lt;!-- This is the main content area of the Student Club home page --&gt;
+</code></pre>
+<p>Notice how the comment appears in a different color (syntax highlighting).</p>
+<p><strong>Step 4:</strong> Save (Ctrl+S) and preview again to confirm the comment is invisible in the browser.</p>
+<p>✅ <strong>Expected result:</strong> You can navigate between views, see your project files, and understand where key panels are located. Comments in code are invisible in the browser.</p>
+<p>💾 <strong>File to save:</strong> <code>club-website/index.html</code> (updated with comment)</p>
+<hr>
+<h4 id="task-3-build-a-complete-home-page-with-navigation">TASK 3: Build a Complete Home Page with Navigation<a class="anchor" href="#task-3-build-a-complete-home-page-with-navigation" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Expand your <code>index.html</code> to include a navigation menu, multiple sections, and a footer — matching the structure you will use throughout the course.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Include a <code>&lt;header&gt;</code> with site name and navigation</li>
+<li>Include a <code>&lt;main&gt;</code> section with at least two subsections</li>
+<li>Include a <code>&lt;footer&gt;</code> with copyright notice</li>
+<li>All navigation links should point to other pages (they will not work yet, but the links should be present)</li>
+</ul>
+<p>🔧 <strong>Steps:</strong></p>
+<p><strong>Step 1:</strong> Open <code>index.html</code> and replace ALL existing content with this code:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Student Club - Home&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- ===== HEADER SECTION ===== --&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Events&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;gallery.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;!-- ===== MAIN CONTENT ===== --&gt;
+    &lt;main&gt;
+        &lt;h2&gt;Welcome to the Student Club&lt;/h2&gt;
+        &lt;p&gt;We are a community of creative and enthusiastic students.
+           Join us for workshops, events, and fun activities!&lt;/p&gt;
+
+        &lt;section&gt;
+            &lt;h3&gt;Latest News&lt;/h3&gt;
+            &lt;article&gt;
+                &lt;h4&gt;Web Design Workshop&lt;/h4&gt;
+                &lt;p&gt;Learn the basics of HTML and CSS in our hands-on workshop.
+                   Date: March 15, 2024. Time: 2:00 PM - 4:00 PM.&lt;/p&gt;
+            &lt;/article&gt;
+            &lt;article&gt;
+                &lt;h4&gt;Photography Contest&lt;/h4&gt;
+                &lt;p&gt;Submit your best campus photos and win prizes!
+                   Deadline: March 20, 2024.&lt;/p&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h3&gt;Quick Facts&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Founded in 2020&lt;/li&gt;
+                &lt;li&gt;Over 200 active members&lt;/li&gt;
+                &lt;li&gt;50+ events organized each year&lt;/li&gt;
+                &lt;li&gt;Winner of Best Student Club 2023&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;!-- ===== FOOTER ===== --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2024 Student Club. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Step 2:</strong> Save the file (Ctrl+S).</p>
+<p><strong>Step 3:</strong> Preview in browser (F12 or Live Server).</p>
+<p><strong>Step 4:</strong> Examine the page structure:</p>
+<ul>
+<li>The header shows the club name and navigation links</li>
+<li>The main area has a welcome message, news articles, and quick facts</li>
+<li>The footer shows copyright information</li>
+<li>Note: Navigation links to <code>about.html</code>, <code>events.html</code>, etc. will show &quot;file not found&quot; errors because those pages do not exist yet. This is expected — you will create them in Session 2.</li>
+</ul>
+<p><strong>Step 5:</strong> Try clicking the &quot;Home&quot; link. It should reload the current page (because <code>index.html</code> exists).</p>
+<p>✅ <strong>Expected result:</strong> A structured web page with a header, navigation bar (as an unstyled bulleted list), two content sections with headings and articles, and a footer. The page looks plain (no CSS yet) but has correct HTML structure.</p>
+<p>💾 <strong>File to save:</strong> <code>club-website/index.html</code> (complete version)</p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>Errors rarely announce themselves. The browser does something odd instead, and you have to read that behaviour backwards to the cause. Use this table when the page is wrong but you do not know why.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tab title says <code>index.html</code> instead of your title</td>
+<td><code>&lt;title&gt;</code> missing, empty, or outside <code>&lt;head&gt;</code></td>
+<td>View Source (Ctrl+U) and look inside <code>&lt;head&gt;</code></td>
+<td>Put <code>&lt;title&gt;Your Text&lt;/title&gt;</code> inside <code>&lt;head&gt;</code></td>
+</tr>
+<tr>
+<td>The whole page is one giant heading</td>
+<td>A <code>&lt;/h1&gt;</code> is missing, so the heading never ends</td>
+<td>Ctrl+U — the <code>&lt;h1&gt;</code> has no closing partner</td>
+<td>Add the closing <code>&lt;/h1&gt;</code></td>
+</tr>
+<tr>
+<td>Page shows raw code like <code>&lt;h1&gt;Welcome&lt;/h1&gt;</code> as text</td>
+<td>File saved as <code>.txt</code>, or opened in a text editor not a browser</td>
+<td>Check the file extension in Explorer</td>
+<td>Rename to <code>.html</code> and open with a browser</td>
+</tr>
+<tr>
+<td>Accented or Vietnamese characters show as <code>?</code> or <code>Ã¡</code></td>
+<td><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> missing or not first in <code>&lt;head&gt;</code></td>
+<td>Ctrl+U — is charset the first line inside <code>&lt;head&gt;</code>?</td>
+<td>Add the charset meta tag as the first child of <code>&lt;head&gt;</code></td>
+</tr>
+<tr>
+<td>Text is tiny and the layout is shrunk on a phone</td>
+<td>The viewport meta tag is missing</td>
+<td>Open DevTools device mode (Ctrl+Shift+M)</td>
+<td>Add <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Layout is subtly wrong in a way you cannot pin down</td>
+<td>Doctype missing — the browser is in quirks mode</td>
+<td>Type <code>document.compatMode</code> in the Console; it should return <code>CSS1Compat</code></td>
+<td>Make <code>&lt;!DOCTYPE html&gt;</code> the very first line</td>
+</tr>
+<tr>
+<td>Your comment text appears on the page</td>
+<td>Comment written as <code>&lt;!-- ... &gt;</code> or <code>&lt; !-- ... --&gt;</code></td>
+<td>The comment renders instead of hiding</td>
+<td>Use exactly <code>&lt;!--</code> and <code>--&gt;</code></td>
+</tr>
+<tr>
+<td>Nothing at all renders — blank white page</td>
+<td>Content sits outside <code>&lt;body&gt;</code>, or <code>&lt;body&gt;</code> is never opened</td>
+<td>Ctrl+U and check your content is between <code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code></td>
+<td>Move content inside <code>&lt;body&gt;</code></td>
+</tr>
+</tbody></table>
+<p><strong>The habit worth building:</strong> when something looks wrong, press F12 first. The Console tab reports what the browser objected to, and the Elements tab shows the structure the browser actually built — which is often not the structure you thought you wrote.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. What is the difference between a website and a web page?</strong></p>
+<details>
+<summary>Answer</summary><p>A <strong>web page</strong> is a single HTML document (one file, e.g. <code>about.html</code>). A <strong>website</strong> is a collection of related web pages plus their assets (images, CSS, JavaScript) organised in one folder structure and linked together by navigation.</p>
+</details><hr>
+<p><strong>Q2. Why is HTML called a markup language and not a programming language?</strong></p>
+<details>
+<summary>Answer</summary><p>HTML has no logic: no variables, no conditions, no loops, no calculations. It only <em>marks up</em> content to describe its structure and meaning (this is a heading, this is a paragraph, this is a list). Programming languages like JavaScript can make decisions and compute values; HTML cannot.</p>
+</details><hr>
+<p><strong>Q3. Name the four required parts of the HTML5 boilerplate and say what each one does.</strong></p>
+<details>
+<summary>Answer</summary><ol>
+<li><code>&lt;!DOCTYPE html&gt;</code> — tells the browser to use HTML5 standards mode.</li>
+<li><code>&lt;html lang=&quot;en&quot;&gt;</code> — the root element; <code>lang</code> declares the document language for screen readers and search engines.</li>
+<li><code>&lt;head&gt;</code> — metadata the user does not see: <code>&lt;meta charset&gt;</code>, <code>&lt;meta name=&quot;viewport&quot;&gt;</code>, <code>&lt;title&gt;</code>, CSS links.</li>
+<li><code>&lt;body&gt;</code> — everything the user actually sees on the page.</li>
+</ol>
+</details><hr>
+<p><strong>Q4. What happens if you leave out <code>&lt;!DOCTYPE html&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>The browser falls back to <strong>quirks mode</strong>, emulating 1990s bug-for-bug behaviour. Box sizing, margins, and CSS inheritance all behave inconsistently, and the same page can look different in Chrome, Firefox, and Safari. It is one line — never omit it.</p>
+</details><hr>
+<p><strong>Q5. Why must the home page be named <code>index.html</code> and not <code>home.html</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>Web servers look for <code>index.html</code> by default when someone visits a folder URL such as <code>https://example.com/</code>. If the file is called <code>home.html</code>, visitors get a directory listing or a 404 unless they type the full filename.</p>
+</details><hr>
+<p><strong>Q6. Why should filenames avoid spaces and capital letters?</strong></p>
+<details>
+<summary>Answer</summary><p>Spaces become <code>%20</code> in URLs, which is ugly and error-prone. Most web servers run Linux, where filenames are <strong>case-sensitive</strong> — <code>About.html</code> and <code>about.html</code> are different files. A link that works on your Windows machine can 404 once uploaded. Use lowercase with hyphens: <code>about-us.html</code>.</p>
+</details><hr>
+<p><strong>Q7. What is the difference between <code>&lt;head&gt;</code> and <code>&lt;header&gt;</code>?</strong></p>
+<details>
+<summary>Answer</summary><p><code>&lt;head&gt;</code> is metadata for the browser and is <strong>never displayed</strong> — it holds <code>&lt;title&gt;</code>, <code>&lt;meta&gt;</code>, and CSS links. <code>&lt;header&gt;</code> lives inside <code>&lt;body&gt;</code> and <strong>is displayed</strong> — it is the visible banner area at the top of the page, usually holding the logo, site name, and navigation.</p>
+</details><hr>
+<p><strong>Q8. Why create separate <code>images/</code>, <code>css/</code>, and <code>js/</code> subfolders instead of putting everything in one folder?</strong></p>
+<details>
+<summary>Answer</summary><p>Separation keeps the project navigable as it grows. With 40 files in one folder you cannot find anything; with subfolders you always know where to look. It also matches what every professional project and every hosting platform expects, and makes relative paths predictable (<code>images/logo.png</code>, <code>css/style.css</code>).</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes ☐</th>
+<th>No ☐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Explain what a website is and how it differs from a single web page</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Define HTML and explain that it is a markup language, not a programming language</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Name the four main parts of the HTML5 boilerplate and explain each one</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create a proper project folder structure with <code>images/</code>, <code>css/</code>, <code>js/</code>, and <code>documents/</code> subfolders</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Write a valid HTML5 page from memory (without looking at notes)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Save a file as <code>index.html</code> in the correct location and preview it in a browser</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Switch between Design View, Code View, and Split View in Dreamweaver (or navigate VS Code panels)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Explain why <code>&lt;!DOCTYPE html&gt;</code> is necessary and what happens without it</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<p><strong>Self-scoring guide:</strong></p>
+<ul>
+<li>7-8 Yes: Excellent! You are ready for Session 2.</li>
+<li>5-6 Yes: Good. Review the sections where you answered &quot;No&quot; before moving on.</li>
+<li>0-4 Yes: Re-read the Theory section and redo Tasks 1 and 3. Ask your instructor or a classmate for help.</li>
+</ul>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works">How the Web Works — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web">Getting Started with the Web — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML">Introduction to HTML — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics">HTML Basics — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">Document and Website Structure — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS">What is CSS? — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">HTML Element Reference — MDN</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 2, you will learn how to create a complete multi-page website with proper folder organization, file naming conventions, relative and absolute paths, and an introduction to Git and GitHub for version control.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>

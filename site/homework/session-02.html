@@ -12,6 +12,13 @@
 (function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
 t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="en")location.replace("../vi/homework/session-02.html");}catch(e){}})();
 </script>
 </head>
 <body class="reading-page homework-page">
@@ -19,7 +26,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
 <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
 <header class="bar">
   <div class="bar-inner">
-    <a class="home" href="../index.html" aria-label="INS2053 course home">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
       <span class="brand-mark" aria-hidden="true">W</span>
       <span class="brand-copy"><strong>INS2053</strong><span>Web Authoring &amp; Management</span></span>
     </a>
@@ -29,7 +36,11 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
       <a data-course-nav="slides" href="../slides/index.html">Slides</a>
       <a data-course-nav="homework" href="../homework/index.html">Homework</a>
     </nav>
-    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme">
+    <nav class="lang-switch" aria-label="Change language">
+      <a class="lang-opt on" aria-current="true" data-lang-opt="en" aria-label="English" title="Current language: English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt" href="../vi/homework/session-02.html" hreflang="vi" lang="vi" data-lang-opt="vi" aria-label="Tiếng Việt" title="Also available in Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Switch to dark theme" data-label-light="Light" data-label-dark="Dark" data-word-light="Switch to light theme" data-word-dark="Switch to dark theme">
       <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Theme</span>
     </button>
   </div>

@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buổi 4: Applying CSS to Your Website — INS2053 · Web Authoring &amp; Web Management</title>
+<meta name="description" content="Buổi 4: Applying CSS to Your Website — INS2053 · Web Authoring &amp; Web Management">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+/* Set the theme before first paint, otherwise a dark-theme reader sees a white
+   flash on every navigation. Same storage key as the slide decks. */
+(function(){try{var t=localStorage.getItem("ins2053.theme");if(!t&&window.matchMedia)
+t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();
+/* Honour a saved language before first paint too, so a Vietnamese reader who
+   arrives on an English URL never sees English flash first. Only redirect on an
+   EXPLICIT choice: with no stored preference the reader stays where they landed,
+   which is what keeps a shared English link shareable. The twin always exists,
+   because both trees are generated for every page, so this can never loop. */
+(function(){try{var w=localStorage.getItem("ins2053.lang");
+if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}catch(e){}})();
+</script>
+</head>
+<body class="reading-page ebook-page">
+<a class="skip" href="#main">Đến nội dung chính</a>
+<div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+<header class="bar">
+  <div class="bar-inner">
+    <a class="home" href="../index.html" aria-label="INS2053 · Web Authoring &amp; Web Management">
+      <span class="brand-mark" aria-hidden="true">W</span>
+      <span class="brand-copy"><strong>INS2053</strong><span>Soạn thảo &amp; Quản trị Web</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Học liệu khóa học">
+      <a data-course-nav="sessions" href="../sessions/index.html">Buổi học</a>
+      <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
+      <a data-course-nav="slides" href="../slides/index.html">Slide</a>
+      <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
+      <a class="lang-opt" href="../../ebook/04-applying-css-to-website.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
+      <a class="lang-opt on" aria-current="true" data-lang-opt="vi" aria-label="Tiếng Việt" title="Ngôn ngữ hiện tại: Tiếng Việt"><span class="lang-name">Tiếng Việt</span><span class="lang-short" aria-hidden="true">VI</span></a>
+    </nav>
+    <button class="theme" type="button" data-theme-toggle aria-label="Chuyển sang chủ đề tối" data-label-light="Sáng" data-label-dark="Tối" data-word-light="Chuyển sang chủ đề sáng" data-word-dark="Chuyển sang chủ đề tối">
+      <span class="theme-icon" aria-hidden="true"></span><span class="theme-label" data-theme-label>Chủ đề</span>
+    </button>
+  </div>
+</header>
+<nav class="crumbs" aria-label="Đường dẫn"><a href="../index.html">Trang chủ</a><span class="sep" aria-hidden="true">/</span><a href="../ebook/index.html">Giáo trình</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Chương 4</span></nav>
+<main id="main">
+  <header class="page-head">
+    <p class="eyebrow">Giáo trình · Chương 04</p>
+    <h1>Buổi 4: Applying CSS to Your Website</h1>
+
+  </header>
+<nav class="toc" aria-labelledby="toc-h">
+      <h2 id="toc-h">Trong trang này</h2>
+      <ol>
+        <li class="d2"><a href="#1-what-is-css">1. What Is CSS?</a></li>
+        <li class="d2"><a href="#2-css-syntax-rules-selectors-and-declarations">2. CSS Syntax: Rules, Selectors, and Declarations</a></li>
+        <li class="d2"><a href="#3-css-selectors">3. CSS Selectors</a></li>
+        <li class="d2"><a href="#4-colours-in-css">4. Colours in CSS</a></li>
+        <li class="d2"><a href="#5-font-properties">5. Font Properties</a></li>
+        <li class="d2"><a href="#6-the-box-model">6. The Box Model</a></li>
+        <li class="d2"><a href="#7-specificity-which-rule-wins">7. Specificity: Which Rule Wins?</a></li>
+        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
+        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#example-1-linking-a-stylesheet-to-indexhtml">Example 1: Linking a Stylesheet to index.html</a></li>
+        <li class="d2"><a href="#example-2-styling-the-header">Example 2: Styling the Header</a></li>
+        <li class="d2"><a href="#example-3-understanding-the-box-model">Example 3: Understanding the Box Model</a></li>
+        <li class="d2"><a href="#example-4-specificity-showdown">Example 4: Specificity Showdown</a></li>
+        <li class="d2"><a href="#example-5-creating-utility-classes">Example 5: Creating Utility Classes</a></li>
+        <li class="d2"><a href="#setup">Setup</a></li>
+      </ol>
+    </nav>
+  <div class="callout warn lang-fallback" role="note">
+    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
+    <p><a href="../../ebook/04-applying-css-to-website.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
+  </div>
+  <nav class="pager" aria-label="Điều hướng chương">
+    <a class="up" href="../sessions/session-04.html">Tổng quan Buổi 4</a>
+  </nav>
+  <article class="doc">
+<h2 id="session-4">🟦 SESSION 4<a class="anchor" href="#session-4" aria-label="Link to this section">#</a></h2>
+<h2 id="applying-css-to-your-website"><strong>Applying CSS to Your Website</strong><a class="anchor" href="#applying-css-to-your-website" aria-label="Link to this section">#</a></h2>
+<p>Welcome back! In the previous sessions you built HTML pages for the Student Club Website — but they look plain: black text on a white background, no colours, no spacing, no personality. Today we fix that. You will learn <strong>CSS</strong>, the language that paints and decorates your HTML skeleton. By the end of this session every page of your Student Club Website will have colours, fonts, spacing, and a professional feel. Do not worry if you have never seen CSS before — we will walk through every single line together.</p>
+<hr>
+<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
+📚 Reference:    MDN &quot;First Steps in CSS&quot;; W3C CSS Specification
+                 Course slides (Week 4)
+🎯 Objectives:   1. Explain what CSS is and why it is separate from HTML
+                 2. Link an external CSS file to any HTML page using &lt;link&gt;
+                 3. Write CSS rules using tag, class, and ID selectors
+                 4. Apply colour, background, font-size, margin, and padding
+                 5. Describe the four layers of the CSS box model
+                 6. Predict which rule wins when two rules conflict (specificity)
+📖 Prepare:      1. Complete Sessions 1-3 (you need working HTML pages)
+                 2. Have Dreamweaver or VS Code open with your site folder
+                 3. Make sure your site has a css/ subfolder
+🖼 Diagrams:     canvases/buoi-04.canvas.tsx — RuleAnatomy, BoxModelDiagram, SpecificityScale
+🔗 Outcomes:     CLO1 (master basic web design and build skills)
+                 CLO4 (design and build a web application)
+</code></pre>
+<hr>
+<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<p>By the end of this session you will be able to:</p>
+<ul>
+<li>Define CSS and explain its role alongside HTML</li>
+<li>Create an external stylesheet file (<code>style.css</code>) and link it to HTML</li>
+<li>Write CSS rules using <strong>element selectors</strong>, <strong>class selectors</strong>, and <strong>ID selectors</strong></li>
+<li>Change colours using names, hex codes, and RGB values</li>
+<li>Control fonts with <code>font-family</code>, <code>font-size</code>, <code>font-weight</code>, and <code>line-height</code></li>
+<li>Add spacing with <code>margin</code> and <code>padding</code></li>
+<li>Describe the <strong>box model</strong>: content → padding → border → margin</li>
+<li>Understand <strong>specificity</strong> so you can predict which style wins when rules clash</li>
+</ul>
+<hr>
+<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h3 id="1-what-is-css">1. What Is CSS?<a class="anchor" href="#1-what-is-css" aria-label="Link to this section">#</a></h3>
+<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>CSS</strong> stands for <strong>Cascading Style Sheets</strong>. It is a language that tells the browser <em>how</em> HTML elements should <strong>look</strong>. HTML provides the structure and content; CSS provides the visual presentation.</p>
+<p>Think of building a house:</p>
+<ul>
+<li><strong>HTML</strong> = bricks, walls, rooms (the structure)</li>
+<li><strong>CSS</strong> = paint, wallpaper, furniture arrangement (the appearance)</li>
+</ul>
+<p>You never put paint inside a brick. Similarly, you should keep styling out of your HTML as much as possible.</p>
+<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<p>Imagine you manage 10 web pages for the Student Club. Without CSS, changing the heading colour means editing all 10 files. With one external CSS file, you change the colour <strong>once</strong> and all 10 pages update instantly. That is the power of separating style from structure.</p>
+<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><strong>Separation of concerns</strong> — HTML handles meaning; CSS handles looks. This makes both easier to maintain.</li>
+<li><strong>Consistency</strong> — One stylesheet gives every page the same look.</li>
+<li><strong>Efficiency</strong> — Change one file instead of dozens.</li>
+<li><strong>Accessibility</strong> — Screen readers ignore CSS, so your content remains accessible regardless of styling.</li>
+</ul>
+<h4 id="three-ways-to-add-css">Three Ways to Add CSS<a class="anchor" href="#three-ways-to-add-css" aria-label="Link to this section">#</a></h4>
+<p>There are three ways to apply CSS. You must know all three, but you will use <strong>external</strong> almost exclusively.</p>
+<h5 id="method-1-inline-css-on-the-element-itself">Method 1: Inline CSS (on the element itself)<a class="anchor" href="#method-1-inline-css-on-the-element-itself" aria-label="Link to this section">#</a></h5>
+<pre><code class="language-html">&lt;p style=&quot;color: red; font-size: 18px;&quot;&gt;This text is red.&lt;/p&gt;
+</code></pre>
+<ul>
+<li>Applied directly via the <code>style</code> attribute</li>
+<li>Only affects that one element</li>
+<li>Cannot be reused</li>
+<li>Very hard to maintain on a multi-page site</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Avoid inline styles in production.</strong> They defeat the purpose of CSS. Use only for quick debugging.</p>
+</blockquote>
+<h5 id="method-2-internal-css-inside-head-of-one-page">Method 2: Internal CSS (inside <code>&lt;head&gt;</code> of one page)<a class="anchor" href="#method-2-internal-css-inside-head-of-one-page" aria-label="Link to this section">#</a></h5>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;style&gt;
+        p {
+            color: red;
+            font-size: 18px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+</code></pre>
+<ul>
+<li>Affects only the current page</li>
+<li>Useful for single-page experiments</li>
+<li>If you have 10 pages, you must copy the <code>&lt;style&gt;</code> block into each one</li>
+</ul>
+<h5 id="method-3-external-css-separate-css-file-best">Method 3: External CSS (separate <code>.css</code> file) ✅ BEST<a class="anchor" href="#method-3-external-css-separate-css-file-best" aria-label="Link to this section">#</a></h5>
+<pre><code class="language-html">&lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+</code></pre>
+<ul>
+<li>One file controls the entire website</li>
+<li>Change once → all pages update</li>
+<li>Browser caches the file → faster page loads</li>
+<li><strong>This is what we will use for the Student Club Website</strong></li>
+</ul>
+<h4 id="comparison-table">🔍 Comparison Table<a class="anchor" href="#comparison-table" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Inline</th>
+<th>Internal</th>
+<th>External</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Where written</td>
+<td>On the element</td>
+<td>In <code>&lt;head&gt;</code></td>
+<td>Separate <code>.css</code> file</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>One element</td>
+<td>One page</td>
+<td>Entire site</td>
+</tr>
+<tr>
+<td>Reusable?</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Maintainable?</td>
+<td>Terrible</td>
+<td>Poor</td>
+<td>Excellent</td>
+</tr>
+<tr>
+<td>Recommended?</td>
+<td>❌ Only for debugging</td>
+<td>⚠️ Rarely</td>
+<td>✅ Always</td>
+</tr>
+</tbody></table>
+<h4 id="important-notes">⚠️ Important Notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>The <code>&lt;link&gt;</code> tag goes <strong>inside</strong> <code>&lt;head&gt;</code>, never in <code>&lt;body&gt;</code>.</li>
+<li>The <code>href</code> path is relative to the HTML file. If your HTML is in the root and CSS is in a <code>css/</code> folder, write <code>href=&quot;css/style.css&quot;</code>.</li>
+<li>You can link <strong>multiple</strong> stylesheets. The last one loaded wins for conflicting rules.</li>
+</ul>
+<h4 id="try-it-yourself-link-a-stylesheet-and-prove-it-loaded">🧪 Try It Yourself — Link a Stylesheet and Prove It Loaded<a class="anchor" href="#try-it-yourself-link-a-stylesheet-and-prove-it-loaded" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (5 min):</strong> Connect CSS to HTML and verify it, rather than hoping.</p>
+<ol>
+<li>Create <code>css/style.css</code> containing one obvious rule:<pre><code class="language-css">body { background: #fffbe6; }
+</code></pre>
+</li>
+<li>In <code>index.html</code>, inside <code>&lt;head&gt;</code>:<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+</li>
+<li>Reload. If the background is not pale yellow, open F12 → <strong>Network</strong> and reload again.</li>
+<li>Find the <code>style.css</code> row and read its status code.</li>
+</ol>
+<p><strong>Expected result:</strong> A pale yellow page and a <code>200</code> status. A <code>404</code> means the path is wrong — and the page will look completely unstyled, not partly styled.</p>
+<details>
+<summary>Why an obvious first rule is worth it</summary><p><code>background: #fffbe6</code> is a deliberate smoke test: a change so visible you cannot miss it. If it does not appear, you know the problem is the <em>connection</em>, not your CSS.</p>
+<p>That distinction saves real time. Students often spend twenty minutes debugging a selector when the stylesheet was never loading. Confirm the link works first, then write the rules you actually want.</p>
+<p>Keep the three ways to apply CSS straight: external (<code>&lt;link&gt;</code>, use this), internal (<code>&lt;style&gt;</code> in the head, fine for a one-off test), and inline (<code>style=&quot;...&quot;</code>, avoid — it cannot be reused and beats almost everything in specificity).</p>
+</details><hr>
+<h3 id="2-css-syntax-rules-selectors-and-declarations">2. CSS Syntax: Rules, Selectors, and Declarations<a class="anchor" href="#2-css-syntax-rules-selectors-and-declarations" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-04.canvas.tsx</code> → <code>RuleAnatomy</code> — slide <code>s04-rule-anatomy</code> (&quot;Anatomy of a CSS Rule&quot;)</p>
+</blockquote>
+<h4 id="21-anatomy-of-a-css-rule">2.1 Anatomy of a CSS Rule<a class="anchor" href="#21-anatomy-of-a-css-rule" aria-label="Link to this section">#</a></h4>
+<p>Every CSS rule has two parts:</p>
+<pre><code>selector {
+    property: value;
+    property: value;
+}
+</code></pre>
+<p>Concrete example:</p>
+<pre><code class="language-css">h1 {
+    color: navy;
+    font-size: 32px;
+    text-align: center;
+}
+</code></pre>
+<p>Let us break this down piece by piece:</p>
+<ul>
+<li><code>h1</code> — the <strong>selector</strong>. It says &quot;find every <code>&lt;h1&gt;</code> element on the page.&quot;</li>
+<li><code>{ ... }</code> — the <strong>declaration block</strong>. Everything inside the curly braces applies to matched elements.</li>
+<li><code>color: navy;</code> — a <strong>declaration</strong>. It has a <strong>property</strong> (<code>color</code>) and a <strong>value</strong> (<code>navy</code>), separated by a colon (<code>:</code>). Every declaration ends with a <strong>semicolon</strong> (<code>;</code>).</li>
+<li><code>font-size: 32px;</code> — another declaration. Sets the font size to 32 pixels.</li>
+<li><code>text-align: center;</code> — centres the text horizontally.</li>
+</ul>
+<h4 id="common-syntax-errors">⚠️ Common Syntax Errors<a class="anchor" href="#common-syntax-errors" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ❌ WRONG: missing semicolon */
+h1 {
+    color: navy
+    font-size: 32px;
+}
+
+/* ✅ CORRECT: semicolons after every declaration */
+h1 {
+    color: navy;
+    font-size: 32px;
+}
+</code></pre>
+<pre><code class="language-css">/* ❌ WRONG: colon replaced with equals sign */
+h1 {
+    color = navy;
+}
+
+/* ✅ CORRECT: colon separates property and value */
+h1 {
+    color: navy;
+}
+</code></pre>
+<pre><code class="language-css">/* ❌ WRONG: missing closing brace */
+h1 {
+    color: navy;
+
+
+/* ✅ CORRECT: always close the brace */
+h1 {
+    color: navy;
+}
+</code></pre>
+<hr>
+<h3 id="3-css-selectors">3. CSS Selectors<a class="anchor" href="#3-css-selectors" aria-label="Link to this section">#</a></h3>
+<p>Selectors tell CSS <strong>which</strong> elements to style. You will use three types constantly.</p>
+<h4 id="31-element-tag-selector">3.1 Element (Tag) Selector<a class="anchor" href="#31-element-tag-selector" aria-label="Link to this section">#</a></h4>
+<p>Targets <strong>every</strong> element of that type.</p>
+<pre><code class="language-css">/* Targets ALL &lt;p&gt; elements on the page */
+p {
+    color: #333;
+    line-height: 1.6;
+}
+</code></pre>
+<p>Use when you want a global default for a tag.</p>
+<h4 id="32-class-selector">3.2 Class Selector<a class="anchor" href="#32-class-selector" aria-label="Link to this section">#</a></h4>
+<p>Targets elements that have a specific <code>class</code> attribute. Uses a <strong>dot</strong> (<code>.</code>) prefix.</p>
+<pre><code class="language-css">/* Targets elements with class=&quot;highlight&quot; */
+.highlight {
+    background-color: #ffffcc;
+    padding: 2px 5px;
+}
+</code></pre>
+<p>In HTML:</p>
+<pre><code class="language-html">&lt;p&gt;This is normal.&lt;/p&gt;
+&lt;p class=&quot;highlight&quot;&gt;This gets a yellow background.&lt;/p&gt;
+</code></pre>
+<p>Key facts about classes:</p>
+<ul>
+<li>You can use the <strong>same class on many elements</strong></li>
+<li>An element can have <strong>multiple classes</strong>: <code>class=&quot;highlight center-text&quot;</code></li>
+<li>Class names are case-sensitive</li>
+</ul>
+<h4 id="33-id-selector">3.3 ID Selector<a class="anchor" href="#33-id-selector" aria-label="Link to this section">#</a></h4>
+<p>Targets the <strong>one</strong> element with a specific <code>id</code> attribute. Uses a <strong>hash</strong> (<code>#</code>) prefix.</p>
+<pre><code class="language-css">/* Targets the element with id=&quot;header&quot; */
+#header {
+    background-color: #1a5276;
+    color: white;
+}
+</code></pre>
+<p>In HTML:</p>
+<pre><code class="language-html">&lt;header id=&quot;header&quot;&gt;
+    &lt;h1&gt;Student Club&lt;/h1&gt;
+&lt;/header&gt;
+</code></pre>
+<p>Key facts about IDs:</p>
+<ul>
+<li>Must be <strong>unique</strong> per page — only one element can have a given ID</li>
+<li>Higher specificity than classes (more on this later)</li>
+<li>Use sparingly; prefer classes for styling</li>
+</ul>
+<h4 id="34-other-useful-selectors">3.4 Other Useful Selectors<a class="anchor" href="#34-other-useful-selectors" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Syntax</th>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Descendant</td>
+<td><code>A B</code></td>
+<td><code>nav a</code></td>
+<td>Links <strong>inside</strong> <code>&lt;nav&gt;</code></td>
+</tr>
+<tr>
+<td>Group</td>
+<td><code>A, B</code></td>
+<td><code>h1, h2, h3</code></td>
+<td>All three heading levels</td>
+</tr>
+<tr>
+<td>Universal</td>
+<td><code>*</code></td>
+<td><code>* { margin: 0; }</code></td>
+<td>Every element</td>
+</tr>
+<tr>
+<td>Child</td>
+<td><code>A &gt; B</code></td>
+<td><code>ul &gt; li</code></td>
+<td>Direct children only</td>
+</tr>
+<tr>
+<td>Pseudo-class</td>
+<td><code>:state</code></td>
+<td><code>a:hover</code></td>
+<td>When user hovers over a link</td>
+</tr>
+</tbody></table>
+<h4 id="selector-comparison">🔍 Selector Comparison<a class="anchor" href="#selector-comparison" aria-label="Link to this section">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Syntax</th>
+<th>Reusable?</th>
+<th>Specificity</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Element</td>
+<td><code>p</code></td>
+<td>Yes (all <code>&lt;p&gt;</code>)</td>
+<td>Low (0,0,1)</td>
+<td>Global defaults</td>
+</tr>
+<tr>
+<td>Class</td>
+<td><code>.name</code></td>
+<td>Yes (many elements)</td>
+<td>Medium (0,1,0)</td>
+<td>Component styling</td>
+</tr>
+<tr>
+<td>ID</td>
+<td><code>#name</code></td>
+<td>No (unique)</td>
+<td>High (1,0,0)</td>
+<td>Page-level sections</td>
+</tr>
+</tbody></table>
+<h4 id="important-notes-2">⚠️ Important Notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>When you combine classes in HTML, write them space-separated: <code>class=&quot;btn btn-large&quot;</code> — <strong>not</strong> <code>class=&quot;btn, btn-large&quot;</code>.</li>
+<li>ID selectors are powerful but inflexible. Modern best practice favours classes for almost everything.</li>
+<li>The universal selector <code>*</code> matches everything. Use it carefully — it can slow rendering on huge pages.</li>
+</ul>
+<h4 id="try-it-yourself-class-vs-id-in-practice">🧪 Try It Yourself — Class vs. ID in Practice<a class="anchor" href="#try-it-yourself-class-vs-id-in-practice" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Learn which selector to reach for by using both wrongly first.</p>
+<ol>
+<li>Mark up three event cards, all with the same <code>id</code>:<pre><code class="language-html">&lt;div id=&quot;card&quot;&gt;Workshop&lt;/div&gt;
+&lt;div id=&quot;card&quot;&gt;Showcase&lt;/div&gt;
+&lt;div id=&quot;card&quot;&gt;Guest talk&lt;/div&gt;
+</code></pre>
+<pre><code class="language-css">#card { border: 1px solid #333; padding: 10px; }
+</code></pre>
+</li>
+<li>Reload. All three appear styled, so it looks fine.</li>
+<li>Now paste the page into the W3C HTML validator at validator.w3.org.</li>
+<li>Change every <code>id=&quot;card&quot;</code> to <code>class=&quot;card&quot;</code> and the CSS to <code>.card</code>, then re-validate.</li>
+</ol>
+<p><strong>Expected result:</strong> The first version styles correctly but the validator reports duplicate IDs. The class version passes.</p>
+<details>
+<summary>The distinction that matters</summary><ul>
+<li><code>class</code> — a <strong>group</strong>. Reusable as many times per page as you like. This is what you want for cards, buttons, nav items, and almost everything else.</li>
+<li><code>id</code> — a <strong>single</strong> element. Unique per page. Used for jump links (<code>href=&quot;#contact&quot;</code>), for <code>&lt;label for=&quot;...&quot;&gt;</code>, and as a JavaScript handle.</li>
+</ul>
+<p>CSS does not enforce uniqueness, which is why the broken version still looked right. What breaks is everything that assumes an id is unique: in-page anchors jump to the first match only, <code>label for</code> focuses the wrong field, and <code>document.getElementById</code> returns just one element.</p>
+<p>Rule of thumb: reach for <code>class</code> by default; use <code>id</code> only when something genuinely needs to be addressed on its own.</p>
+</details><hr>
+<h3 id="4-colours-in-css">4. Colours in CSS<a class="anchor" href="#4-colours-in-css" aria-label="Link to this section">#</a></h3>
+<h4 id="41-named-colours">4.1 Named Colours<a class="anchor" href="#41-named-colours" aria-label="Link to this section">#</a></h4>
+<p>CSS recognises 148 colour names:</p>
+<pre><code class="language-css">color: red;
+color: navy;
+color: darkgreen;
+color: tomato;
+color: steelblue;
+</code></pre>
+<p>Named colours are easy to read but limited. For precise brand colours, use hex or RGB.</p>
+<h4 id="42-hexadecimal-hex-colours">4.2 Hexadecimal (Hex) Colours<a class="anchor" href="#42-hexadecimal-hex-colours" aria-label="Link to this section">#</a></h4>
+<p>Hex colours start with <code>#</code> followed by six hex digits (RRGGBB):</p>
+<pre><code class="language-css">color: #ff0000;   /* pure red */
+color: #000080;   /* navy */
+color: #333333;   /* dark gray */
+color: #f0f4f8;   /* very light blue-gray */
+</code></pre>
+<p>Each pair represents Red, Green, Blue intensity from <code>00</code> (none) to <code>ff</code> (maximum):</p>
+<pre><code>#ff0000  →  Red=255, Green=0,   Blue=0   → pure red
+#00ff00  →  Red=0,   Green=255, Blue=0   → pure green
+#0000ff  →  Red=0,   Green=0,   Blue=255 → pure blue
+#ffffff  →  Red=255, Green=255, Blue=255 → white
+#000000  →  Red=0,   Green=0,   Blue=0   → black
+</code></pre>
+<p>Shorthand: When each pair has identical digits, you can abbreviate:</p>
+<pre><code class="language-css">#ff0000  →  #f00
+#336699  →  #369
+#aabbcc  →  #abc
+</code></pre>
+<h4 id="43-rgb-and-rgba">4.3 RGB and RGBA<a class="anchor" href="#43-rgb-and-rgba" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">color: rgb(255, 0, 0);          /* red */
+color: rgb(0, 0, 128);          /* navy */
+color: rgba(255, 0, 0, 0.5);   /* red at 50% opacity */
+</code></pre>
+<p>The fourth value in <code>rgba()</code> is <strong>alpha</strong> (transparency), from <code>0</code> (invisible) to <code>1</code> (fully opaque).</p>
+<h4 id="real-life-example-2">🎒 Real-life Example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<p>The Student Club Website uses this palette:</p>
+<pre><code class="language-css">/* Primary dark blue  */ #1a5276
+/* Secondary blue     */ #2874a6
+/* Light background   */ #f0f4f8
+/* Body text          */ #333333
+/* White              */ #ffffff
+</code></pre>
+<p>Pick your palette early and stick with it. Consistent colours make a site look professional.</p>
+<h4 id="important-notes-3">⚠️ Important Notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Always check <strong>colour contrast</strong> for accessibility. Light grey text on white is unreadable.</li>
+<li>Hex is the most common format in professional CSS. Learn it first.</li>
+<li>Use a colour picker tool (built into browser DevTools) to find exact values.</li>
+</ul>
+<hr>
+<h3 id="5-font-properties">5. Font Properties<a class="anchor" href="#5-font-properties" aria-label="Link to this section">#</a></h3>
+<h4 id="51-font-family">5.1 font-family<a class="anchor" href="#51-font-family" aria-label="Link to this section">#</a></h4>
+<p>Specifies which typeface to use. Always provide a <strong>font stack</strong> (fallback list):</p>
+<pre><code class="language-css">body {
+    font-family: &quot;Segoe UI&quot;, Arial, Helvetica, sans-serif;
+}
+</code></pre>
+<p>How fallbacks work:</p>
+<ol>
+<li>Browser tries &quot;Segoe UI&quot;</li>
+<li>If not available, tries Arial</li>
+<li>Then Helvetica</li>
+<li>Finally falls back to the generic <code>sans-serif</code> family</li>
+</ol>
+<blockquote>
+<p>⚠️ Font names with spaces must be quoted: <code>&quot;Segoe UI&quot;</code>. Single-word names like <code>Arial</code> do not need quotes.</p>
+</blockquote>
+<p>Generic families (always include one as the last fallback):</p>
+<ul>
+<li><code>serif</code> — Times New Roman, Georgia</li>
+<li><code>sans-serif</code> — Arial, Verdana, Segoe UI</li>
+<li><code>monospace</code> — Courier New, Consolas</li>
+</ul>
+<h4 id="52-font-size">5.2 font-size<a class="anchor" href="#52-font-size" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">h1 { font-size: 36px; }
+p  { font-size: 16px; }
+small { font-size: 13px; }
+</code></pre>
+<p>Common units:</p>
+<ul>
+<li><code>px</code> — pixels (fixed, most common for beginners)</li>
+<li><code>em</code> — relative to parent element&#39;s font size</li>
+<li><code>rem</code> — relative to root (<code>&lt;html&gt;</code>) font size</li>
+<li><code>%</code> — percentage of parent font size</li>
+</ul>
+<p>For now, use <code>px</code>. We will explore relative units in later sessions.</p>
+<h4 id="53-font-weight-and-line-height">5.3 font-weight and line-height<a class="anchor" href="#53-font-weight-and-line-height" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">h1 {
+    font-weight: bold;     /* or: normal, lighter, 100-900 */
+    line-height: 1.6;      /* unitless multiplier */
+}
+</code></pre>
+<p><code>line-height</code> without units is a multiplier: <code>1.6</code> means &quot;1.6 times the font size.&quot; This gives comfortable reading spacing.</p>
+<h4 id="best-practices-for-fonts">✅ Best Practices for Fonts<a class="anchor" href="#best-practices-for-fonts" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Set a base <code>font-size</code> on <code>body</code> (usually <code>16px</code>)</li>
+<li>Use a clear font stack with at least 3 fonts + a generic family</li>
+<li>Use <code>line-height: 1.5</code> to <code>1.8</code> for body text</li>
+<li>Limit yourself to 2–3 different font sizes per page</li>
+<li>Avoid using more than 2 font families</li>
+</ul>
+<hr>
+<h3 id="6-the-box-model">6. The Box Model<a class="anchor" href="#6-the-box-model" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-04.canvas.tsx</code> → <code>BoxModelDiagram</code> — slide <code>s04-box-model</code> (&quot;The Box Model&quot;)</p>
+</blockquote>
+<h4 id="61-definition">6.1 Definition<a class="anchor" href="#61-definition" aria-label="Link to this section">#</a></h4>
+<p><strong>Every</strong> HTML element is treated by the browser as a rectangular box. This box has four layers, from inside to outside:</p>
+<pre><code>+-------------------------------------------------------+
+|  MARGIN                                               |
+|  (transparent space OUTSIDE the border)               |
+|  +---------------------------------------------------+|
+|  |  BORDER                                           ||
+|  |  (visible edge, can have colour and thickness)    ||
+|  |  +-----------------------------------------------+||
+|  |  |  PADDING                                      |||
+|  |  |  (space BETWEEN border and content)           |||
+|  |  |  +-------------------------------------------+|||
+|  |  |  |  CONTENT                                  ||||
+|  |  |  |  (your text, image, etc.)                 ||||
+|  |  |  |  width × height                           ||||
+|  |  |  +-------------------------------------------+|||
+|  |  +-----------------------------------------------+||
+|  +---------------------------------------------------+|
++-------------------------------------------------------+
+</code></pre>
+<h4 id="62-each-layer-explained">6.2 Each Layer Explained<a class="anchor" href="#62-each-layer-explained" aria-label="Link to this section">#</a></h4>
+<p><strong>Content</strong> — The actual stuff: text, images, child elements. You set its size with <code>width</code> and <code>height</code>.</p>
+<p><strong>Padding</strong> — Space between the content and the border. Padding is <em>inside</em> the box. It pushes content away from the edges.</p>
+<pre><code class="language-css">.box {
+    padding: 20px;         /* 20px on all four sides */
+}
+</code></pre>
+<p><strong>Border</strong> — A visible line around the padding. You control its width, style, and colour.</p>
+<pre><code class="language-css">.box {
+    border: 2px solid #333;   /* 2px wide, solid line, dark gray */
+}
+</code></pre>
+<p><strong>Margin</strong> — Space outside the border. Margin is <em>outside</em> the box. It pushes other elements away.</p>
+<pre><code class="language-css">.box {
+    margin: 10px;             /* 10px on all four sides */
+}
+</code></pre>
+<h4 id="63-shorthand-values">6.3 Shorthand Values<a class="anchor" href="#63-shorthand-values" aria-label="Link to this section">#</a></h4>
+<p>Padding and margin accept 1, 2, 3, or 4 values:</p>
+<pre><code class="language-css">/* 1 value: all sides */
+padding: 20px;                    /* top right bottom left = 20px */
+
+/* 2 values: vertical / horizontal */
+padding: 10px 20px;               /* top+bottom=10px, left+right=20px */
+
+/* 3 values: top / horizontal / bottom */
+padding: 10px 20px 30px;          /* top=10, left+right=20, bottom=30 */
+
+/* 4 values: top / right / bottom / left (clockwise!) */
+padding: 10px 20px 30px 40px;     /* T=10, R=20, B=30, L=40 */
+</code></pre>
+<p>Remember the clock trick: <strong>Top → Right → Bottom → Left</strong> (clockwise from 12 o&#39;clock).</p>
+<h4 id="64-box-sizing-border-box">6.4 box-sizing: border-box<a class="anchor" href="#64-box-sizing-border-box" aria-label="Link to this section">#</a></h4>
+<p>By default (<code>box-sizing: content-box</code>), <code>width</code> sets only the content width. Padding and border are <strong>added on top</strong>:</p>
+<pre><code>Total width = width + left-padding + right-padding + left-border + right-border
+</code></pre>
+<p>This is confusing. A <code>300px</code> wide box with <code>20px</code> padding and <code>2px</code> border is actually <strong>344px</strong> wide!</p>
+<p>The fix:</p>
+<pre><code class="language-css">* {
+    box-sizing: border-box;
+}
+</code></pre>
+<p>With <code>border-box</code>, <code>width</code> includes content + padding + border. A <code>300px</code> box stays <code>300px</code> no matter what padding or border you add. Content shrinks to fit.</p>
+<blockquote>
+<p>⚠️ <strong>Always put <code>box-sizing: border-box</code> in your CSS reset.</strong> This prevents countless layout headaches.</p>
+</blockquote>
+<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">.card {
+    width: 300px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    margin: 15px;
+}
+</code></pre>
+<p>With <code>border-box</code>: total rendered width = 300px. Content area = 300 − 40 − 4 = 256px.
+Without <code>border-box</code>: total rendered width = 300 + 40 + 4 = 344px. 😱</p>
+<h4 id="important-notes-4">⚠️ Important Notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Margins can <strong>collapse</strong>: when two vertical margins meet, only the larger one is used. This does NOT happen with padding.</li>
+<li>Zero values need no unit: <code>margin: 0;</code> is correct. <code>margin: 0px;</code> works but is unnecessary.</li>
+<li>Negative margins are allowed (they pull elements closer). Negative padding is <strong>not</strong> allowed.</li>
+</ul>
+<h4 id="try-it-yourself-see-the-box-model-bite">🧪 Try It Yourself — See the Box Model Bite<a class="anchor" href="#try-it-yourself-see-the-box-model-bite" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (6 min):</strong> Measure why a 300px box is not 300px wide.</p>
+<ol>
+<li>Style a card:<pre><code class="language-css">.card {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid #333;
+    background: #f4f4f4;
+}
+</code></pre>
+</li>
+<li>Reload, inspect <code>.card</code> in F12, and scroll to the <strong>box model diagram</strong> at the bottom of the Styles pane.</li>
+<li>Read the total width. Then add one line and reload:<pre><code class="language-css">.card { box-sizing: border-box; }
+</code></pre>
+</li>
+</ol>
+<p><strong>Expected result:</strong> First measurement is 350px total (300 + 20 + 20 + 5 + 5). After <code>border-box</code>, the element is exactly 300px and the padding is taken out of the inside.</p>
+<details>
+<summary>Why every real stylesheet starts with this</summary><p>The default <code>content-box</code> means <code>width</code> describes only the content area; padding and border are added on top. That makes percentage layouts almost impossible to reason about — a <code>width: 50%</code> column with padding is wider than half the container and wraps.</p>
+<p>So put this at the top of <code>style.css</code> and stop thinking about it:</p>
+<pre><code class="language-css">*, *::before, *::after { box-sizing: border-box; }
+</code></pre>
+<p>Now <code>width</code> means the total visible width, which is what you meant in the first place. Margin still sits outside the box in both models.</p>
+</details><hr>
+<h3 id="7-specificity-which-rule-wins">7. Specificity: Which Rule Wins?<a class="anchor" href="#7-specificity-which-rule-wins" aria-label="Link to this section">#</a></h3>
+<blockquote>
+<p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-04.canvas.tsx</code> → <code>SpecificityScale</code> — slide <code>s04-specificity</code> (&quot;Specificity&quot;)</p>
+</blockquote>
+<h4 id="71-definition">7.1 Definition<a class="anchor" href="#71-definition" aria-label="Link to this section">#</a></h4>
+<p>When two CSS rules target the same element and set the same property, the browser uses <strong>specificity</strong> to decide which wins.</p>
+<p>Specificity is calculated as a three-part score: <strong>(IDs, Classes, Elements)</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Specificity</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>p</code></td>
+<td>0 IDs, 0 classes, 1 element</td>
+<td>(0,0,1)</td>
+</tr>
+<tr>
+<td><code>.highlight</code></td>
+<td>0 IDs, 1 class, 0 elements</td>
+<td>(0,1,0)</td>
+</tr>
+<tr>
+<td><code>#header</code></td>
+<td>1 ID, 0 classes, 0 elements</td>
+<td>(1,0,0)</td>
+</tr>
+<tr>
+<td><code>nav ul li a</code></td>
+<td>0 IDs, 0 classes, 4 elements</td>
+<td>(0,0,4)</td>
+</tr>
+<tr>
+<td><code>nav .active</code></td>
+<td>0 IDs, 1 class, 1 element</td>
+<td>(0,1,1)</td>
+</tr>
+<tr>
+<td><code>#nav .active</code></td>
+<td>1 ID, 1 class, 0 elements</td>
+<td>(1,1,0)</td>
+</tr>
+</tbody></table>
+<p>Higher score wins. Compare left-to-right: IDs beat classes, classes beat elements.</p>
+<h4 id="72-examples">7.2 Examples<a class="anchor" href="#72-examples" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* Specificity: (0,0,1) */
+p {
+    color: black;
+}
+
+/* Specificity: (0,1,0) — WINS because class &gt; element */
+.intro {
+    color: navy;
+}
+</code></pre>
+<p>If a <code>&lt;p&gt;</code> has <code>class=&quot;intro&quot;</code>, it will be <strong>navy</strong>, not black.</p>
+<pre><code class="language-css">/* Specificity: (0,1,0) */
+.title {
+    color: blue;
+}
+
+/* Specificity: (1,0,0) — WINS because ID &gt; class */
+#page-title {
+    color: red;
+}
+</code></pre>
+<p>If <code>&lt;h1 id=&quot;page-title&quot; class=&quot;title&quot;&gt;</code>, the colour will be <strong>red</strong>.</p>
+<h4 id="important-notes-5">⚠️ Important Notes<a class="anchor" href="#important-notes-5" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Inline styles (<code>style=&quot;...&quot;</code>) beat everything except <code>!important</code>. Avoid both.</li>
+<li><code>!important</code> overrides all specificity. <strong>Never use it</strong> unless you absolutely must override third-party CSS.</li>
+<li>When specificity is equal, the <strong>last rule in the file</strong> wins.</li>
+<li>Specificity is the #1 source of &quot;why isn&#39;t my CSS working?&quot; bugs. Learn it well.</li>
+</ul>
+<hr>
+<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<ol>
+<li><strong>Always use external stylesheets.</strong> One <code>css/style.css</code> for the whole site.</li>
+<li><strong>Start with a CSS reset:</strong><pre><code class="language-css">* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+</code></pre>
+</li>
+<li><strong>Prefer classes over IDs</strong> for styling. Reserve IDs for JavaScript hooks or unique landmarks.</li>
+<li><strong>Use meaningful class names:</strong> <code>.event-card</code>, <code>.nav-link</code>, <code>.sidebar-title</code> — not <code>.box1</code>, <code>.red</code>, <code>.big</code>.</li>
+<li><strong>Comment your CSS</strong> to organise sections:<pre><code class="language-css">/* === HEADER === */
+/* === NAVIGATION === */
+/* === MAIN CONTENT === */
+</code></pre>
+</li>
+<li><strong>Set base styles on <code>body</code></strong> (font, colour, background) so everything inherits.</li>
+<li><strong>Test in the browser after every change.</strong> Press F12 to preview.</li>
+</ol>
+<hr>
+<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h4 id="mistake-1-forgetting-to-link-the-css-file">Mistake 1: Forgetting to link the CSS file<a class="anchor" href="#mistake-1-forgetting-to-link-the-css-file" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-html">&lt;!-- ❌ WRONG: no &lt;link&gt; tag → no styles applied --&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!-- ✅ CORRECT: &lt;link&gt; inside &lt;head&gt; --&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+</code></pre>
+<h4 id="mistake-2-wrong-selector-syntax">Mistake 2: Wrong selector syntax<a class="anchor" href="#mistake-2-wrong-selector-syntax" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ❌ WRONG: using # for a class */
+#highlight { background: yellow; }
+/* HTML: &lt;p class=&quot;highlight&quot;&gt; → won&#39;t match! */
+</code></pre>
+<pre><code class="language-css">/* ✅ CORRECT: dot for class, hash for ID */
+.highlight { background: yellow; }
+/* HTML: &lt;p class=&quot;highlight&quot;&gt; → matches! */
+</code></pre>
+<h4 id="mistake-3-missing-semicolons">Mistake 3: Missing semicolons<a class="anchor" href="#mistake-3-missing-semicolons" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ❌ WRONG: missing semicolon after color */
+h2 {
+    color: navy
+    font-size: 24px;
+}
+</code></pre>
+<pre><code class="language-css">/* ✅ CORRECT */
+h2 {
+    color: navy;
+    font-size: 24px;
+}
+</code></pre>
+<h4 id="mistake-4-confusing-margin-and-padding">Mistake 4: Confusing margin and padding<a class="anchor" href="#mistake-4-confusing-margin-and-padding" aria-label="Link to this section">#</a></h4>
+<pre><code class="language-css">/* ❌ THINKING: &quot;I want space INSIDE the box&quot; but using margin */
+.box {
+    margin: 20px;  /* This adds space OUTSIDE */
+}
+</code></pre>
+<pre><code class="language-css">/* ✅ CORRECT: padding for internal space */
+.box {
+    padding: 20px;  /* Space INSIDE, between border and content */
+}
+</code></pre>
+<h4 id="mistake-5-not-using-a-css-reset">Mistake 5: Not using a CSS reset<a class="anchor" href="#mistake-5-not-using-a-css-reset" aria-label="Link to this section">#</a></h4>
+<p>Without a reset, browsers apply their own default margins and paddings. Your <code>&lt;h1&gt;</code> might have <code>margin-top: 21px</code> in Chrome but <code>margin-top: 0.67em</code> in Firefox. Start every stylesheet with:</p>
+<pre><code class="language-css">* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+</code></pre>
+<h4 id="try-it-yourself-win-a-specificity-fight">🧪 Try It Yourself — Win a Specificity Fight<a class="anchor" href="#try-it-yourself-win-a-specificity-fight" aria-label="Link to this section">#</a></h4>
+<p><strong>Task (7 min):</strong> Make a rule lose, then make it win — without <code>!important</code>.</p>
+<ol>
+<li>Set up a conflict:<pre><code class="language-html">&lt;p id=&quot;intro&quot; class=&quot;lead&quot;&gt;Welcome to the Student Web Club.&lt;/p&gt;
+</code></pre>
+<pre><code class="language-css">p              { color: black; }
+.lead          { color: blue; }
+#intro         { color: green; }
+</code></pre>
+</li>
+<li>Reload. The text is green.</li>
+<li>Comment out the <code>#intro</code> rule and reload. Now blue.</li>
+<li>Comment out <code>.lead</code> too. Now black.</li>
+<li>Put all three back, then inspect the paragraph in F12 → <strong>Styles</strong>.</li>
+</ol>
+<p><strong>Expected result:</strong> The Styles pane lists all three rules with the winner on top and the losers struck through. Removing the winner promotes the next one.</p>
+<details>
+<summary>How to count specificity</summary><p>Score each selector as three numbers — (ids, classes, elements):</p>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Score</th>
+<th>Wins against</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>p</code></td>
+<td>0,0,1</td>
+<td>nothing</td>
+</tr>
+<tr>
+<td><code>.lead</code></td>
+<td>0,1,0</td>
+<td>any number of element selectors</td>
+</tr>
+<tr>
+<td><code>p.lead</code></td>
+<td>0,1,1</td>
+<td><code>.lead</code> alone</td>
+</tr>
+<tr>
+<td><code>#intro</code></td>
+<td>1,0,0</td>
+<td>any number of classes</td>
+</tr>
+</tbody></table>
+<p>Compare left to right: one id beats any number of classes, and one class beats any number of elements. Ties go to whichever rule comes <strong>last</strong> in the stylesheet.</p>
+<p><code>!important</code> overrides all of it — which is why it should be a last resort. It removes your ability to override the rule later, and the usual outcome is a stylesheet where every rule needs <code>!important</code> to compete.</p>
+</details><hr>
+<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSS</td>
+<td>Language controlling visual appearance of HTML</td>
+<td><code>h1 { color: navy; }</code></td>
+</tr>
+<tr>
+<td>External stylesheet</td>
+<td>Separate <code>.css</code> file linked to HTML</td>
+<td><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code></td>
+</tr>
+<tr>
+<td>Element selector</td>
+<td>Targets all elements of a tag type</td>
+<td><code>p { ... }</code></td>
+</tr>
+<tr>
+<td>Class selector</td>
+<td>Targets elements with a specific class</td>
+<td><code>.highlight { ... }</code></td>
+</tr>
+<tr>
+<td>ID selector</td>
+<td>Targets one element with a specific ID</td>
+<td><code>#header { ... }</code></td>
+</tr>
+<tr>
+<td>Hex colour</td>
+<td>Six-digit colour code in RRGGBB format</td>
+<td><code>#1a5276</code></td>
+</tr>
+<tr>
+<td>Font stack</td>
+<td>Ordered list of fallback fonts</td>
+<td><code>&quot;Segoe UI&quot;, Arial, sans-serif</code></td>
+</tr>
+<tr>
+<td>Box model</td>
+<td>Four layers: content, padding, border, margin</td>
+<td>Every element is a box</td>
+</tr>
+<tr>
+<td><code>box-sizing: border-box</code></td>
+<td>Width includes padding + border</td>
+<td>Prevents unexpected sizing</td>
+</tr>
+<tr>
+<td>Specificity</td>
+<td>Scoring system determining which rule wins</td>
+<td>ID (1,0,0) &gt; class (0,1,0) &gt; element (0,0,1)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h3 id="example-1-linking-a-stylesheet-to-indexhtml">Example 1: Linking a Stylesheet to index.html<a class="anchor" href="#example-1-linking-a-stylesheet-to-indexhtml" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You have created <code>index.html</code> and an empty <code>css/style.css</code>. You need to connect them.</p>
+<p><strong>Code (in index.html):</strong></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Student Club - Home&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Student Club&lt;/h1&gt;
+        &lt;p&gt;Learn. Create. Connect.&lt;/p&gt;
+    &lt;/header&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li>Line 5: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code> tells the browser: &quot;Load the file at <code>css/style.css</code> and treat it as a stylesheet.&quot;</li>
+<li><code>rel=&quot;stylesheet&quot;</code> specifies the relationship — this file is a CSS stylesheet.</li>
+<li><code>href=&quot;css/style.css&quot;</code> is the path. Since <code>index.html</code> is in the root folder, <code>css/style.css</code> means &quot;go into the <code>css</code> subfolder and find <code>style.css</code>.&quot;</li>
+<li>This tag MUST be inside <code>&lt;head&gt;</code>. Placing it in <code>&lt;body&gt;</code> may cause a flash of unstyled content.</li>
+</ul>
+<p><strong>Result:</strong> When you open <code>index.html</code> in the browser, any CSS rules in <code>css/style.css</code> will be applied. If the file is empty, nothing changes visually. If the path is wrong, the browser console shows a 404 error.</p>
+<hr>
+<h3 id="example-2-styling-the-header">Example 2: Styling the Header<a class="anchor" href="#example-2-styling-the-header" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You want the header to have a dark blue background with white centred text.</p>
+<p><strong>Code (in css/style.css):</strong></p>
+<pre><code class="language-css">/* === HEADER STYLES === */
+header {
+    background-color: #1a5276;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>header { ... }</code> — targets the <code>&lt;header&gt;</code> element.</li>
+<li><code>background-color: #1a5276;</code> — sets a dark blue background.</li>
+<li><code>color: white;</code> — makes ALL text inside the header white. The <code>color</code> property is inherited by child elements.</li>
+<li><code>text-align: center;</code> — centres all inline content horizontally.</li>
+<li><code>padding: 30px 20px;</code> — 30px top/bottom, 20px left/right. This creates breathing room inside the header.</li>
+<li><code>header h1 { ... }</code> — descendant selector. Targets only <code>&lt;h1&gt;</code> elements that are <strong>inside</strong> a <code>&lt;header&gt;</code>. Other <code>&lt;h1&gt;</code> elements elsewhere are unaffected.</li>
+<li><code>letter-spacing: 1px;</code> — adds 1px between each character for a refined look.</li>
+<li><code>opacity: 0.9;</code> — makes the subtitle slightly transparent, creating visual hierarchy.</li>
+</ul>
+<p><strong>Result:</strong> The header appears as a full-width dark blue bar with white centred text. The title is large; the tagline is slightly smaller and softer.</p>
+<hr>
+<h3 id="example-3-understanding-the-box-model">Example 3: Understanding the Box Model<a class="anchor" href="#example-3-understanding-the-box-model" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You create a card component and need to understand its actual size.</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-css">.card {
+    width: 300px;
+    padding: 20px;
+    border: 3px solid #2874a6;
+    margin: 15px;
+    background-color: #f8f9fa;
+}
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>width: 300px;</code> — sets the box width. But what does &quot;300px&quot; include?</li>
+<li><code>padding: 20px;</code> — 20px of inner space on all four sides.</li>
+<li><code>border: 3px solid #2874a6;</code> — 3px border on all sides.</li>
+<li><code>margin: 15px;</code> — 15px of outer space on all sides.</li>
+</ul>
+<p><strong>Calculating actual size WITH <code>box-sizing: border-box</code> (recommended):</strong></p>
+<ul>
+<li>Total width = 300px (width already includes padding + border)</li>
+<li>Content area = 300 − 20 − 20 − 3 − 3 = 254px</li>
+<li>Total space taken = 300 + 15 + 15 = 330px (box + margins)</li>
+</ul>
+<p><strong>Calculating actual size WITHOUT <code>box-sizing: border-box</code> (default):</strong></p>
+<ul>
+<li>Total width = 300 + 20 + 20 + 3 + 3 = 346px 😬</li>
+<li>Total space taken = 346 + 15 + 15 = 376px</li>
+</ul>
+<p><strong>Result:</strong> With <code>border-box</code>, the card occupies exactly 300px of width (plus margins). Without it, the card is 46px wider than expected, potentially breaking your layout.</p>
+<hr>
+<h3 id="example-4-specificity-showdown">Example 4: Specificity Showdown<a class="anchor" href="#example-4-specificity-showdown" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> Two rules target the same element. Which colour wins?</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-css">/* Rule A — specificity (0,0,1) */
+p {
+    color: black;
+}
+
+/* Rule B — specificity (0,1,0) */
+.intro {
+    color: navy;
+}
+
+/* Rule C — specificity (0,1,1) */
+p.intro {
+    color: darkgreen;
+}
+</code></pre>
+<p>HTML:</p>
+<pre><code class="language-html">&lt;p class=&quot;intro&quot;&gt;What colour am I?&lt;/p&gt;
+</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li>Rule A matches (it is a <code>&lt;p&gt;</code>). Specificity: (0,0,1).</li>
+<li>Rule B matches (it has <code>class=&quot;intro&quot;</code>). Specificity: (0,1,0). Beats Rule A.</li>
+<li>Rule C matches (it is a <code>&lt;p&gt;</code> AND has <code>class=&quot;intro&quot;</code>). Specificity: (0,1,1). Beats both A and B.</li>
+</ul>
+<p><strong>Result:</strong> The text is <strong>dark green</strong> because <code>p.intro</code> has the highest specificity.</p>
+<hr>
+<h3 id="example-5-creating-utility-classes">Example 5: Creating Utility Classes<a class="anchor" href="#example-5-creating-utility-classes" aria-label="Link to this section">#</a></h3>
+<p><strong>Situation:</strong> You need reusable classes for highlighting, centring, and status messages across multiple pages.</p>
+<p><strong>Code (in css/style.css):</strong></p>
+<pre><code class="language-css">/* === UTILITY CLASSES === */
+.highlight {
+    background-color: #ffffcc;
+    padding: 2px 5px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+</code></pre>
+<p>HTML usage:</p>
+<pre><code class="language-html">&lt;p&gt;This is normal text.&lt;/p&gt;
+&lt;p class=&quot;highlight&quot;&gt;Important announcement!&lt;/p&gt;
+&lt;p class=&quot;center-text&quot;&gt;Centred paragraph.&lt;/p&gt;
+&lt;p class=&quot;highlight center-text&quot;&gt;Both highlighted AND centred.&lt;/p&gt;
+&lt;p class=&quot;error&quot;&gt;Something went wrong.&lt;/p&gt;
+&lt;p class=&quot;success&quot;&gt;Operation completed!&lt;/p&gt;
+</code></pre>
+<p><strong>Line-by-line explanation:</strong></p>
+<ul>
+<li><code>.highlight</code> — adds a pale yellow background with tiny padding. Use for callouts.</li>
+<li><code>.center-text</code> — centres text. Combine with other classes freely.</li>
+<li><code>.error</code> and <code>.success</code> — semantic status classes. The class name describes meaning, not appearance.</li>
+<li>Multiple classes are space-separated in HTML: <code>class=&quot;highlight center-text&quot;</code>. Both sets of styles apply.</li>
+</ul>
+<p><strong>Result:</strong> You have a small library of reusable classes that work on any element, on any page, because they are defined in the shared stylesheet.</p>
+<hr>
+<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<p>Before starting the tasks, make sure your project folder looks like this:</p>
+<pre><code>student-club/
+├── index.html
+├── about.html
+├── events.html
+├── gallery.html
+├── contact.html
+├── css/
+│   └── style.css          ← create this if it doesn&#39;t exist
+└── images/
+    └── (your images)
+</code></pre>
+<ol>
+<li>Open your code editor (Dreamweaver or VS Code).</li>
+<li>Open your site folder.</li>
+<li>Inside the <code>css/</code> folder, create (or open) <code>style.css</code>.</li>
+<li>Make sure every HTML file has this line inside <code>&lt;head&gt;</code>:<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+</code></pre>
+</li>
+</ol>
+<hr>
+<h4 id="task-1-css-reset-and-base-styles">TASK 1: CSS Reset and Base Styles<a class="anchor" href="#task-1-css-reset-and-base-styles" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Normalise browser defaults and set base typography.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Write a universal reset that removes default margins and paddings and enables <code>border-box</code>.</li>
+<li>Set base font, size, line-height, text colour, and background colour on <code>body</code>.</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open <code>css/style.css</code>.</li>
+<li>At the very top, add:<pre><code class="language-css">/* === RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+</code></pre>
+</li>
+<li>Below the reset, add:<pre><code class="language-css">/* === BASE STYLES === */
+body {
+    font-family: &quot;Segoe UI&quot;, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f4f8;
+}
+</code></pre>
+</li>
+<li>Save the file.</li>
+<li>Open <code>index.html</code> in the browser (F12). Verify:<ul>
+<li>Background is light blue-grey</li>
+<li>Text is dark grey, readable</li>
+<li>No unexpected margins around headings</li>
+</ul>
+</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> The page background changes from white to <code>#f0f4f8</code>. All text uses Segoe UI (or Arial fallback) at 16px with comfortable line spacing.</p>
+<p>📁 <strong>File to save:</strong> <code>css/style.css</code></p>
+<hr>
+<h4 id="task-2-style-the-header-and-navigation">TASK 2: Style the Header and Navigation<a class="anchor" href="#task-2-style-the-header-and-navigation" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Give the header a branded look and turn the navigation list into a horizontal menu bar.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Dark blue header with white centred text</li>
+<li>Horizontal navigation bar with hover effects</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>In <code>css/style.css</code>, add:<pre><code class="language-css">/* === HEADER === */
+header {
+    background-color: #1a5276;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+</code></pre>
+</li>
+<li>Add navigation styles:<pre><code class="language-css">/* === NAVIGATION === */
+nav {
+    background-color: #2874a6;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #1a5276;
+}
+</code></pre>
+</li>
+<li>Save. Preview in browser.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong></p>
+<ul>
+<li>Header is a dark blue banner with white title and tagline.</li>
+<li>Navigation links appear horizontally in a medium blue bar.</li>
+<li>Hovering over a link smoothly transitions to darker blue.</li>
+<li>Bullet points are removed from the navigation list.</li>
+</ul>
+<p>📁 <strong>File to save:</strong> <code>css/style.css</code></p>
+<hr>
+<h4 id="task-3-style-main-content-and-footer">TASK 3: Style Main Content and Footer<a class="anchor" href="#task-3-style-main-content-and-footer" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create a clean, centred content area with styled headings, and a matching footer.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Centred content container with max-width, white background, rounded corners, and subtle shadow</li>
+<li>Styled h2/h3 headings with colour accents</li>
+<li>Dark footer matching the header</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Add main content styles:<pre><code class="language-css">/* === MAIN CONTENT === */
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    color: #1a5276;
+    font-size: 28px;
+    border-bottom: 3px solid #2874a6;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+main h3 {
+    color: #2874a6;
+    font-size: 22px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+main p {
+    margin-bottom: 15px;
+}
+
+main ul, main ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+main li {
+    margin-bottom: 8px;
+}
+</code></pre>
+</li>
+<li>Add footer styles:<pre><code class="language-css">/* === FOOTER === */
+footer {
+    background-color: #1a5276;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #85c1e9;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+</code></pre>
+</li>
+<li>Save. Preview all pages.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong></p>
+<ul>
+<li>Main content appears as a white card centred on the page with a soft shadow.</li>
+<li>H2 headings have a blue underline accent.</li>
+<li>Lists are properly indented.</li>
+<li>Footer matches the header colour scheme.</li>
+<li>All pages share the same look because they use the same stylesheet.</li>
+</ul>
+<p>📁 <strong>File to save:</strong> <code>css/style.css</code></p>
+<hr>
+<h4 id="task-4-add-utility-classes-and-test-across-pages">TASK 4: Add Utility Classes and Test Across Pages<a class="anchor" href="#task-4-add-utility-classes-and-test-across-pages" aria-label="Link to this section">#</a></h4>
+<p>🎯 <strong>Goal:</strong> Create reusable utility classes and verify they work on every page.</p>
+<p>📝 <strong>Requirements:</strong></p>
+<ul>
+<li>Add <code>.highlight</code>, <code>.center-text</code>, <code>.error</code>, <code>.success</code> classes</li>
+<li>Use at least two of them on each page</li>
+<li>Verify consistent appearance across all five pages</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Add utility classes to <code>css/style.css</code>:<pre><code class="language-css">/* === UTILITY CLASSES === */
+.highlight {
+    background-color: #ffffcc;
+    padding: 2px 5px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+</code></pre>
+</li>
+<li>In <code>index.html</code>, add a highlighted paragraph:<pre><code class="language-html">&lt;p class=&quot;highlight&quot;&gt;New members are always welcome!&lt;/p&gt;
+</code></pre>
+</li>
+<li>In <code>about.html</code>, centre a caption:<pre><code class="language-html">&lt;p class=&quot;center-text&quot;&gt;Our team at the 2023 orientation.&lt;/p&gt;
+</code></pre>
+</li>
+<li>Open every page in the browser and verify the utility classes render correctly.</li>
+</ol>
+<p>✅ <strong>Expected result:</strong> Highlighted text has a yellow background on every page where it appears. Centred text is centred everywhere. Styles are consistent because they come from one shared CSS file.</p>
+<p>📁 <strong>Files to save:</strong> <code>css/style.css</code>, <code>index.html</code>, <code>about.html</code></p>
+<hr>
+<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<p>&quot;My CSS is not working&quot; is almost always one of six things. This table is ordered by how often each one is the culprit.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom you see</th>
+<th>Likely cause</th>
+<th>How to confirm</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No styling at all — the page looks like plain HTML</td>
+<td>The <code>&lt;link&gt;</code> path is wrong</td>
+<td>F12 → Network tab shows 404 on <code>style.css</code></td>
+<td>Fix the <code>href</code>, usually <code>css/style.css</code></td>
+</tr>
+<tr>
+<td>One rule is ignored while the rest apply</td>
+<td>A more specific selector is winning</td>
+<td>Inspect the element; DevTools strikes through the losing rule</td>
+<td>Raise specificity, or reorder — do not reach for <code>!important</code></td>
+</tr>
+<tr>
+<td>A rule after another rule does nothing</td>
+<td>The earlier declaration is <code>!important</code></td>
+<td>DevTools shows <code>!important</code> on the winning rule</td>
+<td>Remove the <code>!important</code> and fix the specificity properly</td>
+</tr>
+<tr>
+<td>Nothing after a certain point in the file applies</td>
+<td>A missing <code>}</code> swallowed the rest of the stylesheet</td>
+<td>Run the W3C CSS validator, or watch the syntax highlighting break</td>
+<td>Add the missing brace</td>
+</tr>
+<tr>
+<td>One property in a working rule is skipped</td>
+<td>Missing semicolon on the line before it</td>
+<td>DevTools shows the property crossed out or absent</td>
+<td>Add the <code>;</code></td>
+</tr>
+<tr>
+<td><code>width: 300px</code> renders wider than 300px</td>
+<td>Padding and border add to the width in the default box model</td>
+<td>Inspect the element and read the box model diagram</td>
+<td>Set <code>box-sizing: border-box</code></td>
+</tr>
+<tr>
+<td><code>margin-top</code> on a child pushes the parent down</td>
+<td>Margin collapsing between parent and child</td>
+<td>Inspect: the parent&#39;s top edge has moved</td>
+<td>Use <code>padding</code> on the parent, or set <code>overflow: auto</code></td>
+</tr>
+<tr>
+<td>Class does nothing at all</td>
+<td><code>.</code> missing in the CSS, or <code>class=</code> misspelled in the HTML</td>
+<td>DevTools Styles pane shows no matching rule</td>
+<td>Check both spellings and that <code>.</code> prefixes the class in CSS</td>
+</tr>
+<tr>
+<td>Colour value ignored</td>
+<td>Missing <code>#</code>, or an invalid name</td>
+<td>DevTools shows the value as invalid</td>
+<td>Use <code>#RRGGBB</code> or a valid CSS colour keyword</td>
+</tr>
+</tbody></table>
+<p><strong>Read the Styles pane, do not guess.</strong> Select the element in DevTools and look at the right-hand panel. Winning rules are on top; overridden declarations have a line through them. That panel answers &quot;why is my CSS not working&quot; faster than re-reading the stylesheet.</p>
+<hr>
+<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<p>Answer these from memory first, then expand the answer to check yourself.</p>
+<p><strong>Q1. Name the three ways to apply CSS and say which one you should use.</strong></p>
+<details>
+<summary>Answer</summary><ol>
+<li><strong>Inline</strong> — <code>style=&quot;color: red&quot;</code> on the element. Highest specificity, unreusable, hardest to maintain.</li>
+<li><strong>Internal</strong> — a <code>&lt;style&gt;</code> block in <code>&lt;head&gt;</code>. Applies to one page only.</li>
+<li><strong>External</strong> — a separate <code>.css</code> file linked with <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code>.</li>
+</ol>
+<p>Use <strong>external</strong>. One file styles every page, the browser caches it, and one edit updates the whole site.</p>
+</details><hr>
+<p><strong>Q2. What are the four parts of the box model, from inside out?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Content</strong> (the text or image) → <strong>padding</strong> (space inside the border, takes the background colour) → <strong>border</strong> → <strong>margin</strong> (transparent space outside, separating this element from its neighbours). Padding grows the visible box; margin pushes other boxes away.</p>
+</details><hr>
+<p><strong>Q3. What does <code>box-sizing: border-box</code> change, and why is it usually what you want?</strong></p>
+<details>
+<summary>Answer</summary><p>By default (<code>content-box</code>), <code>width: 300px</code> plus <code>padding: 20px</code> plus <code>border: 5px</code> renders 350px wide, because padding and border are added on top. With <code>border-box</code>, <code>width: 300px</code> is the <strong>final</strong> rendered width, and padding and border are absorbed inside it. That matches how people naturally think about sizing, so most projects start with <code>* { box-sizing: border-box; }</code>.</p>
+</details><hr>
+<p><strong>Q4. Given <code>p { color: blue; }</code>, <code>.intro { color: green; }</code>, and <code>#lead { color: red; }</code> all matching one paragraph, which colour wins and why?</strong></p>
+<details>
+<summary>Answer</summary><p><strong>Red.</strong> Specificity ranks ID (<code>#lead</code>) above class (<code>.intro</code>) above element (<code>p</code>), regardless of the order they appear in the stylesheet. Source order only breaks ties between selectors of equal specificity.</p>
+</details><hr>
+<p><strong>Q5. What is the difference between a class and an ID, and when do you use each?</strong></p>
+<details>
+<summary>Answer</summary><p>A <strong>class</strong> (<code>.card</code>) can be reused on any number of elements — use it for anything repeated. An <strong>ID</strong> (<code>#main-nav</code>) must be unique on the page — use it for a single landmark or as a link anchor target. For styling, prefer classes: IDs have such high specificity that overriding them later usually forces <code>!important</code>.</p>
+</details><hr>
+<p><strong>Q6. Why does <code>margin: 0 auto</code> centre a block element, and what else does it need?</strong></p>
+<details>
+<summary>Answer</summary><p><code>auto</code> tells the browser to split the leftover horizontal space equally between the left and right margins, which centres the box. It only works if the element has a <strong>constrained width</strong> (e.g. <code>max-width: 1200px</code>) — a block element at full width has no leftover space to distribute — and it only centres the box itself, not the text inside it (that is <code>text-align: center</code>).</p>
+</details><hr>
+<p><strong>Q7. What does &quot;cascade&quot; actually mean in Cascading Style Sheets?</strong></p>
+<details>
+<summary>Answer</summary><p>Multiple rules can target the same element, and the browser resolves the conflict by cascading through, in order: <strong>importance</strong> (<code>!important</code>), then <strong>specificity</strong> (ID &gt; class &gt; element), then <strong>source order</strong> (later wins). Inherited properties like <code>color</code> and <code>font-family</code> also cascade down from parent to child unless overridden.</p>
+</details><hr>
+<p><strong>Q8. Why should you avoid <code>!important</code>?</strong></p>
+<details>
+<summary>Answer</summary><p>It overrides the entire specificity system, so the only way to beat one <code>!important</code> is another <code>!important</code>. Codebases that lean on it quickly become unmaintainable, because a rule&#39;s effect no longer follows from reading the selectors. Fix the underlying specificity instead — usually by using a class rather than an ID, or making the selector slightly more specific.</p>
+</details><hr>
+<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>I can...</th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Explain the difference between HTML and CSS</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Link an external CSS file to an HTML page using <code>&lt;link&gt;</code></td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Write a CSS rule with a selector, property, and value</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Use element, class, and ID selectors correctly</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Specify colours using hex codes</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Describe the four layers of the box model (content, padding, border, margin)</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Explain why <code>box-sizing: border-box</code> is important</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Determine which CSS rule wins based on specificity</td>
+<td>☐</td>
+<td>☐</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 If you answered &quot;No&quot; to any item, re-read that section and redo the corresponding practice task before moving on.</p>
+</blockquote>
+<hr>
+<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS">What is CSS? — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works">How CSS works — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS selectors — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">The box model — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units">CSS values and units — MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity">Specificity — MDN</a></li>
+<li><a href="https://www.w3.org/TR/css-color-4/">CSS colour values — W3C</a></li>
+</ul>
+<hr>
+<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<p>In Session 5, you will use semantic HTML elements and Flexbox to build a proper two-column page layout with header, navigation, main content, sidebar, and footer — all within the Student Club Website.</p>
+
+  </article>
+</main>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand"><span class="brand-mark" aria-hidden="true">W</span><p><strong>INS2053</strong><span>Soạn thảo và Quản trị Web</span></p></div>
+    <div class="foot-copy">
+      <p>International School, Vietnam National University, Hanoi</p>
+      <p>Chỉ chứa học liệu dành cho sinh viên. Đề thi, rubric chấm điểm và đáp án bài tập trên lớp không được đăng ở đây.</p>
+    </div>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+</body>
+</html>
