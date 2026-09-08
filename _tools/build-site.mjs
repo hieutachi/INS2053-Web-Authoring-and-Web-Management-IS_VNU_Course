@@ -461,6 +461,7 @@ function homePage(chapters) {
       <li class="tile-homework"><a href="homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Homework</strong><span>15 practice sheets · submission later</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-grader"><a href="${GRADER_PUBLIC}"><span class="tile-icon" aria-hidden="true">05</span><span class="tile-copy"><strong>Self-check tool</strong><span>Score your homework against the rubric, in your own browser</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-guide"><a href="orientation.html"><span class="tile-icon" aria-hidden="true">06</span><span class="tile-copy"><strong>New here?</strong><span>How to use the ebook, slides, exercises and self-check tool</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+      <li class="tile-agents"><a href="ai-agents.html"><span class="tile-icon" aria-hidden="true">07</span><span class="tile-copy"><strong>AI Agents guide</strong><span>VS Code + Copilot or Cline — set up and use AI for your homework</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
     </ul>
   </section>
 
@@ -675,6 +676,214 @@ function orientationPage() {
   });
 }
 
+/* --- AI agent guide page -------------------------------------------------- */
+
+function agentGuidePage() {
+  const body = `  <div class="doc">
+<h2 id="why-agents">Why use an AI agent for web development?</h2>
+<p>An AI coding agent lives inside your editor and helps you write, debug, and understand code in real time. For INS2053, that means:</p>
+<ul>
+  <li><strong>Faster homework</strong> — the agent suggests HTML/CSS as you type, so you spend less time on syntax and more on design decisions.</li>
+  <li><strong>Instant explanations</strong> — highlight any code snippet and ask <em>"what does this do?"</em> to get a plain-language answer.</li>
+  <li><strong>Error diagnosis</strong> — paste a broken page and the agent traces the problem to the exact line.</li>
+  <li><strong>Independence</strong> — once you know how to configure one agent, the skill transfers to any editor and any API provider. You are never locked into a single tool.</li>
+</ul>
+<div class="callout">
+  <p><strong>You still need to understand the code.</strong> The agent is a pair-programmer, not a replacement for learning. Use it to accelerate your work — not to skip the thinking. Every line it suggests, you should be able to explain.</p>
+</div>
+
+<h2 id="two-options">Two agents, one workflow</h2>
+<p>This guide covers two free or low-cost agents that run inside <strong>Visual Studio Code</strong>. Pick the one that feels right — both do the same job.</p>
+<table>
+  <caption>Comparison of the two agents</caption>
+  <thead><tr><th scope="col">&nbsp;</th><th scope="col">GitHub Copilot (Free tier)</th><th scope="col">Cline (open-source)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>What it is</strong></td><td>Official GitHub extension, built into VS Code</td><td>Community extension, works with any OpenAI-compatible API</td></tr>
+    <tr><td><strong>Cost</strong></td><td>Free for students (GitHub Education)</td><td>Free extension · you bring your own API key</td></tr>
+    <tr><td><strong>Model</strong></td><td>GPT-4o-mini (free tier)</td><td>Any model: Claude, GPT, Gemini, DeepSeek, local models</td></tr>
+    <tr><td><strong>Best for</strong></td><td>Inline autocomplete as you type</td><td>Multi-file editing, autonomous refactoring, terminal commands</td></tr>
+    <tr><td><strong>Setup difficulty</strong></td><td>Very easy — sign in with GitHub</td><td>Easy — install extension + paste API key</td></tr>
+  </tbody>
+</table>
+
+<h2 id="copilot">Option A: VS Code + GitHub Copilot</h2>
+
+<h3>Step 1 — Install VS Code</h3>
+<p>Download from <a href="https://code.visualstudio.com" rel="noopener">code.visualstudio.com</a>. Install it and open any folder (e.g. your INS2053 project).</p>
+
+<h3>Step 2 — Install the Copilot extension</h3>
+<ol>
+  <li>Open VS Code Extensions panel (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>)</li>
+  <li>Search for <strong>"GitHub Copilot"</strong></li>
+  <li>Click <strong>Install</strong></li>
+  <li>Sign in with your GitHub account (use your student email for the free tier)</li>
+</ol>
+
+<h3>Step 3 — Verify it works</h3>
+<p>Open any <code>.html</code> file and start typing a tag. You should see grey ghost text suggesting the rest. Press <kbd>Tab</kbd> to accept.</p>
+
+<h3>Step 4 — Using Copilot Chat</h3>
+<p>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> to open Copilot Chat. You can:</p>
+<ul>
+  <li>Type a question in the chat panel on the right</li>
+  <li>Highlight code, then press <kbd>Ctrl</kbd>+<kbd>I</kbd> for inline editing</li>
+  <li>Use <code>/explain</code> to understand a code block</li>
+  <li>Use <code>/fix</code> to diagnose and repair errors</li>
+</ul>
+
+<h3>Optional: bring your own API key</h3>
+<p>If you have a different API key (e.g. from OpenRouter or a university server), you can point Copilot at a custom endpoint:</p>
+<table>
+  <caption>Copilot custom model configuration</caption>
+  <thead><tr><th scope="col">Setting</th><th scope="col">Where to find it</th><th scope="col">Example value</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Base URL</strong></td><td>Settings → search <code>copilot base</code></td><td><code>https://openrouter.ai/api/v1</code></td></tr>
+    <tr><td><strong>API Key</strong></td><td>Settings → search <code>copilot api key</code></td><td>Your key (starts with <code>sk-...</code>)</td></tr>
+    <tr><td><strong>Model</strong></td><td>Settings → search <code>copilot model</code></td><td><code>deepseek/deepseek-chat</code></td></tr>
+  </tbody>
+</table>
+
+<h2 id="cline">Option B: Cline (open-source agent)</h2>
+<p>Cline is a free, open-source extension that can read your files, run terminal commands, and edit multiple files at once. It works with any OpenAI-compatible API.</p>
+
+<h3>Step 1 — Install VS Code</h3>
+<p>Same as above — <a href="https://code.visualstudio.com" rel="noopener">code.visualstudio.com</a>.</p>
+
+<h3>Step 2 — Install the Cline extension</h3>
+<ol>
+  <li>Open Extensions panel (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>)</li>
+  <li>Search for <strong>"Cline"</strong> (publisher: Cline)</li>
+  <li>Click <strong>Install</strong></li>
+</ol>
+
+<h3>Step 3 — Configure your API</h3>
+<p>Click the Cline icon in the left sidebar (looks like a robot), then click the ⚙️ gear icon. You'll see these fields:</p>
+<table>
+  <caption>Cline API configuration fields</caption>
+  <thead><tr><th scope="col">Field</th><th scope="col">What to enter</th><th scope="col">Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>API Provider</strong></td><td>Choose from the dropdown</td><td><code>OpenAI Compatible</code></td></tr>
+    <tr><td><strong>Base URL</strong></td><td>The endpoint of your API server</td><td><code>https://openrouter.ai/api/v1</code></td></tr>
+    <tr><td><strong>API Key</strong></td><td>Your secret key from the provider</td><td><code>sk-or-v1-abc123...</code></td></tr>
+    <tr><td><strong>Model</strong></td><td>Which model to use</td><td><code>anthropic/claude-sonnet-4</code></td></tr>
+  </tbody>
+</table>
+
+<h3>Step 4 — Start using Cline</h3>
+<p>Click the Cline icon, type a task in the box, and press Enter. Cline will:</p>
+<ol>
+  <li>Read your project files to understand context</li>
+  <li>Propose changes (you see a diff before anything is written)</li>
+  <li>Ask for your approval before making edits</li>
+  <li>Run terminal commands if needed (with your permission)</li>
+</ol>
+<div class="callout warn">
+  <p><strong>Always review before approving.</strong> Cline shows you every change as a diff. Read it carefully. You are in control — reject anything that doesn't look right.</p>
+</div>
+
+<h2 id="api-keys">Where to get an API key</h2>
+<p>If your Copilot free tier is enough, you can skip this section. Otherwise, here are popular providers that work with both Copilot custom models and Cline:</p>
+<table>
+  <caption>API providers for students</caption>
+  <thead><tr><th scope="col">Provider</th><th scope="col">Free credits</th><th scope="col">Base URL</th><th scope="col">Popular models</th></tr></thead>
+  <tbody>
+    <tr><td><strong>OpenRouter</strong></td><td>Small free tier + pay-as-you-go</td><td><code>https://openrouter.ai/api/v1</code></td><td><code>deepseek/deepseek-chat</code>, <code>anthropic/claude-sonnet-4</code></td></tr>
+    <tr><td><strong>GitHub Models</strong></td><td>Free with GitHub account</td><td><code>https://models.inference.ai.azure.com</code></td><td><code>gpt-4o-mini</code>, <code>Phi-3.5-mini</code></td></tr>
+    <tr><td><strong>Google AI Studio</strong></td><td>Free tier with rate limits</td><td><code>https://generativelanguage.googleapis.com/v1beta</code></td><td><code>gemini-2.0-flash</code></td></tr>
+  </tbody>
+</table>
+
+<h2 id="ins2053-examples">Using agents for INS2053 homework</h2>
+<p>Here's how an agent helps across the 15 sessions. The examples below are from real homework tasks.</p>
+
+<h3>Sessions 1–3: HTML basics</h3>
+<table>
+  <caption>Agent use cases — HTML sessions</caption>
+  <thead><tr><th scope="col">You ask</th><th scope="col">What happens</th></tr></thead>
+  <tbody>
+    <tr><td><em>"Create a basic HTML5 page structure with a header, nav, main, and footer"</em></td><td>Agent generates the boilerplate — you learn by reading and modifying it</td></tr>
+    <tr><td><em>"Add a table with 3 columns for my club events"</em></td><td>Agent writes the table markup; you adjust content and styling</td></tr>
+    <tr><td><em>"Why is my image not showing? Here's my code: …"</em></td><td>Agent spots the wrong <code>src</code> path and explains relative vs. absolute paths</td></tr>
+  </tbody>
+</table>
+
+<h3>Sessions 4–7: CSS and layout</h3>
+<table>
+  <caption>Agent use cases — CSS sessions</caption>
+  <thead><tr><th scope="col">You ask</th><th scope="col">What happens</th></tr></thead>
+  <tbody>
+    <tr><td><em>"Center this div horizontally and vertically with flexbox"</em></td><td>Agent writes the flexbox CSS — you study <code>justify-content</code> and <code>align-items</code></td></tr>
+    <tr><td><em>"Explain the difference between margin and padding"</em></td><td>Agent gives a clear explanation with a visual analogy</td></tr>
+    <tr><td><em>"Make this layout responsive for mobile"</em></td><td>Agent adds media queries; you review each breakpoint</td></tr>
+  </tbody>
+</table>
+
+<h3>Sessions 9–15: Advanced topics</h3>
+<table>
+  <caption>Agent use cases — advanced sessions</caption>
+  <thead><tr><th scope="col">You ask</th><th scope="col">What happens</th></tr></thead>
+  <tbody>
+    <tr><td><em>"Create a contact form with name, email, message, and a submit button"</em></td><td>Agent generates the form HTML with proper <code>label</code>, <code>input</code>, and <code>required</code> attributes</td></tr>
+    <tr><td><em>"Add a YouTube video embed to my media page"</em></td><td>Agent writes the <code>iframe</code> code with responsive wrapper</td></tr>
+    <tr><td><em>"Check my HTML for accessibility issues"</em></td><td>Agent reviews alt text, heading order, form labels, and color contrast</td></tr>
+  </tbody>
+</table>
+
+<h2 id="best-practices">Best practices</h2>
+<ol>
+  <li><strong>Read every suggestion.</strong> Don't blindly accept. If you can't explain what the code does, ask the agent to explain it first.</li>
+  <li><strong>Start small.</strong> Ask for one thing at a time. "Add a nav bar" works better than "build my whole website."</li>
+  <li><strong>Provide context.</strong> Highlight the relevant code before asking. Or say "look at my <code>index.html</code> file."</li>
+  <li><strong>Learn the patterns.</strong> After the agent helps you 2–3 times with the same pattern (e.g. flexbox centering), try doing it yourself next time.</li>
+  <li><strong>Use it for debugging.</strong> Paste your error message or describe what's wrong. Agents are excellent at finding typos, missing closing tags, and CSS specificity conflicts.</li>
+  <li><strong>Don't use it for the self-check tool.</strong> The point of self-checking is to verify <em>your</em> understanding. The agent should help you build, not help you pass automated checks.</li>
+</ol>
+
+<h2 id="troubleshooting">Common issues</h2>
+<table>
+  <caption>Troubleshooting agent setup</caption>
+  <thead><tr><th scope="col">Problem</th><th scope="col">Solution</th></tr></thead>
+  <tbody>
+    <tr><td>Copilot icon is grey / not working</td><td>Check you're signed in to GitHub. VS Code → bottom-left account icon.</td></tr>
+    <tr><td>Cline says "API key invalid"</td><td>Re-copy the key from your provider's dashboard. Keys are case-sensitive and have no trailing spaces.</td></tr>
+    <tr><td>Cline says "rate limit exceeded"</td><td>Wait a minute, or switch to a model with higher limits. Free tiers have low quotas.</td></tr>
+    <tr><td>Agent suggestions are irrelevant</td><td>Add more context: open the relevant file, highlight code, or describe your project structure.</td></tr>
+    <tr><td>Agent writes code that doesn't match the course style</td><td>Tell it: "Use HTML5 semantic tags. Don't use frameworks. Follow the INS2053 rubric."</td></tr>
+  </tbody>
+</table>
+
+<h2 id="remember">Remember</h2>
+<div class="callout">
+  <p>The agent helps you <strong>build faster</strong>, but the course teaches you to <strong>understand what you build</strong>. Both matter. Use the agent as a tool, learn the fundamentals as a skill, and you'll be able to work with <em>any</em> editor, <em>any</em> AI, and <em>any</em> project — long after this course ends.</p>
+</div>
+</div>`;
+
+  return page({
+    title: `Using AI Agents for INS2053 — ${COURSE}`,
+    heading: "Using AI Agents for Web Development",
+    lead: "Two simple setups — VS Code + Copilot or Cline — that help you write, debug, and understand HTML/CSS faster. Works with any API provider.",
+    crumbs: [
+      { href: "index.html", label: "Home" },
+      { label: "AI Agents Guide" },
+    ],
+    toc: [
+      { id: "why-agents", label: "Why use an AI agent?", depth: 2 },
+      { id: "two-options", label: "Two agents, one workflow", depth: 2 },
+      { id: "copilot", label: "Option A: VS Code + Copilot", depth: 2 },
+      { id: "cline", label: "Option B: Cline", depth: 2 },
+      { id: "api-keys", label: "Where to get an API key", depth: 2 },
+      { id: "ins2053-examples", label: "Using agents for INS2053", depth: 2 },
+      { id: "best-practices", label: "Best practices", depth: 2 },
+      { id: "troubleshooting", label: "Common issues", depth: 2 },
+      { id: "remember", label: "Remember", depth: 2 },
+    ],
+    body,
+    depth: 0,
+    pageClass: "reading-page",
+    eyebrow: "INS2053 · AI-assisted learning",
+  });
+}
+
 /* --- build ---------------------------------------------------------------- */
 
 /** Example paths de-linked by rewriteLinks, reported at the end of the build. */
@@ -853,6 +1062,7 @@ async function build() {
   /* 6. index pages -------------------------------------------------------- */
   await writeFile(path.join(OUT, "index.html"), homePage(chapters), "utf8");
   await writeFile(path.join(OUT, "orientation.html"), orientationPage(), "utf8");
+  await writeFile(path.join(OUT, "ai-agents.html"), agentGuidePage(), "utf8");
 
   await writeFile(
     path.join(OUT, "sessions", "index.html"),

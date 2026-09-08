@@ -754,6 +754,10 @@ img {
    for the dark theme — the icon glyph is drawn in this colour. */
 .tile-grader { --tile-accent: #0f766e; }
 :root[data-theme="dark"] .tile-grader { --tile-accent: #4bd1c0; }
+.tile-guide { --tile-accent: #b45309; }
+:root[data-theme="dark"] .tile-guide { --tile-accent: #f59e0b; }
+.tile-agents { --tile-accent: #6366f1; }
+:root[data-theme="dark"] .tile-agents { --tile-accent: #818cf8; }
 
 .tile-icon {
   display: grid;
