@@ -200,6 +200,8 @@ export const UI = {
     idxSlidesHeading: "Lecture slides",
     idxSlidesLead:
       "Seventeen decks with 60 teaching diagrams. Use j and k to move between slides, n for speaker notes.",
+    idxSlidesNote:
+      "<strong>About the language:</strong> the decks themselves stay in English on purpose. They are what your lecturer projects in class, and the labels inside the 60 diagrams are exactly the terms the exam paper and the rubric use — translating them would teach a word you will never be asked to find. The written material beside them is where you can read in Vietnamese: open the chapter of the week, then the deck.",
     idxPracticeNote:
       "<strong>Practice mode:</strong> online submission and grading are not enabled yet. Complete each sheet locally and keep the result in your own Git repository until your lecturer announces the submission flow. To see how a sheet scores against its rubric, open the <a href=\"{href}\">self-check tool</a> — it runs in your browser and uploads nothing.",
     idxCourseWide: "Course-wide lecture deck",
@@ -356,6 +358,8 @@ export const UI = {
     idxSlidesHeading: "Slide bài giảng",
     idxSlidesLead:
       "Mười bảy bộ slide với 60 sơ đồ giảng dạy. Dùng phím j và k để chuyển slide, n để xem ghi chú giảng viên.",
+    idxSlidesNote:
+      "<strong>Về ngôn ngữ:</strong> các bộ slide <em>giữ tiếng Anh có chủ đích</em>, không phải vì chưa dịch kịp. Slide là thứ giảng viên chiếu trên lớp, và nhãn trong 60 sơ đồ đúng là thuật ngữ mà đề thi thực hành cùng rubric dùng — dịch chúng ra tiếng Việt sẽ dạy bạn một từ khoá mà bạn không bao giờ phải tìm trong đề. Phần bạn đọc bằng tiếng Việt là học liệu viết: hãy mở chương của tuần, rồi tới slide. Mười lăm tên buổi học bên dưới hiển thị bằng tiếng Việt để bạn định vị được buổi cần tìm.",
     idxPracticeNote:
       "<strong>Chế độ luyện tập:</strong> việc nộp và chấm bài trực tuyến chưa mở. Hãy làm từng đề trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp. Muốn biết một đề được chấm thế nào theo rubric, hãy mở <a href=\"{href}\">công cụ tự chấm</a> — công cụ chạy ngay trên trình duyệt và không tải gì lên.",
     idxCourseWide: "Slide tổng hợp cả khóa",

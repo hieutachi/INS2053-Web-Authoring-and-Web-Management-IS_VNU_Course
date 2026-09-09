@@ -283,24 +283,91 @@ function prepareHomeworkMarkdown(markdown) {
  * which is the last sheet of the course.
  */
 const SESSIONS = [
-  { n: 1, topic: "Introduction to Dreamweaver & Web Fundamentals" },
-  { n: 2, topic: "Creating a New Site & Organizing Your Project" },
-  { n: 3, topic: "Working with Text and Images" },
-  { n: 4, topic: "Applying CSS to Your Website" },
-  { n: 5, topic: "Creating Page Layouts" },
-  { n: 6, topic: "Creating Page Layouts (Continued)" },
-  { n: 7, topic: "CSS3 and Web Fonts" },
-  { n: 8, topic: "Review & Midterm Exam Preparation", midterm: true },
-  { n: 9, topic: "Working with Tables" },
-  { n: 10, topic: "Embedding Flash, Video and Sound" },
-  { n: 11, topic: "Designing a Compact Site" },
-  { n: 12, topic: "Using Code-Editing Tools" },
-  { n: 13, topic: "Creating Forms" },
-  { n: 14, topic: "Working with Spry Framework" },
-  { n: 15, topic: "Mobile Interface Design and Review" },
+  {
+    n: 1,
+    topic: "Introduction to Dreamweaver & Web Fundamentals",
+    topicVi: "Làm quen Dreamweaver và nền tảng web",
+  },
+  {
+    n: 2,
+    topic: "Creating a New Site & Organizing Your Project",
+    topicVi: "Tạo site mới và tổ chức dự án",
+  },
+  {
+    n: 3,
+    topic: "Working with Text and Images",
+    topicVi: "Làm việc với văn bản và hình ảnh",
+  },
+  {
+    n: 4,
+    topic: "Applying CSS to Your Website",
+    topicVi: "Áp dụng CSS vào website",
+  },
+  {
+    n: 5,
+    topic: "Creating Page Layouts",
+    topicVi: "Tạo bố cục trang",
+  },
+  {
+    n: 6,
+    topic: "Creating Page Layouts (Continued)",
+    topicVi: "Tạo bố cục trang (tiếp theo)",
+  },
+  {
+    n: 7,
+    topic: "CSS3 and Web Fonts",
+    topicVi: "CSS3 và font web",
+  },
+  {
+    n: 8,
+    topic: "Review & Midterm Exam Preparation",
+    topicVi: "Ôn tập và chuẩn bị thi giữa kỳ",
+    midterm: true,
+  },
+  {
+    n: 9,
+    topic: "Working with Tables",
+    topicVi: "Làm việc với bảng",
+  },
+  {
+    n: 10,
+    topic: "Embedding Flash, Video and Sound",
+    topicVi: "Nhúng Flash, video và âm thanh",
+  },
+  {
+    n: 11,
+    topic: "Designing a Compact Site",
+    topicVi: "Thiết kế một site gọn",
+  },
+  {
+    n: 12,
+    topic: "Using Code-Editing Tools",
+    topicVi: "Dùng công cụ sửa code",
+  },
+  {
+    n: 13,
+    topic: "Creating Forms",
+    topicVi: "Tạo biểu mẫu",
+  },
+  {
+    n: 14,
+    topic: "Working with Spry Framework",
+    topicVi: "Làm việc với Spry Framework",
+  },
+  {
+    n: 15,
+    topic: "Mobile Interface Design and Review",
+    topicVi: "Thiết kế giao diện di động và ôn tập",
+  },
 ];
 
 const pad = (n) => String(n).padStart(2, "0");
+
+/* Session topics are bilingual by key, not by file: `topic` stays the English
+   truth that schedule.md and the English tree use, while `topicVi` labels the
+   Vietnamese pages. A session without `topicVi` falls back to the English name
+   so a missing translation can never break the build. */
+const topicOf = (s, lang) => (lang === "vi" && s.topicVi) || s.topic;
 
 /* --- page shell ----------------------------------------------------------- */
 
@@ -563,7 +630,7 @@ ${prev ? `    <a class="prev" href="${prev}">${esc(t(L.pagerPrev, { n: s.n - 1 }
 ${next ? `    <a class="next" href="${next}">${esc(t(L.pagerNext, { n: s.n + 1 }))}</a>` : `    <span></span>`}
   </nav>`;
 
-  const heading = t(L.hubTitle, { n: s.n, topic: s.topic });
+  const heading = t(L.hubTitle, { n: s.n, topic: topicOf(s, lang) });
   return page({
     lang,
     rel: `sessions/session-${nn}.html`,
@@ -595,7 +662,7 @@ function homePage(chapters, lang) {
         <td class="topic" data-label="${esc(
           L.thSession
         )}"><a href="${w(`sessions/session-${nn}.html`)}">${esc(
-      s.topic
+      topicOf(s, lang)
     )}</a>${
       s.midterm ? `<small>${esc(L.smallMidterm)}</small>` : ""
     }</td>
@@ -1408,7 +1475,7 @@ async function buildTree(lang) {
         rel: "sessions/index.html",
         items: SESSIONS.map((s) => ({
           href: `session-${pad(s.n)}.html`,
-          label: t(L.idxSessionLabel, { n: s.n, topic: s.topic }),
+          label: t(L.idxSessionLabel, { n: s.n, topic: topicOf(s, lang) }),
           sub: s.midterm ? L.idxWeekMidterm : t(L.idxWeekN, { n: s.n }),
         })),
       },
@@ -1468,7 +1535,7 @@ async function buildTree(lang) {
   const deckHref = (file) => (lang === "en" ? file : `${p("slides")}/${file}`);
   const deckList = SESSIONS.map((s) => ({
     href: deckHref(`buoi-${pad(s.n)}.html`),
-    label: t(L.idxDeckLabel, { n: s.n, topic: s.topic }),
+    label: t(L.idxDeckLabel, { n: s.n, topic: topicOf(s, lang) }),
     sub: t(L.idxSessionN, { n: s.n }),
   }));
   deckList.push(
@@ -1493,6 +1560,11 @@ async function buildTree(lang) {
         lead: L.idxSlidesLead,
         crumbLabel: L.idxSlidesHeading,
         rel: "slides/index.html",
+        // The decks are deliberately English, so the Vietnamese index has to say
+        // so — a student who finds no notice assumes the translation is broken.
+        // The English tree needs no such explanation, and adding one there would
+        // mean a content change in a tree this work must not touch.
+        note: lang === "vi" ? L.idxSlidesNote : undefined,
         items: deckList,
       },
       lang
