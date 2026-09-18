@@ -1776,6 +1776,58 @@ kbd {
   }
 }
 
+/* --- homework visual target (side-by-side look reference) ------------------ */
+/* Lives on homework sheets only, above the sheet body. The iframe is the
+   live reference page; the wrapper marks it clearly as a target to look at,
+   and print drops the frame so paper copies show the written brief only. */
+.hw-demo {
+  margin: 2.5rem 0 2rem;
+  padding: 1.25rem 1.25rem 1rem;
+  background: var(--fill-tertiary, #f0f3fa);
+  border: 1px solid var(--stroke-secondary, #ccd4e3);
+  border-radius: 10px;
+}
+
+.hw-demo h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+.hw-demo-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.88rem;
+  color: var(--ink-secondary, #444c63);
+}
+
+.hw-demo-frame {
+  display: block;
+  width: 100%;
+  height: 460px;
+  margin-top: 0.9rem;
+  background: #ffffff;
+  border: 1px solid var(--stroke-primary, #8d9ab5);
+  border-radius: 6px;
+}
+
+.hw-demo-frame[title] {
+  /* The frame is a reference, not content to interact with; the dashed
+     border says "look here", the solid page frame keeps it readable. */
+  outline: 2px dashed var(--stroke-primary, #8d9ab5);
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .hw-demo-frame {
+    height: 380px;
+  }
+}
+
+@media print {
+  .hw-demo-frame {
+    display: none;
+  }
+}
+
 @media print {
   .bar,
   .reading-progress,

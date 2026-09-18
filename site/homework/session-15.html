@@ -73,6 +73,70 @@ if(w&&w!=="en")location.replace("../vi/homework/session-15.html");}catch(e){}})(
   <nav class="pager" aria-label="Session navigation">
     <a class="up" href="../sessions/session-15.html">Session 15 overview</a>
   </nav>
+  <section class="hw-demo" aria-labelledby="hw-demo-title-15">
+  <h2 id="hw-demo-title-15">Visual target — what you are building</h2>
+  <p class="hw-demo-note">This is a live reference page for this session&#39;s homework. Open your own page in a browser and compare, side by side: same structure? same blocks? same behaviour? You are aiming for NEARLY IDENTICAL, not pixel-perfect — your own words and images are expected.</p>
+  <p class="hw-demo-note">The reference is view-only: copy, cut, drag and right-click are turned off, and it runs in a locked frame. Study it, then type your own version — that is the skill being graded.</p>
+  <iframe
+    class="hw-demo-frame"
+    title="Live preview of the homework example — Session 15"
+    sandbox="allow-same-origin"
+    loading="lazy"
+    srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>CodeBreakers Club — mobile view</title>
+
+</head>
+<body oncopy=&quot;return false&quot; oncut=&quot;return false&quot; oncontextmenu=&quot;return false&quot; onselectstart=&quot;return false&quot; ondragstart=&quot;return false&quot;>
+
+  <style>
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
+    .banner { background: #0f766e; color: #fff; padding: 1rem;
+              text-align: center; }
+    .menu { background: #134e4a; }
+    .menu ul { list-style: none; margin: 0; padding: 0.4rem;
+               display: flex; gap: 0.4rem; justify-content: center; }
+    .menu a { color: #fff; text-decoration: none; padding: 0.4rem 0.8rem; }
+    .content { max-width: 960px; margin: 1.2rem auto; padding: 0 1rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr);
+             gap: 1rem; }
+    .card { background: #f0fdfa; border: 1px solid #99f6e4;
+            border-radius: 6px; padding: 0.8rem; }
+    .card img { width: 100%; border-radius: 4px; }
+    .footer { background: #111827; color: #d1d5db; text-align: center;
+              padding: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 768px) {
+      .cards { grid-template-columns: 1fr; }
+      .menu ul { flex-direction: column; text-align: center; }
+    }
+  </style>
+  <div class=&quot;banner&quot;><div class=&quot;pagetitle&quot; role=&quot;heading&quot; aria-level=&quot;1&quot;>CodeBreakers Club</div></div>
+  <nav class=&quot;menu&quot;>
+    <ul>
+      <li><a href=&quot;index.html&quot;>Home</a></li>
+      <li><a href=&quot;about.html&quot;>About</a></li>
+      <li><a href=&quot;contact.html&quot;>Contact</a></li>
+    </ul>
+  </nav>
+  <div class=&quot;content&quot;>
+    <h2>The same site, three widths</h2>
+    <div class=&quot;cards&quot;>
+      <div class=&quot;card&quot;><img src=&quot;images/a.jpg&quot; alt=&quot;Members coding&quot;
+           width=&quot;220&quot; height=&quot;120&quot;><p>Desktop: three cards in a row.</p></div>
+      <div class=&quot;card&quot;><img src=&quot;images/b.jpg&quot; alt=&quot;Workshop night&quot;
+           width=&quot;220&quot; height=&quot;120&quot;><p>Tablet: two cards per row.</p></div>
+      <div class=&quot;card&quot;><img src=&quot;images/c.jpg&quot; alt=&quot;Study group&quot;
+           width=&quot;220&quot; height=&quot;120&quot;><p>Phone: everything stacks.</p></div>
+    </div>
+  </div>
+  <div class=&quot;footer&quot;>&amp;copy; 2026 CodeBreakers Club</div>
+
+</body>
+</html>"></iframe>
+  </section>
   <article class="doc">
 <h2 id="homework-15-making-your-site-responsive">Homework 15: Making Your Site Responsive<a class="anchor" href="#homework-15-making-your-site-responsive" aria-label="Link to this section">#</a></h2>
 <h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>

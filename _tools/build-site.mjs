@@ -45,6 +45,7 @@ import { fileURLToPath } from "node:url";
 import { marked } from "marked";
 import { injectTableEmptyStates } from "./table-empty-state.mjs";
 import { LANGS, LANG_KEY, UI, VI_SOURCE, t } from "./i18n.mjs";
+import { DEMOS, toSrcdoc } from "./site-assets/hw-demos.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
@@ -273,6 +274,50 @@ function prepareHomeworkMarkdown(markdown) {
 }
 
 /* --- the course map ------------------------------------------------------- */
+
+
+/* --- homework visual target ------------------------------------------------ */
+
+/**
+ * The side-by-side look target under the Example Output section.
+ *
+ * Every sheet talks about what the finished page "should look like"; this block
+ * SHOWS it — a live rendering of the session's reference page, beside the words.
+ * Students compare their own file against it and judge how NEAR they are, which
+ * is exactly the judging skill the video reflection and the practical exams ask
+ * of them.
+ *
+ * The demo document is injected through `<iframe srcdoc>` with `sandbox` set and
+ * `allow-scripts` deliberately absent, so the target is look-only:
+ *   - no script may run inside it (the demo's own inline handlers still work);
+ *   - selection, copy, cut, dragging and the context menu are refused, so it
+ *     cannot be lifted wholesale — students must type their own version;
+ *   - opening DevTools to read it is pointless: it is a classroom reference, and
+ *     every tag it uses is taught in the matching session anyway.
+ *
+ * No new files are published: qa-site gate 1 counts HTML pages exactly, so the
+ * demo travels inside the sheet it belongs to.
+ */
+function visualTargetBlock(nn, lang) {
+  const L = UI[lang];
+  const demo = DEMOS[Number(nn)];
+  if (!demo) {
+    fail(`no visual-target demo registered for homework session ${nn}`);
+    return "";
+  }
+  return `  <section class="hw-demo" aria-labelledby="hw-demo-title-${nn}">
+  <h2 id="hw-demo-title-${nn}">${esc(L.hwDemoHeading)}</h2>
+  <p class="hw-demo-note">${esc(L.hwDemoIntro)}</p>
+  <p class="hw-demo-note">${esc(L.hwDemoShield)}</p>
+  <iframe
+    class="hw-demo-frame"
+    title="${esc(t(L.hwDemoFrameTitle, { nn: nn }))}"
+    sandbox="allow-same-origin"
+    loading="lazy"
+    srcdoc="${toSrcdoc(demo())}"></iframe>
+  </section>
+`;
+}
 
 /**
  * One entry per teaching week. `topic` is the short label used in navigation;
@@ -1428,10 +1473,13 @@ async function buildTree(lang) {
     <a class="up" href="${w(
       `sessions/session-${nn}.html`
     )}">${esc(t(L.sessionOverview, { n: s.n }))}</a>
-  </nav>\n  <article class="doc">\n${rewriteLinks(html, {
+  </nav>
+${visualTargetBlock(nn, lang)}  <article class="doc">
+${rewriteLinks(html, {
     lang,
     depth: 1,
-  })}\n  </article>`,
+  })}
+  </article>`,
         depth: 1,
         pageClass: "reading-page homework-page",
         eyebrow: t(L.eyebrowHomework, { nn }),

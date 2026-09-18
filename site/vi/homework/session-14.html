@@ -77,6 +77,64 @@ if(w&&w!=="vi")location.replace("../../homework/session-14.html");}catch(e){}})(
   <nav class="pager" aria-label="Điều hướng buổi học">
     <a class="up" href="../sessions/session-14.html">Tổng quan Buổi 14</a>
   </nav>
+  <section class="hw-demo" aria-labelledby="hw-demo-title-14">
+  <h2 id="hw-demo-title-14">Mẫu đối chiếu trực quan — bạn đang xây dựng gì</h2>
+  <p class="hw-demo-note">Đây là trang tham chiếu chạy thật cho bài tập của buổi này. Hãy mở trang của bạn trong trình duyệt và đặt cạnh để đối chiếu: cùng cấu trúc? cùng các khối? cùng hành vi? Mục tiêu là GẦN TƯƠNG TỰ, không phải giống hệt từng pixel — phần lời văn và hình ảnh phải là của chính bạn.</p>
+  <p class="hw-demo-note">Phần tham chiếu chỉ để xem: sao chép, cắt, kéo thả và chuột phải đã bị tắt, và nó chạy trong một khung bị khóa. Hãy quan sát rồi tự gõ phiên bản của riêng bạn — đó mới là kỹ năng được chấm.</p>
+  <iframe
+    class="hw-demo-frame"
+    title="Xem trực quan mẫu bài tập — Buổi 14"
+    sandbox="allow-same-origin"
+    loading="lazy"
+    srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>CodeBreakers Club — dropdown navigation</title>
+
+</head>
+<body oncopy=&quot;return false&quot; oncut=&quot;return false&quot; oncontextmenu=&quot;return false&quot; onselectstart=&quot;return false&quot; ondragstart=&quot;return false&quot;>
+
+  <style>
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
+    .menu { background: #1e3a8a; padding: 0; }
+    .menu ul { list-style: none; margin: 0; padding: 0; display: flex; }
+    .menu li { position: relative; }
+    .menu a { display: block; color: #fff; text-decoration: none;
+              padding: 0.7rem 1.1rem; }
+    .menu li:hover > a { background: #1d4ed8; }
+    .dropdown { display: none; position: absolute; top: 100%; left: 0;
+                background: #1e3a8a; min-width: 180px; z-index: 10; }
+    .menu li:hover .dropdown { display: block; }
+    .dropdown a { padding: 0.6rem 1.1rem; }
+    .dropdown a:hover { background: #3b82f6; }
+    .content { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; }
+  </style>
+  <nav class=&quot;menu&quot;>
+    <ul>
+      <li><a href=&quot;index.html&quot;>Home</a></li>
+      <li><a href=&quot;about.html&quot;>About</a>
+        <ul class=&quot;dropdown&quot;>
+          <li><a href=&quot;about.html#mission&quot;>Our Mission</a></li>
+          <li><a href=&quot;activities.html&quot;>Activities</a></li>
+          <li><a href=&quot;media.html&quot;>Gallery</a></li>
+        </ul>
+      </li>
+      <li><a href=&quot;contact.html&quot;>Contact</a></li>
+    </ul>
+  </nav>
+  <div class=&quot;content&quot;>
+    <h2>Hover the About item above</h2>
+    <p>A dropdown appears with three sub-links and disappears when the mouse
+       leaves. The trick is <code>position: relative</code> on the list item,
+       <code>position: absolute</code> on the dropdown, and
+       <code>:hover</code> switching <code>display</code>.</p>
+  </div>
+
+</body>
+</html>"></iframe>
+  </section>
   <article class="doc">
 <h2 id="homework-14-css-dropdown-navigation">Homework 14: CSS Dropdown Navigation<a class="anchor" href="#homework-14-css-dropdown-navigation" aria-label="Link to this section">#</a></h2>
 <h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>

@@ -97,6 +97,12 @@ export const UI = {
       "Want to know how this sheet scores before you hand it in? Open the <a href=\"{href}\">self-check tool</a>, pick session {n}, and paste or point it at your files. It runs entirely in your browser, uploads nothing, and marks only the mechanical half of the rubric — the rest is your lecturer's judgement.",
     sheetLead:
       "This session's homework brief — Part 1 code + Part 2 video. Hand in through your own repository.",
+    hwDemoHeading: "Visual target — what you are building",
+    hwDemoIntro:
+      "This is a live reference page for this session's homework. Open your own page in a browser and compare, side by side: same structure? same blocks? same behaviour? You are aiming for NEARLY IDENTICAL, not pixel-perfect — your own words and images are expected.",
+    hwDemoShield:
+      "The reference is view-only: copy, cut, drag and right-click are turned off, and it runs in a locked frame. Study it, then type your own version — that is the skill being graded.",
+    hwDemoFrameTitle: "Live preview of the homework example — Session {nn}",
 
     // session hub
     whenBefore: "Before class",
@@ -259,6 +265,13 @@ export const UI = {
       "Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href=\"{href}\">công cụ tự chấm</a>, chọn Buổi {n}, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.",
     sheetLead:
       "Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.",
+
+    hwDemoHeading: "M\u1eabu \u0111\u1ed1i chi\u1ebfu tr\u1ef1c quan \u2014 b\u1ea1n \u0111ang x\u00e2y d\u1ef1ng g\u00ec",
+    hwDemoIntro:
+      "\u0110\u00e2y l\u00e0 trang tham chi\u1ebfu ch\u1ea1y th\u1eadt cho b\u00e0i t\u1eadp c\u1ee7a bu\u1ed5i n\u00e0y. H\u00e3y m\u1edf trang c\u1ee7a b\u1ea1n trong tr\u00ecnh duy\u1ec7t v\u00e0 \u0111\u1eb7t c\u1ea1nh \u0111\u1ec3 \u0111\u1ed1i chi\u1ebfu: c\u00f9ng c\u1ea5u tr\u00fac? c\u00f9ng c\u00e1c kh\u1ed1i? c\u00f9ng h\u00e0nh vi? M\u1ee5c ti\u00eau l\u00e0 G\u1ea6N T\u01af\u01a0NG T\u1ef0, kh\u00f4ng ph\u1ea3i gi\u1ed1ng h\u1ec7t t\u1eebng pixel \u2014 ph\u1ea7n l\u1eddi v\u0103n v\u00e0 h\u00ecnh \u1ea3nh ph\u1ea3i l\u00e0 c\u1ee7a ch\u00ednh b\u1ea1n.",
+    hwDemoShield:
+      "Ph\u1ea7n tham chi\u1ebfu ch\u1ec9 \u0111\u1ec3 xem: sao ch\u00e9p, c\u1eaft, k\u00e9o th\u1ea3 v\u00e0 chu\u1ed9t ph\u1ea3i \u0111\u00e3 b\u1ecb t\u1eaft, v\u00e0 n\u00f3 ch\u1ea1y trong m\u1ed9t khung b\u1ecb kh\u00f3a. H\u00e3y quan s\u00e1t r\u1ed3i t\u1ef1 g\u00f5 phi\u00ean b\u1ea3n c\u1ee7a ri\u00eang b\u1ea1n \u2014 \u0111\u00f3 m\u1edbi l\u00e0 k\u1ef9 n\u0103ng \u0111\u01b0\u1ee3c ch\u1ea5m.",
+    hwDemoFrameTitle: "Xem tr\u1ef1c quan m\u1eabu b\u00e0i t\u1eadp \u2014 Bu\u1ed5i {nn}",
 
     whenBefore: "Trước khi lên lớp",
     whenIn: "Trên lớp",
