@@ -262,13 +262,14 @@ function prepareHomeworkMarkdown(markdown) {
   return markdown
     .replace(
       /^## Due Date\s*\r?\n[^\r\n]*(?:\r?\n)?/m,
-      "## Practice Status\nOnline submission and grading are not enabled yet. Complete this brief locally and keep the result in your own Git repository.\n"
+      "## Practice Status\nOnline submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md. The reference rubric below grades the code part (10 pts); the video is graded separately (4 pts).\n"
     )
     .replace(/^## Submission Guide\s*$/m, "## Save Your Practice Work")
     .replace(/^## Grading Rubric\s*$/m, "## Reference Rubric")
     .replace(/\bby the deadline\b/gi, "before you attempt this task")
     .replace(/\bfinal capstone submission\b/gi, "final capstone version")
-    .replace(/\bBefore you submit it\b/g, "Before you consider it finished");
+    .replace(/\bBefore you submit it\b/g, "Before you consider it finished")
+    .replace(/- Session (\d\d) — <your Google Drive link>/g, "- Session $1 — (paste your Google Drive link here)");
 }
 
 /* --- the course map ------------------------------------------------------- */
@@ -1213,10 +1214,14 @@ function rewriteLinks(html, { lang, depth }) {
     // chapter 11 writes `See the [full schedule](pages/events.html).` to teach
     // the one-canonical-page habit. Rendered as a link it 404s and reads as a
     // broken site, so show it as a path instead of a destination.
+    // Exception: the homework rewrite above already produced a real, resolving
+    // site URL (`../homework/session-NN.html`) — the ebook's HOMEWORK &
+    // SUBMISSION sections rely on it, so it must survive as a live link.
     .replace(
       /<a href="([^"]+)">([\s\S]*?)<\/a>/g,
       (m, href, label) => {
         if (/^(https?:|mailto:|#|data:)/.test(href)) return m;
+        if (/^(\.\.\/)?homework\/session-\d\d\.html$/.test(href)) return m;
         exampleLinks.push(href);
         return `<code class="path">${label}</code>`;
       }

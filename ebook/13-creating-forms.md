@@ -1544,6 +1544,36 @@ If you answered **No** to any row, re-read the relevant Theory section and redo 
 
 ---
 
+## 🏠 HOMEWORK & SUBMISSION — Session 13
+
+After class, this session has exactly one deliverable set: **Homework 13**.
+Everything you need sits on one page — the task list, the video brief and the
+reference rubric: [homework/session-13/homework.md](../homework/session-13/homework.md).
+Do the in-class exercise first; the homework deliberately starts where the
+exercise ends.
+
+**How this session's homework works, in order:**
+
+1. **Build — Part 1 (code, 10 points).** Complete every task in the homework
+   sheet inside your own repository. AI tools are allowed — understand every
+   line you keep.
+2. **Explain — Part 2 (video, 4 points).** Record a **60–120 second** OBS
+   screen recording presenting ONE part of this homework — for example: show the contact form and walk through three different input types you used, explaining what each collects and which label belongs to which input.
+   Voice required, screen shared the whole time; the full requirement checklist
+   is in the homework sheet.
+3. **Submit the video as a link — never the file.** Upload the recording to
+   your own **Google Drive** (Anyone with the link → Viewer), add one line with
+   the link to `homework/submissions.md` in your repository, then commit and
+   push. The system collects and grades the code part; for the video it stores
+   only the link, and your lecturer watches and grades it afterwards.
+4. **Check yourself first.** Open the self-check tool (`cham-bai.html`), point
+   it at your repository, and fix what it flags **before** the deadline.
+
+**Deadline: Sunday 23:59.** The practice round of every homework sheet stays
+public on the website; the official sheet is handed out in class and lives in
+your copy of the repository.
+
+
 # ⏭️ NEXT SESSION
 
 In Session 14 we explore the legacy Spry Framework (included with Dreamweaver CS6), understand why it is obsolete, and learn the modern CSS-only alternative for dropdown navigation menus.

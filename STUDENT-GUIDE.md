@@ -35,7 +35,7 @@ Follow the **lecture slides** your lecturer projects. The class is 150 minutes (
 3. **Independent work** (~30 min) — you start the week's homework
 
 ### After class
-Complete the **homework** for that session. Before submitting, run your work through the **self-check tool** to catch mechanical issues. Homework is due **Sunday at 23:59**.
+Complete the **homework** for that session — **Part 1** is the code tasks, **Part 2** is a 1–2 minute OBS video where you explain your work. Before submitting, run your code through the **self-check tool** to catch mechanical issues. Homework is due **Sunday at 23:59**.
 
 ---
 
@@ -54,6 +54,7 @@ The ebook has 15 chapters (one per session) plus Appendix A. Each chapter follow
 | ✅ Self-Check | 8 questions with hidden answers | Test yourself **before** looking at answers |
 | 📋 Self-Assessment | Checklist to rate your understanding | Honest self-evaluation |
 | 📚 Further Reading | Links to MDN, W3C, tutorials | Deep dives when you want more detail |
+| 🏠 Homework & Submission | What this session's homework is, how to do it (code + video), and how to hand it in | Read at the end — it is your to-do list for the week |
 
 ### Tips for Reading
 
@@ -116,9 +117,37 @@ After your last run, save three things:
 
 ## 6. Homework and Submission
 
+Every homework has **two parts**, handed in together:
+
+- **Part 1 — Code (10 points).** Finish every task in the homework sheet inside
+  your own Git repository, then push it. The rubric on the sheet grades this
+  part (the self-check tool covers its mechanical half).
+- **Part 2 — Video Reflection (4 points).** Record a **60–120 second** OBS
+  screen recording of yourself presenting **one part** of the homework — the
+  sheet suggests an easy topic. Voice required, screen shared throughout, name
+  + student ID at the start. You are graded on the structure of the talk (1),
+  the real screen walkthrough (1), and a correct explanation (2) — reading a
+  script over code you cannot explain scores 0.
+
+### How to Submit the Video
+
+The video is submitted **as a link — never the file**:
+
+1. Upload the recording (MP4, 720p+) to **your own Google Drive**.
+2. Set sharing to **"Anyone with the link → Viewer"**.
+3. Open `homework/submissions.md` in your repository and add one line:
+   `- Session 04 — <your Google Drive link>`
+4. Commit and push it together with the rest of the homework.
+
+The system collects and grades the code part; for the video it stores **only
+the link**, and your lecturer watches and grades it afterwards. A missing,
+private, or dead link means the video part cannot be graded.
+
+### Rules and Dates
+
 - **One homework per session**, due **Sunday 23:59**
 - **Monday grace day** available at −20% of earned mark — nothing marked after Monday 23:59
-- **Grading:** each homework is graded out of 10 using the rubric on the sheet
+- **Total: 14 points per session** — 10 (code) + 4 (video)
 - **No published answer keys** for homework (intentional — homework is part of your grade)
 - **Use the self-check tool** before submitting to catch mechanical issues
 

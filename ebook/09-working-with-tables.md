@@ -1359,6 +1359,36 @@ If you answered **No** to any item, revisit the corresponding Theory section and
 
 ---
 
+## 🏠 HOMEWORK & SUBMISSION — Session 9
+
+After class, this session has exactly one deliverable set: **Homework 09**.
+Everything you need sits on one page — the task list, the video brief and the
+reference rubric: [homework/session-09/homework.md](../homework/session-09/homework.md).
+Do the in-class exercise first; the homework deliberately starts where the
+exercise ends.
+
+**How this session's homework works, in order:**
+
+1. **Build — Part 1 (code, 10 points).** Complete every task in the homework
+   sheet inside your own repository. AI tools are allowed — understand every
+   line you keep.
+2. **Explain — Part 2 (video, 4 points).** Record a **60–120 second** OBS
+   screen recording presenting ONE part of this homework — for example: show your schedule table and explain what `<thead>`, `<tbody>` and `colspan`/`rowspan` do in it, plus one styling choice you made.
+   Voice required, screen shared the whole time; the full requirement checklist
+   is in the homework sheet.
+3. **Submit the video as a link — never the file.** Upload the recording to
+   your own **Google Drive** (Anyone with the link → Viewer), add one line with
+   the link to `homework/submissions.md` in your repository, then commit and
+   push. The system collects and grades the code part; for the video it stores
+   only the link, and your lecturer watches and grades it afterwards.
+4. **Check yourself first.** Open the self-check tool (`cham-bai.html`), point
+   it at your repository, and fix what it flags **before** the deadline.
+
+**Deadline: Sunday 23:59.** The practice round of every homework sheet stays
+public on the website; the official sheet is handed out in class and lives in
+your copy of the repository.
+
+
 # ⏭️ NEXT SESSION
 
 In Session 10 we will explore **working with forms** — input fields, labels, validation, and styling forms for the Student Club contact and registration pages.

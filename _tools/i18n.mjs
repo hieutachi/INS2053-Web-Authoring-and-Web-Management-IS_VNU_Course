@@ -92,11 +92,11 @@ export const UI = {
     fallbackCta: "Read this page in English",
     practiceModeTitle: "Practice mode.",
     practiceModeBody:
-      "Online submission and grading are not enabled yet. Complete the work locally and keep it in your own Git repository until your lecturer announces the submission flow.",
+      "Online submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md — the reference rubric below grades the code (10 pts); the video is graded separately (4 pts).",
     practiceModeTool:
       "Want to know how this sheet scores before you hand it in? Open the <a href=\"{href}\">self-check tool</a>, pick session {n}, and paste or point it at your files. It runs entirely in your browser, uploads nothing, and marks only the mechanical half of the rubric — the rest is your lecturer's judgement.",
     sheetLead:
-      "Practice brief for this session. Online submission and grading are not enabled yet.",
+      "This session's homework brief — Part 1 code + Part 2 video. Hand in through your own repository.",
 
     // session hub
     whenBefore: "Before class",
@@ -112,10 +112,10 @@ export const UI = {
     stepHwTitle: "Homework {nn}",
     stepHwTitle8: "Homework 07 review",
     stepHwNote:
-      "Use the published brief for practice and keep your work in your own repository. Online submission and grading are not enabled yet.",
+      "Online submission is not enabled yet. Part 1: build every task (10 pts). Part 2: a 60–120-second OBS video explaining one part (4 pts) — hand in the video as a Google Drive link in homework/submissions.md.",
     stepToolTitle: "Self-check tool",
     stepToolNote:
-      "Grades the mechanical half of the rubric in your own browser — nothing is uploaded. It reports where you stand, not your final mark; your lecturer decides that.",
+      "Grades the mechanical half of the code rubric in your own browser — nothing is uploaded. It reports where you stand, not your final mark; your lecturer decides that.",
     stepToolCta: "Open the self-check tool",
     chapterCta: "Chapter {n}",
     deckCta: "Deck {n}",
@@ -152,7 +152,7 @@ export const UI = {
     tileSlides: "Lecture slides",
     tileSlidesSub: "17 decks · 60 diagrams",
     tileHomework: "Homework",
-    tileHomeworkSub: "15 practice sheets · submission later",
+    tileHomeworkSub: "15 sheets · Part 1 code + Part 2 video",
     tileTool: "Self-check tool",
     tileToolSub: "Score your homework against the rubric, in your own browser",
     tileGuide: "New here?",
@@ -166,7 +166,7 @@ export const UI = {
       "Read the ebook chapter and complete its <em>Try It Yourself</em> blocks.",
     flow2Body: "150 minutes of lecture, guided practice and a homework start.",
     flow3Body:
-      "Practise with the homework brief and keep the result in your repository. Online submission and grading are not enabled yet.",
+      "Online submission is not enabled yet. Do the homework brief, record a short OBS video explaining it, and hand in through your repository (code) plus a Google Drive link (video).",
     schedHeading: "The 15 weeks",
     schedCaption: "Each row links to that week's chapter, deck and homework sheet.",
     thWeek: "Week",
@@ -203,7 +203,7 @@ export const UI = {
     idxSlidesNote:
       "<strong>About the language:</strong> the decks themselves stay in English on purpose. They are what your lecturer projects in class, and the labels inside the 60 diagrams are exactly the terms the exam paper and the rubric use — translating them would teach a word you will never be asked to find. The written material beside them is where you can read in Vietnamese: open the chapter of the week, then the deck.",
     idxPracticeNote:
-      "<strong>Practice mode:</strong> online submission and grading are not enabled yet. Complete each sheet locally and keep the result in your own Git repository until your lecturer announces the submission flow. To see how a sheet scores against its rubric, open the <a href=\"{href}\">self-check tool</a> — it runs in your browser and uploads nothing.",
+      "<strong>Practice mode:</strong> online submission is not enabled yet. Complete each sheet locally, then hand in through your own Git repository — push the code tasks and add your Google Drive video link to homework/submissions.md. Each sheet's reference rubric grades the code (10 pts); the video is graded separately (4 pts). To see how a sheet scores against its rubric, open the <a href=\"{href}\">self-check tool</a> — it runs in your browser and uploads nothing.",
     idxCourseWide: "Course-wide lecture deck",
     idxOverviewDeck: "Course overview deck",
     idxAllSessions: "All sessions",
@@ -254,11 +254,11 @@ export const UI = {
     fallbackCta: "Đọc trang này bằng tiếng Anh",
     practiceModeTitle: "Chế độ luyện tập.",
     practiceModeBody:
-      "Việc nộp và chấm bài trực tuyến chưa mở. Hãy làm bài trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp.",
+      "Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push phần code, rồi thêm link Google Drive vào homework/submissions.md — rubric tham chiếu dưới đây chấm phần code (10 điểm); video được chấm riêng (4 điểm).",
     practiceModeTool:
       "Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href=\"{href}\">công cụ tự chấm</a>, chọn Buổi {n}, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.",
     sheetLead:
-      "Đề luyện tập cho buổi này. Việc nộp và chấm bài trực tuyến chưa mở.",
+      "Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.",
 
     whenBefore: "Trước khi lên lớp",
     whenIn: "Trên lớp",
@@ -273,10 +273,10 @@ export const UI = {
     stepHwTitle: "Bài tập {nn}",
     stepHwTitle8: "Bài tập 07 — ôn tập",
     stepHwNote:
-      "Dùng đề đã công bố để luyện tập và giữ bài làm trong repository của bạn. Việc nộp và chấm bài trực tuyến chưa mở.",
+      "Việc nộp bài trực tuyến chưa mở. Phần 1: làm hết các nhiệm vụ (10 điểm). Phần 2: video OBS 60–120 giây trình bày một phần của bài (4 điểm) — nộp video bằng link Google Drive ghi trong homework/submissions.md.",
     stepToolTitle: "Công cụ tự chấm",
     stepToolNote:
-      "Chấm phần cơ học của rubric ngay trên trình duyệt của bạn — không tải gì lên. Công cụ cho biết bạn đang đứng ở đâu, chưa phải điểm cuối; giảng viên mới là người quyết định.",
+      "Chấm phần cơ học của rubric code ngay trên trình duyệt của bạn — không tải gì lên. Công cụ cho biết bạn đang đứng ở đâu, chưa phải điểm cuối; giảng viên mới là người quyết định.",
     stepToolCta: "Mở công cụ tự chấm",
     chapterCta: "Chương {n}",
     deckCta: "Slide {n}",
@@ -312,7 +312,7 @@ export const UI = {
     tileSlides: "Slide bài giảng",
     tileSlidesSub: "17 bộ slide · 60 sơ đồ",
     tileHomework: "Bài tập",
-    tileHomeworkSub: "15 đề luyện tập · nộp bài sau",
+    tileHomeworkSub: "15 đề · Phần 1 code + Phần 2 video",
     tileTool: "Công cụ tự chấm",
     tileToolSub: "Tự chấm bài theo rubric ngay trên trình duyệt của bạn",
     tileGuide: "Bạn mới tới?",
@@ -326,7 +326,7 @@ export const UI = {
       "Đọc chương giáo trình và làm hết các khối <em>Try It Yourself</em> trong đó.",
     flow2Body: "150 phút gồm lý thuyết, thực hành có hướng dẫn và bắt đầu làm bài tập.",
     flow3Body:
-      "Luyện tiếp theo đề bài và giữ kết quả trong repository của bạn. Việc nộp và chấm bài trực tuyến chưa mở.",
+      "Việc nộp bài trực tuyến chưa mở. Làm theo đề bài tập, quay video OBS ngắn trình bày bài của bạn, rồi nộp qua repository (code) kèm link Google Drive (video).",
     schedHeading: "15 tuần học",
     schedCaption: "Mỗi dòng dẫn tới chương, slide và đề bài tập của tuần đó.",
     thWeek: "Tuần",
@@ -361,7 +361,7 @@ export const UI = {
     idxSlidesNote:
       "<strong>Về ngôn ngữ:</strong> các bộ slide <em>giữ tiếng Anh có chủ đích</em>, không phải vì chưa dịch kịp. Slide là thứ giảng viên chiếu trên lớp, và nhãn trong 60 sơ đồ đúng là thuật ngữ mà đề thi thực hành cùng rubric dùng — dịch chúng ra tiếng Việt sẽ dạy bạn một từ khoá mà bạn không bao giờ phải tìm trong đề. Phần bạn đọc bằng tiếng Việt là học liệu viết: hãy mở chương của tuần, rồi tới slide. Mười lăm tên buổi học bên dưới hiển thị bằng tiếng Việt để bạn định vị được buổi cần tìm.",
     idxPracticeNote:
-      "<strong>Chế độ luyện tập:</strong> việc nộp và chấm bài trực tuyến chưa mở. Hãy làm từng đề trên máy và giữ kết quả trong repository Git của bạn tới khi giảng viên thông báo lịch nộp. Muốn biết một đề được chấm thế nào theo rubric, hãy mở <a href=\"{href}\">công cụ tự chấm</a> — công cụ chạy ngay trên trình duyệt và không tải gì lên.",
+      "<strong>Chế độ luyện tập:</strong> việc nộp bài trực tuyến chưa mở. Hãy làm từng đề trên máy, rồi nộp qua repository Git của bạn — push phần code và thêm link video Google Drive vào homework/submissions.md. Rubric tham chiếu của mỗi đề chấm phần code (10 điểm); video được chấm riêng (4 điểm). Muốn biết một đề được chấm thế nào theo rubric, hãy mở <a href=\"{href}\">công cụ tự chấm</a> — công cụ chạy ngay trên trình duyệt và không tải gì lên.",
     idxCourseWide: "Slide tổng hợp cả khóa",
     idxOverviewDeck: "Slide giới thiệu khóa học",
     idxAllSessions: "Tất cả buổi học",

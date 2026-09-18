@@ -1207,6 +1207,35 @@ Tách ra giúp dự án còn điều hướng được khi nó lớn lên. Với
 
 ---
 
+## 🏠 BÀI TẬP VÀ NỘP BÀI — Buổi 1
+
+Sau buổi học, buổi này có đúng một bộ sản phẩm cần nộp: **Bài tập 01**.
+Mọi thứ nằm trên một trang — danh sách việc làm, yêu cầu video và rubric tham
+chiếu: [homework/session-01/homework.md](../homework/session-01/homework.md).
+Hãy làm xong bài tập trên lớp trước; đề bài tập được thiết kế để bắt đầu đúng
+từ nơi bài trên lớp kết thúc.
+
+**Bài tập của buổi này chạy theo thứ tự sau:**
+
+1. **Làm — Phần 1 (code, 10 điểm).** Hoàn thành mọi nhiệm vụ trong đề bài tập
+   ngay trong repository của bạn. Được phép dùng công cụ AI — nhưng phải hiểu
+   từng dòng bạn giữ lại.
+2. **Trình bày — Phần 2 (video, 4 điểm).** Quay một video màn hình bằng OBS
+   dài **60–120 giây** trình bày MỘT phần của bài tập — ví dụ: mở `homework/session-01/index.html`, giải thích công dụng từng dòng trong bộ khung HTML5 5 dòng, rồi chỉ `<title>` của bạn hiện ở tab trình duyệt.
+   Bắt buộc có giọng nói, chia sẻ màn hình trong suốt video; danh sách yêu cầu
+   đầy đủ nằm trong đề.
+3. **Nộp video bằng link — không nộp file.** Tải video lên **Google Drive của
+   bạn** (Anyone with the link → Viewer), thêm **một dòng** chứa link vào
+   `homework/submissions.md` trong repository, rồi commit và push. Hệ thống
+   thu thập và chấm phần code; với video, hệ thống chỉ lưu link — giảng viên
+   sẽ xem và chấm sau.
+4. **Tự kiểm tra trước.** Mở công cụ tự chấm (`cham-bai.html`), trỏ tới
+   repository của bạn và sửa hết cảnh báo **trước** hạn nộp.
+
+**Hạn nộp: Chủ nhật 23:59.** Bản luyện tập của mọi đề bài tập luôn công bố trên
+website; đề chính thức được phát trên lớp và nằm trong bản repository của bạn.
+
+
 # ⏭️ BUỔI TIẾP THEO
 
 Ở Buổi 2, bạn sẽ học cách tạo một website nhiều trang hoàn chỉnh với tổ chức thư mục hợp lý, quy ước đặt tên tệp, đường dẫn tương đối và tuyệt đối, cùng phần giới thiệu Git và GitHub để quản lý phiên bản.

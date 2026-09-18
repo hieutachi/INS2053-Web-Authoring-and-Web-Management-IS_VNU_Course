@@ -18,6 +18,10 @@ Kết quả chia thành ba tier:
 Điểm hiện trên thẻ **không phải điểm cuối**. Chỉ giảng viên được chốt điểm sau khi xem
 các dòng `ASSIST`/`MANUAL` và xử lý dòng thiếu file.
 
+**Phần video (từ 2026):** mỗi bài tập có thêm Phần 2 — video OBS 60–120 giây (4 điểm).
+Bộ chấm **không chấm video**; sinh viên nộp link Google Drive trong
+`homework/submissions.md`, giảng viên xem link và tự chấm 4 điểm này (xem §9, bước 4).
+
 ## 2. Mở công cụ
 
 ### Trên website
@@ -219,10 +223,15 @@ Repository chưa có trình nhập gradebook hay xuất CSV. Quy trình có ki�
 3. Chấm phần máy chưa kết luận theo rubric homework gốc. Không cộng toàn bộ
    `manualPoints`; đây chỉ là trọng số chờ người xem.
 4. Ghi một hàng gồm tối thiểu: `MSSV`, `Họ tên`, `Buổi`, `Auto awarded`,
-   `Auto points`, `Điểm người chấm`, `Điểm cuối`, `Digest`, `Tool version`,
-   `Graded at`, `Ghi chú`.
-5. Lưu đường dẫn JSON gốc. Không nhúng source vào bảng điểm dùng chung.
-6. Nếu sửa điểm, ghi người sửa, thời điểm, lý do và giá trị trước/sau. Không sửa JSON
+   `Auto points`, `Điểm người chấm`, `Video (4)`, `Điểm cuối`, `Digest`,
+   `Tool version`, `Graded at`, `Ghi chú`.
+5. **Chấm video (4 điểm):** mở `homework/submissions.md` trong repo của từng
+   sinh viên, bấm từng link Google Drive (chia sẻ phải ở mức
+   "Anyone with the link → Viewer"), xem video và chấm theo bảng nhỏ cuối
+   phần "Part 2" của đề: cấu trúc bài nói 1, walkthrough màn hình thật 1,
+   giải thích đúng 2. Link thiếu, riêng tư hoặc hỏng → 0 điểm video.
+6. Lưu đường dẫn JSON gốc. Không nhúng source vào bảng điểm dùng chung.
+7. Nếu sửa điểm, ghi người sửa, thời điểm, lý do và giá trị trước/sau. Không sửa JSON
    sinh viên để làm nó “khớp” sổ điểm.
 
 | Cột sổ điểm | Trường JSON |

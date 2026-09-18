@@ -1357,6 +1357,36 @@ If you answered **No** to any item, revisit the corresponding Theory section and
 
 ---
 
+## 🏠 HOMEWORK & SUBMISSION — Session 7
+
+After class, this session has exactly one deliverable set: **Homework 07**.
+Everything you need sits on one page — the task list, the video brief and the
+reference rubric: [homework/session-07/homework.md](../homework/session-07/homework.md).
+Do the in-class exercise first; the homework deliberately starts where the
+exercise ends.
+
+**How this session's homework works, in order:**
+
+1. **Build — Part 1 (code, 10 points).** Complete every task in the homework
+   sheet inside your own repository. AI tools are allowed — understand every
+   line you keep.
+2. **Explain — Part 2 (video, 4 points).** Record a **60–120 second** OBS
+   screen recording presenting ONE part of this homework — for example: show the Google Fonts `<link>` in your `<head>` and the `font-family` rules in CSS, and explain how you picked and paired the two fonts.
+   Voice required, screen shared the whole time; the full requirement checklist
+   is in the homework sheet.
+3. **Submit the video as a link — never the file.** Upload the recording to
+   your own **Google Drive** (Anyone with the link → Viewer), add one line with
+   the link to `homework/submissions.md` in your repository, then commit and
+   push. The system collects and grades the code part; for the video it stores
+   only the link, and your lecturer watches and grades it afterwards.
+4. **Check yourself first.** Open the self-check tool (`cham-bai.html`), point
+   it at your repository, and fix what it flags **before** the deadline.
+
+**Deadline: Sunday 23:59.** The practice round of every homework sheet stays
+public on the website; the official sheet is handed out in class and lives in
+your copy of the repository.
+
+
 # ⏭️ NEXT SESSION
 
 Session 8 is a **Review & Midterm Preparation** session — we will recap everything from Sessions 1–7, work through practice exam questions, and make sure you are fully ready for the midterm.

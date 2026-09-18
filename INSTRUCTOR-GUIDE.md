@@ -107,20 +107,30 @@ Week 1 is the students' first encounter with the course. In addition to the norm
 
 ## 4. Assessment Workflow
 
-### 4.1 Homework (Weekly, 10%)
+### 4.1 Homework (Weekly, 14 points)
 
 Each homework sheet (`homework/session-NN/homework.md`) has:
-- **Task 1 + Task 2** with clear requirements
-- A **Grading Rubric** (10 points total)
+- **Part 1 — Tasks (10 points)** with clear requirements and a **Grading Rubric**
+- **Part 2 — Video Reflection (4 points)**: a 1–2 minute OBS screen recording
+  in which the student presents one part of the homework. The sheet names an
+  easy topic per session, lists the requirement checklist, and carries a small
+  marking table (structure 1, screen walkthrough 1, correct explanation 2)
+- A `submissions.md` file where each student appends their Google Drive link
 - No published answer keys (intentional — homework is graded)
 
-**Student self-check flow:** Before submitting, students open the self-check tool, choose the session, and load their files. The tool grades the mechanical half (`AUTO` tier) and flags what needs human judgment (`ASSIST`/`MANUAL` tiers).
+**Video handling:** the site and the grader never receive video files. Students
+upload to their own Google Drive ("Anyone with the link → Viewer") and commit
+**only the link** to `homework/submissions.md`. Watch the links and score the
+4 video points yourself — a missing, private, or dead link cannot earn them.
+
+**Student self-check flow:** Before submitting, students open the self-check tool, choose the session, and load their files. The tool grades the mechanical half (`AUTO` tier) of the 10-point code rubric and flags what needs human judgment (`ASSIST`/`MANUAL` tiers).
 
 **Instructor grading flow:** See `HUONG-DAN-cham-bai.md` §7–9 for the full workflow:
-1. Collect PNG/PDF + JSON from each student
+1. Collect PNG/PDF + JSON from each student (code part)
 2. Verify JSON integrity with `node _tools/grader/regrade.mjs`
 3. Grade the `ASSIST` and `MANUAL` rows yourself
-4. Record marks (no built-in gradebook yet — use a spreadsheet)
+4. Open each `submissions.md` Drive link, watch the video, award the 4 points
+5. Record marks (no built-in gradebook yet — use a spreadsheet)
 
 ### 4.2 Capstone Project (40%)
 
