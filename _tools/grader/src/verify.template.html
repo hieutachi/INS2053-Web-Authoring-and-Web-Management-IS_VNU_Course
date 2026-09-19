@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- ==================================================================================
+     KIỂM TRA BÀI NỘP — trang xác minh dành riêng cho giảng viên.
+
+     Sinh ra bởi _tools/build-verify.mjs. KHÔNG được liên kết từ bất kỳ trang sinh
+     viên nào. Có `robots noindex` nhưng đây không phải trang bí mật: mọi điểm
+     dưới đây được CHẤM LẠI từ bytes trong JSON, nên ai mở được trang cũng chỉ
+     thấy kết quả xác minh, không thể thay đổi điểm.
+
+     Chạy tốt từ file:// — không fetch, không gửi dữ liệu đi đâu (CSP bên dưới).
+     ================================================================================== -->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:">
+<title>Kiểm tra bài nộp — INS2053 (trang GV)</title>
+<style>
+/*VERIFY_CSS*/
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Kiểm tra bài nộp — INS2053</h1>
+  <p id="count" class="count">Đang kiểm tra…</p>
+  <p class="note">Mọi điểm bên dưới được <b>chấm lại trực tiếp</b> từ bytes sinh viên nộp
+    (SHA-256 + rubric hiện tại — cùng cơ chế regrade.mjs / scoresheet.mjs), không lấy từ
+    con số JSON ghi sẵn. Trang chỉ đọc: không gửi dữ liệu đi đâu.</p>
+  <label class="search">Lọc theo MSSV:
+    <input id="q" type="search" autocomplete="off" placeholder="vd 2151012345">
+  </label>
+</header>
+<main id="summary"></main>
+<footer class="foot">Sinh ra bởi <code>_tools/build-verify.mjs</code> — trang GV,
+  không liên kết từ trang sinh viên, không index. Điểm cuối mỗi bài do giảng viên chốt.</footer>
+<script>
+/*VERIFY_JS*/
+</script>
+</body>
+</html>

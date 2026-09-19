@@ -17,6 +17,11 @@ _tools/grader/ClaudeKit-Clean/
 # Generated audit output (recreate with the scripts in _tools/)
 _tools/*.txt
 
+# Instructor-only verification output: embeds every submitted JSON of the
+# class. Never deploy, never commit — rebuild with `npm run build:verify`.
+_tools/verify/
+site/kiem-tra-bai.html
+
 # One-off audit probes. The re-runnable QA scripts have no tmp- prefix.
 _tools/tmp-*.js
 _tools/tmp-*.mjs

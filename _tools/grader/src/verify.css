@@ -1,0 +1,104 @@
+/* Kiểm tra bài — instructor verification page. Standalone stylesheet, no
+   external fetches (CSP default-src 'none'). Compact table first, per-paper
+   detail on demand — the lecturer scans flags, then opens one card. */
+
+* { box-sizing: border-box; }
+:root {
+  --ink: #1c2733; --mut: #5b6b7b; --line: #d8e0e8; --bg: #f4f7fa; --card: #fff;
+  --ok: #1a7f37; --okbg: #e6f4ea; --warn: #9a6700; --warnbg: #fff3d6;
+  --bad: #b42318; --badbg: #fdebe9; --accent: #0b5cad;
+}
+html { background: var(--bg); }
+body {
+  margin: 0 auto; max-width: 1100px; padding: 1.2rem 1rem 3rem;
+  font: 15px/1.45 system-ui, "Segoe UI", Roboto, Arial, sans-serif; color: var(--ink);
+}
+h1 { font-size: 1.35rem; margin: 0 0 .3rem; }
+.count { color: var(--mut); margin: .2rem 0 .6rem; }
+.note { font-size: .88rem; color: var(--mut); margin: .3rem 0; }
+.search { display: inline-flex; gap: .5rem; align-items: center; font-size: .9rem; }
+.search input {
+  font: inherit; padding: .3rem .55rem; border: 1px solid var(--line);
+  border-radius: 6px; min-width: 16rem; background: var(--card);
+}
+.top { border-bottom: 2px solid var(--line); padding-bottom: .8rem; margin-bottom: 1rem; }
+
+/* --- per-session accordion -------------------------------------------------- */
+details.hw {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; margin: 0 0 1rem; overflow: hidden;
+}
+details.hw > summary {
+  cursor: pointer; padding: .7rem .9rem; font-weight: 600;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  list-style: revert; user-select: none;
+}
+details.hw > summary:hover { background: #eef3f8; }
+.s-meta { color: var(--mut); font-weight: 400; font-size: .9rem; }
+.s-body { padding: 0 .9rem .9rem; }
+
+/* --- tables ------------------------------------------------------------------ */
+table.rubric {
+  width: 100%; border-collapse: collapse; font-size: .88rem;
+  background: var(--card); margin: .5rem 0 1rem;
+}
+table.rubric caption { caption-side: top; text-align: left; color: var(--mut); font-size: .85rem; padding: .2rem 0; }
+table.rubric th, table.rubric td {
+  border-bottom: 1px solid var(--line); padding: .35rem .5rem;
+  text-align: left; vertical-align: top;
+}
+table.rubric thead th { background: #eef3f8; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; color: var(--mut); }
+td.pts, th.pts { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td.iso { white-space: nowrap; font-size: .8rem; color: var(--mut); }
+td.flags { max-width: 15rem; }
+ul.checks { margin: .15rem 0 0; padding-left: 1.1rem; color: var(--mut); font-size: .82rem; }
+ul.checks li.miss { opacity: .55; }
+
+/* --- flags -------------------------------------------------------------------- */
+.flag {
+  display: inline-block; padding: .05rem .45rem; margin: .05rem .2rem .05rem 0;
+  border-radius: 999px; font-size: .74rem; font-weight: 600; white-space: nowrap;
+}
+.flag.good { background: var(--okbg); color: var(--ok); }
+.flag.warn { background: var(--warnbg); color: var(--warn); }
+.flag.bad  { background: var(--badbg); color: var(--bad); }
+
+/* --- tier + state chips --------------------------------------------------------- */
+.tier { font-size: .72rem; font-weight: 700; padding: .1rem .4rem; border-radius: 4px; }
+.tier.auto   { background: #e2ecf7; color: var(--accent); }
+.tier.assist { background: #ede7f6; color: #5e35b1; }
+.tier.manual { background: #fff0e0; color: #a35400; }
+.state.graded  { color: var(--ok); font-weight: 600; }
+.state.blocked { color: var(--warn); }
+.state.manual  { color: var(--mut); }
+
+/* --- result cards ------------------------------------------------------------------ */
+.cards { display: grid; gap: 1rem; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: .9rem 1rem; scroll-margin-top: 1rem;
+}
+.card.flash { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card-head { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-start; }
+.card-head .title { flex: 1 1 16rem; }
+.card-head .who { flex: 1 1 12rem; }
+.session { font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--mut); }
+.card-head .hw { font-weight: 700; font-size: 1.05rem; }
+.name { font-weight: 700; }
+.meta { color: var(--mut); font-size: .85rem; }
+.bigscore { text-align: right; margin-left: auto; }
+.bigscore .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+.bigscore .den { color: var(--mut); }
+.bigscore .cap { font-size: .75rem; color: var(--mut); }
+
+.alert { padding: .5rem .7rem; border-radius: 8px; margin: .7rem 0; font-size: .9rem; }
+.alert.ok    { background: var(--okbg); color: var(--ok); }
+.alert.error { background: var(--badbg); color: var(--bad); }
+
+.provenance {
+  display: flex; flex-wrap: wrap; gap: .3rem 1.2rem; font-size: .82rem;
+  color: var(--mut); border-top: 1px dashed var(--line); padding-top: .5rem; margin-bottom: .5rem;
+}
+.provenance code { background: #eef3f8; padding: 0 .3rem; border-radius: 4px; }
+
+.foot { margin-top: 2rem; color: var(--mut); font-size: .8rem; border-top: 1px solid var(--line); padding-top: .8rem; }
