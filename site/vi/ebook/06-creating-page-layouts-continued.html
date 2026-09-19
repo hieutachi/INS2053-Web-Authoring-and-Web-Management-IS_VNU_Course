@@ -60,14 +60,14 @@ if(w&&w!=="vi")location.replace("../../ebook/06-creating-page-layouts-continued.
         <li class="d2"><a href="#3-navigation-menu-with-current-page-highlighting">3. Navigation Menu with Current Page Highlighting</a></li>
         <li class="d2"><a href="#4-reusing-one-css-file-across-all-pages">4. Reusing One CSS File Across All Pages</a></li>
         <li class="d2"><a href="#5-styling-new-components">5. Styling New Components</a></li>
-        <li class="d2"><a href="#best-practices-2">✅ Best Practices</a></li>
-        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#thực-hành-tốt-2">✅ THỰC HÀNH TỐT</a></li>
+        <li class="d2"><a href="#lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP</a></li>
         <li class="d2"><a href="#example-1-creating-the-about-page-from-indexhtml">Example 1: Creating the About Page from index.html</a></li>
         <li class="d2"><a href="#example-2-building-the-events-page-with-event-cards">Example 2: Building the Events Page with Event Cards</a></li>
         <li class="d2"><a href="#example-3-building-the-gallery-page-with-flexbox-grid">Example 3: Building the Gallery Page with Flexbox Grid</a></li>
         <li class="d2"><a href="#example-4-building-the-contact-page-with-a-form">Example 4: Building the Contact Page with a Form</a></li>
         <li class="d2"><a href="#example-5-verifying-navigation-across-all-pages">Example 5: Verifying Navigation Across All Pages</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#homework-submission-session-6">🏠 HOMEWORK &amp; SUBMISSION — Session 6</a></li>
       </ol>
     </nav>
@@ -83,7 +83,7 @@ if(w&&w!=="vi")location.replace("../../ebook/06-creating-page-layouts-continued.
 <h2 id="creating-page-layouts-continued-multi-page-sites-and-navigation"><strong>Creating Page Layouts (Continued) — Multi-Page Sites and Navigation</strong><a class="anchor" href="#creating-page-layouts-continued-multi-page-sites-and-navigation" aria-label="Link to this section">#</a></h2>
 <p>You now have a beautifully laid-out home page. But a real website has many pages, and visitors need to move between them. Today you will build the complete Student Club Website: Home, About Us, Events, Gallery, and Contact. You will learn how to create a navigation menu that highlights the current page, how to reuse one CSS file across all pages, and how relative links connect everything together. By the end of this session your Student Club Website will be a fully functional multi-page site.</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    MDN &quot;Creating hyperlinks&quot;; MDN &quot;Document and website structure&quot;
                  Course slides (Week 6)
@@ -101,7 +101,7 @@ if(w&&w!=="vi")location.replace("../../ebook/06-creating-page-layouts-continued.
                  CLO4 (design and build a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <p>By the end of this session you will be able to:</p>
 <ul>
 <li>Explain why all pages should share the same header, navigation, sidebar, and footer</li>
@@ -113,12 +113,12 @@ if(w&&w!=="vi")location.replace("../../ebook/06-creating-page-layouts-continued.
 <li>Maintain one shared CSS file that styles the entire website</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-multi-page-website-architecture">1. Multi-Page Website Architecture<a class="anchor" href="#1-multi-page-website-architecture" aria-label="Link to this section">#</a></h3>
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-06.canvas.tsx</code> → <code>MultiPageNav</code> — slide <code>s06-architecture</code> (&quot;Multi-Page Architecture&quot;)</p>
 </blockquote>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>A <strong>multi-page website</strong> consists of multiple HTML files that link to each other. Each file is a separate page, but they all share the same visual structure: header, navigation, sidebar, and footer stay the same — only the <code>&lt;main&gt;</code> content changes.</p>
 <pre><code>index.html     →  Home page content
 about.html     →  About Us content
@@ -128,7 +128,7 @@ contact.html   →  Contact form + info
 css/style.css  →  ONE stylesheet for ALL pages
 images/        →  Shared image folder
 </code></pre>
-<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>Think of a printed brochure. Every page has the same header logo, footer with contact info, and colour scheme. Only the body text differs per page. Your website works the same way: the &quot;template&quot; stays constant; only <code>&lt;main&gt;</code> changes.</p>
 <h4 id="12-why-consistency-matters">1.2 Why Consistency Matters<a class="anchor" href="#12-why-consistency-matters" aria-label="Link to this section">#</a></h4>
 <ul>
@@ -150,7 +150,7 @@ images/        →  Shared image folder
 <blockquote>
 <p>⚠️ When you copy a page, verify that the header, nav, aside, and footer are <strong>identical</strong>. Even a missing closing tag can break the layout.</p>
 </blockquote>
-<h4 id="important-notes">⚠️ Important Notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Every page must link to the <strong>same</strong> CSS file: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code>.</li>
 <li>Keep your folder structure flat (all HTML files in the root) for simple relative links.</li>
@@ -173,7 +173,7 @@ images/        →  Shared image folder
 </li>
 <li>Create the empty files now, each with the HTML5 boilerplate and nothing else.</li>
 </ol>
-<p><strong>Expected result:</strong> Four files that all open in a browser and show a title, plus a written purpose for each. No styling yet.</p>
+<p><strong>Kết quả mong đợi:</strong> Four files that all open in a browser and show a title, plus a written purpose for each. No styling yet.</p>
 <details>
 <summary>Why the one-sentence purpose matters</summary><p>If two pages have the same purpose, they should be one page. That is how sites end up with an &quot;About&quot; and an &quot;About Us&quot; that say the same thing.</p>
 <p>The other reason to write it down: the sentence becomes the page&#39;s <code>&lt;h1&gt;</code> and its <code>&lt;meta name=&quot;description&quot;&gt;</code>. You are not doing paperwork — you are drafting content.</p>
@@ -183,7 +183,7 @@ images/        →  Shared image folder
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-06.canvas.tsx</code> → <code>LinkTargets</code> — slide <code>s06-relative-links</code> (&quot;Relative Links&quot;)</p>
 </blockquote>
-<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="21-định-nghĩa">2.1 Định nghĩa<a class="anchor" href="#21-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>A <strong>relative link</strong> points to a file based on its position relative to the current file. This is different from an <strong>absolute link</strong> (full URL starting with <code>http://</code>).</p>
 <h4 id="22-how-relative-links-work">2.2 How Relative Links Work<a class="anchor" href="#22-how-relative-links-work" aria-label="Link to this section">#</a></h4>
 <p>When all your HTML files are in the <strong>same folder</strong>:</p>
@@ -208,7 +208,7 @@ images/        →  Shared image folder
 <pre><code class="language-html">&lt;!-- Go up one folder level --&gt;
 &lt;a href=&quot;../index.html&quot;&gt;Back to Home&lt;/a&gt;
 </code></pre>
-<h4 id="comparison-table">🔍 Comparison Table<a class="anchor" href="#comparison-table" aria-label="Link to this section">#</a></h4>
+<h4 id="bảng-so-sánh">🔍 BẢNG SO SÁNH<a class="anchor" href="#bảng-so-sánh" aria-label="Link to this section">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -243,7 +243,7 @@ images/        →  Shared image folder
 <td>External websites</td>
 </tr>
 </tbody></table>
-<h4 id="important-notes-2">⚠️ Important Notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-2">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li><strong>Never use absolute file paths</strong> like <code>C:\Users\N4G\site\about.html</code>. These only work on YOUR computer.</li>
 <li>Always use forward slashes (<code>/</code>) in URLs, even on Windows. Browsers handle the conversion.</li>
@@ -293,7 +293,7 @@ images/        →  Shared image folder
 <li>On <code>about.html</code>, the <code>class=&quot;active&quot;</code> is on the About link → &quot;About Us&quot; is highlighted.</li>
 <li>The rest of the page (header, sidebar, footer) looks identical. Only <code>&lt;main&gt;</code> content changed.</li>
 </ol>
-<h4 id="important-notes-3">⚠️ Important Notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-3">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>You must manually move the <code>active</code> class when creating each page. This is easy to forget!</li>
 <li>The <code>active</code> class is NOT related to the CSS pseudo-class <code>:active</code> (which fires during a mouse click). They are different concepts.</li>
@@ -319,7 +319,7 @@ nav a:focus { background: #3b82f6; color: #fff; }
 <li>On <code>pages/about.html</code>, move both the class and <code>aria-current</code> to the About link.</li>
 <li>Open each page, then press <strong>Tab</strong> repeatedly through the nav without touching the mouse.</li>
 </ol>
-<p><strong>Expected result:</strong> Exactly one item is highlighted per page, and the focus outline is clearly visible as you Tab. Both the highlight and the focus ring must be visible — they answer different questions.</p>
+<p><strong>Kết quả mong đợi:</strong> Exactly one item is highlighted per page, and the focus outline is clearly visible as you Tab. Both the highlight and the focus ring must be visible — they answer different questions.</p>
 <details>
 <summary>Two mistakes and one addition</summary><p><strong>Mistake 1:</strong> copying the nav with <code>class=&quot;active&quot;</code> already on Home, so every page highlights Home. The nav markup is shared; the <code>active</code> class is per page.</p>
 <p><strong>Mistake 2:</strong> styling <code>:hover</code> but not <code>:focus</code>. A keyboard user then has no idea which link is selected. Always style them together.</p>
@@ -383,7 +383,7 @@ table { ... }
 .center-text { ... }
 .btn { ... }
 </code></pre>
-<h4 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Keep ONE stylesheet for small-to-medium sites. Multiple files add complexity.</li>
 <li>Add new component styles at the bottom, in the COMPONENTS section.</li>
@@ -400,7 +400,7 @@ table { ... }
 <li>Open each page in turn — <code>index.html</code>, <code>pages/about.html</code>, <code>pages/contact.html</code>.</li>
 <li>Change the colour to <code>#dc2626</code>, save, and reload all three again.</li>
 </ol>
-<p><strong>Expected result:</strong> Every page gains the blue bar, then the red bar, from one edit. Any page that does not change has a broken <code>&lt;link&gt;</code> path — check its Network tab.</p>
+<p><strong>Kết quả mong đợi:</strong> Every page gains the blue bar, then the red bar, from one edit. Any page that does not change has a broken <code>&lt;link&gt;</code> path — check its Network tab.</p>
 <details>
 <summary>The habit this replaces</summary><p>The tempting alternative is a <code>&lt;style&gt;</code> block in each page&#39;s <code>&lt;head&gt;</code>. It works for one page and fails at three: a colour change becomes three edits, and after a week the pages have quietly drifted apart.</p>
 <p>One external stylesheet also loads faster. The browser caches <code>style.css</code> after the first page, so the second and third pages need only their HTML.</p>
@@ -571,14 +571,14 @@ table tr:nth-child(even) {
 <li><code>:focus</code> pseudo-class styles the input when clicked/tabbed into.</li>
 <li><code>font-family: inherit</code> ensures form fields use the same font as the rest of the page.</li>
 </ul>
-<h4 id="important-notes-4">⚠️ Important Notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-4">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-4" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Form <code>&lt;label&gt;</code> elements should always have a <code>for</code> attribute matching the input&#39;s <code>id</code>. This connects them for accessibility.</li>
 <li>The <code>required</code> attribute on inputs enables browser-native validation.</li>
 <li>Forms need a server-side script to actually send data. Our form uses <code>action=&quot;#&quot;</code> as a placeholder.</li>
 </ul>
 <hr>
-<h3 id="best-practices-2">✅ Best Practices<a class="anchor" href="#best-practices-2" aria-label="Link to this section">#</a></h3>
+<h3 id="thực-hành-tốt-2">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-2" aria-label="Link to this section">#</a></h3>
 <ol>
 <li><strong>Build one perfect page first</strong>, then copy it for other pages.</li>
 <li><strong>Always update the <code>active</code> class</strong> in the navigation when creating a new page.</li>
@@ -590,7 +590,7 @@ table tr:nth-child(even) {
 <li><strong>Name files consistently:</strong> lowercase, no spaces, <code>.html</code> extension.</li>
 </ol>
 <hr>
-<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h3 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h3>
 <h4 id="mistake-1-forgetting-to-move-the-active-class">Mistake 1: Forgetting to move the <code>active</code> class<a class="anchor" href="#mistake-1-forgetting-to-move-the-active-class" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-html">&lt;!-- ❌ WRONG: Home is still active on the About page --&gt;
 &lt;!-- On about.html --&gt;
@@ -662,7 +662,7 @@ table tr:nth-child(even) {
 <li>Now use the same class once on <code>pages/about.html</code> — writing no new CSS at all.</li>
 <li>Change <code>border-radius</code> to <code>16px</code> in the stylesheet and reload both pages.</li>
 </ol>
-<p><strong>Expected result:</strong> All four cards change together from one edit. That is the whole point of a component class.</p>
+<p><strong>Kết quả mong đợi:</strong> All four cards change together from one edit. That is the whole point of a component class.</p>
 <details>
 <summary>How to name classes so this keeps working</summary><p>Name for <strong>what the thing is</strong>, not what it looks like:</p>
 <ul>
@@ -672,7 +672,7 @@ table tr:nth-child(even) {
 <p><code>.blue-box</code> becomes a lie the moment the design changes to green, and you either live with the wrong name or rename it in every file. <code>.card</code> stays true regardless of colour.</p>
 <p>Then use a nested selector such as <code>.card h3</code> for parts inside the component. That keeps the component&#39;s styling self-contained instead of leaking into every <code>&lt;h3&gt;</code> on the site.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -728,9 +728,9 @@ table tr:nth-child(even) {
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-creating-the-about-page-from-indexhtml">Example 1: Creating the About Page from index.html<a class="anchor" href="#example-1-creating-the-about-page-from-indexhtml" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Your <code>index.html</code> is complete. You need to create <code>about.html</code> with the same layout but different content.</p>
+<p><strong>Tình huống:</strong> Your <code>index.html</code> is complete. You need to create <code>about.html</code> with the same layout but different content.</p>
 <p><strong>Steps with code:</strong></p>
 <p>Step 1 — Save As:</p>
 <pre><code>File → Save As → about.html (in the same folder as index.html)
@@ -802,7 +802,7 @@ table tr:nth-child(even) {
     &lt;/table&gt;
 &lt;/main&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li>The <code>&lt;title&gt;</code> appears in the browser tab. Unique titles help users distinguish tabs.</li>
 <li>Moving <code>class=&quot;active&quot;</code> tells visitors which page they are on.</li>
@@ -811,10 +811,10 @@ table tr:nth-child(even) {
 <li><code>&lt;table&gt;</code> uses the styles defined in the shared CSS — no new CSS needed.</li>
 <li>The <code>&lt;aside&gt;</code> sidebar content stays the same (or can be slightly adjusted).</li>
 </ul>
-<p><strong>Result:</strong> <code>about.html</code> opens with the same header, nav, sidebar, and footer as <code>index.html</code>. The navigation highlights &quot;About Us.&quot; The main area shows club information and a leaders table.</p>
+<p><strong>Kết quả:</strong> <code>about.html</code> opens with the same header, nav, sidebar, and footer as <code>index.html</code>. The navigation highlights &quot;About Us.&quot; The main area shows club information and a leaders table.</p>
 <hr>
 <h3 id="example-2-building-the-events-page-with-event-cards">Example 2: Building the Events Page with Event Cards<a class="anchor" href="#example-2-building-the-events-page-with-event-cards" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Create an events listing page with styled event cards.</p>
+<p><strong>Tình huống:</strong> Create an events listing page with styled event cards.</p>
 <p><strong>Code (events.html — main content only):</strong></p>
 <pre><code class="language-html">&lt;main&gt;
     &lt;h2&gt;Events &amp;amp; Activities&lt;/h2&gt;
@@ -856,7 +856,7 @@ table tr:nth-child(even) {
     &lt;/div&gt;
 &lt;/main&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li>Each event is wrapped in <code>&lt;div class=&quot;event-card&quot;&gt;</code> — this applies the card styling (background, left border, padding).</li>
 <li><code>&lt;p class=&quot;event-date&quot;&gt;</code> gets bold blue text via the <code>.event-date</code> CSS rule.</li>
@@ -865,10 +865,10 @@ table tr:nth-child(even) {
 <li>All four cards stack vertically because <code>.event-card</code> is a block-level div with <code>margin-bottom: 20px</code>.</li>
 <li>Remember to set <code>class=&quot;active&quot;</code> on the Events nav link!</li>
 </ul>
-<p><strong>Result:</strong> Four event cards displayed as neat blocks with coloured left borders, dates, locations, descriptions, and action buttons.</p>
+<p><strong>Kết quả:</strong> Four event cards displayed as neat blocks with coloured left borders, dates, locations, descriptions, and action buttons.</p>
 <hr>
 <h3 id="example-3-building-the-gallery-page-with-flexbox-grid">Example 3: Building the Gallery Page with Flexbox Grid<a class="anchor" href="#example-3-building-the-gallery-page-with-flexbox-grid" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Display event photos in a responsive grid.</p>
+<p><strong>Tình huống:</strong> Display event photos in a responsive grid.</p>
 <p><strong>Code (gallery.html — main content only):</strong></p>
 <pre><code class="language-html">&lt;main&gt;
     &lt;h2&gt;Photo Gallery&lt;/h2&gt;
@@ -902,7 +902,7 @@ table tr:nth-child(even) {
     &lt;/div&gt;
 &lt;/main&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li><code>.gallery</code> is a flex container with <code>flex-wrap: wrap</code> — items flow into rows and wrap when space runs out.</li>
 <li>Each <code>.gallery-item</code> has <code>flex: 1 1 200px</code> — starts at 200px, grows to fill space, shrinks if needed.</li>
@@ -910,10 +910,10 @@ table tr:nth-child(even) {
 <li>Captions below each image use the <code>.gallery-item p</code> style (smaller, grey text).</li>
 <li>The <code>gap: 15px</code> on the container adds consistent spacing between items without extra margins.</li>
 </ul>
-<p><strong>Result:</strong> Photos display in a responsive grid that adjusts columns based on available width. On wide screens you might see 3–4 per row; on narrow screens, 1–2.</p>
+<p><strong>Kết quả:</strong> Photos display in a responsive grid that adjusts columns based on available width. On wide screens you might see 3–4 per row; on narrow screens, 1–2.</p>
 <hr>
 <h3 id="example-4-building-the-contact-page-with-a-form">Example 4: Building the Contact Page with a Form<a class="anchor" href="#example-4-building-the-contact-page-with-a-form" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Create a contact page with information and a message form.</p>
+<p><strong>Tình huống:</strong> Create a contact page with information and a message form.</p>
 <p><strong>Code (contact.html — main content only):</strong></p>
 <pre><code class="language-html">&lt;main&gt;
     &lt;h2&gt;Contact Us&lt;/h2&gt;
@@ -958,7 +958,7 @@ table tr:nth-child(even) {
     &lt;/form&gt;
 &lt;/main&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li><code>.contact-info</code> is a styled info box with light blue background (defined in CSS).</li>
 <li><code>mailto:</code> in the email link opens the user&#39;s email client.</li>
@@ -971,10 +971,10 @@ table tr:nth-child(even) {
 <li><code>&lt;textarea rows=&quot;5&quot;&gt;</code> creates a multi-line text input, 5 rows tall.</li>
 <li>The submit button uses the <code>.btn</code> class for consistent styling with other action buttons.</li>
 </ul>
-<p><strong>Result:</strong> A professional contact page with contact information in a highlighted box and a clean, accessible form below it.</p>
+<p><strong>Kết quả:</strong> A professional contact page with contact information in a highlighted box and a clean, accessible form below it.</p>
 <hr>
 <h3 id="example-5-verifying-navigation-across-all-pages">Example 5: Verifying Navigation Across All Pages<a class="anchor" href="#example-5-verifying-navigation-across-all-pages" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You have created all five pages. Verify that navigation works correctly.</p>
+<p><strong>Tình huống:</strong> You have created all five pages. Verify that navigation works correctly.</p>
 <p><strong>Checklist:</strong></p>
 <ol>
 <li><p>Open <code>index.html</code> in the browser.</p>
@@ -1031,8 +1031,8 @@ table tr:nth-child(even) {
 <li>Layout broken → check that <code>&lt;aside&gt;</code> is present inside <code>.page-body</code></li>
 </ul>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <p>Make sure your project folder contains:</p>
 <pre><code>student-club/
 ├── index.html          ← completed in Session 5
@@ -1051,7 +1051,7 @@ table tr:nth-child(even) {
 <li>Update title, active nav link, and main content</li>
 <li>Include a table of club leaders</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>In your editor, open <code>index.html</code>.</li>
 <li>File → Save As → <code>about.html</code> (same folder).</li>
@@ -1073,7 +1073,7 @@ table tr:nth-child(even) {
 <li>Add at least 4 event cards</li>
 <li>Add event card CSS to the shared stylesheet</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>Save <code>index.html</code> as <code>events.html</code>.</li>
 <li>Update <code>&lt;title&gt;</code> to &quot;Student Club - Events&quot;.</li>
@@ -1094,7 +1094,7 @@ table tr:nth-child(even) {
 <li>Add at least 6 gallery items</li>
 <li>Add gallery CSS to the shared stylesheet</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>Save <code>index.html</code> as <code>gallery.html</code>.</li>
 <li>Update <code>&lt;title&gt;</code> to &quot;Student Club - Gallery&quot;.</li>
@@ -1116,7 +1116,7 @@ table tr:nth-child(even) {
 <li>Include contact info box and message form</li>
 <li>Add form CSS to the shared stylesheet</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>Save <code>index.html</code> as <code>contact.html</code>.</li>
 <li>Update <code>&lt;title&gt;</code> to &quot;Student Club - Contact&quot;.</li>
@@ -1137,7 +1137,7 @@ table tr:nth-child(even) {
 <li>Check for broken links, missing images, or layout issues</li>
 <li>Verify the browser console shows no errors</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>Open <code>index.html</code> in the browser.</li>
 <li>Click each nav link in order: Home → About → Events → Gallery → Contact → Home.</li>
@@ -1155,7 +1155,7 @@ table tr:nth-child(even) {
 <p>✅ <strong>Expected result:</strong> All five pages load correctly. Navigation cycle works in any order. No broken links. No console errors. Consistent design across all pages.</p>
 <p>📁 <strong>Files to fix (if needed):</strong> Any HTML or CSS file with issues</p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>Navigation bugs are the ones students most often ship without noticing, because the page they are testing from happens to work.</p>
 <table>
 <thead>
@@ -1223,7 +1223,7 @@ table tr:nth-child(even) {
 </tbody></table>
 <p><strong>Test navigation the way a marker will:</strong> open the deepest page in the site, then click every nav item in turn without touching the address bar. Any link that breaks is a path written from the wrong starting point.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. You are on <code>about.html</code> in the project root and want to link to <code>index.html</code>. What is the correct <code>href</code>?</strong></p>
 <details>
@@ -1258,7 +1258,7 @@ table tr:nth-child(even) {
 <details>
 <summary>Answer</summary><p>Start on the home page and click every nav link on every page, checking the browser reaches the right file — a 5-page site has 25 link paths and takes about two minutes. Watch for <code>file:///C:/...</code> 404s from absolute paths, and confirm each page&#39;s <code>.active</code> class matches the page you are actually on.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1321,7 +1321,7 @@ table tr:nth-child(even) {
 <p>💡 If you answered &quot;No&quot; to any item, revisit that section and redo the corresponding task. Pay close attention to the worked examples — follow them line by line.</p>
 </blockquote>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure">Structuring a website — MDN</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks">Creating hyperlinks — MDN</a></li>
@@ -1338,7 +1338,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-06.html">homework/session-06/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -1355,10 +1355,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>In the next session, you will enhance your Student Club Website with advanced CSS techniques including responsive design with media queries, CSS transitions and animations, and refined typography — making your site look polished on every device.</p>
 
   </article>

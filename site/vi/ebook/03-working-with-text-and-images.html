@@ -61,8 +61,8 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
         <li class="d2"><a href="#4-images-in-html">4. Images in HTML</a></li>
         <li class="d2"><a href="#5-image-formats">5. Image Formats</a></li>
         <li class="d2"><a href="#6-using-the-editor-to-insert-content">6. Using the Editor to Insert Content</a></li>
-        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
-        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#thực-hành-tốt">✅ THỰC HÀNH TỐT</a></li>
+        <li class="d2"><a href="#lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP</a></li>
         <li class="d2"><a href="#example-1-formatted-about-page">Example 1: Formatted About Page</a></li>
         <li class="d2"><a href="#example-2-adding-images-to-the-home-page">Example 2: Adding Images to the Home Page</a></li>
         <li class="d2"><a href="#example-3-nested-lists-for-event-categories">Example 3: Nested Lists for Event Categories</a></li>
@@ -82,7 +82,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <h2 id="working-with-text-and-images"><strong>Working with Text and Images</strong><a class="anchor" href="#working-with-text-and-images" aria-label="Link to this section">#</a></h2>
 <p>Welcome to Session 3! In the previous sessions you set up your project, created multiple pages, and connected them with navigation. Today you will learn how to fill those pages with real content: formatted text (headings, paragraphs, bold, italic, lists) and images (with proper formats, sizing, and accessibility). By the end of this session your Student Club Website will look like a real website with rich, well-structured content that is accessible to all users.</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    MDN &quot;HTML Text Fundamentals&quot;
                  https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals
@@ -101,7 +101,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
                  CLO4 (design and build a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <p>After this session you will be able to:</p>
 <ul>
 <li>Use heading tags (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>) correctly to create a logical page outline</li>
@@ -114,12 +114,12 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Use Dreamweaver&#39;s Insert menu and Properties panel (or VS Code equivalents) to work efficiently</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-headings-creating-page-structure">1. Headings: Creating Page Structure<a class="anchor" href="#1-headings-creating-page-structure" aria-label="Link to this section">#</a></h3>
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-03.canvas.tsx</code> → <code>HeadingOutline</code> — slide <code>headings</code> (&quot;Headings: Page Structure&quot;)</p>
 </blockquote>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>HTML provides six levels of headings: <code>&lt;h1&gt;</code> (largest/most important) through <code>&lt;h6&gt;</code> (smallest/least important). Headings create an <strong>outline</strong> of your page, similar to chapter titles and section headers in a textbook.</p>
 <p>Headings serve THREE critical purposes:</p>
 <ol>
@@ -127,7 +127,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li><strong>Accessibility</strong> — Screen reader users navigate by jumping from heading to heading, skipping content they are not interested in</li>
 <li><strong>SEO (Search Engine Optimization)</strong> — Search engines use headings to understand what your page is about</li>
 </ol>
-<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>Think of headings like the <strong>table of contents in a textbook</strong>:</p>
 <ul>
 <li><code>&lt;h1&gt;</code> = Book title (only ONE per page)</li>
@@ -218,7 +218,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Install the <strong>HeadingsMap</strong> extension, or open F12 → Elements and read the nesting.</li>
 <li>Write the outline out on paper from the headings alone.</li>
 </ol>
-<p><strong>Expected result:</strong> The outline reads like a table of contents. Exactly one <code>&lt;h1&gt;</code>, no skipped levels, and each heading names what follows it.</p>
+<p><strong>Kết quả mong đợi:</strong> The outline reads like a table of contents. Exactly one <code>&lt;h1&gt;</code>, no skipped levels, and each heading names what follows it.</p>
 <details>
 <summary>The mistake almost everyone makes first</summary><p>Choosing a heading level because of its size. <code>&lt;h4&gt;</code> is not &quot;small bold text&quot; — it is a fourth-level section, and jumping from <code>&lt;h2&gt;</code> to <code>&lt;h4&gt;</code> tells a screen reader user that a level is missing.</p>
 <p>Pick the level from the structure, then set the size in CSS:</p>
@@ -304,7 +304,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
     &lt;p&gt;Event details...&lt;/p&gt;
 &lt;/section&gt;
 </code></pre>
-<h4 id="real-life-example-2">🎒 Real-life Example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-2">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-2" aria-label="Link to this section">#</a></h4>
 <p>Think of text formatting like <strong>voice tone when giving a presentation</strong>:</p>
 <ul>
 <li><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, etc. = Speaking louder for section titles so everyone knows a new topic is starting</li>
@@ -314,7 +314,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li><code>&lt;hr&gt;</code> = Pausing between topics (like saying &quot;Now, let us move on to...&quot;)</li>
 <li><code>&lt;p&gt;</code> = A complete thought, separated by natural pauses</li>
 </ul>
-<h4 id="important-notes">⚠️ Important Notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Do NOT use <code>&lt;br&gt;</code> to create vertical spacing. Use CSS <code>margin</code> and <code>padding</code> instead.</li>
 <li>Do NOT use <code>&lt;b&gt;</code> or <code>&lt;i&gt;</code> as your default bold/italic tags. Prefer <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>.</li>
@@ -331,7 +331,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Reload. They look identical.</li>
 <li>Open F12 → <strong>Elements</strong>, then the <strong>Accessibility</strong> pane, and inspect each one.</li>
 </ol>
-<p><strong>Expected result:</strong> Both render bold. Only <code>&lt;strong&gt;</code> carries importance in the accessibility tree; <code>&lt;b&gt;</code> is styling with no meaning attached.</p>
+<p><strong>Kết quả mong đợi:</strong> Both render bold. Only <code>&lt;strong&gt;</code> carries importance in the accessibility tree; <code>&lt;b&gt;</code> is styling with no meaning attached.</p>
 <details>
 <summary>Which to use, and when</summary><ul>
 <li><code>&lt;strong&gt;</code> — this text is <em>important</em>. A screen reader may emphasise it.</li>
@@ -442,7 +442,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <td>Chronological order matters</td>
 </tr>
 </tbody></table>
-<h4 id="important-notes-2">⚠️ Important Notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-2">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Every list item MUST be wrapped in <code>&lt;li&gt;</code> tags. Nothing else goes directly inside <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>.</li>
 <li>Nested lists go INSIDE the <code>&lt;li&gt;</code> element, AFTER the text of the parent item.</li>
@@ -468,7 +468,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Reload and look at the indentation and bullet shapes.</li>
 <li>Now move the nested <code>&lt;ul&gt;</code> so it sits <em>between</em> two <code>&lt;li&gt;</code> elements instead of inside one, and reload.</li>
 </ol>
-<p><strong>Expected result:</strong> Correctly nested, the sub-list indents under its parent with a different bullet. Nested wrongly, it still renders — but the validator will reject it, and screen readers lose the parent-child relationship.</p>
+<p><strong>Kết quả mong đợi:</strong> Correctly nested, the sub-list indents under its parent with a different bullet. Nested wrongly, it still renders — but the validator will reject it, and screen readers lose the parent-child relationship.</p>
 <details>
 <summary>The one nesting rule</summary><p>A nested list must live <strong>inside</strong> an <code>&lt;li&gt;</code>, not between them. Only <code>&lt;li&gt;</code> may be a direct child of <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code>.</p>
 <p>Note where the parent&#39;s <code>&lt;/li&gt;</code> goes: after the nested <code>&lt;/ul&gt;</code>, not before it. That is what makes &quot;Weekly workshops&quot; the parent of the two sub-items rather than a sibling.</p>
@@ -578,7 +578,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 &lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Club team members&quot;&gt;
 </code></pre>
 <p>⚠️ Important: The <code>width</code> and <code>height</code> attributes set the DISPLAY size, not the actual file size. Setting <code>width=&quot;200&quot;</code> on a 4000-pixel-wide photo makes it display small but still downloads the full file. Always resize images to the correct dimensions BEFORE adding them to your site.</p>
-<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-3">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-3" aria-label="Link to this section">#</a></h4>
 <p>Think of the <code>&lt;img&gt;</code> tag like hanging a <strong>painting in a gallery</strong>:</p>
 <ul>
 <li><code>src</code> = Where the painting is stored (the storage room location)</li>
@@ -599,7 +599,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Now break one path on purpose: change <code>workshop.jpg</code> to <code>workshop-x.jpg</code> and reload.</li>
 <li>Finally, in F12 → Elements, delete each <code>&lt;img&gt;</code> in turn and read the page without it.</li>
 </ol>
-<p><strong>Expected result:</strong> The broken image shows its alt text in place of the photo — proof that alt text is also your fallback. Deleting the decorative divider costs the reader nothing, which is exactly why its alt is empty.</p>
+<p><strong>Kết quả mong đợi:</strong> The broken image shows its alt text in place of the photo — proof that alt text is also your fallback. Deleting the decorative divider costs the reader nothing, which is exactly why its alt is empty.</p>
 <details>
 <summary>The rule that decides every case</summary><p>Ask: <em>if this image failed to load, what would the reader need to be told?</em></p>
 <ul>
@@ -733,7 +733,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Use JPG quality 70-80% for photos (barely noticeable quality loss, much smaller file)</li>
 <li>Never use images larger than 2 MB on a web page</li>
 </ul>
-<h4 id="important-notes-3">⚠️ Important Notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-3">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Always save images in the <code>images/</code> subfolder of your project. Never link to images on your Desktop or external URLs (unless intentionally using a CDN).</li>
 <li>Use RELATIVE paths for all image sources: <code>src=&quot;images/photo.jpg&quot;</code> not <code>src=&quot;C:\Users\...\photo.jpg&quot;</code>.</li>
@@ -785,14 +785,14 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 </tr>
 </tbody></table>
 <p>To use Emmet: type the abbreviation in an HTML file and press <strong>Tab</strong>.</p>
-<h4 id="important-notes-4">⚠️ Important Notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-4">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-4" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Visual tools (Dreamweaver Design View) generate HTML FOR YOU, but you should always verify the generated code in Code View.</li>
 <li>Learning to type HTML manually is ESSENTIAL. Visual tools are helpful shortcuts, not replacements for understanding code.</li>
 <li>In VS Code, install the &quot;HTML Snippets&quot; extension for additional shortcuts.</li>
 </ul>
 <hr>
-<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<h3 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h3>
 <ol>
 <li><strong>Use exactly ONE <code>&lt;h1&gt;</code> per page.</strong> It should describe the page&#39;s main topic.</li>
 <li><strong>Follow heading hierarchy strictly.</strong> Never skip levels (h1 → h2 → h3, not h1 → h3).</li>
@@ -808,7 +808,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li><strong>Test with images disabled</strong> in your browser to verify that alt text provides adequate information.</li>
 </ol>
 <hr>
-<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h3 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h3>
 <h4 id="mistake-1-skipping-heading-levels">Mistake 1: Skipping heading levels<a class="anchor" href="#mistake-1-skipping-heading-levels" aria-label="Link to this section">#</a></h4>
 <p>❌ Wrong:</p>
 <pre><code class="language-html">&lt;h1&gt;Student Club&lt;/h1&gt;
@@ -868,7 +868,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 &lt;img src=&quot;images/photo.jpg&quot; alt=&quot;Team photo&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;
 </code></pre>
 <hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -954,9 +954,9 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-formatted-about-page">Example 1: Formatted About Page<a class="anchor" href="#example-1-formatted-about-page" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You are building the About page for the Student Club Website. You need headings, paragraphs, bold text, italic text, and both types of lists.</p>
+<p><strong>Tình huống:</strong> You are building the About page for the Student Club Website. You need headings, paragraphs, bold text, italic text, and both types of lists.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -1016,7 +1016,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li><code>&lt;h2&gt;About Our Club&lt;/h2&gt;</code>: Main section heading. Only one <code>&lt;h1&gt;</code> exists (in the header), so <code>&lt;h2&gt;</code> starts the content sections.</li>
 <li><code>&lt;strong&gt;Student Club&lt;/strong&gt;</code>: Bold emphasis on the club name — this is important information.</li>
@@ -1026,10 +1026,10 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li><code>&lt;ol&gt;</code> with <code>&lt;li&gt;</code> items: Numbered list of joining steps. Order IS critical (you must fill out the form BEFORE attending orientation), so ordered list is correct.</li>
 <li><code>&lt;blockquote&gt;</code>: Indented quotation block for the club motto. Screen readers announce this as a quotation.</li>
 </ul>
-<p><strong>Result:</strong> A well-structured About page with clear visual hierarchy. The bulleted list shows activities, the numbered list shows joining steps, and the blockquote displays the motto with distinctive styling.</p>
+<p><strong>Kết quả:</strong> A well-structured About page with clear visual hierarchy. The bulleted list shows activities, the numbered list shows joining steps, and the blockquote displays the motto with distinctive styling.</p>
 <hr>
 <h3 id="example-2-adding-images-to-the-home-page">Example 2: Adding Images to the Home Page<a class="anchor" href="#example-2-adding-images-to-the-home-page" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want to add the club logo and a banner image to the home page header, plus a team photo in the main content area.</p>
+<p><strong>Tình huống:</strong> You want to add the club logo and a banner image to the home page header, plus a team photo in the main content area.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;header&gt;
     &lt;!-- Logo: PNG format because it has a transparent background --&gt;
@@ -1052,7 +1052,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
     &lt;p&gt;&lt;em&gt;Our team at the annual orientation event, September 2024.&lt;/em&gt;&lt;/p&gt;
 &lt;/main&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li><code>&lt;img src=&quot;images/club-logo.png&quot;...&gt;</code>: PNG format chosen because logos typically need transparent backgrounds. The relative path <code>images/club-logo.png</code> navigates from the root (where index.html lives) into the <code>images/</code> subfolder.</li>
 <li><code>alt=&quot;Student Club logo with blue shield emblem&quot;</code>: Describes WHAT the logo looks like, not just &quot;logo.&quot; A screen reader user gets a mental picture.</li>
@@ -1061,10 +1061,10 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li><code>alt=&quot;Students collaborating on projects in the campus library&quot;</code>: Describes the scene in the photo. Specific and informative.</li>
 <li><code>&lt;p&gt;&lt;em&gt;Our team at the annual orientation event...&lt;/em&gt;&lt;/p&gt;</code>: An image caption placed directly after the image. Uses <code>&lt;em&gt;</code> for subtle emphasis. Captions provide context that supplements (but does not duplicate) the alt text.</li>
 </ul>
-<p><strong>Result:</strong> Three images displayed at appropriate sizes with descriptive alt text. If any image fails to load, the alt text appears in its place. Screen reader users hear meaningful descriptions.</p>
+<p><strong>Kết quả:</strong> Three images displayed at appropriate sizes with descriptive alt text. If any image fails to load, the alt text appears in its place. Screen reader users hear meaningful descriptions.</p>
 <hr>
 <h3 id="example-3-nested-lists-for-event-categories">Example 3: Nested Lists for Event Categories<a class="anchor" href="#example-3-nested-lists-for-event-categories" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want to organize events by category with sub-items, mixing unordered and ordered lists.</p>
+<p><strong>Tình huống:</strong> You want to organize events by category with sub-items, mixing unordered and ordered lists.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;h2&gt;Event Schedule&lt;/h2&gt;
 
@@ -1091,7 +1091,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
     &lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li>Outer <code>&lt;ul&gt;</code>: The top-level categories (Technical, Creative, Social) are not ordered, so we use an unordered list.</li>
 <li><code>&lt;li&gt;&lt;strong&gt;Technical Workshops&lt;/strong&gt;</code>: Each category is a list item with a bold label.</li>
@@ -1100,9 +1100,9 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Inner <code>&lt;ul&gt;</code> for Creative Events: These events have no specific order, so we nest an unordered list.</li>
 <li>The nesting creates a visual indentation that clearly shows the hierarchy.</li>
 </ul>
-<p><strong>Result:</strong> A hierarchical list showing three event categories, each containing sub-items. Technical workshops are numbered (sequential), while creative and social events are bulleted (non-sequential).</p>
+<p><strong>Kết quả:</strong> A hierarchical list showing three event categories, each containing sub-items. Technical workshops are numbered (sequential), while creative and social events are bulleted (non-sequential).</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
 <h3 id="setup-tools-and-folders">Setup (Tools and Folders)<a class="anchor" href="#setup-tools-and-folders" aria-label="Link to this section">#</a></h3>
 <p>Before starting, make sure:</p>
 <ol>
@@ -1127,8 +1127,8 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Include a blockquote with the club motto</li>
 </ul>
 <p>🔧 <strong>Steps:</strong></p>
-<p><strong>Step 1:</strong> Open <code>about.html</code> in your editor.</p>
-<p><strong>Step 2:</strong> Replace the entire <code>&lt;main&gt;</code> section content with this code:</p>
+<p><strong>Bước 1:</strong> Open <code>about.html</code> in your editor.</p>
+<p><strong>Bước 2:</strong> Replace the entire <code>&lt;main&gt;</code> section content with this code:</p>
 <pre><code class="language-html">    &lt;main&gt;
         &lt;h2&gt;About Our Club&lt;/h2&gt;
         &lt;p&gt;The &lt;strong&gt;Student Club&lt;/strong&gt; was founded in 2020 with a mission to bring
@@ -1169,8 +1169,8 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
         &lt;/blockquote&gt;
     &lt;/main&gt;
 </code></pre>
-<p><strong>Step 3:</strong> Save (Ctrl+S) and preview in browser (F12).</p>
-<p><strong>Step 4:</strong> Verify:</p>
+<p><strong>Bước 3:</strong> Save (Ctrl+S) and preview in browser (F12).</p>
+<p><strong>Bước 4:</strong> Verify:</p>
 <ul>
 <li>Headings decrease in size from h2 to h3</li>
 <li>Bold and italic text render correctly</li>
@@ -1192,13 +1192,13 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>All paths must be relative</li>
 </ul>
 <p>🔧 <strong>Steps:</strong></p>
-<p><strong>Step 1:</strong> Make sure your images exist in the <code>images/</code> folder:</p>
+<p><strong>Bước 1:</strong> Make sure your images exist in the <code>images/</code> folder:</p>
 <ul>
 <li><code>images/club-logo.png</code></li>
 <li><code>images/banner.jpg</code></li>
 <li><code>images/team-photo.jpg</code></li>
 </ul>
-<p><strong>Step 2:</strong> Open <code>index.html</code> and update the <code>&lt;header&gt;</code> section:</p>
+<p><strong>Bước 2:</strong> Open <code>index.html</code> and update the <code>&lt;header&gt;</code> section:</p>
 <pre><code class="language-html">    &lt;header&gt;
         &lt;img src=&quot;images/club-logo.png&quot; alt=&quot;Student Club logo with blue shield emblem&quot;
              width=&quot;120&quot; height=&quot;60&quot;&gt;
@@ -1216,13 +1216,13 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
         &lt;/nav&gt;
     &lt;/header&gt;
 </code></pre>
-<p><strong>Step 3:</strong> In the <code>&lt;main&gt;</code> section, add a team photo after the welcome paragraph:</p>
+<p><strong>Bước 3:</strong> In the <code>&lt;main&gt;</code> section, add a team photo after the welcome paragraph:</p>
 <pre><code class="language-html">        &lt;h3&gt;Meet Our Team&lt;/h3&gt;
         &lt;img src=&quot;images/team-photo.jpg&quot; alt=&quot;Five club leaders posing in front of the IT building&quot;
              width=&quot;400&quot; height=&quot;300&quot;&gt;
         &lt;p&gt;&lt;em&gt;Our leadership team at the 2024 orientation event.&lt;/em&gt;&lt;/p&gt;
 </code></pre>
-<p><strong>Step 4:</strong> Save and preview. Check that:</p>
+<p><strong>Bước 4:</strong> Save and preview. Check that:</p>
 <ul>
 <li>All three images display at the correct size</li>
 <li>The logo appears above the heading</li>
@@ -1230,7 +1230,7 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>The team photo appears in the main content area</li>
 <li>If you rename an image file temporarily to test, the alt text appears in place of the missing image</li>
 </ul>
-<p><strong>Step 5:</strong> Test accessibility: Right-click in Chrome → Inspect → find an <code>&lt;img&gt;</code> tag → delete the <code>src</code> attribute → observe the alt text appearing.</p>
+<p><strong>Bước 5:</strong> Test accessibility: Right-click in Chrome → Inspect → find an <code>&lt;img&gt;</code> tag → delete the <code>src</code> attribute → observe the alt text appearing.</p>
 <p>✅ <strong>Expected result:</strong> Three images displayed correctly with proper sizing. Alt text is present and descriptive. Images use relative paths and appropriate formats.</p>
 <p>💾 <strong>File to save:</strong> <code>index.html</code></p>
 <hr>
@@ -1245,13 +1245,13 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
 <li>Images must use relative paths</li>
 </ul>
 <p>🔧 <strong>Steps:</strong></p>
-<p><strong>Step 1:</strong> Place at least 3 images in your <code>images/</code> folder. If you do not have real photos, create colored placeholder images named:</p>
+<p><strong>Bước 1:</strong> Place at least 3 images in your <code>images/</code> folder. If you do not have real photos, create colored placeholder images named:</p>
 <ul>
 <li><code>event-orientation.jpg</code> (400x300)</li>
 <li><code>event-workshop.jpg</code> (400x300)</li>
 <li><code>event-social.jpg</code> (400x300)</li>
 </ul>
-<p><strong>Step 2:</strong> Open <code>gallery.html</code> and replace the <code>&lt;main&gt;</code> content:</p>
+<p><strong>Bước 2:</strong> Open <code>gallery.html</code> and replace the <code>&lt;main&gt;</code> content:</p>
 <pre><code class="language-html">    &lt;main&gt;
         &lt;h2&gt;Photo Gallery&lt;/h2&gt;
         &lt;p&gt;Browse photos from our events and activities throughout the year.&lt;/p&gt;
@@ -1281,8 +1281,8 @@ if(w&&w!=="vi")location.replace("../../ebook/03-working-with-text-and-images.htm
         &lt;/section&gt;
     &lt;/main&gt;
 </code></pre>
-<p><strong>Step 3:</strong> Save and preview. Verify all images display and captions appear below each image.</p>
-<p><strong>Step 4:</strong> Add CSS to style the gallery. Open <code>css/style.css</code> and add:</p>
+<p><strong>Bước 3:</strong> Save and preview. Verify all images display and captions appear below each image.</p>
+<p><strong>Bước 4:</strong> Add CSS to style the gallery. Open <code>css/style.css</code> and add:</p>
 <pre><code class="language-css">/* --- Gallery Styles --- */
 main section {
     margin-bottom: 30px;
@@ -1305,7 +1305,7 @@ main img + p {
     font-size: 14px;
 }
 </code></pre>
-<p><strong>Step 5:</strong> Save the CSS file and refresh the browser. Images should now have borders, rounded corners, and centered italic captions.</p>
+<p><strong>Bước 5:</strong> Save the CSS file and refresh the browser. Images should now have borders, rounded corners, and centered italic captions.</p>
 <p>✅ <strong>Expected result:</strong> A gallery page with three sections, each containing a heading, an image with border styling, and an italic caption. All images use relative paths and have descriptive alt text.</p>
 <p>💾 <strong>Files to save:</strong> <code>gallery.html</code>, <code>css/style.css</code></p>
 <hr>
@@ -1320,8 +1320,8 @@ main img + p {
 <li>Ensure styles work consistently across all five pages</li>
 </ul>
 <p>🔧 <strong>Steps:</strong></p>
-<p><strong>Step 1:</strong> Open <code>css/style.css</code>.</p>
-<p><strong>Step 2:</strong> Replace or update the content with this comprehensive stylesheet:</p>
+<p><strong>Bước 1:</strong> Open <code>css/style.css</code>.</p>
+<p><strong>Bước 2:</strong> Replace or update the content with this comprehensive stylesheet:</p>
 <pre><code class="language-css">/* ========================================
    Student Club Website - Main Stylesheet
    Updated for Session 3: Text &amp; Images
@@ -1521,8 +1521,8 @@ footer {
     margin-top: 20px;
 }
 </code></pre>
-<p><strong>Step 3:</strong> Save the CSS file (Ctrl+S).</p>
-<p><strong>Step 4:</strong> Preview EACH of the five pages in the browser. Verify:</p>
+<p><strong>Bước 3:</strong> Save the CSS file (Ctrl+S).</p>
+<p><strong>Bước 4:</strong> Preview EACH of the five pages in the browser. Verify:</p>
 <ul>
 <li>Headings are styled consistently with the correct sizes and colors</li>
 <li>Paragraphs are justified with comfortable line spacing</li>
@@ -1535,7 +1535,7 @@ footer {
 <p>✅ <strong>Expected result:</strong> All five pages share a professional, consistent design. Text is readable, images are well-presented, and the overall layout feels polished.</p>
 <p>💾 <strong>File to save:</strong> <code>css/style.css</code></p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>Text and image bugs are visible, which makes them good practice at reading a symptom back to its cause.</p>
 <table>
 <thead>
@@ -1603,7 +1603,7 @@ footer {
 </tbody></table>
 <p><strong>The alt-text test that takes ten seconds:</strong> in DevTools, right-click each <code>&lt;img&gt;</code> and delete it. Read the page. If a sentence is now missing information, that image&#39;s alt text needs to supply it.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. Why should there be only one <code>&lt;h1&gt;</code> per page?</strong></p>
 <details>
@@ -1641,7 +1641,7 @@ footer {
 <details>
 <summary>Answer</summary><p><code>&lt;ol&gt;</code> when the <strong>order matters</strong> — installation steps, rankings, a recipe. <code>&lt;ul&gt;</code> when it does not — navigation links, feature lists, club benefits. Ask yourself: if I shuffled these items, would the meaning change? Yes → <code>&lt;ol&gt;</code>. No → <code>&lt;ul&gt;</code>. Never choose based on whether you want bullets or numbers; that is <code>list-style</code> in CSS.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1707,7 +1707,7 @@ footer {
 <li>0-4 Yes: Re-read the Theory section carefully. Focus on the worked examples and replicate them step by step. Ask your instructor or a classmate for help.</li>
 </ul>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals">HTML Text Fundamentals — MDN</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Advanced_text_formatting">Advanced Text Formatting — MDN</a></li>
@@ -1725,7 +1725,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-03.html">homework/session-03/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -1742,10 +1742,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>In Session 4, you will learn how to create hyperlinks between pages, build navigation systems, and use anchors to link to specific sections within a page — making your Student Club Website fully navigable.</p>
 
   </article>

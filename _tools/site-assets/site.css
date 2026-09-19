@@ -1857,3 +1857,23 @@ kbd {
   }
 }
 
+/* --- Vietnamese typography (TRANSLATION-PLAN.md §5.6 / package A4) ---------
+   Diacritics (ặ, ồ, ữ) collide at the English leading; the 23ch measure is
+   calibrated on English titles ~18% shorter than Vietnamese. Scoped to
+   html[lang="vi"] so the English tree is untouched. */
+html[lang="vi"] h1 {
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+html[lang="vi"] .session-page h1,
+html[lang="vi"] .list-page h1,
+html[lang="vi"] .reading-page h1 {
+  max-width: 30ch;
+}
+
+html[lang="vi"] .toc a {
+  line-height: 1.5;
+}
+
+

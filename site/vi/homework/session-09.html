@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Homework 9: Creating HTML Tables — INS2053 · Web Authoring &amp; Web Management</title>
+<title>Bài tập 9: Tạo bảng HTML — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.">
 <link rel="stylesheet" href="../../assets/site.css">
 <script>
@@ -49,27 +49,23 @@ if(w&&w!=="vi")location.replace("../../homework/session-09.html");}catch(e){}})(
 <main id="main">
   <header class="page-head">
     <p class="eyebrow">Buổi 09 · Bài tập</p>
-    <h1>Homework 9: Creating HTML Tables</h1>
+    <h1>Bài tập 9: Tạo bảng HTML</h1>
     <p class="lead">Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.</p>
 
   </header>
 <nav class="toc" aria-labelledby="toc-h">
       <h2 id="toc-h">Trong trang này</h2>
       <ol>
-        <li class="d2"><a href="#practice-status">Practice Status</a></li>
-        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
+        <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
-        <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
-        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
-        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
+        <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
+        <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
         <li class="d2"><a href="#tips">Tips</a></li>
         <li class="d2"><a href="#example-output">Example Output</a></li>
       </ol>
     </nav>
-  <div class="callout warn lang-fallback" role="note">
-    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
-    <p><a href="../../homework/session-09.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
-  </div>
   <div class="callout status-note" role="status">
     <p><strong>Chế độ luyện tập.</strong> Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push phần code, rồi thêm link Google Drive vào homework/submissions.md — rubric tham chiếu dưới đây chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
     <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 9, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
@@ -139,34 +135,34 @@ if(w&&w!=="vi")location.replace("../../homework/session-09.html");}catch(e){}})(
 </html>"></iframe>
   </section>
   <article class="doc">
-<h2 id="homework-9-creating-html-tables">Homework 9: Creating HTML Tables<a class="anchor" href="#homework-9-creating-html-tables" aria-label="Link to this section">#</a></h2>
-<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
-<p>Online submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md. The reference rubric below grades the code part (10 pts); the video is graded separately (4 pts).</p>
-<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<h2 id="bài-tập-9-tạo-bảng-html">Bài tập 9: Tạo bảng HTML<a class="anchor" href="#bài-tập-9-tạo-bảng-html" aria-label="Link to this section">#</a></h2>
+<h3 id="trạng-thái-luyện-tập">Trạng thái luyện tập<a class="anchor" href="#trạng-thái-luyện-tập" aria-label="Link to this section">#</a></h3>
+<p>Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push các phần code, rồi thêm link Google Drive vào homework/submissions.md. Rubric tham chiếu bên dưới chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
+<h3 id="mục-tiêu">Mục tiêu<a class="anchor" href="#mục-tiêu" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Learn how to build HTML tables</li>
-<li>Practice using table elements: table, tr, th, td</li>
-<li>Style a table with CSS to make it readable</li>
+<li>Học cách xây bảng HTML</li>
+<li>Luyện dùng các phần tử bảng: table, tr, th, td</li>
+<li>Style bảng bằng CSS để dễ đọc</li>
 </ul>
 <h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
-<h4 id="task-1-create-a-schedule-table">Task 1: Create a Schedule Table<a class="anchor" href="#task-1-create-a-schedule-table" aria-label="Link to this section">#</a></h4>
-<p>Create a new page for your project that displays a weekly schedule or activity timetable.</p>
-<p><strong>Create the file:</strong> <code>project/activities.html</code></p>
+<h4 id="task-1-tạo-bảng-lịch-trình">Task 1: Tạo bảng lịch trình<a class="anchor" href="#task-1-tạo-bảng-lịch-trình" aria-label="Link to this section">#</a></h4>
+<p>Tạo một trang mới cho dự án hiển thị lịch hằng tuần hoặc thời khóa biểu hoạt động.</p>
+<p><strong>Tạo file:</strong> <code>project/activities.html</code></p>
 <blockquote>
-<p>This is the page <code>project/spec.md</code> and milestone M5 grade — the file name must be exactly
-<code>activities.html</code>, at the project root beside <code>index.html</code>.</p>
+<p>Đây là trang được <code>project/spec.md</code> và mốc M5 chấm — tên file phải chính xác là
+<code>activities.html</code>, nằm ở gốc dự án cạnh <code>index.html</code>.</p>
 </blockquote>
-<p><strong>Your table must include:</strong></p>
+<p><strong>Bảng của bạn phải có:</strong></p>
 <ul>
-<li>A <code>&lt;caption&gt;</code> element describing the table (e.g., &quot;Weekly Club Activities&quot;)</li>
-<li>A <code>&lt;thead&gt;</code> section with column headers</li>
-<li>A <code>&lt;tbody&gt;</code> section with data rows</li>
-<li>At least 5 columns (e.g., Day, Time, Activity, Location, Leader)</li>
-<li>At least 5 rows of data</li>
-<li>Use <code>&lt;th&gt;</code> for header cells and <code>&lt;td&gt;</code> for data cells</li>
-<li>Use <code>colspan</code> or <code>rowspan</code> at least once</li>
+<li>Một phần tử <code>&lt;caption&gt;</code> mô tả bảng (ví dụ &quot;Weekly Club Activities&quot;)</li>
+<li>Một phần <code>&lt;thead&gt;</code> với các ô tiêu đề cột</li>
+<li>Một phần <code>&lt;tbody&gt;</code> với các dòng dữ liệu</li>
+<li>Ít nhất 5 cột (ví dụ Day, Time, Activity, Location, Leader)</li>
+<li>Ít nhất 5 dòng dữ liệu</li>
+<li>Dùng <code>&lt;th&gt;</code> cho ô tiêu đề và <code>&lt;td&gt;</code> cho ô dữ liệu</li>
+<li>Dùng <code>colspan</code> hoặc <code>rowspan</code> ít nhất một lần</li>
 </ul>
-<p><strong>Example structure:</strong></p>
+<p><strong>Ví dụ cấu trúc:</strong></p>
 <pre><code class="language-html">&lt;table&gt;
   &lt;caption&gt;Weekly Club Activities&lt;/caption&gt;
   &lt;thead&gt;
@@ -190,153 +186,161 @@ if(w&&w!=="vi")location.replace("../../homework/session-09.html");}catch(e){}})(
   &lt;/tbody&gt;
 &lt;/table&gt;
 </code></pre>
-<h4 id="task-2-style-the-table">Task 2: Style the Table<a class="anchor" href="#task-2-style-the-table" aria-label="Link to this section">#</a></h4>
-<p>Add CSS to make the table look professional.</p>
-<p><strong>Your CSS must include:</strong></p>
+<h4 id="task-2-style-bảng">Task 2: Style bảng<a class="anchor" href="#task-2-style-bảng" aria-label="Link to this section">#</a></h4>
+<p>Thêm CSS để bảng trông chuyên nghiệp.</p>
+<p><strong>CSS của bạn phải có:</strong></p>
 <ul>
-<li>Set <code>width: 100%</code> and <code>border-collapse: collapse</code> on the table</li>
-<li>Add borders to all cells</li>
-<li>Style header cells with a background color and white text</li>
-<li>Add alternating row colors (zebra striping) using <code>tr:nth-child(even)</code></li>
-<li>Add padding inside cells for readability</li>
-<li>Add a hover effect on rows</li>
+<li>Đặt <code>width: 100%</code> và <code>border-collapse: collapse</code> cho bảng</li>
+<li>Thêm viền cho mọi ô</li>
+<li>Style ô tiêu đề với màu nền và chữ trắng</li>
+<li>Thêm màu xen kẽ cho các dòng (zebra striping) bằng <code>tr:nth-child(even)</code></li>
+<li>Thêm padding bên trong ô cho dễ đọc</li>
+<li>Thêm hiệu ứng hover cho các dòng</li>
 </ul>
-<h4 id="task-3-update-navigation">Task 3: Update Navigation<a class="anchor" href="#task-3-update-navigation" aria-label="Link to this section">#</a></h4>
+<h4 id="task-3-cập-nhật-điều-hướng">Task 3: Cập nhật điều hướng<a class="anchor" href="#task-3-cập-nhật-điều-hướng" aria-label="Link to this section">#</a></h4>
 <ul>
-<li>Add an &quot;Activities&quot; link to the navigation menu on ALL pages</li>
-<li>All pages sit at the project root, so the link is simply <code>href=&quot;activities.html&quot;</code> everywhere</li>
-<li>Click it from every page to confirm</li>
+<li>Thêm liên kết &quot;Activities&quot; vào menu điều hướng trên TẤT CẢ các trang</li>
+<li>Mọi trang đều nằm ở gốc dự án, nên liên kết đơn giản là <code>href=&quot;activities.html&quot;</code> ở mọi nơi</li>
+<li>Bấm thử từ mỗi trang để xác nhận</li>
 </ul>
-<p><strong>File paths:</strong></p>
+<p><strong>Đường dẫn file:</strong></p>
 <ul>
-<li><code>project/activities.html</code> (new page with table)</li>
-<li><code>project/css/style.css</code> (add table styles)</li>
-<li><code>project/index.html</code> (add Activities link to nav)</li>
-<li><code>project/about.html</code> (add Activities link to nav)</li>
-<li><code>project/contact.html</code> (add Activities link to nav)</li>
+<li><code>project/activities.html</code> (trang mới với bảng)</li>
+<li><code>project/css/style.css</code> (cập nhật với style bảng)</li>
+<li><code>project/index.html</code>, <code>project/about.html</code>, <code>project/contact.html</code> (thêm liên kết nav)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
-<p>Code is only half of this homework. The other half is a <strong>short screen-recorded
-video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
-skill the midterm practical, the final practical exam, and every job interview
-afterwards will ask of you. Using an AI tool or a tutorial to build the tasks
-above is allowed; being able to walk through every line of what you keep is not
-optional.</p>
-<h4 id="what-to-record">What to record<a class="anchor" href="#what-to-record" aria-label="Link to this section">#</a></h4>
-<p>With <strong>OBS Studio</strong> (free — <a href="https://obsproject.com">https://obsproject.com</a>), record <strong>60–120 seconds</strong>,
-your <strong>voice required</strong> (face optional), sharing your screen while you present
-ONE part of this homework. Pick a single topic — do not try to cover everything.
-For this session, the easiest good choice is to <strong>show your schedule table and explain what <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> and <code>colspan</code>/<code>rowspan</code> do in it, plus one styling choice you made</strong>.</p>
-<p>Requirements for the recording:</p>
+<p><strong>Danh sách kiểm tra yêu cầu:</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> Length <strong>1–2 minutes</strong>. Over 2 minutes loses structure points; under 1 minute usually means there is no substance.</li>
-<li><input disabled="" type="checkbox"> The <strong>screen is shared the whole time</strong> — the lecturer must see your real editor and browser, not a slideshow of screenshots.</li>
-<li><input disabled="" type="checkbox"> You <strong>speak</strong> through the video (Vietnamese is fine; technical terms stay in English), and your name + student ID are visible or spoken at the start.</li>
-<li><input disabled="" type="checkbox"> You <strong>show and explain</strong>, not read: open the actual file, point at the actual lines, show the actual result in the browser.</li>
+<li><input disabled="" type="checkbox"> Bảng có caption, thead, tbody</li>
+<li><input disabled="" type="checkbox"> Có 5+ cột và 5+ dòng</li>
+<li><input disabled="" type="checkbox"> <code>colspan</code> hoặc <code>rowspan</code> được dùng ít nhất một lần</li>
+<li><input disabled="" type="checkbox"> Bảng được style với viền, màu tiêu đề, zebra striping</li>
+<li><input disabled="" type="checkbox"> Liên kết Activities có trên mọi trang và hoạt động</li>
 </ul>
-<h4 id="how-to-hand-in-the-video">How to hand in the video<a class="anchor" href="#how-to-hand-in-the-video" aria-label="Link to this section">#</a></h4>
-<p>You submit a <strong>link</strong>, never the video file itself:</p>
+<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
+chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
+thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau
+này đều đòi hỏi. Dùng công cụ AI hoặc tutorial để làm các task trên là được phép;
+nhưng việc giải thích được từng dòng của những gì bạn giữ lại là điều không tùy chọn.</p>
+<h4 id="quay-nội-dung-gì">Quay nội dung gì<a class="anchor" href="#quay-nội-dung-gì" aria-label="Link to this section">#</a></h4>
+<p>Với <strong>OBS Studio</strong> (miễn phí — <a href="https://obsproject.com">https://obsproject.com</a>), quay <strong>60–120 giây</strong>,
+<strong>bắt buộc có giọng nói</strong> (khuôn mặt tùy chọn), chia sẻ màn hình trong khi bạn
+trình bày MỘT phần của bài tập này. Chọn một chủ đề duy nhất — đừng cố covering
+hết mọi thứ. Với buổi này, lựa chọn tốt và dễ nhất là <strong>mở bảng lịch trình của
+bạn và giải thích <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> và <code>colspan</code>/<code>rowspan</code> làm gì trong đó,
+cộng thêm một lựa chọn style bạn đã làm</strong>.</p>
+<p>Yêu cầu cho bản ghi:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Độ dài <strong>1–2 phút</strong>. Quá 2 phút mất điểm cấu trúc; dưới 1 phút thường nghĩa là không có nội dung.</li>
+<li><input disabled="" type="checkbox"> <strong>Màn hình được chia sẻ suốt video</strong> — giảng viên phải thấy trình soạn thảo và trình duyệt thật của bạn, không phải một loạt ảnh chụp màn hình.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>nói</strong> trong video (tiếng Việt hoàn toàn được; thuật ngữ kỹ thuật giữ tiếng Anh), và tên + mã số sinh viên hiện lên hoặc được đọc ở đầu video.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>vừa chỉ vừa giải thích</strong>, không đọc thuộc lòng: mở file thật, chỉ vào dòng thật, chạy kết quả thật trên trình duyệt.</li>
+</ul>
+<h4 id="cách-nộp-video">Cách nộp video<a class="anchor" href="#cách-nộp-video" aria-label="Link to this section">#</a></h4>
+<p>Bạn nộp một <strong>link</strong>, không bao giờ nộp file video:</p>
 <ol>
-<li>Upload the recording (<code>MP4</code>, 720p or higher) to <strong>your own Google Drive</strong>.</li>
-<li>Set sharing to <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
-<li>Open <code>homework/submissions.md</code> in your repository and add <strong>one line</strong>:
-<code>- Session 09 — (paste your Google Drive link here)</code></li>
-<li>Commit and push that file together with the rest of this homework.</li>
+<li>Tải bản ghi (<code>MP4</code>, 720p trở lên) lên <strong>Google Drive của chính bạn</strong>.</li>
+<li>Đặt chế độ chia sẻ thành <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository của bạn và thêm <strong>một dòng</strong>:
+<code>- Session 09 — (dán link Google Drive của bạn vào đây)</code></li>
+<li>Commit và push file đó cùng với phần còn lại của bài tập.</li>
 </ol>
-<p>The system collects and grades the code part (it runs the self-check on your
-repository). For the video it stores <strong>only the link</strong> — your lecturer watches
-it and grades it afterwards. A missing, private, or dead link means the video
-part cannot be graded.</p>
-<h4 id="how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric">How the video part is graded (4 points, on top of the 10-point rubric)<a class="anchor" href="#how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric" aria-label="Link to this section">#</a></h4>
+<p>Hệ thống thu và chấm phần code (nó chạy công cụ tự kiểm tra trên repository của
+bạn). Với video, hệ thống chỉ lưu <strong>link</strong> — giảng viên xem và chấm sau. Link
+thiếu, riêng tư, hoặc hỏng nghĩa là phần video không thể chấm.</p>
+<h4 id="phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm">Phần video được chấm thế nào (4 điểm, cộng trên rubric 10 điểm)<a class="anchor" href="#phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm" aria-label="Link to this section">#</a></h4>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>What the lecturer looks for</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Giảng viên nhìn vào điều gì</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Structure of the talk</td>
+<td>Cấu trúc bài nói</td>
 <td>1</td>
-<td>A beginning (what you built), a middle (how it works, pointing at real code), and an end (what you learned or would improve).</td>
+<td>Có mở đầu (bạn đã xây gì), giữa (nó hoạt động thế nào, chỉ vào code thật), và kết thúc (bạn học được gì hoặc sẽ cải thiện gì).</td>
 </tr>
 <tr>
-<td>Screen walkthrough</td>
+<td>Trình bày trên màn hình</td>
 <td>1</td>
-<td>The real project on screen — editor and browser together, no slideshow of screenshots.</td>
+<td>Dự án thật trên màn hình — trình soạn thảo và trình duyệt cùng lúc, không phải slideshow ảnh chụp.</td>
 </tr>
 <tr>
-<td>Correct explanation</td>
+<td>Giải thích đúng</td>
 <td>2</td>
-<td>You explain what the code does and why. Reading a memorised script over code you cannot explain scores 0.</td>
+<td>Bạn giải thích code làm gì và tại sao. Đọc một kịch bản học thuộc trên code bạn không giải thích được bị chấm 0.</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>4</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>Why a video? AI tools can write homework code, so the proof of learning moves
-to the explanation. Sixty seconds of you explaining your own lines is the
-strongest evidence of real understanding — and it is exactly what a technical
-interview looks like.</p>
+<p>Vì sao phải quay video? Công cụ AI có thể viết code bài tập, nên bằng chứng học
+tập chuyển sang phần giải thích. Sáu mươi giây bạn giải thích chính dòng code
+của mình là bằng chứng hiểu thật mạnh nhất — và nó cũng chính là một buổi phỏng
+vấn kỹ thuật điển hình.</p>
 </blockquote>
-<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<h3 id="lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn<a class="anchor" href="#lưu-bài-luyện-tập-của-bạn" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Add changes: <code>git add project/</code></li>
+<li>Thêm thay đổi: <code>git add project/</code></li>
 <li>Commit: <code>git commit -m &quot;HW9: Add schedule page with styled table&quot;</code></li>
 <li>Push: <code>git push</code></li>
 </ul>
-<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<h3 id="rubric-tham-chiếu">Rubric tham chiếu<a class="anchor" href="#rubric-tham-chiếu" aria-label="Link to this section">#</a></h3>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>Description</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Mô tả</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Table structure</td>
+<td>Cấu trúc bảng</td>
 <td>3</td>
-<td>Uses thead, tbody, caption, th, td correctly</td>
+<td>Dùng thead, tbody, caption, th, td đúng cách</td>
 </tr>
 <tr>
-<td>Content</td>
+<td>Nội dung</td>
 <td>2</td>
-<td>Has 5+ columns, 5+ rows, colspan/rowspan used</td>
+<td>Có 5+ cột, 5+ dòng, dùng colspan/rowspan</td>
 </tr>
 <tr>
-<td>Table styling</td>
+<td>Style bảng</td>
 <td>3</td>
-<td>Borders, header colors, zebra striping, hover</td>
+<td>Viền, màu tiêu đề, zebra striping, hover</td>
 </tr>
 <tr>
-<td>Navigation</td>
+<td>Điều hướng</td>
 <td>1</td>
-<td>Activities link added to all pages</td>
+<td>Liên kết Activities được thêm vào mọi trang</td>
 </tr>
 <tr>
-<td>Link accuracy</td>
+<td>Độ chính xác liên kết</td>
 <td>1</td>
-<td>All navigation links work correctly</td>
+<td>Mọi liên kết điều hướng hoạt động đúng</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>10</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Use <code>border-collapse: collapse</code> to avoid double borders</li>
-<li>Zebra striping makes tables much easier to read: <code>tr:nth-child(even) { background: #f2f2f2; }</code></li>
-<li>Make sure the Activities nav link is <code>href=&quot;activities.html&quot;</code> on every page — no <code>../</code></li>
+<li>Dùng <code>border-collapse: collapse</code> để tránh viền kép</li>
+<li>Zebra striping giúp bảng dễ đọc hơn nhiều: <code>tr:nth-child(even) { background: #f2f2f2; }</code></li>
+<li>Đảm bảo liên kết nav Activities là <code>href=&quot;activities.html&quot;</code> trên mọi trang — không có <code>../</code></li>
 </ul>
 <h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
-<p>A clean, professional-looking table on its own page. The header row should stand out with color, rows should alternate colors, and the navigation should include an Activities link on every page.</p>
+<p>Một bảng trông sạch sẽ, chuyên nghiệp trên trang riêng của nó. Dòng tiêu đề nổi
+bật bằng màu, các dòng xen kẽ màu, và điều hướng có liên kết Activities trên mọi
+trang.</p>
 
   </article>
 </main>

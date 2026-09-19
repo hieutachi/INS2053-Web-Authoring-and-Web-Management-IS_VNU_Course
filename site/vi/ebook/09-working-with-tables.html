@@ -63,7 +63,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
         <li class="d2"><a href="#example-1-basic-event-schedule-table">Example 1: Basic Event Schedule Table</a></li>
         <li class="d2"><a href="#example-2-membership-fee-table-with-rowspan">Example 2: Membership Fee Table with rowspan</a></li>
         <li class="d2"><a href="#example-3-club-leadership-table-with-mailto-links">Example 3: Club Leadership Table with Mailto Links</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#homework-submission-session-9">🏠 HOMEWORK &amp; SUBMISSION — Session 9</a></li>
       </ol>
     </nav>
@@ -79,7 +79,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 <h2 id="working-with-tables"><strong>Working with Tables</strong><a class="anchor" href="#working-with-tables" aria-label="Link to this section">#</a></h2>
 <p>Welcome to Session 9! Today we are adding a powerful new tool to your HTML toolkit: <strong>tables</strong>. Tables let you display structured data — schedules, price lists, rosters, statistics — in neat rows and columns that are easy to scan and understand. You will learn every table element from <code>&lt;table&gt;</code> to <code>&lt;tfoot&gt;</code>, how to merge cells with <code>colspan</code> and <code>rowspan</code>, and how to style tables so they look professional on the Student Club Website. Equally important, you will learn when to use tables (data) and when absolutely NOT to use them (layout). Let us get started!</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    Chapter 9 — Working with Tables (course ebook)
                  MDN: &quot;HTML tables&quot;, &quot;Table basics&quot;, &quot;Advanced tables&quot;
@@ -96,7 +96,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
                  CLO4 (design and build a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <p>By the end of this session you will be able to:</p>
 <ul>
 <li>Create an HTML table using <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code>.</li>
@@ -107,13 +107,13 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 <li>Add event schedule and membership fee tables to the <strong>Student Club Website</strong>.</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-what-are-html-tables">1. What Are HTML Tables?<a class="anchor" href="#1-what-are-html-tables" aria-label="Link to this section">#</a></h3>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>An <strong>HTML table</strong> is a structured grid of rows and columns used to display <strong>tabular data</strong> — information that naturally belongs in a spreadsheet-like format. Examples include class timetables, product comparison charts, financial reports, sports standings, and member directories.</p>
-<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>Think of a table like an Excel spreadsheet embedded in a web page. When you look at a train schedule, a restaurant menu with prices, or a university course catalogue, you are looking at tabular data. HTML tables are the semantic way to represent this kind of information on the web.</p>
-<h4 id="12-why-it-matters">1.2 Why it matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<h4 id="12-vì-sao-điều-này-quan-trọng">1.2 Vì sao điều này quan trọng<a class="anchor" href="#12-vì-sao-điều-này-quan-trọng" aria-label="Link to this section">#</a></h4>
 <p>Tables provide <strong>semantic meaning</strong> to data. Screen readers announce &quot;table with 4 rows and 3 columns&quot; and navigate cell by cell, helping visually impaired users understand the data structure. Search engines also recognise tables as structured data, which can improve SEO for data-heavy pages.</p>
 <h4 id="important-notes-when-not-to-use-tables">⚠️ Important notes — When NOT to use tables<a class="anchor" href="#important-notes-when-not-to-use-tables" aria-label="Link to this section">#</a></h4>
 <p>In the early days of the web (1990s–early 2000s), developers used tables to create page layouts — positioning headers, sidebars, and content areas using table cells. <strong>This is now considered bad practice.</strong> Here is why:</p>
@@ -273,7 +273,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 </tr>
 </tbody></table>
 <p>⚠️ <strong>Critical rule:</strong> <code>&lt;td&gt;</code> and <code>&lt;th&gt;</code> elements MUST be direct children of <code>&lt;tr&gt;</code>. You cannot put a <code>&lt;td&gt;</code> directly inside <code>&lt;table&gt;</code> without wrapping it in a <code>&lt;tr&gt;</code> first. This is a very common beginner mistake.</p>
-<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Cell outside a row</p>
 <pre><code class="language-html">&lt;table&gt;
     &lt;td&gt;This is invalid!&lt;/td&gt;
@@ -315,7 +315,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 </li>
 <li>Re-inspect a data cell.</li>
 </ol>
-<p><strong>Expected result:</strong> Visually nothing changes except the caption appearing above the table. In the accessibility tree, each data cell is now associated with its column header.</p>
+<p><strong>Kết quả mong đợi:</strong> Visually nothing changes except the caption appearing above the table. In the accessibility tree, each data cell is now associated with its column header.</p>
 <details>
 <summary>What a screen reader user actually hears</summary><p>Without <code>scope</code>, moving across a row announces bare values: &quot;Friday, Workshop, B203.&quot; The listener must remember what the columns were.</p>
 <p>With <code>scope=&quot;col&quot;</code>, each value arrives labelled: &quot;Day: Friday. Activity: Workshop. Room: B203.&quot; That is the difference between data and noise.</p>
@@ -411,14 +411,14 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 <li><code>&lt;tfoot&gt;</code> (last, if present)</li>
 </ol>
 <p>⚠️ Note: In older HTML specs, <code>&lt;tfoot&gt;</code> was required to come BEFORE <code>&lt;tbody&gt;</code>. In HTML5, it can come after <code>&lt;tbody&gt;</code>, which is more intuitive. Modern browsers support both orders, but placing it last is the current best practice.</p>
-<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Always include <code>&lt;caption&gt;</code> — even if it is hidden visually with CSS, screen readers need it.</li>
 <li>Always wrap header rows in <code>&lt;thead&gt;</code> and data rows in <code>&lt;tbody&gt;</code>.</li>
 <li>Use <code>&lt;tfoot&gt;</code> for summary rows (totals, counts, notes).</li>
 <li>Keep only ONE <code>&lt;thead&gt;</code> and ONE <code>&lt;tfoot&gt;</code> per table. You CAN have multiple <code>&lt;tbody&gt;</code> sections to group related data.</li>
 </ul>
-<h4 id="common-mistakes-2">❌ Common mistakes<a class="anchor" href="#common-mistakes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-2">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-2" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Forgetting semantic sections entirely</p>
 <pre><code class="language-html">&lt;table&gt;
     &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
@@ -475,13 +475,13 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 <p>You can use both attributes on the same cell:</p>
 <pre><code class="language-html">&lt;td colspan=&quot;2&quot; rowspan=&quot;3&quot;&gt;This cell spans 2 columns AND 3 rows&lt;/td&gt;
 </code></pre>
-<h4 id="best-practices-2">✅ Best practices<a class="anchor" href="#best-practices-2" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-2">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Plan your table on paper FIRST. Draw the grid and mark which cells span.</li>
 <li>Count cells in each row carefully. Every row must have the same total number of column positions (accounting for spans).</li>
 <li>Test merged tables thoroughly — visual bugs are easy to miss.</li>
 </ul>
-<h4 id="common-mistakes-3">❌ Common mistakes<a class="anchor" href="#common-mistakes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-3">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-3" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Same number of cells in every row despite rowspan</p>
 <pre><code class="language-html">&lt;tr&gt;
     &lt;td rowspan=&quot;2&quot;&gt;Category&lt;/td&gt;
@@ -524,7 +524,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 <li>Now break it: add a <code>&lt;td&gt;Extra&lt;/td&gt;</code> to the last row and reload.</li>
 <li>Fix it by removing that cell, then break it the other way: change <code>colspan=&quot;3&quot;</code> to <code>colspan=&quot;2&quot;</code>.</li>
 </ol>
-<p><strong>Expected result:</strong> The extra cell pushes a fourth column into existence and the table goes ragged. The wrong <code>colspan</code> leaves a visible gap in the top row.</p>
+<p><strong>Kết quả mong đợi:</strong> The extra cell pushes a fourth column into existence and the table goes ragged. The wrong <code>colspan</code> leaves a visible gap in the top row.</p>
 <details>
 <summary>The arithmetic that prevents both bugs</summary><p>Every row must total the same number of columns, counting each span by its value:</p>
 <table>
@@ -739,7 +739,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 }
 </code></pre>
 <p>This adds a horizontal scrollbar on narrow screens while keeping the table fully readable.</p>
-<h4 id="best-practices-3">✅ Best practices<a class="anchor" href="#best-practices-3" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-3">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Always use <code>border-collapse: collapse</code>.</li>
 <li>Give headers a distinct visual treatment (different background, bold text, or both).</li>
@@ -748,7 +748,7 @@ if(w&&w!=="vi")location.replace("../../ebook/09-working-with-tables.html");}catc
 <li>Wrap wide tables in a scrollable container.</li>
 <li>Keep cell padding generous (10–15 px) for readability.</li>
 </ul>
-<h4 id="common-mistakes-4">❌ Common mistakes<a class="anchor" href="#common-mistakes-4" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-4">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-4" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> No border-collapse (double borders everywhere)</p>
 <pre><code class="language-css">table { border: 1px solid #ccc; }
 td { border: 1px solid #ccc; }
@@ -783,7 +783,7 @@ table { border-collapse: collapse; width: 100%; min-width: 480px; }
 </li>
 <li>Reload at 375px and swipe the table itself.</li>
 </ol>
-<p><strong>Expected result:</strong> The page no longer scrolls sideways. The table scrolls within its wrapper while the header, nav, and footer stay put.</p>
+<p><strong>Kết quả mong đợi:</strong> The page no longer scrolls sideways. The table scrolls within its wrapper while the header, nav, and footer stay put.</p>
 <details>
 <summary>Why not just shrink the table</summary><p>You can force a table into 375px, but the result is unreadable — three characters per line in every cell. Tabular data has a genuine minimum width, which is what <code>min-width</code> acknowledges.</p>
 <p>That is the reason for the pairing: <code>width: 100%</code> lets the table use the full space when there is room, and <code>min-width</code> stops it collapsing below legibility. <code>overflow-x: auto</code> on the wrapper then contains the overflow instead of letting it push the whole page.</p>
@@ -793,7 +793,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 </code></pre>
 <p>Scope the zebra striping to <code>tbody</code>, otherwise <code>nth-child</code> counts the header row and stripes the wrong rows.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -869,9 +869,9 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-basic-event-schedule-table">Example 1: Basic Event Schedule Table<a class="anchor" href="#example-1-basic-event-schedule-table" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You need to display upcoming events on the Student Club events page.</p>
+<p><strong>Tình huống:</strong> You need to display upcoming events on the Student Club events page.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;table class=&quot;styled-table&quot;&gt;
     &lt;caption&gt;Upcoming Events — March 2024&lt;/caption&gt;
@@ -915,7 +915,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
     &lt;/tfoot&gt;
 &lt;/table&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -948,10 +948,10 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 <td>The &quot;Total Events&quot; label spans the first four columns; the count &quot;3&quot; sits in the fifth column.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> A clean, professionally styled table with a gradient header, zebra-striped rows, hover highlighting, and a bold summary footer. The caption &quot;Upcoming Events — March 2024&quot; appears above the table.</p>
+<p><strong>Kết quả:</strong> A clean, professionally styled table with a gradient header, zebra-striped rows, hover highlighting, and a bold summary footer. The caption &quot;Upcoming Events — March 2024&quot; appears above the table.</p>
 <hr>
 <h3 id="example-2-membership-fee-table-with-rowspan">Example 2: Membership Fee Table with rowspan<a class="anchor" href="#example-2-membership-fee-table-with-rowspan" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Students have two membership tiers (semester and full year), while guests pay per event. You want &quot;Student&quot; to appear once and span both rows.</p>
+<p><strong>Tình huống:</strong> Students have two membership tiers (semester and full year), while guests pay per event. You want &quot;Student&quot; to appear once and span both rows.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;table class=&quot;styled-table&quot;&gt;
     &lt;caption&gt;Membership Fee Structure&lt;/caption&gt;
@@ -985,7 +985,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
     &lt;/tbody&gt;
 &lt;/table&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1019,7 +1019,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 </code></pre>
 <hr>
 <h3 id="example-3-club-leadership-table-with-mailto-links">Example 3: Club Leadership Table with Mailto Links<a class="anchor" href="#example-3-club-leadership-table-with-mailto-links" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Display the club leadership team on the About page with clickable email links.</p>
+<p><strong>Tình huống:</strong> Display the club leadership team on the About page with clickable email links.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;table class=&quot;styled-table&quot;&gt;
     &lt;caption&gt;Club Leadership Team 2024&lt;/caption&gt;
@@ -1060,10 +1060,10 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 &lt;/table&gt;
 </code></pre>
 <p><strong>Key detail:</strong> The <code>&lt;a href=&quot;mailto:...&quot;&gt;</code> tag inside a <code>&lt;td&gt;</code> creates a clickable email link. When clicked, it opens the user&#39;s default email client with the address pre-filled. This is perfectly valid HTML — table cells can contain any inline element.</p>
-<p><strong>Result:</strong> A four-row table listing each leader. Email addresses are blue clickable links. Rows highlight on hover.</p>
+<p><strong>Kết quả:</strong> A four-row table listing each leader. Email addresses are blue clickable links. Rows highlight on hover.</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <p>Open your <code>student-club-site</code> project folder. Make sure <code>events.html</code>, <code>about.html</code>, and <code>css/style.css</code> are ready for editing.</p>
 <hr>
 <h4 id="task-1-add-an-event-schedule-table-to-the-events-page">TASK 1: Add an Event Schedule Table to the Events Page<a class="anchor" href="#task-1-add-an-event-schedule-table-to-the-events-page" aria-label="Link to this section">#</a></h4>
@@ -1337,7 +1337,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 <p>✅ <strong>Check:</strong> All four leaders are listed. Email addresses are clickable (they open your email client). Rows highlight on hover. Table has the same consistent styling as other tables.</p>
 <p>💾 <strong>Save</strong> all files.</p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>Tables have strict nesting rules, and the browser silently repairs bad markup rather than reporting it — which is why a table can look broken with no error anywhere.</p>
 <table>
 <thead>
@@ -1411,7 +1411,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 </tbody></table>
 <p><strong>The browser fixes your table for you, and that is the trap.</strong> Compare Ctrl+U (what you wrote) against the Elements panel (what the browser built). If the two differ, the browser has repaired invalid nesting, and the repair is rarely what you intended.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. When is a <code>&lt;table&gt;</code> the right element, and when is it wrong?</strong></p>
 <details>
@@ -1448,7 +1448,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 </code></pre>
 <p>with <code>&lt;div class=&quot;table-wrapper&quot;&gt;&lt;table&gt;...&lt;/table&gt;&lt;/div&gt;</code>. The table keeps its natural width and the user swipes horizontally, which preserves the row/column relationships. Shrinking a table to fit 375px makes the text unreadable instead.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1509,7 +1509,7 @@ tbody tr:nth-child(even) { background: #f8f9fa; }
 </tbody></table>
 <p>If you answered <strong>No</strong> to any item, revisit the corresponding Theory section and redo the relevant Hands-On task. Pay special attention to rowspan (item 4) — it is the trickiest concept in this session.</p>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables">HTML tables overview — MDN Learn</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics">Table basics — MDN Learn</a></li>
@@ -1527,7 +1527,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-09.html">homework/session-09/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -1544,10 +1544,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>In Session 10 we will explore <strong>working with forms</strong> — input fields, labels, validation, and styling forms for the Student Club contact and registration pages.</p>
 
   </article>

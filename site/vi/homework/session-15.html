@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Homework 15: Making Your Site Responsive — INS2053 · Web Authoring &amp; Web Management</title>
+<title>Bài tập 15: Làm website responsive — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.">
 <link rel="stylesheet" href="../../assets/site.css">
 <script>
@@ -49,27 +49,23 @@ if(w&&w!=="vi")location.replace("../../homework/session-15.html");}catch(e){}})(
 <main id="main">
   <header class="page-head">
     <p class="eyebrow">Buổi 15 · Bài tập</p>
-    <h1>Homework 15: Making Your Site Responsive</h1>
+    <h1>Bài tập 15: Làm website responsive</h1>
     <p class="lead">Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.</p>
 
   </header>
 <nav class="toc" aria-labelledby="toc-h">
       <h2 id="toc-h">Trong trang này</h2>
       <ol>
-        <li class="d2"><a href="#practice-status">Practice Status</a></li>
-        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
+        <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
-        <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
-        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
-        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
+        <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
+        <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
         <li class="d2"><a href="#tips">Tips</a></li>
         <li class="d2"><a href="#example-output">Example Output</a></li>
       </ol>
     </nav>
-  <div class="callout warn lang-fallback" role="note">
-    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
-    <p><a href="../../homework/session-15.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
-  </div>
   <div class="callout status-note" role="status">
     <p><strong>Chế độ luyện tập.</strong> Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push phần code, rồi thêm link Google Drive vào homework/submissions.md — rubric tham chiếu dưới đây chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
     <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 15, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
@@ -142,22 +138,22 @@ if(w&&w!=="vi")location.replace("../../homework/session-15.html");}catch(e){}})(
 </html>"></iframe>
   </section>
   <article class="doc">
-<h2 id="homework-15-making-your-site-responsive">Homework 15: Making Your Site Responsive<a class="anchor" href="#homework-15-making-your-site-responsive" aria-label="Link to this section">#</a></h2>
-<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
-<p>Online submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md. The reference rubric below grades the code part (10 pts); the video is graded separately (4 pts).</p>
-<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<h2 id="bài-tập-15-làm-website-responsive">Bài tập 15: Làm website responsive<a class="anchor" href="#bài-tập-15-làm-website-responsive" aria-label="Link to this section">#</a></h2>
+<h3 id="trạng-thái-luyện-tập">Trạng thái luyện tập<a class="anchor" href="#trạng-thái-luyện-tập" aria-label="Link to this section">#</a></h3>
+<p>Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push các phần code, rồi thêm link Google Drive vào homework/submissions.md. Rubric tham chiếu bên dưới chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
+<h3 id="mục-tiêu">Mục tiêu<a class="anchor" href="#mục-tiêu" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Learn about responsive web design</li>
-<li>Use the viewport meta tag for mobile devices</li>
-<li>Write CSS media queries to adapt layout for different screen sizes</li>
+<li>Học về thiết kế web responsive</li>
+<li>Dùng thẻ meta viewport cho thiết bị di động</li>
+<li>Viết CSS media queries để thích ứng bố cục với nhiều kích thước màn hình</li>
 </ul>
 <h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
-<h4 id="task-1-add-the-viewport-meta-tag">Task 1: Add the Viewport Meta Tag<a class="anchor" href="#task-1-add-the-viewport-meta-tag" aria-label="Link to this section">#</a></h4>
-<p>Add the responsive viewport meta tag to the <code>&lt;head&gt;</code> section of ALL your HTML pages.</p>
-<p><strong>Add this line inside <code>&lt;head&gt;</code> on every page:</strong></p>
+<h4 id="task-1-thêm-thẻ-meta-viewport">Task 1: Thêm thẻ meta viewport<a class="anchor" href="#task-1-thêm-thẻ-meta-viewport" aria-label="Link to this section">#</a></h4>
+<p>Thêm thẻ meta viewport responsive vào phần <code>&lt;head&gt;</code> của TẤT CẢ các trang HTML.</p>
+<p><strong>Thêm dòng này bên trong <code>&lt;head&gt;</code> trên mọi trang:</strong></p>
 <pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
 </code></pre>
-<p><strong>Files to update:</strong></p>
+<p><strong>File cần cập nhật:</strong></p>
 <ul>
 <li><code>project/index.html</code></li>
 <li><code>project/about.html</code></li>
@@ -165,9 +161,9 @@ if(w&&w!=="vi")location.replace("../../homework/session-15.html");}catch(e){}})(
 <li><code>project/media.html</code></li>
 <li><code>project/contact.html</code></li>
 </ul>
-<h4 id="task-2-write-a-media-query">Task 2: Write a Media Query<a class="anchor" href="#task-2-write-a-media-query" aria-label="Link to this section">#</a></h4>
-<p>Add a media query to your CSS that changes the layout for mobile screens (screens smaller than 768px).</p>
-<p><strong>Add this to <code>project/css/style.css</code>:</strong></p>
+<h4 id="task-2-viết-một-media-query">Task 2: Viết một media query<a class="anchor" href="#task-2-viết-một-media-query" aria-label="Link to this section">#</a></h4>
+<p>Thêm một media query vào CSS để đổi bố cục cho màn hình di động (màn hình nhỏ hơn 768px).</p>
+<p><strong>Thêm vào <code>project/css/style.css</code>:</strong></p>
 <pre><code class="language-css">/* Responsive Design - Mobile Styles */
 @media screen and (max-width: 768px) {
 
@@ -218,167 +214,169 @@ if(w&&w!=="vi")location.replace("../../homework/session-15.html");}catch(e){}})(
   }
 }
 </code></pre>
-<p><strong>Your media query must include changes for at least 5 of these elements:</strong></p>
+<p><strong>Media query của bạn phải có thay đổi cho ít nhất 5 trong các phần tử sau:</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> Navigation menu (stack vertically or adjust layout)</li>
-<li><input disabled="" type="checkbox"> Header (smaller font size, less padding)</li>
-<li><input disabled="" type="checkbox"> Main content area (full width, less padding)</li>
-<li><input disabled="" type="checkbox"> Images (max-width: 100%, height: auto)</li>
-<li><input disabled="" type="checkbox"> Table (horizontal scroll)</li>
-<li><input disabled="" type="checkbox"> Form inputs (full width)</li>
-<li><input disabled="" type="checkbox"> Footer (smaller text, less padding)</li>
+<li><input disabled="" type="checkbox"> Menu điều hướng (xếp dọc hoặc chỉnh bố cục)</li>
+<li><input disabled="" type="checkbox"> Header (cỡ chữ nhỏ hơn, ít padding hơn)</li>
+<li><input disabled="" type="checkbox"> Vùng nội dung chính (full chiều rộng, ít padding hơn)</li>
+<li><input disabled="" type="checkbox"> Hình ảnh (max-width: 100%, height: auto)</li>
+<li><input disabled="" type="checkbox"> Bảng (cuộn ngang)</li>
+<li><input disabled="" type="checkbox"> Input của biểu mẫu (full chiều rộng)</li>
+<li><input disabled="" type="checkbox"> Footer (chữ nhỏ hơn, ít padding hơn)</li>
 </ul>
-<h4 id="task-3-make-images-responsive">Task 3: Make Images Responsive<a class="anchor" href="#task-3-make-images-responsive" aria-label="Link to this section">#</a></h4>
-<p>Ensure all images on the site scale properly on small screens.</p>
-<p><strong>Add to your base CSS (outside the media query):</strong></p>
+<h4 id="task-3-làm-ảnh-responsive">Task 3: Làm ảnh responsive<a class="anchor" href="#task-3-làm-ảnh-responsive" aria-label="Link to this section">#</a></h4>
+<p>Đảm bảo mọi ảnh trên site co giãn đúng trên màn hình nhỏ.</p>
+<p><strong>Thêm vào CSS gốc (ngoài media query):</strong></p>
 <pre><code class="language-css">img {
   max-width: 100%;
   height: auto;
 }
 </code></pre>
-<h4 id="task-4-test-your-site">Task 4: Test Your Site<a class="anchor" href="#task-4-test-your-site" aria-label="Link to this section">#</a></h4>
-<p>Test your website on different screen sizes:</p>
+<h4 id="task-4-kiểm-tra-website-của-bạn">Task 4: Kiểm tra website của bạn<a class="anchor" href="#task-4-kiểm-tra-website-của-bạn" aria-label="Link to this section">#</a></h4>
+<p>Kiểm tra website trên các kích thước màn hình khác nhau:</p>
 <ol>
-<li>Open your site in Chrome or Firefox</li>
-<li>Press F12 to open Developer Tools</li>
-<li>Click the &quot;Toggle Device Toolbar&quot; button (phone/tablet icon)</li>
-<li>Test at these widths: 320px (mobile), 768px (tablet), 1024px (desktop)</li>
-<li>Take note of any layout issues and fix them</li>
+<li>Mở website của bạn trong Chrome hoặc Firefox</li>
+<li>Nhấn F12 để mở Developer Tools</li>
+<li>Bấm nút &quot;Toggle Device Toolbar&quot; (biểu tượng điện thoại/máy tính bảng)</li>
+<li>Kiểm tra ở các độ rộng: 320px (di động), 768px (máy tính bảng), 1024px (desktop)</li>
+<li>Ghi lại các lỗi bố cục và sửa chúng</li>
 </ol>
-<p><strong>Optional:</strong> Add a second media query for even smaller screens:</p>
+<p><strong>Tùy chọn:</strong> Thêm media query thứ hai cho màn hình nhỏ hơn nữa:</p>
 <pre><code class="language-css">@media screen and (max-width: 480px) {
   /* Extra small screen styles */
   h1 { font-size: 1.3em; }
   nav a { font-size: 0.9em; }
 }
 </code></pre>
-<p><strong>File paths:</strong></p>
+<p><strong>Đường dẫn file:</strong></p>
 <ul>
-<li>All 5 HTML files (viewport meta tag)</li>
-<li><code>project/css/style.css</code> (media queries + responsive images)</li>
+<li>Cả 5 file HTML (thẻ meta viewport)</li>
+<li><code>project/css/style.css</code> (media queries + ảnh responsive)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
-<p>Code is only half of this homework. The other half is a <strong>short screen-recorded
-video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
-skill the midterm practical, the final practical exam, and every job interview
-afterwards will ask of you. Using an AI tool or a tutorial to build the tasks
-above is allowed; being able to walk through every line of what you keep is not
-optional.</p>
-<h4 id="what-to-record">What to record<a class="anchor" href="#what-to-record" aria-label="Link to this section">#</a></h4>
-<p>With <strong>OBS Studio</strong> (free — <a href="https://obsproject.com">https://obsproject.com</a>), record <strong>60–120 seconds</strong>,
-your <strong>voice required</strong> (face optional), sharing your screen while you present
-ONE part of this homework. Pick a single topic — do not try to cover everything.
-For this session, the easiest good choice is to <strong>show your site in the browser device toolbar, narrow the viewport live, and explain which media query rule fires and what it changes</strong>.</p>
-<p>Requirements for the recording:</p>
+<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
+chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
+thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau
+này đều đòi hỏi. Dùng công cụ AI hoặc tutorial để làm các task trên là được phép;
+nhưng việc giải thích được từng dòng của những gì bạn giữ lại là điều không tùy chọn.</p>
+<h4 id="quay-nội-dung-gì">Quay nội dung gì<a class="anchor" href="#quay-nội-dung-gì" aria-label="Link to this section">#</a></h4>
+<p>Với <strong>OBS Studio</strong> (miễn phí — <a href="https://obsproject.com">https://obsproject.com</a>), quay <strong>60–120 giây</strong>,
+<strong>bắt buộc có giọng nói</strong> (khuôn mặt tùy chọn), chia sẻ màn hình trong khi bạn
+trình bày MỘT phần của bài tập này. Chọn một chủ đề duy nhất — đừng cố covering
+hết mọi thứ. Với buổi này, lựa chọn tốt và dễ nhất là <strong>mở website của bạn trong
+device toolbar của trình duyệt, thu hẹp viewport trực tiếp, và giải thích quy tắc
+media query nào kích hoạt và nó thay đổi điều gì</strong>.</p>
+<p>Yêu cầu cho bản ghi:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Length <strong>1–2 minutes</strong>. Over 2 minutes loses structure points; under 1 minute usually means there is no substance.</li>
-<li><input disabled="" type="checkbox"> The <strong>screen is shared the whole time</strong> — the lecturer must see your real editor and browser, not a slideshow of screenshots.</li>
-<li><input disabled="" type="checkbox"> You <strong>speak</strong> through the video (Vietnamese is fine; technical terms stay in English), and your name + student ID are visible or spoken at the start.</li>
-<li><input disabled="" type="checkbox"> You <strong>show and explain</strong>, not read: open the actual file, point at the actual lines, show the actual result in the browser.</li>
+<li><input disabled="" type="checkbox"> Độ dài <strong>1–2 phút</strong>. Quá 2 phút mất điểm cấu trúc; dưới 1 phút thường nghĩa là không có nội dung.</li>
+<li><input disabled="" type="checkbox"> <strong>Màn hình được chia sẻ suốt video</strong> — giảng viên phải thấy trình soạn thảo và trình duyệt thật của bạn, không phải một loạt ảnh chụp màn hình.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>nói</strong> trong video (tiếng Việt hoàn toàn được; thuật ngữ kỹ thuật giữ tiếng Anh), và tên + mã số sinh viên hiện lên hoặc được đọc ở đầu video.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>vừa chỉ vừa giải thích</strong>, không đọc thuộc lòng: mở file thật, chỉ vào dòng thật, chạy kết quả thật trên trình duyệt.</li>
 </ul>
-<h4 id="how-to-hand-in-the-video">How to hand in the video<a class="anchor" href="#how-to-hand-in-the-video" aria-label="Link to this section">#</a></h4>
-<p>You submit a <strong>link</strong>, never the video file itself:</p>
+<h4 id="cách-nộp-video">Cách nộp video<a class="anchor" href="#cách-nộp-video" aria-label="Link to this section">#</a></h4>
+<p>Bạn nộp một <strong>link</strong>, không bao giờ nộp file video:</p>
 <ol>
-<li>Upload the recording (<code>MP4</code>, 720p or higher) to <strong>your own Google Drive</strong>.</li>
-<li>Set sharing to <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
-<li>Open <code>homework/submissions.md</code> in your repository and add <strong>one line</strong>:
-<code>- Session 15 — (paste your Google Drive link here)</code></li>
-<li>Commit and push that file together with the rest of this homework.</li>
+<li>Tải bản ghi (<code>MP4</code>, 720p trở lên) lên <strong>Google Drive của chính bạn</strong>.</li>
+<li>Đặt chế độ chia sẻ thành <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository của bạn và thêm <strong>một dòng</strong>:
+<code>- Session 15 — (dán link Google Drive của bạn vào đây)</code></li>
+<li>Commit và push file đó cùng với phần còn lại của bài tập.</li>
 </ol>
-<p>The system collects and grades the code part (it runs the self-check on your
-repository). For the video it stores <strong>only the link</strong> — your lecturer watches
-it and grades it afterwards. A missing, private, or dead link means the video
-part cannot be graded.</p>
-<h4 id="how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric">How the video part is graded (4 points, on top of the 10-point rubric)<a class="anchor" href="#how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric" aria-label="Link to this section">#</a></h4>
+<p>Hệ thống thu và chấm phần code (nó chạy công cụ tự kiểm tra trên repository của
+bạn). Với video, hệ thống chỉ lưu <strong>link</strong> — giảng viên xem và chấm sau. Link
+thiếu, riêng tư, hoặc hỏng nghĩa là phần video không thể chấm.</p>
+<h4 id="phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm">Phần video được chấm thế nào (4 điểm, cộng trên rubric 10 điểm)<a class="anchor" href="#phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm" aria-label="Link to this section">#</a></h4>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>What the lecturer looks for</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Giảng viên nhìn vào điều gì</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Structure of the talk</td>
+<td>Cấu trúc bài nói</td>
 <td>1</td>
-<td>A beginning (what you built), a middle (how it works, pointing at real code), and an end (what you learned or would improve).</td>
+<td>Có mở đầu (bạn đã xây gì), giữa (nó hoạt động thế nào, chỉ vào code thật), và kết thúc (bạn học được gì hoặc sẽ cải thiện gì).</td>
 </tr>
 <tr>
-<td>Screen walkthrough</td>
+<td>Trình bày trên màn hình</td>
 <td>1</td>
-<td>The real project on screen — editor and browser together, no slideshow of screenshots.</td>
+<td>Dự án thật trên màn hình — trình soạn thảo và trình duyệt cùng lúc, không phải slideshow ảnh chụp.</td>
 </tr>
 <tr>
-<td>Correct explanation</td>
+<td>Giải thích đúng</td>
 <td>2</td>
-<td>You explain what the code does and why. Reading a memorised script over code you cannot explain scores 0.</td>
+<td>Bạn giải thích code làm gì và tại sao. Đọc một kịch bản học thuộc trên code bạn không giải thích được bị chấm 0.</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>4</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>Why a video? AI tools can write homework code, so the proof of learning moves
-to the explanation. Sixty seconds of you explaining your own lines is the
-strongest evidence of real understanding — and it is exactly what a technical
-interview looks like.</p>
+<p>Vì sao phải quay video? Công cụ AI có thể viết code bài tập, nên bằng chứng học
+tập chuyển sang phần giải thích. Sáu mươi giây bạn giải thích chính dòng code
+của mình là bằng chứng hiểu thật mạnh nhất — và nó cũng chính là một buổi phỏng
+vấn kỹ thuật điển hình.</p>
 </blockquote>
-<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<h3 id="lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn<a class="anchor" href="#lưu-bài-luyện-tập-của-bạn" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Add changes: <code>git add project/</code></li>
+<li>Thêm thay đổi: <code>git add project/</code></li>
 <li>Commit: <code>git commit -m &quot;HW15: Add responsive design with media queries&quot;</code></li>
 <li>Push: <code>git push</code></li>
 </ul>
-<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<h3 id="rubric-tham-chiếu">Rubric tham chiếu<a class="anchor" href="#rubric-tham-chiếu" aria-label="Link to this section">#</a></h3>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>Description</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Mô tả</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Viewport meta tag</td>
+<td>Thẻ meta viewport</td>
 <td>2</td>
-<td>Added to all HTML pages</td>
+<td>Được thêm vào mọi trang HTML</td>
 </tr>
 <tr>
 <td>Media query</td>
 <td>3</td>
-<td>At least one media query with 5+ element changes</td>
+<td>Ít nhất một media query với 5+ thay đổi phần tử</td>
 </tr>
 <tr>
-<td>Responsive images</td>
+<td>Ảnh responsive</td>
 <td>2</td>
-<td>Images scale properly on all screen sizes</td>
+<td>Ảnh co giãn đúng trên mọi kích thước màn hình</td>
 </tr>
 <tr>
-<td>Mobile layout</td>
+<td>Bố cục di động</td>
 <td>2</td>
-<td>Site looks good on mobile screen (768px)</td>
+<td>Website trông đẹp trên màn hình di động (768px)</td>
 </tr>
 <tr>
-<td>Testing</td>
+<td>Kiểm thử</td>
 <td>1</td>
-<td>Site tested and works at multiple widths</td>
+<td>Website được kiểm tra và chạy tốt ở nhiều độ rộng</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>10</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>The viewport meta tag is essential — without it, mobile browsers will zoom out to show the full desktop layout</li>
-<li>Test early and often — resize your browser window while working to catch issues</li>
-<li><code>max-width: 100%</code> and <code>height: auto</code> on images prevents them from overflowing on small screens</li>
+<li>Thẻ meta viewport là bắt buộc — thiếu nó, trình duyệt di động sẽ thu nhỏ để hiện toàn bộ bố cục desktop</li>
+<li>Kiểm tra sớm và thường — thu nhỏ cửa sổ trình duyệt trong lúc làm để phát hiện lỗi kịp thời</li>
+<li><code>max-width: 100%</code> và <code>height: auto</code> trên ảnh ngăn chúng tràn khung trên màn hình nhỏ</li>
 </ul>
 <h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
-<p>When you open your site on a mobile phone (or resize the browser window to 320px wide), the navigation should stack vertically, images should fit within the screen, the header should be compact, and text should be readable without zooming.</p>
+<p>Khi mở website trên điện thoại (hoặc thu cửa sổ trình duyệt về 320px), điều hướng
+xếp dọc, ảnh vừa trong màn hình, header gọn gàng, và chữ đọc được mà không cần
+zoom.</p>
 
   </article>
 </main>

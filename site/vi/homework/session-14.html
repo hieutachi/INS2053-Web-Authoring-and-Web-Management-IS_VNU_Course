@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Homework 14: CSS Dropdown Navigation — INS2053 · Web Authoring &amp; Web Management</title>
+<title>Bài tập 14: Điều hướng dropdown bằng CSS — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.">
 <link rel="stylesheet" href="../../assets/site.css">
 <script>
@@ -49,27 +49,23 @@ if(w&&w!=="vi")location.replace("../../homework/session-14.html");}catch(e){}})(
 <main id="main">
   <header class="page-head">
     <p class="eyebrow">Buổi 14 · Bài tập</p>
-    <h1>Homework 14: CSS Dropdown Navigation</h1>
+    <h1>Bài tập 14: Điều hướng dropdown bằng CSS</h1>
     <p class="lead">Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.</p>
 
   </header>
 <nav class="toc" aria-labelledby="toc-h">
       <h2 id="toc-h">Trong trang này</h2>
       <ol>
-        <li class="d2"><a href="#practice-status">Practice Status</a></li>
-        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
+        <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
-        <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
-        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
-        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
+        <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
+        <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
         <li class="d2"><a href="#tips">Tips</a></li>
         <li class="d2"><a href="#example-output">Example Output</a></li>
       </ol>
     </nav>
-  <div class="callout warn lang-fallback" role="note">
-    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
-    <p><a href="../../homework/session-14.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
-  </div>
   <div class="callout status-note" role="status">
     <p><strong>Chế độ luyện tập.</strong> Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push phần code, rồi thêm link Google Drive vào homework/submissions.md — rubric tham chiếu dưới đây chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
     <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 14, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
@@ -136,19 +132,20 @@ if(w&&w!=="vi")location.replace("../../homework/session-14.html");}catch(e){}})(
 </html>"></iframe>
   </section>
   <article class="doc">
-<h2 id="homework-14-css-dropdown-navigation">Homework 14: CSS Dropdown Navigation<a class="anchor" href="#homework-14-css-dropdown-navigation" aria-label="Link to this section">#</a></h2>
-<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
-<p>Online submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md. The reference rubric below grades the code part (10 pts); the video is graded separately (4 pts).</p>
-<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<h2 id="bài-tập-14-điều-hướng-dropdown-bằng-css">Bài tập 14: Điều hướng dropdown bằng CSS<a class="anchor" href="#bài-tập-14-điều-hướng-dropdown-bằng-css" aria-label="Link to this section">#</a></h2>
+<h3 id="trạng-thái-luyện-tập">Trạng thái luyện tập<a class="anchor" href="#trạng-thái-luyện-tập" aria-label="Link to this section">#</a></h3>
+<p>Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push các phần code, rồi thêm link Google Drive vào homework/submissions.md. Rubric tham chiếu bên dưới chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
+<h3 id="mục-tiêu">Mục tiêu<a class="anchor" href="#mục-tiêu" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Build an interactive dropdown menu with pure HTML and CSS</li>
-<li>Understand how modern sites replaced the legacy Spry widgets with <code>:hover</code> CSS</li>
-<li>Add an interactive element to your club website</li>
+<li>Xây menu dropdown tương tác chỉ bằng HTML và CSS thuần</li>
+<li>Hiểu cách các website hiện đại thay widget Spry lỗi thời bằng CSS <code>:hover</code></li>
+<li>Thêm một phần tử tương tác vào website CLB</li>
 </ul>
 <h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
-<h4 id="task-1-add-a-dropdown-menu-to-your-navigation">Task 1: Add a Dropdown Menu to Your Navigation<a class="anchor" href="#task-1-add-a-dropdown-menu-to-your-navigation" aria-label="Link to this section">#</a></h4>
-<p>Create a dropdown navigation menu using HTML and CSS only — no JavaScript needed.</p>
-<p><strong>Add a dropdown to your nav</strong> (paths shown for <code>project/index.html</code> in the site root):</p>
+<h4 id="task-1-thêm-menu-dropdown-vào-điều-hướng">Task 1: Thêm menu dropdown vào điều hướng<a class="anchor" href="#task-1-thêm-menu-dropdown-vào-điều-hướng" aria-label="Link to this section">#</a></h4>
+<p>Tạo menu điều hướng dropdown chỉ bằng HTML và CSS — không cần JavaScript.</p>
+<p><strong>Thêm dropdown vào nav của bạn</strong> (đường dẫn hiển thị cho <code>project/index.html</code> ở
+gốc site):</p>
 <pre><code class="language-html">&lt;nav&gt;
   &lt;ul class=&quot;menu&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
@@ -166,7 +163,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-14.html");}catch(e){}})(
   &lt;/ul&gt;
 &lt;/nav&gt;
 </code></pre>
-<p><strong>CSS for the dropdown:</strong></p>
+<p><strong>CSS cho dropdown:</strong></p>
 <pre><code class="language-css">.dropdown-content {
   display: none;
   position: absolute;
@@ -180,27 +177,27 @@ if(w&&w!=="vi")location.replace("../../homework/session-14.html");}catch(e){}})(
 }
 </code></pre>
 <blockquote>
-<p>This is exactly the menu pattern Session 14 teaches as the modern replacement
-for the retired Spry Menu Bar — <code>:hover</code> on the parent <code>&lt;li&gt;</code> shows the child <code>&lt;ul&gt;</code>.</p>
+<p>Đây chính là mẫu menu mà Buổi 14 dạy như bản thay thế hiện đại cho Spry Menu
+Bar đã ngừng hỗ trợ — <code>:hover</code> trên <code>&lt;li&gt;</code> cha làm hiện <code>&lt;ul&gt;</code> con.</p>
 </blockquote>
-<h4 id="task-2-style-and-integrate-the-menu">Task 2: Style and Integrate the Menu<a class="anchor" href="#task-2-style-and-integrate-the-menu" aria-label="Link to this section">#</a></h4>
-<p>Add the dropdown CSS to your stylesheet and update the navigation on all pages.</p>
-<p><strong>Your CSS must include:</strong></p>
+<h4 id="task-2-style-và-tích-hợp-menu">Task 2: Style và tích hợp menu<a class="anchor" href="#task-2-style-và-tích-hợp-menu" aria-label="Link to this section">#</a></h4>
+<p>Thêm CSS dropdown vào stylesheet và cập nhật điều hướng trên mọi trang.</p>
+<p><strong>CSS của bạn phải có:</strong></p>
 <ul>
-<li>Dropdown container styling (<code>position: relative</code> on the parent <code>&lt;li&gt;</code>)</li>
-<li>Dropdown content hidden by default</li>
-<li>Show dropdown on hover</li>
-<li>Style dropdown links (padding, hover color change)</li>
-<li>Smooth transition effect</li>
+<li>Style khung chứa dropdown (<code>position: relative</code> trên <code>&lt;li&gt;</code> cha)</li>
+<li>Nội dung dropdown ẩn theo mặc định</li>
+<li>Hiện dropdown khi hover</li>
+<li>Style các liên kết dropdown (padding, đổi màu khi hover)</li>
+<li>Hiệu ứng chuyển động mượt</li>
 </ul>
-<p><strong>Your HTML updates must include:</strong></p>
+<p><strong>Phần cập nhật HTML của bạn phải có:</strong></p>
 <ul>
-<li>Updated nav on at least 2 pages with the dropdown structure</li>
-<li>Correct links inside the dropdown (use your own pages and anchors)</li>
+<li>Nav cập nhật với cấu trúc dropdown trên ít nhất 2 trang</li>
+<li>Liên kết đúng bên trong dropdown (dùng trang và anchor của chính bạn)</li>
 </ul>
-<h4 id="task-3-add-a-back-to-top-button-bonus">Task 3: Add a &quot;Back to Top&quot; Button (Bonus)<a class="anchor" href="#task-3-add-a-back-to-top-button-bonus" aria-label="Link to this section">#</a></h4>
-<p>Add a simple &quot;Back to Top&quot; button to your pages.</p>
-<p><strong>Minimum implementation (HTML + CSS):</strong></p>
+<h4 id="task-3-thêm-nút-back-to-top-bonus">Task 3: Thêm nút &quot;Back to Top&quot; (Bonus)<a class="anchor" href="#task-3-thêm-nút-back-to-top-bonus" aria-label="Link to this section">#</a></h4>
+<p>Thêm một nút &quot;Back to Top&quot; đơn giản vào các trang của bạn.</p>
+<p><strong>Cài đặt tối thiểu (HTML + CSS):</strong></p>
 <pre><code class="language-html">&lt;a href=&quot;#top&quot; class=&quot;back-to-top&quot;&gt;Back to Top&lt;/a&gt;
 </code></pre>
 <pre><code class="language-css">.back-to-top {
@@ -211,137 +208,138 @@ for the retired Spry Menu Bar — <code>:hover</code> on the parent <code>&lt;li
   color: white;
   padding: 10px 15px;
   text-decoration: none;
-  border-radius: 5px;
 }
 </code></pre>
-<p>Add <code>id=&quot;top&quot;</code> to your <code>&lt;header&gt;</code> element so the link scrolls back up.</p>
-<p><strong>File paths:</strong></p>
+<p><strong>Đường dẫn file:</strong></p>
 <ul>
-<li><code>project/css/style.css</code> (dropdown + button styles)</li>
-<li>At least 2 HTML files (updated navigation)</li>
+<li><code>project/index.html</code>, <code>project/about.html</code> (thêm dropdown vào nav)</li>
+<li><code>project/css/style.css</code> (thêm style dropdown)</li>
+<li>Các trang khác (cập nhật nav đồng bộ)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
-<p>Code is only half of this homework. The other half is a <strong>short screen-recorded
-video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
-skill the midterm practical, the final practical exam, and every job interview
-afterwards will ask of you. Using an AI tool or a tutorial to build the tasks
-above is allowed; being able to walk through every line of what you keep is not
-optional.</p>
-<h4 id="what-to-record">What to record<a class="anchor" href="#what-to-record" aria-label="Link to this section">#</a></h4>
-<p>With <strong>OBS Studio</strong> (free — <a href="https://obsproject.com">https://obsproject.com</a>), record <strong>60–120 seconds</strong>,
-your <strong>voice required</strong> (face optional), sharing your screen while you present
-ONE part of this homework. Pick a single topic — do not try to cover everything.
-For this session, the easiest good choice is to <strong>show the dropdown menu and explain how <code>:hover</code> on the list item reveals the hidden sub-menu, and what <code>position: absolute</code> does there</strong>.</p>
-<p>Requirements for the recording:</p>
+<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
+chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
+thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau
+này đều đòi hỏi. Dùng công cụ AI hoặc tutorial để làm các task trên là được phép;
+nhưng việc giải thích được từng dòng của những gì bạn giữ lại là điều không tùy chọn.</p>
+<h4 id="quay-nội-dung-gì">Quay nội dung gì<a class="anchor" href="#quay-nội-dung-gì" aria-label="Link to this section">#</a></h4>
+<p>Với <strong>OBS Studio</strong> (miễn phí — <a href="https://obsproject.com">https://obsproject.com</a>), quay <strong>60–120 giây</strong>,
+<strong>bắt buộc có giọng nói</strong> (khuôn mặt tùy chọn), chia sẻ màn hình trong khi bạn
+trình bày MỘT phần của bài tập này. Chọn một chủ đề duy nhất — đừng cố covering
+hết mọi thứ. Với buổi này, lựa chọn tốt và dễ nhất là <strong>mở menu dropdown và giải
+thích <code>:hover</code> trên phần tử danh sách làm hiện menu con ẩn thế nào, và
+<code>position: absolute</code> đóng vai trò gì ở đó</strong>.</p>
+<p>Yêu cầu cho bản ghi:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Length <strong>1–2 minutes</strong>. Over 2 minutes loses structure points; under 1 minute usually means there is no substance.</li>
-<li><input disabled="" type="checkbox"> The <strong>screen is shared the whole time</strong> — the lecturer must see your real editor and browser, not a slideshow of screenshots.</li>
-<li><input disabled="" type="checkbox"> You <strong>speak</strong> through the video (Vietnamese is fine; technical terms stay in English), and your name + student ID are visible or spoken at the start.</li>
-<li><input disabled="" type="checkbox"> You <strong>show and explain</strong>, not read: open the actual file, point at the actual lines, show the actual result in the browser.</li>
+<li><input disabled="" type="checkbox"> Độ dài <strong>1–2 phút</strong>. Quá 2 phút mất điểm cấu trúc; dưới 1 phút thường nghĩa là không có nội dung.</li>
+<li><input disabled="" type="checkbox"> <strong>Màn hình được chia sẻ suốt video</strong> — giảng viên phải thấy trình soạn thảo và trình duyệt thật của bạn, không phải một loạt ảnh chụp màn hình.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>nói</strong> trong video (tiếng Việt hoàn toàn được; thuật ngữ kỹ thuật giữ tiếng Anh), và tên + mã số sinh viên hiện lên hoặc được đọc ở đầu video.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>vừa chỉ vừa giải thích</strong>, không đọc thuộc lòng: mở file thật, chỉ vào dòng thật, chạy kết quả thật trên trình duyệt.</li>
 </ul>
-<h4 id="how-to-hand-in-the-video">How to hand in the video<a class="anchor" href="#how-to-hand-in-the-video" aria-label="Link to this section">#</a></h4>
-<p>You submit a <strong>link</strong>, never the video file itself:</p>
+<h4 id="cách-nộp-video">Cách nộp video<a class="anchor" href="#cách-nộp-video" aria-label="Link to this section">#</a></h4>
+<p>Bạn nộp một <strong>link</strong>, không bao giờ nộp file video:</p>
 <ol>
-<li>Upload the recording (<code>MP4</code>, 720p or higher) to <strong>your own Google Drive</strong>.</li>
-<li>Set sharing to <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
-<li>Open <code>homework/submissions.md</code> in your repository and add <strong>one line</strong>:
-<code>- Session 14 — (paste your Google Drive link here)</code></li>
-<li>Commit and push that file together with the rest of this homework.</li>
+<li>Tải bản ghi (<code>MP4</code>, 720p trở lên) lên <strong>Google Drive của chính bạn</strong>.</li>
+<li>Đặt chế độ chia sẻ thành <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository của bạn và thêm <strong>một dòng</strong>:
+<code>- Session 14 — (dán link Google Drive của bạn vào đây)</code></li>
+<li>Commit và push file đó cùng với phần còn lại của bài tập.</li>
 </ol>
-<p>The system collects and grades the code part (it runs the self-check on your
-repository). For the video it stores <strong>only the link</strong> — your lecturer watches
-it and grades it afterwards. A missing, private, or dead link means the video
-part cannot be graded.</p>
-<h4 id="how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric">How the video part is graded (4 points, on top of the 10-point rubric)<a class="anchor" href="#how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric" aria-label="Link to this section">#</a></h4>
+<p>Hệ thống thu và chấm phần code (nó chạy công cụ tự kiểm tra trên repository của
+bạn). Với video, hệ thống chỉ lưu <strong>link</strong> — giảng viên xem và chấm sau. Link
+thiếu, riêng tư, hoặc hỏng nghĩa là phần video không thể chấm.</p>
+<h4 id="phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm">Phần video được chấm thế nào (4 điểm, cộng trên rubric 10 điểm)<a class="anchor" href="#phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm" aria-label="Link to this section">#</a></h4>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>What the lecturer looks for</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Giảng viên nhìn vào điều gì</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Structure of the talk</td>
+<td>Cấu trúc bài nói</td>
 <td>1</td>
-<td>A beginning (what you built), a middle (how it works, pointing at real code), and an end (what you learned or would improve).</td>
+<td>Có mở đầu (bạn đã xây gì), giữa (nó hoạt động thế nào, chỉ vào code thật), và kết thúc (bạn học được gì hoặc sẽ cải thiện gì).</td>
 </tr>
 <tr>
-<td>Screen walkthrough</td>
+<td>Trình bày trên màn hình</td>
 <td>1</td>
-<td>The real project on screen — editor and browser together, no slideshow of screenshots.</td>
+<td>Dự án thật trên màn hình — trình soạn thảo và trình duyệt cùng lúc, không phải slideshow ảnh chụp.</td>
 </tr>
 <tr>
-<td>Correct explanation</td>
+<td>Giải thích đúng</td>
 <td>2</td>
-<td>You explain what the code does and why. Reading a memorised script over code you cannot explain scores 0.</td>
+<td>Bạn giải thích code làm gì và tại sao. Đọc một kịch bản học thuộc trên code bạn không giải thích được bị chấm 0.</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>4</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>Why a video? AI tools can write homework code, so the proof of learning moves
-to the explanation. Sixty seconds of you explaining your own lines is the
-strongest evidence of real understanding — and it is exactly what a technical
-interview looks like.</p>
+<p>Vì sao phải quay video? Công cụ AI có thể viết code bài tập, nên bằng chứng học
+tập chuyển sang phần giải thích. Sáu mươi giây bạn giải thích chính dòng code
+của mình là bằng chứng hiểu thật mạnh nhất — và nó cũng chính là một buổi phỏng
+vấn kỹ thuật điển hình.</p>
 </blockquote>
-<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<h3 id="lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn<a class="anchor" href="#lưu-bài-luyện-tập-của-bạn" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Add changes: <code>git add project/</code></li>
+<li>Thêm thay đổi: <code>git add project/</code></li>
 <li>Commit: <code>git commit -m &quot;HW14: Add interactive dropdown menu&quot;</code></li>
 <li>Push: <code>git push</code></li>
 </ul>
-<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<h3 id="rubric-tham-chiếu">Rubric tham chiếu<a class="anchor" href="#rubric-tham-chiếu" aria-label="Link to this section">#</a></h3>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>Description</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Mô tả</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Menu structure</td>
+<td>Cấu trúc menu</td>
 <td>3</td>
-<td>Dropdown HTML is properly structured</td>
+<td>HTML dropdown được cấu trúc đúng</td>
 </tr>
 <tr>
-<td>CSS styling</td>
+<td>Style CSS</td>
 <td>3</td>
-<td>Dropdown shows on hover, links styled</td>
+<td>Dropdown hiện khi hover, liên kết được style</td>
 </tr>
 <tr>
-<td>Integration</td>
+<td>Tích hợp</td>
 <td>2</td>
-<td>Dropdown works within existing navigation</td>
+<td>Dropdown hoạt động trong điều hướng hiện có</td>
 </tr>
 <tr>
 <td>Back to top</td>
 <td>1</td>
-<td>Button exists and links to top</td>
+<td>Nút tồn tại và trỏ lên đầu trang</td>
 </tr>
 <tr>
-<td>Code quality</td>
+<td>Chất lượng code</td>
 <td>1</td>
-<td>Clean, well-commented code</td>
+<td>Code sạch, chú thích đầy đủ</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>10</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>The key to CSS dropdowns is <code>display: none</code> by default and <code>display: block</code> on <code>:hover</code></li>
-<li>Use <code>position: relative</code> on the parent <code>&lt;li&gt;</code> and <code>position: absolute</code> on the dropdown <code>&lt;ul&gt;</code></li>
-<li>If the dropdown goes off-screen, adjust <code>left</code> or <code>right</code> values</li>
+<li>Chìa khóa của CSS dropdown là <code>display: none</code> mặc định và <code>display: block</code> khi <code>:hover</code></li>
+<li>Dùng <code>position: relative</code> trên <code>&lt;li&gt;</code> cha và <code>position: absolute</code> trên <code>&lt;ul&gt;</code> dropdown</li>
+<li>Nếu dropdown tràn khỏi màn hình, điều chỉnh giá trị <code>left</code> hoặc <code>right</code></li>
 </ul>
 <h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
-<p>When you hover over the &quot;About&quot; menu item, a dropdown should appear showing sub-links like &quot;Our Mission,&quot; &quot;Activities,&quot; and &quot;Gallery.&quot; The dropdown should disappear when you move your mouse away.</p>
+<p>Khi rê chuột lên mục &quot;About&quot;, một dropdown sẽ hiện ra với các liên kết con như
+&quot;Our Mission&quot;, &quot;Activities&quot; và &quot;Gallery&quot;. Dropdown biến mất khi bạn đưa chuột đi
+khỏi.</p>
 
   </article>
 </main>

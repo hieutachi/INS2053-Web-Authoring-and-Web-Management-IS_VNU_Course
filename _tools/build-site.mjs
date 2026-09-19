@@ -254,23 +254,148 @@ function render(markdown) {
   return { html, headings };
 }
 
+/* --- Vietnamese content labels (plan item A2) ----------------------------- */
+
+/**
+ * Machine-translates the REPEATED structural labels of the ebook — the 11
+ * level-1 headings, the recurring h3 blocks, and the bold lead labels — so a
+ * Vietnamese reader can orient inside a chapter whose prose is still English
+ * (TRANSLATION-PLAN.md §6 package B). Runs on the VI tree only; the EN tree
+ * bytes never change.
+ *
+ * Anchoring rules (plan §5.2): headings are matched as whole lines with a
+ * `#`-run prefix; lead labels only at the start of a line (optionally after a
+ * bullet marker), bolded, so `**box model**` mid-sentence or a `[Common
+ * Errors](#…) link can never be touched. The `> 🖼 **Diagram:**`
+ * contract lines are NOT matched: they carry a blockquote prefix my label
+ * pattern does not accept, and check-diagram-links.js parses them verbatim.
+ */
+const VI_HEADINGS = {
+  "📌 SESSION INFORMATION": "📌 THÔNG TIN BUỔI HỌC",
+  "🎯 LEARNING OBJECTIVES": "🎯 MỤC TIÊU HỌC TẬP",
+  "📖 THEORY": "📖 LÝ THUYẾT",
+  "📋 THEORY SUMMARY": "📋 TÓM TẮT LÝ THUYẾT",
+  "💡 WORKED EXAMPLES": "💡 VÍ DỤ MẪU",
+  "🛠️ HANDS-ON PRACTICE": "🛠️ THỰC HÀNH TRÊN MÁY",
+  "🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU": "🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ",
+  "✅ SELF-CHECK QUESTIONS": "✅ CÂU HỎI TỰ KIỂM TRA",
+  "📝 SELF-ASSESSMENT WORKSHEET": "📝 PHIẾU TỰ ĐÁNH GIÁ",
+  "🔗 FURTHER READING": "🔗 ĐỌC THÊM",
+  "⏭️ NEXT SESSION": "⏭️ BUỔI TIẾP THEO",
+  "🎒 Real-life Example": "🎒 Ví dụ thực tế",
+  "🎒 Real-life example": "🎒 Ví dụ thực tế",
+  "⚠️ Important Notes": "⚠️ LƯU Ý QUAN TRỌNG",
+  "⚠️ Important notes": "⚠️ LƯU Ý QUAN TRỌNG",
+  "❌ Common mistakes": "❌ LỖI THƯỜNG GẶP",
+  "❌ Common Mistakes": "❌ LỖI THƯỜNG GẶP",
+  "✅ Best practices": "✅ THỰC HÀNH TỐT",
+  "✅ Best Practices": "✅ THỰC HÀNH TỐT",
+  "🔍 Comparison Table": "🔍 BẢNG SO SÁNH",
+  "Setup": "Thiết lập",
+};
+
+/** Bold lead labels: exact text inside the `**…**` run, incl. its colon. */
+const VI_LEADS = {
+  "Expected result:": "Kết quả mong đợi:",
+  "Situation:": "Tình huống:",
+  "Result:": "Kết quả:",
+  "Line-by-line explanation:": "Giải thích từng dòng:",
+  "Steps:": "Các bước:",
+  "How this session's homework works, in order:": "Cách làm bài tập của buổi này, theo thứ tự:",
+  "Deadline: Sunday 23:59.": "Hạn nộp: Chủ nhật 23:59.",
+};
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * Apply the maps above to one markdown document. Only called for the VI tree.
+ * Heading ids/TOC are generated from the SAME translated text later in the
+ * one render pass, so anchors stay self-consistent.
+ */
+function labelize(markdown) {
+  let out = markdown;
+  // fixed headings: `#{1,4} <exact>` as a whole line, emoji kept
+  for (const [en, vi] of Object.entries(VI_HEADINGS)) {
+    out = out.replace(new RegExp(`^(#{1,4}\\s+)${escapeRe(en)}\\s*$`, "gm"), `$1${vi}`);
+  }
+  // numbered h3 blocks: `N.N Definition`, `N.N Why It Matters`, syntax
+  out = out.replace(/^(#{1,4}\s+)(\d+\.\d+)\s+Definition\s*$/gm, "$1$2 Định nghĩa");
+  out = out.replace(/^(#{1,4}\s+)(\d+\.\d+)\s+Why [Ii]t [Mm]atters\s*$/gm, "$1$2 Vì sao điều này quan trọng");
+  out = out.replace(/^(#{1,4}\s+)(\d+\.\d+)\s+Basic Syntax\s*$/gm, "$1$2 Cú pháp cơ bản");
+  out = out.replace(/^(#{1,4}\s+)(\d+\.\d+)\s+Syntax\s*$/gm, "$1$2 Cú pháp");
+  // bold lead labels at line start (optional bullet marker)
+  for (const [en, vi] of Object.entries(VI_LEADS)) {
+    out = out.replace(new RegExp(`^(\\s*(?:[-*]\\s+)?)\\*\\*${escapeRe(en)}\\*\\*`, "gm"), `$1**${vi}**`);
+  }
+  // parameterised labels: `**Step N:**` and `**Task (N min):**`
+  out = out.replace(/^(\s*(?:[-*]\s+)?)\*\*Step (\d+):\*\*/gm, "$1**Bước $2:**");
+  out = out.replace(/^(\s*(?:[-*]\s+)?)\*\*Task (\d+) min:\*\*/gm, "$1**Bài tập ($2 phút):**");
+  return out;
+}
+
+/**
+ * The three machine homework headings, renamed per language. qa-site.mjs group
+ * 11 requires the English triple on the English tree and — since A3 — the
+ * Vietnamese triple on the Vietnamese tree, so a `i18n/vi/homework/…` source
+ * must still carry the ENGLISH headings `## Due Date`, `## Submission Guide`
+ * and `## Grading Rubric` for the replaces below to find; the translation is
+ * supplied by this map at build time, never typed into the VI source file.
+ */
+const PRACTICE_HEADINGS = {
+  en: {
+    status: "Practice Status",
+    save: "Save Your Practice Work",
+    rubric: "Reference Rubric",
+  },
+  vi: {
+    status: "Trạng thái luyện tập",
+    save: "Lưu bài luyện tập của bạn",
+    rubric: "Rubric tham chiếu",
+  },
+};
+
+/** The replacement Practice Status section, in the language of the source. */
+function practiceStatusNote(lang) {
+  if (lang === "vi")
+    return "## Trạng thái luyện tập\nViệc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push các phần code, rồi thêm link Google Drive vào homework/submissions.md. Rubric tham chiếu bên dưới chấm phần code (10 điểm); video được chấm riêng (4 điểm).\n";
+  return "## Practice Status\nOnline submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md. The reference rubric below grades the code part (10 pts); the video is graded separately (4 pts).\n";
+}
+
+/**
 /**
  * Keep the source homework useful to lecturers while publishing it only as
  * ungraded practice. Technical uses of HTML submit controls in Session 13 stay
  * intact as escaped teaching examples; course deadlines and hand-in wording do not.
  */
-function prepareHomeworkMarkdown(markdown) {
-  return markdown
+function prepareHomeworkMarkdown(markdown, lang = "en") {
+  const H = PRACTICE_HEADINGS[lang] || PRACTICE_HEADINGS.en;
+  let out = markdown
     .replace(
       /^## Due Date\s*\r?\n[^\r\n]*(?:\r?\n)?/m,
-      "## Practice Status\nOnline submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md. The reference rubric below grades the code part (10 pts); the video is graded separately (4 pts).\n"
+      practiceStatusNote(lang)
     )
-    .replace(/^## Submission Guide\s*$/m, "## Save Your Practice Work")
-    .replace(/^## Grading Rubric\s*$/m, "## Reference Rubric")
-    .replace(/\bby the deadline\b/gi, "before you attempt this task")
-    .replace(/\bfinal capstone submission\b/gi, "final capstone version")
-    .replace(/\bBefore you submit it\b/g, "Before you consider it finished")
-    .replace(/- Session (\d\d) — <your Google Drive link>/g, "- Session $1 — (paste your Google Drive link here)");
+    .replace(/^## Submission Guide\s*$/m, `## ${H.save}`)
+    .replace(/^## Grading Rubric\s*$/m, `## ${H.rubric}`);
+  if (lang === "vi") {
+    out = out
+      .replace(/\bby the deadline\b/gi, "trước khi bạn làm bài này")
+      .replace(/\bfinal capstone submission\b/gi, "phiên bản cuối của đồ án")
+      .replace(/\bBefore you submit it\b/g, "Trước khi bạn coi bài là xong")
+      .replace(
+        /- Session (\d\d) — <your Google Drive link>/g,
+        "- Session $1 — (dán link Google Drive của bạn vào đây)"
+      );
+  } else {
+    out = out
+      .replace(/\bby the deadline\b/gi, "before you attempt this task")
+      .replace(/\bfinal capstone submission\b/gi, "final capstone version")
+      .replace(/\bBefore you submit it\b/g, "Before you consider it finished")
+      .replace(
+        /- Session (\d\d) — <your Google Drive link>/g,
+        "- Session $1 — (paste your Google Drive link here)"
+      );
+  }
+  return out;
 }
 
 /* --- the course map ------------------------------------------------------- */
@@ -1381,7 +1506,10 @@ async function buildTree(lang) {
     const viSrc = path.join(ROOT, "i18n/vi/ebook", file);
     const hasVi = lang === "vi" && existsSync(viSrc);
     const md = await readFile(hasVi ? viSrc : path.join(ROOT, "ebook", file), "utf8");
-    const { html, headings } = render(md);
+    // VI tree: machine-translate the repeated structural labels (A2) before
+    // rendering. The EN tree passes through untouched, byte for byte.
+    const pageMd = lang === "vi" ? labelize(md) : md;
+    const { html, headings } = render(pageMd);
 
     // The title is the chapter's own SECOND line; the first is "# SESSION NN".
     const lines = md.split(/\r?\n/);
@@ -1445,7 +1573,7 @@ async function buildTree(lang) {
       continue;
     }
     const md = await readFile(hasVi ? viSrc : enSrc, "utf8");
-    const publicMd = prepareHomeworkMarkdown(md);
+    const publicMd = prepareHomeworkMarkdown(md, lang);
     const { html, headings } = render(publicMd);
     const title = plain((md.split(/\r?\n/)[0] || "").replace(/^#\s*/, ""));
     if (hasVi) translated++;

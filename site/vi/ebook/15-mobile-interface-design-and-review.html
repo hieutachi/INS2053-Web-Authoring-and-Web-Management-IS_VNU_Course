@@ -64,7 +64,7 @@ if(w&&w!=="vi")location.replace("../../ebook/15-mobile-interface-design-and-revi
         <li class="d2"><a href="#example-1-adding-viewport-meta-tag-to-all-pages">Example 1: Adding Viewport Meta Tag to All Pages</a></li>
         <li class="d2"><a href="#example-2-complete-responsive-css-for-student-club-website">Example 2: Complete Responsive CSS for Student Club Website</a></li>
         <li class="d2"><a href="#example-3-using-chrome-devtools-to-test-responsiveness">Example 3: Using Chrome DevTools to Test Responsiveness</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#session-by-session-summary">Session-by-Session Summary</a></li>
         <li class="d2"><a href="#core-skills-checklist">Core Skills Checklist</a></li>
         <li class="d2"><a href="#exam-format-typical">Exam Format (Typical)</a></li>
@@ -93,7 +93,7 @@ if(w&&w!=="vi")location.replace("../../ebook/15-mobile-interface-design-and-revi
 <h2 id="mobile-interface-design-and-review"><strong>Mobile Interface Design and Review</strong><a class="anchor" href="#mobile-interface-design-and-review" aria-label="Link to this section">#</a></h2>
 <p>Welcome to our final session! Today has two important parts. First, you will learn how to make your Student Club Website look great on smartphones and tablets using responsive web design techniques (viewport meta tag, media queries, flexible images). Second, we will review everything you have learned across all 15 sessions and prepare you for the final exam. By the end of today, your website will work beautifully on desktop, tablet, AND phone — and you will have a clear study plan for the exam. Let us finish strong!</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    Chapter 15 — Mobile Interface Design / Review (course textbook)
                  MDN &quot;Responsive Web Design&quot;; MDN &quot;Using Media Queries&quot;
@@ -111,7 +111,7 @@ if(w&&w!=="vi")location.replace("../../ebook/15-mobile-interface-design-and-revi
                  CLO5 (evaluate, document, and present a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>Explain why mobile-friendly design is essential (statistics, user expectations, SEO).</li>
 <li>Describe what the viewport meta tag does and add it to every page.</li>
@@ -125,14 +125,14 @@ if(w&&w!=="vi")location.replace("../../ebook/15-mobile-interface-design-and-revi
 <li>Complete a final-project checklist before submission.</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-why-mobile-design-matters">1. Why Mobile Design Matters<a class="anchor" href="#1-why-mobile-design-matters" aria-label="Link to this section">#</a></h3>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p><strong>Mobile interface design</strong> means designing websites so they are usable, readable, and visually appealing on small screens — smartphones (typically 320px–430px wide) and tablets (typically 600px–1024px wide). This is not just about making things smaller; it requires rethinking layout, navigation, font sizes, button sizes, and image handling.</p>
-<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>Think about the last time you visited a website on your phone and had to pinch-zoom to read tiny text, or accidentally tapped the wrong link because the buttons were too close together. That website was NOT designed for mobile. Now think about websites like YouTube, Facebook, or your university portal — they adapt perfectly to your phone screen. That is responsive design in action.</p>
 <p>For our <strong>Student Club Website</strong>, consider: students will check event schedules, register for membership, and browse the gallery primarily on their phones during breaks between classes. If the site does not work on mobile, they will simply leave.</p>
-<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<h4 id="12-vì-sao-điều-này-quan-trọng">1.2 Vì sao điều này quan trọng<a class="anchor" href="#12-vì-sao-điều-này-quan-trọng" aria-label="Link to this section">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -186,9 +186,9 @@ if(w&&w!=="vi")location.replace("../../ebook/15-mobile-interface-design-and-revi
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-15.canvas.tsx</code> → <code>ViewportMeta</code> — slide <code>s15-responsive</code> (&quot;Viewport &amp; Media Queries&quot;)</p>
 </blockquote>
-<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="21-định-nghĩa">2.1 Định nghĩa<a class="anchor" href="#21-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>The <strong>viewport meta tag</strong> tells mobile browsers how to control the page&#39;s dimensions and scaling. Without it, mobile browsers assume the page is designed for a desktop (typically 980px wide) and shrink it down to fit the phone screen — making everything tiny and unreadable.</p>
-<h4 id="22-syntax">2.2 Syntax<a class="anchor" href="#22-syntax" aria-label="Link to this section">#</a></h4>
+<h4 id="22-cú-pháp">2.2 Cú pháp<a class="anchor" href="#22-cú-pháp" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-html">&lt;!-- ✅ ALWAYS include this in &lt;head&gt; --&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
 </code></pre>
@@ -226,13 +226,13 @@ WITH viewport meta tag:
 │ Media queries can adjust layout │
 └─────────────────────────────────┘
 </code></pre>
-<h4 id="important-notes">⚠️ Important notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Add this tag to EVERY HTML page in your site. Missing it on even one page breaks mobile display for that page.</li>
 <li>Place it inside <code>&lt;head&gt;</code>, typically right after <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>.</li>
 <li>Never set <code>maximum-scale=1.0</code> or <code>user-scalable=no</code> — this prevents users from zooming and is an accessibility violation.</li>
 </ul>
-<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-2">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-2" aria-label="Link to this section">#</a></h4>
 <p>Open your Student Club Website&#39;s <code>index.html</code> on your phone RIGHT NOW (before adding the viewport tag). Notice how tiny everything looks? Now add the tag and refresh. The difference is dramatic.</p>
 <h4 id="try-it-yourself-delete-the-viewport-tag">🧪 Try It Yourself — Delete the Viewport Tag<a class="anchor" href="#try-it-yourself-delete-the-viewport-tag" aria-label="Link to this section">#</a></h4>
 <p><strong>Task (5 min):</strong> See exactly what that one line does.</p>
@@ -246,7 +246,7 @@ WITH viewport meta tag:
 </code></pre>
 </li>
 </ol>
-<p><strong>Expected result:</strong> With the tag, <code>innerWidth</code> reports 375 and the page fits. Without it, the browser reports about 980 and renders a full desktop page zoomed out to postage-stamp size — technically all there, practically unreadable.</p>
+<p><strong>Kết quả mong đợi:</strong> With the tag, <code>innerWidth</code> reports 375 and the page fits. Without it, the browser reports about 980 and renders a full desktop page zoomed out to postage-stamp size — technically all there, practically unreadable.</p>
 <details>
 <summary>What the two values mean</summary><p><code>width=device-width</code> tells the browser to use the device&#39;s real width as the viewport instead of pretending to be a 980px desktop. That default exists for old sites that were never designed for phones — zooming out is better than breaking them.</p>
 <p><code>initial-scale=1</code> sets the starting zoom to 100%, so one CSS pixel maps to one device-independent pixel.</p>
@@ -257,9 +257,9 @@ WITH viewport meta tag:
 <blockquote>
 <p>🖼 <strong>Diagrams:</strong> <code>canvases/buoi-15.canvas.tsx</code> → <code>MediaQueryAnatomy</code> — slide <code>s15-media-queries</code> (&quot;Media Query Breakpoints&quot;); <code>MobileFirstLadder</code> — slide <code>s15-media-queries</code> (&quot;Media Query Breakpoints&quot;)</p>
 </blockquote>
-<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="31-định-nghĩa">3.1 Định nghĩa<a class="anchor" href="#31-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>A <strong>media query</strong> is a CSS rule that applies styles only when certain conditions are met — most commonly, when the screen width falls below (or above) a specific threshold. Media queries are the engine of responsive design.</p>
-<h4 id="32-syntax">3.2 Syntax<a class="anchor" href="#32-syntax" aria-label="Link to this section">#</a></h4>
+<h4 id="32-cú-pháp">3.2 Cú pháp<a class="anchor" href="#32-cú-pháp" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-css">/* Base styles apply to ALL screen sizes */
 main {
     width: 65%;
@@ -438,7 +438,7 @@ main {
     main { padding: 10px; }
 }
 </code></pre>
-<h4 id="important-notes-2">⚠️ Important notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-2">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Media queries should be placed AFTER your base styles in the CSS file (order matters — later rules override earlier ones at the same specificity).</li>
 <li>Use <code>max-width</code> for desktop-first; use <code>min-width</code> for mobile-first. Do not mix both in the same project unless you have a specific reason.</li>
@@ -462,7 +462,7 @@ main {
 <li>Both work. Open device mode and drag the width across 768px for each version.</li>
 <li>Now add a third layout — four across on very wide screens — to each version and count the lines you had to write.</li>
 </ol>
-<p><strong>Expected result:</strong> Both produce identical results at two sizes. Adding a third breakpoint is where they diverge: mobile-first adds one <code>min-width</code> block, while desktop-first requires you to re-specify and override.</p>
+<p><strong>Kết quả mong đợi:</strong> Both produce identical results at two sizes. Adding a third breakpoint is where they diverge: mobile-first adds one <code>min-width</code> block, while desktop-first requires you to re-specify and override.</p>
 <details>
 <summary>Why mobile-first is the convention</summary><p>The base rules describe the <strong>simplest</strong> layout — a single column — and each <code>min-width</code> query adds complexity as space allows. That direction matters for three reasons:</p>
 <ol>
@@ -503,7 +503,7 @@ img {
     min-height: 300px;
 }
 </code></pre>
-<h4 id="important-notes-3">⚠️ Important notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-3">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Add the <code>img</code> rule early in your CSS (it should apply globally).</li>
 <li>For very large images, also consider serving smaller files for mobile using the <code>&lt;picture&gt;</code> element or <code>srcset</code> attribute (beyond scope of this course, but good to know about).</li>
@@ -521,7 +521,7 @@ img {
 </li>
 <li>Reload at 375px, then drag the width back up to 1400px.</li>
 </ol>
-<p><strong>Expected result:</strong> The photo shrinks to fit any screen and the sideways scrolling stops. At wide widths it stops at its natural size instead of stretching and blurring.</p>
+<p><strong>Kết quả mong đợi:</strong> The photo shrinks to fit any screen and the sideways scrolling stops. At wide widths it stops at its natural size instead of stretching and blurring.</p>
 <details>
 <summary>Why both lines are needed, and why not <code>width: 100%</code></summary><p><code>max-width: 100%</code> caps the image at its container&#39;s width but lets it stay smaller. <code>width: 100%</code> would <em>force</em> it to the container width, upscaling a small logo into a blurry mess.</p>
 <p><code>height: auto</code> is what preserves the aspect ratio. Without it, an explicit <code>height</code> attribute in the HTML stays fixed while the width shrinks, and the image distorts.</p>
@@ -578,7 +578,7 @@ body {
     }
 }
 </code></pre>
-<h4 id="important-notes-4">⚠️ Important notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-4">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-4" aria-label="Link to this section">#</a></h4>
 <ul>
 <li><code>font-size: 16px</code> on form inputs prevents iOS Safari from zooming in when the field is focused.</li>
 <li>Hover effects do NOT work on touch screens. Provide alternative visual feedback (<code>:active</code> state) for touch.</li>
@@ -664,7 +664,7 @@ body {
 <td>Always visible or hamburger</td>
 </tr>
 </tbody></table>
-<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h4>
 <ol>
 <li><strong>Always include the viewport meta tag</strong> on every page.</li>
 <li><strong>Use relative units</strong> (%, em, rem) instead of fixed pixels for widths.</li>
@@ -675,7 +675,7 @@ body {
 <li><strong>Stack columns vertically on mobile</strong> — side-by-side columns rarely work well below 768px.</li>
 <li><strong>Prioritize content</strong> — on mobile, show the most important content first; move secondary content (sidebars) below.</li>
 </ol>
-<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Mistake 1: Forgetting the viewport meta tag</strong></p>
 <pre><code class="language-html">&lt;!-- ❌ WRONG: no viewport tag --&gt;
 &lt;head&gt;
@@ -723,7 +723,7 @@ nav a { padding: 12px 16px; font-size: 14px; min-height: 44px; }
 <li><strong>Keyboard only.</strong> Reload, put your hands off the mouse, and press <strong>Tab</strong> through every link, field, and button. You must always be able to see where focus is.</li>
 <li><strong>Lighthouse.</strong> F12 → <strong>Lighthouse</strong> tab → tick Accessibility and Performance → <strong>Analyze page load</strong>. Read the top three issues.</li>
 </ol>
-<p><strong>Expected result:</strong> No sideways scrolling at 375px, no layout break between 320px and 1400px, a visible focus ring on every interactive element, and a Lighthouse accessibility score you can name.</p>
+<p><strong>Kết quả mong đợi:</strong> No sideways scrolling at 375px, no layout break between 320px and 1400px, a visible focus ring on every interactive element, and a Lighthouse accessibility score you can name.</p>
 <details>
 <summary>What each check is really finding</summary><p><strong>The drag is the most useful one.</strong> A layout rarely breaks <em>at</em> your breakpoint — it breaks 40px before it, where the content no longer fits but the media query has not fired. Dragging finds that width; testing three fixed sizes does not.</p>
 <p><strong>Horizontal scrolling always has a cause</strong>, and it is usually one element: a fixed <code>width</code> in pixels, a long unbroken URL, or a table. Find it by pasting this into the Console:</p>
@@ -735,7 +735,7 @@ nav a { padding: 12px 16px; font-size: 14px; min-height: 44px; }
 <p><strong>Lighthouse gives you a checklist, not a verdict.</strong> Contrast failures, missing <code>alt</code>, unlabelled form fields, and a missing <code>lang</code> attribute are the four it most often reports, and all four are quick to fix.</p>
 <p>One thing device mode cannot simulate: touch target size and real network speed. Test the finished site on an actual phone at least once via Live Server&#39;s network address.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -796,9 +796,9 @@ nav a { padding: 12px 16px; font-size: 14px; min-height: 44px; }
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-adding-viewport-meta-tag-to-all-pages">Example 1: Adding Viewport Meta Tag to All Pages<a class="anchor" href="#example-1-adding-viewport-meta-tag-to-all-pages" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong>
+<p><strong>Tình huống:</strong>
 Your Student Club Website currently has no viewport meta tag. Every page looks tiny on mobile. You need to fix all six pages.</p>
 <p><strong>Code (add to <code>&lt;head&gt;</code> of EVERY HTML file):</strong></p>
 <pre><code class="language-html">&lt;head&gt;
@@ -810,7 +810,7 @@ Your Student Club Website currently has no viewport meta tag. Every page looks t
     &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
 &lt;/head&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -835,11 +835,11 @@ Your Student Club Website currently has no viewport meta tag. Every page looks t
 <td>No automatic zoom on page load.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong>
+<p><strong>Kết quả:</strong>
 After adding this tag to all six pages and viewing on a phone, text is readable at normal size, and media queries can now take effect properly.</p>
 <hr>
 <h3 id="example-2-complete-responsive-css-for-student-club-website">Example 2: Complete Responsive CSS for Student Club Website<a class="anchor" href="#example-2-complete-responsive-css-for-student-club-website" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong>
+<p><strong>Tình huống:</strong>
 Add comprehensive responsive styles to <code>css/style.css</code> to handle tablet and mobile layouts.</p>
 <p><strong>Code (append to bottom of <code>css/style.css</code>):</strong></p>
 <pre><code class="language-css">/* =============================================
@@ -1045,11 +1045,11 @@ nav a,
 <td>Ensures all tappable targets meet the 44px minimum.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong>
+<p><strong>Kết quả:</strong>
 The Student Club Website now displays correctly at desktop (1200px), tablet (768px), and mobile (375px) widths. Navigation, forms, gallery, and sidebar all adapt appropriately.</p>
 <hr>
 <h3 id="example-3-using-chrome-devtools-to-test-responsiveness">Example 3: Using Chrome DevTools to Test Responsiveness<a class="anchor" href="#example-3-using-chrome-devtools-to-test-responsiveness" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong>
+<p><strong>Tình huống:</strong>
 You want to verify that your responsive CSS works correctly across different device sizes.</p>
 <p><strong>Step-by-step walkthrough:</strong></p>
 <ol>
@@ -1128,11 +1128,11 @@ You want to verify that your responsive CSS works correctly across different dev
 <li>Sidebar appearing beside main content instead of below it</li>
 <li>Dropdown menus appearing off-screen</li>
 </ul>
-<p><strong>Result:</strong>
+<p><strong>Kết quả:</strong>
 Systematic testing confirms the site works at all target sizes. Any issues found are fixed by adjusting media query rules.</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <p>Before starting:</p>
 <ol>
 <li>Your Student Club site has all pages from Sessions 1–14.</li>
@@ -1298,7 +1298,7 @@ img {
 <p>✅ <strong>Check:</strong> All boxes checked with no outstanding issues.</p>
 <p>💾 <strong>Save point:</strong> Final complete backup. Your Student Club Website is now fully responsive!</p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>Responsive bugs hide on a desktop monitor. Every symptom here is invisible until you narrow the window.</p>
 <table>
 <thead>
@@ -1378,7 +1378,7 @@ img {
 </tbody></table>
 <p><strong>Test at three widths every time:</strong> 375px (phone), 768px (tablet), 1280px (laptop). Then, with the window narrow, press Tab through the whole page. That combination catches the overwhelming majority of responsive and accessibility problems before a marker or a real user finds them.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. What exactly does the viewport meta tag do?</strong></p>
 <details>
@@ -1414,7 +1414,7 @@ img {
 <details>
 <summary>Answer</summary><p>Chrome DevTools device toolbar: F12, then Ctrl+Shift+M. Pick device presets (iPhone SE for the narrowest common case, iPad, and a desktop width), rotate between portrait and landscape, and also drag the viewport edge slowly to catch breakpoints that only misbehave between presets. Then check on one real phone before submitting — emulators do not reproduce touch accuracy or real font rendering.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1862,7 +1862,7 @@ The last part — <strong>presenting</strong> — is what this section teaches. 
 it means half the value is lost, especially for MIS graduates who must present solutions to clients and managers.</p>
 </blockquote>
 <h3 id="p1-why-presentation-is-a-core-skill">P1. Why Presentation Is a Core Skill<a class="anchor" href="#p1-why-presentation-is-a-core-skill" aria-label="Link to this section">#</a></h3>
-<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-3">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-3" aria-label="Link to this section">#</a></h4>
 <p>Two developers build the same website. One presents it as <em>&quot;here is my code&quot;</em> and clicks around silently.
 The other says <em>&quot;the client&#39;s goal was X, so I designed Y to achieve it — let me show you&quot;</em> and demos the
 site while explaining each decision. Which one gets hired, or gets the project approved? The second.
@@ -2000,7 +2000,7 @@ site while explaining each decision. Which one gets hired, or gets the project a
 </tr>
 </tbody></table>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design">MDN: Responsive Web Design</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">MDN: Using Media Queries</a></li>
@@ -2021,7 +2021,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-15.html">homework/session-15/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -2038,10 +2038,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>There is no next session — you have completed INS2053! But your learning journey continues. Keep building websites, keep experimenting with CSS, and keep pushing your skills. The foundation you have built in these 15 sessions will serve you well in any future web development course or project. Good luck on your final exam, and congratulations on reaching this milestone!</p>
 <hr>
 <h2 id="congratulations">🎉 CONGRATULATIONS!<a class="anchor" href="#congratulations" aria-label="Link to this section">#</a></h2>

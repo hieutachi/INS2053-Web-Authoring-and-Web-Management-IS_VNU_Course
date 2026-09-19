@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Homework 4: Styling with External CSS — INS2053 · Web Authoring &amp; Web Management</title>
+<title>Bài tập 4: Trang trí bằng External CSS — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.">
 <link rel="stylesheet" href="../../assets/site.css">
 <script>
@@ -49,27 +49,23 @@ if(w&&w!=="vi")location.replace("../../homework/session-04.html");}catch(e){}})(
 <main id="main">
   <header class="page-head">
     <p class="eyebrow">Buổi 04 · Bài tập</p>
-    <h1>Homework 4: Styling with External CSS</h1>
+    <h1>Bài tập 4: Trang trí bằng External CSS</h1>
     <p class="lead">Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.</p>
 
   </header>
 <nav class="toc" aria-labelledby="toc-h">
       <h2 id="toc-h">Trong trang này</h2>
       <ol>
-        <li class="d2"><a href="#practice-status">Practice Status</a></li>
-        <li class="d2"><a href="#objective">Objective</a></li>
+        <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
+        <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
-        <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
-        <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
-        <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
+        <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
+        <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
+        <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
         <li class="d2"><a href="#tips">Tips</a></li>
         <li class="d2"><a href="#example-output">Example Output</a></li>
       </ol>
     </nav>
-  <div class="callout warn lang-fallback" role="note">
-    <p><strong>Trang này chưa có bản dịch tiếng Việt</strong> Phần bên dưới là nguyên bản tiếng Anh. Giao diện và điều hướng vẫn dùng tiếng Việt; code, HTML và CSS để tiếng Anh ở mọi phiên bản của trang này, vì đó chính là nội dung được học.</p>
-    <p><a href="../../homework/session-04.html" hreflang="en" lang="en">Đọc trang này bằng tiếng Anh</a></p>
-  </div>
   <div class="callout status-note" role="status">
     <p><strong>Chế độ luyện tập.</strong> Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push phần code, rồi thêm link Google Drive vào homework/submissions.md — rubric tham chiếu dưới đây chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
     <p>Muốn biết đề này được chấm thế nào trước khi nộp? Hãy mở <a href="../../cham-bai.html">công cụ tự chấm</a>, chọn Buổi 4, rồi dán hoặc trỏ tới file của bạn. Công cụ chạy hoàn toàn trên trình duyệt, không tải gì lên, và chỉ chấm phần cơ học của rubric — phần còn lại do giảng viên quyết định.</p>
@@ -115,210 +111,212 @@ if(w&&w!=="vi")location.replace("../../homework/session-04.html");}catch(e){}})(
 </html>"></iframe>
   </section>
   <article class="doc">
-<h2 id="homework-4-styling-with-external-css">Homework 4: Styling with External CSS<a class="anchor" href="#homework-4-styling-with-external-css" aria-label="Link to this section">#</a></h2>
-<h3 id="practice-status">Practice Status<a class="anchor" href="#practice-status" aria-label="Link to this section">#</a></h3>
-<p>Online submission is not enabled yet. Hand in through your own Git repository: push the code tasks, then add your Google Drive link to homework/submissions.md. The reference rubric below grades the code part (10 pts); the video is graded separately (4 pts).</p>
-<h3 id="objective">Objective<a class="anchor" href="#objective" aria-label="Link to this section">#</a></h3>
+<h2 id="bài-tập-4-trang-trí-bằng-external-css">Bài tập 4: Trang trí bằng External CSS<a class="anchor" href="#bài-tập-4-trang-trí-bằng-external-css" aria-label="Link to this section">#</a></h2>
+<h3 id="trạng-thái-luyện-tập">Trạng thái luyện tập<a class="anchor" href="#trạng-thái-luyện-tập" aria-label="Link to this section">#</a></h3>
+<p>Việc nộp bài trực tuyến chưa mở. Hãy nộp qua repository Git của bạn: push các phần code, rồi thêm link Google Drive vào homework/submissions.md. Rubric tham chiếu bên dưới chấm phần code (10 điểm); video được chấm riêng (4 điểm).</p>
+<h3 id="mục-tiêu">Mục tiêu<a class="anchor" href="#mục-tiêu" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Create an external CSS stylesheet</li>
-<li>Learn CSS selectors, properties, and values</li>
-<li>Apply colors, fonts, and spacing to your pages</li>
+<li>Tạo một file CSS ngoài (external stylesheet)</li>
+<li>Học selector, property và value của CSS</li>
+<li>Áp dụng màu sắc, font chữ và khoảng cách cho các trang của bạn</li>
 </ul>
 <h3 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h3>
-<h4 id="task-1-create-your-external-css-file">Task 1: Create Your External CSS File<a class="anchor" href="#task-1-create-your-external-css-file" aria-label="Link to this section">#</a></h4>
-<p>Create a CSS file and link it to your About page.</p>
-<p><strong>Create the file:</strong> <code>project/css/style.css</code></p>
-<p><strong>Link it in your HTML:</strong> Add this line in the <code>&lt;head&gt;</code> of <code>project/about.html</code>:</p>
+<h4 id="task-1-tạo-file-css-ngoài">Task 1: Tạo file CSS ngoài<a class="anchor" href="#task-1-tạo-file-css-ngoài" aria-label="Link to this section">#</a></h4>
+<p>Tạo một file CSS và liên kết nó với trang About.</p>
+<p><strong>Tạo file:</strong> <code>project/css/style.css</code></p>
+<p><strong>Liên kết trong HTML:</strong> thêm dòng này vào <code>&lt;head&gt;</code> của <code>project/about.html</code>:</p>
 <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
 </code></pre>
 <blockquote>
-<p>Every page in this project sits at the project root, so the CSS link is the same on all
-of them: <code>css/style.css</code>, with no <code>../</code>. Add the identical line to <code>index.html</code> and
-<code>contact.html</code> too — a page without the link stays unstyled, and that is the single most
-common reason a homework &quot;looks like nothing happened&quot;.</p>
+<p>Mọi trang trong dự án đều nằm ở gốc dự án, nên liên kết CSS giống nhau trên tất
+cả: <code>css/style.css</code>, không có <code>../</code>. Thêm dòng y hệt vào cả <code>index.html</code> và
+<code>contact.html</code> — một trang thiếu liên kết sẽ không có style, và đó là lý do số
+một khiến bài tập &quot;trông như chẳng có gì xảy ra&quot;.</p>
 </blockquote>
-<h4 id="task-2-style-the-about-page">Task 2: Style the About Page<a class="anchor" href="#task-2-style-the-about-page" aria-label="Link to this section">#</a></h4>
-<p>Write CSS rules to make your About page look visually appealing.</p>
-<p><strong>Your CSS must include:</strong></p>
+<h4 id="task-2-trang-trí-trang-about">Task 2: Trang trí trang About<a class="anchor" href="#task-2-trang-trí-trang-about" aria-label="Link to this section">#</a></h4>
+<p>Viết các quy tắc CSS để trang About trông hấp dẫn về mặt thị giác.</p>
+<p><strong>CSS của bạn phải có:</strong></p>
 <ol>
-<li><p><strong>Body styling:</strong></p>
+<li><p><strong>Style cho body:</strong></p>
 <ul>
-<li>Set a background color (choose a light, readable color)</li>
-<li>Set a text color that contrasts well with the background</li>
-<li>Set a default font family (e.g., Arial, Verdana, or sans-serif)</li>
-<li>Set font size for the body</li>
+<li>Đặt màu nền (chọn màu sáng, dễ đọc)</li>
+<li>Đặt màu chữ tương phản tốt với nền</li>
+<li>Đặt font family mặc định (ví dụ Arial, Verdana, hoặc sans-serif)</li>
+<li>Đặt cỡ chữ cho body</li>
 </ul>
 </li>
-<li><p><strong>Heading styles:</strong></p>
+<li><p><strong>Style cho đề mục:</strong></p>
 <ul>
-<li>Style <code>h1</code> with a specific color and larger font size</li>
-<li>Style <code>h2</code> with a different color</li>
-<li>Style <code>h3</code> with yet another color or style</li>
+<li>Style <code>h1</code> với màu cụ thể và cỡ chữ lớn hơn</li>
+<li>Style <code>h2</code> với màu khác</li>
+<li>Style <code>h3</code> với màu hoặc kiểu khác nữa</li>
 </ul>
 </li>
-<li><p><strong>Paragraph styling:</strong></p>
+<li><p><strong>Style cho đoạn văn:</strong></p>
 <ul>
-<li>Set line height (e.g., 1.6 or 1.8)</li>
-<li>Add margin or padding for spacing</li>
+<li>Đặt line height (ví dụ 1.6 hoặc 1.8)</li>
+<li>Thêm margin hoặc padding tạo khoảng cách</li>
 </ul>
 </li>
-<li><p><strong>Image styling:</strong></p>
+<li><p><strong>Style cho hình ảnh:</strong></p>
 <ul>
-<li>Set a maximum width so images don&#39;t overflow</li>
-<li>Add a border or border-radius for visual appeal</li>
-<li>Add some padding or margin around images</li>
+<li>Đặt max-width để ảnh không tràn khung</li>
+<li>Thêm border hoặc border-radius cho đẹp</li>
+<li>Thêm padding hoặc margin quanh ảnh</li>
 </ul>
 </li>
-<li><p><strong>List styling:</strong></p>
+<li><p><strong>Style cho danh sách:</strong></p>
 <ul>
-<li>Style at least one list type (ul or ol)</li>
-<li>Maybe change the list-style or add padding</li>
+<li>Style ít nhất một loại danh sách (ul hoặc ol)</li>
+<li>Có thể đổi list-style hoặc thêm padding</li>
 </ul>
 </li>
 </ol>
-<p><strong>File paths:</strong></p>
+<p><strong>Đường dẫn file:</strong></p>
 <ul>
-<li><code>project/css/style.css</code> (new CSS file)</li>
-<li><code>project/about.html</code> (updated with CSS link)</li>
+<li><code>project/css/style.css</code> (file CSS mới)</li>
+<li><code>project/about.html</code> (cập nhật với liên kết CSS)</li>
 </ul>
-<p><strong>Requirements checklist:</strong></p>
+<p><strong>Danh sách kiểm tra yêu cầu:</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> External CSS file exists at <code>project/css/style.css</code></li>
-<li><input disabled="" type="checkbox"> CSS is linked to <code>about.html</code></li>
-<li><input disabled="" type="checkbox"> Body has background color and font settings</li>
-<li><input disabled="" type="checkbox"> All 3 heading levels have distinct styles</li>
-<li><input disabled="" type="checkbox"> Paragraphs have readable line height</li>
-<li><input disabled="" type="checkbox"> Images have max-width and some styling</li>
-<li><input disabled="" type="checkbox"> At least one list is styled</li>
+<li><input disabled="" type="checkbox"> File CSS ngoài tồn tại tại <code>project/css/style.css</code></li>
+<li><input disabled="" type="checkbox"> CSS được liên kết với <code>about.html</code></li>
+<li><input disabled="" type="checkbox"> Body có màu nền và cài đặt font</li>
+<li><input disabled="" type="checkbox"> Cả 3 cấp đề mục có style phân biệt</li>
+<li><input disabled="" type="checkbox"> Đoạn văn có line height dễ đọc</li>
+<li><input disabled="" type="checkbox"> Ảnh có max-width và một chút style</li>
+<li><input disabled="" type="checkbox"> Ít nhất một danh sách được style</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
-<p>Code is only half of this homework. The other half is a <strong>short screen-recorded
-video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
-skill the midterm practical, the final practical exam, and every job interview
-afterwards will ask of you. Using an AI tool or a tutorial to build the tasks
-above is allowed; being able to walk through every line of what you keep is not
-optional.</p>
-<h4 id="what-to-record">What to record<a class="anchor" href="#what-to-record" aria-label="Link to this section">#</a></h4>
-<p>With <strong>OBS Studio</strong> (free — <a href="https://obsproject.com">https://obsproject.com</a>), record <strong>60–120 seconds</strong>,
-your <strong>voice required</strong> (face optional), sharing your screen while you present
-ONE part of this homework. Pick a single topic — do not try to cover everything.
-For this session, the easiest good choice is to <strong>show <code>css/style.css</code>, explain how <code>project/about.html</code> links to it with <code>&lt;link&gt;</code>, and walk through one rule you wrote (selector → property → effect)</strong>.</p>
-<p>Requirements for the recording:</p>
+<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
+chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
+thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau
+này đều đòi hỏi. Dùng công cụ AI hoặc tutorial để làm các task trên là được phép;
+nhưng việc giải thích được từng dòng của những gì bạn giữ lại là điều không tùy chọn.</p>
+<h4 id="quay-nội-dung-gì">Quay nội dung gì<a class="anchor" href="#quay-nội-dung-gì" aria-label="Link to this section">#</a></h4>
+<p>Với <strong>OBS Studio</strong> (miễn phí — <a href="https://obsproject.com">https://obsproject.com</a>), quay <strong>60–120 giây</strong>,
+<strong>bắt buộc có giọng nói</strong> (khuôn mặt tùy chọn), chia sẻ màn hình trong khi bạn
+trình bày MỘT phần của bài tập này. Chọn một chủ đề duy nhất — đừng cố covering
+hết mọi thứ. Với buổi này, lựa chọn tốt và dễ nhất là <strong>mở <code>css/style.css</code>, giải
+thích <code>project/about.html</code> liên kết tới nó bằng <code>&lt;link&gt;</code> thế nào, rồi đi qua một
+quy tắc bạn viết (selector → property → hiệu quả)</strong>.</p>
+<p>Yêu cầu cho bản ghi:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Length <strong>1–2 minutes</strong>. Over 2 minutes loses structure points; under 1 minute usually means there is no substance.</li>
-<li><input disabled="" type="checkbox"> The <strong>screen is shared the whole time</strong> — the lecturer must see your real editor and browser, not a slideshow of screenshots.</li>
-<li><input disabled="" type="checkbox"> You <strong>speak</strong> through the video (Vietnamese is fine; technical terms stay in English), and your name + student ID are visible or spoken at the start.</li>
-<li><input disabled="" type="checkbox"> You <strong>show and explain</strong>, not read: open the actual file, point at the actual lines, show the actual result in the browser.</li>
+<li><input disabled="" type="checkbox"> Độ dài <strong>1–2 phút</strong>. Quá 2 phút mất điểm cấu trúc; dưới 1 phút thường nghĩa là không có nội dung.</li>
+<li><input disabled="" type="checkbox"> <strong>Màn hình được chia sẻ suốt video</strong> — giảng viên phải thấy trình soạn thảo và trình duyệt thật của bạn, không phải một loạt ảnh chụp màn hình.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>nói</strong> trong video (tiếng Việt hoàn toàn được; thuật ngữ kỹ thuật giữ tiếng Anh), và tên + mã số sinh viên hiện lên hoặc được đọc ở đầu video.</li>
+<li><input disabled="" type="checkbox"> Bạn <strong>vừa chỉ vừa giải thích</strong>, không đọc thuộc lòng: mở file thật, chỉ vào dòng thật, chạy kết quả thật trên trình duyệt.</li>
 </ul>
-<h4 id="how-to-hand-in-the-video">How to hand in the video<a class="anchor" href="#how-to-hand-in-the-video" aria-label="Link to this section">#</a></h4>
-<p>You submit a <strong>link</strong>, never the video file itself:</p>
+<h4 id="cách-nộp-video">Cách nộp video<a class="anchor" href="#cách-nộp-video" aria-label="Link to this section">#</a></h4>
+<p>Bạn nộp một <strong>link</strong>, không bao giờ nộp file video:</p>
 <ol>
-<li>Upload the recording (<code>MP4</code>, 720p or higher) to <strong>your own Google Drive</strong>.</li>
-<li>Set sharing to <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
-<li>Open <code>homework/submissions.md</code> in your repository and add <strong>one line</strong>:
-<code>- Session 04 — (paste your Google Drive link here)</code></li>
-<li>Commit and push that file together with the rest of this homework.</li>
+<li>Tải bản ghi (<code>MP4</code>, 720p trở lên) lên <strong>Google Drive của chính bạn</strong>.</li>
+<li>Đặt chế độ chia sẻ thành <strong>&quot;Anyone with the link → Viewer&quot;</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository của bạn và thêm <strong>một dòng</strong>:
+<code>- Session 04 — (dán link Google Drive của bạn vào đây)</code></li>
+<li>Commit và push file đó cùng với phần còn lại của bài tập.</li>
 </ol>
-<p>The system collects and grades the code part (it runs the self-check on your
-repository). For the video it stores <strong>only the link</strong> — your lecturer watches
-it and grades it afterwards. A missing, private, or dead link means the video
-part cannot be graded.</p>
-<h4 id="how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric">How the video part is graded (4 points, on top of the 10-point rubric)<a class="anchor" href="#how-the-video-part-is-graded-4-points-on-top-of-the-10-point-rubric" aria-label="Link to this section">#</a></h4>
+<p>Hệ thống thu và chấm phần code (nó chạy công cụ tự kiểm tra trên repository của
+bạn). Với video, hệ thống chỉ lưu <strong>link</strong> — giảng viên xem và chấm sau. Link
+thiếu, riêng tư, hoặc hỏng nghĩa là phần video không thể chấm.</p>
+<h4 id="phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm">Phần video được chấm thế nào (4 điểm, cộng trên rubric 10 điểm)<a class="anchor" href="#phần-video-được-chấm-thế-nào-4-điểm-cộng-trên-rubric-10-điểm" aria-label="Link to this section">#</a></h4>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>What the lecturer looks for</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Giảng viên nhìn vào điều gì</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Structure of the talk</td>
+<td>Cấu trúc bài nói</td>
 <td>1</td>
-<td>A beginning (what you built), a middle (how it works, pointing at real code), and an end (what you learned or would improve).</td>
+<td>Có mở đầu (bạn đã xây gì), giữa (nó hoạt động thế nào, chỉ vào code thật), và kết thúc (bạn học được gì hoặc sẽ cải thiện gì).</td>
 </tr>
 <tr>
-<td>Screen walkthrough</td>
+<td>Trình bày trên màn hình</td>
 <td>1</td>
-<td>The real project on screen — editor and browser together, no slideshow of screenshots.</td>
+<td>Dự án thật trên màn hình — trình soạn thảo và trình duyệt cùng lúc, không phải slideshow ảnh chụp.</td>
 </tr>
 <tr>
-<td>Correct explanation</td>
+<td>Giải thích đúng</td>
 <td>2</td>
-<td>You explain what the code does and why. Reading a memorised script over code you cannot explain scores 0.</td>
+<td>Bạn giải thích code làm gì và tại sao. Đọc một kịch bản học thuộc trên code bạn không giải thích được bị chấm 0.</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>4</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <blockquote>
-<p>Why a video? AI tools can write homework code, so the proof of learning moves
-to the explanation. Sixty seconds of you explaining your own lines is the
-strongest evidence of real understanding — and it is exactly what a technical
-interview looks like.</p>
+<p>Vì sao phải quay video? Công cụ AI có thể viết code bài tập, nên bằng chứng học
+tập chuyển sang phần giải thích. Sáu mươi giây bạn giải thích chính dòng code
+của mình là bằng chứng hiểu thật mạnh nhất — và nó cũng chính là một buổi phỏng
+vấn kỹ thuật điển hình.</p>
 </blockquote>
-<h3 id="save-your-practice-work">Save Your Practice Work<a class="anchor" href="#save-your-practice-work" aria-label="Link to this section">#</a></h3>
+<h3 id="lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn<a class="anchor" href="#lưu-bài-luyện-tập-của-bạn" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>Add changes: <code>git add project/css/style.css project/about.html</code></li>
+<li>Thêm thay đổi: <code>git add project/css/style.css project/about.html</code></li>
 <li>Commit: <code>git commit -m &quot;HW4: Add external CSS and style About page&quot;</code></li>
 <li>Push: <code>git push</code></li>
 </ul>
-<h3 id="reference-rubric">Reference Rubric<a class="anchor" href="#reference-rubric" aria-label="Link to this section">#</a></h3>
+<h3 id="rubric-tham-chiếu">Rubric tham chiếu<a class="anchor" href="#rubric-tham-chiếu" aria-label="Link to this section">#</a></h3>
 <table>
 <thead>
 <tr>
-<th>Criteria</th>
-<th>Points</th>
-<th>Description</th>
+<th>Tiêu chí</th>
+<th>Điểm</th>
+<th>Mô tả</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>CSS file</td>
+<td>File CSS</td>
 <td>2</td>
-<td>File exists and is linked correctly</td>
+<td>File tồn tại và được liên kết đúng</td>
 </tr>
 <tr>
-<td>Colors</td>
+<td>Màu sắc</td>
 <td>2</td>
-<td>Background, text, and heading colors are set</td>
+<td>Nền, chữ và màu đề mục được đặt</td>
 </tr>
 <tr>
 <td>Typography</td>
 <td>2</td>
-<td>Font family, sizes, line height are defined</td>
+<td>Font family, cỡ chữ, line height được định nghĩa</td>
 </tr>
 <tr>
-<td>Spacing</td>
+<td>Khoảng cách</td>
 <td>2</td>
-<td>Margins, padding, and line height improve readability</td>
+<td>Margin, padding và line height cải thiện độ dễ đọc</td>
 </tr>
 <tr>
-<td>Image styling</td>
+<td>Style ảnh</td>
 <td>1</td>
-<td>Images are sized and styled properly</td>
+<td>Ảnh được đặt kích thước và style hợp lý</td>
 </tr>
 <tr>
-<td>Overall look</td>
+<td>Tổng thể</td>
 <td>1</td>
-<td>Page looks clean and professional</td>
+<td>Trang trông sạch và chuyên nghiệp</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
+<td><strong>Tổng</strong></td>
 <td><strong>10</strong></td>
 <td></td>
 </tr>
 </tbody></table>
 <h3 id="tips">Tips<a class="anchor" href="#tips" aria-label="Link to this section">#</a></h3>
 <ul>
-<li>The CSS link is <code>href=&quot;css/style.css&quot;</code> on every page, because all pages sit at the project root</li>
-<li>If the page still looks unstyled, press F12 → Network, reload, and check whether <code>style.css</code> returns <strong>200</strong> (found) or <strong>404</strong> (wrong path)</li>
-<li>Pick colors that look good together (try a color palette site like coolors.co)</li>
-<li>Test your page in the browser after each CSS change to see the effect</li>
+<li>Liên kết CSS là <code>href=&quot;css/style.css&quot;</code> trên mọi trang, vì tất cả các trang nằm ở gốc dự án</li>
+<li>Nếu trang vẫn không có style, nhấn F12 → Network, tải lại, và xem <code>style.css</code> trả về <strong>200</strong> (tìm thấy) hay <strong>404</strong> (sai đường dẫn)</li>
+<li>Chọn màu hợp nhau (thử một trang bảng màu như coolors.co)</li>
+<li>Kiểm tra trang trên trình duyệt sau mỗi lần sửa CSS để thấy hiệu quả</li>
 </ul>
 <h3 id="example-output">Example Output<a class="anchor" href="#example-output" aria-label="Link to this section">#</a></h3>
-<p>Your About page should transform from plain black-and-white text to a colorful, well-spaced page with styled headings, readable paragraphs, and nicely framed images.</p>
+<p>Trang About của bạn sẽ chuyển từ chữ đen trắng thuần sang một trang nhiều màu,
+khoảng cách hợp lý, với đề mục được trang trí, đoạn văn dễ đọc và ảnh được đóng
+khung đẹp mắt.</p>
 
   </article>
 </main>

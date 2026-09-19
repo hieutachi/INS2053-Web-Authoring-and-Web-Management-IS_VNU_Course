@@ -62,14 +62,14 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
         <li class="d2"><a href="#5-font-properties">5. Font Properties</a></li>
         <li class="d2"><a href="#6-the-box-model">6. The Box Model</a></li>
         <li class="d2"><a href="#7-specificity-which-rule-wins">7. Specificity: Which Rule Wins?</a></li>
-        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
-        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#thực-hành-tốt">✅ THỰC HÀNH TỐT</a></li>
+        <li class="d2"><a href="#lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP</a></li>
         <li class="d2"><a href="#example-1-linking-a-stylesheet-to-indexhtml">Example 1: Linking a Stylesheet to index.html</a></li>
         <li class="d2"><a href="#example-2-styling-the-header">Example 2: Styling the Header</a></li>
         <li class="d2"><a href="#example-3-understanding-the-box-model">Example 3: Understanding the Box Model</a></li>
         <li class="d2"><a href="#example-4-specificity-showdown">Example 4: Specificity Showdown</a></li>
         <li class="d2"><a href="#example-5-creating-utility-classes">Example 5: Creating Utility Classes</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#homework-submission-session-4">🏠 HOMEWORK &amp; SUBMISSION — Session 4</a></li>
       </ol>
     </nav>
@@ -85,7 +85,7 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
 <h2 id="applying-css-to-your-website"><strong>Applying CSS to Your Website</strong><a class="anchor" href="#applying-css-to-your-website" aria-label="Link to this section">#</a></h2>
 <p>Welcome back! In the previous sessions you built HTML pages for the Student Club Website — but they look plain: black text on a white background, no colours, no spacing, no personality. Today we fix that. You will learn <strong>CSS</strong>, the language that paints and decorates your HTML skeleton. By the end of this session every page of your Student Club Website will have colours, fonts, spacing, and a professional feel. Do not worry if you have never seen CSS before — we will walk through every single line together.</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    MDN &quot;First Steps in CSS&quot;; W3C CSS Specification
                  Course slides (Week 4)
@@ -103,7 +103,7 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
                  CLO4 (design and build a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <p>By the end of this session you will be able to:</p>
 <ul>
 <li>Define CSS and explain its role alongside HTML</li>
@@ -116,9 +116,9 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
 <li>Understand <strong>specificity</strong> so you can predict which style wins when rules clash</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-what-is-css">1. What Is CSS?<a class="anchor" href="#1-what-is-css" aria-label="Link to this section">#</a></h3>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p><strong>CSS</strong> stands for <strong>Cascading Style Sheets</strong>. It is a language that tells the browser <em>how</em> HTML elements should <strong>look</strong>. HTML provides the structure and content; CSS provides the visual presentation.</p>
 <p>Think of building a house:</p>
 <ul>
@@ -126,9 +126,9 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
 <li><strong>CSS</strong> = paint, wallpaper, furniture arrangement (the appearance)</li>
 </ul>
 <p>You never put paint inside a brick. Similarly, you should keep styling out of your HTML as much as possible.</p>
-<h4 id="real-life-example">🎒 Real-life Example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>Imagine you manage 10 web pages for the Student Club. Without CSS, changing the heading colour means editing all 10 files. With one external CSS file, you change the colour <strong>once</strong> and all 10 pages update instantly. That is the power of separating style from structure.</p>
-<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<h4 id="12-vì-sao-điều-này-quan-trọng">1.2 Vì sao điều này quan trọng<a class="anchor" href="#12-vì-sao-điều-này-quan-trọng" aria-label="Link to this section">#</a></h4>
 <ul>
 <li><strong>Separation of concerns</strong> — HTML handles meaning; CSS handles looks. This makes both easier to maintain.</li>
 <li><strong>Consistency</strong> — One stylesheet gives every page the same look.</li>
@@ -175,7 +175,7 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
 <li>Browser caches the file → faster page loads</li>
 <li><strong>This is what we will use for the Student Club Website</strong></li>
 </ul>
-<h4 id="comparison-table">🔍 Comparison Table<a class="anchor" href="#comparison-table" aria-label="Link to this section">#</a></h4>
+<h4 id="bảng-so-sánh">🔍 BẢNG SO SÁNH<a class="anchor" href="#bảng-so-sánh" aria-label="Link to this section">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -216,7 +216,7 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
 <td>✅ Always</td>
 </tr>
 </tbody></table>
-<h4 id="important-notes">⚠️ Important Notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>The <code>&lt;link&gt;</code> tag goes <strong>inside</strong> <code>&lt;head&gt;</code>, never in <code>&lt;body&gt;</code>.</li>
 <li>The <code>href</code> path is relative to the HTML file. If your HTML is in the root and CSS is in a <code>css/</code> folder, write <code>href=&quot;css/style.css&quot;</code>.</li>
@@ -234,7 +234,7 @@ if(w&&w!=="vi")location.replace("../../ebook/04-applying-css-to-website.html");}
 <li>Reload. If the background is not pale yellow, open F12 → <strong>Network</strong> and reload again.</li>
 <li>Find the <code>style.css</code> row and read its status code.</li>
 </ol>
-<p><strong>Expected result:</strong> A pale yellow page and a <code>200</code> status. A <code>404</code> means the path is wrong — and the page will look completely unstyled, not partly styled.</p>
+<p><strong>Kết quả mong đợi:</strong> A pale yellow page and a <code>200</code> status. A <code>404</code> means the path is wrong — and the page will look completely unstyled, not partly styled.</p>
 <details>
 <summary>Why an obvious first rule is worth it</summary><p><code>background: #fffbe6</code> is a deliberate smoke test: a change so visible you cannot miss it. If it does not appear, you know the problem is the <em>connection</em>, not your CSS.</p>
 <p>That distinction saves real time. Students often spend twenty minutes debugging a selector when the stylesheet was never loading. Confirm the link works first, then write the rules you actually want.</p>
@@ -422,7 +422,7 @@ p {
 <td>Page-level sections</td>
 </tr>
 </tbody></table>
-<h4 id="important-notes-2">⚠️ Important Notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-2">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>When you combine classes in HTML, write them space-separated: <code>class=&quot;btn btn-large&quot;</code> — <strong>not</strong> <code>class=&quot;btn, btn-large&quot;</code>.</li>
 <li>ID selectors are powerful but inflexible. Modern best practice favours classes for almost everything.</li>
@@ -442,7 +442,7 @@ p {
 <li>Now paste the page into the W3C HTML validator at validator.w3.org.</li>
 <li>Change every <code>id=&quot;card&quot;</code> to <code>class=&quot;card&quot;</code> and the CSS to <code>.card</code>, then re-validate.</li>
 </ol>
-<p><strong>Expected result:</strong> The first version styles correctly but the validator reports duplicate IDs. The class version passes.</p>
+<p><strong>Kết quả mong đợi:</strong> The first version styles correctly but the validator reports duplicate IDs. The class version passes.</p>
 <details>
 <summary>The distinction that matters</summary><ul>
 <li><code>class</code> — a <strong>group</strong>. Reusable as many times per page as you like. This is what you want for cards, buttons, nav items, and almost everything else.</li>
@@ -486,7 +486,7 @@ color: rgb(0, 0, 128);          /* navy */
 color: rgba(255, 0, 0, 0.5);   /* red at 50% opacity */
 </code></pre>
 <p>The fourth value in <code>rgba()</code> is <strong>alpha</strong> (transparency), from <code>0</code> (invisible) to <code>1</code> (fully opaque).</p>
-<h4 id="real-life-example-2">🎒 Real-life Example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-2">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-2" aria-label="Link to this section">#</a></h4>
 <p>The Student Club Website uses this palette:</p>
 <pre><code class="language-css">/* Primary dark blue  */ #1a5276
 /* Secondary blue     */ #2874a6
@@ -495,7 +495,7 @@ color: rgba(255, 0, 0, 0.5);   /* red at 50% opacity */
 /* White              */ #ffffff
 </code></pre>
 <p>Pick your palette early and stick with it. Consistent colours make a site look professional.</p>
-<h4 id="important-notes-3">⚠️ Important Notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-3">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Always check <strong>colour contrast</strong> for accessibility. Light grey text on white is unreadable.</li>
 <li>Hex is the most common format in professional CSS. Learn it first.</li>
@@ -558,7 +558,7 @@ small { font-size: 13px; }
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-04.canvas.tsx</code> → <code>BoxModelDiagram</code> — slide <code>s04-box-model</code> (&quot;The Box Model&quot;)</p>
 </blockquote>
-<h4 id="61-definition">6.1 Definition<a class="anchor" href="#61-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="61-định-nghĩa">6.1 Định nghĩa<a class="anchor" href="#61-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p><strong>Every</strong> HTML element is treated by the browser as a rectangular box. This box has four layers, from inside to outside:</p>
 <pre><code>+-------------------------------------------------------+
 |  MARGIN                                               |
@@ -624,7 +624,7 @@ padding: 10px 20px 30px 40px;     /* T=10, R=20, B=30, L=40 */
 <blockquote>
 <p>⚠️ <strong>Always put <code>box-sizing: border-box</code> in your CSS reset.</strong> This prevents countless layout headaches.</p>
 </blockquote>
-<h4 id="real-life-example-3">🎒 Real-life Example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-3">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-3" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-css">.card {
     width: 300px;
     padding: 20px;
@@ -634,7 +634,7 @@ padding: 10px 20px 30px 40px;     /* T=10, R=20, B=30, L=40 */
 </code></pre>
 <p>With <code>border-box</code>: total rendered width = 300px. Content area = 300 − 40 − 4 = 256px.
 Without <code>border-box</code>: total rendered width = 300 + 40 + 4 = 344px. 😱</p>
-<h4 id="important-notes-4">⚠️ Important Notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-4">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-4" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Margins can <strong>collapse</strong>: when two vertical margins meet, only the larger one is used. This does NOT happen with padding.</li>
 <li>Zero values need no unit: <code>margin: 0;</code> is correct. <code>margin: 0px;</code> works but is unnecessary.</li>
@@ -656,7 +656,7 @@ Without <code>border-box</code>: total rendered width = 300 + 40 + 4 = 344px. �
 </code></pre>
 </li>
 </ol>
-<p><strong>Expected result:</strong> First measurement is 350px total (300 + 20 + 20 + 5 + 5). After <code>border-box</code>, the element is exactly 300px and the padding is taken out of the inside.</p>
+<p><strong>Kết quả mong đợi:</strong> First measurement is 350px total (300 + 20 + 20 + 5 + 5). After <code>border-box</code>, the element is exactly 300px and the padding is taken out of the inside.</p>
 <details>
 <summary>Why every real stylesheet starts with this</summary><p>The default <code>content-box</code> means <code>width</code> describes only the content area; padding and border are added on top. That makes percentage layouts almost impossible to reason about — a <code>width: 50%</code> column with padding is wider than half the container and wraps.</p>
 <p>So put this at the top of <code>style.css</code> and stop thinking about it:</p>
@@ -668,7 +668,7 @@ Without <code>border-box</code>: total rendered width = 300 + 40 + 4 = 344px. �
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-04.canvas.tsx</code> → <code>SpecificityScale</code> — slide <code>s04-specificity</code> (&quot;Specificity&quot;)</p>
 </blockquote>
-<h4 id="71-definition">7.1 Definition<a class="anchor" href="#71-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="71-định-nghĩa">7.1 Định nghĩa<a class="anchor" href="#71-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>When two CSS rules target the same element and set the same property, the browser uses <strong>specificity</strong> to decide which wins.</p>
 <p>Specificity is calculated as a three-part score: <strong>(IDs, Classes, Elements)</strong>.</p>
 <table>
@@ -734,7 +734,7 @@ p {
 }
 </code></pre>
 <p>If <code>&lt;h1 id=&quot;page-title&quot; class=&quot;title&quot;&gt;</code>, the colour will be <strong>red</strong>.</p>
-<h4 id="important-notes-5">⚠️ Important Notes<a class="anchor" href="#important-notes-5" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-5">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-5" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Inline styles (<code>style=&quot;...&quot;</code>) beat everything except <code>!important</code>. Avoid both.</li>
 <li><code>!important</code> overrides all specificity. <strong>Never use it</strong> unless you absolutely must override third-party CSS.</li>
@@ -742,7 +742,7 @@ p {
 <li>Specificity is the #1 source of &quot;why isn&#39;t my CSS working?&quot; bugs. Learn it well.</li>
 </ul>
 <hr>
-<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<h3 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h3>
 <ol>
 <li><strong>Always use external stylesheets.</strong> One <code>css/style.css</code> for the whole site.</li>
 <li><strong>Start with a CSS reset:</strong><pre><code class="language-css">* {
@@ -763,7 +763,7 @@ p {
 <li><strong>Test in the browser after every change.</strong> Press F12 to preview.</li>
 </ol>
 <hr>
-<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h3 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h3>
 <h4 id="mistake-1-forgetting-to-link-the-css-file">Mistake 1: Forgetting to link the CSS file<a class="anchor" href="#mistake-1-forgetting-to-link-the-css-file" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-html">&lt;!-- ❌ WRONG: no &lt;link&gt; tag → no styles applied --&gt;
 &lt;head&gt;
@@ -834,7 +834,7 @@ h2 {
 <li>Comment out <code>.lead</code> too. Now black.</li>
 <li>Put all three back, then inspect the paragraph in F12 → <strong>Styles</strong>.</li>
 </ol>
-<p><strong>Expected result:</strong> The Styles pane lists all three rules with the winner on top and the losers struck through. Removing the winner promotes the next one.</p>
+<p><strong>Kết quả mong đợi:</strong> The Styles pane lists all three rules with the winner on top and the losers struck through. Removing the winner promotes the next one.</p>
 <details>
 <summary>How to count specificity</summary><p>Score each selector as three numbers — (ids, classes, elements):</p>
 <table>
@@ -869,7 +869,7 @@ h2 {
 <p>Compare left to right: one id beats any number of classes, and one class beats any number of elements. Ties go to whichever rule comes <strong>last</strong> in the stylesheet.</p>
 <p><code>!important</code> overrides all of it — which is why it should be a last resort. It removes your ability to override the rule later, and the usual outcome is a stylesheet where every rule needs <code>!important</code> to compete.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -930,9 +930,9 @@ h2 {
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-linking-a-stylesheet-to-indexhtml">Example 1: Linking a Stylesheet to index.html<a class="anchor" href="#example-1-linking-a-stylesheet-to-indexhtml" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You have created <code>index.html</code> and an empty <code>css/style.css</code>. You need to connect them.</p>
+<p><strong>Tình huống:</strong> You have created <code>index.html</code> and an empty <code>css/style.css</code>. You need to connect them.</p>
 <p><strong>Code (in index.html):</strong></p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -949,17 +949,17 @@ h2 {
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li>Line 5: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code> tells the browser: &quot;Load the file at <code>css/style.css</code> and treat it as a stylesheet.&quot;</li>
 <li><code>rel=&quot;stylesheet&quot;</code> specifies the relationship — this file is a CSS stylesheet.</li>
 <li><code>href=&quot;css/style.css&quot;</code> is the path. Since <code>index.html</code> is in the root folder, <code>css/style.css</code> means &quot;go into the <code>css</code> subfolder and find <code>style.css</code>.&quot;</li>
 <li>This tag MUST be inside <code>&lt;head&gt;</code>. Placing it in <code>&lt;body&gt;</code> may cause a flash of unstyled content.</li>
 </ul>
-<p><strong>Result:</strong> When you open <code>index.html</code> in the browser, any CSS rules in <code>css/style.css</code> will be applied. If the file is empty, nothing changes visually. If the path is wrong, the browser console shows a 404 error.</p>
+<p><strong>Kết quả:</strong> When you open <code>index.html</code> in the browser, any CSS rules in <code>css/style.css</code> will be applied. If the file is empty, nothing changes visually. If the path is wrong, the browser console shows a 404 error.</p>
 <hr>
 <h3 id="example-2-styling-the-header">Example 2: Styling the Header<a class="anchor" href="#example-2-styling-the-header" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want the header to have a dark blue background with white centred text.</p>
+<p><strong>Tình huống:</strong> You want the header to have a dark blue background with white centred text.</p>
 <p><strong>Code (in css/style.css):</strong></p>
 <pre><code class="language-css">/* === HEADER STYLES === */
 header {
@@ -980,7 +980,7 @@ header p {
     opacity: 0.9;
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li><code>header { ... }</code> — targets the <code>&lt;header&gt;</code> element.</li>
 <li><code>background-color: #1a5276;</code> — sets a dark blue background.</li>
@@ -991,10 +991,10 @@ header p {
 <li><code>letter-spacing: 1px;</code> — adds 1px between each character for a refined look.</li>
 <li><code>opacity: 0.9;</code> — makes the subtitle slightly transparent, creating visual hierarchy.</li>
 </ul>
-<p><strong>Result:</strong> The header appears as a full-width dark blue bar with white centred text. The title is large; the tagline is slightly smaller and softer.</p>
+<p><strong>Kết quả:</strong> The header appears as a full-width dark blue bar with white centred text. The title is large; the tagline is slightly smaller and softer.</p>
 <hr>
 <h3 id="example-3-understanding-the-box-model">Example 3: Understanding the Box Model<a class="anchor" href="#example-3-understanding-the-box-model" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You create a card component and need to understand its actual size.</p>
+<p><strong>Tình huống:</strong> You create a card component and need to understand its actual size.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-css">.card {
     width: 300px;
@@ -1004,7 +1004,7 @@ header p {
     background-color: #f8f9fa;
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li><code>width: 300px;</code> — sets the box width. But what does &quot;300px&quot; include?</li>
 <li><code>padding: 20px;</code> — 20px of inner space on all four sides.</li>
@@ -1022,10 +1022,10 @@ header p {
 <li>Total width = 300 + 20 + 20 + 3 + 3 = 346px 😬</li>
 <li>Total space taken = 346 + 15 + 15 = 376px</li>
 </ul>
-<p><strong>Result:</strong> With <code>border-box</code>, the card occupies exactly 300px of width (plus margins). Without it, the card is 46px wider than expected, potentially breaking your layout.</p>
+<p><strong>Kết quả:</strong> With <code>border-box</code>, the card occupies exactly 300px of width (plus margins). Without it, the card is 46px wider than expected, potentially breaking your layout.</p>
 <hr>
 <h3 id="example-4-specificity-showdown">Example 4: Specificity Showdown<a class="anchor" href="#example-4-specificity-showdown" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Two rules target the same element. Which colour wins?</p>
+<p><strong>Tình huống:</strong> Two rules target the same element. Which colour wins?</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-css">/* Rule A — specificity (0,0,1) */
 p {
@@ -1051,10 +1051,10 @@ p.intro {
 <li>Rule B matches (it has <code>class=&quot;intro&quot;</code>). Specificity: (0,1,0). Beats Rule A.</li>
 <li>Rule C matches (it is a <code>&lt;p&gt;</code> AND has <code>class=&quot;intro&quot;</code>). Specificity: (0,1,1). Beats both A and B.</li>
 </ul>
-<p><strong>Result:</strong> The text is <strong>dark green</strong> because <code>p.intro</code> has the highest specificity.</p>
+<p><strong>Kết quả:</strong> The text is <strong>dark green</strong> because <code>p.intro</code> has the highest specificity.</p>
 <hr>
 <h3 id="example-5-creating-utility-classes">Example 5: Creating Utility Classes<a class="anchor" href="#example-5-creating-utility-classes" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You need reusable classes for highlighting, centring, and status messages across multiple pages.</p>
+<p><strong>Tình huống:</strong> You need reusable classes for highlighting, centring, and status messages across multiple pages.</p>
 <p><strong>Code (in css/style.css):</strong></p>
 <pre><code class="language-css">/* === UTILITY CLASSES === */
 .highlight {
@@ -1084,17 +1084,17 @@ p.intro {
 &lt;p class=&quot;error&quot;&gt;Something went wrong.&lt;/p&gt;
 &lt;p class=&quot;success&quot;&gt;Operation completed!&lt;/p&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <ul>
 <li><code>.highlight</code> — adds a pale yellow background with tiny padding. Use for callouts.</li>
 <li><code>.center-text</code> — centres text. Combine with other classes freely.</li>
 <li><code>.error</code> and <code>.success</code> — semantic status classes. The class name describes meaning, not appearance.</li>
 <li>Multiple classes are space-separated in HTML: <code>class=&quot;highlight center-text&quot;</code>. Both sets of styles apply.</li>
 </ul>
-<p><strong>Result:</strong> You have a small library of reusable classes that work on any element, on any page, because they are defined in the shared stylesheet.</p>
+<p><strong>Kết quả:</strong> You have a small library of reusable classes that work on any element, on any page, because they are defined in the shared stylesheet.</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <p>Before starting the tasks, make sure your project folder looks like this:</p>
 <pre><code>student-club/
 ├── index.html
@@ -1123,7 +1123,7 @@ p.intro {
 <li>Write a universal reset that removes default margins and paddings and enables <code>border-box</code>.</li>
 <li>Set base font, size, line-height, text colour, and background colour on <code>body</code>.</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>Open <code>css/style.css</code>.</li>
 <li>At the very top, add:<pre><code class="language-css">/* === RESET === */
@@ -1162,7 +1162,7 @@ body {
 <li>Dark blue header with white centred text</li>
 <li>Horizontal navigation bar with hover effects</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>In <code>css/style.css</code>, add:<pre><code class="language-css">/* === HEADER === */
 header {
@@ -1233,7 +1233,7 @@ nav ul li a:hover {
 <li>Styled h2/h3 headings with colour accents</li>
 <li>Dark footer matching the header</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>Add main content styles:<pre><code class="language-css">/* === MAIN CONTENT === */
 main {
@@ -1313,7 +1313,7 @@ footer a:hover {
 <li>Use at least two of them on each page</li>
 <li>Verify consistent appearance across all five pages</li>
 </ul>
-<p><strong>Steps:</strong></p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li>Add utility classes to <code>css/style.css</code>:<pre><code class="language-css">/* === UTILITY CLASSES === */
 .highlight {
@@ -1347,7 +1347,7 @@ footer a:hover {
 <p>✅ <strong>Expected result:</strong> Highlighted text has a yellow background on every page where it appears. Centred text is centred everywhere. Styles are consistent because they come from one shared CSS file.</p>
 <p>📁 <strong>Files to save:</strong> <code>css/style.css</code>, <code>index.html</code>, <code>about.html</code></p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>&quot;My CSS is not working&quot; is almost always one of six things. This table is ordered by how often each one is the culprit.</p>
 <table>
 <thead>
@@ -1415,7 +1415,7 @@ footer a:hover {
 </tbody></table>
 <p><strong>Read the Styles pane, do not guess.</strong> Select the element in DevTools and look at the right-hand panel. Winning rules are on top; overridden declarations have a line through them. That panel answers &quot;why is my CSS not working&quot; faster than re-reading the stylesheet.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. Name the three ways to apply CSS and say which one you should use.</strong></p>
 <details>
@@ -1454,7 +1454,7 @@ footer a:hover {
 <details>
 <summary>Answer</summary><p>It overrides the entire specificity system, so the only way to beat one <code>!important</code> is another <code>!important</code>. Codebases that lean on it quickly become unmaintainable, because a rule&#39;s effect no longer follows from reading the selectors. Fix the underlying specificity instead — usually by using a class rather than an ID, or making the selector slightly more specific.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1517,7 +1517,7 @@ footer a:hover {
 <p>💡 If you answered &quot;No&quot; to any item, re-read that section and redo the corresponding practice task before moving on.</p>
 </blockquote>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS">What is CSS? — MDN</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works">How CSS works — MDN</a></li>
@@ -1534,7 +1534,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-04.html">homework/session-04/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -1551,10 +1551,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>In Session 5, you will use semantic HTML elements and Flexbox to build a proper two-column page layout with header, navigation, main content, sidebar, and footer — all within the Student Club Website.</p>
 
   </article>

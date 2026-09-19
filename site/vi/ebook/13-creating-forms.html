@@ -65,7 +65,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
         <li class="d2"><a href="#example-1-simple-contact-form">Example 1: Simple Contact Form</a></li>
         <li class="d2"><a href="#example-2-radio-and-checkbox-group">Example 2: Radio and Checkbox Group</a></li>
         <li class="d2"><a href="#example-3-form-validation-demo">Example 3: Form Validation Demo</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#homework-submission-session-13">🏠 HOMEWORK &amp; SUBMISSION — Session 13</a></li>
       </ol>
     </nav>
@@ -81,7 +81,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <h2 id="creating-forms"><strong>Creating Forms</strong><a class="anchor" href="#creating-forms" aria-label="Link to this section">#</a></h2>
 <p>Welcome to Session 13! Today we tackle one of the most practical skills in web development: <strong>forms</strong>. Every time you register for a website, log into your email, search Google, or send a message — you are using a form. Forms are how users <em>talk back</em> to a website. Up until now, our Student Club Website has been mostly one-way (we show information). Now we will make it interactive by building a membership registration form and a contact form. Do not worry if this feels new — we will walk through every single line together.</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    Chapter 13 — Creating Forms (course textbook)
                  MDN Web Docs &quot;Learn Forms&quot;
@@ -98,7 +98,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
                  CLO4 (design and build a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <ul>
 <li>Explain what an HTML <code>&lt;form&gt;</code> is and why websites need forms.</li>
 <li>Describe the difference between <code>method=&quot;get&quot;</code> and <code>method=&quot;post&quot;</code>.</li>
@@ -112,15 +112,15 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <li>Build a complete membership registration page (<code>join.html</code>) for the Student Club Website.</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-what-is-a-form">1. What Is a Form?<a class="anchor" href="#1-what-is-a-form" aria-label="Link to this section">#</a></h3>
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-13.canvas.tsx</code> → <code>FormDataFlow</code> — slide <code>s13-what-is-form</code> (&quot;What Is a Form?&quot;)</p>
 </blockquote>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>An <strong>HTML form</strong> is a section of a web page that collects data from the user and (usually) sends it to a server for processing. The form is created with the <code>&lt;form&gt;</code> element, which acts as a container for all the input fields, buttons, and labels.</p>
 <p>Think of a form like a paper application form you fill out at a university office. Each blank space on the paper corresponds to an <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, or <code>&lt;textarea&gt;</code> in HTML. When you press &quot;Submit,&quot; it is like handing the completed paper to the clerk.</p>
-<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>On our <strong>Student Club Website</strong>, we want students to be able to:</p>
 <ul>
 <li>Register as new members → needs a registration form</li>
@@ -129,7 +129,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <li>Give feedback → needs a survey form</li>
 </ul>
 <p>Every one of these uses the same HTML concepts we learn today.</p>
-<h4 id="12-why-it-matters">1.2 Why It Matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<h4 id="12-vì-sao-điều-này-quan-trọng">1.2 Vì sao điều này quan trọng<a class="anchor" href="#12-vì-sao-điều-này-quan-trọng" aria-label="Link to this section">#</a></h4>
 <p>Without forms, a website is just a digital poster — users can look but cannot interact. Forms turn a static page into a two-way conversation. They are essential for e-commerce, social media, education platforms, government services, and virtually every modern website.</p>
 <pre><code>┌─────────────────────────────────────────────┐
 │           HOW A FORM WORKS                   │
@@ -158,7 +158,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 </ul>
 <hr>
 <h3 id="2-the-form-element-and-its-attributes">2. The <code>&lt;form&gt;</code> Element and Its Attributes<a class="anchor" href="#2-the-form-element-and-its-attributes" aria-label="Link to this section">#</a></h3>
-<h4 id="21-basic-syntax">2.1 Basic Syntax<a class="anchor" href="#21-basic-syntax" aria-label="Link to this section">#</a></h4>
+<h4 id="21-cú-pháp-cơ-bản">2.1 Cú pháp cơ bản<a class="anchor" href="#21-cú-pháp-cơ-bản" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-html">&lt;!-- ✅ CORRECT: form with action and method --&gt;
 &lt;form action=&quot;process.php&quot; method=&quot;post&quot;&gt;
     &lt;!-- form controls go here --&gt;
@@ -244,7 +244,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <td><strong>Use <code>post</code> for registration/contact forms</strong></td>
 </tr>
 </tbody></table>
-<h4 id="important-notes">⚠️ Important notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Always use <code>method=&quot;post&quot;</code> when collecting personal information (names, emails, passwords).</li>
 <li>Use <code>method=&quot;get&quot;</code> only for things like search boxes where seeing the query in the URL is useful.</li>
@@ -338,7 +338,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <li>Shows a calendar popup in modern browsers.</li>
 <li>Value format is always <code>YYYY-MM-DD</code>.</li>
 </ul>
-<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-2">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-2" aria-label="Link to this section">#</a></h4>
 <p>In our Student Club registration form we use:</p>
 <ul>
 <li><code>text</code> for Full Name and Student ID</li>
@@ -426,7 +426,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <td>Clear form</td>
 </tr>
 </tbody></table>
-<h4 id="important-notes-2">⚠️ Important notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-2">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Always provide a <code>&lt;label&gt;</code> for every input (except submit/reset buttons).</li>
 <li>The <code>name</code> attribute is mandatory for data submission.</li>
@@ -444,7 +444,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <li>Reload on your laptop. The date field shows a picker.</li>
 <li>Now open the same page on your phone, or use F12 → <strong>Ctrl+Shift+M</strong> device mode and tap each field.</li>
 </ol>
-<p><strong>Expected result:</strong> On a phone, <code>email</code> brings up a keyboard with <code>@</code>, <code>tel</code> shows a numeric keypad, and <code>date</code> opens the native date picker. All four accept typed text; only the correct type makes it pleasant to enter.</p>
+<p><strong>Kết quả mong đợi:</strong> On a phone, <code>email</code> brings up a keyboard with <code>@</code>, <code>tel</code> shows a numeric keypad, and <code>date</code> opens the native date picker. All four accept typed text; only the correct type makes it pleasant to enter.</p>
 <details>
 <summary>The types worth knowing, and the two traps</summary><table>
 <thead>
@@ -516,7 +516,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <li>Content goes between opening and closing tags (not in a <code>value</code> attribute).</li>
 <li>Unlike <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code> is NOT self-closing. Always write <code>&lt;/textarea&gt;</code>.</li>
 </ul>
-<h4 id="important-notes-3">⚠️ Important notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-3">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>❌ WRONG: <code>&lt;textarea value=&quot;default text&quot;&gt;&lt;/textarea&gt;</code> — there is no <code>value</code> attribute on textarea.</li>
 <li>✅ CORRECT: <code>&lt;textarea&gt;Default text&lt;/textarea&gt;</code></li>
@@ -569,7 +569,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <li><code>&lt;legend&gt;</code> provides a caption that sits on the border.</li>
 <li>Screen readers announce the legend when entering the group, giving context to each field.</li>
 </ul>
-<h4 id="real-life-example-3">🎒 Real-life example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-3">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-3" aria-label="Link to this section">#</a></h4>
 <p>Our Student Club registration form uses four fieldsets:</p>
 <ol>
 <li><strong>Personal Information</strong> — name, student ID, email, phone, DOB, gender</li>
@@ -592,7 +592,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 </li>
 <li>Click &quot;Email&quot; again. Then try a checkbox the same way.</li>
 </ol>
-<p><strong>Expected result:</strong> With <code>for</code> matching the input&#39;s <code>id</code>, clicking the label text focuses the field — and for a checkbox, clicking the label toggles it. That click is your test: if it does nothing, the label is not connected.</p>
+<p><strong>Kết quả mong đợi:</strong> With <code>for</code> matching the input&#39;s <code>id</code>, clicking the label text focuses the field — and for a checkbox, clicking the label toggles it. That click is your test: if it does nothing, the label is not connected.</p>
 <details>
 <summary>Why this is the highest-value five minutes in the chapter</summary><p>A connected label does three jobs at once:</p>
 <ol>
@@ -692,7 +692,7 @@ if(w&&w!=="vi")location.replace("../../ebook/13-creating-forms.html");}catch(e){
 <li><code>type=&quot;email&quot;</code> — must contain @ and domain.</li>
 <li><code>title</code> — tooltip shown when validation fails (some browsers display this as the error message).</li>
 </ul>
-<h4 id="important-notes-4">⚠️ Important notes<a class="anchor" href="#important-notes-4" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-4">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-4" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Client-side validation can be bypassed (disable JS, use dev tools). NEVER trust it alone for security. Always validate again on the server.</li>
 <li>For this course, client-side validation is sufficient since we are learning front-end skills.</li>
@@ -723,7 +723,7 @@ input:valid    { border-color: #16a34a; }
 </code></pre>
 </li>
 </ol>
-<p><strong>Expected result:</strong> The browser blocks submission and shows its own message next to the offending field — no JavaScript involved. The CSS colours each border as you type.</p>
+<p><strong>Kết quả mong đợi:</strong> The browser blocks submission and shows its own message next to the offending field — no JavaScript involved. The CSS colours each border as you type.</p>
 <details>
 <summary>What this validation is and is not</summary><p>It is a <strong>usability</strong> feature: it catches typos immediately, next to the field, before a round trip to the server.</p>
 <p>It is <strong>not security</strong>. Every one of these attributes can be removed in DevTools in three seconds, and a request can be sent without a browser at all. Any real application must revalidate on the server. Client-side validation improves the experience for cooperative users; it stops nobody who is trying.</p>
@@ -789,7 +789,7 @@ input:valid    { border-color: #16a34a; }
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 </code></pre>
-<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h4>
 <ol>
 <li><strong>Always use <code>&lt;label&gt;</code></strong> for every form control.</li>
 <li><strong>Group related fields</strong> with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>.</li>
@@ -800,7 +800,7 @@ input:valid    { border-color: #16a34a; }
 <li><strong>Make buttons large enough</strong> for touch (minimum 44×44 px).</li>
 <li><strong>Keep form layout vertical</strong> (label above input) — it is the easiest to read on all screen sizes.</li>
 </ol>
-<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Mistake 1: Missing <code>name</code> attribute</strong></p>
 <pre><code class="language-html">&lt;!-- ❌ WRONG: data will NOT be submitted --&gt;
 &lt;input type=&quot;text&quot; id=&quot;fullname&quot;&gt;
@@ -861,7 +861,7 @@ input:focus, select:focus, textarea:focus {
 <li>Reload, then remove <code>font: inherit</code> and reload again.</li>
 <li>Put it back, then replace the <code>:focus</code> rule with <code>outline: none</code> and try navigating with <strong>Tab</strong> only.</li>
 </ol>
-<p><strong>Expected result:</strong> Without <code>font: inherit</code>, form fields revert to the browser&#39;s default font and look pasted in from another site. With <code>outline: none</code>, you cannot see where you are when tabbing — the form becomes unusable without a mouse.</p>
+<p><strong>Kết quả mong đợi:</strong> Without <code>font: inherit</code>, form fields revert to the browser&#39;s default font and look pasted in from another site. With <code>outline: none</code>, you cannot see where you are when tabbing — the form becomes unusable without a mouse.</p>
 <details>
 <summary>The two rules to remember</summary><p><strong><code>font: inherit</code> on form controls.</strong> Inputs, selects, and textareas do not inherit typography by default; they use a browser-supplied font. One declaration makes them match the rest of your page.</p>
 <p><strong>Never <code>outline: none</code> without a replacement.</strong> The focus ring is the only thing telling a keyboard user where they are. If the default outline clashes with your design, replace it — do not delete it:</p>
@@ -870,7 +870,7 @@ input:focus, select:focus, textarea:focus {
 <p><code>:focus-visible</code> is the refinement worth knowing: it shows the ring for keyboard focus but not for mouse clicks, which is usually what designers actually wanted when they reached for <code>outline: none</code>.</p>
 <p><code>width: 100%</code> on inputs also relies on <code>box-sizing: border-box</code> being set globally. Without it, the padding pushes each field past the edge of its container.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -971,9 +971,9 @@ input:focus, select:focus, textarea:focus {
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-simple-contact-form">Example 1: Simple Contact Form<a class="anchor" href="#example-1-simple-contact-form" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong>
+<p><strong>Tình huống:</strong>
 We need a quick contact form for the Student Club Website&#39;s Contact page. It should collect the visitor&#39;s name, email, subject, and message.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;form action=&quot;#&quot; method=&quot;post&quot; class=&quot;contact-form&quot;&gt;
@@ -1013,7 +1013,7 @@ We need a quick contact form for the Student Club Website&#39;s Contact page. It
     &lt;/fieldset&gt;
 &lt;/form&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1058,11 +1058,11 @@ We need a quick contact form for the Student Club Website&#39;s Contact page. It
 <td>Submit button. <code>type=&quot;submit&quot;</code> is the default but writing it explicitly is good practice.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong>
+<p><strong>Kết quả:</strong>
 A clean, accessible contact form with four fields inside a labeled fieldset. The browser validates required fields and email format before allowing submission.</p>
 <hr>
 <h3 id="example-2-radio-and-checkbox-group">Example 2: Radio and Checkbox Group<a class="anchor" href="#example-2-radio-and-checkbox-group" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong>
+<p><strong>Tình huống:</strong>
 We need a section in the registration form where students pick their gender (one choice) and their interests (multiple choices).</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;!-- RADIO GROUP: pick exactly one --&gt;
@@ -1106,7 +1106,7 @@ We need a section in the registration form where students pick their gender (one
     &lt;/div&gt;
 &lt;/div&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1139,14 +1139,14 @@ We need a section in the registration form where students pick their gender (one
 <td>Makes the entire text clickable, not just the tiny box.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong></p>
+<p><strong>Kết quả:</strong></p>
 <ul>
 <li>Gender: clicking &quot;Female&quot; selects it and deselects any previously chosen option.</li>
 <li>Interests: the user can check Web Design AND Music AND Sports simultaneously. Unchecked items are not submitted.</li>
 </ul>
 <hr>
 <h3 id="example-3-form-validation-demo">Example 3: Form Validation Demo<a class="anchor" href="#example-3-form-validation-demo" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong>
+<p><strong>Tình huống:</strong>
 We want to see browser validation in action. Create a mini form and test what happens when you leave required fields empty or enter invalid data.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;
@@ -1176,7 +1176,7 @@ We want to see browser validation in action. Create a mini form and test what ha
     &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Test Validation&lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1209,11 +1209,11 @@ We want to see browser validation in action. Create a mini form and test what ha
 <li>Enter phone &quot;123&quot; → click Submit → browser shows &quot;Enter exactly 10 digits&quot;.</li>
 <li>Fill everything correctly → form submits (goes nowhere because <code>action=&quot;#&quot;</code>).</li>
 </ol>
-<p><strong>Result:</strong>
+<p><strong>Kết quả:</strong>
 You experience firsthand how HTML5 validation works without any JavaScript. This is built into every modern browser.</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <p>Before starting, make sure:</p>
 <ol>
 <li>Your Student Club site folder is open in Dreamweaver (or VS Code).</li>
@@ -1638,7 +1638,7 @@ legend {
 <p>✅ <strong>Check:</strong> The contact form appears below the existing contact information. It uses the same CSS styles as the registration form (consistent design). Required fields trigger validation messages when left empty.</p>
 <p>💾 <strong>Save point:</strong> Final backup of Session 13 work.</p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>Form bugs are the most costly kind, because a form that looks fine can still be losing every submission.</p>
 <table>
 <thead>
@@ -1724,7 +1724,7 @@ legend {
 </tbody></table>
 <p><strong>Never trust the browser as your only validation.</strong> HTML5 attributes such as <code>required</code> and <code>type=&quot;email&quot;</code> improve the experience, but a user can bypass them with DevTools in seconds. Every field must be validated again on the server. Client-side checks are for convenience; server-side checks are for correctness and security.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. Why does every form input need a <code>&lt;label&gt;</code>, and how do you connect them?</strong></p>
 <details>
@@ -1758,7 +1758,7 @@ legend {
 <details>
 <summary>Answer</summary><p><code>rows</code> sets the visible height in text lines and <code>cols</code> the width in characters. Set <code>rows</code> in HTML as a sensible default, but control width in CSS with <code>width: 100%</code> so the field fits its container responsively — a fixed <code>cols=&quot;40&quot;</code> overflows narrow phone screens. Note <code>&lt;textarea&gt;</code> needs a separate closing tag and its default value goes between the tags, not in a <code>value</code> attribute.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1819,7 +1819,7 @@ legend {
 </tbody></table>
 <p>If you answered <strong>No</strong> to any row, re-read the relevant Theory section and redo the corresponding Hands-On task before moving on.</p>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms">MDN: Learn Forms (complete guide)</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form">MDN: Your First Form</a></li>
@@ -1840,7 +1840,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-13.html">homework/session-13/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -1857,10 +1857,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>In Session 14 we explore the legacy Spry Framework (included with Dreamweaver CS6), understand why it is obsolete, and learn the modern CSS-only alternative for dropdown navigation menus.</p>
 
   </article>

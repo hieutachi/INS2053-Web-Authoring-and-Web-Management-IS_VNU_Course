@@ -65,13 +65,13 @@ if(w&&w!=="vi")location.replace("../../ebook/12-using-code-editing-tools.html");
         <li class="d2"><a href="#8-browser-developer-tools-devtools">8. Browser Developer Tools (DevTools)</a></li>
         <li class="d2"><a href="#9-debugging-common-errors">9. Debugging Common Errors</a></li>
         <li class="d2"><a href="#10-code-formatting-and-comments">10. Code Formatting and Comments</a></li>
-        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
-        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#thực-hành-tốt">✅ THỰC HÀNH TỐT</a></li>
+        <li class="d2"><a href="#lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP</a></li>
         <li class="d2"><a href="#example-1-using-emmet-to-build-a-page-skeleton">Example 1: Using Emmet to Build a Page Skeleton</a></li>
         <li class="d2"><a href="#example-2-debugging-a-layout-issue-with-devtools">Example 2: Debugging a Layout Issue with DevTools</a></li>
         <li class="d2"><a href="#example-3-finding-and-fixing-validation-errors">Example 3: Finding and Fixing Validation Errors</a></li>
         <li class="d2"><a href="#example-4-using-find-and-replace-across-all-files">Example 4: Using Find-and-Replace Across All Files</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#homework-submission-session-12">🏠 HOMEWORK &amp; SUBMISSION — Session 12</a></li>
       </ol>
     </nav>
@@ -87,7 +87,7 @@ if(w&&w!=="vi")location.replace("../../ebook/12-using-code-editing-tools.html");
 <h2 id="using-code-editing-tools"><strong>Using Code-Editing Tools</strong><a class="anchor" href="#using-code-editing-tools" aria-label="Link to this section">#</a></h2>
 <p>Welcome to the final session of our web authoring journey, friend! You have learned HTML structure, CSS styling, images, multimedia, and site planning. Now it is time to level up your <strong>workflow</strong>. Professional developers do not just write code — they use powerful tools that make coding faster, catch errors automatically, and help debug problems in seconds. In this session you will master <strong>VS Code</strong> (Visual Studio Code), the industry-standard code editor used by millions of developers worldwide. You will also learn how to validate your HTML/CSS using official W3C validators and how to use browser Developer Tools to inspect, test, and fix issues in real time. Think of this session as upgrading from a bicycle to a sports car — same destination, but MUCH faster and smoother. Let us go!</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    VS Code documentation; W3C HTML/CSS Validators
                  Chrome DevTools documentation (MDN)
@@ -105,7 +105,7 @@ if(w&&w!=="vi")location.replace("../../ebook/12-using-code-editing-tools.html");
                  CLO5 (evaluate, document, and present a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <p>By the end of this session you will be able to:</p>
 <ul>
 <li>Navigate the VS Code interface confidently (Explorer, Editor, Terminal, Extensions)</li>
@@ -123,14 +123,14 @@ if(w&&w!=="vi")location.replace("../../ebook/12-using-code-editing-tools.html");
 <li>Use comments effectively to document HTML and CSS</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-vs-code-your-primary-development-tool">1. VS Code: Your Primary Development Tool<a class="anchor" href="#1-vs-code-your-primary-development-tool" aria-label="Link to this section">#</a></h3>
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-12.canvas.tsx</code> → <code>VSCodeLayout</code> — slide <code>s12-vscode</code> (&quot;VS Code Interface&quot;)</p>
 </blockquote>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p><strong>Visual Studio Code (VS Code)</strong> is a free, open-source code editor created by Microsoft. It is NOT the same as &quot;Visual Studio&quot; (which is a much larger IDE). VS Code is lightweight, fast, extensible, and has become the most popular code editor for web development worldwide.</p>
-<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>According to the Stack Overflow Developer Survey, VS Code has been the #1 most-used development environment since 2019. Over 70% of professional web developers use it daily. When you join a tech company, chances are very high that your team uses VS Code.</p>
 <h4 id="12-vs-code-interface-overview">1.2 VS Code Interface Overview<a class="anchor" href="#12-vs-code-interface-overview" aria-label="Link to this section">#</a></h4>
 <pre><code>┌─────────────────────────────────────────────────────────────┐
@@ -301,7 +301,7 @@ if(w&&w!=="vi")location.replace("../../ebook/12-using-code-editing-tools.html");
 <li>Right-click <code>index.html</code> in the Explorer and choose <strong>Open with Live Server</strong>.</li>
 <li>Arrange VS Code and the browser side by side. Edit a heading and press <strong>Ctrl+S</strong>.</li>
 </ol>
-<p><strong>Expected result:</strong> The browser reloads by itself the moment you save. The address bar reads <code>http://127.0.0.1:5500/</code>, not <code>file:///C:/...</code>.</p>
+<p><strong>Kết quả mong đợi:</strong> The browser reloads by itself the moment you save. The address bar reads <code>http://127.0.0.1:5500/</code>, not <code>file:///C:/...</code>.</p>
 <details>
 <summary>Why the URL change matters more than the convenience</summary><p>Live Server runs a real local web server, so your pages load over HTTP instead of directly from disk. Several things behave differently:</p>
 <ul>
@@ -316,9 +316,9 @@ if(w&&w!=="vi")location.replace("../../ebook/12-using-code-editing-tools.html");
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-12.canvas.tsx</code> → <code>EmmetExpand</code> — slide <code>s12-emmet</code> (&quot;Emmet Abbreviations&quot;)</p>
 </blockquote>
-<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="31-định-nghĩa">3.1 Định nghĩa<a class="anchor" href="#31-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p><strong>Emmet</strong> is a built-in VS Code feature that expands short abbreviations into full HTML or CSS code. You type a compact shorthand, press <strong>Tab</strong>, and VS Code generates the complete markup.</p>
-<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-2">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-2" aria-label="Link to this section">#</a></h4>
 <p>Instead of typing 15 lines of HTML for a navigation menu, you type ONE line and press Tab. What took 2 minutes now takes 2 seconds.</p>
 <h4 id="32-common-emmet-abbreviations">3.2 Common Emmet Abbreviations<a class="anchor" href="#32-common-emmet-abbreviations" aria-label="Link to this section">#</a></h4>
 <h5 id="html-abbreviations">HTML Abbreviations<a class="anchor" href="#html-abbreviations" aria-label="Link to this section">#</a></h5>
@@ -571,7 +571,7 @@ Result:
 <li><code>table&gt;tr*3&gt;td*4</code> — a 3×4 table skeleton.</li>
 <li><code>section.events&gt;h2+p+ul&gt;li*3</code> — a section with a heading, a paragraph, and a three-item list.</li>
 </ol>
-<p><strong>Expected result:</strong> Each abbreviation expands into complete, correctly nested, correctly indented HTML with the cursor placed where you type next.</p>
+<p><strong>Kết quả mong đợi:</strong> Each abbreviation expands into complete, correctly nested, correctly indented HTML with the cursor placed where you type next.</p>
 <details>
 <summary>The four operators that generate everything else</summary><table>
 <thead>
@@ -916,7 +916,7 @@ Result:
 <li>Reload the page in the browser first. It still looks fine.</li>
 <li>Re-validate and read all three messages.</li>
 </ol>
-<p><strong>Expected result:</strong> The browser renders the broken page without complaint. The validator reports &quot;End tag for div omitted&quot;, &quot;Duplicate ID&quot;, and &quot;An img element must have an alt attribute&quot;.</p>
+<p><strong>Kết quả mong đợi:</strong> The browser renders the broken page without complaint. The validator reports &quot;End tag for div omitted&quot;, &quot;Duplicate ID&quot;, and &quot;An img element must have an alt attribute&quot;.</p>
 <details>
 <summary>Why the browser does not tell you</summary><p>HTML parsers are required to be forgiving. Faced with a missing <code>&lt;/div&gt;</code>, the browser guesses where it should have gone and carries on — because a partly-rendered page serves the reader better than an error screen.</p>
 <p>The catch is that its guess is often not yours. An unclosed <code>&lt;div&gt;</code> before a footer can silently nest the footer inside a card, and your layout breaks in a way that looks like a CSS problem. You will spend an hour on the stylesheet for a structural bug.</p>
@@ -1130,7 +1130,7 @@ console.log(document.querySelectorAll(&#39;a&#39;).length);
 <li>Add a brand-new property: click the blank space inside the rule and type <code>border-radius: 12px</code>.</li>
 <li>When it looks right, copy the values into <code>css/style.css</code> and reload to confirm.</li>
 </ol>
-<p><strong>Expected result:</strong> You tune the design by eye in seconds instead of editing, saving, and reloading for each guess. Reloading discards every DevTools change — the file is the source of truth.</p>
+<p><strong>Kết quả mong đợi:</strong> You tune the design by eye in seconds instead of editing, saving, and reloading for each guess. Reloading discards every DevTools change — the file is the source of truth.</p>
 <details>
 <summary>The three panels worth knowing well</summary><p><strong>Elements → Styles.</strong> Every rule matching the selected element, winner on top, losers struck through. This is where &quot;why is my CSS not working&quot; gets answered. The box model diagram at the bottom shows content, padding, border, and margin as measured numbers.</p>
 <p><strong>Console.</strong> Errors with a file name and line number. Read the <em>first</em> error, not the last — later ones are often consequences of it.</p>
@@ -1381,7 +1381,7 @@ nav a.active {
 <li>Over-commenting is as bad as under-commenting. If the code is self-explanatory, skip the comment.</li>
 </ul>
 <hr>
-<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<h3 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h3>
 <ol>
 <li><p><strong>Use VS Code as your primary editor.</strong> Not Notepad, not Word, not Dreamweaver Design View. VS Code is the industry standard.</p>
 </li>
@@ -1405,7 +1405,7 @@ nav a.active {
 </li>
 </ol>
 <hr>
-<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h3 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h3>
 <h4 id="mistake-1-coding-in-notepad-or-word">Mistake 1: Coding in Notepad or Word<a class="anchor" href="#mistake-1-coding-in-notepad-or-word" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Writing HTML in Notepad (no syntax highlighting, no autocomplete, no error detection).</p>
 <p>✅ <strong>Correct:</strong> Using VS Code with extensions for syntax highlighting, IntelliSense, Emmet, and validation.</p>
@@ -1435,7 +1435,7 @@ nav a.active {
 <li>Now enable it permanently: <strong>Ctrl+,</strong> → search &quot;format on save&quot; → tick <strong>Editor: Format On Save</strong>.</li>
 <li>Mangle the file again, then just press <strong>Ctrl+S</strong>.</li>
 </ol>
-<p><strong>Expected result:</strong> The file reformats itself with consistent indentation, one element per line, and nesting made visible.</p>
+<p><strong>Kết quả mong đợi:</strong> The file reformats itself with consistent indentation, one element per line, and nesting made visible.</p>
 <details>
 <summary>Why this is a correctness tool, not a tidiness tool</summary><p>Formatting reveals structure. When the formatter indents a closing tag somewhere you did not expect, it is telling you the nesting is not what you thought — an unclosed <code>&lt;div&gt;</code> shows up immediately as everything after it drifting one level right.</p>
 <p>Two habits to pair with it:</p>
@@ -1447,7 +1447,7 @@ nav a.active {
 </code></pre>
 <p>Neither adds a byte to the rendered page — HTML and CSS comments are stripped before rendering — but both make the file findable with Ctrl+F six weeks later.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1523,9 +1523,9 @@ nav a.active {
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-using-emmet-to-build-a-page-skeleton">Example 1: Using Emmet to Build a Page Skeleton<a class="anchor" href="#example-1-using-emmet-to-build-a-page-skeleton" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You are creating a new page <code>schedule.html</code> for the Student Club Website. You need the basic HTML5 structure with header, nav, main content area, sidebar, and footer.</p>
+<p><strong>Tình huống:</strong> You are creating a new page <code>schedule.html</code> for the Student Club Website. You need the basic HTML5 structure with header, nav, main content area, sidebar, and footer.</p>
 <p><strong>Code (typed as Emmet, then expanded):</strong></p>
 <p>Type this single line:</p>
 <pre><code>!
@@ -1649,10 +1649,10 @@ nav a.active {
 <td>Footer with copyright</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> A complete page skeleton generated in under 5 seconds. Now fill in the actual content (link URLs, section headings, paragraph text).</p>
+<p><strong>Kết quả:</strong> A complete page skeleton generated in under 5 seconds. Now fill in the actual content (link URLs, section headings, paragraph text).</p>
 <hr>
 <h3 id="example-2-debugging-a-layout-issue-with-devtools">Example 2: Debugging a Layout Issue with DevTools<a class="anchor" href="#example-2-debugging-a-layout-issue-with-devtools" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> Your sidebar is appearing BELOW the main content instead of beside it. You expected a two-column layout.</p>
+<p><strong>Tình huống:</strong> Your sidebar is appearing BELOW the main content instead of beside it. You expected a two-column layout.</p>
 <p><strong>Step 1 — Inspect the problem:</strong></p>
 <ol>
 <li>Right-click the sidebar → Inspect.</li>
@@ -1686,10 +1686,10 @@ You notice the parent <code>#main-area</code> has no defined width and no <code>
 <li>Save.</li>
 <li>Refresh the browser to confirm.</li>
 </ol>
-<p><strong>Result:</strong> Bug diagnosed and fixed in under 2 minutes using DevTools, without any guesswork.</p>
+<p><strong>Kết quả:</strong> Bug diagnosed and fixed in under 2 minutes using DevTools, without any guesswork.</p>
 <hr>
 <h3 id="example-3-finding-and-fixing-validation-errors">Example 3: Finding and Fixing Validation Errors<a class="anchor" href="#example-3-finding-and-fixing-validation-errors" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You validate <code>events.html</code> and the W3C validator reports 3 errors.</p>
+<p><strong>Tình huống:</strong> You validate <code>events.html</code> and the W3C validator reports 3 errors.</p>
 <p><strong>Error 1:</strong> Line 24 — &quot;Element <code>img</code> is missing required attribute <code>alt</code>.&quot;</p>
 <pre><code class="language-html">&lt;!-- Line 24 — WRONG --&gt;
 &lt;img src=&quot;images/workshop.jpg&quot; width=&quot;300&quot;&gt;
@@ -1729,8 +1729,8 @@ You notice the parent <code>#main-area</code> has no defined width and no <code>
 </ol>
 <hr>
 <h3 id="example-4-using-find-and-replace-across-all-files">Example 4: Using Find-and-Replace Across All Files<a class="anchor" href="#example-4-using-find-and-replace-across-all-files" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You changed the club email from <code>club@university.edu</code> to <code>studentclub@vnuis.edu.vn</code>. You need to update it everywhere, but you remember removing redundancy in Session 11 — it should only appear on <code>contact.html</code>. Let us verify.</p>
-<p><strong>Steps:</strong></p>
+<p><strong>Tình huống:</strong> You changed the club email from <code>club@university.edu</code> to <code>studentclub@vnuis.edu.vn</code>. You need to update it everywhere, but you remember removing redundancy in Session 11 — it should only appear on <code>contact.html</code>. Let us verify.</p>
+<p><strong>Các bước:</strong></p>
 <ol>
 <li><p>Press <code>Ctrl+Shift+F</code> (Find in Files).</p>
 </li>
@@ -1755,10 +1755,10 @@ You notice the parent <code>#main-area</code> has no defined width and no <code>
 <li>Review the diff preview to confirm only intended changes.</li>
 <li>Click <strong>Apply</strong>.</li>
 </ol>
-<p><strong>Result:</strong> Email updated across all files in one operation. No missed instances.</p>
+<p><strong>Kết quả:</strong> Email updated across all files in one operation. No missed instances.</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <ol>
 <li>Install VS Code from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a> (if not already installed).</li>
 <li>Open your <strong>club-website</strong> folder in VS Code (<strong>File → Open Folder</strong>).</li>
@@ -2013,7 +2013,7 @@ You notice the parent <code>#main-area</code> has no defined width and no <code>
 <p>✅ <strong>Check:</strong> All files are consistently formatted. Section comments make navigation easy. Anyone reading your code can find specific sections quickly.</p>
 <p>💾 <strong>Final save.</strong> Your codebase is now professional-grade.</p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>This chapter is about the tools that find errors, so the table works the other way round: here is what each tool reports, and what it means.</p>
 <table>
 <thead>
@@ -2099,7 +2099,7 @@ You notice the parent <code>#main-area</code> has no defined width and no <code>
 </tbody></table>
 <p><strong>Order to debug in:</strong> Console first (it names the file and line), then Network (it shows what failed to load), then the validator (it finds structural HTML errors the browser silently repaired), then Lighthouse (it finds what works but should not ship). Reversing that order wastes time.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. What does Live Server give you that double-clicking an HTML file does not?</strong></p>
 <details>
@@ -2139,7 +2139,7 @@ You notice the parent <code>#main-area</code> has no defined width and no <code>
 <details>
 <summary>Answer</summary><p>Tab width is a per-editor setting, so a file mixing both looks correctly aligned in your editor and jumbled in someone else&#39;s. Nesting becomes impossible to read, which hides structural bugs. Pick one — spaces are the common convention for HTML and CSS — and let the formatter enforce it.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -2200,7 +2200,7 @@ You notice the parent <code>#main-area</code> has no defined width and no <code>
 </tbody></table>
 <p>If you answered &quot;No&quot; to any item, re-read the relevant Theory section and redo the corresponding Hands-On task.</p>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/getstarted/introvideos">VS Code Getting Started — Official Docs</a></li>
 <li><a href="https://docs.emmet.io/cheat-sheet/">Emmet cheat sheet — Official Docs</a></li>
@@ -2219,7 +2219,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-12.html">homework/session-12/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -2236,10 +2236,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>Congratulations! You have completed the core INS2053 web authoring curriculum. Your Student Club Website is now a polished, validated, multi-page site with multimedia, responsive design, and professional code quality. Continue building, experimenting, and exploring — the web is yours to create!</p>
 
   </article>

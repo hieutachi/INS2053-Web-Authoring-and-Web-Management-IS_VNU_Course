@@ -67,7 +67,7 @@ if(w&&w!=="vi")location.replace("../../ebook/07-css3-and-web-fonts.html");}catch
         <li class="d2"><a href="#example-1-loading-and-applying-google-fonts">Example 1: Loading and Applying Google Fonts</a></li>
         <li class="d2"><a href="#example-2-styled-event-card-with-shadow-rounded-corners-and-hover-lift">Example 2: Styled Event Card with Shadow, Rounded Corners, and Hover Lift</a></li>
         <li class="d2"><a href="#example-3-gradient-header-with-text-shadow">Example 3: Gradient Header with Text Shadow</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#homework-submission-session-7">🏠 HOMEWORK &amp; SUBMISSION — Session 7</a></li>
       </ol>
     </nav>
@@ -83,7 +83,7 @@ if(w&&w!=="vi")location.replace("../../ebook/07-css3-and-web-fonts.html");}catch
 <h2 id="css3-and-web-fonts"><strong>CSS3 and Web Fonts</strong><a class="anchor" href="#css3-and-web-fonts" aria-label="Link to this section">#</a></h2>
 <p>Welcome back, everyone! In this session we are going to make your Student Club Website look truly <em>modern</em> and <em>professional</em>. Up until now, our pages have been functional but a little plain — rectangular boxes, flat colours, and system fonts that every other website uses. Today we change all of that. You will learn how to load beautiful custom fonts from Google Fonts, add rounded corners, shadows, gradients, and smooth hover animations using pure CSS3. By the end of this session your site will look like something you would actually be proud to show off. No image-editing software needed — just code!</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    Chapter 7 — CSS3 &amp; Web Fonts (course ebook)
                  MDN: &quot;CSS transitions&quot;, &quot;Using CSS gradients&quot;, &quot;@font-face&quot;
@@ -99,7 +99,7 @@ if(w&&w!=="vi")location.replace("../../ebook/07-css3-and-web-fonts.html");}catch
                  CLO4 (design and build a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <p>By the end of this session you will be able to:</p>
 <ul>
 <li>Import and use <strong>Google Fonts</strong> in any HTML page via <code>&lt;link&gt;</code> tags.</li>
@@ -114,14 +114,14 @@ if(w&&w!=="vi")location.replace("../../ebook/07-css3-and-web-fonts.html");}catch
 <li>Apply all of the above to the <strong>Student Club Website</strong> project.</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-web-fonts-and-google-fonts">1. Web Fonts and Google Fonts<a class="anchor" href="#1-web-fonts-and-google-fonts" aria-label="Link to this section">#</a></h3>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>A <strong>web font</strong> is a font file that is downloaded by the browser when a visitor opens your page. Instead of relying only on fonts already installed on the user&#39;s computer (like Arial or Times New Roman), you can serve <em>any</em> font you like — as long as you have the right licence.</p>
 <p><strong>Google Fonts</strong> is a free, open-source library of over 1,500 font families hosted on Google&#39;s servers. You do not need to download or host the font files yourself; you simply tell the browser where to fetch them.</p>
-<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>Think of Google Fonts like Spotify for typefaces. Spotify streams music from its servers instead of requiring you to own every MP3 file. Google Fonts streams font files to the visitor&#39;s browser on demand. The most popular fonts are cached worldwide, so they load very fast.</p>
-<h4 id="12-why-it-matters">1.2 Why it matters<a class="anchor" href="#12-why-it-matters" aria-label="Link to this section">#</a></h4>
+<h4 id="12-vì-sao-điều-này-quan-trọng">1.2 Vì sao điều này quan trọng<a class="anchor" href="#12-vì-sao-điều-này-quan-trọng" aria-label="Link to this section">#</a></h4>
 <p>Without web fonts, your website is limited to the handful of &quot;web-safe&quot; fonts that happen to be pre-installed on each visitor&#39;s operating system. This means your carefully designed heading might render in boring Times New Roman on someone else&#39;s machine. Google Fonts gives you typographic control that was previously only possible in print design.</p>
 <pre><code>HOW GOOGLE FONTS WORKS (simplified):
 
@@ -132,7 +132,7 @@ Your HTML                Google Server           Visitor Browser
 │   leapis...&quot; │        │               │        │                  │
 └──────────────┘        └───────────────┘        └──────────────────┘
 </code></pre>
-<h4 id="important-notes">⚠️ Important notes<a class="anchor" href="#important-notes" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>You must have an <strong>internet connection</strong> while developing for Google Fonts to load. If you work offline, the fallback font will display instead.</li>
 <li>Only request the <strong>font weights you actually use</strong> (e.g., 400 and 700). Requesting every weight slows down page load.</li>
@@ -151,7 +151,7 @@ Your HTML                Google Server           Visitor Browser
 <li>Apply it: <code>body { font-family: &#39;Roboto&#39;, sans-serif; }</code></li>
 <li>Reload with F12 → <strong>Network</strong> open, filter to <strong>Font</strong>, and count the requests.</li>
 </ol>
-<p><strong>Expected result:</strong> Two font files download (one per weight) and the page text visibly changes. If you requested nine weights, you would see nine files — for no benefit.</p>
+<p><strong>Kết quả mong đợi:</strong> Two font files download (one per weight) and the page text visibly changes. If you requested nine weights, you would see nine files — for no benefit.</p>
 <details>
 <summary>The three details that trip people up</summary><p><strong>Order.</strong> The font <code>&lt;link&gt;</code> must come before your stylesheet. If your CSS is parsed first, <code>font-family: &#39;Roboto&#39;</code> refers to a font the browser has not been told how to fetch yet.</p>
 <p><strong>Weights.</strong> Every weight is a separate download. Selecting all nine on the Google Fonts page can add several hundred kilobytes to a page that uses two of them. Request 400 and 700, and add others only when you actually use them.</p>
@@ -232,14 +232,14 @@ Your HTML                Google Server           Visitor Browser
 @import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@400;600&amp;display=swap&#39;);
 </code></pre>
 <p>⚠️ If you put <code>@import</code> after any other CSS rule, the browser will ignore it silently. This is a very common bug.</p>
-<h4 id="best-practices">✅ Best practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Use <code>&lt;link&gt;</code> in HTML rather than <code>@import</code> in CSS for better performance.</li>
 <li>Limit yourself to <strong>2–3 font families</strong> per site. More than that hurts load time and visual consistency.</li>
 <li>Always add <code>display=swap</code> so users see text immediately.</li>
 <li>Place the Google Fonts <code>&lt;link&gt;</code> <strong>before</strong> your own stylesheet <code>&lt;link&gt;</code> so the fonts are available when your CSS is parsed.</li>
 </ul>
-<h4 id="common-mistakes">❌ Common mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Forgetting the fallback font</p>
 <pre><code class="language-css">h1 {
     font-family: &#39;Montserrat&#39;;
@@ -267,7 +267,7 @@ body { margin: 0; }
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-07.canvas.tsx</code> → <code>FontStackChain</code> — slide <code>s7-font-stacks</code> (&quot;Font stacks &amp; text styling&quot;)</p>
 </blockquote>
-<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="31-định-nghĩa">3.1 Định nghĩa<a class="anchor" href="#31-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>A <strong>font stack</strong> (or font-family stack) is a comma-separated list of fonts in a CSS <code>font-family</code> declaration. The browser tries each font in order and uses the first one it finds.</p>
 <pre><code class="language-css">body {
     font-family: &#39;Open Sans&#39;, Arial, Helvetica, sans-serif;
@@ -280,15 +280,15 @@ body { margin: 0; }
 <li>If that failed, try <strong>Helvetica</strong> (macOS default).</li>
 <li>If nothing else worked, use whatever the browser considers a generic <strong>sans-serif</strong>.</li>
 </ol>
-<h4 id="32-why-it-matters">3.2 Why it matters<a class="anchor" href="#32-why-it-matters" aria-label="Link to this section">#</a></h4>
+<h4 id="32-vì-sao-điều-này-quan-trọng">3.2 Vì sao điều này quan trọng<a class="anchor" href="#32-vì-sao-điều-này-quan-trọng" aria-label="Link to this section">#</a></h4>
 <p>Even though Google Fonts is extremely reliable, things can go wrong: the visitor might be offline, the CDN could be temporarily blocked in their country, or JavaScript errors could prevent loading. A good font stack guarantees your text remains readable in <em>all</em> circumstances.</p>
-<h4 id="best-practices-2">✅ Best practices<a class="anchor" href="#best-practices-2" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-2">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Always end with a <strong>generic family keyword</strong>: <code>serif</code>, <code>sans-serif</code>, or <code>monospace</code>. These are not quoted.</li>
 <li>Choose fallbacks that have similar proportions to your primary font so the layout does not shift dramatically.</li>
 <li>Quote font names that contain spaces: <code>&#39;Open Sans&#39;</code>, not <code>Open Sans</code>.</li>
 </ul>
-<h4 id="common-mistakes-2">❌ Common mistakes<a class="anchor" href="#common-mistakes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-2">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-2" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Missing quotes around multi-word font name</p>
 <pre><code class="language-css">font-family: Open Sans, sans-serif;
 </code></pre>
@@ -305,7 +305,7 @@ body { margin: 0; }
 <li>Now misspell the first font on purpose — <code>&#39;Robotoo&#39;</code> — and reload.</li>
 <li>Read Rendered Fonts again.</li>
 </ol>
-<p><strong>Expected result:</strong> First it reports Roboto. After the typo it silently reports Segoe UI or Arial instead, with no error anywhere. The page still looks fine, just not as designed.</p>
+<p><strong>Kết quả mong đợi:</strong> First it reports Roboto. After the typo it silently reports Segoe UI or Arial instead, with no error anywhere. The page still looks fine, just not as designed.</p>
 <details>
 <summary>Why the stack has that shape</summary><p>The browser tries each name left to right and uses the first one it can load. So order it from most specific to most general:</p>
 <ol>
@@ -375,13 +375,13 @@ h1 {
 <td>Shadow colour (black at 30% opacity)</td>
 </tr>
 </tbody></table>
-<h4 id="best-practices-3">✅ Best practices<a class="anchor" href="#best-practices-3" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-3">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Use <strong>unitless <code>line-height</code></strong> for body text so it scales proportionally.</li>
 <li>Use <code>letter-spacing</code> subtly — 1–3 px for headings, never more unless it is a deliberate design choice.</li>
 <li>Keep <code>text-shadow</code> subtle; heavy shadows look dated.</li>
 </ul>
-<h4 id="common-mistakes-3">❌ Common mistakes<a class="anchor" href="#common-mistakes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-3">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-3" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Using pixel line-height that breaks when font size changes</p>
 <pre><code class="language-css">p { font-size: 16px; line-height: 24px; }
 </code></pre>
@@ -393,7 +393,7 @@ h1 {
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-07.canvas.tsx</code> → <code>PolishLab</code> — slide <code>s7-corners-shadows</code> (&quot;Rounded corners &amp; shadows&quot;)</p>
 </blockquote>
-<h4 id="51-definition">5.1 Definition<a class="anchor" href="#51-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="51-định-nghĩa">5.1 Định nghĩa<a class="anchor" href="#51-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>The <code>border-radius</code> property rounds the corners of an element&#39;s border box. Before CSS3, designers had to use corner images — now it is a single line of CSS.</p>
 <h4 id="52-shorthand-syntax">5.2 Shorthand syntax<a class="anchor" href="#52-shorthand-syntax" aria-label="Link to this section">#</a></h4>
 <pre><code>border-radius: TL  TR  BR  BL;     (clockwise from top-left)
@@ -425,7 +425,7 @@ border-radius: ALL;                 (single value = all four corners)
 
   (top-left, top-right, bottom-right, bottom-left)
 </code></pre>
-<h4 id="important-notes-2">⚠️ Important notes<a class="anchor" href="#important-notes-2" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-2">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-2" aria-label="Link to this section">#</a></h4>
 <ul>
 <li><code>border-radius: 50%</code> only creates a perfect circle when <strong>width equals height</strong>. If the element is rectangular, you get an ellipse.</li>
 <li><code>border-radius</code> also clips background images and gradients to the rounded shape.</li>
@@ -435,7 +435,7 @@ border-radius: ALL;                 (single value = all four corners)
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-07.canvas.tsx</code> → <code>PolishLab</code> — slide <code>s7-corners-shadows</code> (&quot;Rounded corners &amp; shadows&quot;)</p>
 </blockquote>
-<h4 id="61-definition">6.1 Definition<a class="anchor" href="#61-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="61-định-nghĩa">6.1 Định nghĩa<a class="anchor" href="#61-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p><code>box-shadow</code> adds a drop shadow to the outside (or inside) of an element&#39;s border box.</p>
 <pre><code class="language-css">/* Syntax: box-shadow: h-offset v-offset blur spread color; */
 .card {
@@ -483,13 +483,13 @@ border-radius: ALL;                 (single value = all four corners)
                 0 0 20px rgba(52, 152, 219, 0.2);
 }
 </code></pre>
-<h4 id="best-practices-4">✅ Best practices<a class="anchor" href="#best-practices-4" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-4">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-4" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Use low-opacity colours (<code>rgba</code> with alpha 0.05 – 0.2) for subtle, modern shadows.</li>
 <li>Avoid pure black (<code>#000</code>) shadows; they look harsh. Use dark grey with transparency instead.</li>
 <li>Increase blur radius for a softer, more natural shadow.</li>
 </ul>
-<h4 id="common-mistakes-4">❌ Common mistakes<a class="anchor" href="#common-mistakes-4" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-4">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-4" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Harsh solid-black shadow</p>
 <pre><code class="language-css">box-shadow: 5px 5px 0px #000000;
 </code></pre>
@@ -509,7 +509,7 @@ border-radius: ALL;                 (single value = all four corners)
 </code></pre>
 </li>
 </ol>
-<p><strong>Expected result:</strong> As blur grows and the colour becomes more transparent, the card appears to sit further off the page. The hard black shadow reads as a mistake; the soft transparent ones read as depth.</p>
+<p><strong>Kết quả mong đợi:</strong> As blur grows and the colour becomes more transparent, the card appears to sit further off the page. The hard black shadow reads as a mistake; the soft transparent ones read as depth.</p>
 <details>
 <summary>Reading the four values</summary><p><code>box-shadow: &lt;x&gt; &lt;y&gt; &lt;blur&gt; &lt;colour&gt;</code></p>
 <ul>
@@ -521,7 +521,7 @@ border-radius: ALL;                 (single value = all four corners)
 <p>One more property pairs with this: <code>border-radius</code>. Sharp corners with a soft shadow look inconsistent, so raise both together. And if <code>border-radius</code> appears to do nothing, check the element is not <code>display: inline</code> — inline elements ignore it.</p>
 </details><hr>
 <h3 id="7-css3-gradients">7. CSS3 Gradients<a class="anchor" href="#7-css3-gradients" aria-label="Link to this section">#</a></h3>
-<h4 id="71-definition">7.1 Definition<a class="anchor" href="#71-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="71-định-nghĩa">7.1 Định nghĩa<a class="anchor" href="#71-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>A <strong>gradient</strong> is a smooth transition between two or more colours rendered as a background image by the browser. There are two main types: <strong>linear</strong> (colours flow in a straight line) and <strong>radial</strong> (colours radiate outward from a point).</p>
 <h4 id="72-linear-gradients">7.2 Linear gradients<a class="anchor" href="#72-linear-gradients" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-css">/* Simple two-colour, left to right */
@@ -558,13 +558,13 @@ background: linear-gradient(to left, ...);     /* Right → left */
     background: radial-gradient(ellipse at center, #ffffff 0%, #e8eef3 100%);
 }
 </code></pre>
-<h4 id="best-practices-5">✅ Best practices<a class="anchor" href="#best-practices-5" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-5">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-5" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Use gradients for <strong>headers, buttons, banners, and accent areas</strong> — not for entire page backgrounds (it gets visually noisy).</li>
 <li>Stick to <strong>2–3 colours</strong> per gradient for a clean look.</li>
 <li>Test contrast: make sure white text on a gradient header is still readable at both ends of the gradient.</li>
 </ul>
-<h4 id="common-mistakes-5">❌ Common mistakes<a class="anchor" href="#common-mistakes-5" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-5">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-5" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Too many colours creating a rainbow mess</p>
 <pre><code class="language-css">background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 </code></pre>
@@ -573,9 +573,9 @@ background: linear-gradient(to left, ...);     /* Right → left */
 </code></pre>
 <hr>
 <h3 id="8-css3-transitions">8. CSS3 Transitions<a class="anchor" href="#8-css3-transitions" aria-label="Link to this section">#</a></h3>
-<h4 id="81-definition">8.1 Definition<a class="anchor" href="#81-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="81-định-nghĩa">8.1 Định nghĩa<a class="anchor" href="#81-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>A <strong>transition</strong> tells the browser to animate the change from one CSS property value to another over a specified duration. Without transitions, property changes (e.g., on <code>:hover</code>) happen instantly. With transitions, they happen smoothly.</p>
-<h4 id="82-syntax">8.2 Syntax<a class="anchor" href="#82-syntax" aria-label="Link to this section">#</a></h4>
+<h4 id="82-cú-pháp">8.2 Cú pháp<a class="anchor" href="#82-cú-pháp" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-css">/* Short form */
 .element {
     transition: property duration timing-function delay;
@@ -638,18 +638,18 @@ linear:       Constant speed throughout              (robotic, rarely used for U
 }
 </code></pre>
 <p>⚠️ <code>transition: all</code> is convenient but can cause unintended animations if you later add new properties. Prefer listing specific properties for production sites.</p>
-<h4 id="important-notes-3">⚠️ Important notes<a class="anchor" href="#important-notes-3" aria-label="Link to this section">#</a></h4>
+<h4 id="lưu-ý-quan-trọng-3">⚠️ LƯU Ý QUAN TRỌNG<a class="anchor" href="#lưu-ý-quan-trọng-3" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>The <code>transition</code> property goes on the <strong>normal state</strong>, NOT on the <code>:hover</code> state. This ensures the animation plays both <em>into</em> and <em>out of</em> the hover.</li>
 <li>Not all properties can be animated. You cannot transition <code>display</code>, <code>font-family</code>, or <code>position</code>. Check <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">MDN: Animatable CSS properties</a>.</li>
 </ul>
-<h4 id="best-practices-6">✅ Best practices<a class="anchor" href="#best-practices-6" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-6">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-6" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Keep durations between <strong>0.2 s and 0.5 s</strong> for UI interactions. Longer feels sluggish; shorter feels jarring.</li>
 <li>Use <code>ease</code> or <code>ease-in-out</code> for most UI transitions.</li>
 <li>Always define the transition on the base selector, not the pseudo-class.</li>
 </ul>
-<h4 id="common-mistakes-6">❌ Common mistakes<a class="anchor" href="#common-mistakes-6" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-6">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-6" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Transition defined only on <code>:hover</code></p>
 <pre><code class="language-css">a:hover {
     transition: color 0.3s ease;
@@ -724,13 +724,13 @@ a:hover {
 <td><code>skew(5deg)</code> tilts horizontally</td>
 </tr>
 </tbody></table>
-<h4 id="best-practices-7">✅ Best practices<a class="anchor" href="#best-practices-7" aria-label="Link to this section">#</a></h4>
+<h4 id="thực-hành-tốt-7">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt-7" aria-label="Link to this section">#</a></h4>
 <ul>
 <li>Use <code>transform</code> for movement/scale instead of changing <code>margin</code> or <code>top/left</code> — transforms are hardware-accelerated and much smoother.</li>
 <li>Small movements (3–8 px translation, 1.02–1.08 scale) feel elegant. Large movements feel cartoonish.</li>
 <li>Always pair <code>transform</code> changes with a <code>transition</code> so they animate rather than snap.</li>
 </ul>
-<h4 id="common-mistakes-7">❌ Common mistakes<a class="anchor" href="#common-mistakes-7" aria-label="Link to this section">#</a></h4>
+<h4 id="lỗi-thường-gặp-7">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp-7" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong> Changing <code>top</code>/<code>left</code> for hover movement (causes reflow, janky)</p>
 <pre><code class="language-css">.card:hover { top: -5px; }
 </code></pre>
@@ -758,13 +758,13 @@ a:hover {
 </code></pre>
 </li>
 </ol>
-<p><strong>Expected result:</strong> With <code>transition</code> on the base rule the card animates both in and out. Moved into <code>:hover</code>, it animates in but snaps back — because on mouse-out the hover rule no longer applies, so there is no transition left to obey.</p>
+<p><strong>Kết quả mong đợi:</strong> With <code>transition</code> on the base rule the card animates both in and out. Moved into <code>:hover</code>, it animates in but snaps back — because on mouse-out the hover rule no longer applies, so there is no transition left to obey.</p>
 <details>
 <summary>Two things worth keeping</summary><p><strong>Where <code>transition</code> belongs.</strong> On the element, not the state. Read it as &quot;this element animates changes to these properties&quot;, not &quot;animate when hovered&quot;.</p>
 <p><strong>Which properties to animate.</strong> <code>transform</code> and <code>opacity</code> only, for anything that needs to be smooth. The browser can hand those to the GPU. Animating <code>width</code>, <code>height</code>, <code>top</code>, or <code>margin</code> forces it to recalculate layout on every frame, which is what makes an effect feel janky on a phone.</p>
 <p><code>prefers-reduced-motion</code> is not optional politeness — for users with vestibular disorders, motion can cause genuine nausea. Honouring the setting takes three lines.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -840,9 +840,9 @@ a:hover {
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-loading-and-applying-google-fonts">Example 1: Loading and Applying Google Fonts<a class="anchor" href="#example-1-loading-and-applying-google-fonts" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want headings in Montserrat (Bold) and body text in Open Sans (Regular) on the Student Club home page.</p>
+<p><strong>Tình huống:</strong> You want headings in Montserrat (Bold) and body text in Open Sans (Regular) on the Student Club home page.</p>
 <p><strong>Code (HTML <code>&lt;head&gt;</code>):</strong></p>
 <pre><code class="language-html">&lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -871,7 +871,7 @@ body, p, li, a, td, th {
     font-family: &#39;Open Sans&#39;, Arial, sans-serif;
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -900,10 +900,10 @@ body, p, li, a, td, th {
 <td>Uses Montserrat if available; falls back to Arial, then generic sans-serif.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> Headings appear in the geometric, modern Montserrat typeface. Body paragraphs use the highly readable Open Sans. If the visitor is offline, Arial (or the system sans-serif) displays instead — the page remains perfectly usable.</p>
+<p><strong>Kết quả:</strong> Headings appear in the geometric, modern Montserrat typeface. Body paragraphs use the highly readable Open Sans. If the visitor is offline, Arial (or the system sans-serif) displays instead — the page remains perfectly usable.</p>
 <hr>
 <h3 id="example-2-styled-event-card-with-shadow-rounded-corners-and-hover-lift">Example 2: Styled Event Card with Shadow, Rounded Corners, and Hover Lift<a class="anchor" href="#example-2-styled-event-card-with-shadow-rounded-corners-and-hover-lift" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want event cards on the home page that look like floating cards and lift slightly when hovered.</p>
+<p><strong>Tình huống:</strong> You want event cards on the home page that look like floating cards and lift slightly when hovered.</p>
 <p><strong>Code (HTML):</strong></p>
 <pre><code class="language-html">&lt;div class=&quot;event-card&quot;&gt;
     &lt;div class=&quot;event-date&quot;&gt;March 15, 2024&lt;/div&gt;
@@ -932,7 +932,7 @@ body, p, li, a, td, th {
     border-left-color: #1a5276;                         /* Darker accent */
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -973,10 +973,10 @@ body, p, li, a, td, th {
 <td>On hover, makes the shadow larger and darker to reinforce the &quot;lifting&quot; illusion.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> Cards sit flat with a subtle shadow. When the user hovers, the card gently rises and the shadow deepens, creating a satisfying tactile interaction. The blue accent bar darkens to provide additional visual feedback.</p>
+<p><strong>Kết quả:</strong> Cards sit flat with a subtle shadow. When the user hovers, the card gently rises and the shadow deepens, creating a satisfying tactile interaction. The blue accent bar darkens to provide additional visual feedback.</p>
 <hr>
 <h3 id="example-3-gradient-header-with-text-shadow">Example 3: Gradient Header with Text Shadow<a class="anchor" href="#example-3-gradient-header-with-text-shadow" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want the site header to have a diagonal gradient background and the title to have a subtle text shadow for legibility.</p>
+<p><strong>Tình huống:</strong> You want the site header to have a diagonal gradient background and the title to have a subtle text shadow for legibility.</p>
 <p><strong>Code (HTML):</strong></p>
 <pre><code class="language-html">&lt;header&gt;
     &lt;h1&gt;Student Club&lt;/h1&gt;
@@ -1005,7 +1005,7 @@ header p {
     opacity: 0.9;
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1042,10 +1042,10 @@ header p {
 <td>Makes the tagline slightly translucent so it is visually subordinate to the heading.</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> The header displays a rich diagonal blue gradient. The title &quot;Student Club&quot; appears in bold white Montserrat with wide letter-spacing and a soft shadow. The tagline sits below in slightly faded white.</p>
+<p><strong>Kết quả:</strong> The header displays a rich diagonal blue gradient. The title &quot;Student Club&quot; appears in bold white Montserrat with wide letter-spacing and a soft shadow. The tagline sits below in slightly faded white.</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <p>Make sure your project folder looks like this before starting:</p>
 <pre><code>student-club-site/
 ├── index.html
@@ -1268,7 +1268,7 @@ nav ul li a.active {
 <p>✅ <strong>Check:</strong> The banner has a dark diagonal gradient. The heading has a text shadow. The &quot;Join Now&quot; button is pill-shaped with its own gradient and lifts on hover.</p>
 <p>💾 <strong>Save</strong> all files.</p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>Web fonts and CSS3 effects fail quietly: the page still renders, just not the way you designed it.</p>
 <table>
 <thead>
@@ -1342,7 +1342,7 @@ nav ul li a.active {
 </tbody></table>
 <p><strong>Check the font actually swapped, not just loaded.</strong> In DevTools, select a heading and read the Computed panel&#39;s rendered font at the very bottom. It names the font the browser truly used — which is the only way to catch a silent fallback.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. Where does the Google Fonts <code>&lt;link&gt;</code> go, and why there?</strong></p>
 <details>
@@ -1376,7 +1376,7 @@ nav ul li a.active {
 <details>
 <summary>Answer</summary><p><strong>Cheap:</strong> <code>transform</code> and <code>opacity</code> — the compositor handles them on the GPU without re-running layout. <strong>Expensive:</strong> <code>width</code>, <code>height</code>, <code>top</code>, <code>left</code>, <code>margin</code>, <code>padding</code> — each frame forces a re-layout of the page. To move something, use <code>transform: translateY(-2px)</code> rather than animating <code>top</code>.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1437,7 +1437,7 @@ nav ul li a.active {
 </tbody></table>
 <p>If you answered <strong>No</strong> to any item, revisit the corresponding Theory section and redo the relevant Hands-On task before moving on.</p>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">CSS transitions — MDN</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform">CSS transforms — MDN</a></li>
@@ -1457,7 +1457,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-07.html">homework/session-07/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -1474,10 +1474,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>Session 8 is a <strong>Review &amp; Midterm Preparation</strong> session — we will recap everything from Sessions 1–7, work through practice exam questions, and make sure you are fully ready for the midterm.</p>
 
   </article>

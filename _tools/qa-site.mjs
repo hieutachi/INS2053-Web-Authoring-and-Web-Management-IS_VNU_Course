@@ -391,24 +391,52 @@ console.log("== 11. no submission or grading UI ================================
   let staleHomeworkCopy = 0;
   for (const lang of Object.keys(LANGS)) {
     const prefix = lang === "en" ? "" : VI_PREFIX;
+    // The three machine headings are renamed per language by the builder
+    // (PRACTICE_HEADINGS in build-site.mjs), so each tree is gated on its own
+    // triple — and must NOT still show the other language's triple.
+    const H =
+      lang === "vi"
+        ? ["Trạng thái luyện tập", "Lưu bài luyện tập của bạn", "Rubric tham chiếu"]
+        : ["Practice Status", "Save Your Practice Work", "Reference Rubric"];
+    const otherH =
+      lang === "vi"
+        ? ["Practice Status", "Save Your Practice Work", "Reference Rubric"]
+        : ["Trạng thái luyện tập", "Lưu bài luyện tập của bạn", "Rubric tham chiếu"];
     for (let n = 1; n <= 15; n++) {
       const id = String(n).padStart(2, "0");
       const rel = `${prefix}homework/session-${id}.html`;
       const s = src.get(rel) ?? "";
-      const required = [
-        "Practice Status",
-        "Save Your Practice Work",
-        "Reference Rubric",
-      ];
+      const required = H;
       const missing = required.filter((label) => !s.includes(`>${label}</a>`));
-      const stale = [
-        [/>Due Date</, "Due Date heading"],
-        [/>Submission Guide</, "Submission Guide heading"],
-        [/>Grading Rubric</, "Grading Rubric heading"],
-        [/Sunday,\s*23:59/i, "homework deadline"],
-        [/\bgrace day\b/i, "late-work policy"],
-        [/\bby the deadline\b/i, "deadline instruction"],
-      ].filter(([pattern]) => pattern.test(s)).map(([, label]) => label);
+            const stale = [
+        // the other language's machine headings must not appear anywhere
+        ...otherH
+          .filter((label) => s.includes(`>${label}</a>`))
+          .map((label) => `wrong-language heading ${label}`),
+        ...(
+          lang === "vi"
+            ? [
+                [/>Due Date</, "Due Date heading"],
+                [/>Submission Guide</, "Submission Guide heading"],
+                [/>Grading Rubric</, "Grading Rubric heading"],
+                [/>Save Your Practice Work</, "English Save heading"],
+                [/>Reference Rubric</, "English Reference Rubric heading"],
+                [/Sunday,\s*23:59/i, "homework deadline"],
+                [/\bgrace day\b/i, "late-work policy"],
+                [/\bby the deadline\b/i, "deadline instruction"],
+                [/before you attempt this task/i, "English deadline rewrite"],
+                [/Online submission is not enabled yet/i, "English practice-status note"],
+              ]
+            : [
+                [/>Due Date</, "Due Date heading"],
+                [/>Submission Guide</, "Submission Guide heading"],
+                [/>Grading Rubric</, "Grading Rubric heading"],
+                [/Sunday,\s*23:59/i, "homework deadline"],
+                [/\bgrace day\b/i, "late-work policy"],
+                [/\bby the deadline\b/i, "deadline instruction"],
+              ]
+        ).filter(([pattern]) => pattern.test(s)).map(([, label]) => label),
+      ];
       if (missing.length || stale.length) {
         bad(`${rel} — public practice copy invalid: ${[
           ...missing.map((label) => `missing ${label}`),

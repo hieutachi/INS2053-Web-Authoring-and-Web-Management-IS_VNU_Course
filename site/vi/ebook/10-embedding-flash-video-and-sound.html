@@ -60,13 +60,13 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
         <li class="d2"><a href="#3-html5-audio-the-audio-element">3. HTML5 Audio: The &lt;audio&gt; Element</a></li>
         <li class="d2"><a href="#4-image-formats-recap">4. Image Formats Recap</a></li>
         <li class="d2"><a href="#5-embedding-third-party-videos-youtube-vimeo">5. Embedding Third-Party Videos (YouTube / Vimeo)</a></li>
-        <li class="d2"><a href="#best-practices">✅ Best Practices</a></li>
-        <li class="d2"><a href="#common-mistakes">❌ Common Mistakes</a></li>
+        <li class="d2"><a href="#thực-hành-tốt">✅ THỰC HÀNH TỐT</a></li>
+        <li class="d2"><a href="#lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP</a></li>
         <li class="d2"><a href="#example-1-basic-video-with-controls-and-poster">Example 1: Basic Video with Controls and Poster</a></li>
         <li class="d2"><a href="#example-2-background-decorative-video">Example 2: Background Decorative Video</a></li>
         <li class="d2"><a href="#example-3-audio-player-with-styling">Example 3: Audio Player with Styling</a></li>
         <li class="d2"><a href="#example-4-responsive-youtube-embed">Example 4: Responsive YouTube Embed</a></li>
-        <li class="d2"><a href="#setup">Setup</a></li>
+        <li class="d2"><a href="#thiết-lập">Thiết lập</a></li>
         <li class="d2"><a href="#homework-submission-session-10">🏠 HOMEWORK &amp; SUBMISSION — Session 10</a></li>
       </ol>
     </nav>
@@ -82,7 +82,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <h2 id="embedding-flash-video-and-sound"><strong>Embedding Flash, Video and Sound</strong><a class="anchor" href="#embedding-flash-video-and-sound" aria-label="Link to this section">#</a></h2>
 <p>Welcome back, friend! In this session we are going to make your Student Club Website come alive with <strong>video</strong> and <strong>audio</strong>. Imagine a visitor landing on your club page and immediately seeing a promo video of your last event, or hearing your club anthem playing softly in the background — that is the power of multimedia on the web. You will also learn why an old technology called &quot;Flash&quot; is no longer used, so you never waste time on something that is dead. By the end of this session you will be able to embed videos and audio players confidently, using modern HTML5 standards that work in every browser. Let us get started!</p>
 <hr>
-<h2 id="session-information">📌 SESSION INFORMATION<a class="anchor" href="#session-information" aria-label="Link to this section">#</a></h2>
+<h2 id="thông-tin-buổi-học">📌 THÔNG TIN BUỔI HỌC<a class="anchor" href="#thông-tin-buổi-học" aria-label="Link to this section">#</a></h2>
 <pre><code>📅 Duration:     3 periods (150 minutes) — Theory ~60 min, Practice ~90 min
 📚 Reference:    MDN &quot;Video and audio content&quot;; MDN &quot;Multimedia and embedding&quot;
 🎯 Objectives:   1. Explain why Flash was deprecated and what replaced it
@@ -100,7 +100,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
                  CLO4 (design and build a web application)
 </code></pre>
 <hr>
-<h2 id="learning-objectives">🎯 LEARNING OBJECTIVES<a class="anchor" href="#learning-objectives" aria-label="Link to this section">#</a></h2>
+<h2 id="mục-tiêu-học-tập">🎯 MỤC TIÊU HỌC TẬP<a class="anchor" href="#mục-tiêu-học-tập" aria-label="Link to this section">#</a></h2>
 <p>By the end of this session you will be able to:</p>
 <ul>
 <li>Explain what Adobe Flash was and why it has been completely discontinued</li>
@@ -115,12 +115,12 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <li>Add a fully functional Media page to the Student Club Website project</li>
 </ul>
 <hr>
-<h2 id="theory">📖 THEORY<a class="anchor" href="#theory" aria-label="Link to this section">#</a></h2>
+<h2 id="lý-thuyết">📖 LÝ THUYẾT<a class="anchor" href="#lý-thuyết" aria-label="Link to this section">#</a></h2>
 <h3 id="1-the-rise-and-fall-of-adobe-flash">1. The Rise and Fall of Adobe Flash<a class="anchor" href="#1-the-rise-and-fall-of-adobe-flash" aria-label="Link to this section">#</a></h3>
-<h4 id="11-definition">1.1 Definition<a class="anchor" href="#11-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="11-định-nghĩa">1.1 Định nghĩa<a class="anchor" href="#11-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p><strong>Adobe Flash</strong> (originally Macromedia Flash) was a multimedia software platform used from the late 1990s through the 2010s to create animations, interactive games, video players, and rich web applications. Flash content was delivered as <code>.swf</code> (ShockWave Flash) files and required a browser plugin called &quot;Flash Player&quot; to run.</p>
 <p>For nearly two decades, Flash was <em>the</em> way to put anything animated or interactive on a website. Early YouTube, countless banner ads, entire game portals, and fancy restaurant menus were all built in Flash.</p>
-<h4 id="real-life-example">🎒 Real-life example<a class="anchor" href="#real-life-example" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế" aria-label="Link to this section">#</a></h4>
 <p>Think about the early 2000s internet. When you visited a cool website, you often saw a loading bar that said &quot;Loading Flash Player...&quot; before any content appeared. That was Flash. Many students&#39; first experience with online games (like those on Miniclip or Newgrounds) was through Flash. Even YouTube originally used Flash to play videos — before switching to HTML5 in 2015.</p>
 <h4 id="12-why-flash-was-discontinued">1.2 Why Flash Was Discontinued<a class="anchor" href="#12-why-flash-was-discontinued" aria-label="Link to this section">#</a></h4>
 <p>Flash had serious problems that eventually killed it:</p>
@@ -182,7 +182,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 </code></pre>
 </li>
 </ol>
-<p><strong>Expected result:</strong> Four lines of plugin configuration collapse into three lines of standard HTML that needs no plugin at all.</p>
+<p><strong>Kết quả mong đợi:</strong> Four lines of plugin configuration collapse into three lines of standard HTML that needs no plugin at all.</p>
 <details>
 <summary>Why this chapter still mentions Flash</summary><p>Flash was removed from every browser on <strong>31 December 2020</strong>. Adobe ended support, and the runtime actively blocks content. A <code>.swf</code> file today is unplayable — not deprecated, not discouraged, but dead.</p>
 <p>It stays in the syllabus for two reasons. First, the course textbook predates its removal, and you will meet the terminology. Second, you will be asked to maintain sites built in that era, and the job is recognising <code>&lt;object&gt;</code>/<code>&lt;embed&gt;</code>/<code>.swf</code> and knowing what replaces it:</p>
@@ -220,11 +220,11 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <blockquote>
 <p>🖼 <strong>Diagrams:</strong> <code>canvases/buoi-10.canvas.tsx</code> → <code>VideoAnatomy</code> — slide <code>s10-video</code> (&quot;The video Element&quot;); <code>CodecFallback</code> — slide <code>s10-codec</code> (&quot;Source &amp; Codec Selection&quot;)</p>
 </blockquote>
-<h4 id="21-definition">2.1 Definition<a class="anchor" href="#21-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="21-định-nghĩa">2.1 Định nghĩa<a class="anchor" href="#21-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>The HTML5 <code>&lt;video&gt;</code> element is a <strong>built-in browser feature</strong> that lets you embed video directly into a web page — no plugins, no downloads, no Flash. Every modern browser (Chrome, Firefox, Edge, Safari) supports it natively.</p>
-<h4 id="real-life-example-2">🎒 Real-life example<a class="anchor" href="#real-life-example-2" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-2">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-2" aria-label="Link to this section">#</a></h4>
 <p>Every time you watch a video on a news website, a university lecture recording, or a product demo page that is NOT YouTube/Vimeo, it is probably using the HTML5 <code>&lt;video&gt;</code> element. Netflix&#39;s web player, for instance, uses HTML5 video under the hood.</p>
-<h4 id="22-basic-syntax">2.2 Basic Syntax<a class="anchor" href="#22-basic-syntax" aria-label="Link to this section">#</a></h4>
+<h4 id="22-cú-pháp-cơ-bản">2.2 Cú pháp cơ bản<a class="anchor" href="#22-cú-pháp-cơ-bản" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-html">&lt;!-- BASIC VIDEO EMBED --&gt;
 &lt;video src=&quot;video/club-promo.mp4&quot; controls width=&quot;640&quot; height=&quot;360&quot;&gt;
     Your browser does not support the video element.
@@ -476,7 +476,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <li>Put <code>controls</code> back, remove <code>poster</code>, and reload.</li>
 <li>Remove <code>width</code> and <code>height</code>, then reload with the Network tab throttled to Slow 3G.</li>
 </ol>
-<p><strong>Expected result:</strong> No <code>controls</code> gives a frozen first frame with no way to start it. No <code>poster</code> shows a black rectangle until playback begins. No <code>width</code>/<code>height</code> makes the page jump as the video&#39;s real size arrives.</p>
+<p><strong>Kết quả mong đợi:</strong> No <code>controls</code> gives a frozen first frame with no way to start it. No <code>poster</code> shows a black rectangle until playback begins. No <code>width</code>/<code>height</code> makes the page jump as the video&#39;s real size arrives.</p>
 <details>
 <summary>What each attribute is actually for</summary><table>
 <thead>
@@ -513,11 +513,11 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <blockquote>
 <p>🖼 <strong>Diagram:</strong> <code>canvases/buoi-10.canvas.tsx</code> → <code>AutoplayRules</code> — slide <code>s10-audio</code> (&quot;Audio &amp; Autoplay Rules&quot;)</p>
 </blockquote>
-<h4 id="31-definition">3.1 Definition<a class="anchor" href="#31-definition" aria-label="Link to this section">#</a></h4>
+<h4 id="31-định-nghĩa">3.1 Định nghĩa<a class="anchor" href="#31-định-nghĩa" aria-label="Link to this section">#</a></h4>
 <p>The <code>&lt;audio&gt;</code> element works almost identically to <code>&lt;video&gt;</code>, but for sound files. It displays a compact audio player with play/pause, volume, and seek controls.</p>
-<h4 id="real-life-example-3">🎒 Real-life example<a class="anchor" href="#real-life-example-3" aria-label="Link to this section">#</a></h4>
+<h4 id="ví-dụ-thực-tế-3">🎒 Ví dụ thực tế<a class="anchor" href="#ví-dụ-thực-tế-3" aria-label="Link to this section">#</a></h4>
 <p>Podcast websites, music streaming previews, pronunciation guides on dictionary sites, and notification sound demos all use the <code>&lt;audio&gt;</code> element.</p>
-<h4 id="32-basic-syntax">3.2 Basic Syntax<a class="anchor" href="#32-basic-syntax" aria-label="Link to this section">#</a></h4>
+<h4 id="32-cú-pháp-cơ-bản">3.2 Cú pháp cơ bản<a class="anchor" href="#32-cú-pháp-cơ-bản" aria-label="Link to this section">#</a></h4>
 <pre><code class="language-html">&lt;audio src=&quot;audio/club-anthem.mp3&quot; controls&gt;
     Your browser does not support the audio element.
 &lt;/audio&gt;
@@ -615,7 +615,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <li>Now break both <code>src</code> paths on purpose and reload.</li>
 <li>Watch the Console and Network tabs.</li>
 </ol>
-<p><strong>Expected result:</strong> With broken paths you get a player that will not play and a Console error — but the download link never appears, because the fallback text only shows in browsers that do not support <code>&lt;audio&gt;</code> at all.</p>
+<p><strong>Kết quả mong đợi:</strong> With broken paths you get a player that will not play and a Console error — but the download link never appears, because the fallback text only shows in browsers that do not support <code>&lt;audio&gt;</code> at all.</p>
 <details>
 <summary>The distinction worth understanding</summary><p>There are two different failure modes, and they need different handling:</p>
 <ol>
@@ -778,7 +778,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 └─────────────────────────────────────┘
 </code></pre>
 <hr>
-<h3 id="best-practices">✅ Best Practices<a class="anchor" href="#best-practices" aria-label="Link to this section">#</a></h3>
+<h3 id="thực-hành-tốt">✅ THỰC HÀNH TỐT<a class="anchor" href="#thực-hành-tốt" aria-label="Link to this section">#</a></h3>
 <ol>
 <li><p><strong>Always include <code>controls</code></strong> unless you are building a custom JavaScript player. Users need to be able to pause, adjust volume, and seek.</p>
 </li>
@@ -807,7 +807,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 </li>
 </ol>
 <hr>
-<h3 id="common-mistakes">❌ Common Mistakes<a class="anchor" href="#common-mistakes" aria-label="Link to this section">#</a></h3>
+<h3 id="lỗi-thường-gặp">❌ LỖI THƯỜNG GẶP<a class="anchor" href="#lỗi-thường-gặp" aria-label="Link to this section">#</a></h3>
 <h4 id="mistake-1-trying-to-use-flash">Mistake 1: Trying to use Flash<a class="anchor" href="#mistake-1-trying-to-use-flash" aria-label="Link to this section">#</a></h4>
 <p>❌ <strong>Wrong:</strong></p>
 <pre><code class="language-html">&lt;!-- DO NOT DO THIS — Flash is dead --&gt;
@@ -898,7 +898,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <li>Reload with F12 → <strong>Network</strong> open and read the total transferred size at the bottom.</li>
 <li>Now remove <code>loading=&quot;lazy&quot;</code>, put the iframe far down the page, and compare.</li>
 </ol>
-<p><strong>Expected result:</strong> A YouTube embed pulls in roughly a megabyte of player code before anyone presses play. With <code>loading=&quot;lazy&quot;</code> and the iframe below the fold, none of it loads until the visitor scrolls near it.</p>
+<p><strong>Kết quả mong đợi:</strong> A YouTube embed pulls in roughly a megabyte of player code before anyone presses play. With <code>loading=&quot;lazy&quot;</code> and the iframe below the fold, none of it loads until the visitor scrolls near it.</p>
 <details>
 <summary>The four attributes and why each is there</summary><ul>
 <li><strong><code>title</code></strong> — required for accessibility. An iframe with no title is announced only as &quot;frame&quot;, so a screen reader user cannot tell what it contains. This is the most commonly missed attribute on the web.</li>
@@ -909,7 +909,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <p>Use the <code>/embed/</code> URL, not the <code>watch?v=</code> address bar URL. The watch URL refuses to load in a frame, and the console reports a frame-ancestors error rather than anything about YouTube.</p>
 <p>Host your own file with <code>&lt;video&gt;</code> when the content is yours and small. Embed when the video is long — you get YouTube&#39;s bandwidth, adaptive quality, and captions for free.</p>
 </details><hr>
-<h2 id="theory-summary">📋 THEORY SUMMARY<a class="anchor" href="#theory-summary" aria-label="Link to this section">#</a></h2>
+<h2 id="tóm-tắt-lý-thuyết">📋 TÓM TẮT LÝ THUYẾT<a class="anchor" href="#tóm-tắt-lý-thuyết" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -995,9 +995,9 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 </tr>
 </tbody></table>
 <hr>
-<h2 id="worked-examples">💡 WORKED EXAMPLES<a class="anchor" href="#worked-examples" aria-label="Link to this section">#</a></h2>
+<h2 id="ví-dụ-mẫu">💡 VÍ DỤ MẪU<a class="anchor" href="#ví-dụ-mẫu" aria-label="Link to this section">#</a></h2>
 <h3 id="example-1-basic-video-with-controls-and-poster">Example 1: Basic Video with Controls and Poster<a class="anchor" href="#example-1-basic-video-with-controls-and-poster" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want to add a promotional video for the Student Club on the home page. The video file is <code>club-promo.mp4</code> stored in the <code>video/</code> folder. You have a thumbnail image <code>promo-thumb.jpg</code> in the <code>images/</code> folder.</p>
+<p><strong>Tình huống:</strong> You want to add a promotional video for the Student Club on the home page. The video file is <code>club-promo.mp4</code> stored in the <code>video/</code> folder. You have a thumbnail image <code>promo-thumb.jpg</code> in the <code>images/</code> folder.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;section class=&quot;media-section&quot;&gt;
     &lt;h3&gt;Watch Our Promo Video&lt;/h3&gt;
@@ -1014,7 +1014,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
     &lt;p class=&quot;caption&quot;&gt;See what our club is all about!&lt;/p&gt;
 &lt;/section&gt;
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1075,10 +1075,10 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <td>Caption text below the video</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> The browser displays a 640×360 video player with the thumbnail image visible. When the user clicks play, the video starts with full controls (play/pause, volume, timeline, fullscreen). If the browser cannot play either format, the user sees a message with a download link.</p>
+<p><strong>Kết quả:</strong> The browser displays a 640×360 video player with the thumbnail image visible. When the user clicks play, the video starts with full controls (play/pause, volume, timeline, fullscreen). If the browser cannot play either format, the user sees a message with a download link.</p>
 <hr>
 <h3 id="example-2-background-decorative-video">Example 2: Background Decorative Video<a class="anchor" href="#example-2-background-decorative-video" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want a subtle looping video as a decorative background behind your hero section. It should autoplay silently and loop forever.</p>
+<p><strong>Tình huống:</strong> You want a subtle looping video as a decorative background behind your hero section. It should autoplay silently and loop forever.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;div class=&quot;hero-background&quot;&gt;
     &lt;video autoplay muted loop playsinline&gt;
@@ -1103,7 +1103,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
     object-fit: cover;
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1144,11 +1144,11 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <td>Clips any part of the video that extends beyond the container</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> A silent, looping video fills the hero section background. It autoplays on all modern browsers including mobile. There are no visible controls because this is purely decorative.</p>
+<p><strong>Kết quả:</strong> A silent, looping video fills the hero section background. It autoplays on all modern browsers including mobile. There are no visible controls because this is purely decorative.</p>
 <p>⚠️ <strong>Accessibility warning:</strong> Decorative background videos can be distracting for some users. Consider adding a &quot;Pause animation&quot; button nearby, and always ensure text on top of the video remains readable (add a semi-transparent overlay if needed).</p>
 <hr>
 <h3 id="example-3-audio-player-with-styling">Example 3: Audio Player with Styling<a class="anchor" href="#example-3-audio-player-with-styling" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want to add the Student Club anthem as an audio player on the Media page, wrapped in a styled container.</p>
+<p><strong>Tình huống:</strong> You want to add the Student Club anthem as an audio player on the Media page, wrapped in a styled container.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;div class=&quot;audio-player&quot;&gt;
     &lt;h3&gt;🎵 Club Anthem&lt;/h3&gt;
@@ -1188,7 +1188,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
     font-style: italic;
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1233,10 +1233,10 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <td>Makes the audio player responsive but caps its width</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> A neatly styled card containing the audio player. The player shows standard browser controls (play/pause, timeline, volume). Below it, an italic caption describes the audio.</p>
+<p><strong>Kết quả:</strong> A neatly styled card containing the audio player. The player shows standard browser controls (play/pause, timeline, volume). Below it, an italic caption describes the audio.</p>
 <hr>
 <h3 id="example-4-responsive-youtube-embed">Example 4: Responsive YouTube Embed<a class="anchor" href="#example-4-responsive-youtube-embed" aria-label="Link to this section">#</a></h3>
-<p><strong>Situation:</strong> You want to embed a YouTube video on the Media page so it resizes properly on mobile devices.</p>
+<p><strong>Tình huống:</strong> You want to embed a YouTube video on the Media page so it resizes properly on mobile devices.</p>
 <p><strong>Code:</strong></p>
 <pre><code class="language-html">&lt;div class=&quot;video-container&quot;&gt;
     &lt;iframe
@@ -1267,7 +1267,7 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
     border: none;
 }
 </code></pre>
-<p><strong>Line-by-line explanation:</strong></p>
+<p><strong>Giải thích từng dòng:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1316,10 +1316,10 @@ if(w&&w!=="vi")location.replace("../../ebook/10-embedding-flash-video-and-sound.
 <td>Permits the YouTube player to enter fullscreen mode</td>
 </tr>
 </tbody></table>
-<p><strong>Result:</strong> The YouTube video scales fluidly from desktop to mobile, always maintaining the correct 16:9 proportions. No horizontal scrollbar, no squished video.</p>
+<p><strong>Kết quả:</strong> The YouTube video scales fluidly from desktop to mobile, always maintaining the correct 16:9 proportions. No horizontal scrollbar, no squished video.</p>
 <hr>
-<h2 id="hands-on-practice">🛠️ HANDS-ON PRACTICE<a class="anchor" href="#hands-on-practice" aria-label="Link to this section">#</a></h2>
-<h3 id="setup">Setup<a class="anchor" href="#setup" aria-label="Link to this section">#</a></h3>
+<h2 id="thực-hành-trên-máy">🛠️ THỰC HÀNH TRÊN MÁY<a class="anchor" href="#thực-hành-trên-máy" aria-label="Link to this section">#</a></h2>
+<h3 id="thiết-lập">Thiết lập<a class="anchor" href="#thiết-lập" aria-label="Link to this section">#</a></h3>
 <p>Before starting the tasks, prepare your project:</p>
 <ol>
 <li>Open your <strong>club-website</strong> folder in VS Code.</li>
@@ -1657,7 +1657,7 @@ video {
 <p>✅ <strong>Check:</strong> All tests pass. If any fail, revisit the relevant task above.</p>
 <p>💾 <strong>Final save.</strong> Your Student Club Website now has a fully functional multimedia page!</p>
 <hr>
-<h2 id="common-errors-what-the-browser-shows-you">🐛 COMMON ERRORS — WHAT THE BROWSER SHOWS YOU<a class="anchor" href="#common-errors-what-the-browser-shows-you" aria-label="Link to this section">#</a></h2>
+<h2 id="lỗi-thường-gặp-trình-duyệt-hiển-thị-gì">🐛 LỖI THƯỜNG GẶP — TRÌNH DUYỆT HIỂN THỊ GÌ<a class="anchor" href="#lỗi-thường-gặp-trình-duyệt-hiển-thị-gì" aria-label="Link to this section">#</a></h2>
 <p>Media bugs are mostly path and format problems, and the browser&#39;s failure mode is a blank box rather than a message.</p>
 <table>
 <thead>
@@ -1731,7 +1731,7 @@ video {
 </tbody></table>
 <p><strong>Never use Flash.</strong> If you find <code>&lt;object type=&quot;application/x-shockwave-flash&quot;&gt;</code> in any tutorial, that tutorial predates 2020. Flash was removed from every browser on 31 December 2020; the replacement is <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code>, which need no plugin.</p>
 <hr>
-<h2 id="self-check-questions">✅ SELF-CHECK QUESTIONS<a class="anchor" href="#self-check-questions" aria-label="Link to this section">#</a></h2>
+<h2 id="câu-hỏi-tự-kiểm-tra">✅ CÂU HỎI TỰ KIỂM TRA<a class="anchor" href="#câu-hỏi-tự-kiểm-tra" aria-label="Link to this section">#</a></h2>
 <p>Answer these from memory first, then expand the answer to check yourself.</p>
 <p><strong>Q1. Why is Flash dead, and what replaced it?</strong></p>
 <details>
@@ -1765,7 +1765,7 @@ video {
 <details>
 <summary>Answer</summary><p><strong>Captions</strong> via <code>&lt;track kind=&quot;captions&quot; src=&quot;captions.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot;&gt;</code> for deaf and hard-of-hearing users. A <strong>text transcript</strong> below the player, which also helps search engines and anyone who prefers reading. Native <code>controls</code>, which are keyboard operable. And <strong>no autoplay</strong>. A video with no captions and no transcript excludes deaf users completely.</p>
 </details><hr>
-<h2 id="self-assessment-worksheet">📝 SELF-ASSESSMENT WORKSHEET<a class="anchor" href="#self-assessment-worksheet" aria-label="Link to this section">#</a></h2>
+<h2 id="phiếu-tự-đánh-giá">📝 PHIẾU TỰ ĐÁNH GIÁ<a class="anchor" href="#phiếu-tự-đánh-giá" aria-label="Link to this section">#</a></h2>
 <table>
 <thead>
 <tr>
@@ -1826,7 +1826,7 @@ video {
 </tbody></table>
 <p>If you answered &quot;No&quot; to any item, re-read the relevant Theory section and redo the corresponding Hands-On task.</p>
 <hr>
-<h2 id="further-reading">🔗 FURTHER READING<a class="anchor" href="#further-reading" aria-label="Link to this section">#</a></h2>
+<h2 id="đọc-thêm">🔗 ĐỌC THÊM<a class="anchor" href="#đọc-thêm" aria-label="Link to this section">#</a></h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content">Video and audio content — MDN Learn</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code> element reference — MDN</a></li>
@@ -1845,7 +1845,7 @@ Everything you need sits on one page — the task list, the video brief and the
 reference rubric: <a href="../homework/session-10.html">homework/session-10/homework.md</a>.
 Do the in-class exercise first; the homework deliberately starts where the
 exercise ends.</p>
-<p><strong>How this session&#39;s homework works, in order:</strong></p>
+<p><strong>Cách làm bài tập của buổi này, theo thứ tự:</strong></p>
 <ol>
 <li><strong>Build — Part 1 (code, 10 points).</strong> Complete every task in the homework
 sheet inside your own repository. AI tools are allowed — understand every
@@ -1862,10 +1862,10 @@ only the link, and your lecturer watches and grades it afterwards.</li>
 <li><strong>Check yourself first.</strong> Open the self-check tool (<code>cham-bai.html</code>), point
 it at your repository, and fix what it flags <strong>before</strong> the deadline.</li>
 </ol>
-<p><strong>Deadline: Sunday 23:59.</strong> The practice round of every homework sheet stays
+<p><strong>Hạn nộp: Chủ nhật 23:59.</strong> The practice round of every homework sheet stays
 public on the website; the official sheet is handed out in class and lives in
 your copy of the repository.</p>
-<h2 id="next-session">⏭️ NEXT SESSION<a class="anchor" href="#next-session" aria-label="Link to this section">#</a></h2>
+<h2 id="buổi-tiếp-theo">⏭️ BUỔI TIẾP THEO<a class="anchor" href="#buổi-tiếp-theo" aria-label="Link to this section">#</a></h2>
 <p>In <strong>Session 11: Designing a Compact Site</strong>, you will learn how to plan, organize, and polish a small multi-page website — making your Student Club Website tighter, cleaner, and ready for submission.</p>
 
   </article>
