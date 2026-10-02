@@ -125,7 +125,7 @@ Live visual target plus a console check: no red errors, favicon visible in the t
 - `project/media.html`
 - `project/contact.html`
 - `project/css/style.css`
-- `project/images/favicon.ico`
+- `project/images/favicon.ico` (or `.png`)
 
 ### How to hand it in
 

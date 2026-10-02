@@ -635,7 +635,7 @@ export const BRIEFS = {
         "A README that is three lines of prose — the rubric wants named sections.",
         "Fixing one page's spacing directly in that page instead of in shared CSS.",
       ],
-      files: ["`project/README.md`", "`project/index.html`", "`project/about.html`", "`project/activities.html`", "`project/media.html`", "`project/contact.html`", "`project/css/style.css`", "`project/images/favicon.ico`"],
+      files: ["`project/README.md`", "`project/index.html`", "`project/about.html`", "`project/activities.html`", "`project/media.html`", "`project/contact.html`", "`project/css/style.css`", "`project/images/favicon.ico` (or `.png`)"],
       videoTopic:
         "show your `README.md` and favicon, and explain what each README section promises a visitor and how the favicon is wired into the pages.",
     },
@@ -661,7 +661,7 @@ export const BRIEFS = {
         "README ba dòng văn xuôi — rubric cần các mục được đặt tên.",
         "Sửa khoảng cách của một trang ngay trong trang đó thay vì trong CSS chung.",
       ],
-      files: ["`project/README.md`", "`project/index.html`", "`project/about.html`", "`project/activities.html`", "`project/media.html`", "`project/contact.html`", "`project/css/style.css`", "`project/images/favicon.ico`"],
+      files: ["`project/README.md`", "`project/index.html`", "`project/about.html`", "`project/activities.html`", "`project/media.html`", "`project/contact.html`", "`project/css/style.css`", "`project/images/favicon.ico` (or `.png`)"],
       videoTopic:
         "chiếu `README.md` và favicon, giải thích từng mục README hứa hẹn gì với người xem và favicon được nối vào các trang thế nào.",
     },

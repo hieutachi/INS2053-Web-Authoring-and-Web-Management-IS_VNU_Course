@@ -125,7 +125,7 @@ Mẫu sống cộng một lượt kiểm tra console: không lỗi đỏ, favico
 - `project/media.html`
 - `project/contact.html`
 - `project/css/style.css`
-- `project/images/favicon.ico`
+- `project/images/favicon.ico` (or `.png`)
 
 ### Cách nộp bài
 

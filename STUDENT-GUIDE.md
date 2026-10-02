@@ -67,15 +67,15 @@ The ebook has 15 chapters (one per session) plus Appendix A. Each chapter follow
 
 ## 4. How to Use the Session Pages
 
-The website (`site/`) organizes everything by week. Each session page is a nine-card flow, in the order you meet it:
+The website (`site/`) organizes everything by week. Each session page is a **nine-card flow**. Here is the summary, grouped into seven steps:
 
 1. **Before class** → Read the ebook chapter
 2. **In class** → Follow the lecture deck
-3. **After class — assigned** → Open the homework sheet and read its **Detailed Brief** first
-4. **After class — build** → Finish Part 1 (the code tasks)
-5. **After class — explain** → Record Part 2 (your 60–120 second OBS video)
-6. **After class — hand in** → Push the code + add your Drive link to `submissions.md`
-7. **Check yourself** → Run the self-check tool, then read how the work is marked
+3. **After class — assigned + brief** → Open the homework sheet (card 3), then read its **Detailed Brief** first (card 4)
+4. **After class — build + explain** → Finish Part 1 code tasks (card 5), then record Part 2 video (card 6)
+5. **After class — hand in** → Push the code + add your Drive link to `submissions.md` (card 7)
+6. **Check yourself** → Run the self-check tool (card 8)
+7. **Marked** → Read how the work is graded against the reference rubric (card 9)
 
 Start at [Session 1](site/sessions/session-01.html) and follow the flow.
 
