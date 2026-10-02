@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-07.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -190,7 +191,64 @@ h1 {
 <li><code>project/contact.html</code> (add Google Fonts link)</li>
 <li><code>project/css/style.css</code> (update with font rules)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>The week your site gains a voice. You pick two real typefaces, load them from Google Fonts, and tune sizes and spacing until the pages look designed rather than merely rendered.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Typography is most of what people call “design”. Two well-chosen fonts and honest spacing beat any colour scheme.</li>
+<li>Web fonts must be <em>loaded</em> before CSS can use them: the <code>&lt;link&gt;</code> in the head plus a <code>font-family</code> rule. Forgetting one half is the usual reason the font “does not apply”.</li>
+<li>Pairing discipline — one face for headings, one for body text, a clear size ratio — is the actual skill being graded, not how exotic your font is.</li>
+<li>A CDN font link is fine for homework but the final capstone version must also work offline, which is why the sheet warns you here.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>Against the live visual target your headings should read as a different face from your body text, with generous line height, a comfortable measure (not edge-to-edge lines), and consistent sizes per level across all pages.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Choose (10 min).</strong> On Google Fonts pick one display face for headings and one text face for body. Preview them together with the site&#39;s own words.</li>
+<li><strong>Load them (5 min).</strong> Copy the provided <code>&lt;link&gt;</code> tags into the <code>&lt;head&gt;</code> of all three pages, before your stylesheet link.</li>
+<li><strong>Apply (15 min).</strong> In <code>css/style.css</code> set <code>font-family</code> for <code>body</code> and for <code>h1, h2, h3</code>, with a fallback stack (<code>&#39;Font Name&#39;, Arial, sans-serif</code>).</li>
+<li><strong>Tune (15 min).</strong> Heading sizes as a ratio, <code>line-height</code> around 1.5–1.7 for paragraphs, <code>margin</code> under headings, letter-spacing on small caps if used.</li>
+<li><strong>Consistency sweep (5 min).</strong> Same page open in two tabs: old page and new page. Sizes per level must match exactly.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>font-family: &#39;Poppins&#39;;</code> without quotes or without the fallback list.</li>
+<li>Loading six weights you never use — the page downloads kilobytes for nothing.</li>
+<li>More than two typefaces on one page: it reads as noise, not design.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/index.html</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/contact.html</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-07/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW7: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show the Google Fonts <code>&lt;link&gt;</code> in your <code>&lt;head&gt;</code> and the <code>font-family</code> rules in CSS, and explain how you picked and paired the two fonts.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 07 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 7, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

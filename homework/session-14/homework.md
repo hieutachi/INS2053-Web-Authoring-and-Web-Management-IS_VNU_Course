@@ -93,6 +93,71 @@ Add `id="top"` to your `<header>` element so the link scrolls back up.
 - `project/css/style.css` (dropdown + button styles)
 - At least 2 HTML files (updated navigation)
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+Navigation upgrades itself: a dropdown menu built in pure CSS — a sub-menu that appears on hover, positioned precisely, and styled to sit above the page content.
+
+### Why this homework exists
+
+- This is the week CSS positioning stops being abstract. `position: relative` on the parent plus `position: absolute` on the child is the pattern behind tooltips, modals and menus in every real interface.
+- Showing and hiding with `display`/`visibility` on `:hover` teaches you state-based styling — the same mechanism behind `:focus` and `:active`.
+- `z-index` and stacking contexts explain why your dropdown sometimes hides *behind* content. Learn it here, not in the final.
+- Bonus Task 3 (“back to top”) is deliberately optional: attempt it only once the dropdown is solid.
+
+### What “done” looks like
+
+Live visual target: hovering a parent item reveals a boxed sub-menu directly beneath it, flush-left with the parent, with a small transition, and it never disappears behind the main column.
+
+### How to work through it
+
+1. **Structure the markup (15 min).** Nested list: `<nav>` → `<ul>` → `<li>` → (`<a>` + a nested `<ul>` for children). The nested list is the sub-menu.
+2. **Hide it (5 min).** Child `<ul>` gets `position: absolute`, `top: 100%`, `left: 0`, `display: none`.
+3. **Anchor it (10 min).** Parent `<li>` gets `position: relative` so the absolute child positions against it, not the page.
+4. **Reveal on hover (10 min).** `nav li:hover > ul { display: block; }`. Hover and confirm the box appears exactly under its parent.
+5. **Style the box (15 min).** Background, border, padding, item spacing, hover colour on links, `z-index` above the main content.
+6. **Test the gaps (10 min).** Move the mouse diagonally from parent to child: no flicker, no disappearing menu. Adjust padding to close dead zones.
+
+### Where students lose marks
+
+- Absolute child with no relatively positioned ancestor — the menu flies to the page corner.
+- `display: none` toggled by `opacity` alone: invisible but still clickable, so it steals hover from content below.
+- Applying the dropdown to only one page and losing nav consistency.
+
+### Files this homework must produce
+
+- `project/css/style.css`
+- At least 2 HTML files (updated navigation)
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-14/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW14: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show the dropdown menu and explain how `:hover` on the list item reveals the hidden sub-menu, and what `position: absolute` does there.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 14 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 14, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

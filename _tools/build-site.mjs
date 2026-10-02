@@ -346,11 +346,13 @@ const PRACTICE_HEADINGS = {
     status: "Practice Status",
     save: "Save Your Practice Work",
     rubric: "Reference Rubric",
+    brief: "Detailed Brief — Read This First",
   },
   vi: {
     status: "Trạng thái luyện tập",
     save: "Lưu bài luyện tập của bạn",
     rubric: "Rubric tham chiếu",
+    brief: "Mô tả chi tiết — hãy đọc phần này trước",
   },
 };
 
@@ -375,7 +377,24 @@ function prepareHomeworkMarkdown(markdown, lang = "en") {
       practiceStatusNote(lang)
     )
     .replace(/^## Submission Guide\s*$/m, `## ${H.save}`)
-    .replace(/^## Grading Rubric\s*$/m, `## ${H.rubric}`);
+    .replace(/^## Grading Rubric\s*$/m, `## ${H.rubric}`)
+    // The Detailed Brief heading is generated per language by
+    // build-hw-briefs.mjs, so each tree already carries its own wording and the
+    // VI source stays machine-normal like the triple above. Rename it here only
+    // when a sheet was injected with the other language's heading.
+    .replace(
+      /^## (?:Detailed Brief — Read This First|Mô tả chi tiết — hãy đọc phần này trước)\s*$/m,
+      `## ${H.brief}`
+    );
+  // The Detailed Brief tells students when work is collected. The published
+  // copy must not: gate 11 fails any homework page that carries a hand-in
+  // deadline, so the timing sentences are dropped here rather than by editing
+  // the sources, which lecturers use offline.
+  out = out
+    .replace(/^[^\S\n]*> class, so by the deadline you will have covered it.*\r?\n/m, "")
+    .replace(/^[^\S\n]*Bài tập này nộp sau buổi đó[^\r\n]*\r?\n/m, "")
+    .replace(/\bSunday,\s*23:59\b/gi, "the end of the weekend")
+    .replace(/\bChủ nhật,\s*23:59\b/gi, "hết ngày cuối tuần");
   if (lang === "vi") {
     out = out
       .replace(/\bby the deadline\b/gi, "trước khi bạn làm bài này")
@@ -716,6 +735,17 @@ ${fallback}${body}
 }
 
 
+/* --- homework anchors shared between the two build passes ----------------- */
+
+/**
+ * `${lang}/${nn}` -> the heading label a session hub deep-links to on that
+ * sheet. Filled while the sheets are rendered and read while the hubs are built,
+ * in the same pass, so an anchor always describes the document it lands on
+ * rather than what the tree's language suggests it should be: an untranslated
+ * Vietnamese sheet publishes English prose and keeps the English heading.
+ */
+const HW_ANCHORS = {};
+
 /* --- session hub ---------------------------------------------------------- */
 
 /**
@@ -723,7 +753,14 @@ ${fallback}${body}
  *
  *   Before class  read the ebook chapter
  *   In class      lecture deck (the lecturer projects it; students can reread)
- *   After class   homework practice; submission and grading open later
+ *   After class   assigned -> detailed brief -> build -> explain -> hand in
+ *   Check         self-check tool, then how the work is marked
+ *
+ * The homework half is deliberately split into its own cards. One "do the
+ * homework" step left the two things students actually get lost on — what the
+ * assignment asks for and how each half is handed in — to be inferred from a
+ * sheet. Each card deep-links to the matching heading of that sheet, so the hub
+ * reads as the flow and the sheet carries the detail.
  *
  * The in-class exercise is deliberately absent: exercises/ carries answer keys
  * in <details> blocks and stays unpublished. The card says so rather than
@@ -735,6 +772,20 @@ function sessionHub(s, chapterTitle, lang) {
   const { base, w, p } = hrefs(1, lang);
   const prev = s.n > 1 ? `session-${pad(s.n - 1)}.html` : null;
   const next = s.n < 15 ? `session-${pad(s.n + 1)}.html` : null;
+
+  /* Anchors inside site/homework/session-NN.html. Headings are slugified by
+     makeRenderer(), so an anchor here is derived from the published heading
+     rather than typed: rename a heading in i18n.mjs or PRACTICE_HEADINGS and
+     the hub follows. qa-site check 10 fails if any of them stops resolving. */
+  const hw = w(`homework/session-${nn}.html`);
+  const H = PRACTICE_HEADINGS[lang];
+  const A = {
+    tasks: slugify(HW_ANCHORS[`${lang}/${nn}`].tasks),
+    brief: slugify(H.brief),
+    video: slugify(L.anchorVideo),
+    handin: slugify(H.save),
+    rubric: slugify(H.rubric),
+  };
 
   const steps = [
     {
@@ -759,8 +810,40 @@ function sessionHub(s, chapterTitle, lang) {
       title:
         s.n === 8 ? L.stepHwTitle8 : t(L.stepHwTitle, { nn }),
       note: L.stepHwNote,
-      href: w(`homework/session-${nn}.html`),
+      href: hw,
       cta: t(L.homeworkCta, { nn }),
+    },
+    {
+      when: L.whenAfter,
+      phase: "brief",
+      title: t(L.stepAssignedTitle, { nn }),
+      note: L.stepAssignedNote,
+      href: `${hw}#${A.brief}`,
+      cta: L.stepAssignedCta,
+    },
+    {
+      when: L.whenAfter,
+      phase: "build",
+      title: L.stepBuildTitle,
+      note: L.stepBuildNote,
+      href: `${hw}#${A.tasks}`,
+      cta: L.stepBuildCta,
+    },
+    {
+      when: L.whenAfter,
+      phase: "build",
+      title: L.stepExplainTitle,
+      note: L.stepExplainNote,
+      href: `${hw}#${A.video}`,
+      cta: L.stepExplainCta,
+    },
+    {
+      when: L.whenAfter,
+      phase: "handin",
+      title: L.stepHandinTitle,
+      note: L.stepHandinNote,
+      href: `${hw}#${A.handin}`,
+      cta: L.stepHandinCta,
     },
     {
       when: L.whenCheck,
@@ -770,12 +853,20 @@ function sessionHub(s, chapterTitle, lang) {
       href: p(GRADER_PUBLIC),
       cta: L.stepToolCta,
     },
+    {
+      when: L.whenCheck,
+      phase: "graded",
+      title: L.stepGradedTitle,
+      note: L.stepGradedNote,
+      href: `${hw}#${A.rubric}`,
+      cta: L.stepGradedCta,
+    },
   ];
 
   const cards = steps
     .map(
       (st, index) => `    <li class="step step-${st.phase}">
-      <span class="step-number" aria-hidden="true">0${index + 1}</span>
+      <span class="step-number" aria-hidden="true">${pad(index + 1)}</span>
       <p class="when">${esc(st.when)}</p>
       <h2>${esc(st.title)}</h2>
       <p class="note">${st.note}</p>
@@ -790,7 +881,8 @@ function sessionHub(s, chapterTitle, lang) {
   </div>\n`
     : "";
 
-  const body = `${midterm}  <ol class="steps">
+  const body = `${midterm}  <p class="flow-lead">${esc(L.flowLead)}</p>
+  <ol class="steps">
 ${cards}
   </ol>
   <div class="callout">
@@ -815,7 +907,7 @@ ${next ? `    <a class="next" href="${next}">${esc(t(L.pagerNext, { n: s.n + 1 }
     ],
     body,
     depth: 1,
-    pageClass: "session-page",
+    pageClass: "session-page flow-9",
     eyebrow: t(L.hubEyebrow, { nn }),
   });
 }
@@ -1577,6 +1669,16 @@ async function buildTree(lang) {
     const { html, headings } = render(publicMd);
     const title = plain((md.split(/\r?\n/)[0] || "").replace(/^#\s*/, ""));
     if (hasVi) translated++;
+
+    // Record the heading slug the session hub deep-links to. The Requirements
+    // heading survives publication unchanged, but its language depends on the
+    // prose source: an untranslated Vietnamese sheet publishes English prose and
+    // therefore carries the English heading. Deriving the anchor from what was
+    // actually rendered means a hub can never point at a heading that does not
+    // exist on its own sheet.
+    const req = headings.find((h) => /^(Requirements|Yêu cầu)$/i.test(h.label));
+    if (req) HW_ANCHORS[`${lang}/${nn}`] = { tasks: req.label };
+    else fail(`homework/session-${nn} (${lang}) has no Requirements heading to link to`);
 
     await writeFile(
       path.join(TREE, "homework", `session-${nn}.html`),

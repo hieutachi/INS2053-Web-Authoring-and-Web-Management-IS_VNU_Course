@@ -67,6 +67,72 @@ Write CSS rules to make your About page look visually appealing.
 - [ ] Images have max-width and some styling
 - [ ] At least one list is styled
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+From this week your site has a look, and the look lives in its own file. You move from writing pages to writing a stylesheet the whole site shares.
+
+### Why this homework exists
+
+- An external CSS file linked from every page is the core idea of web design: change one rule, every page updates. Inline styles and `<font>` tags are the pre-2000 way and cost you marks.
+- Selectors are how CSS finds things. Understanding element vs class selectors now is what makes the layout, typography and responsive weeks possible.
+- The cascade and specificity decide *which* rule wins when two disagree. Guessing here produces the classic “my CSS is not working” bug.
+
+### What “done” looks like
+
+Against the live visual target your page should show: a coloured body background, a readable font, three visibly different heading levels, comfortable line spacing, and styled images and lists. Nothing fancy — legible and consistent is the target.
+
+### How to work through it
+
+1. **Create the file (2 min).** `project/css/style.css`, empty, saved inside the project.
+2. **Link it correctly (3 min).** In every HTML page, inside `<head>` and BEFORE `</head>`: `<link rel="stylesheet" href="css/style.css">`. Path is relative to the HTML file, not to the project root.
+3. **Style the base (10 min).** `body` gets `background-color`, `color`, `font-family`, `line-height`. Everything inherits from here.
+4. **Style the three heading levels (10 min).** Distinct size and colour for `h1`, `h2`, `h3`.
+5. **Style content elements (10 min).** Paragraph spacing, `img { max-width: 100%; }`, and at least one list styled.
+6. **Verify the link works (5 min).** Delete one property, save, reload: if the page does not change, the `<link>` path is wrong — fix that before writing more CSS.
+
+### Where students lose marks
+
+- `href="/css/style.css"` — works on some setups, breaks on others; use `css/style.css`.
+- CSS saved but not reloaded: check with F12 → Network, or Ctrl+F5.
+- Styling headings by wrapping them in `<b>` or changing their text instead of using CSS.
+
+### Files this homework must produce
+
+- `project/css/style.css`
+- `project/about.html`
+- `project/index.html`
+- `project/contact.html`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-04/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW4: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show `css/style.css`, explain how `project/about.html` links to it with `<link>`, and walk through one rule you wrote: selector → property → visible effect.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 04 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 4, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

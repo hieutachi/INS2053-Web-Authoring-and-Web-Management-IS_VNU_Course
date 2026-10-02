@@ -59,6 +59,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-02.html");}catch(e){}})(
         <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
         <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước</a></li>
         <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
         <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
         <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
@@ -188,7 +189,64 @@ trước rồi quay lại phần này.</p>
 <li><code>project/contact.html</code></li>
 <li><code>project/images/</code> (với ít nhất 2 file ảnh)</li>
 </ul>
-<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước<a class="anchor" href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước" aria-label="Link to this section">#</a></h3>
+<h4 id="bạn-thực-sự-đang-xây-gì">Bạn thực sự đang xây gì<a class="anchor" href="#bạn-thực-sự-đang-xây-gì" aria-label="Link to this section">#</a></h4>
+<p>Tuần này bạn đổ nền cho cả học kỳ: một thư mục dự án thật. Từ đây môn học chạy trên <strong>hai cây tách biệt</strong> trong repository, và nhầm lẫn giữa chúng là cách mất điểm phổ biến nhất.</p>
+<h4 id="vì-sao-bài-tập-này-tồn-tại">Vì sao bài tập này tồn tại<a class="anchor" href="#vì-sao-bài-tập-này-tồn-tại" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/</code> là Student Club Website — đồ án bạn cộng thêm tính năng mỗi tuần và nộp cuối kỳ. <code>homework/session-NN/</code> là bài luyện tạm thời của riêng tuần đó. Việc chấm bài nhìn vào đường dẫn cụ thể, nên một trang đặt sai cây coi như không tồn tại với người chấm.</li>
+<li>Cấu trúc phẳng ở gốc project (các trang nằm cạnh nhau, chỉ <code>css/</code> và <code>images/</code> là thư mục con) khiến mọi link nội bộ chỉ là tên file, không có <code>../</code> để gõ sai.</li>
+<li>Đặt tên chữ thường có dấu gạch nối không phải là cầu toàn: server Linux coi <code>About.html</code> và <code>about.html</code> là hai file khác nhau, link của bạn gãy ngay khi deploy.</li>
+</ul>
+<h4 id="xong-nhìn-như-thế-nào">“Xong” nhìn như thế nào<a class="anchor" href="#xong-nhìn-như-thế-nào" aria-label="Link to this section">#</a></h4>
+<p>Cây thư mục của bạn phải giống tham chiếu trong Task 1: ba trang chạy được ở gốc project, hai thư mục asset rỗng nhưng có thật, không có gì thêm. So với mẫu sống trên trang website.</p>
+<h4 id="cách-làm-từng-bước">Cách làm từng bước<a class="anchor" href="#cách-làm-từng-bước" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Tạo cây thư mục (5 phút).</strong> Tạo <code>project/</code> gồm <code>index.html</code>, <code>about.html</code>, <code>contact.html</code>, cùng <code>project/css/</code> và <code>project/images/</code>.</li>
+<li><strong>Viết ba trang nháp (20 phút).</strong> Mỗi trang có đủ bộ khung HTML5, một <code>&lt;h1&gt;</code> và nội dung ngắn Task 1 mô tả. Nghĩ tên club ngay bây giờ — bạn sẽ giữ nó tới Tuần 16.</li>
+<li><strong>Áp dụng quy tắc đặt tên (5 phút).</strong> Chữ thường, dấu gạch nối thay khoảng trắng, không dấu trong tên file. Đổi tên mọi thứ sai trước khi link tới nó.</li>
+<li><strong>Hình ảnh — sau Buổi 3 (10 phút).</strong> Task 2 cần <code>&lt;img&gt;</code> mà buổi sau mới học. Làm Task 1 bây giờ, quay lại Task 2 sau buổi 3; bài được thu sau buổi đó.</li>
+<li><strong>Kiểm tra đường dẫn, không kiểm tra đẹp (5 phút).</strong> Mở từng trang từ file hệ thống và chắc chắn ảnh nạp từ đường dẫn tương đối <code>images/…</code>.</li>
+</ol>
+<h4 id="nơi-sinh-viên-mất-điểm">Nơi sinh viên mất điểm<a class="anchor" href="#nơi-sinh-viên-mất-điểm" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Để trang bài tập trong <code>project/</code> — cây đồ án phải sạch.</li>
+<li><code>About Us.html</code> hay <code>Trang chủ.html</code>: khoảng trắng và dấu tiếng Việt trong tên file.</li>
+<li>Link bằng <code>../images/x.png</code> từ một trang ở gốc: không có thư mục cha nào để leo lên.</li>
+</ul>
+<h4 id="file-bài-tập-phải-tạo-ra">File bài tập phải tạo ra<a class="anchor" href="#file-bài-tập-phải-tạo-ra" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/index.html</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/contact.html</code></li>
+<li><code>project/css/</code></li>
+<li><code>project/images/</code> (2+ file ảnh)</li>
+</ul>
+<h4 id="cách-nộp-bài">Cách nộp bài<a class="anchor" href="#cách-nộp-bài" aria-label="Link to this section">#</a></h4>
+<p>Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: <strong>Phần 1 code (10 điểm)</strong> và <strong>Phần 2 video (4 điểm)</strong>. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.</p>
+<p><strong>Phần 1 — phần code</strong></p>
+<ol>
+<li>Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.</li>
+<li>Thêm vào staging: <code>git add homework/session-02/ project/</code> (chỉ thêm những gì buổi này động tới).</li>
+<li>Commit với message nói rõ đã đổi gì: <code>git commit -m &quot;HW2: &lt;tóm tắt ngắn&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. Một commit nằm lại trên laptop không phải là bài nộp.</li>
+</ol>
+<p><strong>Phần 2 — phần video</strong></p>
+<ol>
+<li>Quay 60–120 giây bằng OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.</li>
+<li>Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu cây thư mục project, giải thích vì sao website nằm ở <code>project/</code> còn bài luyện nằm ở <code>homework/session-02/</code>, và <code>css/</code> với <code>images/</code> được dành để làm gì.</li>
+<li>Tải file MP4 (720p trở lên) lên <strong>Google Drive của chính bạn</strong> và đặt quyền chia sẻ là <strong>“Ai có liên kết → Xem”</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository và thêm một dòng: <code>- Session 02 — (dán link Google Drive của bạn vào đây)</code>.</li>
+<li>Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.</li>
+</ol>
+<p><strong>Trước khi push</strong></p>
+<ol>
+<li>Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.</li>
+<li>Mở công cụ tự chấm (<code>site/cham-bai.html</code>), chọn buổi 2, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.</li>
+<li>Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
 <p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
 chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
 thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau

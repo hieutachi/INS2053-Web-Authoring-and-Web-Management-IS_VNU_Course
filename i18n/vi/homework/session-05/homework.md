@@ -88,6 +88,69 @@ web đúng nghĩa.
 - `project/index.html` (cập nhật với HTML ngữ nghĩa)
 - `project/css/style.css` (cập nhật với style bố cục)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Trang của bạn hết là một dải chữ cuộn dài và trở thành một bố cục: header, dải điều hướng, cột chính, sidebar, footer — dựng bằng những thẻ nói lên vùng đó *là gì*, chứ không chỉ nằm ở đâu.
+
+### Vì sao bài tập này tồn tại
+
+- Thẻ ngữ nghĩa (`header`, `nav`, `main`, `aside`, `footer`) cho máy biết hình hài tài liệu. Trình đọc màn hình nhảy giữa chúng; công cụ tìm kiếm đánh giá cao nội dung trong `main`. Một trang toàn `<div>` trông y hệt với trình duyệt và vô nghĩa với mọi thứ còn lại.
+- Bố cục là nơi CSS hết là trang trí và trở thành kỹ thuật: box model, width, float/flex, margin. Đây là tuần biến site hai cột thành hiện thực.
+- Một template dùng lại được nghĩa là mọi trang sau chỉ là bản copy thay nội dung, không phải dựng lại.
+
+### “Xong” nhìn như thế nào
+
+Mẫu sống cho thấy mục tiêu: dải header tối màu có tên club, hàng nav ngang, cột chính rộng bên trái, aside hẹp bên phải, dải footer. Hai cột rõ ràng, thẳng hàng, không chồng chữ.
+
+### Cách làm từng bước
+
+1. **Đánh dấu các vùng (15 phút).** Viết lại phần body của `project/index.html` theo thứ tự `header` → `nav` → `main` → `aside` → `footer`, mỗi vùng có nội dung thật.
+2. **Cho các hộp kích thước (15 phút).** Trong `css/style.css`: `main` khoảng 70% width float trái, `aside` khoảng 25% float phải (hoặc dùng flex), `header`/`footer` full width.
+3. **Canh khoảng cách (10 phút).** Padding trong từng vùng, margin giữa các vùng, `max-width` cho cả trang để chữ không căng ngang màn 4K.
+4. **Clear float (5 phút).** Quên clear thì footer trèo lên cạnh cột. Thêm `clear: both` cho footer (hoặc đổi sang flex, không cần clear).
+5. **Thử kéo resize (5 phút).** Kéo cửa sổ hẹp rồi rộng. Hai cột giữ tỉ lệ và không gì chồng lên nhau.
+
+### Nơi sinh viên mất điểm
+
+- Bọc mọi thứ trong `<div>` rồi style — với máy đọc trang thì không khác gì thẻ ngữ nghĩa, và bạn bị trừ điểm.
+- Quên clear float: footer đè sidebar.
+- Đặt width bằng pixel khiến bố cục vỡ trên màn laptop.
+
+### File bài tập phải tạo ra
+
+- `project/index.html`
+- `project/css/style.css`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-05/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW5: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu template bố cục và giải thích thẻ ngữ nghĩa nào làm nhiệm vụ gì, cùng CSS biến các thẻ đó thành hai cột ra sao.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 05 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 5, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

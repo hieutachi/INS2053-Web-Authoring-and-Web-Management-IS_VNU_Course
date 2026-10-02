@@ -92,6 +92,71 @@ Thêm một nút "Back to Top" đơn giản vào các trang của bạn.
 - `project/css/style.css` (thêm style dropdown)
 - Các trang khác (cập nhật nav đồng bộ)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Điều hướng tự nâng cấp: một menu dropdown thuần CSS — sub-menu hiện ra khi hover, định vị chính xác, và được style để nằm trên nội dung trang.
+
+### Vì sao bài tập này tồn tại
+
+- Tuần này CSS positioning hết trừu tượng. `position: relative` trên phần tử cha cộng `position: absolute` trên phần tử con là mẫu đứng sau tooltip, modal và menu trong mọi giao diện thật.
+- Ẩn/hiện bằng `display`/`visibility` khi `:hover` dạy bạn style theo trạng thái — cùng cơ chế với `:focus` và `:active`.
+- `z-index` và stacking context giải thích vì sao dropdown đôi khi nằm *sau* nội dung. Học ở đây, đừng để tới bài thi cuối.
+- Task 3 bonus (“về đầu trang”) cố ý là tùy chọn: chỉ làm khi dropdown đã vững.
+
+### “Xong” nhìn như thế nào
+
+Mẫu sống: rê chuột lên mục cha làm sub-menu dạng hộp hiện ra ngay bên dưới, lệch trái khớp mục cha, có transition nhẹ, và không bao giờ bị cột nội dung che mất.
+
+### Cách làm từng bước
+
+1. **Dựng cấu trúc (15 phút).** Danh sách lồng: `<nav>` → `<ul>` → `<li>` → (`<a>` + một `<ul>` lồng cho mục con). Danh sách lồng chính là sub-menu.
+2. **Ẩn nó (5 phút).** `<ul>` con nhận `position: absolute`, `top: 100%`, `left: 0`, `display: none`.
+3. **Neo nó (10 phút).** `<li>` cha nhận `position: relative` để phần tử absolute định vị theo cha, không theo trang.
+4. **Hiện khi hover (10 phút).** `nav li:hover > ul { display: block; }`. Hover và xác nhận hộp hiện đúng dưới mục cha.
+5. **Style hộp (15 phút).** Nền, viền, padding, khoảng cách mục, màu khi hover của link, `z-index` trên nội dung chính.
+6. **Test khoảng hở (10 phút).** Đưa chuột chéo từ cha sang con: không nhấp nháy, không menu biến mất. Chỉnh padding để lấp vùng chết.
+
+### Nơi sinh viên mất điểm
+
+- Con absolute mà không có tổ tiên relative — menu bay ra góc trang.
+- `display: none` đổi bằng `opacity` đơn thuần: không nhìn thấy nhưng vẫn bấm được, nên cướp hover của nội dung bên dưới.
+- Áp dụng dropdown cho một trang duy nhất và mất nhất quán nav.
+
+### File bài tập phải tạo ra
+
+- `project/css/style.css`
+- Ít nhất 2 file HTML (cập nhật navigation)
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-14/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW14: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu menu dropdown và giải thích `:hover` trên mục danh sách làm hiện sub-menu ẩn thế nào, và `position: absolute` đảm nhiệm gì ở đó.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 14 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 14, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

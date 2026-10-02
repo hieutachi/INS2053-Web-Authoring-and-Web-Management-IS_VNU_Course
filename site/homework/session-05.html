@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-05.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -216,7 +217,61 @@ the <code>href</code> path is wrong.</p>
 <li><code>project/index.html</code> (updated with semantic HTML)</li>
 <li><code>project/css/style.css</code> (updated with layout styles)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>Your pages stop being one long scroll of text and become a layout: a header, a navigation strip, a main column, a sidebar, a footer — built from tags that say what the region <em>is</em>, not just where it sits.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Semantic tags (<code>header</code>, <code>nav</code>, <code>main</code>, <code>aside</code>, <code>footer</code>) give a machine the shape of your document. Screen readers jump between them; search engines weight <code>main</code> content higher. A page of only <code>&lt;div&gt;</code>s looks identical to a browser and meaningless to everything else.</li>
+<li>Layout is where CSS stops being decoration and becomes engineering: box model, width, float/flex, margins. This is the week that makes a two-column site possible.</li>
+<li>One reusable template means every later page is a copy with content swapped, not a rebuild.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>The live visual target shows the goal: a dark header band with the club name, a horizontal nav row, a wide main column on the left, a narrow aside on the right, and a footer strip. Two clear columns, aligned, no overlapping text.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Mark up the regions (15 min).</strong> Rewrite <code>project/index.html</code> body as <code>header</code> → <code>nav</code> → <code>main</code> → <code>aside</code> → <code>footer</code>, each with real content.</li>
+<li><strong>Give the boxes sizes (15 min).</strong> In <code>css/style.css</code>: <code>main</code> about 70% width floated left, <code>aside</code> about 25% floated right (or use flex), <code>header</code>/<code>footer</code> full width.</li>
+<li><strong>Control the space (10 min).</strong> Padding inside regions, margin between them, a <code>max-width</code> on the whole page so text does not stretch across a 4K monitor.</li>
+<li><strong>Clear the floats (5 min).</strong> Without clearing, the footer climbs up beside the columns. Add <code>clear: both</code> on the footer (or switch to flex, which needs none).</li>
+<li><strong>Resize test (5 min).</strong> Drag the window narrow and wide. Columns should hold their proportions and nothing should overlap.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Wrapping everything in <code>&lt;div&gt;</code> and styling that — semantically identical to a machine reading your page, and marked down.</li>
+<li>Forgetting to clear floats: footer overlaps the sidebar.</li>
+<li>Setting widths in pixels so the layout breaks on a laptop screen.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/index.html</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-05/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW5: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show the layout template and explain which semantic tag does which job, and how your CSS turns those tags into two columns.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 05 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 5, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

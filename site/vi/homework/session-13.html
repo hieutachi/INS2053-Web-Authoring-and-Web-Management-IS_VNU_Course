@@ -59,6 +59,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-13.html");}catch(e){}})(
         <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
         <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước</a></li>
         <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
         <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
         <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
@@ -230,7 +231,63 @@ checklist của mốc đó yêu cầu, nên làm tốt bài tập này là hoàn
 <li><code>project/contact.html</code> (thêm biểu mẫu)</li>
 <li><code>project/css/style.css</code> (thêm style biểu mẫu)</li>
 </ul>
-<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước<a class="anchor" href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước" aria-label="Link to this section">#</a></h3>
+<h4 id="bạn-thực-sự-đang-xây-gì">Bạn thực sự đang xây gì<a class="anchor" href="#bạn-thực-sự-đang-xây-gì" aria-label="Link to this section">#</a></h4>
+<p>Site biết lắng nghe: một form liên hệ thật trên <code>contact.html</code> — nhãn, đúng loại input, thuộc tính validate, textarea, radio và checkbox — được style khớp với phần còn lại.</p>
+<h4 id="vì-sao-bài-tập-này-tồn-tại">Vì sao bài tập này tồn tại<a class="anchor" href="#vì-sao-bài-tập-này-tồn-tại" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Loại input không phải chuyện hình thức. <code>type=&quot;email&quot;</code> cho bạn gợi ý bàn phím và validation miễn phí; <code>type=&quot;text&quot;</code> không cho gì. Chọn sai là lý do mất điểm phổ biến nhất của bài này.</li>
+<li>Mọi trường cần <code>&lt;label for&gt;</code> gắn với một <code>id</code>. Input không nhãn thì không tiếp cận được và bị trừ mạnh.</li>
+<li><code>required</code>, <code>placeholder</code>, <code>maxlength</code>, <code>pattern</code> là validation phía client — lớp bảo vệ rẻ tiền trước khi dữ liệu tới server.</li>
+<li>Form chưa có <code>action</code> vẫn phải trông hoàn chỉnh: môn học chấm trình bày và ngữ nghĩa, không chấm xử lý backend.</li>
+</ul>
+<h4 id="xong-nhìn-như-thế-nào">“Xong” nhìn như thế nào<a class="anchor" href="#xong-nhìn-như-thế-nào" aria-label="Link to this section">#</a></h4>
+<p>Mẫu sống: các trường xếp dọc với nhãn nhìn thấy được phía trên từng control, khoảng cách dễ chịu, có trạng thái focus, textarea đủ cao để đọc, radio và checkbox thẳng hàng với nhãn, nút bấm trông như một phần của thiết kế.</p>
+<h4 id="cách-làm-từng-bước">Cách làm từng bước<a class="anchor" href="#cách-làm-từng-bước" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Liệt kê trường (10 phút).</strong> Quyết định thứ thật sự cần: tên, email, chủ đề, lời nhắn, loại câu hỏi (radio), đồng ý (checkbox).</li>
+<li><strong>Dựng khung (10 phút).</strong> <code>&lt;form&gt;</code> có method và action, đặt trong vùng <code>main</code> sẵn có của trang.</li>
+<li><strong>Thêm từng trường (25 phút).</strong> Mỗi trường: <code>&lt;label for=&quot;x&quot;&gt;</code> + <code>&lt;input id=&quot;x&quot;&gt;</code> đúng type. Test sau mỗi trường, không đợi tới cuối.</li>
+<li><strong>Thuộc tính validate (10 phút).</strong> <code>required</code> cho trường thiết yếu, <code>placeholder</code> là ví dụ chứ không phải nhãn, <code>maxlength</code> cho textarea.</li>
+<li><strong>Style (20 phút).</strong> Chiều rộng, khoảng cách, độ đậm nhãn, viền focus, diện mạo nút — trong <code>css/style.css</code>.</li>
+<li><strong>Lướt bằng bàn phím (5 phút).</strong> Tab suốt form. Mọi control với tới được, mọi nhãn được đọc lên.</li>
+</ol>
+<h4 id="nơi-sinh-viên-mất-điểm">Nơi sinh viên mất điểm<a class="anchor" href="#nơi-sinh-viên-mất-điểm" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>&lt;label&gt;Tên&lt;/label&gt;</code> không có cặp <code>for</code>/<code>id</code>.</li>
+<li>Dùng <code>placeholder</code> làm nhãn duy nhất — nó biến mất ngay khi người dùng gõ.</li>
+<li>Nút gửi đặt <code>type=&quot;button&quot;</code> trong khi task cần control submit thật (đây là dạy mã đánh dấu, không phải endpoint sống).</li>
+</ul>
+<h4 id="file-bài-tập-phải-tạo-ra">File bài tập phải tạo ra<a class="anchor" href="#file-bài-tập-phải-tạo-ra" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/contact.html</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h4 id="cách-nộp-bài">Cách nộp bài<a class="anchor" href="#cách-nộp-bài" aria-label="Link to this section">#</a></h4>
+<p>Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: <strong>Phần 1 code (10 điểm)</strong> và <strong>Phần 2 video (4 điểm)</strong>. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.</p>
+<p><strong>Phần 1 — phần code</strong></p>
+<ol>
+<li>Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.</li>
+<li>Thêm vào staging: <code>git add homework/session-13/ project/</code> (chỉ thêm những gì buổi này động tới).</li>
+<li>Commit với message nói rõ đã đổi gì: <code>git commit -m &quot;HW13: &lt;tóm tắt ngắn&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. Một commit nằm lại trên laptop không phải là bài nộp.</li>
+</ol>
+<p><strong>Phần 2 — phần video</strong></p>
+<ol>
+<li>Quay 60–120 giây bằng OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.</li>
+<li>Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu form liên hệ và đi qua ba loại input bạn đã dùng, giải thích mỗi loại thu thập gì và nhãn nào thuộc input nào.</li>
+<li>Tải file MP4 (720p trở lên) lên <strong>Google Drive của chính bạn</strong> và đặt quyền chia sẻ là <strong>“Ai có liên kết → Xem”</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository và thêm một dòng: <code>- Session 13 — (dán link Google Drive của bạn vào đây)</code>.</li>
+<li>Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.</li>
+</ol>
+<p><strong>Trước khi push</strong></p>
+<ol>
+<li>Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.</li>
+<li>Mở công cụ tự chấm (<code>site/cham-bai.html</code>), chọn buổi 13, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.</li>
+<li>Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
 <p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
 chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
 thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau

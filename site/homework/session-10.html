@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-10.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -200,7 +201,65 @@ if(w&&w!=="en")location.replace("../vi/homework/session-10.html");}catch(e){}})(
 <li><code>project/css/style.css</code> (add media styles)</li>
 <li>All 4 existing HTML pages (update navigation)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>The site gains motion and sound: a Media page with an embedded video and an audio clip, each with controls, a poster and a fallback for the browser that cannot play it.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> are native HTML — no plugin, no Flash. Knowing the attributes (<code>controls</code>, <code>poster</code>, <code>preload</code>, <code>loop</code>, <code>muted</code>) is the whole skill.</li>
+<li>Fallback content inside the element is not optional decoration: it is what a user without the codec sees, and it is graded.</li>
+<li>Local files versus embeds matter for the exam: the practical is closed-internet, so your own <code>&lt;video&gt;</code> with a local <code>source</code> is what you can rely on.</li>
+<li>Media is heavy. Sizing, lazy loading and keeping files in <code>project/media/</code> is good practice, not busywork.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>Live visual target: a Media page whose video shows a poster frame before play, plays with visible controls, sits at a sane width, and whose audio row lines up with the rest of the layout.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Get assets (10 min).</strong> One short MP4 and one MP3 you have the right to use. Put them in <code>project/media/</code>.</li>
+<li><strong>Create the page (5 min).</strong> <code>project/media.html</code> copied from an existing page.</li>
+<li><strong>Embed the video (15 min).</strong> <code>&lt;video&gt;</code> with <code>controls</code>, <code>poster</code>, explicit <code>width</code>/<code>height</code>, a <code>&lt;source&gt;</code> for MP4, and fallback text plus a link for browsers that fail.</li>
+<li><strong>Embed the audio (10 min).</strong> <code>&lt;audio controls&gt;</code> with a <code>&lt;source&gt;</code> and the same fallback pattern.</li>
+<li><strong>Style the page (15 min).</strong> Media width capped at the content column, captions under each clip, spacing consistent with other pages.</li>
+<li><strong>Cross-browser sanity (5 min).</strong> Play both, pause both, drag the progress bar, then view source and confirm the fallback text is real sentences.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>autoplay</code> — annoying, and often blocked by the browser anyway.</li>
+<li>Committing a 200 MB video to Git; keep the file short or link out and note it.</li>
+<li>Missing fallback text: a blank rectangle scores zero on the media requirement.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/media.html</code></li>
+<li><code>project/media/</code> (video + audio files)</li>
+<li><code>project/css/style.css</code></li>
+<li>All existing HTML pages (nav updated)</li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-10/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW10: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show the media page and explain how <code>&lt;video&gt;</code> (or <code>&lt;audio&gt;</code>) with <code>controls</code> works, including the fallback text and the <code>poster</code>/<code>source</code> attributes you used.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 10 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 10, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

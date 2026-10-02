@@ -59,6 +59,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-07.html");}catch(e){}})(
         <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
         <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước</a></li>
         <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
         <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
         <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
@@ -190,7 +191,64 @@ h1 {
 <li><code>project/contact.html</code> (thêm liên kết Google Fonts)</li>
 <li><code>project/css/style.css</code> (cập nhật với quy tắc font)</li>
 </ul>
-<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước<a class="anchor" href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước" aria-label="Link to this section">#</a></h3>
+<h4 id="bạn-thực-sự-đang-xây-gì">Bạn thực sự đang xây gì<a class="anchor" href="#bạn-thực-sự-đang-xây-gì" aria-label="Link to this section">#</a></h4>
+<p>Tuần website của bạn có giọng điệu. Bạn chọn hai bộ chữ thật, nạp từ Google Fonts, và chỉnh cỡ cùng khoảng cách cho tới khi trang trông như được thiết kế chứ không chỉ được hiển thị.</p>
+<h4 id="vì-sao-bài-tập-này-tồn-tại">Vì sao bài tập này tồn tại<a class="anchor" href="#vì-sao-bài-tập-này-tồn-tại" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Typography là phần lớn những gì người ta gọi là “thiết kế”. Hai font chọn tốt và khoảng cách trung thực thắng mọi bảng màu.</li>
+<li>Web font phải được <em>nạp</em> rồi CSS mới dùng được: thẻ <code>&lt;link&gt;</code> trong head cộng một rule <code>font-family</code>. Quên một nửa là lý do phổ biến khiến font “không áp dụng”.</li>
+<li>Kỷ luật phối chữ — một bộ cho đề mục, một bộ cho thân bài, tỉ lệ cỡ rõ ràng — mới là kỹ năng được chấm, không phải font của bạn hiếm đến mức nào.</li>
+<li>Link font qua CDN ổn cho bài tập nhưng phiên bản đồ án cuối phải chạy được offline, đó là lý do phiếu bài nhắc bạn ở đây.</li>
+</ul>
+<h4 id="xong-nhìn-như-thế-nào">“Xong” nhìn như thế nào<a class="anchor" href="#xong-nhìn-như-thế-nào" aria-label="Link to this section">#</a></h4>
+<p>So với mẫu sống: đề mục phải khác bộ chữ với thân bài, giãn dòng rộng, độ dài dòng dễ đọc (không căng sát hai mép), cỡ chữ mỗi cấp nhất quán trên mọi trang.</p>
+<h4 id="cách-làm-từng-bước">Cách làm từng bước<a class="anchor" href="#cách-làm-từng-bước" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Chọn (10 phút).</strong> Trên Google Fonts chọn một bộ hiển thị cho đề mục và một bộ văn bản cho thân bài. Xem thử cả hai với chính chữ của site.</li>
+<li><strong>Nạp (5 phút).</strong> Copy các thẻ <code>&lt;link&gt;</code> được cung cấp vào <code>&lt;head&gt;</code> của cả ba trang, trước link stylesheet.</li>
+<li><strong>Áp dụng (15 phút).</strong> Trong <code>css/style.css</code> đặt <code>font-family</code> cho <code>body</code> và cho <code>h1, h2, h3</code>, kèm danh sách dự phòng (<code>&#39;Font Name&#39;, Arial, sans-serif</code>).</li>
+<li><strong>Chỉnh (15 phút).</strong> Cỡ đề mục theo tỉ lệ, <code>line-height</code> khoảng 1.5–1.7 cho đoạn, <code>margin</code> dưới đề mục, letter-spacing nếu dùng chữ in hoa nhỏ.</li>
+<li><strong>Quét nhất quán (5 phút).</strong> Mở cùng lúc trang cũ và trang mới: cỡ mỗi cấp phải khớp tuyệt đối.</li>
+</ol>
+<h4 id="nơi-sinh-viên-mất-điểm">Nơi sinh viên mất điểm<a class="anchor" href="#nơi-sinh-viên-mất-điểm" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>font-family: &#39;Poppins&#39;;</code> thiếu dấu nháy hoặc thiếu danh sách dự phòng.</li>
+<li>Nạp sáu weight nhưng chỉ dùng một — trang tải vài chục KB vô ích.</li>
+<li>Nhiều hơn hai bộ chữ trên một trang: trông như nhiễu, không phải thiết kế.</li>
+</ul>
+<h4 id="file-bài-tập-phải-tạo-ra">File bài tập phải tạo ra<a class="anchor" href="#file-bài-tập-phải-tạo-ra" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/index.html</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/contact.html</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h4 id="cách-nộp-bài">Cách nộp bài<a class="anchor" href="#cách-nộp-bài" aria-label="Link to this section">#</a></h4>
+<p>Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: <strong>Phần 1 code (10 điểm)</strong> và <strong>Phần 2 video (4 điểm)</strong>. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.</p>
+<p><strong>Phần 1 — phần code</strong></p>
+<ol>
+<li>Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.</li>
+<li>Thêm vào staging: <code>git add homework/session-07/ project/</code> (chỉ thêm những gì buổi này động tới).</li>
+<li>Commit với message nói rõ đã đổi gì: <code>git commit -m &quot;HW7: &lt;tóm tắt ngắn&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. Một commit nằm lại trên laptop không phải là bài nộp.</li>
+</ol>
+<p><strong>Phần 2 — phần video</strong></p>
+<ol>
+<li>Quay 60–120 giây bằng OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.</li>
+<li>Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu thẻ <code>&lt;link&gt;</code> Google Fonts trong <code>&lt;head&gt;</code> và các rule <code>font-family</code> trong CSS, giải thích bạn chọn và phối hai font ra sao.</li>
+<li>Tải file MP4 (720p trở lên) lên <strong>Google Drive của chính bạn</strong> và đặt quyền chia sẻ là <strong>“Ai có liên kết → Xem”</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository và thêm một dòng: <code>- Session 07 — (dán link Google Drive của bạn vào đây)</code>.</li>
+<li>Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.</li>
+</ol>
+<p><strong>Trước khi push</strong></p>
+<ol>
+<li>Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.</li>
+<li>Mở công cụ tự chấm (<code>site/cham-bai.html</code>), chọn buổi 7, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.</li>
+<li>Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
 <p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
 chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
 thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau

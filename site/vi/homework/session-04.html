@@ -59,6 +59,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-04.html");}catch(e){}})(
         <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
         <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước</a></li>
         <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
         <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
         <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
@@ -187,7 +188,64 @@ một khiến bài tập &quot;trông như chẳng có gì xảy ra&quot;.</p>
 <li><input disabled="" type="checkbox"> Ảnh có max-width và một chút style</li>
 <li><input disabled="" type="checkbox"> Ít nhất một danh sách được style</li>
 </ul>
-<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước<a class="anchor" href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước" aria-label="Link to this section">#</a></h3>
+<h4 id="bạn-thực-sự-đang-xây-gì">Bạn thực sự đang xây gì<a class="anchor" href="#bạn-thực-sự-đang-xây-gì" aria-label="Link to this section">#</a></h4>
+<p>Từ tuần này website của bạn có giao diện, và giao diện nằm trong một file riêng. Bạn chuyển từ viết trang sang viết một stylesheet mà cả site dùng chung.</p>
+<h4 id="vì-sao-bài-tập-này-tồn-tại">Vì sao bài tập này tồn tại<a class="anchor" href="#vì-sao-bài-tập-này-tồn-tại" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Một file CSS ngoài được link từ mọi trang là ý cốt lõi của thiết kế web: đổi một rule, mọi trang cùng cập nhật. Style nội tuyến và thẻ <code>&lt;font&gt;</code> là cách của thời trước 2000 và sẽ trừ điểm.</li>
+<li>Selector là cách CSS tìm phần tử. Hiểu selector phần tử và selector class ngay bây giờ là điều làm nên các tuần bố cục, typography và responsive sau này.</li>
+<li>Cascade và specificity quyết định <em>rule nào thắng</em> khi hai rule mâu thuẫn. Đoán ở đây sinh ra lỗi kinh điển “CSS của tôi không chạy”.</li>
+</ul>
+<h4 id="xong-nhìn-như-thế-nào">“Xong” nhìn như thế nào<a class="anchor" href="#xong-nhìn-như-thế-nào" aria-label="Link to this section">#</a></h4>
+<p>So với mẫu sống, trang của bạn cần: nền body có màu, font dễ đọc, ba cấp đề mục khác nhau rõ rệt, giãn dòng thoải mái, ảnh và danh sách được định dạng. Không cần hoa mỹ — dễ đọc và nhất quán là đạt.</p>
+<h4 id="cách-làm-từng-bước">Cách làm từng bước<a class="anchor" href="#cách-làm-từng-bước" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Tạo file (2 phút).</strong> <code>project/css/style.css</code>, rỗng, lưu trong project.</li>
+<li><strong>Link đúng cách (3 phút).</strong> Trong mọi trang HTML, đặt trong <code>&lt;head&gt;</code> và TRƯỚC <code>&lt;/head&gt;</code>: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code>. Đường dẫn tính theo file HTML, không tính theo gốc project.</li>
+<li><strong>Định dạng nền tảng (10 phút).</strong> <code>body</code> nhận <code>background-color</code>, <code>color</code>, <code>font-family</code>, <code>line-height</code>. Mọi thứ kế thừa từ đây.</li>
+<li><strong>Định dạng ba cấp đề mục (10 phút).</strong> Cỡ và màu khác nhau rõ cho <code>h1</code>, <code>h2</code>, <code>h3</code>.</li>
+<li><strong>Định dạng nội dung (10 phút).</strong> Giãn đoạn, <code>img { max-width: 100%; }</code>, và ít nhất một danh sách được style.</li>
+<li><strong>Xác nhận link hoạt động (5 phút).</strong> Xoá một property, lưu, tải lại: trang không đổi nghĩa là đường dẫn <code>&lt;link&gt;</code> sai — sửa xong mới viết tiếp CSS.</li>
+</ol>
+<h4 id="nơi-sinh-viên-mất-điểm">Nơi sinh viên mất điểm<a class="anchor" href="#nơi-sinh-viên-mất-điểm" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>href=&quot;/css/style.css&quot;</code> — có máy chạy, có máy không; hãy dùng <code>css/style.css</code>.</li>
+<li>Lưu CSS nhưng chưa tải lại trang: kiểm tra bằng F12 → Network, hoặc Ctrl+F5.</li>
+<li>Style đề mục bằng cách bọc <code>&lt;b&gt;</code> hoặc sửa câu chữ thay vì dùng CSS.</li>
+</ul>
+<h4 id="file-bài-tập-phải-tạo-ra">File bài tập phải tạo ra<a class="anchor" href="#file-bài-tập-phải-tạo-ra" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/css/style.css</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/index.html</code></li>
+<li><code>project/contact.html</code></li>
+</ul>
+<h4 id="cách-nộp-bài">Cách nộp bài<a class="anchor" href="#cách-nộp-bài" aria-label="Link to this section">#</a></h4>
+<p>Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: <strong>Phần 1 code (10 điểm)</strong> và <strong>Phần 2 video (4 điểm)</strong>. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.</p>
+<p><strong>Phần 1 — phần code</strong></p>
+<ol>
+<li>Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.</li>
+<li>Thêm vào staging: <code>git add homework/session-04/ project/</code> (chỉ thêm những gì buổi này động tới).</li>
+<li>Commit với message nói rõ đã đổi gì: <code>git commit -m &quot;HW4: &lt;tóm tắt ngắn&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. Một commit nằm lại trên laptop không phải là bài nộp.</li>
+</ol>
+<p><strong>Phần 2 — phần video</strong></p>
+<ol>
+<li>Quay 60–120 giây bằng OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.</li>
+<li>Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu <code>css/style.css</code>, giải thích <code>project/about.html</code> nối tới nó bằng <code>&lt;link&gt;</code> thế nào, và đọc qua một rule bạn viết: selector → property → hiệu quả nhìn thấy.</li>
+<li>Tải file MP4 (720p trở lên) lên <strong>Google Drive của chính bạn</strong> và đặt quyền chia sẻ là <strong>“Ai có liên kết → Xem”</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository và thêm một dòng: <code>- Session 04 — (dán link Google Drive của bạn vào đây)</code>.</li>
+<li>Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.</li>
+</ol>
+<p><strong>Trước khi push</strong></p>
+<ol>
+<li>Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.</li>
+<li>Mở công cụ tự chấm (<code>site/cham-bai.html</code>), chọn buổi 4, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.</li>
+<li>Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
 <p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
 chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
 thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau

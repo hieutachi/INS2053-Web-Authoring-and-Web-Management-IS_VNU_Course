@@ -52,6 +52,71 @@ một bố cục đơn giản.
 - [ ] Có 2+ ảnh với alt text mô tả
 - [ ] Có phần thư viện ảnh với 3+ ảnh và chú thích
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Trang About của bạn hết là một mẩu ghi chú và trở thành một trang thật: phân cấp đề mục đúng, danh sách dễ quét mắt, và ảnh vẫn nói lên điều gì đó khi nó không tải được.
+
+### Vì sao bài tập này tồn tại
+
+- Cấp đề mục là cấu trúc, không phải cỡ chữ. Dùng `<h3>` vì nó trông nhỏ sẽ làm rối trình đọc màn hình và công cụ tìm kiếm, đồng thời mất điểm phần cấu trúc trong rubric.
+- Danh sách là cách rẻ nhất để nội dung dễ đọc: không thứ tự cho những việc ngang nhau (hoạt động club), có thứ tự cho các bước hoặc xếp hạng.
+- `alt` không phải chi tiết trang trí. Đó là thứ người khiếm thị nghe thấy, thứ hiện ra khi ảnh lỗi, và thứ Google lập chỉ mục. Alt mô tả là yêu cầu được chấm, không phải gợi ý.
+- Đường dẫn tương đối là lý do site chạy tốt trên máy bạn nhưng chết sau khi upload. Xử lý đúng một lần ở đây giúp mọi buổi sau nhẹ đi.
+
+### “Xong” nhìn như thế nào
+
+So với mẫu sống: tiêu đề, đoạn giới thiệu, ba cấp đề mục, một danh sách gạch đầu dòng, một danh số thứ tự, rồi thư viện ít nhất ba ảnh có chú thích. Chữ chảy một cột từ trên xuống — chưa có CSS.
+
+### Cách làm từng bước
+
+1. **Mở lại trang tuần trước (1 phút).** Sửa trực tiếp `project/about.html`. Đừng tạo file mới; trang này lớn dần mỗi tuần.
+2. **Vẽ dàn ý (10 phút).** `<h1>` tên club/trang → `<h2>` mục → `<h3>` mục con, mỗi đề mục kèm đoạn văn của nó.
+3. **Thêm hai danh sách (10 phút).** Một `<ul>` 5+ mục, một `<ol>` 3+ mục. Mỗi mục ngắn gọn.
+4. **Thả ảnh (15 phút).** Đặt file vào `project/images/`, tham chiếu bằng `<img src="images/ten-file.jpg" alt="mô tả nội dung ảnh">` kèm `width`/`height`.
+5. **Xây thư viện ảnh (10 phút).** Ba ảnh trở lên, mỗi ảnh có chú thích hiện trên trang, nằm trong một mục có `<h2>`.
+6. **Rà soát alt (5 phút).** Đọc to trang của bạn chỉ bằng các dòng alt. Nếu người nghe không hình dung được trang, viết lại.
+
+### Nơi sinh viên mất điểm
+
+- `alt="image"` hay `alt="photo"` — không nói gì, mất trọn điểm phần alt.
+- `src="/images/x.jpg"` (dấu gạch chéo đầu = tuyệt đối từ gốc web) thay vì `src="images/x.jpg"`.
+- Nhảy cấp đề mục (`h1` → `h3`) chỉ để chữ nhỏ hơn.
+
+### File bài tập phải tạo ra
+
+- `project/about.html`
+- `project/images/` (file ảnh mới)
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-03/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW3: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu một ảnh bạn thêm vào thư viện và giải thích `src`, `alt`, `width`/`height` mỗi thứ làm gì, và chuyện gì xảy ra nếu thiếu từng thứ.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 03 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 3, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

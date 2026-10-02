@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-08.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -233,7 +234,64 @@ so each nav link is a plain file name. Open every page and click every link — 
 <li><code>homework/session-08/table-practice.html</code> (new practice page with table)</li>
 <li><code>homework/session-08/table-practice.css</code> (table styles)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>The week after the midterm. Two jobs: turn the exam into information — write down what you got wrong and fix it — and get ahead on tables, which is what Session 9 is built on.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>A reflection you actually write is worth more than another page you half-copy. Naming three concrete mistakes, with the correct answer and the chapter section to re-read, is how the weak areas disappear before the final.</li>
+<li>Tables are the first HTML structure that is genuinely <em>grid-shaped</em>: rows, cells, headers, merging. Practising in a throwaway file first means Session 9 is about styling, not survival.</li>
+<li>Task 4 exists because navigation quietly rots: every page you added since Week 2 must still be reachable.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>There is no polished page to chase this week. Your <code>midterm-review.md</code> should read like the template in Task 1 — mistake, my answer, correct answer, why, where to review. Your <code>table-practice.html</code> should show a bordered table with a shaded header row and merged cells where the task asks for them.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Recall while it is fresh (10 min).</strong> Right after the exam, before discussing answers, list what you hesitated on.</li>
+<li><strong>Write the reflection (20 min).</strong> Three items in <code>homework/session-08/midterm-review.md</code>, following the exact template: what the topic was, what you answered, what is correct, one sentence why, and the ebook section to re-read.</li>
+<li><strong>Re-read those sections (15 min).</strong> Actually open chapters 1–7 at the sections you named.</li>
+<li><strong>Build the practice table (25 min).</strong> <code>table-practice.html</code> per Task 2: <code>border</code>, a header row, at least one <code>colspan</code> or <code>rowspan</code>, real content — not lorem ipsum.</li>
+<li><strong>Style it (15 min).</strong> Task 3: alternating row colours, padding in cells, header contrast — in <code>table-practice.css</code>.</li>
+<li><strong>Crawl the project (10 min).</strong> Task 4: click from <code>index.html</code> to every page and back. Fix broken links and update the nav list.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Writing “I was careless” instead of a specific technical mistake — nothing to fix, no points.</li>
+<li>Building the table directly in <code>project/activities.html</code> before tables are taught; this week&#39;s table stays a practice file.</li>
+<li>Leaving <code>border=&quot;1&quot;</code> as your only styling — attribute borders are legacy, CSS is the requirement.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>homework/session-08/midterm-review.md</code></li>
+<li><code>homework/session-08/table-practice.html</code></li>
+<li><code>homework/session-08/table-practice.css</code></li>
+<li><code>project/</code> (navigation fixes)</li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-08/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW8: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: pick ONE thing you got wrong in the midterm (or in Task 2&#39;s table), open that file, and explain what the correct approach is and why.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 08 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 8, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

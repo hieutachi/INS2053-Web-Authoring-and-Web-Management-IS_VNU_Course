@@ -76,6 +76,74 @@ Add CSS to make the table look professional.
 - `project/about.html` (add Activities link to nav)
 - `project/contact.html` (add Activities link to nav)
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+Tables move from practice file into the real site: an Activities page whose schedule is an honest HTML table, styled, and reachable from every other page.
+
+### Why this homework exists
+
+- A schedule is tabular data. Using a table for it is the correct semantics; using divs or a grid of paragraphs is what the rubric calls misuse.
+- `thead`/`tbody`/`tfoot`, `<th scope="col">` and captioned tables are what let a screen reader announce “row 3, column Wednesday” instead of a wall of text.
+- `colspan` and `rowspan` are the merge primitives you will need again in the final exam.
+- Adding a fifth page forces the nav-consistency habit: four existing pages must all learn about the new one.
+
+### What “done” looks like
+
+The live visual target: a titled Activities page, a table with a shaded header row, at least one merged cell, zebra-striped body rows, padding so cells breathe, and the new page present in the nav of all four older pages.
+
+### How to work through it
+
+1. **Create the page (5 min).** `project/activities.html`, copied from an existing page so the boilerplate, nav and footer come along.
+2. **Draft the data (10 min).** Write the schedule as a plain list first: which events, which days, which rooms. Decide the grid before the markup.
+3. **Mark up the table (20 min).** `<table>` → `<caption>` → `<thead>` with `<th scope="col">` → `<tbody>` with real rows → at least one `colspan` or `rowspan`.
+4. **Style it (20 min).** In `css/style.css`: `border-collapse: collapse`, cell padding, header background, `tbody tr:nth-child(even)` stripes, hover highlight.
+5. **Wire the navigation (10 min).** Add Activities to the nav on `index`, `about`, `contact` and `media` (if it exists yet); mark it active on the new page.
+6. **Accessibility pass (5 min).** Tab through, and read the table aloud imagining you cannot see it. Does every row identify its column?
+
+### Where students lose marks
+
+- Nested tables or spacer tricks for layout — layout tables are exactly what the course teaches you to avoid.
+- `<td>` in the header row instead of `<th>`.
+- Updating the nav on only one page and losing consistency points on the other three.
+
+### Files this homework must produce
+
+- `project/activities.html`
+- `project/css/style.css`
+- `project/index.html`
+- `project/about.html`
+- `project/contact.html`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-09/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW9: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show your schedule table and explain what `<thead>`, `<tbody>` and `colspan`/`rowspan` do in it, plus one styling choice you made.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 09 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 9, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

@@ -65,6 +65,72 @@ Make additional typography improvements across the mini-site:
 - `project/contact.html` (add Google Fonts link)
 - `project/css/style.css` (update with font rules)
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+The week your site gains a voice. You pick two real typefaces, load them from Google Fonts, and tune sizes and spacing until the pages look designed rather than merely rendered.
+
+### Why this homework exists
+
+- Typography is most of what people call “design”. Two well-chosen fonts and honest spacing beat any colour scheme.
+- Web fonts must be *loaded* before CSS can use them: the `<link>` in the head plus a `font-family` rule. Forgetting one half is the usual reason the font “does not apply”.
+- Pairing discipline — one face for headings, one for body text, a clear size ratio — is the actual skill being graded, not how exotic your font is.
+- A CDN font link is fine for homework but the final capstone version must also work offline, which is why the sheet warns you here.
+
+### What “done” looks like
+
+Against the live visual target your headings should read as a different face from your body text, with generous line height, a comfortable measure (not edge-to-edge lines), and consistent sizes per level across all pages.
+
+### How to work through it
+
+1. **Choose (10 min).** On Google Fonts pick one display face for headings and one text face for body. Preview them together with the site's own words.
+2. **Load them (5 min).** Copy the provided `<link>` tags into the `<head>` of all three pages, before your stylesheet link.
+3. **Apply (15 min).** In `css/style.css` set `font-family` for `body` and for `h1, h2, h3`, with a fallback stack (`'Font Name', Arial, sans-serif`).
+4. **Tune (15 min).** Heading sizes as a ratio, `line-height` around 1.5–1.7 for paragraphs, `margin` under headings, letter-spacing on small caps if used.
+5. **Consistency sweep (5 min).** Same page open in two tabs: old page and new page. Sizes per level must match exactly.
+
+### Where students lose marks
+
+- `font-family: 'Poppins';` without quotes or without the fallback list.
+- Loading six weights you never use — the page downloads kilobytes for nothing.
+- More than two typefaces on one page: it reads as noise, not design.
+
+### Files this homework must produce
+
+- `project/index.html`
+- `project/about.html`
+- `project/contact.html`
+- `project/css/style.css`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-07/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW7: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show the Google Fonts `<link>` in your `<head>` and the `font-family` rules in CSS, and explain how you picked and paired the two fonts.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 07 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 7, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

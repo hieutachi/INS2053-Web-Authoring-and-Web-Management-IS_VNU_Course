@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-14.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -216,7 +217,63 @@ for the retired Spry Menu Bar — <code>:hover</code> on the parent <code>&lt;li
 <li><code>project/css/style.css</code> (dropdown + button styles)</li>
 <li>At least 2 HTML files (updated navigation)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>Navigation upgrades itself: a dropdown menu built in pure CSS — a sub-menu that appears on hover, positioned precisely, and styled to sit above the page content.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>This is the week CSS positioning stops being abstract. <code>position: relative</code> on the parent plus <code>position: absolute</code> on the child is the pattern behind tooltips, modals and menus in every real interface.</li>
+<li>Showing and hiding with <code>display</code>/<code>visibility</code> on <code>:hover</code> teaches you state-based styling — the same mechanism behind <code>:focus</code> and <code>:active</code>.</li>
+<li><code>z-index</code> and stacking contexts explain why your dropdown sometimes hides <em>behind</em> content. Learn it here, not in the final.</li>
+<li>Bonus Task 3 (“back to top”) is deliberately optional: attempt it only once the dropdown is solid.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>Live visual target: hovering a parent item reveals a boxed sub-menu directly beneath it, flush-left with the parent, with a small transition, and it never disappears behind the main column.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Structure the markup (15 min).</strong> Nested list: <code>&lt;nav&gt;</code> → <code>&lt;ul&gt;</code> → <code>&lt;li&gt;</code> → (<code>&lt;a&gt;</code> + a nested <code>&lt;ul&gt;</code> for children). The nested list is the sub-menu.</li>
+<li><strong>Hide it (5 min).</strong> Child <code>&lt;ul&gt;</code> gets <code>position: absolute</code>, <code>top: 100%</code>, <code>left: 0</code>, <code>display: none</code>.</li>
+<li><strong>Anchor it (10 min).</strong> Parent <code>&lt;li&gt;</code> gets <code>position: relative</code> so the absolute child positions against it, not the page.</li>
+<li><strong>Reveal on hover (10 min).</strong> <code>nav li:hover &gt; ul { display: block; }</code>. Hover and confirm the box appears exactly under its parent.</li>
+<li><strong>Style the box (15 min).</strong> Background, border, padding, item spacing, hover colour on links, <code>z-index</code> above the main content.</li>
+<li><strong>Test the gaps (10 min).</strong> Move the mouse diagonally from parent to child: no flicker, no disappearing menu. Adjust padding to close dead zones.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Absolute child with no relatively positioned ancestor — the menu flies to the page corner.</li>
+<li><code>display: none</code> toggled by <code>opacity</code> alone: invisible but still clickable, so it steals hover from content below.</li>
+<li>Applying the dropdown to only one page and losing nav consistency.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/css/style.css</code></li>
+<li>At least 2 HTML files (updated navigation)</li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-14/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW14: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show the dropdown menu and explain how <code>:hover</code> on the list item reveals the hidden sub-menu, and what <code>position: absolute</code> does there.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 14 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 14, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

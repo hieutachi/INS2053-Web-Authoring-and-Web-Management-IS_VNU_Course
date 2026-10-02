@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-03.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -172,7 +173,63 @@ if(w&&w!=="en")location.replace("../vi/homework/session-03.html");}catch(e){}})(
 <li><input disabled="" type="checkbox"> Has 2+ images with descriptive alt text</li>
 <li><input disabled="" type="checkbox"> Has a photo gallery section with 3+ images and captions</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>Your About page stops being a note and becomes a page: real heading hierarchy, lists that scan, and photographs that still say something when they fail to load.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Heading levels are structure, not size. An <code>&lt;h3&gt;</code> used because it looks small confuses screen readers and search engines, and costs you the structure points in the rubric.</li>
+<li>Lists are the cheapest way to make content readable: unordered for things with no order (club activities), ordered for steps or rankings.</li>
+<li><code>alt</code> text is not decoration. It is what a blind visitor hears, what shows while an image is missing, and what Google indexes. A descriptive alt is a graded requirement, not a suggestion.</li>
+<li>Relative paths are the reason your site works locally and dies after upload. Getting them right here, once, saves every later session.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>Compare with the live visual target: title, intro paragraph, three heading levels, one bulleted list, one numbered list, then a gallery of at least three images each with a caption. Text flows top to bottom in one column — no CSS yet.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Re-open last week&#39;s page (1 min).</strong> Edit <code>project/about.html</code> in place. Do not start a new file; this page grows every week.</li>
+<li><strong>Build the outline (10 min).</strong> <code>&lt;h1&gt;</code> club/page title → <code>&lt;h2&gt;</code> section → <code>&lt;h3&gt;</code> subsection, each followed by its paragraph.</li>
+<li><strong>Add the two lists (10 min).</strong> One <code>&lt;ul&gt;</code> with 5+ items, one <code>&lt;ol&gt;</code> with 3+ items. Keep list items short.</li>
+<li><strong>Drop in images (15 min).</strong> Put files in <code>project/images/</code>, reference them with <code>&lt;img src=&quot;images/ten-file.jpg&quot; alt=&quot;mô tả những gì trong ảnh&quot;&gt;</code> plus <code>width</code>/<code>height</code>.</li>
+<li><strong>Build the gallery (10 min).</strong> Three or more images, each with a visible caption, inside a section headed <code>&lt;h2&gt;</code>.</li>
+<li><strong>Alt-text pass (5 min).</strong> Read your page aloud using only the alt texts. If a listener cannot picture the page, rewrite them.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>alt=&quot;image&quot;</code> or <code>alt=&quot;photo&quot;</code> — says nothing, scores zero on the alt criterion.</li>
+<li><code>src=&quot;/images/x.jpg&quot;</code> (leading slash = absolute from the web root) instead of <code>src=&quot;images/x.jpg&quot;</code>.</li>
+<li>Skipping heading levels (<code>h1</code> → <code>h3</code>) to get a smaller font.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/about.html</code></li>
+<li><code>project/images/</code> (new image files)</li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-03/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW3: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show one image you added to the gallery and explain what <code>src</code>, <code>alt</code> and <code>width</code>/<code>height</code> each do, and what happens if each one is missing.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 03 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 3, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

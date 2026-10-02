@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-06.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -186,7 +187,64 @@ No <code>../</code> anywhere.</p>
 <li><input disabled="" type="checkbox"> CSS is linked on all pages</li>
 <li><input disabled="" type="checkbox"> Layout is consistent across all pages</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>Three pages finally become one site. You wire them together with the same navigation on every page, finish the Contact page, and give the home page something worth landing on.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Navigation is the product. A visitor who cannot leave a page leaves the site. Identical markup on every page is what makes a site feel like one place.</li>
+<li>Relative links are the skill this week really tests: <code>href=&quot;about.html&quot;</code> between siblings, and why <code>../</code> would be wrong at the project root.</li>
+<li>Highlighting the current page (an <code>active</code> class on the matching item) is the difference between a menu and a map.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>In the live visual target, click around: the same header, nav and footer on all three pages, every link lands, the current page is visibly marked, and the home page shows several distinct sections.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Write the menu once (10 min).</strong> Build the <code>&lt;ul&gt;</code> nav in <code>index.html</code>, then copy the exact block into <code>about.html</code> and <code>contact.html</code> — same order, same classes.</li>
+<li><strong>Point the links (10 min).</strong> <code>index.html</code>, <code>about.html</code>, <code>contact.html</code> as plain sibling file names. Click every link from every page before moving on.</li>
+<li><strong>Mark the current page (5 min).</strong> Add <code>class=&quot;active&quot;</code> to the matching <code>&lt;li&gt;</code> on each page and style it in CSS.</li>
+<li><strong>Finish the contact page (15 min).</strong> Real content per Task 2: heading, intro, address block, email written as text (the form comes in Week 13).</li>
+<li><strong>Build up the home page (15 min).</strong> Several sections per Task 3 — welcome, highlights, what the club does — each with an <code>&lt;h2&gt;</code>.</li>
+<li><strong>Full crawl (5 min).</strong> Start at <code>index.html</code>, visit every page by clicking only, never the address bar. Any dead link is a failed requirement.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Menu written slightly differently on each page — inconsistent nav loses consistency points.</li>
+<li><code>href=&quot;index.html&quot;</code> everywhere including on index itself.</li>
+<li>Testing only one direction: links usually break on the page you did not think about.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/index.html</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/contact.html</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-06/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW6: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show the navigation menu on all three pages and explain how the same <code>&lt;ul&gt;</code> works everywhere and how the current page gets highlighted.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 06 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 6, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

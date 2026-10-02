@@ -102,6 +102,70 @@ nav {
 - All HTML files in `project/`
 - `project/css/style.css`
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+Validator week. You stop guessing whether your code is correct and start proving it: W3C checks for the HTML, the Jigsaw/CSS validator for the stylesheet, then a formatting pass so the code reads cleanly.
+
+### Why this homework exists
+
+- Validators catch the errors browsers forgive: unclosed tags, wrong nesting, missing alt, unknown properties. Forgiveness hides bugs that surface on another device or in an exam.
+- Reading a validation report is a professional skill — error line, cause, fix — and it is exactly what the video part of this homework asks you to demonstrate.
+- Consistent indentation and comments are how someone else (or you in three weeks) reads your file. The rubric pays for it.
+
+### What “done” looks like
+
+Success looks like this: the W3C checker returns “No errors” (warnings explained in your notes), the CSS validator returns zero errors, and your files are indented two spaces with a comment above each region.
+
+### How to work through it
+
+1. **Validate the HTML (20 min).** Submit each page to the W3C Nu checker (by URI or by pasting the file). Record every error: line, message, cause.
+2. **Fix and re-run (20 min).** Fix the earliest error first — later errors are often knock-on effects. Re-validate until clean.
+3. **Validate the CSS (15 min).** Run `css/style.css` through the W3C CSS validator, fix unknown properties and typos.
+4. **Format (15 min).** Two-space indent, one declaration per line, alphabetical or grouped properties, a comment marking each region.
+5. **Regression check (10 min).** Reload every page: fixing markup can change rendering. Confirm nothing broke.
+6. **Write the report (10 min).** Save the validator results in a file inside `homework/session-12/` so your notes travel with the homework.
+
+### Where students lose marks
+
+- Deleting the offending element instead of fixing it, and losing a graded feature.
+- Believing a warning that is a false positive — explain it in your notes instead of mangling valid code.
+- Reformatting with an auto-formatter that also rewrites your paths or strips your comments.
+
+### Files this homework must produce
+
+- All HTML files in `project/`
+- `project/css/style.css`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-12/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW12: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show one HTML validation error and one CSS warning from the validators and explain what caused them and how you fixed them.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 12 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 12, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

@@ -65,6 +65,72 @@ Cải thiện typography thêm cho toàn mini-site:
 - `project/contact.html` (thêm liên kết Google Fonts)
 - `project/css/style.css` (cập nhật với quy tắc font)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Tuần website của bạn có giọng điệu. Bạn chọn hai bộ chữ thật, nạp từ Google Fonts, và chỉnh cỡ cùng khoảng cách cho tới khi trang trông như được thiết kế chứ không chỉ được hiển thị.
+
+### Vì sao bài tập này tồn tại
+
+- Typography là phần lớn những gì người ta gọi là “thiết kế”. Hai font chọn tốt và khoảng cách trung thực thắng mọi bảng màu.
+- Web font phải được *nạp* rồi CSS mới dùng được: thẻ `<link>` trong head cộng một rule `font-family`. Quên một nửa là lý do phổ biến khiến font “không áp dụng”.
+- Kỷ luật phối chữ — một bộ cho đề mục, một bộ cho thân bài, tỉ lệ cỡ rõ ràng — mới là kỹ năng được chấm, không phải font của bạn hiếm đến mức nào.
+- Link font qua CDN ổn cho bài tập nhưng phiên bản đồ án cuối phải chạy được offline, đó là lý do phiếu bài nhắc bạn ở đây.
+
+### “Xong” nhìn như thế nào
+
+So với mẫu sống: đề mục phải khác bộ chữ với thân bài, giãn dòng rộng, độ dài dòng dễ đọc (không căng sát hai mép), cỡ chữ mỗi cấp nhất quán trên mọi trang.
+
+### Cách làm từng bước
+
+1. **Chọn (10 phút).** Trên Google Fonts chọn một bộ hiển thị cho đề mục và một bộ văn bản cho thân bài. Xem thử cả hai với chính chữ của site.
+2. **Nạp (5 phút).** Copy các thẻ `<link>` được cung cấp vào `<head>` của cả ba trang, trước link stylesheet.
+3. **Áp dụng (15 phút).** Trong `css/style.css` đặt `font-family` cho `body` và cho `h1, h2, h3`, kèm danh sách dự phòng (`'Font Name', Arial, sans-serif`).
+4. **Chỉnh (15 phút).** Cỡ đề mục theo tỉ lệ, `line-height` khoảng 1.5–1.7 cho đoạn, `margin` dưới đề mục, letter-spacing nếu dùng chữ in hoa nhỏ.
+5. **Quét nhất quán (5 phút).** Mở cùng lúc trang cũ và trang mới: cỡ mỗi cấp phải khớp tuyệt đối.
+
+### Nơi sinh viên mất điểm
+
+- `font-family: 'Poppins';` thiếu dấu nháy hoặc thiếu danh sách dự phòng.
+- Nạp sáu weight nhưng chỉ dùng một — trang tải vài chục KB vô ích.
+- Nhiều hơn hai bộ chữ trên một trang: trông như nhiễu, không phải thiết kế.
+
+### File bài tập phải tạo ra
+
+- `project/index.html`
+- `project/about.html`
+- `project/contact.html`
+- `project/css/style.css`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-07/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW7: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu thẻ `<link>` Google Fonts trong `<head>` và các rule `font-family` trong CSS, giải thích bạn chọn và phối hai font ra sao.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 07 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 7, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

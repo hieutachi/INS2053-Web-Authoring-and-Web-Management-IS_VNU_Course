@@ -124,6 +124,72 @@ Kiểm tra website trên các kích thước màn hình khác nhau:
 - Cả 5 file HTML (thẻ meta viewport)
 - `project/css/style.css` (media queries + ảnh responsive)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Tuần dựng bài cuối cùng: site của bạn thích ứng thay vì vỡ. Viewport meta, một media query tử tế, ảnh co giãn — kiểm trên cửa sổ cỡ điện thoại chứ không đoán.
+
+### Vì sao bài tập này tồn tại
+
+- Không có `<meta name="viewport">`, điện thoại giả vờ rộng 980px và mọi media query bạn viết thành vô dụng. Một dòng duy nhất, và là điều kiện tiên quyết cho cả tuần này.
+- Môn học dạy query `max-width` (desktop-first). Chuẩn ngành là `min-width` (mobile-first); Chương 15 giải thích cả hai, nhưng bài thi cần `max-width`.
+- `img { max-width: 100%; }` là rule duy nhất ngăn cuộn ngang trên điện thoại.
+- Test responsive là một thói quen: kéo resize, nhìn breakpoint kích hoạt, xác nhận không chồng lấn. Chính thói quen đó được thưởng ở bài thi thực hành cuối kỳ.
+
+### “Xong” nhìn như thế nào
+
+Mở mẫu sống và kéo iframe hẹp dần: tới breakpoint hai cột xếp chồng, chữ trôi lại, ảnh nhỏ đi, và không bao giờ xuất hiện thanh cuộn ngang.
+
+### Cách làm từng bước
+
+1. **Thêm thẻ viewport (5 phút).** Một dòng trong `<head>` của cả năm trang, trước link stylesheet.
+2. **Chọn breakpoint (10 phút).** Nhìn bố cục của chính bạn, không nhìn số thần kỳ. Quanh 768px là nơi hai cột bắt đầu chật ở site này.
+3. **Viết query (20 phút).** `@media (max-width: 768px) { … }`: xếp `main` và `aside` full width, thu nhỏ đề mục, chỉnh padding.
+4. **Cho ảnh chảy (10 phút).** `img { max-width: 100%; height: auto; }` đặt trong rule nền tảng.
+5. **Test thật (15 phút).** Device toolbar của DevTools: 375px, 768px, desktop. Soi riêng nav, table, form và trang media — bảng và form tràn đầu tiên.
+6. **Bò cuối (10 phút).** Mọi trang ở mọi chiều rộng, không cuộn ngang ở đâu cả.
+
+### Nơi sinh viên mất điểm
+
+- Thẻ viewport chỉ thêm vào một trang.
+- Container đặt width pixel cố định vượt quá màn điện thoại.
+- Dùng `min-width` trong bài thi trong khi chuẩn môn học là `max-width`.
+- Bảng buộc cuộn ngang — bọc nó hoặc giảm số cột trong query.
+
+### File bài tập phải tạo ra
+
+- Cả 5 file HTML (thẻ meta viewport)
+- `project/css/style.css`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-15/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW15: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu site trong device toolbar của trình duyệt, thu hẹp viewport trực tiếp, và giải thích rule media query nào kích hoạt cùng thay đổi của nó.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 15 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 15, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

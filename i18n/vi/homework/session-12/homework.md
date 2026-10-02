@@ -90,6 +90,69 @@ Truy cập [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) và kiểm 
 - `project/contact.html`
 - `project/css/style.css`
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Tuần validator. Bạn thôi đoán code đúng hay sai và bắt đầu chứng minh: W3C soi HTML, công cụ W3C soi CSS, rồi một lượt định dạng để code đọc sạch.
+
+### Vì sao bài tập này tồn tại
+
+- Validator bắt được những lỗi trình duyệt bỏ qua: thẻ chưa đóng, lồng sai, thiếu alt, property không tồn tại. Sự bao dung ấy giấu lỗi sẽ bộc lộ trên thiết bị khác hoặc trong phòng thi.
+- Đọc báo cáo validation là kỹ năng nghề — dòng lỗi, nguyên nhân, cách sửa — và đó chính là điều phần video của bài này yêu cầu bạn trình bày.
+- Thụt lề nhất quán và comment là cách người khác (hoặc bạn sau ba tuần) đọc được file. Rubric trả tiền cho việc đó.
+
+### “Xong” nhìn như thế nào
+
+Thành công trông như thế này: W3C trả về “No errors” (warning được giải thích trong ghi chú của bạn), CSS validator không còn lỗi, và file của bạn thụt lề hai space kèm một comment cho mỗi vùng.
+
+### Cách làm từng bước
+
+1. **Soi HTML (20 phút).** Gửi từng trang lên W3C Nu checker (theo URI hoặc dán file). Ghi lại mọi lỗi: dòng, thông báo, nguyên nhân.
+2. **Sửa và chạy lại (20 phút).** Sửa lỗi xuất hiện sớm nhất trước — các lỗi sau thường là hiệu ứng dây chuyền. Validate tới khi sạch.
+3. **Soi CSS (15 phút).** Chạy `css/style.css` qua W3C CSS validator, sửa property lạ và lỗi chính tả.
+4. **Định dạng (15 phút).** Thụt lề hai space, mỗi declaration một dòng, gom property theo nhóm, comment đầu mỗi vùng.
+5. **Hồi quy (10 phút).** Tải lại mọi trang: sửa markup có thể đổi cách hiển thị. Xác nhận không gì hỏng.
+6. **Viết báo cáo (10 phút).** Lưu kết quả validator vào một file trong `homework/session-12/` để ghi chú đi cùng bài tập.
+
+### Nơi sinh viên mất điểm
+
+- Xoá phăng phần tử bị báo lỗi thay vì sửa nó, và mất luôn tính năng được chấm.
+- Tin một warning là dương tính giả — hãy giải thích trong ghi chú thay vì bẻ code đúng thành sai.
+- Dùng auto-formatter viết lại luôn đường dẫn hoặc xoá comment của bạn.
+
+### File bài tập phải tạo ra
+
+- Toàn bộ file HTML trong `project/`
+- `project/css/style.css`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-12/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW12: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu một lỗi HTML validation và một cảnh báo CSS từ validator, giải thích nguyên nhân và cách bạn sửa.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 12 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 12, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
 
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
@@ -165,4 +228,3 @@ thiếu, riêng tư, hoặc hỏng nghĩa là phần video không thể chấm.
 Mọi file HTML của bạn phải qua được W3C validation với không lỗi. File CSS cũng
 phải qua validation. Code phải trông gọn gàng, có tổ chức với thụt lề đúng và chú
 thích hữu ích.
-

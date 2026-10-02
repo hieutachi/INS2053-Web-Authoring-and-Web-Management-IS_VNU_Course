@@ -54,6 +54,69 @@ extension issues) inside each one so they survive the push.
 - [ ] Every opening tag has a closing tag
 - [ ] Consistent indentation
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+You have just opened VS Code for the first time. Before any styling, any image, any menu, every website on earth starts with the same thing: a plain HTML file that tells the browser who you are. This week you are not building a club site yet — you are building your **name card on the web**, the one page everyone in the class will open.
+
+### Why this homework exists
+
+- The five-line HTML5 boilerplate is the one piece of code you will type fifteen times this semester, plus twice in the practical exams. If it comes from copy-paste, every later session costs you minutes. If it comes from memory, it costs nothing.
+- The folder layout you create today (`css/`, `images/`) is the layout every homework and the capstone assume. Renaming it later breaks links that work fine on your machine and die on the server.
+
+### What “done” looks like
+
+Open the sheet on the website and compare your page against the live reference under **“Visual target — what you are building”**: big bold name, two paragraphs of plain black text on white, one subheading, no styling at all. Plain is correct for Week 1 — a styled page this week means you spent time on the wrong thing.
+
+### How to work through it
+
+1. **Set up once (2 min).** Open the folder that holds your repository in VS Code (**File → Open Folder** — never a single file). Create `homework/session-01/` inside it.
+2. **Type the skeleton (10 min).** Create `index.html`, then type the five boilerplate lines by hand — do not paste. Save, double-click the file, and confirm the browser tab shows your `<title>`.
+3. **Fill in the content (15 min).** One `<h1>` with your name, two `<p>` about you, one `<h2>` with a paragraph under it. Add one `<!-- comment -->` naming a region of the page.
+4. **Create the empty folders (2 min).** `css/` and `images/` inside `homework/session-01/`, each holding a `.gitkeep` file, otherwise Git forgets them.
+5. **Self-check (5 min).** Every opening tag has a closing tag, indentation consistent, no stray text outside `<body>`. Then run the self-check tool before you push.
+
+### Where students lose marks
+
+- Pasting the boilerplate instead of typing it — you will regret this in the midterm, which is closed-internet.
+- `<meta charset="UTF-8">` placed after `<title>`: your Vietnamese name renders as `Ã¡` garbage.
+- Forgetting `.gitkeep`: the empty `css/` and `images/` folders vanish on push and the folder-layout points are lost.
+
+### Files this homework must produce
+
+- `homework/session-01/index.html`
+- `homework/session-01/css/.gitkeep`
+- `homework/session-01/images/.gitkeep`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-01/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW1: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: open `homework/session-01/index.html`, explain what each of the five boilerplate lines does, then show where your `<title>` appears in the browser tab.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 01 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 1, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

@@ -108,6 +108,72 @@ so each nav link is a plain file name. Open every page and click every link — 
 - `homework/session-08/table-practice.html` (new practice page with table)
 - `homework/session-08/table-practice.css` (table styles)
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+The week after the midterm. Two jobs: turn the exam into information — write down what you got wrong and fix it — and get ahead on tables, which is what Session 9 is built on.
+
+### Why this homework exists
+
+- A reflection you actually write is worth more than another page you half-copy. Naming three concrete mistakes, with the correct answer and the chapter section to re-read, is how the weak areas disappear before the final.
+- Tables are the first HTML structure that is genuinely *grid-shaped*: rows, cells, headers, merging. Practising in a throwaway file first means Session 9 is about styling, not survival.
+- Task 4 exists because navigation quietly rots: every page you added since Week 2 must still be reachable.
+
+### What “done” looks like
+
+There is no polished page to chase this week. Your `midterm-review.md` should read like the template in Task 1 — mistake, my answer, correct answer, why, where to review. Your `table-practice.html` should show a bordered table with a shaded header row and merged cells where the task asks for them.
+
+### How to work through it
+
+1. **Recall while it is fresh (10 min).** Right after the exam, before discussing answers, list what you hesitated on.
+2. **Write the reflection (20 min).** Three items in `homework/session-08/midterm-review.md`, following the exact template: what the topic was, what you answered, what is correct, one sentence why, and the ebook section to re-read.
+3. **Re-read those sections (15 min).** Actually open chapters 1–7 at the sections you named.
+4. **Build the practice table (25 min).** `table-practice.html` per Task 2: `border`, a header row, at least one `colspan` or `rowspan`, real content — not lorem ipsum.
+5. **Style it (15 min).** Task 3: alternating row colours, padding in cells, header contrast — in `table-practice.css`.
+6. **Crawl the project (10 min).** Task 4: click from `index.html` to every page and back. Fix broken links and update the nav list.
+
+### Where students lose marks
+
+- Writing “I was careless” instead of a specific technical mistake — nothing to fix, no points.
+- Building the table directly in `project/activities.html` before tables are taught; this week's table stays a practice file.
+- Leaving `border="1"` as your only styling — attribute borders are legacy, CSS is the requirement.
+
+### Files this homework must produce
+
+- `homework/session-08/midterm-review.md`
+- `homework/session-08/table-practice.html`
+- `homework/session-08/table-practice.css`
+- `project/` (navigation fixes)
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-08/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW8: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: pick ONE thing you got wrong in the midterm (or in Task 2's table), open that file, and explain what the correct approach is and why.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 08 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 8, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

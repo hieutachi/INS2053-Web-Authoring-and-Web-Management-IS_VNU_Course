@@ -111,12 +111,25 @@ Week 1 is the students' first encounter with the course. In addition to the norm
 
 Each homework sheet (`homework/session-NN/homework.md`) has:
 - **Part 1 — Tasks (10 points)** with clear requirements and a **Grading Rubric**
+- **Detailed Brief — Read This First**: the missing half of the old sheets — the
+  scenario, why the task exists, what "done" looks like against the visual
+  target, a timed step-by-step, the mistakes that cost marks, the exact file
+  paths, and the hand-in procedure for both halves
 - **Part 2 — Video Reflection (4 points)**: a 1–2 minute OBS screen recording
   in which the student presents one part of the homework. The sheet names an
   easy topic per session, lists the requirement checklist, and carries a small
   marking table (structure 1, screen walkthrough 1, correct explanation 2)
 - A `submissions.md` file where each student appends their Google Drive link
 - No published answer keys (intentional — homework is graded)
+
+**The Detailed Brief is generated, not hand-typed.** Its content lives once per
+session in `_tools/hw-briefs.mjs` (English + Vietnamese), and
+`_tools/build-hw-briefs.mjs` splices it into all 30 markdown sources between
+`<!-- HW-BRIEF:START/END -->` markers. To change any session's brief, edit the
+data file and re-run the generator — never hand-edit inside the markers, they
+are overwritten. The session hub pages read the same data, so the overview and
+the sheet can never drift apart. Gate: `npm run hw:check` fails if a source has
+drifted from the data.
 
 **Video handling:** the site and the grader never receive video files. Students
 upload to their own Google Drive ("Anyone with the link → Viewer") and commit
@@ -207,6 +220,7 @@ The site uses an **allowlist** (not a blocklist). These are excluded on purpose:
 ### When to Rebuild
 
 - After editing any `canvases/*.canvas.tsx`: run `npm run build:slides` then `npm run build:site`
+- After editing `_tools/hw-briefs.mjs`: run `npm run build:hw-briefs` (rewrites all 30 sources), then `npm run build:site`
 - After editing any `ebook/`, `slides/`, or `homework/` source: run `npm run build:site`
 - After editing grader source/rubrics: run `npm run build:grader` then `npm run build:site`
 - After adding or editing a translation under `i18n/vi/` or a string in `_tools/i18n.mjs`: run `npm run build:site` (both trees regenerate every time; there is no separate Vietnamese build)
@@ -216,6 +230,7 @@ The site uses an **allowlist** (not a blocklist). These are excluded on purpose:
 ```bash
 # Full rebuild + QA (run before every deploy)
 npm run build:slides    # canvases → slides-html/
+npm run build:hw-briefs # hw-briefs data → the 30 homework sources
 npm run build:site      # grader artifact + site/
 npm run qa              # canvases + slides QA
 npm run qa:site         # 16 QA groups on site output

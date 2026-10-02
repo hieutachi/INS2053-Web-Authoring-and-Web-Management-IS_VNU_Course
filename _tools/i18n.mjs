@@ -123,6 +123,37 @@ export const UI = {
     stepToolNote:
       "Grades the mechanical half of the code rubric in your own browser — nothing is uploaded. It reports where you stand, not your final mark; your lecturer decides that.",
     stepToolCta: "Open the self-check tool",
+    // The homework flow, as a student meets it: assign -> brief -> build ->
+    // explain -> hand in -> grade. Steps 04-06 are new; they carry the part the
+    // sheets used to assume everyone already knew.
+    stepAssignedTitle: "Homework {nn} assigned",
+    stepAssignedNote:
+      "The sheet opens with <strong>Detailed Brief — Read This First</strong>: what you are building, why it matters, and what \u201cdone\u201d looks like. Read that before you touch the tasks.",
+    stepAssignedCta: "Read the detailed brief",
+    stepBuildTitle: "Build it — Part 1 (code, 10 pts)",
+    stepBuildNote:
+      "Work the tasks in order, roughly 60–90 minutes. The brief lists the exact file paths the grader looks for and the mistakes that cost the most marks. AI tools are allowed — understand every line you keep.",
+    stepBuildCta: "See the tasks",
+    stepExplainTitle: "Explain it — Part 2 (video, 4 pts)",
+    stepExplainNote:
+      "Record 60–120 seconds in OBS Studio: screen shared throughout, your voice required, name and student ID at the start. Present ONE part of the homework — the brief names an easy topic for this session.",
+    stepExplainCta: "See the video brief",
+    stepHandinTitle: "Hand it in — code + video link",
+    stepHandinNote:
+      "Commit and push the files to your repository, then add your Google Drive link to <code>homework/submissions.md</code> and push again. Online submission is not enabled yet; your repository is the submission.",
+    stepHandinCta: "See the hand-in steps",
+    stepGradedTitle: "Marked — 10 code + 4 video",
+    stepGradedNote:
+      "The self-check tool scores the mechanical half of the code rubric. Your lecturer reviews the rest and watches the video. Monday is a grace day at −20% of the earned mark; nothing is marked after Monday 23:59.",
+    stepGradedCta: "See the reference rubric",
+    flowLead:
+      "Nine cards, one week. Steps 03–07 are the homework itself, in the order you meet it: what was assigned, what it really means, how to build it, how to explain it, how to hand it in.",
+    // Headings inside the published homework sheet that the hub deep-links to.
+    // The slug is derived from these strings at build time, so renaming a
+    // heading here never leaves a dead anchor behind.
+    anchorTasks: "Requirements",
+    anchorVideo: "Part 2 — Video Reflection (OBS) — required, not optional",
+    anchorHandin: "How to hand it in",
     chapterCta: "Chapter {n}",
     deckCta: "Deck {n}",
     homeworkCta: "Homework {nn}",
@@ -291,6 +322,36 @@ export const UI = {
     stepToolNote:
       "Chấm phần cơ học của rubric code ngay trên trình duyệt của bạn — không tải gì lên. Công cụ cho biết bạn đang đứng ở đâu, chưa phải điểm cuối; giảng viên mới là người quyết định.",
     stepToolCta: "Mở công cụ tự chấm",
+    // Mạch bài tập, theo đúng thứ tự sinh viên gặp: giao bài -> mô tả -> làm ->
+    // giải thích -> nộp -> chấm. Ba bước cuối là mới.
+    stepAssignedTitle: "Được giao bài tập {nn}",
+    stepAssignedNote:
+      "Đề bài mở đầu bằng <strong>Mô tả chi tiết — hãy đọc phần này trước</strong>: bạn đang xây gì, vì sao nó quan trọng, và “xong” trông như thế nào. Đọc phần đó trước khi vào các nhiệm vụ.",
+    stepAssignedCta: "Đọc mô tả chi tiết",
+    stepBuildTitle: "Làm bài — Phần 1 (code, 10 điểm)",
+    stepBuildNote:
+      "Làm lần lượt các nhiệm vụ, tốn khoảng 60–90 phút. Phần mô tả ghi rõ đường dẫn file mà công cụ chấm tìm kiếm và những lỗi mất điểm nhiều nhất. Được dùng công cụ AI — nhưng phải hiểu từng dòng bạn giữ lại.",
+    stepBuildCta: "Xem các nhiệm vụ",
+    stepExplainTitle: "Trình bày lại — Phần 2 (video, 4 điểm)",
+    stepExplainNote:
+      "Quay 60–120 giây bằng OBS Studio: chia sẻ màn hình suốt video, bắt buộc có giọng nói, tên và mã số sinh viên ở đầu video. Trình bày MỘT phần của bài tập — phần mô tả có gợi ý chủ đề dễ cho buổi này.",
+    stepExplainCta: "Xem hướng dẫn quay video",
+    stepHandinTitle: "Nộp bài — code + link video",
+    stepHandinNote:
+      "Commit và push các file vào repository của bạn, rồi thêm link Google Drive vào <code>homework/submissions.md</code> và push tiếp. Việc nộp bài trực tuyến chưa mở; repository của bạn chính là nơi nộp.",
+    stepHandinCta: "Xem các bước nộp",
+    stepGradedTitle: "Được chấm — 10 code + 4 video",
+    stepGradedNote:
+      "Công cụ tự chấm cho điểm phần cơ học của rubric code. Giảng viên xem phần còn lại và chấm video. Thứ Hai là ngày nộp muộn với hệ số −20% trên điểm đạt được; sau 23:59 thứ Hai không chấm gì nữa.",
+    stepGradedCta: "Xem rubric tham chiếu",
+    flowLead:
+      "Chín thẻ, một tuần. Các bước 03–07 chính là bài tập, theo đúng thứ tự bạn gặp: được giao gì, bài đó thật sự nghĩa là gì, làm thế nào, trình bày thế nào, và nộp ra sao.",
+    // Đề mục trong phiếu bài tập đã publish mà trang buổi học link thẳng tới.
+    // Slug được suy từ chuỗi này lúc build, nên đổi tên đề mục không để lại
+    // anchor chết.
+    anchorTasks: "Yêu cầu",
+    anchorVideo: "Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn",
+    anchorHandin: "Cách nộp bài",
     chapterCta: "Chương {n}",
     deckCta: "Slide {n}",
     homeworkCta: "Bài tập {nn}",

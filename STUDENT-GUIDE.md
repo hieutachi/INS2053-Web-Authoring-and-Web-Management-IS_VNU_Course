@@ -67,12 +67,15 @@ The ebook has 15 chapters (one per session) plus Appendix A. Each chapter follow
 
 ## 4. How to Use the Session Pages
 
-The website (`site/`) organizes everything by week. Each session page has four steps:
+The website (`site/`) organizes everything by week. Each session page is a nine-card flow, in the order you meet it:
 
 1. **Before class** → Read the ebook chapter
 2. **In class** → Follow the lecture deck
-3. **After class** → Work on the homework
-4. **Check yourself** → Use the self-check tool
+3. **After class — assigned** → Open the homework sheet and read its **Detailed Brief** first
+4. **After class — build** → Finish Part 1 (the code tasks)
+5. **After class — explain** → Record Part 2 (your 60–120 second OBS video)
+6. **After class — hand in** → Push the code + add your Drive link to `submissions.md`
+7. **Check yourself** → Run the self-check tool, then read how the work is marked
 
 Start at [Session 1](site/sessions/session-01.html) and follow the flow.
 
@@ -128,6 +131,25 @@ Every homework has **two parts**, handed in together:
   + student ID at the start. You are graded on the structure of the talk (1),
   the real screen walkthrough (1), and a correct explanation (2) — reading a
   script over code you cannot explain scores 0.
+
+### Read the Detailed Brief first
+
+Right after the tasks, every sheet carries a section called **Detailed Brief —
+Read This First**. It is the part that tells you *what* you are actually
+building and *how* to get it done, not just what to tick off:
+
+| Sub-section | What it gives you |
+|---|---|
+| What you are actually building | The situation in plain words, before any requirement list |
+| Why this homework exists | What skill it trains and where it pays off later |
+| What "done" looks like | How to judge your own page against the live visual target |
+| How to work through it | A timed, ordered set of steps — roughly 60–90 minutes total |
+| Where students lose marks | The specific mistakes that cost the most points |
+| Files this homework must produce | The exact paths the grader looks for |
+| How to hand it in | Step-by-step for the code push, the video link, and the self-check |
+
+The session hub page deep-links straight to each of these, so you can jump from
+"what was assigned" to "how to hand it in" without hunting through the sheet.
 
 ### How to Submit the Video
 

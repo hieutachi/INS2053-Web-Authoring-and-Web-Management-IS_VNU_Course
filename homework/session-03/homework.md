@@ -50,6 +50,71 @@ Create a section with the heading `<h2>Photo Gallery</h2>` that contains at leas
 - [ ] Has 2+ images with descriptive alt text
 - [ ] Has a photo gallery section with 3+ images and captions
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+Your About page stops being a note and becomes a page: real heading hierarchy, lists that scan, and photographs that still say something when they fail to load.
+
+### Why this homework exists
+
+- Heading levels are structure, not size. An `<h3>` used because it looks small confuses screen readers and search engines, and costs you the structure points in the rubric.
+- Lists are the cheapest way to make content readable: unordered for things with no order (club activities), ordered for steps or rankings.
+- `alt` text is not decoration. It is what a blind visitor hears, what shows while an image is missing, and what Google indexes. A descriptive alt is a graded requirement, not a suggestion.
+- Relative paths are the reason your site works locally and dies after upload. Getting them right here, once, saves every later session.
+
+### What “done” looks like
+
+Compare with the live visual target: title, intro paragraph, three heading levels, one bulleted list, one numbered list, then a gallery of at least three images each with a caption. Text flows top to bottom in one column — no CSS yet.
+
+### How to work through it
+
+1. **Re-open last week's page (1 min).** Edit `project/about.html` in place. Do not start a new file; this page grows every week.
+2. **Build the outline (10 min).** `<h1>` club/page title → `<h2>` section → `<h3>` subsection, each followed by its paragraph.
+3. **Add the two lists (10 min).** One `<ul>` with 5+ items, one `<ol>` with 3+ items. Keep list items short.
+4. **Drop in images (15 min).** Put files in `project/images/`, reference them with `<img src="images/ten-file.jpg" alt="mô tả những gì trong ảnh">` plus `width`/`height`.
+5. **Build the gallery (10 min).** Three or more images, each with a visible caption, inside a section headed `<h2>`.
+6. **Alt-text pass (5 min).** Read your page aloud using only the alt texts. If a listener cannot picture the page, rewrite them.
+
+### Where students lose marks
+
+- `alt="image"` or `alt="photo"` — says nothing, scores zero on the alt criterion.
+- `src="/images/x.jpg"` (leading slash = absolute from the web root) instead of `src="images/x.jpg"`.
+- Skipping heading levels (`h1` → `h3`) to get a smaller font.
+
+### Files this homework must produce
+
+- `project/about.html`
+- `project/images/` (new image files)
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-03/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW3: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show one image you added to the gallery and explain what `src`, `alt` and `width`/`height` each do, and what happens if each one is missing.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 03 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 3, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

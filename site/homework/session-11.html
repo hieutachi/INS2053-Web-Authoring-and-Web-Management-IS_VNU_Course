@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-11.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -207,7 +208,67 @@ Open `index.html` in any web browser.
 <li><code>project/contact.html</code> (polish + favicon)</li>
 <li><code>project/css/style.css</code> (final polish)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>Compact-site week: you take what you have and bring it up to release quality — every page consistent, favicon in place, and a README that lets a stranger run the site.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Polish is a gradeable skill: consistent spacing, aligned components, no orphan pages, no placeholder text. It is the difference between coursework and a portfolio piece.</li>
+<li>A favicon is a one-line <code>&lt;link&gt;</code> that changes how professional the tab looks — and forgetting it produces the noisy 404 in the console.</li>
+<li>A README is how anyone (including future you, and any employer who finds the repo) understands what the project is, what it needs, and how to open it.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>Live visual target plus a console check: no red errors, favicon visible in the tab, all five pages visually consistent, and <code>README.md</code> rendering as a proper page on GitHub.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Audit first (15 min).</strong> Open all pages side by side and list every inconsistency: heading sizes, spacing, colours, missing nav items. Fix the list, not the mood.</li>
+<li><strong>Polish the pages (20 min).</strong> Apply the fixes in <code>css/style.css</code> so all pages benefit at once.</li>
+<li><strong>Add the favicon (10 min).</strong> A 32×32 ICO/PNG in <code>project/images/</code>, then <code>&lt;link rel=&quot;icon&quot; href=&quot;images/favicon.ico&quot;&gt;</code> in the <code>&lt;head&gt;</code> of every page.</li>
+<li><strong>Write the README (20 min).</strong> <code>project/README.md</code> with the four required sections: what the site is, the page list, the technologies used, how to run it, and author credit.</li>
+<li><strong>Final crawl (10 min).</strong> Visit every page, open DevTools, confirm zero 404s and zero console errors.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Favicon linked in only one page.</li>
+<li>A README that is three lines of prose — the rubric wants named sections.</li>
+<li>Fixing one page&#39;s spacing directly in that page instead of in shared CSS.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li><code>project/README.md</code></li>
+<li><code>project/index.html</code></li>
+<li><code>project/about.html</code></li>
+<li><code>project/activities.html</code></li>
+<li><code>project/media.html</code></li>
+<li><code>project/contact.html</code></li>
+<li><code>project/css/style.css</code></li>
+<li><code>project/images/favicon.ico</code></li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-11/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW11: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show your <code>README.md</code> and favicon, and explain what each README section promises a visitor and how the favicon is wired into the pages.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 11 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 11, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview

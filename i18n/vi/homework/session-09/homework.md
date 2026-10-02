@@ -81,6 +81,74 @@ Thêm CSS để bảng trông chuyên nghiệp.
 - [ ] Bảng được style với viền, màu tiêu đề, zebra striping
 - [ ] Liên kết Activities có trên mọi trang và hoạt động
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Bảng rời file luyện tập để vào site thật: một trang Activities mà lịch trình là bảng HTML đúng nghĩa, có style, và truy cập được từ mọi trang khác.
+
+### Vì sao bài tập này tồn tại
+
+- Lịch trình là dữ liệu dạng bảng. Dùng table cho nó là ngữ nghĩa đúng; dùng div hay đoạn văn xếp hàng là điều rubric gọi là lạm dụng.
+- `thead`/`tbody`/`tfoot`, `<th scope="col">` và bảng có caption là thứ giúp trình đọc màn hình nói “hàng 3, cột Thứ tư” thay vì một khối chữ.
+- `colspan` và `rowspan` là hai primitive gộp ô bạn sẽ cần lại ở bài thi cuối kỳ.
+- Thêm trang thứ năm buộc bạn phải thành thạo thói quen nhất quán nav: bốn trang cũ đều phải biết trang mới.
+
+### “Xong” nhìn như thế nào
+
+Mẫu sống: trang Activities có tiêu đề, bảng với hàng đề mục tô nền, ít nhất một ô gộp, thân bảng sọc ngựa, padding đủ rộng, và trang mới xuất hiện trong nav của cả bốn trang cũ.
+
+### Cách làm từng bước
+
+1. **Tạo trang (5 phút).** `project/activities.html`, copy từ một trang đang có để sẵn boilerplate, nav và footer.
+2. **Soạn dữ liệu (10 phút).** Viết lịch dưới dạng danh sách thuần trước: sự kiện nào, ngày nào, phòng nào. Quyết định lưới trước khi viết mã.
+3. **Đánh dấu bảng (20 phút).** `<table>` → `<caption>` → `<thead>` với `<th scope="col">` → `<tbody>` các hàng thật → ít nhất một `colspan` hoặc `rowspan`.
+4. **Style (20 phút).** Trong `css/style.css`: `border-collapse: collapse`, padding ô, nền đề mục, sọc `tbody tr:nth-child(even)`, highlight khi hover.
+5. **Nối điều hướng (10 phút).** Thêm Activities vào nav của `index`, `about`, `contact` và `media` (nếu đã có); đánh dấu active ở trang mới.
+6. **Rà soát accessibility (5 phút).** Bấm Tab và đọc to bảng như thể không nhìn thấy. Mỗi hàng có tự nhận cột của nó không?
+
+### Nơi sinh viên mất điểm
+
+- Table lồng nhau hoặc table chiếm chỗ để dàn trang — đúng thứ môn học dạy tránh.
+- Dùng `<td>` thay `<th>` ở hàng đề mục.
+- Cập nhật nav trên một trang rồi mất điểm nhất quán ở ba trang còn lại.
+
+### File bài tập phải tạo ra
+
+- `project/activities.html`
+- `project/css/style.css`
+- `project/index.html`
+- `project/about.html`
+- `project/contact.html`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-09/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW9: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu bảng lịch trình và giải thích `<thead>`, `<tbody>`, `colspan`/`rowspan` trong đó làm gì, cùng một lựa chọn style bạn đã quyết.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 09 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 9, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

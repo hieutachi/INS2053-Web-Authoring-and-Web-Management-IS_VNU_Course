@@ -85,6 +85,75 @@ Open `index.html` in any web browser.
 - `project/contact.html` (đánh bóng + favicon)
 - `project/css/style.css` (hoàn thiện cuối)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Tuần site gọn: bạn lấy những gì đang có và nâng lên chất lượng phát hành — mọi trang nhất quán, có favicon, và một README để người lạ chạy được site.
+
+### Vì sao bài tập này tồn tại
+
+- Đánh bóng là kỹ năng chấm được: khoảng cách nhất quán, thành phần thẳng hàng, không trang mồ côi, không chữPlaceholder. Đó là khác biệt giữa bài tập và một món đồ nghề.
+- Favicon là một dòng `<link>` đổi hẳn cảm giác chuyên nghiệp của tab — và quên nó sinh ra lỗi 404 ồn ào trong console.
+- README là cách bất kỳ ai (kể cả bạn của tương lai, hay nhà tuyển dụng vào repo) hiểu project là gì, cần gì, và mở ra sao.
+
+### “Xong” nhìn như thế nào
+
+Mẫu sống cộng một lượt kiểm tra console: không lỗi đỏ, favicon hiện trên tab, năm trang nhất quán về nhìn, và `README.md` hiển thị đúng như một trang trên GitHub.
+
+### Cách làm từng bước
+
+1. **Khám trước (15 phút).** Mở tất cả trang cạnh nhau và liệt kê mọi chỗ lệch: cỡ đề mục, khoảng cách, màu, mục nav thiếu. Sửa theo danh sách, không sửa theo cảm tính.
+2. **Đánh bóng các trang (20 phút).** Áp dụng fixes trong `css/style.css` để mọi trang cùng được hưởng.
+3. **Thêm favicon (10 phút).** File ICO/PNG 32×32 trong `project/images/`, rồi `<link rel="icon" href="images/favicon.ico">` trong `<head>` của mọi trang.
+4. **Viết README (20 phút).** `project/README.md` với bốn mục bắt buộc: site là gì, danh sách trang, công nghệ dùng, cách chạy, và thông tin tác giả.
+5. **Bò lần cuối (10 phút).** Thăm mọi trang, mở DevTools, xác nhận không 404 và không lỗi console.
+
+### Nơi sinh viên mất điểm
+
+- Favicon chỉ được link ở một trang.
+- README ba dòng văn xuôi — rubric cần các mục được đặt tên.
+- Sửa khoảng cách của một trang ngay trong trang đó thay vì trong CSS chung.
+
+### File bài tập phải tạo ra
+
+- `project/README.md`
+- `project/index.html`
+- `project/about.html`
+- `project/activities.html`
+- `project/media.html`
+- `project/contact.html`
+- `project/css/style.css`
+- `project/images/favicon.ico`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-11/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW11: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu `README.md` và favicon, giải thích từng mục README hứa hẹn gì với người xem và favicon được nối vào các trang thế nào.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 11 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 11, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

@@ -1063,6 +1063,37 @@ img {
 
 .step-learn { --step-accent: #805ad5; }
 .step-practice { --step-accent: var(--accent-orange); }
+/* The homework half of the flow, split into its own cards: what was assigned,
+   how to build it, how to hand it in, how it is marked. Each phase keeps a hue
+   of the practice orange so the nine cards still read as one week's rhythm, not
+   four unrelated lists. */
+.step-brief { --step-accent: var(--accent-warm); }
+.step-build { --step-accent: var(--accent-orange); }
+.step-handin { --step-accent: var(--accent-green); }
+.step-graded { --step-accent: var(--accent-strong); }
+
+.flow-lead {
+  margin: 0 0 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Nine cards fill three rows of three exactly, so the grid closes flush on its
+   own; nothing has to be stretched. The narrower breakpoints collapse the flow
+   to two columns and then one, where a spanning card would break the order. */
+.session-page.flow-9 .step {
+  min-height: 300px;
+}
+
+.session-page.flow-9 .step-number {
+  margin-bottom: 1.6rem;
+}
+
+@media (max-width: 72rem) {
+  .session-page.flow-9 .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
 .step-number {
   align-self: flex-end;

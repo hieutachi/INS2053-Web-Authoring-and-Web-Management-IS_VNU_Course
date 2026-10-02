@@ -90,6 +90,71 @@ form label {
 - `project/contact.html` (thêm biểu mẫu)
 - `project/css/style.css` (thêm style biểu mẫu)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Site biết lắng nghe: một form liên hệ thật trên `contact.html` — nhãn, đúng loại input, thuộc tính validate, textarea, radio và checkbox — được style khớp với phần còn lại.
+
+### Vì sao bài tập này tồn tại
+
+- Loại input không phải chuyện hình thức. `type="email"` cho bạn gợi ý bàn phím và validation miễn phí; `type="text"` không cho gì. Chọn sai là lý do mất điểm phổ biến nhất của bài này.
+- Mọi trường cần `<label for>` gắn với một `id`. Input không nhãn thì không tiếp cận được và bị trừ mạnh.
+- `required`, `placeholder`, `maxlength`, `pattern` là validation phía client — lớp bảo vệ rẻ tiền trước khi dữ liệu tới server.
+- Form chưa có `action` vẫn phải trông hoàn chỉnh: môn học chấm trình bày và ngữ nghĩa, không chấm xử lý backend.
+
+### “Xong” nhìn như thế nào
+
+Mẫu sống: các trường xếp dọc với nhãn nhìn thấy được phía trên từng control, khoảng cách dễ chịu, có trạng thái focus, textarea đủ cao để đọc, radio và checkbox thẳng hàng với nhãn, nút bấm trông như một phần của thiết kế.
+
+### Cách làm từng bước
+
+1. **Liệt kê trường (10 phút).** Quyết định thứ thật sự cần: tên, email, chủ đề, lời nhắn, loại câu hỏi (radio), đồng ý (checkbox).
+2. **Dựng khung (10 phút).** `<form>` có method và action, đặt trong vùng `main` sẵn có của trang.
+3. **Thêm từng trường (25 phút).** Mỗi trường: `<label for="x">` + `<input id="x">` đúng type. Test sau mỗi trường, không đợi tới cuối.
+4. **Thuộc tính validate (10 phút).** `required` cho trường thiết yếu, `placeholder` là ví dụ chứ không phải nhãn, `maxlength` cho textarea.
+5. **Style (20 phút).** Chiều rộng, khoảng cách, độ đậm nhãn, viền focus, diện mạo nút — trong `css/style.css`.
+6. **Lướt bằng bàn phím (5 phút).** Tab suốt form. Mọi control với tới được, mọi nhãn được đọc lên.
+
+### Nơi sinh viên mất điểm
+
+- `<label>Tên</label>` không có cặp `for`/`id`.
+- Dùng `placeholder` làm nhãn duy nhất — nó biến mất ngay khi người dùng gõ.
+- Nút gửi đặt `type="button"` trong khi task cần control submit thật (đây là dạy mã đánh dấu, không phải endpoint sống).
+
+### File bài tập phải tạo ra
+
+- `project/contact.html`
+- `project/css/style.css`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-13/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW13: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu form liên hệ và đi qua ba loại input bạn đã dùng, giải thích mỗi loại thu thập gì và nhãn nào thuộc input nào.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 13 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 13, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**
@@ -166,4 +231,3 @@ thiếu, riêng tư, hoặc hỏng nghĩa là phần video không thể chấm.
 Trang Contact của bạn sẽ có một biểu mẫu trông chuyên nghiệp, nơi khách truy cập
 gõ tên, email, chọn chủ đề, viết lời nhắn và bấm Send. Mọi trường được style gọn
 gàng và dễ dùng.
-

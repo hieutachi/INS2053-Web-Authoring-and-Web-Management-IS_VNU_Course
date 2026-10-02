@@ -59,6 +59,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-12.html");}catch(e){}})(
         <li class="d2"><a href="#trạng-thái-luyện-tập">Trạng thái luyện tập</a></li>
         <li class="d2"><a href="#mục-tiêu">Mục tiêu</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước</a></li>
         <li class="d2"><a href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn</a></li>
         <li class="d2"><a href="#lưu-bài-luyện-tập-của-bạn">Lưu bài luyện tập của bạn</a></li>
         <li class="d2"><a href="#rubric-tham-chiếu">Rubric tham chiếu</a></li>
@@ -220,7 +221,62 @@ if(w&&w!=="vi")location.replace("../../homework/session-12.html");}catch(e){}})(
 <li><code>project/contact.html</code></li>
 <li><code>project/css/style.css</code></li>
 </ul>
-<h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="mô-tả-chi-tiết-hãy-đọc-phần-này-trước">Mô tả chi tiết — hãy đọc phần này trước<a class="anchor" href="#mô-tả-chi-tiết-hãy-đọc-phần-này-trước" aria-label="Link to this section">#</a></h3>
+<h4 id="bạn-thực-sự-đang-xây-gì">Bạn thực sự đang xây gì<a class="anchor" href="#bạn-thực-sự-đang-xây-gì" aria-label="Link to this section">#</a></h4>
+<p>Tuần validator. Bạn thôi đoán code đúng hay sai và bắt đầu chứng minh: W3C soi HTML, công cụ W3C soi CSS, rồi một lượt định dạng để code đọc sạch.</p>
+<h4 id="vì-sao-bài-tập-này-tồn-tại">Vì sao bài tập này tồn tại<a class="anchor" href="#vì-sao-bài-tập-này-tồn-tại" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Validator bắt được những lỗi trình duyệt bỏ qua: thẻ chưa đóng, lồng sai, thiếu alt, property không tồn tại. Sự bao dung ấy giấu lỗi sẽ bộc lộ trên thiết bị khác hoặc trong phòng thi.</li>
+<li>Đọc báo cáo validation là kỹ năng nghề — dòng lỗi, nguyên nhân, cách sửa — và đó chính là điều phần video của bài này yêu cầu bạn trình bày.</li>
+<li>Thụt lề nhất quán và comment là cách người khác (hoặc bạn sau ba tuần) đọc được file. Rubric trả tiền cho việc đó.</li>
+</ul>
+<h4 id="xong-nhìn-như-thế-nào">“Xong” nhìn như thế nào<a class="anchor" href="#xong-nhìn-như-thế-nào" aria-label="Link to this section">#</a></h4>
+<p>Thành công trông như thế này: W3C trả về “No errors” (warning được giải thích trong ghi chú của bạn), CSS validator không còn lỗi, và file của bạn thụt lề hai space kèm một comment cho mỗi vùng.</p>
+<h4 id="cách-làm-từng-bước">Cách làm từng bước<a class="anchor" href="#cách-làm-từng-bước" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Soi HTML (20 phút).</strong> Gửi từng trang lên W3C Nu checker (theo URI hoặc dán file). Ghi lại mọi lỗi: dòng, thông báo, nguyên nhân.</li>
+<li><strong>Sửa và chạy lại (20 phút).</strong> Sửa lỗi xuất hiện sớm nhất trước — các lỗi sau thường là hiệu ứng dây chuyền. Validate tới khi sạch.</li>
+<li><strong>Soi CSS (15 phút).</strong> Chạy <code>css/style.css</code> qua W3C CSS validator, sửa property lạ và lỗi chính tả.</li>
+<li><strong>Định dạng (15 phút).</strong> Thụt lề hai space, mỗi declaration một dòng, gom property theo nhóm, comment đầu mỗi vùng.</li>
+<li><strong>Hồi quy (10 phút).</strong> Tải lại mọi trang: sửa markup có thể đổi cách hiển thị. Xác nhận không gì hỏng.</li>
+<li><strong>Viết báo cáo (10 phút).</strong> Lưu kết quả validator vào một file trong <code>homework/session-12/</code> để ghi chú đi cùng bài tập.</li>
+</ol>
+<h4 id="nơi-sinh-viên-mất-điểm">Nơi sinh viên mất điểm<a class="anchor" href="#nơi-sinh-viên-mất-điểm" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Xoá phăng phần tử bị báo lỗi thay vì sửa nó, và mất luôn tính năng được chấm.</li>
+<li>Tin một warning là dương tính giả — hãy giải thích trong ghi chú thay vì bẻ code đúng thành sai.</li>
+<li>Dùng auto-formatter viết lại luôn đường dẫn hoặc xoá comment của bạn.</li>
+</ul>
+<h4 id="file-bài-tập-phải-tạo-ra">File bài tập phải tạo ra<a class="anchor" href="#file-bài-tập-phải-tạo-ra" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Toàn bộ file HTML trong <code>project/</code></li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h4 id="cách-nộp-bài">Cách nộp bài<a class="anchor" href="#cách-nộp-bài" aria-label="Link to this section">#</a></h4>
+<p>Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: <strong>Phần 1 code (10 điểm)</strong> và <strong>Phần 2 video (4 điểm)</strong>. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.</p>
+<p><strong>Phần 1 — phần code</strong></p>
+<ol>
+<li>Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.</li>
+<li>Thêm vào staging: <code>git add homework/session-12/ project/</code> (chỉ thêm những gì buổi này động tới).</li>
+<li>Commit với message nói rõ đã đổi gì: <code>git commit -m &quot;HW12: &lt;tóm tắt ngắn&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. Một commit nằm lại trên laptop không phải là bài nộp.</li>
+</ol>
+<p><strong>Phần 2 — phần video</strong></p>
+<ol>
+<li>Quay 60–120 giây bằng OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.</li>
+<li>Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu một lỗi HTML validation và một cảnh báo CSS từ validator, giải thích nguyên nhân và cách bạn sửa.</li>
+<li>Tải file MP4 (720p trở lên) lên <strong>Google Drive của chính bạn</strong> và đặt quyền chia sẻ là <strong>“Ai có liên kết → Xem”</strong>.</li>
+<li>Mở <code>homework/submissions.md</code> trong repository và thêm một dòng: <code>- Session 12 — (dán link Google Drive của bạn vào đây)</code>.</li>
+<li>Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.</li>
+</ol>
+<p><strong>Trước khi push</strong></p>
+<ol>
+<li>Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.</li>
+<li>Mở công cụ tự chấm (<code>site/cham-bai.html</code>), chọn buổi 12, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.</li>
+<li>Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn">Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn<a class="anchor" href="#phần-2-suy-ngẫm-bằng-video-obs-bắt-buộc-không-tùy-chọn" aria-label="Link to this section">#</a></h3>
 <p>Code chỉ là một nửa bài tập này. Nửa còn lại là một <strong>video quay màn hình ngắn</strong>
 chứng minh bài làm là của bạn và bạn có thể <em>giải thích</em> nó — chính là kỹ năng mà
 thi thực hành giữa kỳ, thi thực hành cuối kỳ, và mọi buổi phỏng vấn xin việc sau

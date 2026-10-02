@@ -69,6 +69,73 @@ Thêm CSS để trang media trông đẹp.
 - `project/css/style.css` (thêm style media)
 - Cả 4 trang HTML hiện có (cập nhật điều hướng)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Site có chuyển động và âm thanh: một trang Media với video nhúng và một đoạn audio, mỗi thứ có điều khiển, có poster và có nội dung dự phòng cho trình duyệt không phát được.
+
+### Vì sao bài tập này tồn tại
+
+- `<video>` và `<audio>` là HTML thuần — không plugin, không Flash. Biết các thuộc tính (`controls`, `poster`, `preload`, `loop`, `muted`) là toàn bộ kỹ năng.
+- Nội dung dự phòng trong thẻ không phải trang trí tuỳ chọn: đó là thứ người dùng thiếu codec nhìn thấy, và nó được chấm.
+- File cục bộ hay nhúng ngoài rất quan trọng cho kỳ thi: bài thi thực hành không có internet, nên `<video>` của bạn với `source` cục bộ là thứ dựa được.
+- Media rất nặng. Giới hạn kích thước, lazy loading và để file trong `project/media/` là thực hành tốt, không việc vặt.
+
+### “Xong” nhìn như thế nào
+
+Mẫu sống: trang Media có video hiển thị khung poster trước khi phát, phát với điều khiển nhìn thấy được, chiều rộng hợp lý, và hàng audio thẳng hàng với phần còn lại của bố cục.
+
+### Cách làm từng bước
+
+1. **Chuẩn bị asset (10 phút).** Một MP4 ngắn và một MP3 bạn có quyền dùng. Đặt trong `project/media/`.
+2. **Tạo trang (5 phút).** `project/media.html` copy từ một trang đang có.
+3. **Nhúng video (15 phút).** `<video>` có `controls`, `poster`, `width`/`height` rõ ràng, một `<source>` MP4, kèm chữ dự phòng và một link cho trình duyệt thất bại.
+4. **Nhúng audio (10 phút).** `<audio controls>` có `<source>` và cùng mẫu dự phòng.
+5. **Style trang (15 phút).** Giới hạn chiều rộng media theo cột nội dung, chú thích dưới từng clip, khoảng cách nhất quán với các trang khác.
+6. **Kiểm tra chéo (5 phút).** Phát và tạm dừng cả hai, kéo thanh tiến trình, rồi xem source và chắc chắn chữ dự phòng là câu có nghĩa.
+
+### Nơi sinh viên mất điểm
+
+- `autoplay` — gây khó chịu và thường bị trình duyệt chặn.
+- Commit video 200 MB vào Git; hãy giữ clip ngắn hoặc link ra ngoài và ghi rõ.
+- Thiếu nội dung dự phòng: một khung trống ăn điểm 0 phần media.
+
+### File bài tập phải tạo ra
+
+- `project/media.html`
+- `project/media/` (file video + audio)
+- `project/css/style.css`
+- Toàn bộ trang HTML đang có (cập nhật nav)
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-10/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW10: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu trang media và giải thích `<video>` (hoặc `<audio>`) với `controls` hoạt động thế nào, gồm cả chữ dự phòng và các thuộc tính `poster`/`source` bạn dùng.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 10 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 10, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

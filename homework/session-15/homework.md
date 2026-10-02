@@ -124,6 +124,72 @@ Test your website on different screen sizes:
 - All 5 HTML files (viewport meta tag)
 - `project/css/style.css` (media queries + responsive images)
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+The last build week: your site adapts instead of breaking. Viewport meta, one honest media query, images that scale — checked on a phone-sized window rather than assumed.
+
+### Why this homework exists
+
+- Without `<meta name="viewport">` a phone pretends to be 980px wide and every media query you wrote is useless. It is one line and it is the prerequisite for everything else this week.
+- This course teaches `max-width` (desktop-first) queries. Industry default is `min-width` (mobile-first); Chapter 15 explains both, but the exams expect `max-width`.
+- `img { max-width: 100%; }` is the single rule that prevents horizontal scrolling on a phone.
+- Responsive testing is a habit: resize, watch the breakpoint fire, confirm nothing overlaps. That habit is what the final practical rewards.
+
+### What “done” looks like
+
+Open the live visual target and drag the iframe narrower: at the breakpoint the columns stack, text reflows, images shrink, and no horizontal scrollbar ever appears.
+
+### How to work through it
+
+1. **Add the viewport tag (5 min).** One line in the `<head>` of all five pages, before the stylesheet link.
+2. **Pick a breakpoint (10 min).** Look at your own layout, not a magic number. Somewhere around 768px is where two columns get cramped here.
+3. **Write the query (20 min).** `@media (max-width: 768px) { … }`: stack `main` and `aside` to full width, shrink headings, adjust padding.
+4. **Make images fluid (10 min).** `img { max-width: 100%; height: auto; }` inside the base rules.
+5. **Test for real (15 min).** DevTools device toolbar: 375px, 768px, desktop. Check nav, table, form and media page specifically — tables and forms overflow first.
+6. **Final crawl (10 min).** Every page at every width, no horizontal scroll anywhere.
+
+### Where students lose marks
+
+- Viewport tag added to one page only.
+- Fixed pixel widths on containers that exceed the phone screen.
+- Using `min-width` on the exam when the course standard is `max-width`.
+- A table forcing sideways scroll — wrap it or reduce columns in the query.
+
+### Files this homework must produce
+
+- All 5 HTML files (viewport meta tag)
+- `project/css/style.css`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-15/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW15: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show your site in the browser device toolbar, narrow the viewport live, and explain which media query rule fires and what it changes.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 15 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 15, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

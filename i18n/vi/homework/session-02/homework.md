@@ -69,6 +69,72 @@ project/
 - `project/contact.html`
 - `project/images/` (với ít nhất 2 file ảnh)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Tuần này bạn đổ nền cho cả học kỳ: một thư mục dự án thật. Từ đây môn học chạy trên **hai cây tách biệt** trong repository, và nhầm lẫn giữa chúng là cách mất điểm phổ biến nhất.
+
+### Vì sao bài tập này tồn tại
+
+- `project/` là Student Club Website — đồ án bạn cộng thêm tính năng mỗi tuần và nộp cuối kỳ. `homework/session-NN/` là bài luyện tạm thời của riêng tuần đó. Việc chấm bài nhìn vào đường dẫn cụ thể, nên một trang đặt sai cây coi như không tồn tại với người chấm.
+- Cấu trúc phẳng ở gốc project (các trang nằm cạnh nhau, chỉ `css/` và `images/` là thư mục con) khiến mọi link nội bộ chỉ là tên file, không có `../` để gõ sai.
+- Đặt tên chữ thường có dấu gạch nối không phải là cầu toàn: server Linux coi `About.html` và `about.html` là hai file khác nhau, link của bạn gãy ngay khi deploy.
+
+### “Xong” nhìn như thế nào
+
+Cây thư mục của bạn phải giống tham chiếu trong Task 1: ba trang chạy được ở gốc project, hai thư mục asset rỗng nhưng có thật, không có gì thêm. So với mẫu sống trên trang website.
+
+### Cách làm từng bước
+
+1. **Tạo cây thư mục (5 phút).** Tạo `project/` gồm `index.html`, `about.html`, `contact.html`, cùng `project/css/` và `project/images/`.
+2. **Viết ba trang nháp (20 phút).** Mỗi trang có đủ bộ khung HTML5, một `<h1>` và nội dung ngắn Task 1 mô tả. Nghĩ tên club ngay bây giờ — bạn sẽ giữ nó tới Tuần 16.
+3. **Áp dụng quy tắc đặt tên (5 phút).** Chữ thường, dấu gạch nối thay khoảng trắng, không dấu trong tên file. Đổi tên mọi thứ sai trước khi link tới nó.
+4. **Hình ảnh — sau Buổi 3 (10 phút).** Task 2 cần `<img>` mà buổi sau mới học. Làm Task 1 bây giờ, quay lại Task 2 sau buổi 3; bài được thu sau buổi đó.
+5. **Kiểm tra đường dẫn, không kiểm tra đẹp (5 phút).** Mở từng trang từ file hệ thống và chắc chắn ảnh nạp từ đường dẫn tương đối `images/…`.
+
+### Nơi sinh viên mất điểm
+
+- Để trang bài tập trong `project/` — cây đồ án phải sạch.
+- `About Us.html` hay `Trang chủ.html`: khoảng trắng và dấu tiếng Việt trong tên file.
+- Link bằng `../images/x.png` từ một trang ở gốc: không có thư mục cha nào để leo lên.
+
+### File bài tập phải tạo ra
+
+- `project/index.html`
+- `project/about.html`
+- `project/contact.html`
+- `project/css/`
+- `project/images/` (2+ file ảnh)
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-02/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW2: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu cây thư mục project, giải thích vì sao website nằm ở `project/` còn bài luyện nằm ở `homework/session-02/`, và `css/` với `images/` được dành để làm gì.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 02 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 2, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

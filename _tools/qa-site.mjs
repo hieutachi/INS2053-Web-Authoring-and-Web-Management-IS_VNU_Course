@@ -315,7 +315,7 @@ console.log("== 9. navigation text is escaped exactly once =====================
   if (!dirty) ok("no double-escaped entities in contents, breadcrumbs or titles");
 }
 
-/* == 10. every session hub wires its three stages ========================= */
+/* == 10. every session hub wires its full homework flow ==================== */
 console.log("== 10. session hubs are complete =================================");
 {
   // Checked in both trees. The deck lives outside the tree, so its href is the
@@ -333,10 +333,39 @@ console.log("== 10. session hubs are complete ================================="
       if (!s.includes("../ebook/")) problems.push("no chapter link");
       if (!s.includes(`${up}/slides/buoi-${id}.html`)) problems.push("no deck link");
       if (!s.includes(`../homework/session-${id}.html`)) problems.push("no homework link");
+
+      /* The hub is a nine-card flow, and five of those cards deep-link into the
+         sheet: tasks, brief, hand in, marked. A card whose anchor does not exist
+         on that sheet lands the reader at the top of a long page with no
+         explanation — a silent failure, because the link itself resolves fine.
+         So each cross-page fragment is checked against the ids the target
+         document actually carries. Check 4 proves the file exists; this proves
+         the landing spot exists too. */
+      const sheetRel = `${prefix}homework/session-${id}.html`;
+      const sheet = src.get(sheetRel);
+      if (!sheet) {
+        problems.push(`${sheetRel} missing`);
+      } else {
+        const ids = new Set([...sheet.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+        const flow = /<ol class="steps">([\s\S]*?)<\/ol>/.exec(s);
+        if (!flow) problems.push("no steps list");
+        else {
+          const links = [...flow[1].matchAll(/href="([^"]*homework\/session-\d+\.html)(#[^"]*)?"/g)];
+          const anchored = links.filter((m) => m[2]);
+          if (anchored.length < 4)
+            problems.push(`only ${anchored.length} deep-link(s) into the sheet, expected 4+`);
+          for (const m of anchored) {
+            const frag = decodeURIComponent(m[2].slice(1));
+            if (!ids.has(frag))
+              problems.push(`anchor ${m[2]} has no target on ${sheetRel}`);
+          }
+        }
+      }
       if (problems.length) { bad(`${rel} — ${problems.join("; ")}`); dirty++; }
     }
   }
-  if (!dirty) ok("30 hubs (15 per language) each link chapter + deck + homework");
+  if (!dirty)
+    ok("30 hubs (15 per language) each link chapter + deck + homework, and every flow anchor resolves on its sheet");
 }
 
 /* == 11. submission and grading stay disabled ============================ */

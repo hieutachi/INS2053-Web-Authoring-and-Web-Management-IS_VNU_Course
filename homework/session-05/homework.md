@@ -86,6 +86,69 @@ Add CSS rules to your `project/css/style.css` file to make the layout look like 
 - `project/index.html` (updated with semantic HTML)
 - `project/css/style.css` (updated with layout styles)
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+Your pages stop being one long scroll of text and become a layout: a header, a navigation strip, a main column, a sidebar, a footer — built from tags that say what the region *is*, not just where it sits.
+
+### Why this homework exists
+
+- Semantic tags (`header`, `nav`, `main`, `aside`, `footer`) give a machine the shape of your document. Screen readers jump between them; search engines weight `main` content higher. A page of only `<div>`s looks identical to a browser and meaningless to everything else.
+- Layout is where CSS stops being decoration and becomes engineering: box model, width, float/flex, margins. This is the week that makes a two-column site possible.
+- One reusable template means every later page is a copy with content swapped, not a rebuild.
+
+### What “done” looks like
+
+The live visual target shows the goal: a dark header band with the club name, a horizontal nav row, a wide main column on the left, a narrow aside on the right, and a footer strip. Two clear columns, aligned, no overlapping text.
+
+### How to work through it
+
+1. **Mark up the regions (15 min).** Rewrite `project/index.html` body as `header` → `nav` → `main` → `aside` → `footer`, each with real content.
+2. **Give the boxes sizes (15 min).** In `css/style.css`: `main` about 70% width floated left, `aside` about 25% floated right (or use flex), `header`/`footer` full width.
+3. **Control the space (10 min).** Padding inside regions, margin between them, a `max-width` on the whole page so text does not stretch across a 4K monitor.
+4. **Clear the floats (5 min).** Without clearing, the footer climbs up beside the columns. Add `clear: both` on the footer (or switch to flex, which needs none).
+5. **Resize test (5 min).** Drag the window narrow and wide. Columns should hold their proportions and nothing should overlap.
+
+### Where students lose marks
+
+- Wrapping everything in `<div>` and styling that — semantically identical to a machine reading your page, and marked down.
+- Forgetting to clear floats: footer overlaps the sidebar.
+- Setting widths in pixels so the layout breaks on a laptop screen.
+
+### Files this homework must produce
+
+- `project/index.html`
+- `project/css/style.css`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-05/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW5: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show the layout template and explain which semantic tag does which job, and how your CSS turns those tags into two columns.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 05 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 5, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

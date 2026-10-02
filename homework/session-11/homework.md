@@ -85,6 +85,75 @@ Open `index.html` in any web browser.
 - `project/contact.html` (polish + favicon)
 - `project/css/style.css` (final polish)
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+Compact-site week: you take what you have and bring it up to release quality — every page consistent, favicon in place, and a README that lets a stranger run the site.
+
+### Why this homework exists
+
+- Polish is a gradeable skill: consistent spacing, aligned components, no orphan pages, no placeholder text. It is the difference between coursework and a portfolio piece.
+- A favicon is a one-line `<link>` that changes how professional the tab looks — and forgetting it produces the noisy 404 in the console.
+- A README is how anyone (including future you, and any employer who finds the repo) understands what the project is, what it needs, and how to open it.
+
+### What “done” looks like
+
+Live visual target plus a console check: no red errors, favicon visible in the tab, all five pages visually consistent, and `README.md` rendering as a proper page on GitHub.
+
+### How to work through it
+
+1. **Audit first (15 min).** Open all pages side by side and list every inconsistency: heading sizes, spacing, colours, missing nav items. Fix the list, not the mood.
+2. **Polish the pages (20 min).** Apply the fixes in `css/style.css` so all pages benefit at once.
+3. **Add the favicon (10 min).** A 32×32 ICO/PNG in `project/images/`, then `<link rel="icon" href="images/favicon.ico">` in the `<head>` of every page.
+4. **Write the README (20 min).** `project/README.md` with the four required sections: what the site is, the page list, the technologies used, how to run it, and author credit.
+5. **Final crawl (10 min).** Visit every page, open DevTools, confirm zero 404s and zero console errors.
+
+### Where students lose marks
+
+- Favicon linked in only one page.
+- A README that is three lines of prose — the rubric wants named sections.
+- Fixing one page's spacing directly in that page instead of in shared CSS.
+
+### Files this homework must produce
+
+- `project/README.md`
+- `project/index.html`
+- `project/about.html`
+- `project/activities.html`
+- `project/media.html`
+- `project/contact.html`
+- `project/css/style.css`
+- `project/images/favicon.ico`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-11/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW11: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show your `README.md` and favicon, and explain what each README section promises a visitor and how the favicon is wired into the pages.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 11 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 11, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

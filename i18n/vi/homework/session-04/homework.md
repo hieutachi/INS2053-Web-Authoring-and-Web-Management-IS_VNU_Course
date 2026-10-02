@@ -67,6 +67,72 @@ Viết các quy tắc CSS để trang About trông hấp dẫn về mặt thị 
 - [ ] Ảnh có max-width và một chút style
 - [ ] Ít nhất một danh sách được style
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Từ tuần này website của bạn có giao diện, và giao diện nằm trong một file riêng. Bạn chuyển từ viết trang sang viết một stylesheet mà cả site dùng chung.
+
+### Vì sao bài tập này tồn tại
+
+- Một file CSS ngoài được link từ mọi trang là ý cốt lõi của thiết kế web: đổi một rule, mọi trang cùng cập nhật. Style nội tuyến và thẻ `<font>` là cách của thời trước 2000 và sẽ trừ điểm.
+- Selector là cách CSS tìm phần tử. Hiểu selector phần tử và selector class ngay bây giờ là điều làm nên các tuần bố cục, typography và responsive sau này.
+- Cascade và specificity quyết định *rule nào thắng* khi hai rule mâu thuẫn. Đoán ở đây sinh ra lỗi kinh điển “CSS của tôi không chạy”.
+
+### “Xong” nhìn như thế nào
+
+So với mẫu sống, trang của bạn cần: nền body có màu, font dễ đọc, ba cấp đề mục khác nhau rõ rệt, giãn dòng thoải mái, ảnh và danh sách được định dạng. Không cần hoa mỹ — dễ đọc và nhất quán là đạt.
+
+### Cách làm từng bước
+
+1. **Tạo file (2 phút).** `project/css/style.css`, rỗng, lưu trong project.
+2. **Link đúng cách (3 phút).** Trong mọi trang HTML, đặt trong `<head>` và TRƯỚC `</head>`: `<link rel="stylesheet" href="css/style.css">`. Đường dẫn tính theo file HTML, không tính theo gốc project.
+3. **Định dạng nền tảng (10 phút).** `body` nhận `background-color`, `color`, `font-family`, `line-height`. Mọi thứ kế thừa từ đây.
+4. **Định dạng ba cấp đề mục (10 phút).** Cỡ và màu khác nhau rõ cho `h1`, `h2`, `h3`.
+5. **Định dạng nội dung (10 phút).** Giãn đoạn, `img { max-width: 100%; }`, và ít nhất một danh sách được style.
+6. **Xác nhận link hoạt động (5 phút).** Xoá một property, lưu, tải lại: trang không đổi nghĩa là đường dẫn `<link>` sai — sửa xong mới viết tiếp CSS.
+
+### Nơi sinh viên mất điểm
+
+- `href="/css/style.css"` — có máy chạy, có máy không; hãy dùng `css/style.css`.
+- Lưu CSS nhưng chưa tải lại trang: kiểm tra bằng F12 → Network, hoặc Ctrl+F5.
+- Style đề mục bằng cách bọc `<b>` hoặc sửa câu chữ thay vì dùng CSS.
+
+### File bài tập phải tạo ra
+
+- `project/css/style.css`
+- `project/about.html`
+- `project/index.html`
+- `project/contact.html`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-04/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW4: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chiếu `css/style.css`, giải thích `project/about.html` nối tới nó bằng `<link>` thế nào, và đọc qua một rule bạn viết: selector → property → hiệu quả nhìn thấy.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 04 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 4, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

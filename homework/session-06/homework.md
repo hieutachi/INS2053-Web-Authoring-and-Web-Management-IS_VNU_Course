@@ -68,6 +68,72 @@ Update `project/index.html` with richer content:
 - [ ] CSS is linked on all pages
 - [ ] Layout is consistent across all pages
 
+<!-- HW-BRIEF:START -->
+## Detailed Brief — Read This First
+
+### What you are actually building
+
+Three pages finally become one site. You wire them together with the same navigation on every page, finish the Contact page, and give the home page something worth landing on.
+
+### Why this homework exists
+
+- Navigation is the product. A visitor who cannot leave a page leaves the site. Identical markup on every page is what makes a site feel like one place.
+- Relative links are the skill this week really tests: `href="about.html"` between siblings, and why `../` would be wrong at the project root.
+- Highlighting the current page (an `active` class on the matching item) is the difference between a menu and a map.
+
+### What “done” looks like
+
+In the live visual target, click around: the same header, nav and footer on all three pages, every link lands, the current page is visibly marked, and the home page shows several distinct sections.
+
+### How to work through it
+
+1. **Write the menu once (10 min).** Build the `<ul>` nav in `index.html`, then copy the exact block into `about.html` and `contact.html` — same order, same classes.
+2. **Point the links (10 min).** `index.html`, `about.html`, `contact.html` as plain sibling file names. Click every link from every page before moving on.
+3. **Mark the current page (5 min).** Add `class="active"` to the matching `<li>` on each page and style it in CSS.
+4. **Finish the contact page (15 min).** Real content per Task 2: heading, intro, address block, email written as text (the form comes in Week 13).
+5. **Build up the home page (15 min).** Several sections per Task 3 — welcome, highlights, what the club does — each with an `<h2>`.
+6. **Full crawl (5 min).** Start at `index.html`, visit every page by clicking only, never the address bar. Any dead link is a failed requirement.
+
+### Where students lose marks
+
+- Menu written slightly differently on each page — inconsistent nav loses consistency points.
+- `href="index.html"` everywhere including on index itself.
+- Testing only one direction: links usually break on the page you did not think about.
+
+### Files this homework must produce
+
+- `project/index.html`
+- `project/about.html`
+- `project/contact.html`
+- `project/css/style.css`
+
+### How to hand it in
+
+This homework has two halves, handed in together and marked separately: **Part 1 code (10 points)** and **Part 2 video (4 points)**. Online submission is not enabled yet, so your own Git repository is the submission.
+
+**Part 1 — the code**
+
+1. Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.
+2. Stage the work: `git add homework/session-06/ project/` (add only what this session touched).
+3. Commit with a message that says what changed: `git commit -m "HW6: <short summary>"`.
+4. Push: `git push`. A commit that stayed on your laptop is not a submission.
+
+**Part 2 — the video**
+
+1. Record 60–120 seconds in OBS Studio (<https://obsproject.com>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.
+2. Present ONE part of this homework, not all of it. For this session: show the navigation menu on all three pages and explain how the same `<ul>` works everywhere and how the current page gets highlighted.
+3. Upload the MP4 (720p or higher) to **your own Google Drive** and set sharing to **“Anyone with the link → Viewer”**.
+4. Open `homework/submissions.md` in your repository and add one line: `- Session 06 — (paste your Google Drive link here)`.
+5. Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.
+
+**Before you push**
+
+1. Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.
+2. Open the self-check tool (`site/cham-bai.html`), pick session 6, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer's call.
+3. Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.
+
+<!-- HW-BRIEF:END -->
+
 ## Part 2 — Video Reflection (OBS) — required, not optional
 
 Code is only half of this homework. The other half is a **short screen-recorded

@@ -54,6 +54,69 @@ không có đuôi) vào trong mỗi thư mục để chúng tồn tại qua lầ
 - [ ] Mọi thẻ mở đều có thẻ đóng
 - [ ] Thụt lề nhất quán
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Bạn vừa mở VS Code lần đầu. Trước mọi thứ kiểu dáng, hình ảnh hay menu, mọi website trên thế giới đều bắt đầu từ cùng một thứ: một file HTML nói cho trình duyệt biết bạn là ai. Tuần này bạn chưa xây website club — bạn xây **danh thiếp của bạn trên web**, trang mà cả lớp sẽ mở.
+
+### Vì sao bài tập này tồn tại
+
+- Bộ khung HTML5 năm dòng là đoạn code bạn sẽ gõ mười lăm lần trong học kỳ này, cộng hai lần trong bài thi thực hành. Nếu nó đến từ copy-paste, mỗi buổi sau mất thêm vài phút. Nếu nó đến từ trí nhớ, nó không tốn gì cả.
+- Bố cục thư mục bạn tạo hôm nay (`css/`, `images/`) là bố cục mọi bài tập và đồ án giả định sẵn. Đổi tên muộn hơn sẽ làm gãy những link vẫn chạy tốt trên máy bạn nhưng chết trên server.
+
+### “Xong” nhìn như thế nào
+
+Mở phiếu bài tập trên website và so trang của bạn với bản mẫu sống ở mục **“Mẫu đối chiếu trực quan — bạn đang xây dựng gì”**: tên to đậm, hai đoạn chữ đen trên nền trắng, một đề mục phụ, không có kiểu dáng gì. Ở Tuần 1, đơn giản là đúng — một trang đã tô màu nghĩa là bạn dành thời gian sai chỗ.
+
+### Cách làm từng bước
+
+1. **Thiết lập một lần (2 phút).** Mở thư mục chứa repository bằng VS Code (**File → Open Folder** — đừng mở từng file lẻ). Tạo `homework/session-01/` bên trong.
+2. **Gõ bộ khung (10 phút).** Tạo `index.html`, rồi tự gõ năm dòng boilerplate — không paste. Lưu, double-click file, xác nhận tab trình duyệt hiện đúng `<title>`.
+3. **Điền nội dung (15 phút).** Một `<h1>` tên bạn, hai `<p>` về bạn, một `<h2>` kèm một đoạn văn dưới nó. Thêm một `<!-- comment -->` đặt tên cho một vùng của trang.
+4. **Tạo thư mục rỗng (2 phút).** `css/` và `images/` trong `homework/session-01/`, mỗi thư mục chứa một file `.gitkeep`, nếu không Git sẽ quên chúng.
+5. **Tự kiểm tra (5 phút).** Mọi thẻ mở đều có thẻ đóng, thụt lề nhất quán, không còn chữ thừa ngoài `<body>`. Rồi chạy công cụ tự chấm trước khi push.
+
+### Nơi sinh viên mất điểm
+
+- Paste boilerplate thay vì gõ tay — bạn sẽ hối hận ở bài thi giữa kỳ, vốn không có internet.
+- Đặt `<meta charset="UTF-8">` sau `<title>`: tên tiếng Việt của bạn hiển thị thành `Ã¡` lỗi font.
+- Quên `.gitkeep`: hai thư mục rỗng `css/` và `images/` biến mất sau push và mất điểm phần bố cục thư mục.
+
+### File bài tập phải tạo ra
+
+- `homework/session-01/index.html`
+- `homework/session-01/css/.gitkeep`
+- `homework/session-01/images/.gitkeep`
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-01/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW1: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: mở `homework/session-01/index.html`, giải thích năm dòng boilerplate mỗi dòng làm nhiệm vụ gì, rồi chỉ cho thấy `<title>` xuất hiện ở đâu trên tab trình duyệt.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 01 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 1, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

@@ -110,6 +110,72 @@ sửa bất kỳ liên kết nào bị 404 trước khi Bài tập 9 thêm hai t
 - `homework/session-08/table-practice.html` (trang luyện tập mới có bảng)
 - `homework/session-08/table-practice.css` (style bảng)
 
+<!-- HW-BRIEF:START -->
+## Mô tả chi tiết — hãy đọc phần này trước
+
+### Bạn thực sự đang xây gì
+
+Tuần ngay sau bài thi giữa kỳ. Hai việc: biến bài thi thành thông tin — ghi lại mình sai gì và sửa — và đi trước về bảng, vì Buổi 9 dựng trên đó.
+
+### Vì sao bài tập này tồn tại
+
+- Một bản suy ngẫm bạn thật sự viết đáng giá hơn một trang nữa bạn chép nửa vời. Gọi tên ba lỗi cụ thể, kèm đáp án đúng và mục chương cần đọc lại, là cách điểm yếu biến mất trước bài thi cuối kỳ.
+- Bảng là cấu trúc HTML đầu tiên thật sự *dạng lưới*: hàng, ô, đề mục cột, gộp ô. Luyện trong một file tạm trước nghĩa là Buổi 9 bàn về style, không phải vật lộn cú pháp.
+- Task 4 tồn tại vì điều hướng âm thầm mục ruỗng: mọi trang bạn thêm từ Tuần 2 vẫn phải tới được.
+
+### “Xong” nhìn như thế nào
+
+Tuần này không có trang đẹp để đuổi theo. `midterm-review.md` của bạn phải đọc như template ở Task 1 — lỗi, câu trả lời của bạn, đáp án đúng, vì sao, và chỗ cần xem lại. `table-practice.html` hiển thị bảng có viền, hàng đề mục tô nền và các ô gộp đúng chỗ task yêu cầu.
+
+### Cách làm từng bước
+
+1. **Ghi khi còn mới (10 phút).** Ngay sau khi thi, trước khi bàn đáp án, liệt kê những chỗ bạn do dự.
+2. **Viết bản suy ngẫm (20 phút).** Ba mục trong `homework/session-08/midterm-review.md`, theo đúng template: chủ đề là gì, bạn trả lời gì, đáp án đúng, một câu giải thích, và mục ebook cần đọc lại.
+3. **Đọc lại các mục đó (15 phút).** Mở thật sự các chương 1–7 ở đúng mục bạn vừa nêu.
+4. **Dựng bảng luyện (25 phút).** `table-practice.html` theo Task 2: `border`, một hàng đề mục, ít nhất một `colspan` hoặc `rowspan`, nội dung thật — không lorem ipsum.
+5. **Style bảng (15 phút).** Task 3: xen kẽ màu hàng, padding trong ô, đề mục tương phản — viết trong `table-practice.css`.
+6. **Bò lại project (10 phút).** Task 4: bấm từ `index.html` tới mọi trang và quay lại. Sửa link gãy, cập nhật danh sách nav.
+
+### Nơi sinh viên mất điểm
+
+- Viết “em bất cẩn” thay vì một lỗi kỹ thuật cụ thể — không có gì để sửa, không có điểm.
+- Dựng bảng thẳng vào `project/activities.html` khi chưa học bảng; bảng tuần này vẫn phải là file luyện.
+- Để `border="1"` là style duy nhất — thuộc tính viền là kiểu cũ, CSS mới là yêu cầu.
+
+### File bài tập phải tạo ra
+
+- `homework/session-08/midterm-review.md`
+- `homework/session-08/table-practice.html`
+- `homework/session-08/table-practice.css`
+- `project/` (sửa điều hướng)
+
+### Cách nộp bài
+
+Bài tập này gồm hai phần, nộp cùng nhau và chấm riêng: **Phần 1 code (10 điểm)** và **Phần 2 video (4 điểm)**. Việc nộp bài trực tuyến chưa mở, nên repository Git của bạn chính là nơi nộp.
+
+**Phần 1 — phần code**
+
+1. Bảo đảm mọi file liệt kê ở trên tồn tại đúng đường dẫn đó — công cụ chấm tìm file theo đường dẫn, nên một trang đặt chỗ khác coi như không tồn tại.
+2. Thêm vào staging: `git add homework/session-08/ project/` (chỉ thêm những gì buổi này động tới).
+3. Commit với message nói rõ đã đổi gì: `git commit -m "HW8: <tóm tắt ngắn>"`.
+4. Push: `git push`. Một commit nằm lại trên laptop không phải là bài nộp.
+
+**Phần 2 — phần video**
+
+1. Quay 60–120 giây bằng OBS Studio (<https://obsproject.com>): chia sẻ màn hình suốt buổi, bắt buộc có giọng nói của bạn, tên và mã số sinh viên nói ra hoặc hiện trên màn hình ở đầu video.
+2. Trình bày MỘT phần của bài tập này thôi, không phải tất cả. Với buổi này: chọn MỘT thứ bạn làm sai trong bài thi giữa kỳ (hoặc trong bảng ở Task 2), mở file đó và giải thích cách đúng là gì và vì sao.
+3. Tải file MP4 (720p trở lên) lên **Google Drive của chính bạn** và đặt quyền chia sẻ là **“Ai có liên kết → Xem”**.
+4. Mở `homework/submissions.md` trong repository và thêm một dòng: `- Session 08 — (dán link Google Drive của bạn vào đây)`.
+5. Commit và push file đó cùng phần còn lại của bài tập. Link thiếu, để riêng tư hoặc hỏng nghĩa là phần video không chấm được.
+
+**Trước khi push**
+
+1. Tick từng mục trong danh sách kiểm tra ở phần Yêu cầu, đối chiếu với file thật chứ không đoán từ trí nhớ.
+2. Mở công cụ tự chấm (`site/cham-bai.html`), chọn buổi 8, trỏ tới thư mục repository hoặc dán code, rồi sửa những gì nó báo. Công cụ trả về AUTO / MANUAL / BLOCKED — AUTO là điểm máy xác nhận được, MANUAL vẫn thuộc phán quyết của giảng viên.
+3. Lưu thẻ kết quả (ảnh chụp thấy cả hash, Print → PDF, Download JSON) để bạn chứng minh được mình đã nộp gì.
+
+<!-- HW-BRIEF:END -->
+
 ## Phần 2 — Suy ngẫm bằng video (OBS) — bắt buộc, không tùy chọn
 
 Code chỉ là một nửa bài tập này. Nửa còn lại là một **video quay màn hình ngắn**

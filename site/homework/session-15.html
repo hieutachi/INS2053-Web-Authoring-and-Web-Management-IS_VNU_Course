@@ -59,6 +59,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-15.html");}catch(e){}})(
         <li class="d2"><a href="#practice-status">Practice Status</a></li>
         <li class="d2"><a href="#objective">Objective</a></li>
         <li class="d2"><a href="#requirements">Requirements</a></li>
+        <li class="d2"><a href="#detailed-brief-read-this-first">Detailed Brief — Read This First</a></li>
         <li class="d2"><a href="#part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional</a></li>
         <li class="d2"><a href="#save-your-practice-work">Save Your Practice Work</a></li>
         <li class="d2"><a href="#reference-rubric">Reference Rubric</a></li>
@@ -253,7 +254,64 @@ if(w&&w!=="en")location.replace("../vi/homework/session-15.html");}catch(e){}})(
 <li>All 5 HTML files (viewport meta tag)</li>
 <li><code>project/css/style.css</code> (media queries + responsive images)</li>
 </ul>
-<h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
+<!-- HW-BRIEF:START -->
+<h3 id="detailed-brief-read-this-first">Detailed Brief — Read This First<a class="anchor" href="#detailed-brief-read-this-first" aria-label="Link to this section">#</a></h3>
+<h4 id="what-you-are-actually-building">What you are actually building<a class="anchor" href="#what-you-are-actually-building" aria-label="Link to this section">#</a></h4>
+<p>The last build week: your site adapts instead of breaking. Viewport meta, one honest media query, images that scale — checked on a phone-sized window rather than assumed.</p>
+<h4 id="why-this-homework-exists">Why this homework exists<a class="anchor" href="#why-this-homework-exists" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Without <code>&lt;meta name=&quot;viewport&quot;&gt;</code> a phone pretends to be 980px wide and every media query you wrote is useless. It is one line and it is the prerequisite for everything else this week.</li>
+<li>This course teaches <code>max-width</code> (desktop-first) queries. Industry default is <code>min-width</code> (mobile-first); Chapter 15 explains both, but the exams expect <code>max-width</code>.</li>
+<li><code>img { max-width: 100%; }</code> is the single rule that prevents horizontal scrolling on a phone.</li>
+<li>Responsive testing is a habit: resize, watch the breakpoint fire, confirm nothing overlaps. That habit is what the final practical rewards.</li>
+</ul>
+<h4 id="what-done-looks-like">What “done” looks like<a class="anchor" href="#what-done-looks-like" aria-label="Link to this section">#</a></h4>
+<p>Open the live visual target and drag the iframe narrower: at the breakpoint the columns stack, text reflows, images shrink, and no horizontal scrollbar ever appears.</p>
+<h4 id="how-to-work-through-it">How to work through it<a class="anchor" href="#how-to-work-through-it" aria-label="Link to this section">#</a></h4>
+<ol>
+<li><strong>Add the viewport tag (5 min).</strong> One line in the <code>&lt;head&gt;</code> of all five pages, before the stylesheet link.</li>
+<li><strong>Pick a breakpoint (10 min).</strong> Look at your own layout, not a magic number. Somewhere around 768px is where two columns get cramped here.</li>
+<li><strong>Write the query (20 min).</strong> <code>@media (max-width: 768px) { … }</code>: stack <code>main</code> and <code>aside</code> to full width, shrink headings, adjust padding.</li>
+<li><strong>Make images fluid (10 min).</strong> <code>img { max-width: 100%; height: auto; }</code> inside the base rules.</li>
+<li><strong>Test for real (15 min).</strong> DevTools device toolbar: 375px, 768px, desktop. Check nav, table, form and media page specifically — tables and forms overflow first.</li>
+<li><strong>Final crawl (10 min).</strong> Every page at every width, no horizontal scroll anywhere.</li>
+</ol>
+<h4 id="where-students-lose-marks">Where students lose marks<a class="anchor" href="#where-students-lose-marks" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>Viewport tag added to one page only.</li>
+<li>Fixed pixel widths on containers that exceed the phone screen.</li>
+<li>Using <code>min-width</code> on the exam when the course standard is <code>max-width</code>.</li>
+<li>A table forcing sideways scroll — wrap it or reduce columns in the query.</li>
+</ul>
+<h4 id="files-this-homework-must-produce">Files this homework must produce<a class="anchor" href="#files-this-homework-must-produce" aria-label="Link to this section">#</a></h4>
+<ul>
+<li>All 5 HTML files (viewport meta tag)</li>
+<li><code>project/css/style.css</code></li>
+</ul>
+<h4 id="how-to-hand-it-in">How to hand it in<a class="anchor" href="#how-to-hand-it-in" aria-label="Link to this section">#</a></h4>
+<p>This homework has two halves, handed in together and marked separately: <strong>Part 1 code (10 points)</strong> and <strong>Part 2 video (4 points)</strong>. Online submission is not enabled yet, so your own Git repository is the submission.</p>
+<p><strong>Part 1 — the code</strong></p>
+<ol>
+<li>Make sure every file listed above exists at exactly that path — the grader looks up files by path, and a page parked somewhere else simply does not exist for it.</li>
+<li>Stage the work: <code>git add homework/session-15/ project/</code> (add only what this session touched).</li>
+<li>Commit with a message that says what changed: <code>git commit -m &quot;HW15: &lt;short summary&gt;&quot;</code>.</li>
+<li>Push: <code>git push</code>. A commit that stayed on your laptop is not a submission.</li>
+</ol>
+<p><strong>Part 2 — the video</strong></p>
+<ol>
+<li>Record 60–120 seconds in OBS Studio (<a href="https://obsproject.com">https://obsproject.com</a>): screen shared the whole time, your voice required, name and student ID stated or visible at the start.</li>
+<li>Present ONE part of this homework, not all of it. For this session: show your site in the browser device toolbar, narrow the viewport live, and explain which media query rule fires and what it changes.</li>
+<li>Upload the MP4 (720p or higher) to <strong>your own Google Drive</strong> and set sharing to <strong>“Anyone with the link → Viewer”</strong>.</li>
+<li>Open <code>homework/submissions.md</code> in your repository and add one line: <code>- Session 15 — (paste your Google Drive link here)</code>.</li>
+<li>Commit and push that file together with the rest of the homework. A missing, private or dead link means the video cannot be graded.</li>
+</ol>
+<p><strong>Before you push</strong></p>
+<ol>
+<li>Tick the requirements checklist under Requirements, item by item, against the actual file rather than from memory.</li>
+<li>Open the self-check tool (<code>site/cham-bai.html</code>), pick session 15, point it at your repository folder or paste your code, and fix what it flags. It reports AUTO / MANUAL / BLOCKED — AUTO is what a machine confirmed, MANUAL is still your lecturer&#39;s call.</li>
+<li>Save the result card (screenshot showing the hash, Print → PDF, Download JSON) so you can prove what you submitted.</li>
+</ol>
+<!-- HW-BRIEF:END --><h3 id="part-2-video-reflection-obs-required-not-optional">Part 2 — Video Reflection (OBS) — required, not optional<a class="anchor" href="#part-2-video-reflection-obs-required-not-optional" aria-label="Link to this section">#</a></h3>
 <p>Code is only half of this homework. The other half is a <strong>short screen-recorded
 video</strong> that proves the work is yours and that you can <em>explain</em> it — the same
 skill the midterm practical, the final practical exam, and every job interview
