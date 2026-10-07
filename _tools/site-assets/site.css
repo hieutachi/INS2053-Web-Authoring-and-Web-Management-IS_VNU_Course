@@ -1908,3 +1908,64 @@ html[lang="vi"] .toc a {
 }
 
 
+.next-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 0 3rem;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, var(--bg-base)), var(--bg-elevated));
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--stroke-tertiary));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.next-step h2,
+.clarity-note h2 { margin: 0.2rem 0 0.45rem; font-size: clamp(1.3rem, 2.8vw, 1.8rem); }
+.next-step p:last-child,
+.clarity-note p:last-child { max-width: 65ch; margin: 0; color: var(--text-secondary); }
+.next-step .primary-action { flex: 0 0 auto; white-space: nowrap; }
+
+.learning-map {
+  margin: 0 0 4rem;
+  padding: clamp(1.35rem, 3vw, 2.4rem);
+  background: var(--bg-elevated);
+  border: 1px solid var(--stroke-tertiary);
+  border-radius: var(--radius-lg);
+}
+.learning-map-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 0; padding: 0; list-style: none; }
+.learning-map-steps li { display: grid; grid-template-columns: 40px 1fr; gap: 0.8rem; padding: 1rem 1.25rem; border-left: 1px solid var(--stroke-tertiary); }
+.learning-map-steps li:first-child { padding-left: 0; border-left: 0; }
+.map-step-number { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: var(--accent-soft); color: var(--accent-strong); font-size: 0.72rem; font-weight: 800; }
+.learning-map-steps div { display: flex; flex-direction: column; gap: 0.25rem; }
+.learning-map-steps strong { font-size: 0.95rem; }
+.learning-map-steps span:last-child { color: var(--text-tertiary); font-size: 0.88rem; line-height: 1.5; }
+
+.weeks-section { margin-bottom: 4rem; }
+.week-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.week-card { padding: 1.2rem; background: var(--bg-elevated); border: 1px solid var(--stroke-tertiary); border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+.week-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--stroke-tertiary)); box-shadow: var(--shadow-md); }
+.week-card-midterm { border-color: color-mix(in srgb, var(--accent-warm) 60%, var(--stroke-tertiary)); }
+.week-card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.week-number { color: var(--accent); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.week-badge { padding: 0.18rem 0.45rem; border-radius: 999px; background: color-mix(in srgb, var(--accent-warm) 15%, var(--bg-base)); color: var(--accent-orange); font-size: 0.68rem; font-weight: 750; }
+.week-card h3 { min-height: 3.1em; margin: 0.75rem 0 1rem; font-size: 1.08rem; }
+.week-card h3 a { color: var(--text-primary); text-decoration: none; }
+.week-card h3 a:hover { color: var(--accent); }
+.week-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem; }
+.week-links a { display: flex; flex-direction: column; gap: 0.12rem; padding: 0.5rem; border: 1px solid var(--stroke-tertiary); border-radius: 8px; color: var(--text-secondary); font-size: 0.72rem; text-decoration: none; }
+.week-links a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.week-links a span { color: var(--text-tertiary); font-size: 0.62rem; font-weight: 800; }
+.clarity-note { display: grid; grid-template-columns: minmax(200px, 0.8fr) 1.2fr; gap: 2rem; margin-top: 3rem; padding: clamp(1.35rem, 3vw, 2.2rem); background: color-mix(in srgb, var(--accent-warm) 8%, var(--bg-base)); border: 1px solid color-mix(in srgb, var(--accent-warm) 28%, var(--stroke-tertiary)); border-radius: var(--radius-lg); }
+.clarity-note h2 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+
+@media (max-width: 760px) {
+  .next-step, .clarity-note { grid-template-columns: 1fr; display: grid; gap: 1rem; }
+  .next-step .primary-action { justify-self: start; }
+  .learning-map-steps, .week-grid { grid-template-columns: 1fr; }
+  .learning-map-steps li, .learning-map-steps li:first-child { padding: 1rem 0; border-left: 0; border-top: 1px solid var(--stroke-tertiary); }
+  .learning-map-steps li:first-child { border-top: 0; }
+  .week-card h3 { min-height: 0; }
+}
+

@@ -947,19 +947,45 @@ function homePage(chapters, lang) {
 
   const appendix = chapters.find((c) => c.session === null);
 
-  const tile = (cls, n, href, label, sub, shared) =>
-    `      <li class="${cls}"><a href="${
-      shared ? p(href) : w(href)
-    }"><span class="tile-icon" aria-hidden="true">${n}</span><span class="tile-copy"><strong>${esc(
-      label
-    )}</strong><span>${esc(sub)}</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>`;
+  const weekCards = SESSIONS.map((s) => {
+    const nn = pad(s.n);
+    const ch = chapters.find((c) => c.session === s.n);
+    const topic = topicOf(s, lang);
+    return `      <article class="week-card${s.midterm ? " week-card-midterm" : ""}">
+        <div class="week-card-top"><span class="week-number">${esc(t(L.idxWeekN, { n: s.n }))}</span>${s.midterm ? `<span class="week-badge">${esc(L.smallMidterm)}</span>` : ""}</div>
+        <h3><a href="${w(`sessions/session-${nn}.html`)}">${esc(topic)}</a></h3>
+        <div class="week-links" aria-label="${esc(t(L.idxWeekLabel, { n: s.n }))}">
+          ${ch ? `<a href="${w(`ebook/${ch.out}`)}"><span>01</span>${esc(L.idxBefore)}</a>` : ""}
+          <a href="${p(`slides/buoi-${nn}.html`)}"><span>02</span>${esc(L.idxDuring)}</a>
+          <a href="${w(`homework/session-${nn}.html`)}"><span>03</span>${esc(L.idxAfter)}</a>
+        </div>
+      </article>`;
+  }).join("\n");
 
-  const body = `  <section class="resource-section" aria-labelledby="resources-h">
-    <div class="section-head"><div><p class="section-kicker">${esc(
-      L.resKicker
-    )}</p><h2 id="resources-h">${esc(L.resHeading)}</h2></div><p>${esc(
-    L.resSub
-  )}</p></div>
+  const tile = (cls, n, href, label, sub, shared) =>
+    `      <li class="${cls}"><a href="${shared ? p(href) : w(href)}"><span class="tile-icon" aria-hidden="true">${n}</span><span class="tile-copy"><strong>${esc(label)}</strong><span>${esc(sub)}</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>`;
+
+  const body = `  <section class="next-step" aria-labelledby="next-step-title">
+    <div class="next-step-copy"><p class="section-kicker">${esc(L.nextKicker)}</p><h2 id="next-step-title">${esc(L.nextTitle)}</h2><p>${esc(L.nextBody)}</p></div>
+    <a class="primary-action" href="${w("sessions/session-01.html")}">${esc(L.nextCta)} <span aria-hidden="true">→</span></a>
+  </section>
+
+  <section class="learning-map" aria-labelledby="learning-map-title">
+    <div class="section-head"><div><p class="section-kicker">${esc(L.mapKicker)}</p><h2 id="learning-map-title">${esc(L.mapHeading)}</h2></div><p>${esc(L.mapSub)}</p></div>
+    <ol class="learning-map-steps">
+      <li><span class="map-step-number">01</span><div><strong>${esc(L.mapBeforeTitle)}</strong><span>${esc(L.mapBeforeBody)}</span></div></li>
+      <li><span class="map-step-number">02</span><div><strong>${esc(L.mapDuringTitle)}</strong><span>${esc(L.mapDuringBody)}</span></div></li>
+      <li><span class="map-step-number">03</span><div><strong>${esc(L.mapAfterTitle)}</strong><span>${esc(L.mapAfterBody)}</span></div></li>
+    </ol>
+  </section>
+
+  <section class="weeks-section" aria-labelledby="weeks-title">
+    <div class="section-head"><div><p class="section-kicker">${esc(L.weeksKicker)}</p><h2 id="weeks-title">${esc(L.weeksHeading)}</h2></div><p>${esc(L.weeksSub)}</p></div>
+    <div class="week-grid">${weekCards}</div>
+  </section>
+
+  <section class="resource-section" aria-labelledby="resources-h">
+    <div class="section-head"><div><p class="section-kicker">${esc(L.resKicker)}</p><h2 id="resources-h">${esc(L.resHeading)}</h2></div><p>${esc(L.resSub)}</p></div>
     <ul class="tiles">
 ${tile("tile-sessions", "01", "sessions/index.html", L.tileSessions, L.tileSessionsSub)}
 ${tile("tile-ebook", "02", "ebook/index.html", L.tileEbook, L.tileEbookSub)}
@@ -971,50 +997,9 @@ ${tile("tile-agents", "07", "ai-agents.html", L.tileAgents, L.tileAgentsSub)}
     </ul>
   </section>
 
-  <section class="flow-section" aria-labelledby="how-it-works">
-    <div class="section-head"><div><p class="section-kicker">${esc(
-      L.flowKicker
-    )}</p><h2 id="how-it-works">${esc(
-    L.flowHeading
-  )}</h2></div><p>${esc(L.flowSub)}</p></div>
-    <ol class="flow">
-      <li><span class="flow-index" aria-hidden="true">01</span><div><strong>${esc(
-    L.whenBefore
-  )}</strong><span>${L.flow1Body}</span></div></li>
-      <li><span class="flow-index" aria-hidden="true">02</span><div><strong>${esc(
-    L.whenIn
-  )}</strong><span>${esc(L.flow2Body)}</span></div></li>
-      <li><span class="flow-index" aria-hidden="true">03</span><div><strong>${esc(
-    L.whenAfter
-  )}</strong><span>${esc(L.flow3Body)}</span></div></li>
-    </ol>
-  </section>
+  <section class="clarity-note" aria-labelledby="clarity-title"><div><p class="section-kicker">${esc(L.clarityKicker)}</p><h2 id="clarity-title">${esc(L.clarityTitle)}</h2></div><p>${esc(L.clarityBody)}</p></section>
 
-  <h2 id="schedule">${esc(L.schedHeading)}</h2>
-  <table class="sched">
-    <caption>${esc(L.schedCaption)}</caption>
-    <thead>
-      <tr><th scope="col">${esc(L.thWeek)}</th><th scope="col">${esc(
-    L.thSession
-  )}</th><th scope="col">${esc(L.thRead)}</th><th scope="col">${esc(
-    L.thSlides
-  )}</th><th scope="col">${esc(L.thHomework)}</th></tr>
-    </thead>
-    <tbody>
-${rows}
-    </tbody>
-  </table>
-${
-  appendix
-    ? `  <h2 id="extra">${esc(L.extraHeading)}</h2>
-  <p><a href="${w(`ebook/${appendix.out}`)}">${esc(
-    appendix.title
-  )}</a> — ${esc(L.extraSub)}</p>\n`
-    : ""
-}
-  <h2 id="not-here">${esc(L.notHereHeading)}</h2>
-  <p>${esc(L.notHereBody)}</p>`;
-
+  <section class="callout status-note" role="status" aria-label="${esc(L.practiceModeTitle)}"><p><strong>${esc(L.practiceModeTitle)}</strong> ${esc(L.practiceModeBody)}</p></section>`;
   return page({
     lang,
     rel: "index.html",
@@ -1022,16 +1007,8 @@ ${
     heading: L.homeTitle,
     lead: L.homeLead,
     eyebrow: L.homeEyebrow,
-    introExtra: `    <div class="hero-actions"><a class="primary-action" href="${w(
-      "sessions/session-01.html"
-    )}">${esc(L.startCta)} <span aria-hidden="true">→</span></a><a class="secondary-action" href="#schedule">${esc(
-      L.exploreCta
-    )}</a></div>
-    <dl class="hero-stats"><div><dt>15</dt><dd>${esc(
-      L.statSessions
-    )}</dd></div><div><dt>16</dt><dd>${esc(
-      L.statChapters
-    )}</dd></div><div><dt>17</dt><dd>${esc(L.statDecks)}</dd></div></dl>`,
+    introExtra: `    <div class="hero-actions"><a class="primary-action" href="${w("sessions/session-01.html")}">${esc(L.startCta)} <span aria-hidden="true">→</span></a><a class="secondary-action" href="#weeks-title">${esc(L.exploreCta)}</a></div>
+    <dl class="hero-stats"><div><dt>15</dt><dd>${esc(L.statSessions)}</dd></div><div><dt>3</dt><dd>${esc(L.statPhases)}</dd></div><div><dt>1</dt><dd>${esc(L.statProject)}</dd></div></dl>`,
     body,
     depth: 0,
     pageClass: "home-page",
