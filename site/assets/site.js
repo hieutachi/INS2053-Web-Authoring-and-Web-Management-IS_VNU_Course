@@ -110,6 +110,64 @@
     }
   });
 })();
+  var KEY_PROGRESS = "ins2053.currentWeek";
+
+  /* The home page remembers the learner's current week locally. It is deliberately
+     separate from reading progress: one measures the course plan, the other the
+     current document. */
+  var homeProgress = document.querySelector("[data-home-progress]");
+  if (homeProgress) {
+    var totalWeeks = Number(homeProgress.getAttribute("data-progress-total")) || 15;
+    var currentWeek = 1;
+    try { currentWeek = Number(localStorage.getItem(KEY_PROGRESS)) || 1; } catch (err) { /* ignore */ }
+    currentWeek = Math.min(totalWeeks, Math.max(1, Math.floor(currentWeek)));
+    var weekLabel = homeProgress.querySelector("[data-progress-week-label]");
+    var fill = homeProgress.querySelector("[data-progress-fill]");
+    var bar = homeProgress.querySelector("[role=progressbar]");
+    var link = homeProgress.querySelector("[data-progress-link]");
+    var lang = document.documentElement.lang === "vi";
+    var label = (lang ? "Tuần " : "Week ") + currentWeek + (lang ? " trong " : " of ") + totalWeeks + (lang ? " tuần" : " weeks");
+    if (weekLabel) weekLabel.textContent = label;
+    if (fill) fill.style.width = (currentWeek / totalWeeks * 100) + "%";
+    if (bar) { bar.setAttribute("aria-valuenow", String(currentWeek)); bar.setAttribute("aria-label", (lang ? "Tiến độ khóa học: " : "Course progress: ") + currentWeek + (lang ? " trên " : " of ") + totalWeeks + (lang ? " tuần" : " weeks")); }
+    if (link) link.setAttribute("href", (lang ? "sessions/session-" : "sessions/session-") + (currentWeek < 10 ? "0" : "") + currentWeek + ".html");
+  }
+
+
+/* Course-map state: completion is a local learner preference, not a grade. */
+(function () {
+  var KEY_DONE = "ins2053.completedWeeks";
+  var cards = document.querySelectorAll("[data-week-card]");
+  if (!cards.length) return;
+  var done = [];
+  try { done = JSON.parse(localStorage.getItem(KEY_DONE) || "[]"); } catch (err) { done = []; }
+  if (!Array.isArray(done)) done = [];
+  function save() { try { localStorage.setItem(KEY_DONE, JSON.stringify(done)); } catch (err) { /* ignore */ } }
+  function refresh() {
+    var firstOpen = 15;
+    for (var i = 0; i < cards.length; i++) {
+      var card = cards[i]; var week = Number(card.getAttribute("data-week")); var complete = done.indexOf(week) !== -1;
+      if (!complete && firstOpen === 15) firstOpen = week;
+      card.classList.toggle("is-complete", complete); card.classList.toggle("is-current", !complete && week === firstOpen);
+      var status = card.querySelector("[data-week-status]"); var button = card.querySelector("[data-week-toggle]");
+      var vi = document.documentElement.lang === "vi";
+      if (status) status.textContent = complete ? (vi ? "Đã hoàn thành" : "Completed") : (!complete && week === firstOpen ? (vi ? "Đang học" : "In progress") : (vi ? "Chưa bắt đầu" : "Not started"));
+      if (button) { button.textContent = complete ? button.getAttribute("data-incomplete-label") : button.getAttribute("data-complete-label"); button.setAttribute("aria-pressed", String(complete)); }
+    }
+    var panel = document.querySelector("[data-home-progress]");
+    if (panel) {
+      var total = cards.length, current = firstOpen === 15 ? total : firstOpen, bar = panel.querySelector("[role=progressbar]"), fill = panel.querySelector("[data-progress-fill]"), label = panel.querySelector("[data-progress-week-label]"), link = panel.querySelector("[data-progress-link]");
+      if (label) label.textContent = (document.documentElement.lang === "vi" ? "Tuần " : "Week ") + current + (document.documentElement.lang === "vi" ? " trong " : " of ") + total + (document.documentElement.lang === "vi" ? " tuần" : " weeks");
+      if (fill) fill.style.width = (done.length / total * 100) + "%";
+      if (bar) { bar.setAttribute("aria-valuenow", String(done.length)); bar.setAttribute("aria-label", (document.documentElement.lang === "vi" ? "Tiến độ khóa học: " : "Course progress: ") + done.length + (document.documentElement.lang === "vi" ? " trên " : " of ") + total + (document.documentElement.lang === "vi" ? " tuần" : " weeks")); }
+      if (link) link.setAttribute("href", "sessions/session-" + (current < 10 ? "0" : "") + current + ".html");
+    }
+  }
+  document.addEventListener("click", function (event) { var button = event.target.closest && event.target.closest("[data-week-toggle]"); if (!button) return; var card = button.closest("[data-week-card]"), week = Number(card.getAttribute("data-week")), index = done.indexOf(week); if (index === -1) done.push(week); else done.splice(index, 1); done.sort(function (a, b) { return a - b; }); save(); refresh(); });
+  refresh();
+})();
+
+
 
 /* ---- shared empty state for tables ----------------------------------------
    The build already gives every markdown table its empty row (see

@@ -725,6 +725,111 @@ img {
   font-size: 0.76rem;
 }
 
+
+.progress-panel {
+  align-items: center;
+  gap: 2rem;
+}
+
+.progress-panel-status {
+  display: grid;
+  min-width: min(100%, 360px);
+  gap: 0.75rem;
+}
+
+.progress-week {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.progress-track {
+  height: 0.6rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--fill-secondary);
+}
+
+.progress-track span {
+  display: block;
+  width: 6.67%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent-green);
+  transition: width 240ms ease;
+}
+
+.progress-panel .primary-action {
+  justify-self: start;
+}
+
+
+.week-status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: var(--fill-tertiary);
+  color: var(--text-tertiary);
+  font-size: 0.68rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.week-card.is-current {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft), var(--shadow-sm);
+}
+
+.week-card.is-current .week-status {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.week-card.is-complete .week-status {
+  background: rgb(23 132 91 / 14%);
+  color: var(--accent-green);
+}
+
+.week-complete {
+  margin-top: 1rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--stroke-secondary);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+
+.resource-group-title {
+  margin: 2rem 0 1rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.resource-group-title:first-of-type {
+  margin-top: 0;
+}
+
+.resource-group-support {
+  margin-bottom: 0;
+}
+
+.week-complete:hover,
+.week-complete:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.week-card.is-complete .week-complete {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
 /* --- home resources and weekly flow --------------------------------------- */
 
 .resource-section,

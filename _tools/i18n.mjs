@@ -183,6 +183,9 @@ export const UI = {
     resHeading: "Course resources",
     resSub: "Start with your session, or jump straight to the material you need.",
     tileSessions: "Sessions",
+    resCoreHeading: "Follow the learning path",
+    resSupportHeading: "Tools and guidance",
+
     tileSessionsSub: "Week by week, in teaching order",
     tileEbook: "Student ebook",
     tileEbookSub: "15 chapters + Appendix A",
@@ -218,7 +221,20 @@ export const UI = {
     idxBefore: "Read",
     idxDuring: "Class",
     idxAfter: "Homework",
+    weekStatusNotStarted: "Not started",
+    weekStatusCurrent: "In progress",
+    weekStatusDone: "Completed",
+    markComplete: "Mark week complete",
+    markIncomplete: "Mark as in progress",
+
     clarityKicker: "One rule to remember",
+    progressKicker: "Your learning progress",
+    progressTitle: "Continue where you left off",
+    progressWeek: "Week {n} of 15",
+    progressBody: "Your next session is ready. Pick up the reading, class deck and homework in one place.",
+    progressCta: "Continue learning",
+    progressAria: "Course progress: {n} of 15 weeks",
+
     clarityTitle: "Do not hunt through folders",
     clarityBody: "Start from a session page. It is the single front door for that week; from there, move through the chapter, slide deck and homework in order. Use the top navigation only when you need a whole collection.",
 
@@ -404,8 +420,18 @@ export const UI = {
     statDecks: "slide bài giảng",
     resKicker: "Mọi thứ nằm chung một chỗ",
     resHeading: "Học liệu khóa học",
+    resCoreHeading: "Theo lộ trình học",
+    resSupportHeading: "Công cụ và hướng dẫn",
+
     resSub: "Bắt đầu từ buổi học của bạn, hoặc mở thẳng tới tài liệu bạn cần.",
     tileSessions: "Buổi học",
+    progressKicker: "Tiến độ học của bạn",
+    progressTitle: "Tiếp tục từ nơi bạn đã dừng",
+    progressWeek: "Tuần {n} trong 15 tuần",
+    progressBody: "Buổi học tiếp theo đã sẵn sàng. Bạn có thể đọc, xem slide và làm bài tập từ cùng một nơi.",
+    progressCta: "Tiếp tục học",
+    progressAria: "Tiến độ khóa học: {n} trên 15 tuần",
+
     tileSessionsSub: "Từng tuần, theo đúng thứ tự lên lớp",
     tileEbook: "Giáo trình sinh viên",
     tileEbookSub: "15 chương + Phụ lục A",
@@ -428,6 +454,12 @@ export const UI = {
     mapAfterTitle: "Về nhà",
     mapAfterBody: "Hoàn thành bài tập, trình bày phần mình làm và tự kiểm tra.",
     weeksKicker: "Bản đồ khóa học",
+    weekStatusNotStarted: "Chưa bắt đầu",
+    weekStatusCurrent: "Đang học",
+    weekStatusDone: "Đã hoàn thành",
+    markComplete: "Đánh dấu đã hoàn thành",
+    markIncomplete: "Đánh dấu đang học",
+
     weeksHeading: "15 tuần, một lộ trình rõ ràng",
     weeksSub: "Mỗi thẻ có ba lối vào: đọc trước lớp, theo dõi trên lớp, luyện tập tại nhà.",
 

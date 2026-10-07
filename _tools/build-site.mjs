@@ -951,26 +951,28 @@ function homePage(chapters, lang) {
     const nn = pad(s.n);
     const ch = chapters.find((c) => c.session === s.n);
     const topic = topicOf(s, lang);
-    return `      <article class="week-card${s.midterm ? " week-card-midterm" : ""}">
-        <div class="week-card-top"><span class="week-number">${esc(t(L.idxWeekN, { n: s.n }))}</span>${s.midterm ? `<span class="week-badge">${esc(L.smallMidterm)}</span>` : ""}</div>
+    return `      <article class="week-card${s.midterm ? " week-card-midterm" : ""}" data-week-card data-week="${s.n}">
+        <div class="week-card-top"><span class="week-number">${esc(t(L.idxWeekN, { n: s.n }))}</span><span class="week-status" data-week-status>${esc(L.weekStatusNotStarted)}</span>${s.midterm ? `<span class="week-badge">${esc(L.smallMidterm)}</span>` : ""}</div>
         <h3><a href="${w(`sessions/session-${nn}.html`)}">${esc(topic)}</a></h3>
         <div class="week-links" aria-label="${esc(t(L.idxWeekLabel, { n: s.n }))}">
           ${ch ? `<a href="${w(`ebook/${ch.out}`)}"><span>01</span>${esc(L.idxBefore)}</a>` : ""}
           <a href="${p(`slides/buoi-${nn}.html`)}"><span>02</span>${esc(L.idxDuring)}</a>
           <a href="${w(`homework/session-${nn}.html`)}"><span>03</span>${esc(L.idxAfter)}</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="${esc(L.markComplete)}" data-incomplete-label="${esc(L.markIncomplete)}">${esc(L.markComplete)}</button>
       </article>`;
   }).join("\n");
 
   const tile = (cls, n, href, label, sub, shared) =>
     `      <li class="${cls}"><a href="${shared ? p(href) : w(href)}"><span class="tile-icon" aria-hidden="true">${n}</span><span class="tile-copy"><strong>${esc(label)}</strong><span>${esc(sub)}</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>`;
 
-  const body = `  <section class="next-step" aria-labelledby="next-step-title">
-    <div class="next-step-copy"><p class="section-kicker">${esc(L.nextKicker)}</p><h2 id="next-step-title">${esc(L.nextTitle)}</h2><p>${esc(L.nextBody)}</p></div>
-    <a class="primary-action" href="${w("sessions/session-01.html")}">${esc(L.nextCta)} <span aria-hidden="true">→</span></a>
+  const progressPanel = `  <section class="next-step progress-panel" aria-labelledby="progress-title" data-home-progress data-progress-total="${SESSIONS.length}">
+    <div class="next-step-copy"><p class="section-kicker">${esc(L.progressKicker)}</p><h2 id="progress-title">${esc(L.progressTitle)}</h2><p data-progress-body>${esc(L.progressBody)}</p></div>
+    <div class="progress-panel-status"><p class="progress-week" data-progress-week-label>${esc(t(L.progressWeek, { n: 1 }))}</p><div class="progress-track" role="progressbar" aria-label="${esc(t(L.progressAria, { n: 1 }))}" aria-valuemin="1" aria-valuemax="${SESSIONS.length}" aria-valuenow="1"><span data-progress-fill></span></div><a class="primary-action" data-progress-link href="${w("sessions/session-01.html")}">${esc(L.progressCta)} <span aria-hidden="true">→</span></a></div>
   </section>
 
-  <section class="learning-map" aria-labelledby="learning-map-title">
+`;
+  const body = progressPanel + `  <section class="learning-map" aria-labelledby="learning-map-title">
     <div class="section-head"><div><p class="section-kicker">${esc(L.mapKicker)}</p><h2 id="learning-map-title">${esc(L.mapHeading)}</h2></div><p>${esc(L.mapSub)}</p></div>
     <ol class="learning-map-steps">
       <li><span class="map-step-number">01</span><div><strong>${esc(L.mapBeforeTitle)}</strong><span>${esc(L.mapBeforeBody)}</span></div></li>
@@ -986,11 +988,15 @@ function homePage(chapters, lang) {
 
   <section class="resource-section" aria-labelledby="resources-h">
     <div class="section-head"><div><p class="section-kicker">${esc(L.resKicker)}</p><h2 id="resources-h">${esc(L.resHeading)}</h2></div><p>${esc(L.resSub)}</p></div>
-    <ul class="tiles">
+    <h3 class="resource-group-title">${esc(L.resCoreHeading)}</h3>
+    <ul class="tiles resource-group">
 ${tile("tile-sessions", "01", "sessions/index.html", L.tileSessions, L.tileSessionsSub)}
 ${tile("tile-ebook", "02", "ebook/index.html", L.tileEbook, L.tileEbookSub)}
 ${tile("tile-slides", "03", "slides/index.html", L.tileSlides, L.tileSlidesSub)}
 ${tile("tile-homework", "04", "homework/index.html", L.tileHomework, L.tileHomeworkSub)}
+    </ul>
+    <h3 class="resource-group-title">${esc(L.resSupportHeading)}</h3>
+    <ul class="tiles resource-group resource-group-support">
 ${tile("tile-grader", "05", GRADER_PUBLIC, L.tileTool, L.tileToolSub, true)}
 ${tile("tile-guide", "06", "orientation.html", L.tileGuide, L.tileGuideSub)}
 ${tile("tile-agents", "07", "ai-agents.html", L.tileAgents, L.tileAgentsSub)}

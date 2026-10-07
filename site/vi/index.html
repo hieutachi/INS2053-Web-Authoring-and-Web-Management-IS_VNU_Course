@@ -55,9 +55,9 @@ if(w&&w!=="vi")location.replace("../index.html");}catch(e){}})();
     <dl class="hero-stats"><div><dt>15</dt><dd>buổi học có hướng dẫn</dd></div><div><dt>3</dt><dd>nhịp học mỗi tuần</dd></div><div><dt>1</dt><dd>dự án xuyên suốt khóa học</dd></div></dl>
   </header>
 
-  <section class="next-step" aria-labelledby="next-step-title">
-    <div class="next-step-copy"><p class="section-kicker">Bước tiếp theo của bạn</p><h2 id="next-step-title">Chưa biết bắt đầu từ đâu? Hãy bắt đầu tại đây</h2><p>Mở trang buổi học của tuần. Mọi thứ đã được xếp đúng thứ tự: đọc trước, học trên lớp, rồi luyện tập ở nhà.</p></div>
-    <a class="primary-action" href="./sessions/session-01.html">Mở Buổi 1 <span aria-hidden="true">→</span></a>
+  <section class="next-step progress-panel" aria-labelledby="progress-title" data-home-progress data-progress-total="15">
+    <div class="next-step-copy"><p class="section-kicker">Tiến độ học của bạn</p><h2 id="progress-title">Tiếp tục từ nơi bạn đã dừng</h2><p data-progress-body>Buổi học tiếp theo đã sẵn sàng. Bạn có thể đọc, xem slide và làm bài tập từ cùng một nơi.</p></div>
+    <div class="progress-panel-status"><p class="progress-week" data-progress-week-label>Tuần 1 trong 15 tuần</p><div class="progress-track" role="progressbar" aria-label="Tiến độ khóa học: 1 trên 15 tuần" aria-valuemin="1" aria-valuemax="15" aria-valuenow="1"><span data-progress-fill></span></div><a class="primary-action" data-progress-link href="./sessions/session-01.html">Tiếp tục học <span aria-hidden="true">→</span></a></div>
   </section>
 
   <section class="learning-map" aria-labelledby="learning-map-title">
@@ -71,150 +71,169 @@ if(w&&w!=="vi")location.replace("../index.html");}catch(e){}})();
 
   <section class="weeks-section" aria-labelledby="weeks-title">
     <div class="section-head"><div><p class="section-kicker">Bản đồ khóa học</p><h2 id="weeks-title">15 tuần, một lộ trình rõ ràng</h2></div><p>Mỗi thẻ có ba lối vào: đọc trước lớp, theo dõi trên lớp, luyện tập tại nhà.</p></div>
-    <div class="week-grid">      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 1</span></div>
+    <div class="week-grid">      <article class="week-card" data-week-card data-week="1">
+        <div class="week-card-top"><span class="week-number">Tuần 1</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-01.html">Làm quen Dreamweaver và nền tảng web</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/01-introduction-to-dreamweaver.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-01.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-01.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 2</span></div>
+      <article class="week-card" data-week-card data-week="2">
+        <div class="week-card-top"><span class="week-number">Tuần 2</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-02.html">Tạo site mới và tổ chức dự án</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/02-creating-a-new-site.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-02.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-02.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 3</span></div>
+      <article class="week-card" data-week-card data-week="3">
+        <div class="week-card-top"><span class="week-number">Tuần 3</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-03.html">Làm việc với văn bản và hình ảnh</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/03-working-with-text-and-images.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-03.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-03.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 4</span></div>
+      <article class="week-card" data-week-card data-week="4">
+        <div class="week-card-top"><span class="week-number">Tuần 4</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-04.html">Áp dụng CSS vào website</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/04-applying-css-to-website.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-04.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-04.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 5</span></div>
+      <article class="week-card" data-week-card data-week="5">
+        <div class="week-card-top"><span class="week-number">Tuần 5</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-05.html">Tạo bố cục trang</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/05-creating-page-layouts.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-05.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-05.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 6</span></div>
+      <article class="week-card" data-week-card data-week="6">
+        <div class="week-card-top"><span class="week-number">Tuần 6</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-06.html">Tạo bố cục trang (tiếp theo)</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/06-creating-page-layouts-continued.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-06.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-06.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 7</span></div>
+      <article class="week-card" data-week-card data-week="7">
+        <div class="week-card-top"><span class="week-number">Tuần 7</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-07.html">CSS3 và font web</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/07-css3-and-web-fonts.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-07.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-07.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card week-card-midterm">
-        <div class="week-card-top"><span class="week-number">Tuần 8</span><span class="week-badge">Tuần thi giữa kỳ</span></div>
+      <article class="week-card week-card-midterm" data-week-card data-week="8">
+        <div class="week-card-top"><span class="week-number">Tuần 8</span><span class="week-status" data-week-status>Chưa bắt đầu</span><span class="week-badge">Tuần thi giữa kỳ</span></div>
         <h3><a href="./sessions/session-08.html">Ôn tập và chuẩn bị thi giữa kỳ</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/08-review-and-midterm.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-08.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-08.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 9</span></div>
+      <article class="week-card" data-week-card data-week="9">
+        <div class="week-card-top"><span class="week-number">Tuần 9</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-09.html">Làm việc với bảng</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/09-working-with-tables.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-09.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-09.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 10</span></div>
+      <article class="week-card" data-week-card data-week="10">
+        <div class="week-card-top"><span class="week-number">Tuần 10</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-10.html">Nhúng Flash, video và âm thanh</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/10-embedding-flash-video-and-sound.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-10.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-10.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 11</span></div>
+      <article class="week-card" data-week-card data-week="11">
+        <div class="week-card-top"><span class="week-number">Tuần 11</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-11.html">Thiết kế một site gọn</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/11-designing-a-compact-site.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-11.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-11.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 12</span></div>
+      <article class="week-card" data-week-card data-week="12">
+        <div class="week-card-top"><span class="week-number">Tuần 12</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-12.html">Dùng công cụ sửa code</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/12-using-code-editing-tools.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-12.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-12.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 13</span></div>
+      <article class="week-card" data-week-card data-week="13">
+        <div class="week-card-top"><span class="week-number">Tuần 13</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-13.html">Tạo biểu mẫu</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/13-creating-forms.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-13.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-13.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 14</span></div>
+      <article class="week-card" data-week-card data-week="14">
+        <div class="week-card-top"><span class="week-number">Tuần 14</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-14.html">Làm việc với Spry Framework</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/14-working-with-spry-framework.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-14.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-14.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article>
-      <article class="week-card">
-        <div class="week-card-top"><span class="week-number">Tuần 15</span></div>
+      <article class="week-card" data-week-card data-week="15">
+        <div class="week-card-top"><span class="week-number">Tuần 15</span><span class="week-status" data-week-status>Chưa bắt đầu</span></div>
         <h3><a href="./sessions/session-15.html">Thiết kế giao diện di động và ôn tập</a></h3>
         <div class="week-links" aria-label="undefined">
           <a href="./ebook/15-mobile-interface-design-and-review.html"><span>01</span>Đọc trước</a>
           <a href="../slides/buoi-15.html"><span>02</span>Trên lớp</a>
           <a href="./homework/session-15.html"><span>03</span>Bài tập</a>
         </div>
+        <button class="week-complete" type="button" data-week-toggle data-complete-label="Đánh dấu đã hoàn thành" data-incomplete-label="Đánh dấu đang học">Đánh dấu đã hoàn thành</button>
       </article></div>
   </section>
 
   <section class="resource-section" aria-labelledby="resources-h">
     <div class="section-head"><div><p class="section-kicker">Mọi thứ nằm chung một chỗ</p><h2 id="resources-h">Học liệu khóa học</h2></div><p>Bắt đầu từ buổi học của bạn, hoặc mở thẳng tới tài liệu bạn cần.</p></div>
-    <ul class="tiles">
+    <h3 class="resource-group-title">Theo lộ trình học</h3>
+    <ul class="tiles resource-group">
       <li class="tile-sessions"><a href="./sessions/index.html"><span class="tile-icon" aria-hidden="true">01</span><span class="tile-copy"><strong>Buổi học</strong><span>Từng tuần, theo đúng thứ tự lên lớp</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-ebook"><a href="./ebook/index.html"><span class="tile-icon" aria-hidden="true">02</span><span class="tile-copy"><strong>Giáo trình sinh viên</strong><span>15 chương + Phụ lục A</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-slides"><a href="./slides/index.html"><span class="tile-icon" aria-hidden="true">03</span><span class="tile-copy"><strong>Slide bài giảng</strong><span>17 bộ slide · 60 sơ đồ</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-homework"><a href="./homework/index.html"><span class="tile-icon" aria-hidden="true">04</span><span class="tile-copy"><strong>Bài tập</strong><span>15 đề · Phần 1 code + Phần 2 video</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
+    </ul>
+    <h3 class="resource-group-title">Công cụ và hướng dẫn</h3>
+    <ul class="tiles resource-group resource-group-support">
       <li class="tile-grader"><a href="../cham-bai.html"><span class="tile-icon" aria-hidden="true">05</span><span class="tile-copy"><strong>Công cụ tự chấm</strong><span>Tự chấm bài theo rubric ngay trên trình duyệt của bạn</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-guide"><a href="./orientation.html"><span class="tile-icon" aria-hidden="true">06</span><span class="tile-copy"><strong>Bạn mới tới?</strong><span>Cách dùng giáo trình, slide, bài tập và công cụ tự chấm</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
       <li class="tile-agents"><a href="./ai-agents.html"><span class="tile-icon" aria-hidden="true">07</span><span class="tile-copy"><strong>Hướng dẫn AI Agents</strong><span>VS Code + Copilot hoặc Cline — cài và dùng AI cho bài tập của bạn</span></span><span class="tile-arrow" aria-hidden="true">↗</span></a></li>
