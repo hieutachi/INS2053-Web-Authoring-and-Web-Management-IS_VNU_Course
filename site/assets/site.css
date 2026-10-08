@@ -2074,3 +2074,261 @@ html[lang="vi"] .toc a {
   .week-card h3 { min-height: 0; }
 }
 
+
+/* =============================================================================
+   Dashboard visual refresh
+   -----------------------------------------------------------------------------
+   A final, intentionally additive layer for the learning dashboard. Keeping
+   this layer at EOF makes the skin easy to review or remove without changing
+   the builder's semantic HTML or the shared reading-page rules above.
+   ============================================================================= */
+
+.home-page {
+  --dashboard-gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.home-page .page-head {
+  max-width: 860px;
+  padding-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.home-page .page-head h1 {
+  max-width: 13ch;
+  font-size: clamp(2.7rem, 7vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.home-page .page-head .lead {
+  max-width: 62ch;
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+}
+
+.home-page .hero-actions {
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.home-page .primary-action,
+.home-page .secondary-action {
+  min-height: 46px;
+  padding: 0.72rem 1.05rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.home-page .secondary-action {
+  background: var(--bg-elevated);
+  border: 1px solid var(--stroke-secondary);
+}
+
+.home-page .hero-stats {
+  gap: clamp(1.4rem, 5vw, 4.5rem);
+  margin-top: 2.2rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--stroke-tertiary);
+}
+
+.home-page .hero-stats dt {
+  color: var(--accent-strong);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.home-page .hero-stats dd {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.home-page .progress-panel {
+  position: relative;
+  overflow: hidden;
+  align-items: stretch;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  margin-bottom: 3.25rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, var(--bg-elevated)), var(--bg-elevated) 68%),
+    var(--bg-elevated);
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--stroke-tertiary));
+  box-shadow: var(--shadow-md);
+}
+
+.home-page .progress-panel::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(var(--accent), var(--accent-green));
+  content: "";
+}
+
+.home-page .next-step-copy,
+.home-page .progress-panel-status {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page .next-step-copy {
+  flex: 1 1 420px;
+}
+
+.home-page .progress-panel-status {
+  flex: 0 1 360px;
+  align-content: center;
+}
+
+.home-page .progress-track {
+  height: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--stroke-tertiary));
+  background: var(--fill-secondary);
+}
+
+.home-page .progress-track span {
+  background: linear-gradient(90deg, var(--accent), var(--accent-green));
+}
+
+.home-page .learning-map,
+.home-page .week-card,
+.home-page .resource-section,
+.home-page .clarity-note {
+  box-shadow: var(--shadow-sm);
+}
+
+.home-page .learning-map {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.home-page .section-head {
+  margin-bottom: var(--dashboard-gap);
+}
+
+.home-page .section-head h2 {
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.home-page .learning-map-steps li {
+  min-height: 92px;
+}
+
+.home-page .map-step-number {
+  background: linear-gradient(145deg, var(--accent-soft), color-mix(in srgb, var(--accent-green) 16%, var(--accent-soft)));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.home-page .week-grid {
+  gap: var(--dashboard-gap);
+}
+
+.home-page .week-card {
+  display: flex;
+  min-height: 245px;
+  flex-direction: column;
+  padding: 1.35rem;
+  border-color: color-mix(in srgb, var(--stroke-secondary) 68%, transparent);
+}
+
+.home-page .week-card.is-current {
+  border-color: var(--accent);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 7%, var(--bg-elevated)), var(--bg-elevated) 60%);
+}
+
+.home-page .week-card.is-complete {
+  border-color: color-mix(in srgb, var(--accent-green) 55%, var(--stroke-tertiary));
+}
+
+.home-page .week-card h3 {
+  flex: 1 1 auto;
+}
+
+.home-page .week-links a {
+  min-height: 55px;
+  justify-content: center;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.home-page .week-links a:hover {
+  transform: translateY(-2px);
+}
+
+.home-page .week-complete {
+  min-height: 40px;
+  background: color-mix(in srgb, var(--bg-elevated) 78%, var(--fill-tertiary));
+}
+
+/* Home resource tiles: tighten the card feel and add a hover affordance that
+   survives without relying on colour alone (the arrow moves). */
+.home-page .tiles a {
+  border-radius: var(--radius);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.home-page .tiles a:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--stroke-tertiary));
+  box-shadow: var(--shadow-md);
+}
+
+.home-page .tiles a:hover .tile-arrow {
+  transform: translate(3px, -3px);
+}
+
+.home-page .tile-arrow {
+  transition: transform 180ms ease;
+}
+
+/* Focus must be visible against the new gradient surfaces; the two-tone ring
+   keeps the indicator legible on both light fills and the dark theme. */
+.home-page a:focus-visible,
+.home-page button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent-soft) 80%, transparent);
+}
+
+/* Mid-size screens: two columns reads denser than one long column and keeps
+   the week rhythm visible above the fold. */
+@media (min-width: 761px) and (max-width: 1080px) {
+  .home-page .week-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-page .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .home-page .progress-panel {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .home-page .progress-panel-status {
+    flex-basis: auto;
+    min-width: 0;
+  }
+
+  /* Keep the complete toggle reachable: full-width tap target on phones. */
+  .home-page .week-complete {
+    width: 100%;
+    text-align: center;
+  }
+
+  .home-page .page-head h1 {
+    max-width: none;
+  }
+}
+
+/* The refresh uses transitions generously; honour the reader's OS-level
+   preference without inheriting the coarse rule earlier in the file. */
+@media (prefers-reduced-motion: reduce) {
+  .home-page .tiles a,
+  .home-page .week-links a,
+  .home-page .tile-arrow,
+  .home-page .progress-track span {
+    transition: none;
+  }
+}
+
