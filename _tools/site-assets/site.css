@@ -2332,3 +2332,34 @@ html[lang="vi"] .toc a {
   }
 }
 
+
+/* Make the practical next step unmistakable on the dashboard. */
+.home-page .tile-homework a {
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-orange) 13%, var(--bg-elevated)),
+      var(--bg-elevated) 68%);
+  border-color: color-mix(in srgb, var(--accent-orange) 48%, var(--stroke-tertiary));
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-orange) 12%, transparent);
+}
+
+.home-page .tile-homework a::after {
+  background: color-mix(in srgb, var(--accent-orange) 18%, transparent);
+}
+
+.home-page .tile-homework .tile-icon {
+  background: color-mix(in srgb, var(--accent-orange) 20%, var(--bg-base));
+  border-color: color-mix(in srgb, var(--accent-orange) 48%, transparent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent-orange) 9%, transparent);
+}
+
+.home-page .tile-homework .tile-copy strong {
+  color: var(--accent-orange);
+}
+
+.home-page .tile-homework a:hover,
+.home-page .tile-homework a:focus-visible {
+  border-color: var(--accent-orange);
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--accent-orange) 22%, transparent);
+}
+
