@@ -6,6 +6,7 @@
 <title>Session 13: Creating Forms — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Week 13 of 15. Read the chapter before class, follow the deck in class, then use the homework brief for practice.">
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/project.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -18,7 +19,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("ins2053.lang");
-if(w&&w!=="en")location.replace("../vi/sessions/session-13.html");}catch(e){}})();
+if(w&&w!=="en")location.replace("../vi/sessions/session-13.html"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="session-page flow-9">
@@ -35,6 +36,7 @@ if(w&&w!=="en")location.replace("../vi/sessions/session-13.html");}catch(e){}})(
       <a data-course-nav="ebook" href="../ebook/index.html">Ebook</a>
       <a data-course-nav="slides" href="../slides/index.html">Slides</a>
       <a data-course-nav="homework" href="../homework/index.html">Homework</a>
+      <a data-course-nav="project" href="../project/index.html">Project</a>
     </nav>
     <nav class="lang-switch" aria-label="Change language">
       <a class="lang-opt on" aria-current="true" data-lang-opt="en" aria-label="English" title="Current language: English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
@@ -138,5 +140,7 @@ if(w&&w!=="en")location.replace("../vi/sessions/session-13.html");}catch(e){}})(
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/demo-viewer.js" defer></script>
+
 </body>
 </html>

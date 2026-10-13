@@ -6,6 +6,7 @@
 <title>Bài tập 3: Xây dựng trang About — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/project.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -18,7 +19,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("ins2053.lang");
-if(w&&w!=="vi")location.replace("../../homework/session-03.html");}catch(e){}})();
+if(w&&w!=="vi")location.replace("../../homework/session-03.html"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="reading-page homework-page">
@@ -35,6 +36,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-03.html");}catch(e){}})(
       <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
       <a data-course-nav="slides" href="../slides/index.html">Slide</a>
       <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+      <a data-course-nav="project" href="../project/index.html">Project</a>
     </nav>
     <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
       <a class="lang-opt" href="../../homework/session-03.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
@@ -77,42 +79,82 @@ if(w&&w!=="vi")location.replace("../../homework/session-03.html");}catch(e){}})(
   <section class="hw-demo" aria-labelledby="hw-demo-title-03">
   <h2 id="hw-demo-title-03">Mẫu đối chiếu trực quan — bạn đang xây dựng gì</h2>
   <p class="hw-demo-note">Đây là trang tham chiếu chạy thật cho bài tập của buổi này. Hãy mở trang của bạn trong trình duyệt và đặt cạnh để đối chiếu: cùng cấu trúc? cùng các khối? cùng hành vi? Mục tiêu là GẦN TƯƠNG TỰ, không phải giống hệt từng pixel — phần lời văn và hình ảnh phải là của chính bạn.</p>
-  <p class="hw-demo-note">Phần tham chiếu chỉ để xem: sao chép, cắt, kéo thả và chuột phải đã bị tắt, và nó chạy trong một khung bị khóa. Hãy quan sát rồi tự gõ phiên bản của riêng bạn — đó mới là kỹ năng được chấm.</p>
-  <iframe
-    class="hw-demo-frame"
-    title="Xem trực quan mẫu bài tập — Buổi 03"
-    sandbox="allow-same-origin"
-    loading="lazy"
-    srcdoc="<!DOCTYPE html>
-<html lang=&quot;en&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-<title>About | CodeBreakers Club</title>
+  <div class="demo-viewer" data-demo-viewer>
+<h3 id="homework-03-title">Demo Viewer</h3><p>Bản xem để học: script, gửi form và điều hướng trang cha đều bị chặn. Không gửi hay lưu dữ liệu. Sandbox không phải cơ chế chống sao chép.</p>
+<div class="demo-controls" data-viewer-controls hidden><div role="group" aria-label="Trang xem trước"><button type="button" data-demo-page="about" aria-pressed="true">About</button><button type="button" data-demo-page="index" aria-pressed="false">Home</button><button type="button" data-demo-page="contact" aria-pressed="false">Contact</button></div>
+<div role="group" aria-label="Kích thước xem trước"><button type="button" data-demo-width="375" aria-pressed="false">375px</button><button type="button" data-demo-width="768" aria-pressed="false">768px</button><button type="button" data-demo-width="1200" aria-pressed="false">1200px</button><button type="button" data-demo-width="fit" aria-pressed="true">Vừa khung</button></div>
+<button type="button" data-demo-validate>Kiểm tra trường — không gửi</button><button type="button" data-demo-clear>Xóa các trường</button></div>
+<p role="status" data-demo-status data-valid="Các trường hợp lệ. Chỉ mô phỏng: chưa gửi thông tin nào." data-invalid="Hãy điền đủ các trường được đánh dấu.">Sẵn sàng xem trước</p>
+<div class="demo-scroll" tabindex="0" aria-label="Kích thước xem trước"><iframe class="hw-demo-frame" title="Demo Viewer — homework-03" sandbox="allow-same-origin" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;About | CodeBreakers Club&lt;/title&gt;
 
-</head>
-<body oncopy=&quot;return false&quot; oncut=&quot;return false&quot; oncontextmenu=&quot;return false&quot; onselectstart=&quot;return false&quot; ondragstart=&quot;return false&quot;>
 
-  .pagetitle { font-size: 2em; font-weight: bold; margin: 0.67em 0; }
+&lt;/head&gt;
+&lt;body&gt;
 
-  <div class=&quot;pagetitle&quot; role=&quot;heading&quot; aria-level=&quot;1&quot;>About Our Club</div>
-  <p>The CodeBreakers Club was founded in 2024 by students of the
-     International School, VNU.</p>
-  <h2>Our mission</h2>
-  <p>Help every member ship one real web page per month, and never debug
-     alone.</p>
-  <h2>Regular activities</h2>
-  <ul>
-    <li>Friday coding nights</li>
-    <li>Monthly mini-hackathons</li>
-    <li>Peer code review sessions</li>
-  </ul>
-  <h2>Gallery</h2>
-  <img src=&quot;images/meeting.jpg&quot; alt=&quot;Members at a Friday coding night&quot;
-       width=&quot;320&quot; height=&quot;180&quot;>
+  &lt;h1&gt;About Our Club&lt;/h1&gt;
+  &lt;p&gt;The CodeBreakers Club was founded in 2024 by students of the
+     International School, VNU.&lt;/p&gt;
+  &lt;h2&gt;Our mission&lt;/h2&gt;
+  &lt;p&gt;Help every member ship one real web page per month, and never debug
+     alone.&lt;/p&gt;
+  &lt;p&gt;Beginners and alumni can join. Peer feedback helps members gain confidence.&lt;/p&gt;
+  &lt;h2&gt;Regular activities&lt;/h2&gt;&lt;h3&gt;Weekly events&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Friday coding nights&lt;/li&gt;
+    &lt;li&gt;Monthly mini-hackathons&lt;/li&gt;
+    &lt;li&gt;Peer code review sessions&lt;/li&gt;&lt;li&gt;HTML workshops&lt;/li&gt;&lt;li&gt;Alumni mentoring&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;h2&gt;How to join&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;Read about us&lt;/li&gt;&lt;li&gt;Choose an activity&lt;/li&gt;&lt;li&gt;Visit Contact&lt;/li&gt;&lt;/ol&gt;
+  &lt;h2&gt;Gallery&lt;/h2&gt;
+  &lt;img src=&quot;../../assets/student-club/images/club-photo.png&quot; alt=&quot;Original Learn, Build, Share diagram&quot; width=&quot;320&quot; height=&quot;180&quot;&gt;
+  &lt;img src=&quot;../../assets/student-club/images/event-1.png&quot; alt=&quot;Original HTML, CSS and review diagram&quot; width=&quot;320&quot; height=&quot;180&quot;&gt;
+  &lt;img src=&quot;../../assets/student-club/images/meeting.png&quot; alt=&quot;Original Plan, Test, Explain diagram&quot;
+       width=&quot;320&quot; height=&quot;180&quot;&gt;
 
-</body>
-</html>"></iframe>
+&lt;/body&gt;
+&lt;/html&gt;"></iframe></div>
+<template data-demo-document="about">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;About | CodeBreakers Club&lt;/title&gt;
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;About Our Club&lt;/h1&gt;
+  &lt;p&gt;The CodeBreakers Club was founded in 2024 by students of the
+     International School, VNU.&lt;/p&gt;
+  &lt;h2&gt;Our mission&lt;/h2&gt;
+  &lt;p&gt;Help every member ship one real web page per month, and never debug
+     alone.&lt;/p&gt;
+  &lt;p&gt;Beginners and alumni can join. Peer feedback helps members gain confidence.&lt;/p&gt;
+  &lt;h2&gt;Regular activities&lt;/h2&gt;&lt;h3&gt;Weekly events&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Friday coding nights&lt;/li&gt;
+    &lt;li&gt;Monthly mini-hackathons&lt;/li&gt;
+    &lt;li&gt;Peer code review sessions&lt;/li&gt;&lt;li&gt;HTML workshops&lt;/li&gt;&lt;li&gt;Alumni mentoring&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;h2&gt;How to join&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;Read about us&lt;/li&gt;&lt;li&gt;Choose an activity&lt;/li&gt;&lt;li&gt;Visit Contact&lt;/li&gt;&lt;/ol&gt;
+  &lt;h2&gt;Gallery&lt;/h2&gt;
+  &lt;img src=&quot;../../assets/student-club/images/club-photo.png&quot; alt=&quot;Original Learn, Build, Share diagram&quot; width=&quot;320&quot; height=&quot;180&quot;&gt;
+  &lt;img src=&quot;../../assets/student-club/images/event-1.png&quot; alt=&quot;Original HTML, CSS and review diagram&quot; width=&quot;320&quot; height=&quot;180&quot;&gt;
+  &lt;img src=&quot;../../assets/student-club/images/meeting.png&quot; alt=&quot;Original Plan, Test, Explain diagram&quot;
+       width=&quot;320&quot; height=&quot;180&quot;&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</template>
+<template data-demo-document="index">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;index — lesson 3&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — index&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Welcome to the club. We practise, review and share our work.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<template data-demo-document="contact">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;contact — lesson 3&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — contact&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Teaching example: contact@example.invalid. Meeting place: the campus learning lab.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<noscript><p>Bật JavaScript để đổi trang, kích thước và thử validation.</p></noscript>
+</div>
   </section>
   <article class="doc">
 <h2 id="bài-tập-3-xây-dựng-trang-about">Bài tập 3: Xây dựng trang About<a class="anchor" href="#bài-tập-3-xây-dựng-trang-about" aria-label="Link to this section">#</a></h2>
@@ -368,5 +410,7 @@ vấn kỹ thuật điển hình.</p>
   </div>
 </footer>
 <script src="../../assets/site.js" defer></script>
+<script src="../../assets/demo-viewer.js" defer></script>
+
 </body>
 </html>

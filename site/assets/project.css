@@ -1,0 +1,29 @@
+/* Scoped additions; the course's theme and typography remain authoritative. */
+.project-hub { max-width: 1200px; margin: auto; }
+.project-nav { display: flex; flex-wrap: wrap; gap: .5rem; padding: 1rem 0; border-bottom: 1px solid currentColor; }
+.project-nav a { padding: .55rem .75rem; border-radius: .4rem; }
+.project-nav a[aria-current] { background: #173e63; color: white; font-weight: 700; }
+.project-toolbar { display: flex; justify-content: flex-end; margin: 1rem 0; }
+.project-section { max-width: 100%; line-height: 1.75; }
+.project-section h2, .project-section h3 { scroll-margin-top: 6rem; }
+.project-checklist { list-style: none; padding: 0; }
+.project-checklist li { padding: .7rem; border-bottom: 1px solid #8794a5; }
+.project-checklist label { display: flex; gap: .75rem; align-items: baseline; cursor: pointer; }
+.project-hub button, .demo-viewer button { font: inherit; color: inherit; background: transparent; border: 1px solid #8794a5; border-radius: .4rem; padding: .45rem .7rem; cursor: pointer; }
+.demo-viewer { min-width: 0; border: 1px solid #8794a5; border-radius: .65rem; padding: 1rem; margin: 1rem 0; }
+.demo-controls, .demo-controls [role="group"] { display: flex; flex-wrap: wrap; gap: .5rem; }
+.demo-controls { gap: .8rem; }
+.demo-controls button[aria-pressed="true"] { background: #173e63; color: white; }
+.demo-scroll { max-width: 100%; overflow-x: auto; border: 1px solid #8794a5; background: white; }
+.demo-viewer .hw-demo-frame { display: block; width: 100%; max-width: none; height: 650px; border: 0; background: white; }
+.demo-viewer [role="status"] { min-height: 1.5em; }
+.project-hub :focus-visible, .demo-viewer :focus-visible { outline: 3px solid #c47b00; outline-offset: 3px; }
+[hidden] { display: none !important; }
+@media (max-width: 600px) { .demo-viewer { padding: .6rem; } .project-nav a { padding: .4rem; } }
+@media print {
+  .project-section[hidden] { display: block !important; }
+  .project-nav, .project-toolbar, [data-project-reset], .demo-controls { display: none !important; }
+  .project-section { break-before: page; color: #111; }
+  .demo-scroll { overflow: visible; }
+  .demo-viewer .hw-demo-frame { width: 100% !important; }
+}

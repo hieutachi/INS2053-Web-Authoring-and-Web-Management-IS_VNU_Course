@@ -171,7 +171,23 @@ disabled. See [`HUONG-DAN-cham-bai.md`](HUONG-DAN-cham-bai.md).
 | `project/rubric.md` | Marking rubric |
 | `canvases/`, `_tools/`, `_archive/` | Source and tooling, not student-facing; only the vetted `_tools/grader/cham-bai.html` artifact is copied separately |
 
-`npm run qa:site` fails the build if any page links into an excluded folder, so this
+The bilingual Project Hub is published at `site/project/index.html` and
+`site/vi/project/index.html`, from the dedicated `project/student-guide.md` and
+`i18n/vi/project/student-guide.md` sources. This is a narrow allowlist, not general
+publication of `project/`: the instructor rubric remains private. Its eight
+sections support deep links, no-JavaScript reading and printing; the personal
+checklist is shared between EN/VI via versioned local storage, with no submission
+or grade recording. The assignment still requires five separate HTML pages.
+
+The shared Demo Viewer serves the Hub and all 15 homework sheets. Each preview is
+a complete isolated document, with approved in-preview navigation, real viewport
+width presets and parent-side field validation. Scripts, form submission and top
+navigation are blocked inside the frame. Text remains selectable; sandboxing is
+not copy protection. The fictional five-page reference and its licensed local
+media live in `examples/student-club/`; see its README and ASSETS notes.
+
+`npm run qa:site` fails the build if any page links into an excluded folder (except
+the two named public Project Hub pages), so this
 cannot regress by accident. It also rejects forms, uploads, request code and API
 endpoints while submission is disabled. The sole named exception is
 `site/cham-bai.html`, which reads work locally (or read-only from GitHub), executes no
@@ -183,7 +199,9 @@ Build and check:
 ```bash
 npm run qa:grader         # build + 11 grader gates across all 15 rubrics
 npm run build:site        # generate site/, including the vetted grader artifact
-npm run qa:site           # 16 QA groups on the 124-page bilingual public output
+npm run qa:site           # 126 pages, Project Hub + decoded demo gates + self-test
+npm run qa:project        # only Project Hub publication/content contracts
+npm run qa:demos          # only independent preview-document contracts
 npm run clean:site        # delete site/
 ```
 

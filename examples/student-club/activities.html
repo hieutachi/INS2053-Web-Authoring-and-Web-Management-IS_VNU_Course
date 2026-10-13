@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ========== HEADER (same on every page) ========== -->
-    <header>
-        <div class="logo">CB</div>
+    <header id="top">
+        <img class="logo" src="images/logo.svg" alt="CodeBreakers code-bracket logo" width="80" height="80">
         <div>
             <h1>CodeBreakers Club</h1>
             <p class="tagline">Where code meets community</p>
@@ -21,15 +23,16 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="activities.html" class="active">Activities</a></li>
+            <li class="has-dropdown"><a href="about.html">About</a><ul class="dropdown"><li><a href="about.html#mission">Mission</a></li><li><a href="about.html#activities">Activities</a></li><li><a href="about.html#gallery">Gallery</a></li></ul></li>
+            <li><a href="activities.html" class="active" aria-current="page">Activities</a></li>
             <li><a href="media.html">Media</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
     <!-- ========== MAIN CONTENT ========== -->
-    <main>
+    <main id="main">
+        <p class="example-note">Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.</p>
         <section>
             <h2>Weekly Schedule</h2>
             <p>We run activities every week of the semester. Come along to any
@@ -41,14 +44,15 @@
                  thead    = header row
                  tbody    = data rows
                  colspan  = one cell that spans several columns -->
+            <div class="table-scroll" role="region" aria-label="Weekly schedule" tabindex="0">
             <table>
                 <caption>CodeBreakers Club — Weekly Activities</caption>
                 <thead>
                     <tr>
-                        <th>Day</th>
-                        <th>Time</th>
-                        <th>Activity</th>
-                        <th>Location</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Activity</th>
+                        <th scope="col">Location</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,6 +88,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
 
         <section>
@@ -100,7 +105,7 @@
 
     <!-- ========== FOOTER ========== -->
     <footer>
-        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@codebreakers.edu">contact@codebreakers.edu</a></p>
+        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@example.invalid">contact@example.invalid</a></p>
     </footer>
 
 </body>

@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00.000 --> 00:08.000
+Original teaching tutorial. CodeBreakers is a fictional club.
+
+00:08.000 --> 00:18.000
+Create index.html. Add the doctype, HTML, head and body.
+
+00:18.000 --> 00:30.000
+Set UTF-8, viewport and title. Add a heading and two paragraphs.
+
+00:30.000 --> 00:40.000
+Save and open the file. The title is on the tab; content is in the page.
+
+00:40.000 --> 00:52.000
+Create About, Activities, Media and Contact at the same folder level.
+
+00:52.000 --> 01:05.000
+Use relative links and local CSS/images. Test links, keyboard and offline use.
+
+01:05.000 --> 01:30.000
+Build a small working page, then improve it milestone by milestone.

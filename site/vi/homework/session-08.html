@@ -6,6 +6,7 @@
 <title>Bài tập 8: Ôn tập giữa kỳ và luyện bảng — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/project.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -18,7 +19,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("ins2053.lang");
-if(w&&w!=="vi")location.replace("../../homework/session-08.html");}catch(e){}})();
+if(w&&w!=="vi")location.replace("../../homework/session-08.html"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="reading-page homework-page">
@@ -35,6 +36,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-08.html");}catch(e){}})(
       <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
       <a data-course-nav="slides" href="../slides/index.html">Slide</a>
       <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+      <a data-course-nav="project" href="../project/index.html">Project</a>
     </nav>
     <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
       <a class="lang-opt" href="../../homework/session-08.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
@@ -77,23 +79,21 @@ if(w&&w!=="vi")location.replace("../../homework/session-08.html");}catch(e){}})(
   <section class="hw-demo" aria-labelledby="hw-demo-title-08">
   <h2 id="hw-demo-title-08">Mẫu đối chiếu trực quan — bạn đang xây dựng gì</h2>
   <p class="hw-demo-note">Đây là trang tham chiếu chạy thật cho bài tập của buổi này. Hãy mở trang của bạn trong trình duyệt và đặt cạnh để đối chiếu: cùng cấu trúc? cùng các khối? cùng hành vi? Mục tiêu là GẦN TƯƠNG TỰ, không phải giống hệt từng pixel — phần lời văn và hình ảnh phải là của chính bạn.</p>
-  <p class="hw-demo-note">Phần tham chiếu chỉ để xem: sao chép, cắt, kéo thả và chuột phải đã bị tắt, và nó chạy trong một khung bị khóa. Hãy quan sát rồi tự gõ phiên bản của riêng bạn — đó mới là kỹ năng được chấm.</p>
-  <iframe
-    class="hw-demo-frame"
-    title="Xem trực quan mẫu bài tập — Buổi 08"
-    sandbox="allow-same-origin"
-    loading="lazy"
-    srcdoc="<!DOCTYPE html>
-<html lang=&quot;en&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-<title>CodeBreakers Club — midterm checkpoint</title>
+  <div class="demo-viewer" data-demo-viewer>
+<h3 id="homework-08-title">Demo Viewer</h3><p>Bản xem để học: script, gửi form và điều hướng trang cha đều bị chặn. Không gửi hay lưu dữ liệu. Sandbox không phải cơ chế chống sao chép.</p>
+<div class="demo-controls" data-viewer-controls hidden><div role="group" aria-label="Trang xem trước"><button type="button" data-demo-page="index" aria-pressed="true">Home</button><button type="button" data-demo-page="about" aria-pressed="false">About</button><button type="button" data-demo-page="contact" aria-pressed="false">Contact</button></div>
+<div role="group" aria-label="Kích thước xem trước"><button type="button" data-demo-width="375" aria-pressed="false">375px</button><button type="button" data-demo-width="768" aria-pressed="false">768px</button><button type="button" data-demo-width="1200" aria-pressed="false">1200px</button><button type="button" data-demo-width="fit" aria-pressed="true">Vừa khung</button></div>
+<button type="button" data-demo-validate>Kiểm tra trường — không gửi</button><button type="button" data-demo-clear>Xóa các trường</button></div>
+<p role="status" data-demo-status data-valid="Các trường hợp lệ. Chỉ mô phỏng: chưa gửi thông tin nào." data-invalid="Hãy điền đủ các trường được đánh dấu.">Sẵn sàng xem trước</p>
+<div class="demo-scroll" tabindex="0" aria-label="Kích thước xem trước"><iframe class="hw-demo-frame" title="Demo Viewer — homework-08" sandbox="allow-same-origin" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;CodeBreakers Club — midterm checkpoint&lt;/title&gt;
 
-</head>
-<body oncopy=&quot;return false&quot; oncut=&quot;return false&quot; oncontextmenu=&quot;return false&quot; onselectstart=&quot;return false&quot; ondragstart=&quot;return false&quot;>
+&lt;style&gt;
 
-  <style>
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
     .banner { background: #1d4ed8; color: #fff; padding: 1.2rem;
               text-align: center; }
@@ -106,32 +106,93 @@ if(w&&w!=="vi")location.replace("../../homework/session-08.html");}catch(e){}})(
     td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
     .footer { background: #111827; color: #d1d5db; text-align: center;
               padding: 1rem; margin-top: 2rem; }
-  </style>
-  <div class=&quot;banner&quot;><div class=&quot;pagetitle&quot; role=&quot;heading&quot; aria-level=&quot;1&quot;>CodeBreakers Club</div></div>
-  <nav class=&quot;menu&quot;>
-    <a href=&quot;index.html&quot;>Home</a>
-    <a href=&quot;about.html&quot;>About</a>
-    <a href=&quot;contact.html&quot;>Contact</a>
-  </nav>
-  <div class=&quot;content&quot;>
-    <h2>Midterm review</h2>
-    <table>
-      <thead>
-        <tr><th scope=&quot;col&quot;>Skill</th><th scope=&quot;col&quot;>Where I used it</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>HTML boilerplate</td><td>Every page of the project</td></tr>
-        <tr><td>Relative paths</td><td>Navigation between 3 pages</td></tr>
-        <tr><td>Page layout</td><td>Header, menu, content, footer</td></tr>
-      </tbody>
-    </table>
-    <p>Every navigation link below has been clicked and works. The honest
-       reflections live in <code>midterm-review.md</code>.</p>
-  </div>
-  <div class=&quot;footer&quot;>&amp;copy; 2026 CodeBreakers Club</div>
+  
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-</body>
-</html>"></iframe>
+  
+  &lt;header class=&quot;banner&quot;&gt;&lt;h1&gt;CodeBreakers Club&lt;/h1&gt;&lt;/header&gt;
+  &lt;nav class=&quot;menu&quot;&gt;
+    &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+    &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;main class=&quot;content&quot;&gt;
+    &lt;h2&gt;Midterm review&lt;/h2&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Skill&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Where I used it&lt;/th&gt;&lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;HTML boilerplate&lt;/td&gt;&lt;td&gt;Every page of the project&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Relative paths&lt;/td&gt;&lt;td&gt;Navigation between 3 pages&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Page layout&lt;/td&gt;&lt;td&gt;Header, menu, content, footer&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;p&gt;Click and verify every navigation link yourself. This preview cannot prove
+       your repository includes midterm-review.md or the Activities skeleton.&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer class=&quot;footer&quot;&gt;&amp;copy; 2026 CodeBreakers Club&lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;"></iframe></div>
+<template data-demo-document="index">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;CodeBreakers Club — midterm checkpoint&lt;/title&gt;
+
+&lt;style&gt;
+
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
+    .banner { background: #1d4ed8; color: #fff; padding: 1.2rem;
+              text-align: center; }
+    .menu { background: #1e3a8a; text-align: center; padding: 0.6rem; }
+    .menu a { color: #fff; text-decoration: none; margin: 0 1rem; }
+    .content { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th { background: #1d4ed8; color: #fff; text-align: left;
+         padding: 0.5rem 0.75rem; }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    .footer { background: #111827; color: #d1d5db; text-align: center;
+              padding: 1rem; margin-top: 2rem; }
+  
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  
+  &lt;header class=&quot;banner&quot;&gt;&lt;h1&gt;CodeBreakers Club&lt;/h1&gt;&lt;/header&gt;
+  &lt;nav class=&quot;menu&quot;&gt;
+    &lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+    &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;main class=&quot;content&quot;&gt;
+    &lt;h2&gt;Midterm review&lt;/h2&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Skill&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Where I used it&lt;/th&gt;&lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;HTML boilerplate&lt;/td&gt;&lt;td&gt;Every page of the project&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Relative paths&lt;/td&gt;&lt;td&gt;Navigation between 3 pages&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Page layout&lt;/td&gt;&lt;td&gt;Header, menu, content, footer&lt;/td&gt;&lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;p&gt;Click and verify every navigation link yourself. This preview cannot prove
+       your repository includes midterm-review.md or the Activities skeleton.&lt;/p&gt;
+  &lt;/main&gt;
+  &lt;footer class=&quot;footer&quot;&gt;&amp;copy; 2026 CodeBreakers Club&lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</template>
+<template data-demo-document="about">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;about — lesson 8&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — about&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Our mission is to learn HTML and CSS together.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<template data-demo-document="contact">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;contact — lesson 8&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — contact&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Teaching example: contact@example.invalid. Meeting place: the campus learning lab.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<noscript><p>Bật JavaScript để đổi trang, kích thước và thử validation.</p></noscript>
+</div>
   </section>
   <article class="doc">
 <h2 id="bài-tập-8-ôn-tập-giữa-kỳ-và-luyện-bảng">Bài tập 8: Ôn tập giữa kỳ và luyện bảng<a class="anchor" href="#bài-tập-8-ôn-tập-giữa-kỳ-và-luyện-bảng" aria-label="Link to this section">#</a></h2>
@@ -425,5 +486,7 @@ tập sạch sẽ — và một dự án mà bạn đã tự tay bấm qua từn
   </div>
 </footer>
 <script src="../../assets/site.js" defer></script>
+<script src="../../assets/demo-viewer.js" defer></script>
+
 </body>
 </html>

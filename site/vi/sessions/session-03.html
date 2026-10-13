@@ -6,6 +6,7 @@
 <title>Buổi 3: Làm việc với văn bản và hình ảnh — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Tuần 3 trong 15 tuần. Đọc chương trước khi lên lớp, theo slide trên lớp, rồi dùng đề bài tập để luyện thêm.">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/project.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -18,7 +19,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("ins2053.lang");
-if(w&&w!=="vi")location.replace("../../sessions/session-03.html");}catch(e){}})();
+if(w&&w!=="vi")location.replace("../../sessions/session-03.html"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="session-page flow-9">
@@ -35,6 +36,7 @@ if(w&&w!=="vi")location.replace("../../sessions/session-03.html");}catch(e){}})(
       <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
       <a data-course-nav="slides" href="../slides/index.html">Slide</a>
       <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+      <a data-course-nav="project" href="../project/index.html">Project</a>
     </nav>
     <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
       <a class="lang-opt" href="../../sessions/session-03.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
@@ -138,5 +140,7 @@ if(w&&w!=="vi")location.replace("../../sessions/session-03.html");}catch(e){}})(
   </div>
 </footer>
 <script src="../../assets/site.js" defer></script>
+<script src="../../assets/demo-viewer.js" defer></script>
+
 </body>
 </html>

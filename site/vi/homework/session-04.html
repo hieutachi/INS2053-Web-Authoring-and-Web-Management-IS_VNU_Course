@@ -6,6 +6,7 @@
 <title>Bài tập 4: Trang trí bằng External CSS — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="Đề bài tập của buổi này — Phần 1 code + Phần 2 video. Nộp bài qua repository của bạn.">
 <link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/project.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -18,7 +19,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("ins2053.lang");
-if(w&&w!=="vi")location.replace("../../homework/session-04.html");}catch(e){}})();
+if(w&&w!=="vi")location.replace("../../homework/session-04.html"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="reading-page homework-page">
@@ -35,6 +36,7 @@ if(w&&w!=="vi")location.replace("../../homework/session-04.html");}catch(e){}})(
       <a data-course-nav="ebook" href="../ebook/index.html">Giáo trình</a>
       <a data-course-nav="slides" href="../slides/index.html">Slide</a>
       <a data-course-nav="homework" href="../homework/index.html">Bài tập</a>
+      <a data-course-nav="project" href="../project/index.html">Project</a>
     </nav>
     <nav class="lang-switch" aria-label="Đổi ngôn ngữ">
       <a class="lang-opt" href="../../homework/session-04.html" hreflang="en" lang="en" data-lang-opt="en" aria-label="English" title="Trang này có cả bản English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
@@ -77,39 +79,86 @@ if(w&&w!=="vi")location.replace("../../homework/session-04.html");}catch(e){}})(
   <section class="hw-demo" aria-labelledby="hw-demo-title-04">
   <h2 id="hw-demo-title-04">Mẫu đối chiếu trực quan — bạn đang xây dựng gì</h2>
   <p class="hw-demo-note">Đây là trang tham chiếu chạy thật cho bài tập của buổi này. Hãy mở trang của bạn trong trình duyệt và đặt cạnh để đối chiếu: cùng cấu trúc? cùng các khối? cùng hành vi? Mục tiêu là GẦN TƯƠNG TỰ, không phải giống hệt từng pixel — phần lời văn và hình ảnh phải là của chính bạn.</p>
-  <p class="hw-demo-note">Phần tham chiếu chỉ để xem: sao chép, cắt, kéo thả và chuột phải đã bị tắt, và nó chạy trong một khung bị khóa. Hãy quan sát rồi tự gõ phiên bản của riêng bạn — đó mới là kỹ năng được chấm.</p>
-  <iframe
-    class="hw-demo-frame"
-    title="Xem trực quan mẫu bài tập — Buổi 04"
-    sandbox="allow-same-origin"
-    loading="lazy"
-    srcdoc="<!DOCTYPE html>
-<html lang=&quot;en&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-<title>About | CodeBreakers Club</title>
+  <div class="demo-viewer" data-demo-viewer>
+<h3 id="homework-04-title">Demo Viewer</h3><p>Bản xem để học: script, gửi form và điều hướng trang cha đều bị chặn. Không gửi hay lưu dữ liệu. Sandbox không phải cơ chế chống sao chép.</p>
+<div class="demo-controls" data-viewer-controls hidden><div role="group" aria-label="Trang xem trước"><button type="button" data-demo-page="about" aria-pressed="true">About</button><button type="button" data-demo-page="index" aria-pressed="false">Home</button><button type="button" data-demo-page="contact" aria-pressed="false">Contact</button></div>
+<div role="group" aria-label="Kích thước xem trước"><button type="button" data-demo-width="375" aria-pressed="false">375px</button><button type="button" data-demo-width="768" aria-pressed="false">768px</button><button type="button" data-demo-width="1200" aria-pressed="false">1200px</button><button type="button" data-demo-width="fit" aria-pressed="true">Vừa khung</button></div>
+<button type="button" data-demo-validate>Kiểm tra trường — không gửi</button><button type="button" data-demo-clear>Xóa các trường</button></div>
+<p role="status" data-demo-status data-valid="Các trường hợp lệ. Chỉ mô phỏng: chưa gửi thông tin nào." data-invalid="Hãy điền đủ các trường được đánh dấu.">Sẵn sàng xem trước</p>
+<div class="demo-scroll" tabindex="0" aria-label="Kích thước xem trước"><iframe class="hw-demo-frame" title="Demo Viewer — homework-04" sandbox="allow-same-origin" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;About | CodeBreakers Club&lt;/title&gt;
 
-</head>
-<body oncopy=&quot;return false&quot; oncut=&quot;return false&quot; oncontextmenu=&quot;return false&quot; onselectstart=&quot;return false&quot; ondragstart=&quot;return false&quot;>
+&lt;style&gt;
 
-  <style>
-    body { font-family: Georgia, serif; color: #222; line-height: 1.6;
+    body { background: #f4f8fd; font-size: 16px; font-family: Georgia, serif; color: #222; line-height: 1.6;
            max-width: 720px; margin: 0 auto; padding: 1rem; }
     h1 { color: #1d4ed8; border-bottom: 3px solid #1d4ed8; }
     h2 { color: #b45309; }
-    img { border: 4px solid #e5e7eb; border-radius: 8px; }
-  </style>
-  <div class=&quot;pagetitle&quot; role=&quot;heading&quot; aria-level=&quot;1&quot;>About Our Club</div>
-  <p>The same About page as last week — now with its first stylesheet.
-     Headings carry colour, text breathes, and images sit in a frame.</p>
-  <h2>Our mission</h2>
-  <p>Help every member ship one real web page per month.</p>
-  <img src=&quot;images/meeting.jpg&quot; alt=&quot;Members at a Friday coding night&quot;
-       width=&quot;320&quot; height=&quot;180&quot;>
+    h3 { color: #00665c; }
+    ul { padding: 1rem 2rem; background: #e4edf8; }
+    p { margin: 1rem 0; }
+    img { max-width: 100%; height: auto; border: 4px solid #e5e7eb; border-radius: 8px; }
+  
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-</body>
-</html>"></iframe>
+  
+  &lt;h1&gt;About Our Club&lt;/h1&gt;
+  &lt;p&gt;The same About page as last week — now with its first stylesheet.
+     Headings carry colour, text breathes, and images sit in a frame.&lt;/p&gt;
+  &lt;h3&gt;Learning together&lt;/h3&gt;&lt;p&gt;Beginners and experienced students help each other.&lt;/p&gt;
+  &lt;ul&gt;&lt;li&gt;Practise&lt;/li&gt;&lt;li&gt;Review&lt;/li&gt;&lt;li&gt;Share&lt;/li&gt;&lt;/ul&gt;
+  &lt;h2&gt;Our mission&lt;/h2&gt;
+  &lt;p&gt;Help every member ship one real web page per month.&lt;/p&gt;
+  &lt;img src=&quot;../../assets/student-club/images/meeting.png&quot; alt=&quot;Original Plan, Test, Explain diagram&quot;
+       width=&quot;320&quot; height=&quot;180&quot;&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;"></iframe></div>
+<template data-demo-document="about">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;About | CodeBreakers Club&lt;/title&gt;
+
+&lt;style&gt;
+
+    body { background: #f4f8fd; font-size: 16px; font-family: Georgia, serif; color: #222; line-height: 1.6;
+           max-width: 720px; margin: 0 auto; padding: 1rem; }
+    h1 { color: #1d4ed8; border-bottom: 3px solid #1d4ed8; }
+    h2 { color: #b45309; }
+    h3 { color: #00665c; }
+    ul { padding: 1rem 2rem; background: #e4edf8; }
+    p { margin: 1rem 0; }
+    img { max-width: 100%; height: auto; border: 4px solid #e5e7eb; border-radius: 8px; }
+  
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  
+  &lt;h1&gt;About Our Club&lt;/h1&gt;
+  &lt;p&gt;The same About page as last week — now with its first stylesheet.
+     Headings carry colour, text breathes, and images sit in a frame.&lt;/p&gt;
+  &lt;h3&gt;Learning together&lt;/h3&gt;&lt;p&gt;Beginners and experienced students help each other.&lt;/p&gt;
+  &lt;ul&gt;&lt;li&gt;Practise&lt;/li&gt;&lt;li&gt;Review&lt;/li&gt;&lt;li&gt;Share&lt;/li&gt;&lt;/ul&gt;
+  &lt;h2&gt;Our mission&lt;/h2&gt;
+  &lt;p&gt;Help every member ship one real web page per month.&lt;/p&gt;
+  &lt;img src=&quot;../../assets/student-club/images/meeting.png&quot; alt=&quot;Original Plan, Test, Explain diagram&quot;
+       width=&quot;320&quot; height=&quot;180&quot;&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</template>
+<template data-demo-document="index">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;index — lesson 4&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — index&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Welcome to the club. We practise, review and share our work.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<template data-demo-document="contact">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;contact — lesson 4&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — contact&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Teaching example: contact@example.invalid. Meeting place: the campus learning lab.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<noscript><p>Bật JavaScript để đổi trang, kích thước và thử validation.</p></noscript>
+</div>
   </section>
   <article class="doc">
 <h2 id="bài-tập-4-trang-trí-bằng-external-css">Bài tập 4: Trang trí bằng External CSS<a class="anchor" href="#bài-tập-4-trang-trí-bằng-external-css" aria-label="Link to this section">#</a></h2>
@@ -388,5 +437,7 @@ khung đẹp mắt.</p>
   </div>
 </footer>
 <script src="../../assets/site.js" defer></script>
+<script src="../../assets/demo-viewer.js" defer></script>
+
 </body>
 </html>

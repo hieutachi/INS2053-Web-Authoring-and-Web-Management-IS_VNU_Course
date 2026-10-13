@@ -4,7 +4,7 @@
      node _tools/site-assets/hw-demos-selftest.mjs
 
    Fails loudly if a demo is missing, is not a complete HTML document, lost the
-   no-copy shield, or would survive srcdoc escaping intact with stray quotes.
+    safe wrapper, or would survive srcdoc escaping intact with stray quotes.
    Run before `npm run build:site` when editing the demos. Exits non-zero on
    any problem. Read-only.
    ============================================================================= */
@@ -26,15 +26,15 @@ for (const k of want) {
   const doc = fn();
   if (!doc.startsWith("<!DOCTYPE html>")) bad(`demo ${k} does not start with a doctype`);
   if (!doc.trimEnd().endsWith("</html>")) bad(`demo ${k} does not end with </html>`);
-  if (!doc.includes('oncopy="return false"')) bad(`demo ${k} lost the no-copy shield`);
+  if (/\bon\w+\s*=|<script\b/i.test(doc)) bad(`demo ${k} contains scripting`);
+  if ((doc.match(/<h1[ >]/g) || []).length !== 1) bad(`demo ${k} needs one genuine h1`);
   if (!/<title>[^<]+<\/title>/.test(doc)) bad(`demo ${k} has no <title>`);
   // The escaped form must carry no raw double quote left, or the srcdoc
   // attribute would terminate early and swallow the rest of the page.
   const sd = toSrcdoc(doc);
-  const inAttr = sd.slice('srcdoc="'.length);
   if (/[^&]"/.test(sd)) bad(`demo ${k} srcdoc still contains a raw quote`);
-  // Round-trip: unescaping the two entities must give the document back.
-  const back = sd.replace(/&quot;/g, '"').replace(/&amp;/g, "&");
+  // Round-trip: decoding the escaped entities must give the document back.
+  const back = sd.replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, "&");
   if (back !== doc) bad(`demo ${k} srcdoc round-trip is not lossless`);
 }
 

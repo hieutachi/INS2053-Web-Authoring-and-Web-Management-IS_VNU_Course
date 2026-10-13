@@ -1,62 +1,29 @@
-﻿/* =============================================================================
-   hw-demos.mjs — visual targets for the 15 homework sheets.
-
-   Each demo is a COMPLETE standalone HTML document. `build-site.mjs` injects
-   it into `site/homework/session-NN.html` inside
-
-     <iframe sandbox="allow-same-origin" srcdoc="...">
-
-   Why an iframe and not inline markup:
-     - it is a *target to look at*, not something to scrape: with `sandbox`
-       set and `allow-scripts` deliberately absent, the document cannot run
-       script, submit anything, or be scripted from the parent page, and the
-       selection/copy/context-menu handlers inside the document return false;
-     - the outer page's CSS and JS cannot leak in, so the demo shows exactly
-       what the student's own file should look like when opened directly;
-     - `srcdoc` keeps every page self-contained: qa-site gate 1 counts HTML
-       files under site/ exactly, so the demos must not become new files.
-
-   Content mirror of the course project `examples/student-club/` (CodeBreakers
-   Club) and of the in-class exercises, so what a student sees here is what
-   their own repository should grow into, session by session.
-   ============================================================================= */
-
-/* Shared chrome inside each demo document.
-   Deliberately NO CSS reset: a student's Week-1 page renders with the
-   browser's default stylesheet (Times, default margins), and the demo must
-   show exactly that look or the side-by-side comparison lies.
-   The one shared rule mimics the default <div class="pagetitle" role="heading" aria-level="1"> look for the .pagetitle divs
-   below — real <div class="pagetitle" role="heading" aria-level="1"> tags are not allowed inside srcdoc, because qa-site
-   gate 2 counts literal `<h1` occurrences in the raw page source and the
-   homework sheet already carries the page's single h1. */
+/* Complete lesson targets. The shared Viewer isolates styles, blocks scripts/forms,
+   handles approved navigation and simulates validation. It is not copy protection.
+   Each decoded srcdoc is audited as an independent document. */
 const H1_CSS = `
   .pagetitle { font-size: 2em; font-weight: bold; margin: 0.67em 0; }
 `;
 
-/* Every document is wrapped with the same no-copy shield. Because the iframe
-   is sandboxed WITHOUT allow-scripts, the inline event handlers here are the
-   only scripting the document gets — and they run inside the sandbox, not on
-   the host page.
-   Tag rules for demo bodies (all forced by qa-site gates scanning the raw
-   built page):
-     - no <div class="pagetitle" role="heading" aria-level="1">            — use <div class="pagetitle" role="heading" aria-level="1">
-     - no <form>          — use a <div>; the sandbox would block submit anyway
-     - no type="submit"   — the mock Send button is type="button"
-     - no id= duplicates  — attribute quotes are srcdoc-escaped, so ids in here
-                            are invisible to the id checks, but keep them unique
-                            within the demo regardless. */
 function demoDoc(title, bodyHtml, extraCss = "") {
+  bodyHtml = bodyHtml.replace(H1_CSS, '').replace(/<div class="pagetitle" role="heading" aria-level="1">([\s\S]*?)<\/div>/g, '<h1>$1</h1>');
+  // Move author CSS into the document head; early lessons remain unstyled.
+  bodyHtml = bodyHtml.replace(/<style>([\s\S]*?)<\/style>/g, (_, css) => { extraCss += css; return ''; });
+  let headHtml = '';
+  bodyHtml = bodyHtml.replace(/<link\b[^>]*>/g, link => { headHtml += link + '\n'; return ''; });
+  if (!/<h1[ >]/.test(bodyHtml)) bodyHtml = '<h1>' + title + '</h1>' + bodyHtml;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
+${headHtml}
 ${extraCss ? `<style>
 ${extraCss}
 </style>` : ""}
 </head>
-<body oncopy="return false" oncut="return false" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<body>
 ${bodyHtml}
 </body>
 </html>`;
@@ -64,7 +31,7 @@ ${bodyHtml}
 
 /* Escape a full HTML document so it can sit inside a srcdoc attribute. */
 function toSrcdoc(doc) {
-  return doc.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+  return doc.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 /* ---------------------------------------------------------------------------
@@ -85,7 +52,7 @@ DEMOS[1] = () => demoDoc("Nguyen Van An — Homework 1", H1_CSS + `
   <!-- Master region: what I want to build -->
   <h2>What I want to build this semester</h2>
   <p>By the end of INS2053 I want a complete website for my study group, with
-     real pages, real images, and a contact form that actually works.</p>
+     real pages, real images, and a clearly labelled demonstration form.</p>
   <p>This paragraph exists so the page has at least three paragraphs in total,
      exactly as the homework checklist requires.</p>
 `);
@@ -94,14 +61,16 @@ DEMOS[2] = () => demoDoc("CodeBreakers Club — Home", H1_CSS + `
   <div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div>
   <p>Welcome to the CodeBreakers Club, the student club for everyone who
      loves building things for the web.</p>
+  <h2>What we do</h2><ul><li>Practise HTML</li><li>Review code</li><li>Build projects</li></ul>
   <h2>Latest news</h2>
   <p>We meet every Friday in room 2.04. Bring your laptop and one question
      about your current project.</p>
-  <img src="images/logo.png" alt="CodeBreakers Club logo"
+  <img src="images/logo.svg" alt="CodeBreakers Club logo"
        width="120" height="120">
   <h2>Who we are</h2>
   <p>We are thirty students from INS2053 who practise HTML and CSS together
      every week.</p>
+  <img src="images/club-photo.png" alt="Original Learn, Build, Share diagram" width="320" height="180">
 `);
 
 DEMOS[3] = () => demoDoc("About | CodeBreakers Club", H1_CSS + `
@@ -111,31 +80,40 @@ DEMOS[3] = () => demoDoc("About | CodeBreakers Club", H1_CSS + `
   <h2>Our mission</h2>
   <p>Help every member ship one real web page per month, and never debug
      alone.</p>
-  <h2>Regular activities</h2>
+  <p>Beginners and alumni can join. Peer feedback helps members gain confidence.</p>
+  <h2>Regular activities</h2><h3>Weekly events</h3>
   <ul>
     <li>Friday coding nights</li>
     <li>Monthly mini-hackathons</li>
-    <li>Peer code review sessions</li>
+    <li>Peer code review sessions</li><li>HTML workshops</li><li>Alumni mentoring</li>
   </ul>
+  <h2>How to join</h2><ol><li>Read about us</li><li>Choose an activity</li><li>Visit Contact</li></ol>
   <h2>Gallery</h2>
-  <img src="images/meeting.jpg" alt="Members at a Friday coding night"
+  <img src="images/club-photo.png" alt="Original Learn, Build, Share diagram" width="320" height="180">
+  <img src="images/event-1.png" alt="Original HTML, CSS and review diagram" width="320" height="180">
+  <img src="images/meeting.png" alt="Original Plan, Test, Explain diagram"
        width="320" height="180">
 `);
 
 DEMOS[4] = () => demoDoc("About | CodeBreakers Club", `
   <style>
-    body { font-family: Georgia, serif; color: #222; line-height: 1.6;
+    body { background: #f4f8fd; font-size: 16px; font-family: Georgia, serif; color: #222; line-height: 1.6;
            max-width: 720px; margin: 0 auto; padding: 1rem; }
     h1 { color: #1d4ed8; border-bottom: 3px solid #1d4ed8; }
     h2 { color: #b45309; }
-    img { border: 4px solid #e5e7eb; border-radius: 8px; }
+    h3 { color: #00665c; }
+    ul { padding: 1rem 2rem; background: #e4edf8; }
+    p { margin: 1rem 0; }
+    img { max-width: 100%; height: auto; border: 4px solid #e5e7eb; border-radius: 8px; }
   </style>
   <div class="pagetitle" role="heading" aria-level="1">About Our Club</div>
   <p>The same About page as last week — now with its first stylesheet.
      Headings carry colour, text breathes, and images sit in a frame.</p>
+  <h3>Learning together</h3><p>Beginners and experienced students help each other.</p>
+  <ul><li>Practise</li><li>Review</li><li>Share</li></ul>
   <h2>Our mission</h2>
   <p>Help every member ship one real web page per month.</p>
-  <img src="images/meeting.jpg" alt="Members at a Friday coding night"
+  <img src="images/meeting.png" alt="Original Plan, Test, Explain diagram"
        width="320" height="180">
 `);
 
@@ -150,18 +128,18 @@ DEMOS[5] = () => demoDoc("CodeBreakers Club — Home", `
     .footer { background: #111827; color: #d1d5db; text-align: center;
               padding: 1rem; margin-top: 2rem; }
   </style>
-  <div class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></div>
+  <header class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></header>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="content">
+  <main class="content">
     <h2>Welcome!</h2>
     <p>A colored header bar, a horizontal menu, a centered content column
        and a footer bar — the classic page layout from Session 5.</p>
-  </div>
-  <div class="footer">&copy; 2026 CodeBreakers Club</div>
+  </main>
+  <footer class="footer">&copy; 2026 CodeBreakers Club</footer>
 `);
 
 DEMOS[6] = () => demoDoc("CodeBreakers Club — Home", `
@@ -175,19 +153,22 @@ DEMOS[6] = () => demoDoc("CodeBreakers Club — Home", `
     .footer { background: #111827; color: #d1d5db; text-align: center;
               padding: 1rem; margin-top: 2rem; }
   </style>
-  <div class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></div>
+  <header class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></header>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="content">
+  <main class="content">
     <h2>One site, three pages</h2>
     <p>Home, About and Contact now share this exact design. Click between
        them: every page keeps the same banner, the same menu, the same
        footer — one consistent site.</p>
-  </div>
-  <div class="footer">&copy; 2026 CodeBreakers Club</div>
+  <h2>Why join?</h2><ul><li>Friendly feedback</li><li>Regular practice</li><li>Project partners</li></ul>
+  <img src="images/club-photo.png" alt="Original learning cycle diagram" width="320" height="180">
+  <img src="images/meeting.png" alt="Original workshop cycle diagram" width="320" height="180">
+  </main>
+  <footer class="footer">&copy; 2026 CodeBreakers Club</footer>
 `);
 
 DEMOS[7] = () => demoDoc("CodeBreakers Club — Home", `
@@ -195,6 +176,7 @@ DEMOS[7] = () => demoDoc("CodeBreakers Club — Home", `
     body { margin: 0; font-family: "Trebuchet MS", Verdana, sans-serif; }
     .banner { background: #7c3aed; color: #fff; padding: 1.2rem;
               text-align: center; }
+    h1, h2, h3 { font-family: "Courier New", monospace; }
     .banner h1 { font-family: "Courier New", monospace;
                  letter-spacing: 2px; }
     .menu { background: #5b21b6; text-align: center; padding: 0.6rem; }
@@ -205,19 +187,19 @@ DEMOS[7] = () => demoDoc("CodeBreakers Club — Home", `
     .footer { background: #111827; color: #d1d5db; text-align: center;
               padding: 1rem; margin-top: 2rem; }
   </style>
-  <div class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></div>
+  <header class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></header>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="content">
-    <h2>Custom fonts are in</h2>
-    <p>Headings now stand out in a monospace face, body text is easier to
+  <main class="content">
+    <h2>Typography and offline fallback</h2>
+    <p>This offline preview uses system fonts instead of a Google Fonts request. Headings stand out in a monospace face, body text is easier to
        read with taller line height, and links change colour when you hover
        over them.</p>
-  </div>
-  <div class="footer">&copy; 2026 CodeBreakers Club</div>
+  </main>
+  <footer class="footer">&copy; 2026 CodeBreakers Club</footer>
 `);
 
 DEMOS[8] = () => demoDoc("CodeBreakers Club — midterm checkpoint", `
@@ -235,13 +217,13 @@ DEMOS[8] = () => demoDoc("CodeBreakers Club — midterm checkpoint", `
     .footer { background: #111827; color: #d1d5db; text-align: center;
               padding: 1rem; margin-top: 2rem; }
   </style>
-  <div class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></div>
+  <header class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></header>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="content">
+  <main class="content">
     <h2>Midterm review</h2>
     <table>
       <thead>
@@ -253,10 +235,10 @@ DEMOS[8] = () => demoDoc("CodeBreakers Club — midterm checkpoint", `
         <tr><td>Page layout</td><td>Header, menu, content, footer</td></tr>
       </tbody>
     </table>
-    <p>Every navigation link below has been clicked and works. The honest
-       reflections live in <code>midterm-review.md</code>.</p>
-  </div>
-  <div class="footer">&copy; 2026 CodeBreakers Club</div>
+    <p>Click and verify every navigation link yourself. This preview cannot prove
+       your repository includes midterm-review.md or the Activities skeleton.</p>
+  </main>
+  <footer class="footer">&copy; 2026 CodeBreakers Club</footer>
 `);
 
 DEMOS[9] = () => demoDoc("Activities | CodeBreakers Club", `
@@ -285,16 +267,14 @@ DEMOS[9] = () => demoDoc("Activities | CodeBreakers Club", `
     <table>
       <caption>Club activities — Spring 2026</caption>
       <thead>
-        <tr><th scope="col">Activity</th><th scope="col">When</th>
-            <th scope="col">Where</th></tr>
+        <tr><th scope="col">Day</th><th scope="col">Time</th><th scope="col">Activity</th><th scope="col">Location</th></tr>
       </thead>
       <tbody>
-        <tr><td>Friday coding night</td><td>Every Friday, 18:00</td>
-            <td>Room 2.04</td></tr>
-        <tr><td>Mini-hackathon</td><td>First Saturday monthly</td>
-            <td>Lab B1</td></tr>
-        <tr><td>Code review circle</td><td>Second Wednesday</td>
-            <td>Room 3.11</td></tr>
+        <tr><td>Monday</td><td>18:00</td><td>HTML workshop</td><td>Room 2.04</td></tr>
+        <tr><td>Tuesday</td><td>18:00</td><td>CSS practice</td><td>Lab B1</td></tr>
+        <tr><td>Wednesday</td><td>18:00</td><td>Code review</td><td>Room 3.11</td></tr>
+        <tr><td>Friday</td><td>18:00</td><td>Coding night</td><td>Room 2.04</td></tr>
+        <tr><td>Sunday</td><td colspan="3">Rest and independent practice</td></tr>
       </tbody>
     </table>
   </div>
@@ -317,22 +297,25 @@ DEMOS[10] = () => demoDoc("Media | CodeBreakers Club", `
     <a href="contact.html">Contact</a>
   </nav>
   <div class="content">
-    <h2>Club highlight video</h2>
-    <video controls width="640" height="360" poster="images/video-poster.jpg">
-      <source src="media/highlight.mp4" type="video/mp4">
+    <h2>Original narrated HTML tutorial</h2>
+    <video controls width="640" height="360" poster="images/video-poster.png">
+      <source src="media/workshop.mp4" type="video/mp4">
       Your browser does not support the video element.
     </video>
-    <h2>Club podcast</h2>
+    <h2>Audio edition</h2>
     <audio controls>
       <source src="media/podcast.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
-    <p>Recorded at our Friday coding night — members explain how they built
-       their first pages.</p>
+    <p>Original educational tutorial with a synthetic voice, not an event recording.
+       Create index.html with doctype, head, body, title and viewport. Add a heading
+       and two paragraphs; save and open it. Keep five pages at the same folder level,
+       use relative links and test offline. The complete transcript is on the companion Media page.</p>
   </div>
 `);
 
 DEMOS[11] = () => demoDoc("CodeBreakers Club — finished product", `
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <style>
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
     .banner { background: #0f766e; color: #fff; padding: 1.2rem;
@@ -343,7 +326,7 @@ DEMOS[11] = () => demoDoc("CodeBreakers Club — finished product", `
     .footer { background: #111827; color: #d1d5db; text-align: center;
               padding: 1rem; margin-top: 2rem; }
   </style>
-  <div class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></div>
+  <header class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></header>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -351,13 +334,13 @@ DEMOS[11] = () => demoDoc("CodeBreakers Club — finished product", `
     <a href="media.html">Media</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="content">
+  <main class="content">
     <h2>Ship it like a pro</h2>
     <p>This is the finishing week: favicon in the browser tab, a README that
        explains the project, W3C-valid pages, and a consistent design across
        every page of the site.</p>
-  </div>
-  <div class="footer">&copy; 2026 CodeBreakers Club &middot; README.md on GitHub</div>
+  </main>
+  <footer class="footer">&copy; 2026 CodeBreakers Club &middot; Local README documents the pages and asset sources</footer>
 `);
 
 DEMOS[12] = () => demoDoc("CodeBreakers Club — CSS variables", `
@@ -379,17 +362,16 @@ DEMOS[12] = () => demoDoc("CodeBreakers Club — CSS variables", `
     .content { max-width: 760px; margin: 1.5rem auto; padding: 1rem;
                background: #fff; border: 1px solid var(--brand); }
   </style>
-  <div class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></div>
+  <header class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></header>
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="content">
-    <h2>One palette, every page</h2>
-    <p>Colors now live in CSS custom properties on <code>:root</code>. Change
-       <code>--brand</code> once and the banner, the menu and every border
-       update together.</p>
+  <main class="content">
+    <h2>Clean, validated code</h2>
+    <p>Use consistent indentation, section comments and validation. CSS variables are optional,
+       not the goal of Homework 12. A preview cannot prove that your source passes the validator.</p>
   </div>
 `);
 
@@ -403,11 +385,12 @@ DEMOS[13] = () => demoDoc("Contact | CodeBreakers Club", `
                background: #fff; border-radius: 8px;
                box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
     label { display: block; margin-top: 0.9rem; font-weight: bold; }
-    input, select, textarea {
+    input, select, textarea { box-sizing: border-box;
       width: 100%; padding: 0.5rem; margin-top: 0.25rem;
       border: 1px solid #9ca3af; border-radius: 4px;
       font-family: inherit; font-size: 1rem;
     }
+    input[type="radio"], input[type="checkbox"] { width: auto; }
     button { margin-top: 1rem; background: #1d4ed8; color: #fff;
              border: 0; padding: 0.6rem 1.4rem; border-radius: 4px;
              font-size: 1rem; cursor: pointer; }
@@ -420,19 +403,26 @@ DEMOS[13] = () => demoDoc("Contact | CodeBreakers Club", `
   <div class="content">
     <h2>Contact us</h2>
     <div class="mockform">
-      <label for="name">Your name</label>
+      <fieldset><legend>Your details</legend><label for="name">Full name</label>
       <input type="text" id="name" name="name" required>
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
+      <label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone">
+      </fieldset><fieldset><legend>Membership and message</legend>
+      <label for="student"><input type="radio" id="student" name="membership" value="student" required> Student</label>
+      <label for="alumni"><input type="radio" id="alumni" name="membership" value="alumni" required> Alumni</label>
+      <label for="department">Department</label><select id="department" name="department" required><option value="">Choose a department</option><option>Computer Science</option><option>Mathematics</option><option>Physics</option><option>Chemistry</option></select>
       <label for="subject">Subject</label>
       <select id="subject" name="subject">
         <option>Joining the club</option>
         <option>Project question</option>
-        <option>Something else</option>
+        <option>Feedback</option><option>Something else</option>
       </select>
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4"></textarea>
-      <button type="button">Send</button>
+      <textarea id="message" name="message" rows="4" required></textarea>
+      <label for="consent"><input type="checkbox" id="consent" name="consent" required> I agree to the club rules</label></fieldset>
+      <p>Simulation only. Nothing is sent or stored. Use the Viewer controls to validate and clear fields.</p>
+      <button type="button" data-reference-check>Check fields</button><button type="button" data-reference-clear>Clear fields</button>
     </div>
   </div>
 `);
@@ -448,10 +438,11 @@ DEMOS[14] = () => demoDoc("CodeBreakers Club — dropdown navigation", `
     .menu li:hover > a { background: #1d4ed8; }
     .dropdown { display: none; position: absolute; top: 100%; left: 0;
                 background: #1e3a8a; min-width: 180px; z-index: 10; }
-    .menu li:hover .dropdown { display: block; }
+    .menu li:hover .dropdown, .menu li:focus-within .dropdown { display: block; }
     .dropdown a { padding: 0.6rem 1.1rem; }
     .dropdown a:hover { background: #3b82f6; }
     .content { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; }
+    @media (hover: none) { .dropdown { display: block; position: static; } }
   </style>
   <nav class="menu">
     <ul>
@@ -467,9 +458,9 @@ DEMOS[14] = () => demoDoc("CodeBreakers Club — dropdown navigation", `
     </ul>
   </nav>
   <div class="content">
-    <h2>Hover the About item above</h2>
+    <h2>Hover or focus the About item above</h2>
     <p>A dropdown appears with three sub-links and disappears when the mouse
-       leaves. The trick is <code>position: relative</code> on the list item,
+       leaves or keyboard focus moves away. On touch devices the sublinks remain visible. The trick is <code>position: relative</code> on the list item,
        <code>position: absolute</code> on the dropdown, and
        <code>:hover</code> switching <code>display</code>.</p>
   </div>
@@ -489,15 +480,20 @@ DEMOS[15] = () => demoDoc("CodeBreakers Club — mobile view", `
              gap: 1rem; }
     .card { background: #f0fdfa; border: 1px solid #99f6e4;
             border-radius: 6px; padding: 0.8rem; }
-    .card img { width: 100%; border-radius: 4px; }
+    .card img { width: 100%; height: auto; border-radius: 4px; }
     .footer { background: #111827; color: #d1d5db; text-align: center;
               padding: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 960px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
     @media (max-width: 768px) {
-      .cards { grid-template-columns: 1fr; }
       .menu ul { flex-direction: column; text-align: center; }
+      .banner { padding: .6rem; }
+      h1 { font-size: 1.6rem; }
+      .content { padding: 0 .6rem; }
+      .footer { padding: .6rem; font-size: .9rem; }
     }
   </style>
-  <div class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></div>
+  <header class="banner"><div class="pagetitle" role="heading" aria-level="1">CodeBreakers Club</div></header>
   <nav class="menu">
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -505,18 +501,18 @@ DEMOS[15] = () => demoDoc("CodeBreakers Club — mobile view", `
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-  <div class="content">
+  <main class="content">
     <h2>The same site, three widths</h2>
     <div class="cards">
-      <div class="card"><img src="images/a.jpg" alt="Members coding"
+      <div class="card"><img src="images/club-photo.png" alt="Original Learn, Build, Share diagram"
            width="220" height="120"><p>Desktop: three cards in a row.</p></div>
-      <div class="card"><img src="images/b.jpg" alt="Workshop night"
+      <div class="card"><img src="images/meeting.png" alt="Original Plan, Test, Explain diagram"
            width="220" height="120"><p>Tablet: two cards per row.</p></div>
-      <div class="card"><img src="images/c.jpg" alt="Study group"
+      <div class="card"><img src="images/event-1.png" alt="Original HTML, CSS and review diagram"
            width="220" height="120"><p>Phone: everything stacks.</p></div>
     </div>
-  </div>
-  <div class="footer">&copy; 2026 CodeBreakers Club</div>
+  </main>
+  <footer class="footer">&copy; 2026 CodeBreakers Club</footer>
 `);
 
 export { DEMOS, demoDoc, toSrcdoc };

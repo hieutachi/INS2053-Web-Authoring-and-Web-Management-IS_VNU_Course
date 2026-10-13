@@ -1,7 +1,9 @@
 # CodeBreakers Club — Complete Example Website
 
-This is the **finished reference website** for the INS2053 capstone project.
+This is a **five-page teaching reference** for the INS2053 capstone project.
 Open `index.html` in your browser to see it.
+CodeBreakers, its people and its events are fictional. Build your own club identity
+and content; do not submit this reference unchanged.
 
 ## What this example shows
 
@@ -12,10 +14,10 @@ Every technique taught in the course appears here:
 | Semantic HTML (`header`, `nav`, `main`, `section`, `footer`) | Every page |
 | External CSS (`<link>`) | Every page links `css/style.css` |
 | Consistent navigation with `class="active"` | Every page |
-| Flexbox layout | Navigation bar, team cards |
+| Flexbox and Grid layout | Navigation bar and responsive team cards |
 | HTML tables (`caption`, `thead`, `tbody`, `colspan`) | `activities.html` |
 | HTML5 video and audio with fallback text | `media.html` |
-| Forms (text, email, tel, select, radio, checkbox, textarea) | `contact.html` |
+| Form controls (text, email, tel, select, radio, checkbox, textarea) | `contact.html`, validation simulation only |
 | Labels linked to inputs (`for` / `id`) | `contact.html` |
 | Responsive design (`viewport` meta + media query) | All pages + `css/style.css` section 11 |
 
@@ -30,25 +32,36 @@ student-club/
 ├── contact.html        Contact page (with a form)
 ├── css/
 │   └── style.css       The shared stylesheet
-├── images/             Put your images here (.jpg / .png)
-├── media/              Put your videos (.mp4) and audio (.mp3) here
+├── images/             Included original PNG diagrams and SVG logo
+├── media/              Included MP4, MP3, WAV, captions and transcript
+├── ASSETS.md           Asset provenance, license and reproduction instructions
 └── README.md           This file
 ```
 
-## About the missing images and media
+## Included offline images and media
 
-The HTML references files in `images/` and `media/` that are not included
-(for example `images/club-photo.jpg` and `media/workshop.mp4`).
+All referenced images and recordings are included. Images are original geometric
+learning diagrams, not photos of real people or events. The approximately
+84-second MP4 and its MP3 audio edition teach how to create a first HTML page,
+using synthetic narration. They are not a real workshop recording or podcast.
 
-That is intentional. To run this example fully:
+See `ASSETS.md` for the CC0-1.0 dedication and reproduction instructions. Normal
+site builds use the checked-in assets and do not require Windows speech or ffmpeg.
 
-1. Create the `images/` and `media/` folders.
-2. Add your own files with the same names, **or**
-3. Leave them out — the pages still work; the browser just shows a
-   broken-image icon where the media should be.
+Test playback with the network off. Summary captions and an equivalent full text
+transcript are provided. Some browsers block caption loading from `file:` URLs;
+use a local HTTP server for caption-track testing. The transcript is also readable
+directly on the Media page.
 
-This mirrors what you will do in your own project: replace the example
-content with content about **your** club.
+## Contact demonstration and the assignment contract
+
+Contact deliberately uses a labelled, button-only validation demonstration, not
+an active form or submission endpoint. Its small local script checks native field
+validity and clears fields; it sends and stores nothing. The course Viewer removes
+that script and performs the same simulation from the parent page. Use invented
+test values only. This safety adaptation is **not** a waiver of the assignment's
+`form` and submit-control requirements: implement those in your own work as
+directed by your instructor, without collecting real personal information.
 
 ## A note about the club name
 
@@ -61,6 +74,6 @@ whatever name you like for your own project.
 
 - **Do not copy it.** Study it, then build your own version step by step as
   the course progresses.
-- Each week's homework adds one more piece. By Week 15 your project should
-  look similar in structure to this example.
+- Each week's homework adds one more piece. Follow M1–M8 in the Project Hub;
+  the final responsive/polish milestones remain in Week 16.
 - When you get stuck, compare your code to the matching file here.

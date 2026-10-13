@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ========== HEADER (same on every page) ========== -->
-    <header>
-        <div class="logo">CB</div>
+    <header id="top">
+        <img class="logo" src="images/logo.svg" alt="CodeBreakers code-bracket logo" width="80" height="80">
         <div>
             <h1>CodeBreakers Club</h1>
             <p class="tagline">Where code meets community</p>
@@ -21,25 +23,27 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li class="has-dropdown"><a href="about.html">About</a><ul class="dropdown"><li><a href="about.html#mission">Mission</a></li><li><a href="about.html#activities">Activities</a></li><li><a href="about.html#gallery">Gallery</a></li></ul></li>
             <li><a href="activities.html">Activities</a></li>
             <li><a href="media.html">Media</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
         </ul>
     </nav>
 
     <!-- ========== MAIN CONTENT ========== -->
-    <main>
+    <main id="main">
+        <p class="example-note">Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.</p>
         <section>
             <h2>Join CodeBreakers Club</h2>
-            <p>Fill in the form below and we will get back to you within a week.
-               All fields marked with an asterisk (*) are required.</p>
+            <p>This is a local validation demonstration, not an application service.
+               Nothing is submitted or stored. Use invented values. Fields marked * are required.</p>
+            <p>Example meeting location: Room 301, Building A. Contact: contact@example.invalid.</p>
         </section>
 
         <!-- ===== HTML FORM =====
              Every input has a matching <label> (accessibility).
              The for="" attribute on the label matches the id="" of the input. -->
-        <form action="#" method="post">
+        <div class="contact-demo" id="contact-form">
 
             <fieldset>
                 <legend>Your Details</legend>
@@ -48,7 +52,7 @@
                 <input type="text" id="fullname" name="fullname"
                        placeholder="e.g. Nguyen Van A" required>
 
-                <label for="email">Student Email *</label>
+                <label for="email">Email *</label>
                 <input type="email" id="email" name="email"
                        placeholder="e.g. a.nguyen@vnu.edu.vn" required>
 
@@ -60,24 +64,24 @@
             <fieldset>
                 <legend>Membership</legend>
 
-                <label for="year">Which year are you in? *</label>
-                <select id="year" name="year" required>
+                <label for="department">Department *</label>
+                <select id="department" name="department" required>
                     <option value="">-- Please choose --</option>
-                    <option value="1">First year</option>
-                    <option value="2">Second year</option>
-                    <option value="3">Third year</option>
-                    <option value="4">Fourth year</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="math">Mathematics</option>
+                    <option value="physics">Physics</option>
+                    <option value="chemistry">Chemistry</option>
                 </select>
 
                 <!-- Radio buttons: choose ONE option -->
-                <label>Membership type *</label>
+                <p>Membership type *</p>
                 <div class="inline-choice">
-                    <input type="radio" id="member-basic" name="membership" value="basic" required>
-                    <label for="member-basic">Basic member</label>
+                    <input type="radio" id="member-student" name="membership" value="student" required>
+                    <label for="member-student">Student</label>
                 </div>
                 <div class="inline-choice">
-                    <input type="radio" id="member-active" name="membership" value="active">
-                    <label for="member-active">Active member (join events)</label>
+                    <input type="radio" id="member-alumni" name="membership" value="alumni" required>
+                    <label for="member-alumni">Alumni</label>
                 </div>
 
                 <!-- Checkbox: a yes/no option -->
@@ -90,19 +94,43 @@
             <fieldset>
                 <legend>Message</legend>
 
-                <label for="message">Tell us about yourself (optional)</label>
+                <label for="message">Message *</label>
                 <textarea id="message" name="message"
-                          placeholder="What interests you about the club?"></textarea>
+                          rows="5" cols="40" placeholder="What interests you about the club?" required></textarea>
             </fieldset>
 
-            <button type="submit">Submit Application</button>
-        </form>
+            <button type="button" data-reference-check>Check fields — no submission</button>
+            <button type="button" data-reference-clear>Clear fields</button>
+            <p role="status" id="validation-status"></p>
+        </div>
+        <noscript><p>Fields remain readable; validation buttons require JavaScript. Nothing can be submitted.</p></noscript>
     </main>
 
     <!-- ========== FOOTER ========== -->
     <footer>
-        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@codebreakers.edu">contact@codebreakers.edu</a></p>
+        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@example.invalid">contact@example.invalid</a></p>
     </footer>
 
+<script>
+// Demonstration-only enhancement; the submitted assignment still needs form markup.
+// The build strips this script from sandboxed previews; the Viewer simulates it.
+(function () {
+    var controls = Array.from(document.querySelectorAll('#contact-form input, #contact-form select, #contact-form textarea'));
+    var output = document.getElementById('validation-status');
+    document.querySelector('[data-reference-check]').addEventListener('click', function () {
+        var invalid = controls.find(function (control) { return !control.checkValidity(); });
+        output.textContent = invalid ? 'Please complete the required fields.' : 'Valid fields. Simulation only: nothing submitted or stored.';
+        if (invalid) invalid.reportValidity();
+    });
+    document.querySelector('[data-reference-clear]').addEventListener('click', function () {
+        controls.forEach(function (control) {
+            if (control.type === 'checkbox' || control.type === 'radio') control.checked = false;
+            else if (control.tagName === 'SELECT') control.selectedIndex = 0;
+            else control.value = '';
+        });
+        output.textContent = '';
+    });
+})();
+</script>
 </body>
 </html>

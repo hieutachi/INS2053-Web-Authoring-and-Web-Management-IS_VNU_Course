@@ -65,6 +65,7 @@
   document.addEventListener("click", function (event) {
     var link = event.target.closest && event.target.closest("[data-lang-opt]");
     if (!link || !link.hasAttribute("href")) return;
+    if (document.querySelector('[data-project-hub]')) link.href = link.href.split('#')[0] + location.hash;
     try {
       localStorage.setItem(KEY_LANG, link.getAttribute("data-lang-opt"));
     } catch (err) {
@@ -73,7 +74,7 @@
   });
 
   // Mark the current resource section in the persistent course navigation.
-  var section = window.location.pathname.match(/\/(sessions|ebook|slides|homework)\//);
+  var section = window.location.pathname.match(/\/(sessions|ebook|slides|homework|project)\//);
   if (section) {
     var current = document.querySelector('[data-course-nav="' + section[1] + '"]');
     if (current) current.setAttribute("aria-current", "page");

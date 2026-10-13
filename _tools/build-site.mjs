@@ -45,7 +45,10 @@ import { fileURLToPath } from "node:url";
 import { marked } from "marked";
 import { injectTableEmptyStates } from "./table-empty-state.mjs";
 import { LANGS, LANG_KEY, UI, VI_SOURCE, t } from "./i18n.mjs";
-import { DEMOS, toSrcdoc } from "./site-assets/hw-demos.mjs";
+import { DEMOS } from "./site-assets/hw-demos.mjs";
+import { viewer, REFERENCE_ROOT } from "./demo-viewer.mjs";
+import { projectBody } from "./project-page.mjs";
+import { PROJECT_UI } from "./project-data.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..");
@@ -452,13 +455,7 @@ function visualTargetBlock(nn, lang) {
   return `  <section class="hw-demo" aria-labelledby="hw-demo-title-${nn}">
   <h2 id="hw-demo-title-${nn}">${esc(L.hwDemoHeading)}</h2>
   <p class="hw-demo-note">${esc(L.hwDemoIntro)}</p>
-  <p class="hw-demo-note">${esc(L.hwDemoShield)}</p>
-  <iframe
-    class="hw-demo-frame"
-    title="${esc(t(L.hwDemoFrameTitle, { nn: nn }))}"
-    sandbox="allow-same-origin"
-    loading="lazy"
-    srcdoc="${toSrcdoc(demo())}"></iframe>
+  ${viewer({ lang, id: `homework-${nn}`, session: Number(nn), assetBase: hrefs(1, lang).p('assets/student-club/') })}
   </section>
 `;
 }
@@ -661,6 +658,7 @@ ${Object.keys(LANGS)
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(lead || title)}">
 <link rel="stylesheet" href="${p("assets/site.css")}">
+<link rel="stylesheet" href="${p("assets/project.css")}">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -673,7 +671,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("${LANG_KEY}");
-if(w&&w!=="${lang}")location.replace("${twin}");}catch(e){}})();
+if(w&&w!=="${lang}")location.replace("${twin}"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="${esc(pageClass)}">
@@ -692,6 +690,7 @@ if(w&&w!=="${lang}")location.replace("${twin}");}catch(e){}})();
       <a data-course-nav="ebook" href="${base}/ebook/index.html">${esc(L.navEbook)}</a>
       <a data-course-nav="slides" href="${w("slides/index.html")}">${esc(L.navSlides)}</a>
       <a data-course-nav="homework" href="${base}/homework/index.html">${esc(L.navHomework)}</a>
+      <a data-course-nav="project" href="${base}/project/index.html">Project</a>
     </nav>
 ${langSwitch}
     <button class="theme" type="button" data-theme-toggle aria-label="${esc(
@@ -729,6 +728,8 @@ ${fallback}${body}
   </div>
 </footer>
 <script src="${p("assets/site.js")}" defer></script>
+<script src="${p("assets/demo-viewer.js")}" defer></script>
+${pageClass === 'project-page' ? `<script src="${p('assets/project.js')}" defer></script>` : ''}
 </body>
 </html>
 `;
@@ -1504,6 +1505,10 @@ async function build() {
   /* 1. assets — one copy. The Vietnamese tree reaches it as ../assets, so a
         stylesheet change can never drift out of step between the languages. -- */
   await cp(ASSETS, path.join(OUT, "assets"), { recursive: true });
+  // Narrow reference-asset allowlist: never copy the project source directory.
+  for (const folder of ['images', 'media']) {
+    await cp(path.join(REFERENCE_ROOT, folder), path.join(OUT, 'assets/student-club', folder), { recursive: true });
+  }
 
   /* 2. slide decks — copied as-is, already standalone HTML. The decks are the
         lecturer's own material and are not translated, so both trees point at
@@ -1568,6 +1573,14 @@ async function buildTree(lang) {
   const L = UI[lang];
   const { w, p } = hrefs(1, lang);
   await mkdir(TREE, { recursive: true });
+  await mkdir(path.join(TREE, 'project'), { recursive: true });
+  await writeFile(path.join(TREE, 'project/index.html'), page({
+    lang, rel: 'project/index.html', depth: 1, pageClass: 'project-page',
+    title: `${PROJECT_UI[lang].title} — ${COURSE}`, heading: PROJECT_UI[lang].title,
+    lead: PROJECT_UI[lang].lead,
+    crumbs: [{ href: '../index.html', label: L.crumbHome }, { label: 'Project' }],
+    body: await projectBody(lang, p('assets/student-club/')),
+  }));
 
   /* 4. ebook chapters ----------------------------------------------------- */
   await mkdir(path.join(TREE, "ebook"), { recursive: true });

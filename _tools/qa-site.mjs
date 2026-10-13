@@ -109,6 +109,7 @@ console.log("== 1. page inventory ==============================================
     ebook: 17, // 16 chapters + index
     homework: 16, // 15 + index
     sessions: 16, // 15 + index
+    project: 1, // exactly one public hub, never raw project sources
   };
   const forLang = (lang) => {
     const want = { ...tree };
@@ -121,7 +122,7 @@ console.log("== 1. page inventory ==============================================
         (f) => langOf(f) === lang && !inTree(f).includes("/")
       ).length,
     };
-    for (const k of ["ebook", "homework", "sessions", "slides"]) {
+    for (const k of ["ebook", "homework", "sessions", "slides", "project"]) {
       groups[k] = list.filter((f) =>
         inTree(f).startsWith(k + "/") && langOf(f) === lang
       ).length;
@@ -238,13 +239,14 @@ console.log("== 6. content policy ==============================================
     for (const m of s.matchAll(/(?:href|src)="([^"]+)"/g)) {
       const raw = m[1];
       if (/^(https?:|mailto:|#|data:)/.test(raw)) continue;
-      if (/(^|\/)(exams|exercises|project|canvases|_tools|_archive)\//.test(raw)) {
+      const publicProject = /^(?:(?:\.\.\/)*|\.\/)(?:vi\/)?project\/index\.html(?:#.*)?$/.test(raw);
+      if (/(^|\/)(exams|exercises|project|canvases|_tools|_archive)\//.test(raw) && !publicProject) {
         bad(`${rel} — links into excluded material: ${raw}`);
         leaks++;
       }
     }
   }
-  if (!leaks) ok("no page links into exams/, exercises/, project/ or canvases/");
+  if (!leaks) ok("no private-material links; only project/index.html is public");
 }
 
 /* == 7. encoding ========================================================== */

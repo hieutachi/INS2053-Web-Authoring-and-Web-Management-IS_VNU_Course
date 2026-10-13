@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ========== HEADER ==========
          Appears on every page. Holds the club name and logo. -->
-    <header>
-        <div class="logo">CB</div>
+    <header id="top">
+        <img class="logo" src="images/logo.svg" alt="CodeBreakers code-bracket logo" width="80" height="80">
         <div>
             <h1>CodeBreakers Club</h1>
             <p class="tagline">Where code meets community</p>
@@ -20,11 +22,11 @@
 
     <!-- ========== NAVIGATION ==========
          The same menu appears on every page.
-         The link to the CURRENT page has class="active". -->
+         The link to the CURRENT page has class="active" aria-current="page". -->
     <nav>
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+            <li class="has-dropdown"><a href="about.html">About</a><ul class="dropdown"><li><a href="about.html#mission">Mission</a></li><li><a href="about.html#activities">Activities</a></li><li><a href="about.html#gallery">Gallery</a></li></ul></li>
             <li><a href="activities.html">Activities</a></li>
             <li><a href="media.html">Media</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -32,7 +34,8 @@
     </nav>
 
     <!-- ========== MAIN CONTENT ========== -->
-    <main>
+    <main id="main">
+        <p class="example-note">Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.</p>
         <!-- Hero banner: the first thing a visitor sees -->
         <section class="hero">
             <h2>Welcome to CodeBreakers Club!</h2>
@@ -64,13 +67,13 @@
         <!-- A picture with descriptive alt text (accessibility) -->
         <section>
             <h2>Our Community</h2>
-            <img src="images/club-photo.jpg" alt="Members of CodeBreakers Club working together at a workshop">
+            <img src="images/club-photo.png" alt="Original diagram showing the Learn, Build, Share cycle">
         </section>
     </main>
 
     <!-- ========== FOOTER ========== -->
     <footer>
-        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@codebreakers.edu">contact@codebreakers.edu</a></p>
+        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@example.invalid">contact@example.invalid</a></p>
     </footer>
 
 </body>

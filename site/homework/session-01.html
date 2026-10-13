@@ -6,6 +6,7 @@
 <title>Homework 1: My First Web Page — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="This session&#39;s homework brief — Part 1 code + Part 2 video. Hand in through your own repository.">
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/project.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -18,7 +19,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("ins2053.lang");
-if(w&&w!=="en")location.replace("../vi/homework/session-01.html");}catch(e){}})();
+if(w&&w!=="en")location.replace("../vi/homework/session-01.html"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="reading-page homework-page">
@@ -35,6 +36,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-01.html");}catch(e){}})(
       <a data-course-nav="ebook" href="../ebook/index.html">Ebook</a>
       <a data-course-nav="slides" href="../slides/index.html">Slides</a>
       <a data-course-nav="homework" href="../homework/index.html">Homework</a>
+      <a data-course-nav="project" href="../project/index.html">Project</a>
     </nav>
     <nav class="lang-switch" aria-label="Change language">
       <a class="lang-opt on" aria-current="true" data-lang-opt="en" aria-label="English" title="Current language: English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
@@ -77,38 +79,66 @@ if(w&&w!=="en")location.replace("../vi/homework/session-01.html");}catch(e){}})(
   <section class="hw-demo" aria-labelledby="hw-demo-title-01">
   <h2 id="hw-demo-title-01">Visual target — what you are building</h2>
   <p class="hw-demo-note">This is a live reference page for this session&#39;s homework. Open your own page in a browser and compare, side by side: same structure? same blocks? same behaviour? You are aiming for NEARLY IDENTICAL, not pixel-perfect — your own words and images are expected.</p>
-  <p class="hw-demo-note">The reference is view-only: copy, cut, drag and right-click are turned off, and it runs in a locked frame. Study it, then type your own version — that is the skill being graded.</p>
-  <iframe
-    class="hw-demo-frame"
-    title="Live preview of the homework example — Session 01"
-    sandbox="allow-same-origin"
-    loading="lazy"
-    srcdoc="<!DOCTYPE html>
-<html lang=&quot;en&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-<title>Nguyen Van An — Homework 1</title>
+  <div class="demo-viewer" data-demo-viewer>
+<h3 id="homework-01-title">Demo Viewer</h3><p>Learning preview: scripts, form submission and top navigation are blocked. Nothing is sent or stored. The sandbox is not copy protection.</p>
+<div class="demo-controls" data-viewer-controls hidden><div role="group" aria-label="Preview page"><button type="button" data-demo-page="index" aria-pressed="true">Home</button><button type="button" data-demo-page="about" aria-pressed="false">About</button><button type="button" data-demo-page="contact" aria-pressed="false">Contact</button></div>
+<div role="group" aria-label="Preview viewport"><button type="button" data-demo-width="375" aria-pressed="false">375px</button><button type="button" data-demo-width="768" aria-pressed="false">768px</button><button type="button" data-demo-width="1200" aria-pressed="false">1200px</button><button type="button" data-demo-width="fit" aria-pressed="true">Fit</button></div>
+<button type="button" data-demo-validate>Check fields — no submission</button><button type="button" data-demo-clear>Clear fields</button></div>
+<p role="status" data-demo-status data-valid="Fields are valid. Simulation only: nothing was submitted." data-invalid="Please complete the highlighted fields.">Preview ready</p>
+<div class="demo-scroll" tabindex="0" aria-label="Preview viewport"><iframe class="hw-demo-frame" title="Demo Viewer — homework-01" sandbox="allow-same-origin" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Nguyen Van An — Homework 1&lt;/title&gt;
 
-</head>
-<body oncopy=&quot;return false&quot; oncut=&quot;return false&quot; oncontextmenu=&quot;return false&quot; onselectstart=&quot;return false&quot; ondragstart=&quot;return false&quot;>
 
-  .pagetitle { font-size: 2em; font-weight: bold; margin: 0.67em 0; }
+&lt;/head&gt;
+&lt;body&gt;
 
-  <!-- Master region: page header -->
-  <div class=&quot;pagetitle&quot; role=&quot;heading&quot; aria-level=&quot;1&quot;>Nguyen Van An</div>
-  <p>My name is Nguyen Van An. I am a first-year student at the International
-     School, VNU. This page is my first ever hand-written HTML document.</p>
+  &lt;!-- Master region: page header --&gt;
+  &lt;h1&gt;Nguyen Van An&lt;/h1&gt;
+  &lt;p&gt;My name is Nguyen Van An. I am a first-year student at the International
+     School, VNU. This page is my first ever hand-written HTML document.&lt;/p&gt;
 
-  <!-- Master region: what I want to build -->
-  <h2>What I want to build this semester</h2>
-  <p>By the end of INS2053 I want a complete website for my study group, with
-     real pages, real images, and a contact form that actually works.</p>
-  <p>This paragraph exists so the page has at least three paragraphs in total,
-     exactly as the homework checklist requires.</p>
+  &lt;!-- Master region: what I want to build --&gt;
+  &lt;h2&gt;What I want to build this semester&lt;/h2&gt;
+  &lt;p&gt;By the end of INS2053 I want a complete website for my study group, with
+     real pages, real images, and a clearly labelled demonstration form.&lt;/p&gt;
+  &lt;p&gt;This paragraph exists so the page has at least three paragraphs in total,
+     exactly as the homework checklist requires.&lt;/p&gt;
 
-</body>
-</html>"></iframe>
+&lt;/body&gt;
+&lt;/html&gt;"></iframe></div>
+<template data-demo-document="index">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Nguyen Van An — Homework 1&lt;/title&gt;
+
+
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- Master region: page header --&gt;
+  &lt;h1&gt;Nguyen Van An&lt;/h1&gt;
+  &lt;p&gt;My name is Nguyen Van An. I am a first-year student at the International
+     School, VNU. This page is my first ever hand-written HTML document.&lt;/p&gt;
+
+  &lt;!-- Master region: what I want to build --&gt;
+  &lt;h2&gt;What I want to build this semester&lt;/h2&gt;
+  &lt;p&gt;By the end of INS2053 I want a complete website for my study group, with
+     real pages, real images, and a clearly labelled demonstration form.&lt;/p&gt;
+  &lt;p&gt;This paragraph exists so the page has at least three paragraphs in total,
+     exactly as the homework checklist requires.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</template>
+<template data-demo-document="about">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;about — lesson 1&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — about&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Our mission is to learn HTML and CSS together.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<template data-demo-document="contact">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;UTF-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;&lt;title&gt;contact — lesson 1&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;CodeBreakers Club — contact&lt;/h1&gt;&lt;nav&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt; | &lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt; | &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/nav&gt;&lt;p&gt;Teaching example: contact@example.invalid. Meeting place: the campus learning lab.&lt;/p&gt;&lt;p&gt;This companion page demonstrates relative navigation. Return to the lesson target with the page selector above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</template>
+<noscript><p>Enable JavaScript to change pages, viewport and simulate validation.</p></noscript>
+</div>
   </section>
   <article class="doc">
 <h2 id="homework-1-my-first-web-page">Homework 1: My First Web Page<a class="anchor" href="#homework-1-my-first-web-page" aria-label="Link to this section">#</a></h2>
@@ -357,5 +387,7 @@ on white — no styling yet. That is exactly right for Week 1.</p>
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/demo-viewer.js" defer></script>
+
 </body>
 </html>

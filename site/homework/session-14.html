@@ -6,6 +6,7 @@
 <title>Homework 14: CSS Dropdown Navigation — INS2053 · Web Authoring &amp; Web Management</title>
 <meta name="description" content="This session&#39;s homework brief — Part 1 code + Part 2 video. Hand in through your own repository.">
 <link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/project.css">
 <script>
 /* Set the theme before first paint, otherwise a dark-theme reader sees a white
    flash on every navigation. Same storage key as the slide decks. */
@@ -18,7 +19,7 @@ document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}c
    which is what keeps a shared English link shareable. The twin always exists,
    because both trees are generated for every page, so this can never loop. */
 (function(){try{var w=localStorage.getItem("ins2053.lang");
-if(w&&w!=="en")location.replace("../vi/homework/session-14.html");}catch(e){}})();
+if(w&&w!=="en")location.replace("../vi/homework/session-14.html"+location.search+location.hash);}catch(e){}})();
 </script>
 </head>
 <body class="reading-page homework-page">
@@ -35,6 +36,7 @@ if(w&&w!=="en")location.replace("../vi/homework/session-14.html");}catch(e){}})(
       <a data-course-nav="ebook" href="../ebook/index.html">Ebook</a>
       <a data-course-nav="slides" href="../slides/index.html">Slides</a>
       <a data-course-nav="homework" href="../homework/index.html">Homework</a>
+      <a data-course-nav="project" href="../project/index.html">Project</a>
     </nav>
     <nav class="lang-switch" aria-label="Change language">
       <a class="lang-opt on" aria-current="true" data-lang-opt="en" aria-label="English" title="Current language: English"><span class="lang-name">English</span><span class="lang-short" aria-hidden="true">EN</span></a>
@@ -77,60 +79,2141 @@ if(w&&w!=="en")location.replace("../vi/homework/session-14.html");}catch(e){}})(
   <section class="hw-demo" aria-labelledby="hw-demo-title-14">
   <h2 id="hw-demo-title-14">Visual target — what you are building</h2>
   <p class="hw-demo-note">This is a live reference page for this session&#39;s homework. Open your own page in a browser and compare, side by side: same structure? same blocks? same behaviour? You are aiming for NEARLY IDENTICAL, not pixel-perfect — your own words and images are expected.</p>
-  <p class="hw-demo-note">The reference is view-only: copy, cut, drag and right-click are turned off, and it runs in a locked frame. Study it, then type your own version — that is the skill being graded.</p>
-  <iframe
-    class="hw-demo-frame"
-    title="Live preview of the homework example — Session 14"
-    sandbox="allow-same-origin"
-    loading="lazy"
-    srcdoc="<!DOCTYPE html>
-<html lang=&quot;en&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-<title>CodeBreakers Club — dropdown navigation</title>
+  <div class="demo-viewer" data-demo-viewer>
+<h3 id="homework-14-title">Demo Viewer</h3><p>Learning preview: scripts, form submission and top navigation are blocked. Nothing is sent or stored. The sandbox is not copy protection.</p>
+<div class="demo-controls" data-viewer-controls hidden><div role="group" aria-label="Preview page"><button type="button" data-demo-page="index" aria-pressed="true">Home</button><button type="button" data-demo-page="about" aria-pressed="false">About</button><button type="button" data-demo-page="activities" aria-pressed="false">Activities</button><button type="button" data-demo-page="media" aria-pressed="false">Media</button><button type="button" data-demo-page="contact" aria-pressed="false">Contact</button></div>
+<div role="group" aria-label="Preview viewport"><button type="button" data-demo-width="375" aria-pressed="false">375px</button><button type="button" data-demo-width="768" aria-pressed="false">768px</button><button type="button" data-demo-width="1200" aria-pressed="false">1200px</button><button type="button" data-demo-width="fit" aria-pressed="true">Fit</button></div>
+<button type="button" data-demo-validate>Check fields — no submission</button><button type="button" data-demo-clear>Clear fields</button></div>
+<p role="status" data-demo-status data-valid="Fields are valid. Simulation only: nothing was submitted." data-invalid="Please complete the highlighted fields.">Preview ready</p>
+<div class="demo-scroll" tabindex="0" aria-label="Preview viewport"><iframe class="hw-demo-frame" title="Demo Viewer — homework-14" sandbox="allow-same-origin" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;CodeBreakers Club — dropdown navigation&lt;/title&gt;
 
-</head>
-<body oncopy=&quot;return false&quot; oncut=&quot;return false&quot; oncontextmenu=&quot;return false&quot; onselectstart=&quot;return false&quot; ondragstart=&quot;return false&quot;>
+&lt;style&gt;
 
-  <style>
     body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
     .menu { background: #1e3a8a; padding: 0; }
     .menu ul { list-style: none; margin: 0; padding: 0; display: flex; }
     .menu li { position: relative; }
     .menu a { display: block; color: #fff; text-decoration: none;
               padding: 0.7rem 1.1rem; }
-    .menu li:hover > a { background: #1d4ed8; }
+    .menu li:hover &gt; a { background: #1d4ed8; }
     .dropdown { display: none; position: absolute; top: 100%; left: 0;
                 background: #1e3a8a; min-width: 180px; z-index: 10; }
-    .menu li:hover .dropdown { display: block; }
+    .menu li:hover .dropdown, .menu li:focus-within .dropdown { display: block; }
     .dropdown a { padding: 0.6rem 1.1rem; }
     .dropdown a:hover { background: #3b82f6; }
     .content { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; }
-  </style>
-  <nav class=&quot;menu&quot;>
-    <ul>
-      <li><a href=&quot;index.html&quot;>Home</a></li>
-      <li><a href=&quot;about.html&quot;>About</a>
-        <ul class=&quot;dropdown&quot;>
-          <li><a href=&quot;about.html#mission&quot;>Our Mission</a></li>
-          <li><a href=&quot;activities.html&quot;>Activities</a></li>
-          <li><a href=&quot;media.html&quot;>Gallery</a></li>
-        </ul>
-      </li>
-      <li><a href=&quot;contact.html&quot;>Contact</a></li>
-    </ul>
-  </nav>
-  <div class=&quot;content&quot;>
-    <h2>Hover the About item above</h2>
-    <p>A dropdown appears with three sub-links and disappears when the mouse
-       leaves. The trick is <code>position: relative</code> on the list item,
-       <code>position: absolute</code> on the dropdown, and
-       <code>:hover</code> switching <code>display</code>.</p>
-  </div>
+    @media (hover: none) { .dropdown { display: block; position: static; } }
+  
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;CodeBreakers Club — dropdown navigation&lt;/h1&gt;
+  
+  &lt;nav class=&quot;menu&quot;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+        &lt;ul class=&quot;dropdown&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Our Mission&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;activities.html&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;h2&gt;Hover or focus the About item above&lt;/h2&gt;
+    &lt;p&gt;A dropdown appears with three sub-links and disappears when the mouse
+       leaves or keyboard focus moves away. On touch devices the sublinks remain visible. The trick is &lt;code&gt;position: relative&lt;/code&gt; on the list item,
+       &lt;code&gt;position: absolute&lt;/code&gt; on the dropdown, and
+       &lt;code&gt;:hover&lt;/code&gt; switching &lt;code&gt;display&lt;/code&gt;.&lt;/p&gt;
+  &lt;/div&gt;
 
-</body>
-</html>"></iframe>
+&lt;/body&gt;
+&lt;/html&gt;"></iframe></div>
+<template data-demo-document="index">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;CodeBreakers Club — dropdown navigation&lt;/title&gt;
+
+&lt;style&gt;
+
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; }
+    .menu { background: #1e3a8a; padding: 0; }
+    .menu ul { list-style: none; margin: 0; padding: 0; display: flex; }
+    .menu li { position: relative; }
+    .menu a { display: block; color: #fff; text-decoration: none;
+              padding: 0.7rem 1.1rem; }
+    .menu li:hover &gt; a { background: #1d4ed8; }
+    .dropdown { display: none; position: absolute; top: 100%; left: 0;
+                background: #1e3a8a; min-width: 180px; z-index: 10; }
+    .menu li:hover .dropdown, .menu li:focus-within .dropdown { display: block; }
+    .dropdown a { padding: 0.6rem 1.1rem; }
+    .dropdown a:hover { background: #3b82f6; }
+    .content { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; }
+    @media (hover: none) { .dropdown { display: block; position: static; } }
+  
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;CodeBreakers Club — dropdown navigation&lt;/h1&gt;
+  
+  &lt;nav class=&quot;menu&quot;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+        &lt;ul class=&quot;dropdown&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Our Mission&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;activities.html&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;h2&gt;Hover or focus the About item above&lt;/h2&gt;
+    &lt;p&gt;A dropdown appears with three sub-links and disappears when the mouse
+       leaves or keyboard focus moves away. On touch devices the sublinks remain visible. The trick is &lt;code&gt;position: relative&lt;/code&gt; on the list item,
+       &lt;code&gt;position: absolute&lt;/code&gt; on the dropdown, and
+       &lt;code&gt;:hover&lt;/code&gt; switching &lt;code&gt;display&lt;/code&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</template>
+<template data-demo-document="about">&lt;!DOCTYPE html&gt;
+&lt;!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. --&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;About | CodeBreakers Club&lt;/title&gt;
+    &lt;style&gt;/* ============================================================
+   CodeBreakers Club — Shared Stylesheet
+   Course: INS2053 Web Authoring and Web Management
+
+   This single CSS file is linked from every HTML page.
+   Each section is commented so you can find techniques fast.
+   ============================================================ */
+
+/* ---------- 1. RESET ----------
+   Remove the browser's default margins and padding so every
+   page starts from the same baseline. We re-add spacing below. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* makes width include padding/border */
+}
+
+/* ---------- 2. BASE TYPOGRAPHY ---------- */
+body {
+    font-family: &quot;Segoe UI&quot;, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+h1, h2, h3 {
+    color: #003366;      /* the club's dark blue */
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; margin-top: 1.5em; }
+h3 { font-size: 1.2rem; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease; /* CSS3 transition */
+}
+
+a:hover {
+    color: #ffcc00;
+}
+
+img {
+    max-width: 100%;   /* images never overflow their container */
+    height: auto;
+    display: block;
+}
+
+/* ---------- 3. HEADER ---------- */
+header {
+    background: linear-gradient(135deg, #003366, #005599); /* CSS3 gradient */
+    color: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffcc00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.5rem;
+}
+
+header h1 {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+header .tagline {
+    color: #cce0ff;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* ---------- 4. NAVIGATION ---------- */
+nav {
+    background-color: #002244;
+}
+
+nav ul {
+    list-style: none;            /* remove bullet points */
+    display: flex;               /* lay links out in a row */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav li a {
+    display: block;
+    color: #ffffff;
+    padding: 14px 24px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav li a:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* Highlight the page the visitor is currently on */
+nav li a.active {
+    background-color: #ffcc00;
+    color: #003366;
+    font-weight: bold;
+}
+
+/* ---------- 5. MAIN CONTENT ---------- */
+main {
+    max-width: 960px;
+    margin: 30px auto;          /* centre the content column */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+/* The home page's big welcome banner */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #eef4fb;
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.hero h2 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+/* The &quot;Join Us&quot; call-to-action button */
+.btn {
+    display: inline-block;
+    background-color: #003366;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 6. TEAM CARDS (About page) ---------- */
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-card {
+    flex: 1 1 250px;            /* cards grow/shrink, min 250px */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.team-card .name {
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.1rem;
+}
+
+.team-card .role {
+    color: #0066cc;
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+/* ---------- 7. TABLES (Activities page) ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;   /* single borders, not doubled */
+    margin: 1.5em 0;
+    background-color: #ffffff;
+}
+
+caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #003366;
+    padding: 8px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #003366;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f6fb;  /* zebra striping for readability */
+}
+
+tbody tr:hover {
+    background-color: #fff3cc;
+}
+
+/* ---------- 8. MEDIA (Media page) ---------- */
+.media-item {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+video, audio {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* ---------- 9. FORMS (Contact page) ---------- */
+form {
+    max-width: 600px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 1.5em;
+}
+
+legend {
+    font-weight: bold;
+    color: #003366;
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+input[type=&quot;text&quot;],
+input[type=&quot;email&quot;],
+input[type=&quot;tel&quot;],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 4px rgba(0, 102, 204, 0.4);
+}
+
+/* Radio and checkbox rows: label sits next to the input */
+.inline-choice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.inline-choice input {
+    width: auto;
+}
+
+.inline-choice label {
+    margin: 0;
+    font-weight: normal;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+button[type=&quot;submit&quot;] {
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+button[type=&quot;submit&quot;]:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 10. FOOTER ---------- */
+footer {
+    background-color: #002244;
+    color: #cce0ff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ffcc00;
+}
+
+/* ---------- 11. RESPONSIVE (Mobile) ----------
+   When the screen is 768px wide or less (tablets and phones),
+   switch the navigation to a vertical stack. */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;  /* stack the menu links */
+    }
+
+    nav li a {
+        text-align: center;
+        padding: 12px;
+    }
+
+    main {
+        margin: 15px 10px;
+        padding: 15px;
+    }
+
+    h1 { font-size: 1.7rem; }
+
+    table {
+        font-size: 0.85rem;
+    }
+}
+
+/* Accessible navigation and honest, local reference assets. */
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; padding: .7rem; background: white; z-index: 20; }
+:focus-visible { outline: 3px solid #b46b00; outline-offset: 3px; }
+header .logo { width: 80px; height: 80px; object-fit: contain; padding: 0; }
+.example-note { border-left: 4px solid #003366; padding: .75rem; background: #eef4fa; }
+img, video { max-width: 100%; height: auto; }
+audio { width: 100%; }
+.table-scroll { overflow-x: auto; max-width: 100%; }
+.table-scroll table { min-width: 560px; }
+tbody tr:hover, tbody tr:focus-within { background: #fff2bb; }
+.has-dropdown { position: relative; }
+nav .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 180px; z-index: 10; background: #004488; }
+.has-dropdown:hover &gt; .dropdown, .has-dropdown:focus-within &gt; .dropdown { display: block; }
+.contact-demo { max-width: 640px; margin: auto; }
+.contact-demo input:not([type=&quot;checkbox&quot;]):not([type=&quot;radio&quot;]), .contact-demo select, .contact-demo textarea { box-sizing: border-box; width: 100%; padding: .65rem; }
+.contact-demo input[type=&quot;radio&quot;], .contact-demo input[type=&quot;checkbox&quot;] { width: auto; }
+.contact-demo button { padding: .75rem 1rem; margin: .5rem; background: #003366; color: white; border: 0; border-radius: 4px; cursor: pointer; font: inherit; }
+.contact-demo button:hover { background: #004488; }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.team-card { width: auto; min-width: 0; }
+@media (max-width: 960px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) { nav .dropdown { position: static; } }
+@media (hover: none) { nav .dropdown { display: block; position: static; } }
+@media (max-width: 600px) { .team { grid-template-columns: 1fr; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a class=&quot;skip-link&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;
+
+    &lt;!-- ========== HEADER (same on every page) ========== --&gt;
+    &lt;header id=&quot;top&quot;&gt;
+        &lt;img class=&quot;logo&quot; src=&quot;../assets/student-club/images/logo.svg&quot; alt=&quot;CodeBreakers code-bracket logo&quot; width=&quot;80&quot; height=&quot;80&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;CodeBreakers Club&lt;/h1&gt;
+            &lt;p class=&quot;tagline&quot;&gt;Where code meets community&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- ========== NAVIGATION (About link is active) ========== --&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;has-dropdown&quot;&gt;&lt;a href=&quot;about.html&quot; class=&quot;active&quot; aria-current=&quot;page&quot;&gt;About&lt;/a&gt;&lt;ul class=&quot;dropdown&quot;&gt;&lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Mission&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#activities&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#gallery&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;activities.html&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- ========== MAIN CONTENT ========== --&gt;
+    &lt;main id=&quot;main&quot;&gt;
+        &lt;p class=&quot;example-note&quot;&gt;Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.&lt;/p&gt;
+        &lt;section id=&quot;mission&quot;&gt;
+            &lt;h2&gt;Our Mission&lt;/h2&gt;
+            &lt;p&gt;CodeBreakers Club aims to create a supportive community where
+               students can learn, build, and share technology. We believe
+               anyone can learn to code with the right environment and mentors.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Our History&lt;/h2&gt;
+            &lt;p&gt;In this fictional example, five students started a weekly study circle
+               in 2024. They wanted a place to ask beginner questions and practise
+               explaining their code. The group gradually added workshops and peer reviews.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Meet the Team&lt;/h2&gt;
+            &lt;!-- Team members laid out with CSS flexbox cards --&gt;
+            &lt;div class=&quot;team&quot;&gt;
+                &lt;div class=&quot;team-card&quot;&gt;
+                    &lt;p class=&quot;name&quot;&gt;Nguyen Van A&lt;/p&gt;
+                    &lt;p class=&quot;role&quot;&gt;President&lt;/p&gt;
+                    &lt;p&gt;&quot;I love turning ideas into working software.&quot;&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;team-card&quot;&gt;
+                    &lt;p class=&quot;name&quot;&gt;Tran Thi B&lt;/p&gt;
+                    &lt;p class=&quot;role&quot;&gt;Vice President&lt;/p&gt;
+                    &lt;p&gt;&quot;Hack first, ask questions later.&quot;&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;team-card&quot;&gt;
+                    &lt;p class=&quot;name&quot;&gt;Le Van C&lt;/p&gt;
+                    &lt;p class=&quot;role&quot;&gt;Secretary&lt;/p&gt;
+                    &lt;p&gt;&quot;Great events need great organisation.&quot;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&quot;activities&quot;&gt;
+            &lt;h2&gt;Activities and Membership&lt;/h2&gt;
+            &lt;p&gt;Beginners, experienced students and alumni can learn together. Members
+               benefit from feedback, regular practice and supportive project partners.&lt;/p&gt;
+            &lt;h3&gt;Regular activities&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;HTML workshops&lt;/li&gt;&lt;li&gt;CSS practice&lt;/li&gt;&lt;li&gt;Peer code reviews&lt;/li&gt;
+                &lt;li&gt;Mini project challenges&lt;/li&gt;&lt;li&gt;Alumni mentoring discussions&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;h3&gt;How to join&lt;/h3&gt;
+            &lt;ol&gt;&lt;li&gt;Read our activity schedule.&lt;/li&gt;&lt;li&gt;Explore the learning resources.&lt;/li&gt;
+                &lt;li&gt;Visit &lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt; to try the joining form demonstration.&lt;/li&gt;&lt;/ol&gt;
+        &lt;/section&gt;
+        &lt;section id=&quot;gallery&quot;&gt;
+            &lt;h2&gt;Workshop Illustrations&lt;/h2&gt;
+            &lt;img src=&quot;../assets/student-club/images/meeting.png&quot; alt=&quot;Original diagram of the Plan, Test, Explain workshop cycle&quot;&gt;
+            &lt;img src=&quot;../assets/student-club/images/event-1.png&quot; alt=&quot;Original diagram showing HTML, CSS and review stages&quot;&gt;
+            &lt;p&gt;These original diagrams illustrate learning processes; they are not event photographs.&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;!-- ========== FOOTER ========== --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 CodeBreakers Club | &lt;a href=&quot;mailto:contact@example.invalid&quot;&gt;contact@example.invalid&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</template>
+<template data-demo-document="activities">&lt;!DOCTYPE html&gt;
+&lt;!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. --&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Activities | CodeBreakers Club&lt;/title&gt;
+    &lt;style&gt;/* ============================================================
+   CodeBreakers Club — Shared Stylesheet
+   Course: INS2053 Web Authoring and Web Management
+
+   This single CSS file is linked from every HTML page.
+   Each section is commented so you can find techniques fast.
+   ============================================================ */
+
+/* ---------- 1. RESET ----------
+   Remove the browser's default margins and padding so every
+   page starts from the same baseline. We re-add spacing below. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* makes width include padding/border */
+}
+
+/* ---------- 2. BASE TYPOGRAPHY ---------- */
+body {
+    font-family: &quot;Segoe UI&quot;, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+h1, h2, h3 {
+    color: #003366;      /* the club's dark blue */
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; margin-top: 1.5em; }
+h3 { font-size: 1.2rem; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease; /* CSS3 transition */
+}
+
+a:hover {
+    color: #ffcc00;
+}
+
+img {
+    max-width: 100%;   /* images never overflow their container */
+    height: auto;
+    display: block;
+}
+
+/* ---------- 3. HEADER ---------- */
+header {
+    background: linear-gradient(135deg, #003366, #005599); /* CSS3 gradient */
+    color: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffcc00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.5rem;
+}
+
+header h1 {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+header .tagline {
+    color: #cce0ff;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* ---------- 4. NAVIGATION ---------- */
+nav {
+    background-color: #002244;
+}
+
+nav ul {
+    list-style: none;            /* remove bullet points */
+    display: flex;               /* lay links out in a row */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav li a {
+    display: block;
+    color: #ffffff;
+    padding: 14px 24px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav li a:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* Highlight the page the visitor is currently on */
+nav li a.active {
+    background-color: #ffcc00;
+    color: #003366;
+    font-weight: bold;
+}
+
+/* ---------- 5. MAIN CONTENT ---------- */
+main {
+    max-width: 960px;
+    margin: 30px auto;          /* centre the content column */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+/* The home page's big welcome banner */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #eef4fb;
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.hero h2 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+/* The &quot;Join Us&quot; call-to-action button */
+.btn {
+    display: inline-block;
+    background-color: #003366;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 6. TEAM CARDS (About page) ---------- */
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-card {
+    flex: 1 1 250px;            /* cards grow/shrink, min 250px */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.team-card .name {
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.1rem;
+}
+
+.team-card .role {
+    color: #0066cc;
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+/* ---------- 7. TABLES (Activities page) ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;   /* single borders, not doubled */
+    margin: 1.5em 0;
+    background-color: #ffffff;
+}
+
+caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #003366;
+    padding: 8px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #003366;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f6fb;  /* zebra striping for readability */
+}
+
+tbody tr:hover {
+    background-color: #fff3cc;
+}
+
+/* ---------- 8. MEDIA (Media page) ---------- */
+.media-item {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+video, audio {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* ---------- 9. FORMS (Contact page) ---------- */
+form {
+    max-width: 600px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 1.5em;
+}
+
+legend {
+    font-weight: bold;
+    color: #003366;
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+input[type=&quot;text&quot;],
+input[type=&quot;email&quot;],
+input[type=&quot;tel&quot;],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 4px rgba(0, 102, 204, 0.4);
+}
+
+/* Radio and checkbox rows: label sits next to the input */
+.inline-choice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.inline-choice input {
+    width: auto;
+}
+
+.inline-choice label {
+    margin: 0;
+    font-weight: normal;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+button[type=&quot;submit&quot;] {
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+button[type=&quot;submit&quot;]:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 10. FOOTER ---------- */
+footer {
+    background-color: #002244;
+    color: #cce0ff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ffcc00;
+}
+
+/* ---------- 11. RESPONSIVE (Mobile) ----------
+   When the screen is 768px wide or less (tablets and phones),
+   switch the navigation to a vertical stack. */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;  /* stack the menu links */
+    }
+
+    nav li a {
+        text-align: center;
+        padding: 12px;
+    }
+
+    main {
+        margin: 15px 10px;
+        padding: 15px;
+    }
+
+    h1 { font-size: 1.7rem; }
+
+    table {
+        font-size: 0.85rem;
+    }
+}
+
+/* Accessible navigation and honest, local reference assets. */
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; padding: .7rem; background: white; z-index: 20; }
+:focus-visible { outline: 3px solid #b46b00; outline-offset: 3px; }
+header .logo { width: 80px; height: 80px; object-fit: contain; padding: 0; }
+.example-note { border-left: 4px solid #003366; padding: .75rem; background: #eef4fa; }
+img, video { max-width: 100%; height: auto; }
+audio { width: 100%; }
+.table-scroll { overflow-x: auto; max-width: 100%; }
+.table-scroll table { min-width: 560px; }
+tbody tr:hover, tbody tr:focus-within { background: #fff2bb; }
+.has-dropdown { position: relative; }
+nav .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 180px; z-index: 10; background: #004488; }
+.has-dropdown:hover &gt; .dropdown, .has-dropdown:focus-within &gt; .dropdown { display: block; }
+.contact-demo { max-width: 640px; margin: auto; }
+.contact-demo input:not([type=&quot;checkbox&quot;]):not([type=&quot;radio&quot;]), .contact-demo select, .contact-demo textarea { box-sizing: border-box; width: 100%; padding: .65rem; }
+.contact-demo input[type=&quot;radio&quot;], .contact-demo input[type=&quot;checkbox&quot;] { width: auto; }
+.contact-demo button { padding: .75rem 1rem; margin: .5rem; background: #003366; color: white; border: 0; border-radius: 4px; cursor: pointer; font: inherit; }
+.contact-demo button:hover { background: #004488; }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.team-card { width: auto; min-width: 0; }
+@media (max-width: 960px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) { nav .dropdown { position: static; } }
+@media (hover: none) { nav .dropdown { display: block; position: static; } }
+@media (max-width: 600px) { .team { grid-template-columns: 1fr; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a class=&quot;skip-link&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;
+
+    &lt;!-- ========== HEADER (same on every page) ========== --&gt;
+    &lt;header id=&quot;top&quot;&gt;
+        &lt;img class=&quot;logo&quot; src=&quot;../assets/student-club/images/logo.svg&quot; alt=&quot;CodeBreakers code-bracket logo&quot; width=&quot;80&quot; height=&quot;80&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;CodeBreakers Club&lt;/h1&gt;
+            &lt;p class=&quot;tagline&quot;&gt;Where code meets community&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- ========== NAVIGATION (Activities link is active) ========== --&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;has-dropdown&quot;&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;ul class=&quot;dropdown&quot;&gt;&lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Mission&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#activities&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#gallery&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;activities.html&quot; class=&quot;active&quot; aria-current=&quot;page&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- ========== MAIN CONTENT ========== --&gt;
+    &lt;main id=&quot;main&quot;&gt;
+        &lt;p class=&quot;example-note&quot;&gt;Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.&lt;/p&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Weekly Schedule&lt;/h2&gt;
+            &lt;p&gt;We run activities every week of the semester. Come along to any
+               session that interests you — no experience needed for the open
+               workshops.&lt;/p&gt;
+
+            &lt;!-- ===== HTML TABLE =====
+                 caption  = table title
+                 thead    = header row
+                 tbody    = data rows
+                 colspan  = one cell that spans several columns --&gt;
+            &lt;div class=&quot;table-scroll&quot; role=&quot;region&quot; aria-label=&quot;Weekly schedule&quot; tabindex=&quot;0&quot;&gt;
+            &lt;table&gt;
+                &lt;caption&gt;CodeBreakers Club — Weekly Activities&lt;/caption&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th scope=&quot;col&quot;&gt;Day&lt;/th&gt;
+                        &lt;th scope=&quot;col&quot;&gt;Time&lt;/th&gt;
+                        &lt;th scope=&quot;col&quot;&gt;Activity&lt;/th&gt;
+                        &lt;th scope=&quot;col&quot;&gt;Location&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Monday&lt;/td&gt;
+                        &lt;td&gt;18:00 – 20:00&lt;/td&gt;
+                        &lt;td&gt;Web Development Workshop&lt;/td&gt;
+                        &lt;td&gt;Room 204, Building A&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Wednesday&lt;/td&gt;
+                        &lt;td&gt;18:00 – 20:00&lt;/td&gt;
+                        &lt;td&gt;Python Study Group&lt;/td&gt;
+                        &lt;td&gt;Library, Floor 3&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Friday&lt;/td&gt;
+                        &lt;td&gt;17:30 – 19:30&lt;/td&gt;
+                        &lt;td&gt;Open Coding Night&lt;/td&gt;
+                        &lt;td&gt;Room 105, Building B&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Saturday&lt;/td&gt;
+                        &lt;td&gt;09:00 – 12:00&lt;/td&gt;
+                        &lt;td&gt;Hackathon Practice&lt;/td&gt;
+                        &lt;td&gt;Innovation Lab&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Sunday&lt;/td&gt;
+                        &lt;!-- colspan=&quot;3&quot; makes this one cell stretch
+                             across the Time, Activity and Location columns --&gt;
+                        &lt;td colspan=&quot;3&quot;&gt;No activities — Rest day&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Special Events&lt;/h2&gt;
+            &lt;p&gt;Beyond the weekly schedule we also host larger events each
+               semester:&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;strong&gt;Annual Hackathon&lt;/strong&gt; — a 24-hour build competition.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Career Talk Series&lt;/strong&gt; — alumni share their journey into tech jobs.&lt;/li&gt;
+                &lt;li&gt;&lt;strong&gt;Beginner Bootcamp&lt;/strong&gt; — a free introduction to programming for new students.&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;!-- ========== FOOTER ========== --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 CodeBreakers Club | &lt;a href=&quot;mailto:contact@example.invalid&quot;&gt;contact@example.invalid&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</template>
+<template data-demo-document="media">&lt;!DOCTYPE html&gt;
+&lt;!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. --&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Media | CodeBreakers Club&lt;/title&gt;
+    &lt;style&gt;/* ============================================================
+   CodeBreakers Club — Shared Stylesheet
+   Course: INS2053 Web Authoring and Web Management
+
+   This single CSS file is linked from every HTML page.
+   Each section is commented so you can find techniques fast.
+   ============================================================ */
+
+/* ---------- 1. RESET ----------
+   Remove the browser's default margins and padding so every
+   page starts from the same baseline. We re-add spacing below. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* makes width include padding/border */
+}
+
+/* ---------- 2. BASE TYPOGRAPHY ---------- */
+body {
+    font-family: &quot;Segoe UI&quot;, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+h1, h2, h3 {
+    color: #003366;      /* the club's dark blue */
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; margin-top: 1.5em; }
+h3 { font-size: 1.2rem; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease; /* CSS3 transition */
+}
+
+a:hover {
+    color: #ffcc00;
+}
+
+img {
+    max-width: 100%;   /* images never overflow their container */
+    height: auto;
+    display: block;
+}
+
+/* ---------- 3. HEADER ---------- */
+header {
+    background: linear-gradient(135deg, #003366, #005599); /* CSS3 gradient */
+    color: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffcc00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.5rem;
+}
+
+header h1 {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+header .tagline {
+    color: #cce0ff;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* ---------- 4. NAVIGATION ---------- */
+nav {
+    background-color: #002244;
+}
+
+nav ul {
+    list-style: none;            /* remove bullet points */
+    display: flex;               /* lay links out in a row */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav li a {
+    display: block;
+    color: #ffffff;
+    padding: 14px 24px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav li a:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* Highlight the page the visitor is currently on */
+nav li a.active {
+    background-color: #ffcc00;
+    color: #003366;
+    font-weight: bold;
+}
+
+/* ---------- 5. MAIN CONTENT ---------- */
+main {
+    max-width: 960px;
+    margin: 30px auto;          /* centre the content column */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+/* The home page's big welcome banner */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #eef4fb;
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.hero h2 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+/* The &quot;Join Us&quot; call-to-action button */
+.btn {
+    display: inline-block;
+    background-color: #003366;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 6. TEAM CARDS (About page) ---------- */
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-card {
+    flex: 1 1 250px;            /* cards grow/shrink, min 250px */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.team-card .name {
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.1rem;
+}
+
+.team-card .role {
+    color: #0066cc;
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+/* ---------- 7. TABLES (Activities page) ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;   /* single borders, not doubled */
+    margin: 1.5em 0;
+    background-color: #ffffff;
+}
+
+caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #003366;
+    padding: 8px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #003366;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f6fb;  /* zebra striping for readability */
+}
+
+tbody tr:hover {
+    background-color: #fff3cc;
+}
+
+/* ---------- 8. MEDIA (Media page) ---------- */
+.media-item {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+video, audio {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* ---------- 9. FORMS (Contact page) ---------- */
+form {
+    max-width: 600px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 1.5em;
+}
+
+legend {
+    font-weight: bold;
+    color: #003366;
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+input[type=&quot;text&quot;],
+input[type=&quot;email&quot;],
+input[type=&quot;tel&quot;],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 4px rgba(0, 102, 204, 0.4);
+}
+
+/* Radio and checkbox rows: label sits next to the input */
+.inline-choice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.inline-choice input {
+    width: auto;
+}
+
+.inline-choice label {
+    margin: 0;
+    font-weight: normal;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+button[type=&quot;submit&quot;] {
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+button[type=&quot;submit&quot;]:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 10. FOOTER ---------- */
+footer {
+    background-color: #002244;
+    color: #cce0ff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ffcc00;
+}
+
+/* ---------- 11. RESPONSIVE (Mobile) ----------
+   When the screen is 768px wide or less (tablets and phones),
+   switch the navigation to a vertical stack. */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;  /* stack the menu links */
+    }
+
+    nav li a {
+        text-align: center;
+        padding: 12px;
+    }
+
+    main {
+        margin: 15px 10px;
+        padding: 15px;
+    }
+
+    h1 { font-size: 1.7rem; }
+
+    table {
+        font-size: 0.85rem;
+    }
+}
+
+/* Accessible navigation and honest, local reference assets. */
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; padding: .7rem; background: white; z-index: 20; }
+:focus-visible { outline: 3px solid #b46b00; outline-offset: 3px; }
+header .logo { width: 80px; height: 80px; object-fit: contain; padding: 0; }
+.example-note { border-left: 4px solid #003366; padding: .75rem; background: #eef4fa; }
+img, video { max-width: 100%; height: auto; }
+audio { width: 100%; }
+.table-scroll { overflow-x: auto; max-width: 100%; }
+.table-scroll table { min-width: 560px; }
+tbody tr:hover, tbody tr:focus-within { background: #fff2bb; }
+.has-dropdown { position: relative; }
+nav .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 180px; z-index: 10; background: #004488; }
+.has-dropdown:hover &gt; .dropdown, .has-dropdown:focus-within &gt; .dropdown { display: block; }
+.contact-demo { max-width: 640px; margin: auto; }
+.contact-demo input:not([type=&quot;checkbox&quot;]):not([type=&quot;radio&quot;]), .contact-demo select, .contact-demo textarea { box-sizing: border-box; width: 100%; padding: .65rem; }
+.contact-demo input[type=&quot;radio&quot;], .contact-demo input[type=&quot;checkbox&quot;] { width: auto; }
+.contact-demo button { padding: .75rem 1rem; margin: .5rem; background: #003366; color: white; border: 0; border-radius: 4px; cursor: pointer; font: inherit; }
+.contact-demo button:hover { background: #004488; }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.team-card { width: auto; min-width: 0; }
+@media (max-width: 960px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) { nav .dropdown { position: static; } }
+@media (hover: none) { nav .dropdown { display: block; position: static; } }
+@media (max-width: 600px) { .team { grid-template-columns: 1fr; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a class=&quot;skip-link&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;
+
+    &lt;!-- ========== HEADER (same on every page) ========== --&gt;
+    &lt;header id=&quot;top&quot;&gt;
+        &lt;img class=&quot;logo&quot; src=&quot;../assets/student-club/images/logo.svg&quot; alt=&quot;CodeBreakers code-bracket logo&quot; width=&quot;80&quot; height=&quot;80&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;CodeBreakers Club&lt;/h1&gt;
+            &lt;p class=&quot;tagline&quot;&gt;Where code meets community&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- ========== NAVIGATION (Media link is active) ========== --&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;has-dropdown&quot;&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;ul class=&quot;dropdown&quot;&gt;&lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Mission&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#activities&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#gallery&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;activities.html&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;media.html&quot; class=&quot;active&quot; aria-current=&quot;page&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- ========== MAIN CONTENT ========== --&gt;
+    &lt;main id=&quot;main&quot;&gt;
+        &lt;p class=&quot;example-note&quot;&gt;Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.&lt;/p&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Media Gallery&lt;/h2&gt;
+            &lt;p&gt;Watch and listen to an original narrated HTML tutorial. This is self-created
+               educational media with a synthetic voice, not a recording of a real club event.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- ===== HTML5 VIDEO =====
+             controls      = show play/pause buttons
+             poster        = image shown before the video starts
+             width         = starting width (CSS keeps it responsive)
+             &lt;source&gt;      = provide two formats for browser compatibility
+             The text inside is a fallback for very old browsers. --&gt;
+        &lt;section class=&quot;media-item&quot;&gt;
+            &lt;h3&gt;Original Tutorial: Your First HTML Page&lt;/h3&gt;
+            &lt;video controls preload=&quot;metadata&quot; poster=&quot;../assets/student-club/images/video-poster.png&quot; width=&quot;720&quot;&gt;
+                &lt;source src=&quot;../assets/student-club/media/workshop.mp4&quot; type=&quot;video/mp4&quot;&gt;
+                &lt;track kind=&quot;captions&quot; src=&quot;../assets/student-club/media/tutorial.vtt&quot; srclang=&quot;en&quot; label=&quot;English summary captions&quot;&gt;
+                Your browser does not support video. &lt;a href=&quot;../assets/student-club/media/workshop.mp4&quot;&gt;Open the MP4.&lt;/a&gt;
+            &lt;/video&gt;
+        &lt;/section&gt;
+
+        &lt;!-- ===== HTML5 AUDIO =====
+             Same idea as video, but for sound only. --&gt;
+        &lt;section class=&quot;media-item&quot;&gt;
+            &lt;h3&gt;Audio Edition: Your First HTML Page&lt;/h3&gt;
+            &lt;audio controls preload=&quot;metadata&quot;&gt;
+                &lt;source src=&quot;../assets/student-club/media/podcast.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+                Your browser does not support audio. &lt;a href=&quot;../assets/student-club/media/podcast.mp3&quot;&gt;Open the MP3.&lt;/a&gt;
+            &lt;/audio&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Learning Illustrations&lt;/h2&gt;
+            &lt;img src=&quot;../assets/student-club/images/event-1.png&quot; alt=&quot;Original diagram showing HTML, CSS and review stages&quot;&gt;
+            &lt;img src=&quot;../assets/student-club/images/club-photo.png&quot; alt=&quot;Original diagram showing Learn, Build and Share&quot;&gt;
+            &lt;p&gt;Original instructional diagrams, not photographs. All included media is CC0-1.0.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Tutorial Transcript&lt;/h2&gt;
+            &lt;p&gt;Welcome to this original CodeBreakers teaching tutorial. CodeBreakers is a fictional student club.
+               This recording explains how to make your first HTML page. Start with a folder for your website.
+               Create a file named index.html. Add the HTML5 doctype, the HTML element with English language,
+               a head, and a body. In the head, declare UTF-8, set the viewport, and write a descriptive title.
+               In the body, add one main heading with your club name and two paragraphs describing your club.&lt;/p&gt;
+            &lt;p&gt;Save the file and open it in your browser. The title appears on the tab. The heading and paragraphs
+               appear on the page. Next, create separate About, Activities, Media, and Contact files. Keep all
+               five pages at the same folder level. Link them with relative file names. Put your shared stylesheet
+               in the CSS folder and your own images in the images folder.&lt;/p&gt;
+            &lt;p&gt;Finally, test every link, use the keyboard, and check the website with the network switched off.
+               Build a small working page first, then improve it one milestone at a time.&lt;/p&gt;
+            &lt;p&gt;&lt;a href=&quot;../assets/student-club/media/transcript.txt&quot;&gt;Plain-text transcript&lt;/a&gt; · &lt;a href=&quot;../assets/student-club/media/workshop.mp4&quot;&gt;MP4 video&lt;/a&gt; · &lt;a href=&quot;../assets/student-club/media/podcast.mp3&quot;&gt;MP3 audio&lt;/a&gt;&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;!-- ========== FOOTER ========== --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 CodeBreakers Club | &lt;a href=&quot;mailto:contact@example.invalid&quot;&gt;contact@example.invalid&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</template>
+<template data-demo-document="contact">&lt;!DOCTYPE html&gt;
+&lt;!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. --&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Contact | CodeBreakers Club&lt;/title&gt;
+    &lt;style&gt;/* ============================================================
+   CodeBreakers Club — Shared Stylesheet
+   Course: INS2053 Web Authoring and Web Management
+
+   This single CSS file is linked from every HTML page.
+   Each section is commented so you can find techniques fast.
+   ============================================================ */
+
+/* ---------- 1. RESET ----------
+   Remove the browser's default margins and padding so every
+   page starts from the same baseline. We re-add spacing below. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* makes width include padding/border */
+}
+
+/* ---------- 2. BASE TYPOGRAPHY ---------- */
+body {
+    font-family: &quot;Segoe UI&quot;, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+h1, h2, h3 {
+    color: #003366;      /* the club's dark blue */
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; margin-top: 1.5em; }
+h3 { font-size: 1.2rem; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease; /* CSS3 transition */
+}
+
+a:hover {
+    color: #ffcc00;
+}
+
+img {
+    max-width: 100%;   /* images never overflow their container */
+    height: auto;
+    display: block;
+}
+
+/* ---------- 3. HEADER ---------- */
+header {
+    background: linear-gradient(135deg, #003366, #005599); /* CSS3 gradient */
+    color: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffcc00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.5rem;
+}
+
+header h1 {
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+header .tagline {
+    color: #cce0ff;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+/* ---------- 4. NAVIGATION ---------- */
+nav {
+    background-color: #002244;
+}
+
+nav ul {
+    list-style: none;            /* remove bullet points */
+    display: flex;               /* lay links out in a row */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav li a {
+    display: block;
+    color: #ffffff;
+    padding: 14px 24px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav li a:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* Highlight the page the visitor is currently on */
+nav li a.active {
+    background-color: #ffcc00;
+    color: #003366;
+    font-weight: bold;
+}
+
+/* ---------- 5. MAIN CONTENT ---------- */
+main {
+    max-width: 960px;
+    margin: 30px auto;          /* centre the content column */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+/* The home page's big welcome banner */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #eef4fb;
+    border-radius: 8px;
+    margin-bottom: 2em;
+}
+
+.hero h2 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+/* The &quot;Join Us&quot; call-to-action button */
+.btn {
+    display: inline-block;
+    background-color: #003366;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 6. TEAM CARDS (About page) ---------- */
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.team-card {
+    flex: 1 1 250px;            /* cards grow/shrink, min 250px */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.team-card .name {
+    font-weight: bold;
+    color: #003366;
+    font-size: 1.1rem;
+}
+
+.team-card .role {
+    color: #0066cc;
+    font-style: italic;
+    margin-bottom: 0.5em;
+}
+
+/* ---------- 7. TABLES (Activities page) ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;   /* single borders, not doubled */
+    margin: 1.5em 0;
+    background-color: #ffffff;
+}
+
+caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #003366;
+    padding: 8px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #003366;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f6fb;  /* zebra striping for readability */
+}
+
+tbody tr:hover {
+    background-color: #fff3cc;
+}
+
+/* ---------- 8. MEDIA (Media page) ---------- */
+.media-item {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+video, audio {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* ---------- 9. FORMS (Contact page) ---------- */
+form {
+    max-width: 600px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 1.5em;
+}
+
+legend {
+    font-weight: bold;
+    color: #003366;
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+input[type=&quot;text&quot;],
+input[type=&quot;email&quot;],
+input[type=&quot;tel&quot;],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 4px rgba(0, 102, 204, 0.4);
+}
+
+/* Radio and checkbox rows: label sits next to the input */
+.inline-choice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.inline-choice input {
+    width: auto;
+}
+
+.inline-choice label {
+    margin: 0;
+    font-weight: normal;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+button[type=&quot;submit&quot;] {
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+button[type=&quot;submit&quot;]:hover {
+    background-color: #ffcc00;
+    color: #003366;
+}
+
+/* ---------- 10. FOOTER ---------- */
+footer {
+    background-color: #002244;
+    color: #cce0ff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ffcc00;
+}
+
+/* ---------- 11. RESPONSIVE (Mobile) ----------
+   When the screen is 768px wide or less (tablets and phones),
+   switch the navigation to a vertical stack. */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;  /* stack the menu links */
+    }
+
+    nav li a {
+        text-align: center;
+        padding: 12px;
+    }
+
+    main {
+        margin: 15px 10px;
+        padding: 15px;
+    }
+
+    h1 { font-size: 1.7rem; }
+
+    table {
+        font-size: 0.85rem;
+    }
+}
+
+/* Accessible navigation and honest, local reference assets. */
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; padding: .7rem; background: white; z-index: 20; }
+:focus-visible { outline: 3px solid #b46b00; outline-offset: 3px; }
+header .logo { width: 80px; height: 80px; object-fit: contain; padding: 0; }
+.example-note { border-left: 4px solid #003366; padding: .75rem; background: #eef4fa; }
+img, video { max-width: 100%; height: auto; }
+audio { width: 100%; }
+.table-scroll { overflow-x: auto; max-width: 100%; }
+.table-scroll table { min-width: 560px; }
+tbody tr:hover, tbody tr:focus-within { background: #fff2bb; }
+.has-dropdown { position: relative; }
+nav .dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 180px; z-index: 10; background: #004488; }
+.has-dropdown:hover &gt; .dropdown, .has-dropdown:focus-within &gt; .dropdown { display: block; }
+.contact-demo { max-width: 640px; margin: auto; }
+.contact-demo input:not([type=&quot;checkbox&quot;]):not([type=&quot;radio&quot;]), .contact-demo select, .contact-demo textarea { box-sizing: border-box; width: 100%; padding: .65rem; }
+.contact-demo input[type=&quot;radio&quot;], .contact-demo input[type=&quot;checkbox&quot;] { width: auto; }
+.contact-demo button { padding: .75rem 1rem; margin: .5rem; background: #003366; color: white; border: 0; border-radius: 4px; cursor: pointer; font: inherit; }
+.contact-demo button:hover { background: #004488; }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.team-card { width: auto; min-width: 0; }
+@media (max-width: 960px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 768px) { nav .dropdown { position: static; } }
+@media (hover: none) { nav .dropdown { display: block; position: static; } }
+@media (max-width: 600px) { .team { grid-template-columns: 1fr; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a class=&quot;skip-link&quot; href=&quot;#main&quot;&gt;Skip to content&lt;/a&gt;
+
+    &lt;!-- ========== HEADER (same on every page) ========== --&gt;
+    &lt;header id=&quot;top&quot;&gt;
+        &lt;img class=&quot;logo&quot; src=&quot;../assets/student-club/images/logo.svg&quot; alt=&quot;CodeBreakers code-bracket logo&quot; width=&quot;80&quot; height=&quot;80&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;CodeBreakers Club&lt;/h1&gt;
+            &lt;p class=&quot;tagline&quot;&gt;Where code meets community&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- ========== NAVIGATION (Contact link is active) ========== --&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;has-dropdown&quot;&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;ul class=&quot;dropdown&quot;&gt;&lt;li&gt;&lt;a href=&quot;about.html#mission&quot;&gt;Mission&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#activities&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;about.html#gallery&quot;&gt;Gallery&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;activities.html&quot;&gt;Activities&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;media.html&quot;&gt;Media&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;contact.html&quot; class=&quot;active&quot; aria-current=&quot;page&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- ========== MAIN CONTENT ========== --&gt;
+    &lt;main id=&quot;main&quot;&gt;
+        &lt;p class=&quot;example-note&quot;&gt;Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.&lt;/p&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Join CodeBreakers Club&lt;/h2&gt;
+            &lt;p&gt;This is a local validation demonstration, not an application service.
+               Nothing is submitted or stored. Use invented values. Fields marked * are required.&lt;/p&gt;
+            &lt;p&gt;Example meeting location: Room 301, Building A. Contact: contact@example.invalid.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;!-- ===== HTML FORM =====
+             Every input has a matching &lt;label&gt; (accessibility).
+             The for=&quot;&quot; attribute on the label matches the id=&quot;&quot; of the input. --&gt;
+        &lt;div class=&quot;contact-demo&quot; id=&quot;contact-form&quot;&gt;
+
+            &lt;fieldset&gt;
+                &lt;legend&gt;Your Details&lt;/legend&gt;
+
+                &lt;label for=&quot;fullname&quot;&gt;Full Name *&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;fullname&quot; name=&quot;fullname&quot;
+                       placeholder=&quot;e.g. Nguyen Van A&quot; required&gt;
+
+                &lt;label for=&quot;email&quot;&gt;Email *&lt;/label&gt;
+                &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;
+                       placeholder=&quot;e.g. a.nguyen@vnu.edu.vn&quot; required&gt;
+
+                &lt;label for=&quot;phone&quot;&gt;Phone Number (optional)&lt;/label&gt;
+                &lt;input type=&quot;tel&quot; id=&quot;phone&quot; name=&quot;phone&quot;
+                       placeholder=&quot;e.g. 0912 345 678&quot;&gt;
+            &lt;/fieldset&gt;
+
+            &lt;fieldset&gt;
+                &lt;legend&gt;Membership&lt;/legend&gt;
+
+                &lt;label for=&quot;department&quot;&gt;Department *&lt;/label&gt;
+                &lt;select id=&quot;department&quot; name=&quot;department&quot; required&gt;
+                    &lt;option value=&quot;&quot;&gt;-- Please choose --&lt;/option&gt;
+                    &lt;option value=&quot;cs&quot;&gt;Computer Science&lt;/option&gt;
+                    &lt;option value=&quot;math&quot;&gt;Mathematics&lt;/option&gt;
+                    &lt;option value=&quot;physics&quot;&gt;Physics&lt;/option&gt;
+                    &lt;option value=&quot;chemistry&quot;&gt;Chemistry&lt;/option&gt;
+                &lt;/select&gt;
+
+                &lt;!-- Radio buttons: choose ONE option --&gt;
+                &lt;p&gt;Membership type *&lt;/p&gt;
+                &lt;div class=&quot;inline-choice&quot;&gt;
+                    &lt;input type=&quot;radio&quot; id=&quot;member-student&quot; name=&quot;membership&quot; value=&quot;student&quot; required&gt;
+                    &lt;label for=&quot;member-student&quot;&gt;Student&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;inline-choice&quot;&gt;
+                    &lt;input type=&quot;radio&quot; id=&quot;member-alumni&quot; name=&quot;membership&quot; value=&quot;alumni&quot; required&gt;
+                    &lt;label for=&quot;member-alumni&quot;&gt;Alumni&lt;/label&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Checkbox: a yes/no option --&gt;
+                &lt;div class=&quot;inline-choice&quot;&gt;
+                    &lt;input type=&quot;checkbox&quot; id=&quot;terms&quot; name=&quot;terms&quot; required&gt;
+                    &lt;label for=&quot;terms&quot;&gt;I agree to the club rules *&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/fieldset&gt;
+
+            &lt;fieldset&gt;
+                &lt;legend&gt;Message&lt;/legend&gt;
+
+                &lt;label for=&quot;message&quot;&gt;Message *&lt;/label&gt;
+                &lt;textarea id=&quot;message&quot; name=&quot;message&quot;
+                          rows=&quot;5&quot; cols=&quot;40&quot; placeholder=&quot;What interests you about the club?&quot; required&gt;&lt;/textarea&gt;
+            &lt;/fieldset&gt;
+
+            &lt;button type=&quot;button&quot; data-reference-check&gt;Check fields — no submission&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-reference-clear&gt;Clear fields&lt;/button&gt;
+            &lt;p role=&quot;status&quot; id=&quot;validation-status&quot;&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;noscript&gt;&lt;p&gt;Fields remain readable; validation buttons require JavaScript. Nothing can be submitted.&lt;/p&gt;&lt;/noscript&gt;
+    &lt;/main&gt;
+
+    &lt;!-- ========== FOOTER ========== --&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 CodeBreakers Club | &lt;a href=&quot;mailto:contact@example.invalid&quot;&gt;contact@example.invalid&lt;/a&gt;&lt;/p&gt;
+    &lt;/footer&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</template>
+<noscript><p>Enable JavaScript to change pages, viewport and simulate validation.</p></noscript>
+</div>
   </section>
   <article class="doc">
 <h2 id="homework-14-css-dropdown-navigation">Homework 14: CSS Dropdown Navigation<a class="anchor" href="#homework-14-css-dropdown-navigation" aria-label="Link to this section">#</a></h2>
@@ -408,5 +2491,7 @@ interview looks like.</p>
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/demo-viewer.js" defer></script>
+
 </body>
 </html>

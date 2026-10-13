@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- INS2053 teaching reference. Fictional club; original media, CC0-1.0. -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ========== HEADER (same on every page) ========== -->
-    <header>
-        <div class="logo">CB</div>
+    <header id="top">
+        <img class="logo" src="images/logo.svg" alt="CodeBreakers code-bracket logo" width="80" height="80">
         <div>
             <h1>CodeBreakers Club</h1>
             <p class="tagline">Where code meets community</p>
@@ -21,7 +23,7 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
+            <li class="has-dropdown"><a href="about.html" class="active" aria-current="page">About</a><ul class="dropdown"><li><a href="about.html#mission">Mission</a></li><li><a href="about.html#activities">Activities</a></li><li><a href="about.html#gallery">Gallery</a></li></ul></li>
             <li><a href="activities.html">Activities</a></li>
             <li><a href="media.html">Media</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -29,8 +31,9 @@
     </nav>
 
     <!-- ========== MAIN CONTENT ========== -->
-    <main>
-        <section>
+    <main id="main">
+        <p class="example-note">Fictional teaching reference. Names, schedules and contact details are illustrative. No messages are sent.</p>
+        <section id="mission">
             <h2>Our Mission</h2>
             <p>CodeBreakers Club aims to create a supportive community where
                students can learn, build, and share technology. We believe
@@ -39,10 +42,9 @@
 
         <section>
             <h2>Our History</h2>
-            <p>Founded in 2020 by a group of five students, the club has grown
-               to more than one hundred active members. Along the way we have
-               won three national programming awards and hosted dozens of
-               workshops and hackathons.</p>
+            <p>In this fictional example, five students started a weekly study circle
+               in 2024. They wanted a place to ask beginner questions and practise
+               explaining their code. The group gradually added workshops and peer reviews.</p>
         </section>
 
         <section>
@@ -67,15 +69,30 @@
             </div>
         </section>
 
-        <section>
-            <h2>A Photo from Our Last Event</h2>
-            <img src="images/team-photo.jpg" alt="The CodeBreakers Club leadership team smiling at a club event">
+        <section id="activities">
+            <h2>Activities and Membership</h2>
+            <p>Beginners, experienced students and alumni can learn together. Members
+               benefit from feedback, regular practice and supportive project partners.</p>
+            <h3>Regular activities</h3>
+            <ul>
+                <li>HTML workshops</li><li>CSS practice</li><li>Peer code reviews</li>
+                <li>Mini project challenges</li><li>Alumni mentoring discussions</li>
+            </ul>
+            <h3>How to join</h3>
+            <ol><li>Read our activity schedule.</li><li>Explore the learning resources.</li>
+                <li>Visit <a href="contact.html">Contact</a> to try the joining form demonstration.</li></ol>
+        </section>
+        <section id="gallery">
+            <h2>Workshop Illustrations</h2>
+            <img src="images/meeting.png" alt="Original diagram of the Plan, Test, Explain workshop cycle">
+            <img src="images/event-1.png" alt="Original diagram showing HTML, CSS and review stages">
+            <p>These original diagrams illustrate learning processes; they are not event photographs.</p>
         </section>
     </main>
 
     <!-- ========== FOOTER ========== -->
     <footer>
-        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@codebreakers.edu">contact@codebreakers.edu</a></p>
+        <p>&copy; 2026 CodeBreakers Club | <a href="mailto:contact@example.invalid">contact@example.invalid</a></p>
     </footer>
 
 </body>
