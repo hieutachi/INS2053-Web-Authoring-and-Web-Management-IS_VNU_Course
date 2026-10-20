@@ -87,6 +87,8 @@ async function pages(dir = SITE, out = []) {
  * the published site cannot grow a submission feature by accident.
  */
 const GRADER_PAGE = "cham-bai.html";
+const QUIZ_PAGE = "quiz-6-sessions.html";
+
 
 const list = (await pages()).sort();
 const src = new Map();
@@ -94,6 +96,41 @@ for (const rel of list) {
   if (rel === GRADER_PAGE) continue;
   src.set(rel, await readFile(path.join(SITE, rel), "utf8"));
 }
+
+
+
+
+
+
+// Dedicated public, browser-only quiz. Keep it outside bilingual generated-page counts,
+// but audit the page itself and its timing/result behavior explicitly.
+if (!list.includes(QUIZ_PAGE)) bad(`${QUIZ_PAGE} missing from site/`);
+if (list.filter((f) => f === QUIZ_PAGE).length !== 1)
+  bad(`${QUIZ_PAGE} must exist once at the site root`);
+if (list.includes(`${VI_PREFIX}${QUIZ_PAGE}`))
+  bad(`${QUIZ_PAGE} must not be duplicated in the Vietnamese tree`);
+const quizSource = list.includes(QUIZ_PAGE)
+  ? await readFile(path.join(SITE, QUIZ_PAGE), "utf8")
+  : "";
+if (quizSource) {
+  const checks = [
+    [/^<!doctype html>/i.test(quizSource.trim()), "doctype"],
+    [/<html[^>]+lang="vi"/.test(quizSource), "Vietnamese lang"],
+    [/<meta charset="utf-8">/i.test(quizSource), "UTF-8 charset"],
+    [(quizSource.match(/\{session:\d+,q:/g) || []).length === 18, "18-question bank"],
+    [/setInterval\(\(\)=>\{remaining--;/.test(quizSource), "visible updating 30-second question timer"],
+    [/deadline=Date\.now\(\)\+30\*60\*1000/.test(quizSource), "30-minute total deadline"],
+    [/finish\('time_limit'\)/.test(quizSource), "automatic submission"],
+    [/JSON\.stringify\(payload,null,2\)/.test(quizSource), "JSON result"],
+    [/reason,submittedAt:/.test(quizSource), "submission metadata"],
+  ];
+  for (const [passed, label] of checks) if (!passed) bad(`${QUIZ_PAGE}: missing/invalid ${label}`);
+  if (!/<span[^>]+id="questionTimerDisplay"/.test(quizSource)) bad(`${QUIZ_PAGE}: missing question timer display`);
+  if (/<form\b|\bfetch\s*\(|\bXMLHttpRequest\b|sendBeacon/i.test(quizSource))
+    bad(`${QUIZ_PAGE}: unexpected network submission capability`);
+  if (checks.every(([passed]) => passed)) ok(`${QUIZ_PAGE} exists with timed quiz and local JSON results`);
+}
+
 
 const count = (s, re) => (s.match(re) || []).length;
 
@@ -111,6 +148,7 @@ console.log("== 1. page inventory ==============================================
     sessions: 16, // 15 + index
     project: 1, // exactly one public hub, never raw project sources
   };
+
   const forLang = (lang) => {
     const want = { ...tree };
     want.slides = lang === "en" ? 18 : 1;
@@ -119,7 +157,7 @@ console.log("== 1. page inventory ==============================================
     if (lang === "en") want.root = 4;
     const groups = {
       root: list.filter(
-        (f) => langOf(f) === lang && !inTree(f).includes("/")
+        (f) => f !== QUIZ_PAGE && langOf(f) === lang && !inTree(f).includes("/")
       ).length,
     };
     for (const k of ["ebook", "homework", "sessions", "slides", "project"]) {

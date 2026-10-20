@@ -1531,6 +1531,15 @@ async function build() {
     await cp(GRADER_ARTEFACT, path.join(OUT, GRADER_PUBLIC));
   }
 
+
+  /* Public static review quiz. It is intentionally outside the grader gate and
+     produces unauthenticated browser-side results only. */
+  await cp(
+    path.join(HERE, "site-assets", "quiz-6-sessions.html"),
+    path.join(OUT, "quiz-6-sessions.html")
+  );
+
+
   const built = [];
   for (const lang of Object.keys(LANGS)) built.push(await buildTree(lang));
 
