@@ -14,7 +14,6 @@
  * bilingual gates: tree parity, the language switch, chrome that actually changed
  * language, and the fallback notice that marks an untranslated page.
  */
-
 import { readdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
@@ -93,47 +92,37 @@ const QUIZ_PAGE = "quiz-6-sessions.html";
 const list = (await pages()).sort();
 const src = new Map();
 for (const rel of list) {
-  if (rel === GRADER_PAGE) continue;
+  if (rel === GRADER_PAGE || rel === QUIZ_PAGE) continue; // audited independently
   src.set(rel, await readFile(path.join(SITE, rel), "utf8"));
 }
 
-
-
-
-
-
-// Dedicated public, browser-only quiz. Keep it outside bilingual generated-page counts,
-// but audit the page itself and its timing/result behavior explicitly.
+// This standalone Vietnamese quiz is not a generated bilingual course page.
 if (!list.includes(QUIZ_PAGE)) bad(`${QUIZ_PAGE} missing from site/`);
-if (list.filter((f) => f === QUIZ_PAGE).length !== 1)
-  bad(`${QUIZ_PAGE} must exist once at the site root`);
-if (list.includes(`${VI_PREFIX}${QUIZ_PAGE}`))
-  bad(`${QUIZ_PAGE} must not be duplicated in the Vietnamese tree`);
-const quizSource = list.includes(QUIZ_PAGE)
-  ? await readFile(path.join(SITE, QUIZ_PAGE), "utf8")
-  : "";
+if (list.filter((f) => f === QUIZ_PAGE).length !== 1) bad(`${QUIZ_PAGE} must exist once at site root`);
+if (list.includes(`${VI_PREFIX}${QUIZ_PAGE}`)) bad(`${QUIZ_PAGE} must not be duplicated in Vietnamese tree`);
+const quizSource = list.includes(QUIZ_PAGE) ? await readFile(path.join(SITE, QUIZ_PAGE), "utf8") : "";
 if (quizSource) {
   const checks = [
     [/^<!doctype html>/i.test(quizSource.trim()), "doctype"],
     [/<html[^>]+lang="vi"/.test(quizSource), "Vietnamese lang"],
     [/<meta charset="utf-8">/i.test(quizSource), "UTF-8 charset"],
+    [/<meta name="viewport"/.test(quizSource), "viewport"],
+    [(quizSource.replace(/<script\b[\s\S]*?<\/script>/gi, "").match(/<h1[\s>]/g) || []).length === 1, "single h1"],
+    [/<title>[^<]+<\/title>/.test(quizSource), "title"],
     [(quizSource.match(/\{session:\d+,q:/g) || []).length === 18, "18-question bank"],
-    [/setInterval\(\(\)=>\{remaining--;/.test(quizSource), "visible updating 30-second question timer"],
-    [/deadline=Date\.now\(\)\+30\*60\*1000/.test(quizSource), "30-minute total deadline"],
-    [/finish\('time_limit'\)/.test(quizSource), "automatic submission"],
+    [/setInterval\(\(\)=>\{remaining--;/.test(quizSource), "question timer"],
+    [/deadline=Date\.now\(\)\+30\*60\*1000/.test(quizSource), "30-minute deadline"],
+    [/finish\('time_limit'\)/.test(quizSource), "automatic timeout submission"],
     [/JSON\.stringify\(payload,null,2\)/.test(quizSource), "JSON result"],
     [/reason,submittedAt:/.test(quizSource), "submission metadata"],
   ];
   for (const [passed, label] of checks) if (!passed) bad(`${QUIZ_PAGE}: missing/invalid ${label}`);
-  if (!/<span[^>]+id="questionTimerDisplay"/.test(quizSource)) bad(`${QUIZ_PAGE}: missing question timer display`);
-  if (/<form\b|\bfetch\s*\(|\bXMLHttpRequest\b|sendBeacon/i.test(quizSource))
-    bad(`${QUIZ_PAGE}: unexpected network submission capability`);
-  if (checks.every(([passed]) => passed)) ok(`${QUIZ_PAGE} exists with timed quiz and local JSON results`);
+  if (!/<span[^>]+id="questionTimerDisplay"/.test(quizSource)) bad(`${QUIZ_PAGE}: missing timer display`);
+  if (/<form\b|\bfetch\s*\(|\bXMLHttpRequest\b|sendBeacon/i.test(quizSource)) bad(`${QUIZ_PAGE}: unexpected network submission capability`);
+  if (checks.every(([passed]) => passed)) ok(`${QUIZ_PAGE} passes standalone quiz checks`);
 }
 
-
 const count = (s, re) => (s.match(re) || []).length;
-
 /* == 1. page inventory ==================================================== */
 console.log("== 1. page inventory ==============================================");
 {
@@ -179,7 +168,7 @@ console.log("== 1. page inventory ==============================================
         );
     }
     // An unexpected file anywhere is a failure, so the totals are checked too.
-    const total = list.filter((f) => langOf(f) === lang).length;
+    const total = list.filter((f) => f !== QUIZ_PAGE && langOf(f) === lang).length;
     const wantTotal = Object.values(want).reduce((a, b) => a + b, 0);
     if (total !== wantTotal)
       bad(`${lang} tree holds ${total} page(s), expected ${wantTotal}`);
@@ -642,7 +631,7 @@ console.log("== 15. bilingual trees, chrome and translation state ==============
     langOf(rel) === "en" &&
     inTree(rel).startsWith("slides/") &&
     inTree(rel) !== "slides/index.html";
-  const generated = list.filter((f) => f !== GRADER_PAGE && !isDeck(f));
+  const generated = list.filter((f) => f !== GRADER_PAGE && f !== QUIZ_PAGE && !isDeck(f));
   for (const rel of generated) {
     if (!src.has(twinOf(rel)))
       note(rel, `no ${langOf(rel) === "en" ? "Vietnamese" : "English"} twin at ${twinOf(rel)}`);

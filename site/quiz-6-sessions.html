@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz nhanh INS2053 · Ôn tập 6 buổi</title>
+<style>
+:root{font-family:system-ui,Segoe UI,sans-serif;color:#172033;background:#f2f5fb}*{box-sizing:border-box}body{margin:0}.wrap{max-width:900px;margin:auto;padding:24px}.card{background:white;border:1px solid #dce3ef;border-radius:18px;padding:24px;margin:16px 0;box-shadow:0 8px 30px #1720330c}h1,h2{margin-top:0}button,input{font:inherit}button{border:0;border-radius:10px;padding:12px 18px;background:#2457d6;color:white;font-weight:700;cursor:pointer}button.secondary{background:#e8edfa;color:#18336f}button:disabled{opacity:.5;cursor:not-allowed}input{padding:11px;border:1px solid #aab6ca;border-radius:8px;width:100%;margin:5px 0 12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.review{background:#f4f7fd;padding:13px;border-radius:10px}.muted{color:#59677e}.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.timer{font-size:1.2rem;font-weight:800;color:#b42318}.choice{display:block;padding:13px;border:1px solid #dce3ef;border-radius:10px;margin:9px 0;cursor:pointer}.choice:hover{background:#f0f4ff}.choice input{width:auto;margin:0 8px 0 0}.hidden{display:none}.progress{height:8px;background:#e5eaf2;border-radius:6px}.progress i{display:block;height:100%;background:#2457d6;border-radius:6px}.json{white-space:pre-wrap;overflow-wrap:anywhere;background:#111827;color:#d1fae5;padding:16px;border-radius:10px}.note{border-left:4px solid #f0aa19;padding:10px 14px;background:#fff8e5}
+</style></head><body><main class="wrap">
+<header class="card"><h1>⚡ Quiz nhanh INS2053: 6 buổi đầu</h1><p>Ôn nhanh kiến thức, trả lời 30 giây mỗi câu. Tổng thời gian tối đa 30 phút; hết giờ sẽ tự nộp.</p><div class="note">Bài chạy hoàn toàn trên GitHub Pages. Đáp án và điểm phía trình duyệt không thể được bảo mật tuyệt đối; JSON có checksum để phát hiện lỗi sao chép, không phải chữ ký chống sửa.</div></header>
+<section id="intro" class="card"><h2>Ôn tập siêu tốc</h2><div class="grid">
+<div class="review"><b>Buổi 1 · Web & HTML</b><p>Browser gửi request, nhận tài nguyên và render. HTML mô tả cấu trúc; tài liệu gồm DOCTYPE, html, head, body.</p></div>
+<div class="review"><b>Buổi 2 · Dự án & đường dẫn</b><p>Site là thư mục gốc dự án. Dùng đường dẫn tương đối để dự án di chuyển được; đặt tên thường, không dấu cách.</p></div>
+<div class="review"><b>Buổi 3 · Text & ảnh</b><p>Dùng h1–h6 theo cấp bậc, p cho đoạn; img có src và alt mô tả hữu ích.</p></div>
+<div class="review"><b>Buổi 4 · CSS</b><p>CSS trình bày, HTML cấu trúc. Tách stylesheet ngoài; box model: content → padding → border → margin.</p></div>
+<div class="review"><b>Buổi 5 · Layout</b><p>header, nav, main, section, aside, footer mang ngữ nghĩa. Flexbox hỗ trợ bố cục; chỉ một main chính mỗi trang.</p></div>
+<div class="review"><b>Buổi 6 · Site nhiều trang</b><p>Các trang chia sẻ cấu trúc và CSS; liên kết tương đối như about.html; menu dùng ul/li/a.</p></div></div>
+<h2>Thông tin sinh viên</h2><label>MSV<input id="msv" autocomplete="off" required maxlength="30"></label><label>Họ và tên<input id="name" autocomplete="name" required maxlength="100"></label><label>Lớp<input id="className" autocomplete="off" required maxlength="50"></label><button id="start">Bắt đầu 30 phút</button><p class="muted">Bắt đầu bài thi đồng nghĩa bắt đầu đồng hồ; thông tin chỉ được dùng tạo JSON trên thiết bị này.</p></section>
+
+<section id="quiz" class="card hidden"><div class="top"><span id="qcount"></span><span><span class="timer" id="questionTimerDisplay" aria-live="polite"></span> <span class="timer" id="timer"></span></span></div><div class="progress"><i id="bar"></i></div><h2 id="question"></h2><div id="choices"></div><button id="next">Câu tiếp theo</button><button id="submit" class="secondary">Nộp bài ngay</button></section>
+
+
+<section id="result" class="card hidden"><h2>Đã nộp bài</h2><p id="score"></p><p class="muted">Sao chép toàn bộ JSON bên dưới và dán vào Google Form theo hướng dẫn giảng viên.</p><button id="copy">Sao chép JSON</button><pre class="json" id="output"></pre><div id="reviewAnswers"></div></section>
+<script>
+const questions=[
+{session:1,q:"Vai trò chính của HTML là gì?",a:["Tạo cấu trúc và ý nghĩa nội dung","Lưu dữ liệu lên máy chủ","Tạo hiệu ứng chuyển động","Quản lý tên miền"],k:0},
+{session:1,q:"Thành phần nào chứa nội dung hiển thị chính của trang?",a:["<head>","<body>","<!DOCTYPE>","<title>"],k:1},
+{session:2,q:"Từ css/style.css, đường dẫn tương đối tới images/logo.png là gì?",a:["../images/logo.png","/C:/images/logo.png","images/logo.png","https://images/logo.png"],k:0},
+{session:2,q:"Quy tắc tên file phù hợp cho trang lịch sự kiện là gì?",a:["Event Calendar.html","event-calendar.html","event_calendar!!.html","EVENT CALENDAR.html"],k:1},
+{session:3,q:"Thẻ nào thường dùng làm tiêu đề chính của trang?",a:["<h1>","<p>","<strong>","<br>"],k:0},
+{session:3,q:"Thuộc tính alt của ảnh có ích nhất vì sao?",a:["Tạo viền ảnh","Mô tả ảnh cho hỗ trợ tiếp cận khi ảnh không thấy được","Thay thế src","Đổi kích thước ảnh"],k:1},
+{session:4,q:"Cách liên kết stylesheet ngoài đúng là gì?",a:["<css src='style.css'>","<link rel='stylesheet' href='css/style.css'>","<style href='style.css'>","<script src='style.css'>"],k:1},
+{session:4,q:"Thứ tự các lớp box model từ trong ra ngoài?",a:["content, padding, border, margin","margin, border, content, padding","content, margin, padding, border","padding, content, margin, border"],k:0},
+{session:5,q:"Phần nội dung chính ngữ nghĩa dùng thẻ nào?",a:["<aside>","<main>","<footer>","<nav>"],k:1},
+{session:5,q:"Muốn bố trí các phần tử con theo trục flex, khai báo gì?",a:["position: flex","display: flex","float: flex","layout: row"],k:1},
+{session:6,q:"Liên kết từ index.html tới about.html cùng thư mục?",a:["href='about.html'","href='../about.html'","href='/C:/about.html'","href='css/about.html'"],k:0},
+{session:6,q:"Lợi ích của một CSS dùng chung cho nhiều trang?",a:["Mỗi trang có giao diện nhất quán, sửa một nơi","Không cần HTML","Ẩn mã nguồn","Tự tạo liên kết"],k:0},
+{session:1,q:"Trình duyệt làm gì với HTML?",a:["Phân tích rồi render thành trang","Biên dịch thành CSS","Chỉ lưu văn bản","Tạo folder"],k:0},
+{session:2,q:"Site root là gì?",a:["Thư mục gốc chứa các tệp dự án","Tệp ảnh đầu tiên","Máy chủ DNS","Tên trang chủ"],k:0},
+{session:3,q:"Danh sách không thứ tự dùng cặp thẻ nào?",a:["<ol><li>","<ul><li>","<dl><p>","<list><item>"],k:1},
+{session:4,q:"CSS chủ yếu quyết định điều gì?",a:["Cách trình bày/hiển thị","Nội dung văn bản","Địa chỉ URL","Máy chủ lưu trữ"],k:0},
+{session:5,q:"<nav> thường chứa nội dung gì?",a:["Liên kết điều hướng","Ảnh nền","Chân trang","Mã CSS"],k:0},
+{session:6,q:"Trong menu điều hướng HTML cơ bản, thẻ liên kết là gì?",a:["<a>","<img>","<em>","<meta>"],k:0}
+];
+
+function showQuestion(){if(finished)return;clearInterval(questionTimer);const q=questions[index];$('qcount').textContent=`Câu ${index+1}/${questions.length} · Buổi ${q.session}`;$('bar').style.width=`${index/questions.length*100}%`;$('question').textContent=q.q;$('choices').replaceChildren();q.a.forEach((text,n)=>{const label=document.createElement('label');label.className='choice';const radio=document.createElement('input');radio.type='radio';radio.name='answer';radio.value=n;radio.addEventListener('change',()=>answers[index]=n);label.append(radio,document.createTextNode(' '+text));$('choices').append(label)});$('next').textContent=index===questions.length-1?'Nộp bài':'Câu tiếp theo';let remaining=30;$('questionTimerDisplay').textContent=`Thời gian câu hỏi: ${remaining}s`;questionTimer=setInterval(()=>{remaining--; $('questionTimerDisplay').textContent=`Thời gian câu hỏi: ${remaining}s`;if(remaining<=0)advance(true)},1000)}
+
+
+const $=id=>document.getElementById(id);let index=0,answers=[],deadline=0,tick=null,questionTimer=null,finished=false;
+
+function advance(timeout=false){if(finished)return;if(!timeout){const selected=document.querySelector('input[name=answer]:checked');if(selected)answers[index]=Number(selected.value)}if(index===questions.length-1)return finish('completed');index++;showQuestion()}
+function finish(reason){if(finished)return;finished=true;clearInterval(tick);clearInterval(questionTimer);const correct=answers.reduce((n,a,i)=>n+(a===questions[i].k?1:0),0);const payload={version:1,course:'INS2053',student:{msv:$('msv').value.trim(),name:$('name').value.trim(),class:$('className').value.trim()},score:{correct,total:questions.length,percent:Math.round(correct/questions.length*100)},reason,submittedAt:new Date().toISOString(),answers};const raw=JSON.stringify(payload);let hash=2166136261;for(let i=0;i<raw.length;i++){hash^=raw.charCodeAt(i);hash=Math.imul(hash,16777619)}payload.checksum=(hash>>>0).toString(16).padStart(8,'0');$('quiz').classList.add('hidden');$('result').classList.remove('hidden');$('score').textContent=`Điểm: ${correct}/${questions.length} (${payload.score.percent}%). ${reason==='time_limit'?'Tự nộp do hết 30 phút.':''}`;$('output').textContent=JSON.stringify(payload,null,2);$('reviewAnswers').innerHTML='<h3>Đáp án ôn tập</h3>'+questions.map((q,i)=>`<p><b>${i+1}.</b> ${q.a[q.k]} ${answers[i]===q.k?'✅':'—'}</p>`).join('')}
+$('start').addEventListener('click',()=>{for(const id of ['msv','name','className'])if(!$(`${id}`).value.trim()){$(`${id}`).focus();return}$('intro').classList.add('hidden');$('quiz').classList.remove('hidden');deadline=Date.now()+30*60*1000;tick=setInterval(()=>{const left=Math.max(0,deadline-Date.now());$('timer').textContent=`${Math.floor(left/60000)}:${String(Math.floor(left/1000)%60).padStart(2,'0')}`;if(!left)finish('time_limit')},250);showQuestion()});$('next').addEventListener('click',()=>advance());$('submit').addEventListener('click',()=>finish('manual'));$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('output').textContent);$('copy').textContent='Đã sao chép'}catch{$('copy').textContent='Hãy chọn và sao chép JSON'}});
+</script>
+
+
+</body></html>

@@ -1505,7 +1505,8 @@ async function build() {
   /* 1. assets — one copy. The Vietnamese tree reaches it as ../assets, so a
         stylesheet change can never drift out of step between the languages. -- */
   await cp(ASSETS, path.join(OUT, "assets"), { recursive: true });
-  // Narrow reference-asset allowlist: never copy the project source directory.
+  // The quiz source is published separately at the site root, not under assets/.
+  await rm(path.join(OUT, "assets", "quiz-6-sessions.html"), { force: true });
   for (const folder of ['images', 'media']) {
     await cp(path.join(REFERENCE_ROOT, folder), path.join(OUT, 'assets/student-club', folder), { recursive: true });
   }
